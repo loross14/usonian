@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <style>
+      .badge-outer {
+        fill: #373432;
+      }
+      .badge-inner {
+        fill: #E8DAC3;
+      }
+      .badge-accent {
+        fill: #C27254;
+      }
+      .badge-text {
+        fill: #373432;
+        font-family: 'Futura', 'Century Gothic', sans-serif;
+        font-weight: 600;
+        font-size: 11px;
+        letter-spacing: 4px;
+      }
+      .center-text {
+        fill: #373432;
+        font-family: 'Futura', 'Century Gothic', sans-serif;
+        font-weight: 300;
+        font-size: 9px;
+        letter-spacing: 2px;
+      }
+      @keyframes rotateSubtle {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      @keyframes pulseOpacity {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.6; }
+      }
+      .rotate-element {
+        transform-origin: 100px 100px;
+      }
+      svg:hover .rotate-element {
+        animation: rotateSubtle 20s linear infinite;
+      }
+      svg:hover .pulse-element {
+        animation: pulseOpacity 2s ease-in-out infinite;
+      }
+    </style>
+  </defs>
+
+  <!-- Outer circle -->
+  <circle class="badge-outer" cx="100" cy="100" r="95"/>
+
+  <!-- Terracotta ring -->
+  <circle class="badge-accent" cx="100" cy="100" r="88"/>
+
+  <!-- Inner sand circle -->
+  <circle class="badge-inner" cx="100" cy="100" r="82"/>
+
+  <!-- Prairie geometric pattern ring -->
+  <g class="rotate-element">
+    <!-- Decorative angular elements around the badge -->
+    <polygon class="badge-accent pulse-element" points="100,25 105,35 95,35"/>
+    <polygon class="badge-accent pulse-element" points="175,100 165,105 165,95"/>
+    <polygon class="badge-accent pulse-element" points="100,175 95,165 105,165"/>
+    <polygon class="badge-accent pulse-element" points="25,100 35,95 35,105"/>
+
+    <!-- Diagonal accents -->
+    <polygon class="badge-accent pulse-element" points="153,47 148,57 158,52" opacity="0.7"/>
+    <polygon class="badge-accent pulse-element" points="153,153 158,148 148,143" opacity="0.7"/>
+    <polygon class="badge-accent pulse-element" points="47,153 52,148 42,143" opacity="0.7"/>
+    <polygon class="badge-accent pulse-element" points="47,47 42,52 52,57" opacity="0.7"/>
+  </g>
+
+  <!-- USONIAN text on curved path -->
+  <defs>
+    <path id="textPathTop" d="M 40,100 A 60,60 0 0,1 160,100" fill="none"/>
+    <path id="textPathBottom" d="M 160,115 A 55,55 0 0,1 40,115" fill="none"/>
+  </defs>
+
+  <text class="badge-text">
+    <textPath href="#textPathTop" startOffset="50%" text-anchor="middle">USONIAN</textPath>
+  </text>
+
+  <!-- Center decorative element - geometric prairie house abstraction -->
+  <g transform="translate(100, 100)">
+    <!-- Abstract house roof lines -->
+    <rect class="badge-outer" x="-30" y="-15" width="60" height="4" rx="1"/>
+    <rect class="badge-outer" x="-25" y="-9" width="50" height="3" rx="1"/>
+    <rect class="badge-outer" x="-20" y="-4" width="40" height="2" rx="1"/>
+
+    <!-- Vertical elements suggesting structure -->
+    <rect class="badge-accent" x="-20" y="2" width="4" height="18"/>
+    <rect class="badge-accent" x="-8" y="2" width="4" height="18"/>
+    <rect class="badge-accent" x="4" y="2" width="4" height="18"/>
+    <rect class="badge-accent" x="16" y="2" width="4" height="18"/>
+
+    <!-- Base line -->
+    <rect class="badge-outer" x="-25" y="22" width="50" height="3" rx="1"/>
+  </g>
+
+  <!-- Establishment text -->
+  <text class="center-text">
+    <textPath href="#textPathBottom" startOffset="50%" text-anchor="middle">ARCHITECT DESIGNED</textPath>
+  </text>
+
+  <!-- Inner decorative ring -->
+  <circle cx="100" cy="100" r="55" fill="none" stroke="#373432" stroke-width="1" opacity="0.3"/>
+</svg>

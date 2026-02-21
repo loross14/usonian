@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <style>
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.85; }
+    }
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+    .accent { animation: pulse 4s ease-in-out infinite; }
+    .portrait-main { transform-origin: center center; }
+    </style>
+    <linearGradient id="face-grad-lautner" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:rgb(168, 132, 98);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(138, 105, 75);stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="hair-grad-lautner" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:rgb(82, 90, 100);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(55, 52, 50);stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Warm White Background -->
+  <rect width="400" height="400" fill="rgb(252, 250, 247)"/>
+
+  <!-- Subtle Chemosphere silhouette in background -->
+  <g class="building-accent" opacity="0.12" transform="translate(0, 0)">
+    <polygon points="200,30 270,65 295,135 270,205 200,240 130,205 105,135 130,65" fill="rgb(194, 114, 84)"/>
+    <rect x="188" y="240" width="24" height="50" fill="rgb(55, 52, 50)"/>
+  </g>
+
+  <!-- Portrait Composition -->
+  <g class="portrait-main" transform="translate(0, 0)">
+    <!-- Octagonal face frame - signature Lautner geometry -->
+    <polygon points="200,110 255,145 270,210 255,275 200,300 145,275 130,210 145,145"
+      fill="url(#face-grad-lautner)" stroke="rgb(55, 52, 50)" stroke-width="2"/>
+
+    <!-- Hair - Angular geometric form -->
+    <polygon points="145,145 200,90 255,145 245,130 200,105 155,130"
+      fill="url(#hair-grad-lautner)"/>
+
+    <!-- Eyes - Bold geometric rectangles -->
+    <g class="eyes">
+      <rect x="155" y="180" width="32" height="14" fill="rgb(55, 52, 50)" rx="2"/>
+      <rect x="213" y="180" width="32" height="14" fill="rgb(55, 52, 50)" rx="2"/>
+      <rect x="158" y="183" width="10" height="5" fill="rgb(212, 178, 112)" class="accent"/>
+      <rect x="216" y="183" width="10" height="5" fill="rgb(212, 178, 112)" class="accent"/>
+    </g>
+
+    <!-- Glasses - Distinctive geometric frames -->
+    <g class="glasses" fill="none" stroke="rgb(55, 52, 50)" stroke-width="3">
+      <rect x="148" y="172" width="44" height="26" rx="3"/>
+      <rect x="208" y="172" width="44" height="26" rx="3"/>
+      <line x1="192" y1="185" x2="208" y2="185"/>
+      <line x1="148" y1="185" x2="135" y2="178"/>
+      <line x1="252" y1="185" x2="265" y2="178"/>
+    </g>
+
+    <!-- Nose - Angular triangle -->
+    <polygon points="200,205 212,245 188,245" fill="rgb(138, 105, 75)"/>
+
+    <!-- Mouth - Minimal horizontal line -->
+    <line x1="172" y1="265" x2="228" y2="265" stroke="rgb(55, 52, 50)" stroke-width="3"/>
+
+    <!-- Collar - Architectural angular form -->
+    <polygon points="145,300 200,340 255,300 260,380 140,380" fill="rgb(82, 90, 100)"/>
+    <polygon points="180,300 200,325 220,300" fill="rgb(252, 250, 247)"/>
+  </g>
+
+  <!-- Baseline accent -->
+  <line x1="100" y1="370" x2="300" y2="370" stroke="rgb(194, 114, 84)" stroke-width="2" class="accent"/>
+</svg>

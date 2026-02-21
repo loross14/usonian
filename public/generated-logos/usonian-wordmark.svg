@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 80" width="400" height="80">
+  <defs>
+    <style>
+      .letter {
+        fill: #373432;
+        transition: fill 0.3s ease;
+      }
+      .accent-line {
+        stroke: #C27254;
+        stroke-width: 2;
+        transition: stroke-width 0.3s ease;
+      }
+      svg:hover .accent-line {
+        stroke-width: 3;
+      }
+      @keyframes lineGrow {
+        0% { stroke-dashoffset: 400; }
+        100% { stroke-dashoffset: 0; }
+      }
+      .animated-line {
+        stroke-dasharray: 400;
+        stroke-dashoffset: 400;
+        animation: lineGrow 1.5s ease-out forwards;
+      }
+    </style>
+  </defs>
+
+  <!-- Background accent lines - prairie horizontal emphasis -->
+  <line class="accent-line animated-line" x1="0" y1="68" x2="400" y2="68"/>
+  <line class="accent-line animated-line" x1="0" y1="72" x2="400" y2="72" style="animation-delay: 0.2s;"/>
+
+  <!-- U -->
+  <path class="letter" d="M10,15 L10,45 Q10,60 25,60 L35,60 Q50,60 50,45 L50,15 L42,15 L42,45 Q42,52 35,52 L25,52 Q18,52 18,45 L18,15 Z"/>
+
+  <!-- S -->
+  <path class="letter" d="M60,15 L60,23 L85,23 Q90,23 90,28 L90,32 Q90,37 85,37 L70,37 Q60,37 60,47 L60,52 Q60,60 70,60 L100,60 L100,52 L72,52 Q67,52 67,47 L67,45 Q67,40 72,40 L87,40 Q100,40 100,30 L100,25 Q100,15 87,15 Z"/>
+
+  <!-- O -->
+  <path class="letter" d="M110,15 L110,60 L150,60 L150,15 Z M118,23 L142,23 L142,52 L118,52 Z"/>
+
+  <!-- N -->
+  <path class="letter" d="M160,15 L160,60 L168,60 L168,30 L195,60 L205,60 L205,15 L197,15 L197,45 L170,15 Z"/>
+
+  <!-- I -->
+  <path class="letter" d="M215,15 L215,60 L223,60 L223,15 Z"/>
+
+  <!-- A -->
+  <path class="letter" d="M233,60 L233,15 L275,15 L275,60 L267,60 L267,42 L241,42 L241,60 Z M241,34 L267,34 L267,23 L241,23 Z"/>
+
+  <!-- N -->
+  <path class="letter" d="M285,15 L285,60 L293,60 L293,30 L320,60 L330,60 L330,15 L322,15 L322,45 L295,15 Z"/>
+
+  <!-- Decorative prairie elements -->
+  <rect x="340" y="32" width="50" height="3" fill="#C27254"/>
+  <rect x="350" y="38" width="40" height="2" fill="#C27254" opacity="0.7"/>
+  <rect x="360" y="43" width="30" height="2" fill="#C27254" opacity="0.5"/>
+</svg>

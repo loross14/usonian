@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 100" width="450" height="100">
+  <defs>
+    <style>
+      .house-element {
+        transition: transform 0.3s ease;
+      }
+      .roof {
+        fill: #C27254;
+      }
+      .structure {
+        fill: #373432;
+      }
+      .window {
+        fill: #E8DAC3;
+      }
+      .text {
+        fill: #373432;
+        font-family: 'Futura', 'Century Gothic', sans-serif;
+        font-weight: 500;
+        font-size: 32px;
+        letter-spacing: 8px;
+      }
+      .prairie-line {
+        stroke: #C27254;
+        stroke-width: 2;
+      }
+      @keyframes roofFloat {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-2px); }
+      }
+      .roof-animated {
+        animation: roofFloat 3s ease-in-out infinite;
+      }
+      svg:hover .roof-animated {
+        animation-duration: 1.5s;
+      }
+    </style>
+  </defs>
+
+  <!-- Prairie House Icon -->
+  <g class="house-element">
+    <!-- Main roof - strong horizontal prairie line -->
+    <polygon class="roof roof-animated" points="10,35 90,35 95,40 5,40"/>
+
+    <!-- Secondary roof overhang -->
+    <polygon class="roof" points="15,42 85,42 88,46 12,46" opacity="0.8"/>
+
+    <!-- Main structure -->
+    <rect class="structure" x="20" y="48" width="60" height="35"/>
+
+    <!-- Horizontal prairie bands -->
+    <rect class="roof" x="18" y="55" width="64" height="3"/>
+    <rect class="roof" x="18" y="70" width="64" height="3"/>
+
+    <!-- Windows - geometric grid pattern -->
+    <rect class="window" x="25" y="60" width="10" height="8"/>
+    <rect class="window" x="38" y="60" width="10" height="8"/>
+    <rect class="window" x="52" y="60" width="10" height="8"/>
+    <rect class="window" x="65" y="60" width="10" height="8"/>
+
+    <!-- Door -->
+    <rect class="structure" x="42" y="75" width="16" height="8" fill="#E8DAC3"/>
+
+    <!-- Chimney accent -->
+    <rect class="structure" x="70" y="28" width="8" height="12"/>
+  </g>
+
+  <!-- USONIAN Text -->
+  <text class="text" x="115" y="62">USONIAN</text>
+
+  <!-- Decorative prairie lines extending from house -->
+  <line class="prairie-line" x1="95" y1="40" x2="110" y2="40"/>
+  <line class="prairie-line" x1="95" y1="46" x2="108" y2="46" opacity="0.6"/>
+
+  <!-- Bottom accent lines -->
+  <line class="prairie-line" x1="115" y1="78" x2="420" y2="78"/>
+  <line class="prairie-line" x1="115" y1="82" x2="400" y2="82" opacity="0.5"/>
+</svg>

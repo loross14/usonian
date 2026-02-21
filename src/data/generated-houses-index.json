@@ -1,0 +1,114 @@
+{
+  "generated_at": "2026-02-21",
+  "total_count": 18,
+  "properties": [
+    {
+      "slug": "lautner-house",
+      "home_name": "Lautner House",
+      "svg_file": "lautner-house.svg",
+      "year_built": 1939
+    },
+    {
+      "slug": "foster-carling-residence",
+      "home_name": "Foster Carling Residence",
+      "svg_file": "foster-carling-residence.svg",
+      "year_built": 1949
+    },
+    {
+      "slug": "chemosphere",
+      "home_name": "Chemosphere (Malin Residence)",
+      "svg_file": "chemosphere.svg",
+      "year_built": 1960
+    },
+    {
+      "slug": "sheats-goldstein-residence",
+      "home_name": "Sheats-Goldstein Residence",
+      "svg_file": "sheats-goldstein-residence.svg",
+      "year_built": 1961
+    },
+    {
+      "slug": "garcia-house",
+      "home_name": "Garcia House",
+      "svg_file": "garcia-house.svg",
+      "year_built": 1962
+    },
+    {
+      "slug": "silvertop",
+      "home_name": "Silvertop (Reiner Residence)",
+      "svg_file": "silvertop.svg",
+      "year_built": 1957
+    },
+    {
+      "slug": "elrod-house",
+      "home_name": "Elrod House",
+      "svg_file": "elrod-house.svg",
+      "year_built": 1968
+    },
+    {
+      "slug": "bob-hope-residence",
+      "home_name": "Bob Hope Residence",
+      "svg_file": "bob-hope-residence.svg",
+      "year_built": 1979
+    },
+    {
+      "slug": "arango-house",
+      "home_name": "Arango House",
+      "svg_file": "arango-house.svg",
+      "year_built": 1973
+    },
+    {
+      "slug": "hotel-lautner",
+      "home_name": "Hotel Lautner (Hubbard)",
+      "svg_file": "hotel-lautner.svg",
+      "year_built": 1947
+    },
+    {
+      "slug": "jones-house",
+      "home_name": "Jones House (own)",
+      "svg_file": "jones-house.svg",
+      "year_built": 1955
+    },
+    {
+      "slug": "brothers-house",
+      "home_name": "Brothers House (The Gray)",
+      "svg_file": "brothers-house.svg",
+      "year_built": 1956
+    },
+    {
+      "slug": "stoneflower",
+      "home_name": "Stoneflower",
+      "svg_file": "stoneflower.svg",
+      "year_built": 1965
+    },
+    {
+      "slug": "ashmun-house",
+      "home_name": "Ashmun House (Timber Teepee)",
+      "svg_file": "ashmun-house.svg",
+      "year_built": 1951
+    },
+    {
+      "slug": "dow-house-studio",
+      "home_name": "Dow House & Studio",
+      "svg_file": "dow-house-studio.svg",
+      "year_built": 1936
+    },
+    {
+      "slug": "anderson-residence-green",
+      "home_name": "Anderson Residence",
+      "svg_file": "anderson-residence-green.svg",
+      "year_built": 1959
+    },
+    {
+      "slug": "myers-residence",
+      "home_name": "Myers Residence",
+      "svg_file": "myers-residence.svg",
+      "year_built": 1991
+    },
+    {
+      "slug": "lapp-riverhouse",
+      "home_name": "Lapp RiverHouse",
+      "svg_file": "lapp-riverhouse.svg",
+      "year_built": 1990
+    }
+  ]
+}

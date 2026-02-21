@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <style>
+      
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.85; }
+        }
+        .accent { animation: pulse 4s ease-in-out infinite; }
+    
+    </style>
+    <linearGradient id="struct-grad-chemosph" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:rgb(168, 132, 98);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(55, 52, 50);stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- White Background -->
+  <rect width="400" height="300" fill="white"/>
+
+  <g class="house-main">
+    <!-- Central pedestal/column - taller -->
+    <polygon
+      points="185,200 215,200 225,280 175,280"
+      fill="url(#struct-grad-chemosph)"
+    />
+
+    <!-- Main geometric form - larger -->
+    <polygon
+      points="200,74 304,107 304,173 200,206 96,173 96,107"
+      fill="rgb(168, 132, 98)"
+      stroke="rgb(55, 52, 50)"
+      stroke-width="2"
+      class="accent"
+    />
+
+    <!-- Roof cap - larger -->
+    <polygon
+      points="200,55 145,100 255,100"
+      fill="rgb(168, 132, 98)"
+    />
+
+    <!-- Windows arranged radially - larger -->
+    <g class="windows">
+      <circle cx="200" cy="104" r="12" fill="rgb(212, 178, 112)" opacity="0.7"/>
+      <circle cx="257" cy="122" r="12" fill="rgb(212, 178, 112)" opacity="0.7"/>
+      <circle cx="257" cy="158" r="12" fill="rgb(212, 178, 112)" opacity="0.7"/>
+      <circle cx="200" cy="176" r="12" fill="rgb(212, 178, 112)" opacity="0.7"/>
+      <circle cx="143" cy="158" r="12" fill="rgb(212, 178, 112)" opacity="0.7"/>
+      <circle cx="143" cy="122" r="12" fill="rgb(212, 178, 112)" opacity="0.7"/>
+    </g>
+
+    <!-- Ground level - edge to edge -->
+    <line x1="0" y1="270" x2="400" y2="270" stroke="rgb(55, 52, 50)" stroke-width="2" class="line-draw"/>
+  </g>
+
+  <!-- Ground fill -->
+  <rect x="0" y="270" width="400" height="30" fill="rgb(168, 132, 98)" opacity="0.3"/>
+
+  <!-- Landscape accents - at edges -->
+  <circle cx="35" cy="250" r="30" fill="rgb(168, 132, 98)" opacity="0.3"/>
+  <circle cx="365" cy="255" r="35" fill="rgb(168, 132, 98)" opacity="0.3"/>
+</svg>
