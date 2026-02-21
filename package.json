@@ -7,7 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "seed": "tsx scripts/seed.ts"
+    "seed": "tsx scripts/seed.ts",
+    "research": "tsx scripts/research-agent.ts",
+    "research:daily": "tsx scripts/research-agent.ts daily",
+    "research:listings": "tsx scripts/research-agent.ts listings",
+    "generate-data": "tsx scripts/generate-full-data.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.8.0",
