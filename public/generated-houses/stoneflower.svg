@@ -2,11 +2,11 @@
   <defs>
     <style>
       
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
         }
-        .house-main { animation: float 6s ease-in-out infinite; }
+        .house-main { animation: breathe 8s ease-in-out infinite; transform-origin: center bottom; }
     
     </style>
   </defs>
@@ -14,51 +14,63 @@
   <!-- White Background -->
   <rect width="400" height="300" fill="white"/>
 
-  <!-- Ground Line - extends to edges -->
-  <line x1="0" y1="220" x2="400" y2="220" stroke="rgb(232, 218, 195)" stroke-width="2"/>
+  <!-- Forest floor -->
+  <rect x="0" y="250" width="400" height="50" fill="rgb(168, 132, 98)" opacity="0.25"/>
 
   <g class="house-main">
-    <!-- Prairie-style horizontal roof overhangs - edge to edge -->
+    <!-- Stone grotto base (lower level) -->
+    <ellipse cx="200" cy="250" rx="80" ry="25" fill="rgb(82, 90, 100)" opacity="0.6"/>
+    <ellipse cx="180" cy="240" rx="40" ry="20" fill="rgb(82, 90, 100)" opacity="0.5"/>
+    <ellipse cx="230" cy="238" rx="35" ry="18" fill="rgb(82, 90, 100)" opacity="0.5"/>
+
+    <!-- Vertical wood stilts/posts -->
+    <rect x="140" y="120" width="6" height="130" fill="rgb(120, 72, 56)"/>
+    <rect x="175" y="100" width="6" height="150" fill="rgb(120, 72, 56)"/>
+    <rect x="220" y="100" width="6" height="150" fill="rgb(120, 72, 56)"/>
+    <rect x="255" y="120" width="6" height="130" fill="rgb(120, 72, 56)"/>
+
+    <!-- Main triangular A-frame upper structure -->
     <polygon
-      points="10,120 390,120 410,135 -10,135"
-      fill="rgb(194, 114, 84)"
-      class="accent"
-    />
-    <polygon
-      points="20,105 380,105 390,120 10,120"
-      fill="rgb(55, 52, 50)"
+      points="200,60 130,150 270,150"
+      fill="rgb(232, 218, 195)"
+      stroke="rgb(55, 52, 50)"
+      stroke-width="2"
     />
 
-    <!-- Main structure - wider -->
-    <rect x="25" y="135" width="350" height="85" fill="rgb(232, 218, 195)"/>
+    <!-- A-frame roof lines -->
+    <line x1="200" y1="60" x2="130" y2="150" stroke="rgb(120, 72, 56)" stroke-width="4"/>
+    <line x1="200" y1="60" x2="270" y2="150" stroke="rgb(120, 72, 56)" stroke-width="4"/>
 
-    <!-- Lower horizontal band - extends past edges -->
-    <rect x="5" y="190" width="390" height="30" fill="rgb(194, 114, 84)" class="accent"/>
+    <!-- Vertical lattice pattern (Fay Jones signature) -->
+    <line x1="160" y1="80" x2="160" y2="150" stroke="rgb(120, 72, 56)" stroke-width="2"/>
+    <line x1="180" y1="70" x2="180" y2="150" stroke="rgb(120, 72, 56)" stroke-width="2"/>
+    <line x1="200" y1="60" x2="200" y2="150" stroke="rgb(120, 72, 56)" stroke-width="2"/>
+    <line x1="220" y1="70" x2="220" y2="150" stroke="rgb(120, 72, 56)" stroke-width="2"/>
+    <line x1="240" y1="80" x2="240" y2="150" stroke="rgb(120, 72, 56)" stroke-width="2"/>
 
-    <!-- Windows - horizontal band -->
+    <!-- Cross bracing -->
+    <line x1="145" y1="120" x2="255" y2="120" stroke="rgb(120, 72, 56)" stroke-width="2"/>
+
+    <!-- Glass windows in A-frame -->
     <g class="windows">
-      <rect x="40" y="145" width="43" height="35" fill="rgb(212, 178, 112)" opacity="0.8"/>
-      <line x1="61" y1="145" x2="61" y2="180" stroke="rgb(55, 52, 50)" stroke-width="2"/>
-      <rect x="93" y="145" width="43" height="35" fill="rgb(212, 178, 112)" opacity="0.8"/>
-      <line x1="114" y1="145" x2="114" y2="180" stroke="rgb(55, 52, 50)" stroke-width="2"/>
-      <rect x="146" y="145" width="43" height="35" fill="rgb(212, 178, 112)" opacity="0.8"/>
-      <line x1="167" y1="145" x2="167" y2="180" stroke="rgb(55, 52, 50)" stroke-width="2"/>
-      <rect x="199" y="145" width="43" height="35" fill="rgb(212, 178, 112)" opacity="0.8"/>
-      <line x1="220" y1="145" x2="220" y2="180" stroke="rgb(55, 52, 50)" stroke-width="2"/>
-      <rect x="252" y="145" width="43" height="35" fill="rgb(212, 178, 112)" opacity="0.8"/>
-      <line x1="273" y1="145" x2="273" y2="180" stroke="rgb(55, 52, 50)" stroke-width="2"/>
-      <rect x="305" y="145" width="43" height="35" fill="rgb(212, 178, 112)" opacity="0.8"/>
-      <line x1="326" y1="145" x2="326" y2="180" stroke="rgb(55, 52, 50)" stroke-width="2"/>
+      <polygon points="200,75 165,130 235,130" fill="rgb(212, 178, 112)" opacity="0.5"/>
     </g>
 
-    <!-- Chimney -->
-    <rect x="288" y="65" width="25" height="50" fill="rgb(55, 52, 50)"/>
+    <!-- Lower deck level -->
+    <rect x="120" y="150" width="160" height="10" fill="rgb(168, 132, 98)" stroke="rgb(55, 52, 50)" stroke-width="1"/>
 
-    <!-- Decorative horizontal lines (FLW signature) -->
-    <line x1="25" y1="165" x2="375" y2="165" stroke="rgb(55, 52, 50)" stroke-width="1" class="line-draw"/>
-    <line x1="15" y1="112" x2="385" y2="112" stroke="rgb(212, 178, 112)" stroke-width="1"/>
+    <!-- Lower level structure (grotto view) -->
+    <rect x="145" y="160" width="110" height="70" fill="rgb(232, 218, 195)" opacity="0.7" stroke="rgb(55, 52, 50)" stroke-width="1"/>
+
+    <!-- Lower level windows -->
+    <rect x="155" y="175" width="35" height="40" fill="rgb(212, 178, 112)" opacity="0.6"/>
+    <rect x="210" y="175" width="35" height="40" fill="rgb(212, 178, 112)" opacity="0.6"/>
+
+    <!-- Spiral staircase hint -->
+    <ellipse cx="280" cy="200" rx="15" ry="5" fill="rgb(55, 52, 50)" opacity="0.4"/>
+    <path d="M 280 200 Q 295 180 280 160 Q 265 140 280 120" fill="none" stroke="rgb(55, 52, 50)" stroke-width="2" stroke-dasharray="4,4"/>
+
+    <!-- Waterfall hint (from description) -->
+    <line x1="120" y1="230" x2="120" y2="260" stroke="rgb(195, 215, 232)" stroke-width="3" opacity="0.5"/>
   </g>
-
-  <!-- Ground plane fills bottom -->
-  <rect x="0" y="220" width="400" height="80" fill="rgb(232, 218, 195)" opacity="0.3"/>
 </svg>

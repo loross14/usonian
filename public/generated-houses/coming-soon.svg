@@ -1,0 +1,96 @@
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Pulse animation for roof -->
+    <style>
+      @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.7; }
+      }
+      .roof-pulse {
+        animation: pulse 3s ease-in-out infinite;
+      }
+      .blueprint-line {
+        stroke-dasharray: 8 4;
+        stroke-linecap: round;
+      }
+    </style>
+  </defs>
+
+  <!-- White background -->
+  <rect width="400" height="300" fill="white"/>
+
+  <!-- Subtle grid pattern (architectural paper feel) -->
+  <g opacity="0.08">
+    <line x1="0" y1="75" x2="400" y2="75" stroke="rgb(55, 52, 50)" stroke-width="0.5"/>
+    <line x1="0" y1="150" x2="400" y2="150" stroke="rgb(55, 52, 50)" stroke-width="0.5"/>
+    <line x1="0" y1="225" x2="400" y2="225" stroke="rgb(55, 52, 50)" stroke-width="0.5"/>
+    <line x1="100" y1="0" x2="100" y2="300" stroke="rgb(55, 52, 50)" stroke-width="0.5"/>
+    <line x1="200" y1="0" x2="200" y2="300" stroke="rgb(55, 52, 50)" stroke-width="0.5"/>
+    <line x1="300" y1="0" x2="300" y2="300" stroke="rgb(55, 52, 50)" stroke-width="0.5"/>
+  </g>
+
+  <!-- Prairie roofline silhouette with pulse animation -->
+  <g class="roof-pulse">
+    <!-- Main horizontal roof overhang - top layer -->
+    <rect x="40" y="85" width="320" height="6" fill="rgb(194, 114, 84)" rx="1"/>
+
+    <!-- Secondary roof layer -->
+    <rect x="70" y="95" width="260" height="5" fill="rgb(194, 114, 84)" opacity="0.85" rx="1"/>
+
+    <!-- Third roof layer -->
+    <rect x="100" y="104" width="200" height="4" fill="rgb(194, 114, 84)" opacity="0.7" rx="1"/>
+  </g>
+
+  <!-- Abstract house structure - blueprint style dashed lines -->
+  <g class="blueprint-line" fill="none" stroke="rgb(212, 178, 112)" stroke-width="1.5" opacity="0.6">
+    <!-- Left vertical structure -->
+    <line x1="90" y1="108" x2="90" y2="180"/>
+    <line x1="120" y1="108" x2="120" y2="180"/>
+
+    <!-- Right vertical structure -->
+    <line x1="280" y1="108" x2="280" y2="180"/>
+    <line x1="310" y1="108" x2="310" y2="180"/>
+
+    <!-- Horizontal connecting lines -->
+    <line x1="90" y1="140" x2="310" y2="140"/>
+    <line x1="90" y1="165" x2="310" y2="165"/>
+  </g>
+
+  <!-- Central abstract window/door element -->
+  <g>
+    <rect x="175" y="120" width="50" height="60" fill="none" stroke="rgb(232, 218, 195)" stroke-width="2" rx="2"/>
+    <line x1="200" y1="120" x2="200" y2="180" stroke="rgb(232, 218, 195)" stroke-width="1.5"/>
+    <line x1="175" y1="145" x2="225" y2="145" stroke="rgb(232, 218, 195)" stroke-width="1.5"/>
+  </g>
+
+  <!-- Ground line - prairie horizon -->
+  <line x1="30" y1="185" x2="370" y2="185" stroke="rgb(55, 52, 50)" stroke-width="1.5" opacity="0.3"/>
+
+  <!-- Decorative horizontal prairie accent lines -->
+  <g opacity="0.4">
+    <rect x="60" y="195" width="80" height="2" fill="rgb(212, 178, 112)" rx="1"/>
+    <rect x="260" y="195" width="80" height="2" fill="rgb(212, 178, 112)" rx="1"/>
+  </g>
+
+  <!-- Small geometric prairie ornaments -->
+  <g fill="rgb(194, 114, 84)" opacity="0.5">
+    <rect x="145" y="193" width="6" height="6" transform="rotate(45 148 196)"/>
+    <rect x="249" y="193" width="6" height="6" transform="rotate(45 252 196)"/>
+  </g>
+
+  <!-- COMING SOON text -->
+  <text
+    x="200"
+    y="245"
+    text-anchor="middle"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="24"
+    font-weight="400"
+    letter-spacing="6"
+    fill="rgb(55, 52, 50)"
+  >COMING SOON</text>
+
+  <!-- Subtle underline accent -->
+  <line x1="130" y1="255" x2="270" y2="255" stroke="rgb(194, 114, 84)" stroke-width="2" opacity="0.6"/>
+
+</svg>

@@ -21,7 +21,7 @@
     <!-- Prairie-style horizontal roof overhangs - edge to edge -->
     <polygon
       points="10,120 390,120 410,135 -10,135"
-      fill="rgb(120, 72, 56)"
+      fill="rgb(194, 114, 84)"
       class="accent"
     />
     <polygon
@@ -33,24 +33,22 @@
     <rect x="25" y="135" width="350" height="85" fill="rgb(205, 188, 162)"/>
 
     <!-- Lower horizontal band - extends past edges -->
-    <rect x="5" y="190" width="390" height="30" fill="rgb(120, 72, 56)" class="accent"/>
+    <rect x="5" y="190" width="390" height="30" fill="rgb(194, 114, 84)" class="accent"/>
 
     <!-- Windows - horizontal band -->
     <g class="windows">
-      <rect x="40" y="145" width="54" height="35" fill="rgb(212, 178, 112)" opacity="0.8"/>
-      <line x1="67" y1="145" x2="67" y2="180" stroke="rgb(55, 52, 50)" stroke-width="2"/>
-      <rect x="104" y="145" width="54" height="35" fill="rgb(212, 178, 112)" opacity="0.8"/>
-      <line x1="131" y1="145" x2="131" y2="180" stroke="rgb(55, 52, 50)" stroke-width="2"/>
-      <rect x="168" y="145" width="54" height="35" fill="rgb(212, 178, 112)" opacity="0.8"/>
-      <line x1="195" y1="145" x2="195" y2="180" stroke="rgb(55, 52, 50)" stroke-width="2"/>
-      <rect x="232" y="145" width="54" height="35" fill="rgb(212, 178, 112)" opacity="0.8"/>
-      <line x1="259" y1="145" x2="259" y2="180" stroke="rgb(55, 52, 50)" stroke-width="2"/>
-      <rect x="296" y="145" width="54" height="35" fill="rgb(212, 178, 112)" opacity="0.8"/>
-      <line x1="323" y1="145" x2="323" y2="180" stroke="rgb(55, 52, 50)" stroke-width="2"/>
+      <rect x="40" y="145" width="70" height="35" fill="rgb(212, 178, 112)" opacity="0.8"/>
+      <line x1="75" y1="145" x2="75" y2="180" stroke="rgb(55, 52, 50)" stroke-width="2"/>
+      <rect x="120" y="145" width="70" height="35" fill="rgb(212, 178, 112)" opacity="0.8"/>
+      <line x1="155" y1="145" x2="155" y2="180" stroke="rgb(55, 52, 50)" stroke-width="2"/>
+      <rect x="200" y="145" width="70" height="35" fill="rgb(212, 178, 112)" opacity="0.8"/>
+      <line x1="235" y1="145" x2="235" y2="180" stroke="rgb(55, 52, 50)" stroke-width="2"/>
+      <rect x="280" y="145" width="70" height="35" fill="rgb(212, 178, 112)" opacity="0.8"/>
+      <line x1="315" y1="145" x2="315" y2="180" stroke="rgb(55, 52, 50)" stroke-width="2"/>
     </g>
 
     <!-- Chimney -->
-    <rect x="324" y="65" width="25" height="50" fill="rgb(55, 52, 50)"/>
+    <rect x="304" y="65" width="25" height="50" fill="rgb(55, 52, 50)"/>
 
     <!-- Decorative horizontal lines (FLW signature) -->
     <line x1="25" y1="165" x2="375" y2="165" stroke="rgb(55, 52, 50)" stroke-width="1" class="line-draw"/>

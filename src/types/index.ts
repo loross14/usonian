@@ -77,6 +77,16 @@ export interface PropertyImage {
   sort_order: number;
 }
 
+export interface PropertyAlert {
+  id: string;
+  property_id: string;
+  email: string;
+  status: 'active' | 'notified' | 'unsubscribed';
+  created_at: string;
+  notified_at: string | null;
+  unsubscribed_at: string | null;
+}
+
 // Extended types with relations
 export interface PropertyWithRelations extends Property {
   architect?: Architect;

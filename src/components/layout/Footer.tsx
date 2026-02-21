@@ -40,11 +40,6 @@ export function Footer() {
                   Learn
                 </Link>
               </li>
-              <li>
-                <span className="text-sm text-slate-light/60">
-                  Map <span className="text-xs">(coming soon)</span>
-                </span>
-              </li>
             </ul>
           </div>
 

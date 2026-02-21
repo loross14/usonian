@@ -2,11 +2,11 @@
   <defs>
     <style>
       
-        @keyframes glow {
-            0%, 100% { filter: drop-shadow(0 0 2px rgba(212, 178, 112, 0.3)); }
-            50% { filter: drop-shadow(0 0 8px rgba(212, 178, 112, 0.6)); }
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
         }
-        .windows { animation: glow 5s ease-in-out infinite; }
+        .house-main { animation: breathe 8s ease-in-out infinite; transform-origin: center bottom; }
     
     </style>
   </defs>
@@ -15,8 +15,8 @@
   <rect width="400" height="300" fill="white"/>
 
   <!-- Hillside - edge to edge -->
-  <path d="M -20 145 Q 100 185 220 220 L 420 260 L 420 300 L -20 300 Z" fill="rgb(232, 218, 195)" opacity="0.4"/>
-  <path d="M -20 170 Q 80 205 180 240 L 420 280 L 420 300 L -20 300 Z" fill="rgb(232, 218, 195)" opacity="0.3"/>
+  <path d="M -20 145 Q 100 185 220 220 L 420 260 L 420 300 L -20 300 Z" fill="rgb(205, 188, 162)" opacity="0.4"/>
+  <path d="M -20 170 Q 80 205 180 240 L 420 280 L 420 300 L -20 300 Z" fill="rgb(205, 188, 162)" opacity="0.3"/>
 
   <g class="house-main">
     <!-- Cantilevered main volume - wider -->

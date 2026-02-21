@@ -21,7 +21,7 @@
     <!-- Prairie-style horizontal roof overhangs - edge to edge -->
     <polygon
       points="10,120 390,120 410,135 -10,135"
-      fill="rgb(120, 72, 56)"
+      fill="rgb(194, 114, 84)"
       class="accent"
     />
     <polygon
@@ -33,7 +33,7 @@
     <rect x="25" y="135" width="350" height="85" fill="rgb(205, 188, 162)"/>
 
     <!-- Lower horizontal band - extends past edges -->
-    <rect x="5" y="190" width="390" height="30" fill="rgb(120, 72, 56)" class="accent"/>
+    <rect x="5" y="190" width="390" height="30" fill="rgb(194, 114, 84)" class="accent"/>
 
     <!-- Windows - horizontal band -->
     <g class="windows">
@@ -50,7 +50,7 @@
     </g>
 
     <!-- Chimney -->
-    <rect x="324" y="65" width="25" height="50" fill="rgb(55, 52, 50)"/>
+    <rect x="292" y="65" width="25" height="50" fill="rgb(55, 52, 50)"/>
 
     <!-- Decorative horizontal lines (FLW signature) -->
     <line x1="25" y1="165" x2="375" y2="165" stroke="rgb(55, 52, 50)" stroke-width="1" class="line-draw"/>

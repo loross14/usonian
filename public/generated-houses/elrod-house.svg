@@ -2,54 +2,61 @@
   <defs>
     <style>
       
-        @keyframes glow {
-            0%, 100% { filter: drop-shadow(0 0 2px rgba(212, 178, 112, 0.3)); }
-            50% { filter: drop-shadow(0 0 8px rgba(212, 178, 112, 0.6)); }
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
         }
-        .windows { animation: glow 5s ease-in-out infinite; }
+        .house-main { animation: breathe 8s ease-in-out infinite; transform-origin: center bottom; }
     
     </style>
-    <linearGradient id="roof-grad-elrod-ho" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:rgb(82, 90, 100);stop-opacity:1" />
-      <stop offset="100%" style="stop-color:rgb(55, 52, 50);stop-opacity:1" />
-    </linearGradient>
+    <radialGradient id="dome-grad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" style="stop-color:rgb(232, 218, 195);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(82, 90, 100);stop-opacity:1" />
+    </radialGradient>
   </defs>
 
   <!-- White Background -->
   <rect width="400" height="300" fill="white"/>
 
+  <!-- Desert ground -->
+  <rect x="0" y="220" width="400" height="80" fill="rgb(232, 218, 195)" opacity="0.4"/>
+
   <g class="house-main">
-    <!-- Curved/dramatic roof - edge to edge -->
-    <path
-      d="M -10 175 Q 200 16 410 155 L 410 175 L -10 175 Z"
-      fill="url(#roof-grad-elrod-ho)"
-      class="accent"
-    />
+    <!-- The iconic circular concrete dome - 60ft diameter represented -->
+    <ellipse cx="200" cy="140" rx="160" ry="70" fill="url(#dome-grad)" class="accent"/>
 
-    <!-- Main structure with angle - wider -->
-    <polygon
-      points="15,175 385,155 395,220 5,220"
-      fill="rgb(168, 132, 98)"
-    />
+    <!-- Dome outer ring -->
+    <ellipse cx="200" cy="140" rx="160" ry="70" fill="none" stroke="rgb(55, 52, 50)" stroke-width="3"/>
 
-    <!-- Glass wall - wider -->
+    <!-- Radial concrete beams (9 beams fanning outward) -->
+    <line x1="200" y1="140" x2="60" y2="100" stroke="rgb(55, 52, 50)" stroke-width="4"/>
+    <line x1="200" y1="140" x2="90" y2="75" stroke="rgb(55, 52, 50)" stroke-width="4"/>
+    <line x1="200" y1="140" x2="140" y2="72" stroke="rgb(55, 52, 50)" stroke-width="4"/>
+    <line x1="200" y1="140" x2="200" y2="70" stroke="rgb(55, 52, 50)" stroke-width="4"/>
+    <line x1="200" y1="140" x2="260" y2="72" stroke="rgb(55, 52, 50)" stroke-width="4"/>
+    <line x1="200" y1="140" x2="310" y2="75" stroke="rgb(55, 52, 50)" stroke-width="4"/>
+    <line x1="200" y1="140" x2="340" y2="100" stroke="rgb(55, 52, 50)" stroke-width="4"/>
+
+    <!-- Clerestory windows between beams (triangular gold sections) -->
     <g class="windows">
-      <rect x="35" y="165" width="280" height="45" fill="rgb(212, 178, 112)" opacity="0.6"/>
-      <line x1="85" y1="165" x2="85" y2="210" stroke="rgb(55, 52, 50)" stroke-width="1"/>
-      <line x1="135" y1="165" x2="135" y2="210" stroke="rgb(55, 52, 50)" stroke-width="1"/>
-      <line x1="185" y1="165" x2="185" y2="210" stroke="rgb(55, 52, 50)" stroke-width="1"/>
-      <line x1="235" y1="165" x2="235" y2="210" stroke="rgb(55, 52, 50)" stroke-width="1"/>
-      <line x1="285" y1="165" x2="285" y2="210" stroke="rgb(55, 52, 50)" stroke-width="1"/>
+      <polygon points="200,140 90,75 140,72" fill="rgb(212, 178, 112)" opacity="0.6"/>
+      <polygon points="200,140 140,72 200,70" fill="rgb(212, 178, 112)" opacity="0.5"/>
+      <polygon points="200,140 200,70 260,72" fill="rgb(212, 178, 112)" opacity="0.6"/>
+      <polygon points="200,140 260,72 310,75" fill="rgb(212, 178, 112)" opacity="0.5"/>
     </g>
 
-    <!-- Cantilevered element - extends past edge -->
-    <rect x="330" y="140" width="80" height="15" fill="rgb(82, 90, 100)" class="accent"/>
-    <line x1="330" y1="155" x2="410" y2="155" stroke="rgb(55, 52, 50)" stroke-width="2" class="line-draw"/>
+    <!-- Base structure / living area rim -->
+    <ellipse cx="200" cy="180" rx="150" ry="35" fill="rgb(232, 218, 195)" stroke="rgb(55, 52, 50)" stroke-width="2"/>
 
-    <!-- Support column (organic) -->
-    <ellipse cx="370" cy="190" rx="10" ry="35" fill="rgb(55, 52, 50)"/>
+    <!-- Natural boulders integrated into structure -->
+    <ellipse cx="80" cy="190" rx="35" ry="25" fill="rgb(138, 105, 75)" opacity="0.7"/>
+    <ellipse cx="95" cy="205" rx="25" ry="18" fill="rgb(138, 105, 75)" opacity="0.6"/>
+    <ellipse cx="320" cy="185" rx="30" ry="22" fill="rgb(138, 105, 75)" opacity="0.7"/>
+
+    <!-- Indoor-outdoor pool hint -->
+    <ellipse cx="200" cy="200" rx="60" ry="15" fill="rgb(195, 215, 232)" opacity="0.5"/>
+
+    <!-- Central column hint -->
+    <circle cx="200" cy="140" r="12" fill="rgb(55, 52, 50)"/>
   </g>
-
-  <!-- Ground - edge to edge -->
-  <path d="M 0 220 Q 100 215 200 220 Q 300 225 400 218 L 400 300 L 0 300 Z" fill="rgb(168, 132, 98)" opacity="0.4"/>
 </svg>

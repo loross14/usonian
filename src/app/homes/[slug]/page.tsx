@@ -6,6 +6,7 @@ import architectsDataRaw from "@/data/architects.json";
 import { formatPrice, formatLocation, type Property, type Architect } from "@/types";
 import { Badge } from "@/components/ui/Badge";
 import { PropertyCard } from "@/components/property/PropertyCard";
+import { PropertyAlertButton } from "@/components/property/PropertyAlertButton";
 import { getGeneratedSvgUrl } from "@/lib/generated-houses";
 import { getArchitectPortraitUrl } from "@/lib/architect-portraits";
 
@@ -240,6 +241,21 @@ export default async function PropertyDetailPage({ params }: PageProps) {
                   )}
                 </dl>
               </div>
+
+              {/* Watch for Listing Card - only for off-market properties */}
+              {property.status !== 'active' && (
+                <div className="bg-gold/10 border border-gold/30 p-6 rounded-lg mb-8">
+                  <h3 className="text-lg mb-2">Interested in this property?</h3>
+                  <p className="text-sm text-slate mb-4">
+                    Get notified when this rare home becomes available.
+                  </p>
+                  <PropertyAlertButton
+                    propertyId={property.id}
+                    propertyName={property.home_name}
+                    variant="sidebar"
+                  />
+                </div>
+              )}
 
               {/* Architect Card */}
               {architect && (

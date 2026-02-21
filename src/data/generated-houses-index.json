@@ -1,6 +1,6 @@
 {
   "generated_at": "2026-02-21",
-  "total_count": 18,
+  "total_count": 51,
   "properties": [
     {
       "slug": "lautner-house",
@@ -15,9 +15,9 @@
       "year_built": 1949
     },
     {
-      "slug": "chemosphere",
+      "slug": "chemosphere-malin-residence",
       "home_name": "Chemosphere (Malin Residence)",
-      "svg_file": "chemosphere.svg",
+      "svg_file": "chemosphere-malin-residence.svg",
       "year_built": 1960
     },
     {
@@ -33,9 +33,9 @@
       "year_built": 1962
     },
     {
-      "slug": "silvertop",
+      "slug": "silvertop-reiner-residence",
       "home_name": "Silvertop (Reiner Residence)",
-      "svg_file": "silvertop.svg",
+      "svg_file": "silvertop-reiner-residence.svg",
       "year_built": 1957
     },
     {
@@ -57,21 +57,21 @@
       "year_built": 1973
     },
     {
-      "slug": "hotel-lautner",
+      "slug": "hotel-lautner-hubbard",
       "home_name": "Hotel Lautner (Hubbard)",
-      "svg_file": "hotel-lautner.svg",
+      "svg_file": "hotel-lautner-hubbard.svg",
       "year_built": 1947
     },
     {
-      "slug": "jones-house",
+      "slug": "jones-house-own",
       "home_name": "Jones House (own)",
-      "svg_file": "jones-house.svg",
+      "svg_file": "jones-house-own.svg",
       "year_built": 1955
     },
     {
-      "slug": "brothers-house",
+      "slug": "brothers-house-the-gray",
       "home_name": "Brothers House (The Gray)",
-      "svg_file": "brothers-house.svg",
+      "svg_file": "brothers-house-the-gray.svg",
       "year_built": 1956
     },
     {
@@ -81,10 +81,34 @@
       "year_built": 1965
     },
     {
-      "slug": "ashmun-house",
-      "home_name": "Ashmun House (Timber Teepee)",
-      "svg_file": "ashmun-house.svg",
-      "year_built": 1951
+      "slug": "walton-house",
+      "home_name": "Walton House",
+      "svg_file": "walton-house.svg",
+      "year_built": 1958
+    },
+    {
+      "slug": "hunter-house",
+      "home_name": "Hunter House",
+      "svg_file": "hunter-house.svg",
+      "year_built": 1962
+    },
+    {
+      "slug": "yarbrough-house-pebble-hill",
+      "home_name": "Yarbrough House (Pebble Hill)",
+      "svg_file": "yarbrough-house-pebble-hill.svg",
+      "year_built": 1988
+    },
+    {
+      "slug": "reed-house",
+      "home_name": "Reed House",
+      "svg_file": "reed-house.svg",
+      "year_built": 1978
+    },
+    {
+      "slug": "buckley-house",
+      "home_name": "Buckley House",
+      "svg_file": "buckley-house.svg",
+      "year_built": 1967
     },
     {
       "slug": "dow-house-studio",
@@ -93,10 +117,172 @@
       "year_built": 1936
     },
     {
-      "slug": "anderson-residence-green",
+      "slug": "towsley-house",
+      "home_name": "Towsley House",
+      "svg_file": "towsley-house.svg",
+      "year_built": 1932
+    },
+    {
+      "slug": "whitman-house",
+      "home_name": "Whitman House",
+      "svg_file": "whitman-house.svg",
+      "year_built": 1936
+    },
+    {
+      "slug": "gallery-house",
+      "home_name": "Gallery House",
+      "svg_file": "gallery-house.svg",
+      "year_built": 1951
+    },
+    {
+      "slug": "yates-residence",
+      "home_name": "Yates Residence",
+      "svg_file": "yates-residence.svg",
+      "year_built": 0
+    },
+    {
+      "slug": "ashmun-house-timber-teepee",
+      "home_name": "Ashmun House (Timber Teepee)",
+      "svg_file": "ashmun-house-timber-teepee.svg",
+      "year_built": 1951
+    },
+    {
+      "slug": "smith-house",
+      "home_name": "Smith House",
+      "svg_file": "smith-house.svg",
+      "year_built": 1940
+    },
+    {
+      "slug": "knight-house-duke",
+      "home_name": "Knight House (Duke)",
+      "svg_file": "knight-house-duke.svg",
+      "year_built": 1966
+    },
+    {
+      "slug": "dome-house-woods-residence",
+      "home_name": "Dome House (Woods Residence)",
+      "svg_file": "dome-house-woods-residence.svg",
+      "year_built": 1950
+    },
+    {
+      "slug": "deconcini-house",
+      "home_name": "DeConcini House",
+      "svg_file": "deconcini-house.svg",
+      "year_built": 1982
+    },
+    {
+      "slug": "peters-margedant-house",
+      "home_name": "Peters-Margedant House",
+      "svg_file": "peters-margedant-house.svg",
+      "year_built": 1934
+    },
+    {
+      "slug": "ultimate-house",
+      "home_name": "Ultimate House",
+      "svg_file": "ultimate-house.svg",
+      "year_built": 1963
+    },
+    {
+      "slug": "anderson-residence",
       "home_name": "Anderson Residence",
-      "svg_file": "anderson-residence-green.svg",
+      "svg_file": "anderson-residence.svg",
       "year_built": 1959
+    },
+    {
+      "slug": "mischel-house-sunspot",
+      "home_name": "Mischel House (Sunspot)",
+      "svg_file": "mischel-house-sunspot.svg",
+      "year_built": 1966
+    },
+    {
+      "slug": "albert-house-lighthouse",
+      "home_name": "Albert House (Lighthouse)",
+      "svg_file": "albert-house-lighthouse.svg",
+      "year_built": 1939
+    },
+    {
+      "slug": "alpern-residence",
+      "home_name": "Alpern Residence",
+      "svg_file": "alpern-residence.svg",
+      "year_built": 1950
+    },
+    {
+      "slug": "bookstaber-house",
+      "home_name": "Bookstaber House",
+      "svg_file": "bookstaber-house.svg",
+      "year_built": 1949
+    },
+    {
+      "slug": "notz-house",
+      "home_name": "Notz House",
+      "svg_file": "notz-house.svg",
+      "year_built": 1939
+    },
+    {
+      "slug": "fineman-house",
+      "home_name": "Fineman House",
+      "svg_file": "fineman-house.svg",
+      "year_built": 1952
+    },
+    {
+      "slug": "lapp-riverhouse",
+      "home_name": "Lapp RiverHouse",
+      "svg_file": "lapp-riverhouse.svg",
+      "year_built": 1990
+    },
+    {
+      "slug": "creek-house",
+      "home_name": "Creek House",
+      "svg_file": "creek-house.svg",
+      "year_built": 1986
+    },
+    {
+      "slug": "lencioni-residence-wave",
+      "home_name": "Lencioni Residence (Wave)",
+      "svg_file": "lencioni-residence-wave.svg",
+      "year_built": 1985
+    },
+    {
+      "slug": "skyfire-own",
+      "home_name": "Skyfire (own)",
+      "svg_file": "skyfire-own.svg",
+      "year_built": 1997
+    },
+    {
+      "slug": "ross-house",
+      "home_name": "Ross House",
+      "svg_file": "ross-house.svg",
+      "year_built": 1957
+    },
+    {
+      "slug": "wystrach-adams-residence",
+      "home_name": "Wystrach-Adams Residence",
+      "svg_file": "wystrach-adams-residence.svg",
+      "year_built": 0
+    },
+    {
+      "slug": "malibu-estate-own",
+      "home_name": "Malibu Estate (own)",
+      "svg_file": "malibu-estate-own.svg",
+      "year_built": 1986
+    },
+    {
+      "slug": "wood-peterson-house",
+      "home_name": "Wood-Peterson House",
+      "svg_file": "wood-peterson-house.svg",
+      "year_built": 1951
+    },
+    {
+      "slug": "anderson-house",
+      "home_name": "Anderson House",
+      "svg_file": "anderson-house.svg",
+      "year_built": 1950
+    },
+    {
+      "slug": "house-of-spirit",
+      "home_name": "House of Spirit",
+      "svg_file": "house-of-spirit.svg",
+      "year_built": 1957
     },
     {
       "slug": "myers-residence",
@@ -105,10 +291,22 @@
       "year_built": 1991
     },
     {
-      "slug": "lapp-riverhouse",
-      "home_name": "Lapp RiverHouse",
-      "svg_file": "lapp-riverhouse.svg",
-      "year_built": 1990
+      "slug": "rattenbury-residence",
+      "home_name": "Rattenbury Residence",
+      "svg_file": "rattenbury-residence.svg",
+      "year_built": 0
+    },
+    {
+      "slug": "trinkaus-house",
+      "home_name": "Trinkaus House",
+      "svg_file": "trinkaus-house.svg",
+      "year_built": 1965
+    },
+    {
+      "slug": "atlanta-residence",
+      "home_name": "Atlanta Residence",
+      "svg_file": "atlanta-residence.svg",
+      "year_built": 1974
     }
   ]
 }

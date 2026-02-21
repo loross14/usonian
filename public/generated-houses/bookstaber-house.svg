@@ -2,11 +2,11 @@
   <defs>
     <style>
       
-        @keyframes glow {
-            0%, 100% { filter: drop-shadow(0 0 2px rgba(212, 178, 112, 0.3)); }
-            50% { filter: drop-shadow(0 0 8px rgba(212, 178, 112, 0.6)); }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
         }
-        .windows { animation: glow 5s ease-in-out infinite; }
+        .house-main { animation: float 6s ease-in-out infinite; }
     
     </style>
   </defs>
@@ -15,13 +15,13 @@
   <rect width="400" height="300" fill="white"/>
 
   <!-- Ground Line - extends to edges -->
-  <line x1="0" y1="220" x2="400" y2="220" stroke="rgb(232, 218, 195)" stroke-width="2"/>
+  <line x1="0" y1="220" x2="400" y2="220" stroke="rgb(168, 132, 98)" stroke-width="2"/>
 
   <g class="house-main">
     <!-- Prairie-style horizontal roof overhangs - edge to edge -->
     <polygon
       points="10,120 390,120 410,135 -10,135"
-      fill="rgb(82, 90, 100)"
+      fill="rgb(194, 114, 84)"
       class="accent"
     />
     <polygon
@@ -30,10 +30,10 @@
     />
 
     <!-- Main structure - wider -->
-    <rect x="25" y="135" width="350" height="85" fill="rgb(232, 218, 195)"/>
+    <rect x="25" y="135" width="350" height="85" fill="rgb(168, 132, 98)"/>
 
     <!-- Lower horizontal band - extends past edges -->
-    <rect x="5" y="190" width="390" height="30" fill="rgb(82, 90, 100)" class="accent"/>
+    <rect x="5" y="190" width="390" height="30" fill="rgb(194, 114, 84)" class="accent"/>
 
     <!-- Windows - horizontal band -->
     <g class="windows">
@@ -54,7 +54,7 @@
     </g>
 
     <!-- Chimney -->
-    <rect x="288" y="65" width="25" height="50" fill="rgb(55, 52, 50)"/>
+    <rect x="328" y="65" width="25" height="50" fill="rgb(55, 52, 50)"/>
 
     <!-- Decorative horizontal lines (FLW signature) -->
     <line x1="25" y1="165" x2="375" y2="165" stroke="rgb(55, 52, 50)" stroke-width="1" class="line-draw"/>
@@ -62,5 +62,5 @@
   </g>
 
   <!-- Ground plane fills bottom -->
-  <rect x="0" y="220" width="400" height="80" fill="rgb(232, 218, 195)" opacity="0.3"/>
+  <rect x="0" y="220" width="400" height="80" fill="rgb(168, 132, 98)" opacity="0.3"/>
 </svg>

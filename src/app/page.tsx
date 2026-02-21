@@ -218,38 +218,33 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA Section - refined */}
+      {/* Early Access Signup */}
       <section className="py-16 md:py-20 bg-charcoal">
         <div className="container">
-          <div className="max-w-2xl mx-auto text-center">
-            <p className="text-slate-light text-sm uppercase tracking-wider mb-4">
-              The collection grows
-            </p>
-            <h2 className="text-warm-white mb-4">
-              {propertiesData.length} homes and counting
+          <div className="max-w-xl mx-auto text-center">
+            <h2 className="text-warm-white mb-3">
+              Know when rare properties list.
             </h2>
-            <p className="text-slate-light mb-8">
-              Each one a piece of architectural history.
+            <p className="text-slate-light text-sm mb-8">
+              We notify collectors before public listing.
             </p>
-            <Link
-              href="/homes"
-              className="inline-flex items-center gap-2 text-terracotta font-medium hover:text-terracotta-dark transition-colors"
-            >
-              See them all
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+            <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+              <input
+                type="email"
+                placeholder="Email address"
+                className="flex-1 px-4 py-3 bg-charcoal border border-slate rounded text-warm-white placeholder:text-slate focus:outline-none focus:border-terracotta transition-colors"
+                required
+              />
+              <button
+                type="submit"
+                className="px-6 py-3 bg-terracotta text-warm-white font-medium rounded hover:bg-terracotta-dark transition-colors whitespace-nowrap"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </Link>
+                Notify Me
+              </button>
+            </form>
+            <p className="text-slate text-xs mt-4">
+              No spam. Only significant listings.
+            </p>
           </div>
         </div>
       </section>

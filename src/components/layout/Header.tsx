@@ -31,10 +31,6 @@ export function Header() {
             >
               Learn
             </Link>
-            <span className="text-sm font-medium text-slate-light cursor-default">
-              Map
-              <span className="text-xs ml-1 opacity-60">(soon)</span>
-            </span>
           </div>
 
           {/* Mobile Menu Button */}
@@ -87,10 +83,6 @@ export function Header() {
               >
                 Learn
               </Link>
-              <span className="text-base font-medium text-slate-light">
-                Map
-                <span className="text-sm ml-1 opacity-60">(soon)</span>
-              </span>
             </div>
           </div>
         )}

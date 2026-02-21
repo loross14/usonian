@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Property, formatPrice, formatLocation, getStatusLabel } from "@/types";
 import { YearBadge } from "@/components/ui/YearBadge";
 import { getGeneratedSvgUrl } from "@/lib/generated-houses";
+import { PropertyAlertButton } from "@/components/property/PropertyAlertButton";
 
 interface PropertyCardProps {
   property: Property & { architect_name?: string };
@@ -74,18 +75,18 @@ export function PropertyCard({ property }: PropertyCardProps) {
         </div>
 
         {/* Content */}
-        <div className="space-y-2">
-          {/* Architect (above property name - key differentiator) */}
+        <div className="space-y-1">
+          {/* Architect - THE STAR (this is a JOHN LAUTNER house) */}
           {property.architect_name && (
-            <p className="text-xs font-medium uppercase tracking-wider text-terracotta">
+            <h3 className="font-heading text-xl font-semibold text-terracotta group-hover:text-terracotta-dark transition-colors">
               {property.architect_name}
-            </p>
+            </h3>
           )}
 
-          {/* Property Name */}
-          <h3 className="font-heading text-xl text-charcoal group-hover:text-terracotta transition-colors">
+          {/* Property Name - Secondary (the address is just context) */}
+          <p className="text-sm text-charcoal/70">
             {property.home_name}
-          </h3>
+          </p>
 
           {/* Metadata Line */}
           <div className="flex items-center gap-2 text-sm text-slate">
@@ -100,6 +101,15 @@ export function PropertyCard({ property }: PropertyCardProps) {
           </div>
         </div>
       </Link>
+
+      {/* Watch for Listing - only for off-market properties */}
+      {property.status !== 'active' && (
+        <PropertyAlertButton
+          propertyId={property.id}
+          propertyName={property.home_name}
+          variant="card"
+        />
+      )}
     </article>
   );
 }

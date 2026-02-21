@@ -2,11 +2,11 @@
   <defs>
     <style>
       
-        @keyframes breathe {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.02); }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
         }
-        .house-main { animation: breathe 8s ease-in-out infinite; transform-origin: center bottom; }
+        .house-main { animation: float 6s ease-in-out infinite; }
     
     </style>
   </defs>
@@ -15,13 +15,13 @@
   <rect width="400" height="300" fill="white"/>
 
   <!-- Ground Line - extends to edges -->
-  <line x1="0" y1="220" x2="400" y2="220" stroke="rgb(205, 188, 162)" stroke-width="2"/>
+  <line x1="0" y1="220" x2="400" y2="220" stroke="rgb(168, 132, 98)" stroke-width="2"/>
 
   <g class="house-main">
     <!-- Prairie-style horizontal roof overhangs - edge to edge -->
     <polygon
       points="10,120 390,120 410,135 -10,135"
-      fill="rgb(120, 72, 56)"
+      fill="rgb(194, 114, 84)"
       class="accent"
     />
     <polygon
@@ -30,10 +30,10 @@
     />
 
     <!-- Main structure - wider -->
-    <rect x="25" y="135" width="350" height="85" fill="rgb(205, 188, 162)"/>
+    <rect x="25" y="135" width="350" height="85" fill="rgb(168, 132, 98)"/>
 
     <!-- Lower horizontal band - extends past edges -->
-    <rect x="5" y="190" width="390" height="30" fill="rgb(120, 72, 56)" class="accent"/>
+    <rect x="5" y="190" width="390" height="30" fill="rgb(194, 114, 84)" class="accent"/>
 
     <!-- Windows - horizontal band -->
     <g class="windows">
@@ -58,5 +58,5 @@
   </g>
 
   <!-- Ground plane fills bottom -->
-  <rect x="0" y="220" width="400" height="80" fill="rgb(205, 188, 162)" opacity="0.3"/>
+  <rect x="0" y="220" width="400" height="80" fill="rgb(168, 132, 98)" opacity="0.3"/>
 </svg>

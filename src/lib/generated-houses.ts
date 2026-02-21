@@ -18,11 +18,11 @@ export function hasGeneratedSvg(slug: string): boolean {
 
 /**
  * Get the URL path for a generated SVG illustration
- * Returns null if no SVG exists for this slug
+ * Returns a fallback SVG if no SVG exists for this slug
  */
-export function getGeneratedSvgUrl(slug: string): string | null {
+export function getGeneratedSvgUrl(slug: string): string {
   if (!hasGeneratedSvg(slug)) {
-    return null;
+    return `/generated-houses/coming-soon.svg`;
   }
   return `/generated-houses/${slug}.svg`;
 }

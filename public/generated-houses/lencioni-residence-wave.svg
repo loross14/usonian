@@ -37,24 +37,18 @@
 
     <!-- Windows - horizontal band -->
     <g class="windows">
-      <rect x="40" y="145" width="35" height="35" fill="rgb(212, 178, 112)" opacity="0.8"/>
-      <line x1="57" y1="145" x2="57" y2="180" stroke="rgb(55, 52, 50)" stroke-width="2"/>
-      <rect x="85" y="145" width="35" height="35" fill="rgb(212, 178, 112)" opacity="0.8"/>
-      <line x1="102" y1="145" x2="102" y2="180" stroke="rgb(55, 52, 50)" stroke-width="2"/>
-      <rect x="130" y="145" width="35" height="35" fill="rgb(212, 178, 112)" opacity="0.8"/>
-      <line x1="147" y1="145" x2="147" y2="180" stroke="rgb(55, 52, 50)" stroke-width="2"/>
-      <rect x="175" y="145" width="35" height="35" fill="rgb(212, 178, 112)" opacity="0.8"/>
-      <line x1="192" y1="145" x2="192" y2="180" stroke="rgb(55, 52, 50)" stroke-width="2"/>
-      <rect x="220" y="145" width="35" height="35" fill="rgb(212, 178, 112)" opacity="0.8"/>
-      <line x1="237" y1="145" x2="237" y2="180" stroke="rgb(55, 52, 50)" stroke-width="2"/>
-      <rect x="265" y="145" width="35" height="35" fill="rgb(212, 178, 112)" opacity="0.8"/>
-      <line x1="282" y1="145" x2="282" y2="180" stroke="rgb(55, 52, 50)" stroke-width="2"/>
-      <rect x="310" y="145" width="35" height="35" fill="rgb(212, 178, 112)" opacity="0.8"/>
-      <line x1="327" y1="145" x2="327" y2="180" stroke="rgb(55, 52, 50)" stroke-width="2"/>
+      <rect x="40" y="145" width="70" height="35" fill="rgb(212, 178, 112)" opacity="0.8"/>
+      <line x1="75" y1="145" x2="75" y2="180" stroke="rgb(55, 52, 50)" stroke-width="2"/>
+      <rect x="120" y="145" width="70" height="35" fill="rgb(212, 178, 112)" opacity="0.8"/>
+      <line x1="155" y1="145" x2="155" y2="180" stroke="rgb(55, 52, 50)" stroke-width="2"/>
+      <rect x="200" y="145" width="70" height="35" fill="rgb(212, 178, 112)" opacity="0.8"/>
+      <line x1="235" y1="145" x2="235" y2="180" stroke="rgb(55, 52, 50)" stroke-width="2"/>
+      <rect x="280" y="145" width="70" height="35" fill="rgb(212, 178, 112)" opacity="0.8"/>
+      <line x1="315" y1="145" x2="315" y2="180" stroke="rgb(55, 52, 50)" stroke-width="2"/>
     </g>
 
     <!-- Chimney -->
-    <rect x="336" y="65" width="25" height="50" fill="rgb(55, 52, 50)"/>
+    <rect x="304" y="65" width="25" height="50" fill="rgb(55, 52, 50)"/>
 
     <!-- Decorative horizontal lines (FLW signature) -->
     <line x1="25" y1="165" x2="375" y2="165" stroke="rgb(55, 52, 50)" stroke-width="1" class="line-draw"/>

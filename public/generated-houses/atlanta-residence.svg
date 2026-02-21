@@ -2,11 +2,11 @@
   <defs>
     <style>
       
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.85; }
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
         }
-        .accent { animation: pulse 4s ease-in-out infinite; }
+        .house-main { animation: breathe 8s ease-in-out infinite; transform-origin: center bottom; }
     
     </style>
   </defs>
@@ -15,15 +15,15 @@
   <rect width="400" height="300" fill="white"/>
 
   <!-- Ground plane - extends to edges -->
-  <rect x="0" y="210" width="400" height="90" fill="rgb(140, 155, 175)" opacity="0.3"/>
+  <rect x="0" y="210" width="400" height="90" fill="rgb(205, 188, 162)" opacity="0.3"/>
 
   <g class="house-main">
     <!-- Main horizontal wing - wider, extends near edges -->
-    <rect x="5" y="140" width="300" height="70" fill="rgb(140, 155, 175)"/>
+    <rect x="5" y="140" width="300" height="70" fill="rgb(205, 188, 162)"/>
     <rect x="0" y="128" width="310" height="18" fill="rgb(168, 132, 98)" class="accent"/>
 
     <!-- Vertical wing (L-shape) - extends to right edge -->
-    <rect x="260" y="85" width="120" height="125" fill="rgb(140, 155, 175)"/>
+    <rect x="260" y="85" width="120" height="125" fill="rgb(205, 188, 162)"/>
     <rect x="255" y="72" width="130" height="18" fill="rgb(168, 132, 98)" class="accent"/>
 
     <!-- Flat roof overhangs - edge to edge -->
@@ -43,7 +43,7 @@
     <line x1="220" y1="150" x2="220" y2="170" stroke="rgb(55, 52, 50)" stroke-width="2"/>
 
     <!-- Carport/terrace extension - extends past right edge -->
-    <rect x="370" y="165" width="40" height="45" fill="rgb(140, 155, 175)" opacity="0.6"/>
+    <rect x="370" y="165" width="40" height="45" fill="rgb(205, 188, 162)" opacity="0.6"/>
     <rect x="365" y="158" width="45" height="10" fill="rgb(168, 132, 98)" opacity="0.7"/>
     <line x1="390" y1="158" x2="390" y2="210" stroke="rgb(55, 52, 50)" stroke-width="4"/>
   </g>
