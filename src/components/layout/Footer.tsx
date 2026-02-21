@@ -1,70 +1,35 @@
 import Link from "next/link";
 
 export function Footer() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="bg-charcoal text-warm-white py-12 md:py-16">
-      <div className="container">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
-          {/* Brand */}
-          <div className="md:col-span-2">
-            <Link href="/" className="inline-block">
-              <span className="font-heading text-2xl">
-                Usonian
-              </span>
-            </Link>
-            <p className="mt-4 text-slate-light text-sm max-w-md">
-              A curated collection of exceptional architect-designed homes.
-              Celebrating architectural heritage from master designers.
-            </p>
-          </div>
+    <footer className="site-footer relative z-10">
+      <div className="max-w-[1280px] mx-auto">
+        {/* Top Section */}
+        <div className="flex flex-col md:flex-row justify-between items-start gap-6 pb-10 border-b border-white/10 mb-10">
+          {/* Logo */}
+          <div className="footer-logo">USONIAN</div>
 
           {/* Navigation */}
-          <div>
-            <h4 className="font-heading text-gold text-sm uppercase tracking-wider mb-4">
-              Explore
-            </h4>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/homes"
-                  className="text-sm text-slate-light hover:text-warm-white transition-colors"
-                >
-                  Homes
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/architects"
-                  className="text-sm text-slate-light hover:text-warm-white transition-colors"
-                >
-                  Learn
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h4 className="font-heading text-gold text-sm uppercase tracking-wider mb-4">
-              Contact
-            </h4>
-            <p className="text-sm text-slate-light">
-              For inquiries about featured properties or to submit a listing.
-            </p>
-            <a
-              href="mailto:hello@usonian.com"
-              className="inline-block mt-2 text-sm text-terracotta hover:text-terracotta-dark transition-colors"
-            >
-              hello@usonian.com
-            </a>
-          </div>
+          <nav className="footer-nav flex flex-wrap gap-5 md:gap-10">
+            <Link href="/homes">Homes</Link>
+            <Link href="/architects">Architects</Link>
+            <Link href="mailto:hello@usonian.com">Contact</Link>
+          </nav>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-slate">
-          <p className="text-xs text-slate-light text-center">
-            &copy; {new Date().getFullYear()} Usonian. All rights reserved.
-          </p>
+        {/* Divider */}
+        <div className="footer-divider" />
+
+        {/* Bottom Section */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+          <div className="text-[10px] uppercase tracking-[0.15em] text-white/40">
+            USONIAN / Architect-Designed Homes
+          </div>
+          <div className="text-[10px] uppercase tracking-[0.1em] text-gold/70">
+            v.3.0.1 / {currentYear}
+          </div>
         </div>
       </div>
     </footer>

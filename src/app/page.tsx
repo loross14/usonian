@@ -1,250 +1,249 @@
 import Link from "next/link";
-import Image from "next/image";
 import propertiesData from "@/data/properties.json";
 import architectsData from "@/data/architects.json";
-import { PropertyCard } from "@/components/property/PropertyCard";
-import { SectionHeading } from "@/components/ui/SectionHeading";
-import { getArchitectPortraitUrl, getArchitectPortraitWideUrl } from "@/lib/architect-portraits";
+import { formatPrice, formatLocation, getStatusLabel, type Property, type Architect } from "@/types";
+import { PrairieLines } from "@/components/ui/PrairieLines";
+import { NewsletterCTA } from "@/components/ui/NewsletterCTA";
+import { StarIcon } from "@/components/icons/StarIcon";
+import { Badge } from "@/components/ui/Badge";
+import { getGeneratedSvgUrl } from "@/lib/generated-houses";
+
+// Cast to proper types
+const properties = propertiesData as Property[];
+const architects = architectsData as Architect[];
 
 export default function HomePage() {
   // Get featured properties (for sale + have images)
-  const featuredProperties = propertiesData
-    .filter((p) => p.best_image_url)
-    .slice(0, 5)
+  const featuredProperties = properties
+    .filter((p) => p.best_image_url || getGeneratedSvgUrl(p.slug))
+    .slice(0, 3)
     .map((property) => {
-      const architect = architectsData.find((a) => a.id === property.architect_id);
+      const architect = architects.find((a) => a.id === property.architect_id);
       return {
         ...property,
         architect_name: architect?.name,
       };
     });
 
-  // Get a spotlight architect (preferring one with a portrait)
-  const architectsWithPortraits = architectsData.filter(
-    (a) => getArchitectPortraitUrl(a.slug) !== null
-  );
-  const spotlightArchitect = architectsWithPortraits[0] || architectsData[0];
-  const spotlightPortraitUrl = getArchitectPortraitUrl(spotlightArchitect.slug);
-  const spotlightPortraitWideUrl = getArchitectPortraitWideUrl(spotlightArchitect.slug);
+  // Get properties for sale section
+  const forSaleProperties = properties
+    .slice(0, 8)
+    .map((property) => {
+      const architect = architects.find((a) => a.id === property.architect_id);
+      return {
+        ...property,
+        architect_name: architect?.name,
+      };
+    });
 
-  const heroProperty = featuredProperties[0];
+  // Get unique architects with property counts
+  const architectsWithCounts = architects
+    .filter((a) => a.property_count && a.property_count > 0)
+    .slice(0, 7);
+
+  // Count active listings
+  const activeCount = properties.filter((p) => p.status === 'active').length;
 
   return (
     <>
-      {/* Hero Section - Dual Entry Points */}
-      <section className="relative min-h-[70vh] flex items-center bg-charcoal">
-        {/* Background Image - subtle */}
-        {heroProperty?.best_image_url && (
-          <div className="absolute inset-0">
-            <Image
-              src={heroProperty.best_image_url}
-              alt=""
-              fill
-              className="object-cover opacity-20"
-              priority
-              sizes="100vw"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-charcoal via-charcoal/95 to-charcoal/80" />
-          </div>
-        )}
+      {/* Hero Section */}
+      <section className="border-b border-black">
+        <div className="container py-16 md:py-24">
+          {/* Massive Title */}
+          <h1 className="animate-fade-up mb-4">
+            ARCHITECT<span className="text-red">.</span><br />
+            DESIGNED<br />
+            HOMES
+          </h1>
+          <p className="text-xs tracking-[0.15em] opacity-50 mb-10 max-w-xl animate-fade-up animate-delay-1">
+            A curated index of residential architecture. No staging. No filters.<br />
+            Raw documentation of designed spaces available for acquisition.
+          </p>
 
-        {/* Hero Content */}
-        <div className="relative container">
-          <div className="max-w-4xl">
-            {/* Tagline */}
-            <p className="text-gold text-sm font-medium uppercase tracking-wider mb-6">
-              For those who know the difference
-            </p>
+          {/* Prairie Lines */}
+          <PrairieLines />
 
-            <h1 className="text-warm-white mb-6">
-              Architect-Designed,
-              <br />
-              <span className="text-terracotta">Curated.</span>
-            </h1>
+          {/* Hero Cards - Featured Properties */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+            {featuredProperties.map((property, idx) => {
+              const imageUrl = getGeneratedSvgUrl(property.slug) || property.best_image_url;
+              const price = property.last_sale_price
+                ? formatPrice(property.last_sale_price)
+                : "Price Upon Request";
 
-            <p className="text-slate-light text-lg mb-12 max-w-xl">
-              Homes by the architects who studied with Wright. Stories that
-              outlive the sale.
-            </p>
-
-            {/* Two Clear Entry Points */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                href="/homes"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-terracotta text-warm-white font-medium rounded hover:bg-terracotta-dark transition-colors"
-              >
-                Browse Homes
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+              return (
+                <Link
+                  key={property.id}
+                  href={`/homes/${property.slug}`}
+                  className={`group border border-black overflow-hidden card-hover animate-fade-up animate-delay-${idx + 1}`}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </Link>
-              <Link
-                href="/architects"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-transparent border border-slate-light text-warm-white font-medium rounded hover:border-warm-white hover:bg-warm-white/5 transition-colors"
-              >
-                Meet the Architects
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </Link>
-            </div>
+                  {/* Image */}
+                  <div className="relative h-[200px] bg-sand overflow-hidden">
+                    {imageUrl && (
+                      <img
+                        src={imageUrl}
+                        alt={property.home_name}
+                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
+                      />
+                    )}
+                    {/* Badge */}
+                    <div className="absolute top-3 left-3">
+                      <Badge status={property.status} />
+                    </div>
+                  </div>
+                  {/* Content */}
+                  <div className="p-4">
+                    <div className="font-bold text-sm mb-1">{property.home_name}</div>
+                    <div className="text-[11px] opacity-60 tracking-[0.05em] mb-2 uppercase">
+                      {property.architect_name}
+                    </div>
+                    <div className="flex justify-between text-[11px]">
+                      <span className="opacity-50">{property.year_built}</span>
+                      <span className="font-bold">{price}</span>
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* Featured Properties */}
-      <section className="section bg-warm-white">
-        <div className="container">
-          <div className="flex items-end justify-between mb-12">
-            <div>
-              <SectionHeading className="mb-2">Featured Homes</SectionHeading>
-              <p className="text-slate">
-                Exceptional properties by master architects
-              </p>
+      {/* Architect Index Bar */}
+      <section className="border-b border-black bg-black/[0.02]">
+        <div className="container py-6">
+          <div className="flex justify-between items-center mb-4">
+            <div className="text-[10px] font-bold tracking-[0.15em] opacity-50 uppercase">
+              Browse by Architect
             </div>
             <Link
-              href="/homes"
-              className="text-terracotta font-medium hover:text-terracotta-dark transition-colors"
+              href="/architects"
+              className="text-[10px] tracking-[0.1em] opacity-50 hover:opacity-100 border-b border-transparent hover:border-black transition-all"
             >
-              View All
+              VIEW ALL {architects.length} ARCHITECTS
             </Link>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredProperties.slice(1, 4).map((property) => (
-              <PropertyCard key={property.id} property={property} />
+          <div className="flex flex-wrap gap-x-6 gap-y-2">
+            {architectsWithCounts.map((architect, idx) => (
+              <Link
+                key={architect.id}
+                href={`/architects/${architect.slug}`}
+                className="flex items-center gap-2 text-xs tracking-[0.02em] py-2 border-b border-transparent hover:border-black transition-all"
+              >
+                <StarIcon
+                  size={10}
+                  active={architect.fellowship_years !== null}
+                />
+                <span>{architect.name} ({architect.property_count})</span>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Architect Spotlight */}
-      <section className="section bg-sand">
-        <div className="container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <p className="text-terracotta text-sm font-medium uppercase tracking-wider mb-4">
-                Architect Spotlight
-              </p>
-              <h2 className="mb-6">{spotlightArchitect.name}</h2>
-              <p className="text-slate mb-4">
-                {spotlightArchitect.fellowship_years && (
-                  <span className="text-cypress">
-                    Taliesin Fellowship {spotlightArchitect.fellowship_years}
-                  </span>
-                )}
-              </p>
-              <p className="text-charcoal mb-6 leading-relaxed">
-                {spotlightArchitect.biography?.slice(0, 300)}...
-              </p>
-              <Link
-                href={`/architects/${spotlightArchitect.slug}`}
-                className="inline-flex items-center gap-2 text-terracotta font-medium hover:text-terracotta-dark transition-colors"
-              >
-                View Profile
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </Link>
+      {/* For Sale Section */}
+      <section className="border-b border-black">
+        <div className="container py-10">
+          {/* Section Header */}
+          <div className="flex justify-between items-center mb-6">
+            <div className="flex items-center gap-2 text-[11px] font-bold tracking-[0.15em] uppercase">
+              <StarIcon size={12} active />
+              <span>FOR SALE // {activeCount} ACTIVE LISTINGS</span>
             </div>
-            <div className="flex flex-col gap-6">
-              {/* Architect Portrait */}
-              {spotlightPortraitWideUrl ? (
-                <div className="bg-warm-white rounded-lg overflow-hidden">
-                  <img
-                    src={spotlightPortraitWideUrl}
-                    alt={`Portrait of ${spotlightArchitect.name}`}
-                    className="w-full h-auto"
-                  />
-                </div>
-              ) : spotlightPortraitUrl ? (
-                <div className="bg-warm-white p-4 rounded-lg flex justify-center">
-                  <img
-                    src={spotlightPortraitUrl}
-                    alt={`Portrait of ${spotlightArchitect.name}`}
-                    className="w-48 h-48 object-contain"
-                  />
-                </div>
-              ) : null}
-              {/* Stats */}
-              <div className="bg-warm-white p-8 rounded-lg">
-                <div className="grid grid-cols-2 gap-4 text-center">
-                  <div>
-                    <p className="text-4xl font-heading text-terracotta">
-                      {spotlightArchitect.property_count}
-                    </p>
-                    <p className="text-sm text-slate mt-1">Properties Listed</p>
-                  </div>
-                  <div>
-                    <p className="text-4xl font-heading text-terracotta">
-                      {spotlightArchitect.birth_year}
-                    </p>
-                    <p className="text-sm text-slate mt-1">Born</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <Link
+              href="/homes"
+              className="text-[10px] tracking-[0.1em] opacity-50 hover:opacity-100 border-b border-transparent hover:border-black transition-all"
+            >
+              VIEW ALL PROPERTIES
+            </Link>
           </div>
+
+          {/* Table Header */}
+          <div className="hidden md:grid grid-cols-[40px_160px_1fr_80px_140px_100px_120px] gap-4 py-3 border-b-2 border-black text-[9px] tracking-[0.15em] opacity-50 uppercase">
+            <div></div>
+            <div>Architect</div>
+            <div>Property</div>
+            <div>Year</div>
+            <div>Location</div>
+            <div className="text-right">Status</div>
+            <div className="text-right">Price USD</div>
+          </div>
+
+          {/* Property Rows */}
+          {forSaleProperties.map((property, idx) => {
+            const location = formatLocation(property.parsed_city, property.parsed_state);
+            const price = property.last_sale_price
+              ? formatPrice(property.last_sale_price)
+              : "Upon Request";
+            const isTaliesin = architects.find(
+              (a) => a.id === property.architect_id
+            )?.fellowship_years !== null;
+
+            return (
+              <Link
+                key={property.id}
+                href={`/homes/${property.slug}`}
+                className={`property-row grid grid-cols-1 md:grid-cols-[40px_160px_1fr_80px_140px_100px_120px] gap-2 md:gap-4 animate-fade-up animate-delay-${Math.min(idx + 1, 4)}`}
+              >
+                {/* Star */}
+                <div className="hidden md:flex justify-center">
+                  <StarIcon size={10} active={isTaliesin} />
+                </div>
+                {/* Architect */}
+                <div className="font-bold text-[11px] tracking-[0.05em] uppercase">
+                  <span className="md:hidden text-[9px] opacity-40 mr-2">ARCHITECT:</span>
+                  {property.architect_name}
+                </div>
+                {/* Name */}
+                <div className="text-xs">
+                  <span className="md:hidden text-[9px] opacity-40 mr-2">PROPERTY:</span>
+                  {property.home_name}
+                </div>
+                {/* Year */}
+                <div className="text-[11px] opacity-60">
+                  <span className="md:hidden text-[9px] opacity-40 mr-2">YEAR:</span>
+                  {property.year_built}
+                </div>
+                {/* Location */}
+                <div className="text-[11px] tracking-[0.02em]">
+                  <span className="md:hidden text-[9px] opacity-40 mr-2">LOCATION:</span>
+                  {location}
+                </div>
+                {/* Status */}
+                <div className="md:text-right">
+                  <Badge status={property.status} />
+                </div>
+                {/* Price */}
+                <div className={`font-bold text-xs md:text-right ${property.status === 'active' ? 'text-red' : ''}`}>
+                  <span className="md:hidden text-[9px] opacity-40 mr-2 font-normal">PRICE:</span>
+                  {price}
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </section>
 
-      {/* Early Access Signup */}
-      <section className="py-16 md:py-20 bg-charcoal">
-        <div className="container">
-          <div className="max-w-xl mx-auto text-center">
-            <h2 className="text-warm-white mb-3">
-              Know when rare properties list.
-            </h2>
-            <p className="text-slate-light text-sm mb-8">
-              We notify collectors before public listing.
-            </p>
-            <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Email address"
-                className="flex-1 px-4 py-3 bg-charcoal border border-slate rounded text-warm-white placeholder:text-slate focus:outline-none focus:border-terracotta transition-colors"
-                required
-              />
-              <button
-                type="submit"
-                className="px-6 py-3 bg-terracotta text-warm-white font-medium rounded hover:bg-terracotta-dark transition-colors whitespace-nowrap"
-              >
-                Notify Me
-              </button>
-            </form>
-            <p className="text-slate text-xs mt-4">
-              No spam. Only significant listings.
-            </p>
+      {/* Newsletter CTA */}
+      <NewsletterCTA />
+
+      {/* Pagination / Stats */}
+      <section className="border-b border-black">
+        <div className="container py-6">
+          <div className="flex justify-between items-center text-[11px] tracking-[0.1em]">
+            <div className="opacity-50">
+              SHOWING 1-{Math.min(8, properties.length)} OF {properties.length} ENTRIES
+              <span className="cursor" />
+            </div>
+            <div className="flex gap-4">
+              <span className="px-2 py-1 border border-black font-bold">01</span>
+              <Link href="/homes" className="px-2 py-1 border border-transparent hover:border-black">
+                02
+              </Link>
+              <Link href="/homes" className="px-2 py-1 border border-transparent hover:border-black">
+                NEXT
+              </Link>
+            </div>
           </div>
         </div>
       </section>

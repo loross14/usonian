@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
-import { Playfair_Display, DM_Sans } from "next/font/google";
+import { JetBrains_Mono, Playfair_Display } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 
-const playfair = Playfair_Display({
-  variable: "--font-heading",
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-mono",
   subsets: ["latin"],
   display: "swap",
 });
 
-const dmSans = DM_Sans({
-  variable: "--font-body",
+const playfair = Playfair_Display({
+  variable: "--font-heading",
   subsets: ["latin"],
   display: "swap",
 });
@@ -39,10 +39,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${playfair.variable} ${dmSans.variable}`}>
+      <body className={`${jetbrainsMono.variable} ${playfair.variable}`}>
         <Script src="https://mcp.figma.com/mcp/html-to-design/capture.js" strategy="afterInteractive" />
+        <div className="grid-overlay" />
         <Header />
-        <main>{children}</main>
+        <main className="relative z-10">{children}</main>
         <Footer />
       </body>
     </html>

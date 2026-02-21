@@ -6,42 +6,51 @@ import { useState } from "react";
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  // Get current date for terminal display
+  const now = new Date();
+  const dateStr = now.toISOString().split('T')[0].replace(/-/g, '.');
+
   return (
-    <header className="sticky top-0 z-50 bg-warm-white/95 backdrop-blur-sm border-b border-sand">
+    <header className="sticky top-0 z-50 bg-white border-b border-black">
       <div className="container">
         <nav className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo */}
+          {/* Logo - Terminal Style */}
           <Link href="/" className="flex items-center gap-2">
-            <span className="font-heading text-xl md:text-2xl text-charcoal">
-              Usonian
+            <span className="text-xs font-bold tracking-[0.3em] uppercase">
+              <span className="opacity-40">&gt; </span>USONIAN
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-10">
             <Link
               href="/homes"
-              className="text-sm font-medium text-charcoal hover:text-terracotta transition-colors"
+              className="text-[11px] font-medium uppercase tracking-[0.15em] text-black opacity-50 hover:opacity-100 transition-opacity"
             >
               Homes
             </Link>
             <Link
               href="/architects"
-              className="text-sm font-medium text-charcoal hover:text-terracotta transition-colors"
+              className="text-[11px] font-medium uppercase tracking-[0.15em] text-black opacity-50 hover:opacity-100 transition-opacity"
             >
-              Learn
+              Architects
             </Link>
+          </div>
+
+          {/* Coordinates Display - Desktop Only */}
+          <div className="hidden lg:block text-[10px] tracking-[0.1em] opacity-40">
+            SYS.ACTIVE // {dateStr}
           </div>
 
           {/* Mobile Menu Button */}
           <button
             type="button"
-            className="md:hidden p-2 text-charcoal"
+            className="md:hidden p-2 text-black"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
             <svg
-              className="w-6 h-6"
+              className="w-5 h-5"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -67,21 +76,21 @@ export function Header() {
 
         {/* Mobile Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-sand">
+          <div className="md:hidden py-4 border-t border-black">
             <div className="flex flex-col gap-4">
               <Link
                 href="/homes"
-                className="text-base font-medium text-charcoal hover:text-terracotta transition-colors"
+                className="text-[11px] font-medium uppercase tracking-[0.15em] text-black opacity-60 hover:opacity-100 transition-opacity"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Homes
               </Link>
               <Link
                 href="/architects"
-                className="text-base font-medium text-charcoal hover:text-terracotta transition-colors"
+                className="text-[11px] font-medium uppercase tracking-[0.15em] text-black opacity-60 hover:opacity-100 transition-opacity"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Learn
+                Architects
               </Link>
             </div>
           </div>
