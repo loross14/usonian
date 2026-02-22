@@ -1,0 +1,771 @@
+<!-- VARIATION 3: Icon + Separate Text - Compass icon with styled USONIAN text -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>USONIAN V2 - Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Colors */
+      --red: #BF0A30;
+      --navy: #002868;
+      --gold: #D4B270;
+      --black: #000000;
+      --white: #FFFFFF;
+
+      /* Typography */
+      --font-family: 'JetBrains Mono', monospace;
+      --font-size-xs: 11px;
+      --font-size-sm: 12px;
+      --font-size-md: 14px;
+      --font-size-lg: 16px;
+      --font-size-xl: 18px;
+      --font-size-2xl: 32px;
+      --letter-spacing-tight: -0.02em;
+      --letter-spacing-normal: 0;
+      --letter-spacing-wide: 0.1em;
+
+      /* Spacing */
+      --section-padding: 80px;
+      --section-padding-x: 48px;
+      --gap-sm: 8px;
+      --gap-md: 16px;
+      --gap-lg: 24px;
+      --gap-xl: 48px;
+
+      /* Opacity */
+      --opacity-muted: 0.4;
+      --opacity-secondary: 0.6;
+      --opacity-full: 1;
+
+      /* Animation */
+      --easing: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --duration-entrance: 0.6s;
+      --duration-hover: 0.2s;
+      --duration-click: 0.08s;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--white);
+      color: var(--black);
+      line-height: 1.6;
+    }
+
+    /* ==================== FOCUS STATES ==================== */
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    .property-card:focus-visible,
+    .sale-table tbody tr:focus-visible {
+      outline: 2px solid var(--navy);
+      outline-offset: 2px;
+    }
+
+    /* ==================== HEADER ==================== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--gap-lg) var(--section-padding-x);
+      background: var(--white);
+      z-index: 998;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    /* Split Logo: Icon + Text */
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .logo-icon {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+      /* Extract just the compass/drafting tool portion */
+      filter: brightness(0) saturate(100%);
+    }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: var(--letter-spacing-wide);
+      color: var(--black);
+      text-transform: uppercase;
+    }
+
+    .nav {
+      display: flex;
+      gap: 40px;
+    }
+
+    .nav-link {
+      font-size: var(--font-size-sm);
+      font-weight: 500;
+      letter-spacing: var(--letter-spacing-wide);
+      color: var(--black);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 4px;
+      cursor: pointer;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--red);
+      transition: width var(--duration-hover) var(--easing);
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* ==================== HERO SECTION ==================== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px var(--section-padding-x) var(--section-padding);
+    }
+
+    .hero-title {
+      font-size: clamp(48px, 10vw, 120px);
+      font-weight: 700;
+      line-height: 1.0;
+      letter-spacing: var(--letter-spacing-tight);
+      color: var(--black);
+      animation: hero-title-enter var(--duration-entrance) var(--easing) forwards;
+    }
+
+    .hero-title span {
+      display: block;
+    }
+
+    .hero-subtitle {
+      margin-top: 32px;
+      font-size: var(--font-size-md);
+      font-weight: 400;
+      letter-spacing: var(--letter-spacing-wide);
+      color: var(--navy);
+      opacity: 0;
+      animation: hero-title-enter var(--duration-entrance) var(--easing) 0.3s forwards;
+    }
+
+    @keyframes hero-title-enter {
+      0% {
+        transform: translateX(-60px) skewY(-2deg);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0) skewY(0);
+        opacity: var(--opacity-full);
+      }
+    }
+
+    /* ==================== FEATURED PROPERTIES ==================== */
+    .featured-section {
+      padding: var(--section-padding) var(--section-padding-x);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--gap-xl);
+    }
+
+    .section-title {
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      letter-spacing: var(--letter-spacing-wide);
+      color: var(--black);
+    }
+
+    .section-count {
+      font-size: var(--font-size-xs);
+      font-weight: 400;
+      color: var(--navy);
+      opacity: var(--opacity-secondary);
+    }
+
+    .property-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--gap-lg);
+      /* Support up to 3 rows (9 cards total) */
+      max-width: 100%;
+    }
+
+    /* Status Badge Styles */
+    .status-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      padding: 4px 10px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: var(--letter-spacing-wide);
+      text-transform: uppercase;
+      border-radius: 2px;
+      z-index: 1;
+    }
+
+    .status-badge--for-sale {
+      background: var(--red);
+      color: var(--white);
+    }
+
+    .status-badge--sold {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .status-badge--museum {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    .property-card {
+      position: relative;
+      background: var(--white);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      padding: var(--gap-lg);
+      cursor: pointer;
+      transition: all var(--duration-hover) var(--easing);
+      animation: badge-slide-in var(--duration-entrance) var(--easing) forwards;
+    }
+
+    /* Special styling for FOR SALE cards */
+    .property-card--for-sale {
+      border-left: 4px solid var(--red);
+      box-shadow: 0 2px 8px rgba(191, 10, 48, 0.1);
+    }
+
+    .property-card--for-sale:hover {
+      box-shadow: -6px 6px 0 var(--red);
+    }
+
+    .property-card:nth-child(1) { animation-delay: 0s; }
+    .property-card:nth-child(2) { animation-delay: 0.1s; }
+    .property-card:nth-child(3) { animation-delay: 0.2s; }
+    .property-card:nth-child(4) { animation-delay: 0.3s; }
+    .property-card:nth-child(5) { animation-delay: 0.4s; }
+    .property-card:nth-child(6) { animation-delay: 0.5s; }
+    .property-card:nth-child(7) { animation-delay: 0.6s; }
+    .property-card:nth-child(8) { animation-delay: 0.7s; }
+    .property-card:nth-child(9) { animation-delay: 0.8s; }
+
+    .property-card:hover {
+      transform: translateX(6px) translateY(-6px);
+      box-shadow: -6px 6px 0 var(--black);
+    }
+
+    .property-card:active {
+      transform: translateX(3px) translateY(-3px);
+      transition: transform var(--duration-click) var(--easing);
+    }
+
+    @keyframes badge-slide-in {
+      0% {
+        transform: translateX(-12px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: var(--opacity-full);
+      }
+    }
+
+    .property-image {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--black) 100%);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: var(--font-size-xs);
+      letter-spacing: var(--letter-spacing-wide);
+    }
+
+    .property-name {
+      font-size: var(--font-size-xl);
+      font-weight: 600;
+      margin-bottom: var(--gap-sm);
+      color: var(--black);
+    }
+
+    .property-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .property-architect {
+      font-size: var(--font-size-xs);
+      font-weight: 400;
+      color: var(--navy);
+    }
+
+    .property-year {
+      font-size: var(--font-size-xs);
+      font-weight: 500;
+      color: var(--black);
+      opacity: var(--opacity-secondary);
+    }
+
+    .property-location {
+      font-size: var(--font-size-sm);
+      font-weight: 400;
+      color: var(--black);
+      opacity: var(--opacity-secondary);
+    }
+
+    .property-price {
+      margin-top: var(--gap-md);
+      font-size: var(--font-size-lg);
+      font-weight: 600;
+      color: var(--gold);
+    }
+
+    /* ==================== FOR SALE TABLE ==================== */
+    .table-section {
+      padding: var(--section-padding) var(--section-padding-x);
+    }
+
+    .sale-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: var(--gap-xl);
+    }
+
+    .sale-table thead {
+      border-bottom: 2px solid var(--black);
+    }
+
+    .sale-table th {
+      font-size: var(--font-size-xs);
+      font-weight: 600;
+      letter-spacing: var(--letter-spacing-wide);
+      text-transform: uppercase;
+      text-align: left;
+      padding: var(--gap-md) 0;
+      color: var(--black);
+    }
+
+    .sale-table tbody tr {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      animation: table-row-cascade var(--duration-entrance) var(--easing) forwards;
+      opacity: 0;
+      transition: background var(--duration-hover) var(--easing);
+    }
+
+    .sale-table tbody tr:hover {
+      background: rgba(0, 0, 0, 0.02);
+    }
+
+    .sale-table tbody tr:nth-child(1) { animation-delay: 0s; }
+    .sale-table tbody tr:nth-child(2) { animation-delay: 0.1s; }
+    .sale-table tbody tr:nth-child(3) { animation-delay: 0.2s; }
+    .sale-table tbody tr:nth-child(4) { animation-delay: 0.3s; }
+
+    @keyframes table-row-cascade {
+      0% {
+        transform: translateX(-40px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: var(--opacity-full);
+      }
+    }
+
+    .sale-table td {
+      padding: 20px 0;
+      font-size: var(--font-size-md);
+      vertical-align: middle;
+    }
+
+    .sale-table .property-cell {
+      font-weight: 500;
+    }
+
+    .sale-table .year-cell {
+      font-weight: 400;
+      opacity: var(--opacity-secondary);
+    }
+
+    .sale-table .location-cell {
+      font-weight: 400;
+    }
+
+    .sale-table .status-cell {
+      display: flex;
+      align-items: center;
+      gap: var(--gap-sm);
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--red);
+    }
+
+    .status-dot.active {
+      background: #22C55E;
+    }
+
+    .status-dot.pending {
+      background: var(--gold);
+    }
+
+    .sale-table .price-cell {
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    /* ==================== SEE ALL CTA ==================== */
+    .see-all-cta {
+      display: flex;
+      justify-content: center;
+      padding: var(--gap-xl) var(--section-padding-x) var(--section-padding);
+    }
+
+    .see-all-button {
+      display: inline-block;
+      padding: var(--gap-md) 48px;
+      font-family: var(--font-family);
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      letter-spacing: var(--letter-spacing-wide);
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--red);
+      background: transparent;
+      border: 2px solid var(--red);
+      cursor: pointer;
+      transition: all var(--duration-hover) var(--easing);
+    }
+
+    .see-all-button:hover {
+      background: var(--red);
+      color: var(--white);
+    }
+
+    .see-all-button:active {
+      transform: scaleX(0.98) scaleY(1.02);
+      transition: transform var(--duration-click) var(--easing);
+    }
+
+    /* ==================== FOOTER ==================== */
+    .footer {
+      padding: var(--gap-xl) var(--section-padding-x);
+      background: var(--red);
+      color: var(--white);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--gap-xl);
+    }
+
+    /* Footer Logo: Split Icon + Text (white version) */
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+
+    .footer-logo-icon {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+      /* Invert to white for red background */
+      filter: brightness(0) invert(1);
+    }
+
+    .footer-logo-text {
+      font-size: var(--font-size-lg);
+      font-weight: 700;
+      letter-spacing: var(--letter-spacing-wide);
+    }
+
+    .footer-form {
+      display: flex;
+      gap: var(--gap-md);
+      flex: 1;
+      max-width: 400px;
+      justify-content: center;
+    }
+
+    .footer-input {
+      flex: 1;
+      padding: 12px 16px;
+      font-family: var(--font-family);
+      font-size: var(--font-size-sm);
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      color: var(--white);
+      outline: none;
+      transition: border-color var(--duration-hover) var(--easing);
+    }
+
+    .footer-input::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .footer-input:focus {
+      border-color: var(--white);
+    }
+
+    .footer-button {
+      padding: 12px 24px;
+      font-family: var(--font-family);
+      font-size: var(--font-size-xs);
+      font-weight: 600;
+      letter-spacing: var(--letter-spacing-wide);
+      text-transform: uppercase;
+      background: var(--white);
+      color: var(--red);
+      border: none;
+      cursor: pointer;
+      transition: all var(--duration-hover) var(--easing);
+      flex-shrink: 0;
+    }
+
+    .footer-button:hover {
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .footer-button:active {
+      transform: scaleX(0.98) scaleY(1.02);
+      transition: transform var(--duration-click) var(--easing);
+    }
+
+    .footer-copy {
+      font-size: var(--font-size-xs);
+      opacity: 0.7;
+      flex-shrink: 0;
+    }
+
+    /* ==================== RESPONSIVE ==================== */
+    @media (max-width: 768px) {
+      :root {
+        --section-padding: 60px;
+        --section-padding-x: 24px;
+      }
+
+      .header {
+        padding: 20px var(--section-padding-x);
+      }
+
+      .logo-icon {
+        width: 24px;
+        height: 24px;
+      }
+
+      .logo-text {
+        font-size: 16px;
+      }
+
+      .hero {
+        padding: 100px var(--section-padding-x) 60px;
+      }
+
+      .property-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .sale-table {
+        font-size: var(--font-size-sm);
+      }
+
+      .footer {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--gap-lg);
+      }
+
+      .footer-logo {
+        justify-content: center;
+      }
+
+      .footer-form {
+        width: 100%;
+        max-width: none;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header with Split Logo: Compass Icon + Styled Text -->
+  <header class="header">
+    <a href="#" class="logo">
+      <img src="/icons/Usonian-Logo.png" alt="Usonian compass icon" class="logo-icon">
+      <span class="logo-text">USONIAN</span>
+    </a>
+    <nav class="nav">
+      <a href="#" class="nav-link">HOMES</a>
+      <a href="#" class="nav-link">LEARN</a>
+      <a href="#" class="nav-link">ARCHITECTS</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <img src="http://localhost:3845/assets/9957d7409fc75c75595cc287788b8d456b2ee6ed.png" alt="Compass icon" class="hero-compass" style="width: 51px; height: 51px; transform: rotate(180deg) scaleY(-1); margin-bottom: 32px;">
+    <h1 class="hero-title">
+      <span>ARCHITECT</span>
+      <span>DESIGNED</span>
+      <span>HOMES</span>
+    </h1>
+    <p class="hero-subtitle">WHO DESIGNED YOUR HOME?</p>
+  </section>
+
+  <!-- Featured Properties -->
+  <section class="featured-section" id="featured">
+    <div class="section-header">
+      <h2 class="section-title">CURRENTLY FOR SALE</h2>
+      <span class="section-count">03 LISTINGS</span>
+    </div>
+    <div class="property-grid">
+      <article class="property-card property-card--for-sale" tabindex="0">
+        <span class="status-badge status-badge--for-sale">For Sale</span>
+        <div class="property-image">CHEMOSPHERE</div>
+        <h3 class="property-name">Chemosphere</h3>
+        <div class="property-meta">
+          <span class="property-architect">John Lautner</span>
+          <span class="property-year">1960</span>
+        </div>
+        <p class="property-location">Los Angeles, California</p>
+        <p class="property-price">$10,500,000</p>
+      </article>
+      <article class="property-card" tabindex="0">
+        <span class="status-badge status-badge--sold">Sold</span>
+        <div class="property-image">SILVERTOP</div>
+        <h3 class="property-name">Silvertop</h3>
+        <div class="property-meta">
+          <span class="property-architect">John Lautner</span>
+          <span class="property-year">1963</span>
+        </div>
+        <p class="property-location">Silver Lake, California</p>
+        <p class="property-price">$7,800,000</p>
+      </article>
+      <article class="property-card" tabindex="0">
+        <span class="status-badge status-badge--museum">Museum</span>
+        <div class="property-image">ELROD HOUSE</div>
+        <h3 class="property-name">Elrod House</h3>
+        <div class="property-meta">
+          <span class="property-architect">John Lautner</span>
+          <span class="property-year">1968</span>
+        </div>
+        <p class="property-location">Palm Springs, California</p>
+        <p class="property-price">$8,250,000</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Homes Table -->
+  <section class="table-section" id="homes">
+    <div class="section-header">
+      <h2 class="section-title">HOMES</h2>
+      <span class="section-count">04 AVAILABLE</span>
+    </div>
+    <table class="sale-table">
+      <thead>
+        <tr>
+          <th>Property</th>
+          <th>Year</th>
+          <th>Location</th>
+          <th>Status</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr tabindex="0">
+          <td class="property-cell">Kaufmann Desert House</td>
+          <td class="year-cell">1946</td>
+          <td class="location-cell">Palm Springs, CA</td>
+          <td class="status-cell"><span class="status-dot active"></span> Available</td>
+          <td class="price-cell">$25,000,000</td>
+        </tr>
+        <tr tabindex="0">
+          <td class="property-cell">Stahl House (Case Study #22)</td>
+          <td class="year-cell">1960</td>
+          <td class="location-cell">Los Angeles, CA</td>
+          <td class="status-cell"><span class="status-dot pending"></span> Pending</td>
+          <td class="price-cell">$35,000,000</td>
+        </tr>
+        <tr tabindex="0">
+          <td class="property-cell">Sheats-Goldstein Residence</td>
+          <td class="year-cell">1963</td>
+          <td class="location-cell">Beverly Hills, CA</td>
+          <td class="status-cell"><span class="status-dot active"></span> Available</td>
+          <td class="price-cell">$42,000,000</td>
+        </tr>
+        <tr tabindex="0">
+          <td class="property-cell">VDL Research House II</td>
+          <td class="year-cell">1966</td>
+          <td class="location-cell">Silver Lake, CA</td>
+          <td class="status-cell"><span class="status-dot"></span> Off Market</td>
+          <td class="price-cell">$4,500,000</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- See All CTA -->
+    <div class="see-all-cta">
+      <a href="/homes" class="see-all-button">SEE ALL HOMES</a>
+    </div>
+  </section>
+
+  <!-- Footer with Split Logo -->
+  <footer class="footer">
+    <div class="footer-logo">
+      <img src="/icons/Usonian-Logo.png" alt="Usonian compass icon" class="footer-logo-icon">
+      <span class="footer-logo-text">USONIAN</span>
+    </div>
+    <form class="footer-form">
+      <input type="email" class="footer-input" placeholder="Receive updates on new listings...">
+      <button type="submit" class="footer-button">Subscribe</button>
+    </form>
+    <span class="footer-copy">&copy; 2026 USONIAN<br>BY: @GITMONEY</span>
+  </footer>
+
+  <!-- Figma Capture Script -->
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+</body>
+</html>

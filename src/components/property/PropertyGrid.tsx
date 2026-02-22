@@ -48,12 +48,11 @@ export function PropertyGrid({ properties }: PropertyGridProps) {
           key={property.id}
           className={`
             property-card-animate
-            ${isVisible ? "visible" : ""}
             ${index % 2 === 1 ? "md:mt-32" : ""}
           `}
-          style={{ animationDelay: `${index * 80}ms` }}
+          style={{ animationDelay: isVisible ? `${index * 80}ms` : undefined }}
         >
-          <PropertyCard property={property} />
+          <PropertyCard property={property} variant="v2" />
         </div>
       ))}
     </div>

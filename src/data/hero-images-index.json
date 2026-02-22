@@ -100,6 +100,9 @@
       "slug": "bernard-schwartz-house"
     },
     {
+      "slug": "beth-sholom-synagogue"
+    },
+    {
       "slug": "bob-hope-residence"
     },
     {
@@ -130,6 +133,9 @@
       "slug": "carlton-d-wall-house-snowflake"
     },
     {
+      "slug": "caroll-alsop-house"
+    },
+    {
       "slug": "cedric-boulter-house"
     },
     {
@@ -142,34 +148,271 @@
       "slug": "charles-weltzheimer-house"
     },
     {
+      "slug": "charnley-norwood-house"
+    },
+    {
+      "slug": "chauncey-l-griggs-house"
+    },
+    {
       "slug": "chemosphere-malin-residence"
+    },
+    {
+      "slug": "church-of-saint-mary"
+    },
+    {
+      "slug": "city-national-bank-and-hotel"
+    },
+    {
+      "slug": "clarence-sondern-house"
+    },
+    {
+      "slug": "clarke-arnold-house"
+    },
+    {
+      "slug": "community-christian-church"
     },
     {
       "slug": "creek-house"
     },
     {
+      "slug": "curtis-lillian-meyer-house"
+    },
+    {
+      "slug": "darwin-martin-gardener-s-cottage"
+    },
+    {
+      "slug": "darwin-martin-house"
+    },
+    {
+      "slug": "david-christine-weisblat-house"
+    },
+    {
+      "slug": "david-m-amberg-house"
+    },
+    {
+      "slug": "david-wright-house"
+    },
+    {
       "slug": "deconcini-house"
+    },
+    {
+      "slug": "delbert-meier-house"
+    },
+    {
+      "slug": "della-walker-house"
     },
     {
       "slug": "dome-house-woods-residence"
     },
     {
+      "slug": "don-duncan-house"
+    },
+    {
+      "slug": "donald-lovness-house"
+    },
+    {
+      "slug": "donald-stromquist-house"
+    },
+    {
+      "slug": "dorothy-h-turkel-house"
+    },
+    {
+      "slug": "douglas-grant-house"
+    },
+    {
       "slug": "dow-house-studio"
+    },
+    {
+      "slug": "dudley-spencer-house"
+    },
+    {
+      "slug": "duey-wright-house"
+    },
+    {
+      "slug": "earl-stein-house"
+    },
+    {
+      "slug": "edward-boynton-house"
+    },
+    {
+      "slug": "edward-la-fond-house"
+    },
+    {
+      "slug": "edward-serlin-house"
+    },
+    {
+      "slug": "elam-house"
+    },
+    {
+      "slug": "elizabeth-murphy-house"
+    },
+    {
+      "slug": "ellis-feiman-house"
     },
     {
       "slug": "elrod-house"
     },
     {
+      "slug": "eric-pat-pratt-house"
+    },
+    {
+      "slug": "eric-v-brown-house"
+    },
+    {
+      "slug": "erling-katherine-brauner-house"
+    },
+    {
+      "slug": "ernest-vosburgh-house"
+    },
+    {
+      "slug": "eugene-gilmore-house"
+    },
+    {
+      "slug": "eugene-van-tamlen-house"
+    },
+    {
+      "slug": "fair-lane-henry-clara-ford-estate"
+    },
+    {
+      "slug": "fallingwater"
+    },
+    {
+      "slug": "fasbender-medical-clinic"
+    },
+    {
+      "slug": "feldman-house"
+    },
+    {
       "slug": "fineman-house"
+    },
+    {
+      "slug": "first-christian-church"
+    },
+    {
+      "slug": "first-united-methodist-church"
+    },
+    {
+      "slug": "florida-southern-college"
+    },
+    {
+      "slug": "fonken-house"
     },
     {
       "slug": "foster-carling-residence"
     },
     {
+      "slug": "frank-bott-house"
+    },
+    {
+      "slug": "frank-iber-house"
+    },
+    {
+      "slug": "fred-jones-house"
+    },
+    {
+      "slug": "frederick-bogk-house"
+    },
+    {
+      "slug": "friedman-house-fir-tree"
+    },
+    {
       "slug": "gallery-house"
     },
     {
+      "slug": "gammage-auditorium"
+    },
+    {
       "slug": "garcia-house"
+    },
+    {
+      "slug": "george-ablin-house"
+    },
+    {
+      "slug": "george-barton-house"
+    },
+    {
+      "slug": "george-blossom-summer-house"
+    },
+    {
+      "slug": "george-c-stewart-house"
+    },
+    {
+      "slug": "george-greene-house"
+    },
+    {
+      "slug": "george-mary-gerts-summer-cottage"
+    },
+    {
+      "slug": "george-spencer-house"
+    },
+    {
+      "slug": "george-stockman-house"
+    },
+    {
+      "slug": "george-sturges-house"
+    },
+    {
+      "slug": "gerald-tonkens-house"
+    },
+    {
+      "slug": "goetsch-winckler-house"
+    },
+    {
+      "slug": "gordon-house"
+    },
+    {
+      "slug": "grace-a-dow-memorial-library"
+    },
+    {
+      "slug": "greenhills-school"
+    },
+    {
+      "slug": "gregor-elizabeth-affleck-house"
+    },
+    {
+      "slug": "guggenheim-museum"
+    },
+    {
+      "slug": "haddock-house"
+    },
+    {
+      "slug": "hanna-house"
+    },
+    {
+      "slug": "harold-price-house"
+    },
+    {
+      "slug": "harold-price-jr-house"
+    },
+    {
+      "slug": "harvey-p-sutton-house"
+    },
+    {
+      "slug": "henry-j-allen-house"
+    },
+    {
+      "slug": "henry-neils-house"
+    },
+    {
+      "slug": "henry-wallis-cottage"
+    },
+    {
+      "slug": "herbert-jacobs-i-house"
+    },
+    {
+      "slug": "herbert-jacobs-ii-house"
+    },
+    {
+      "slug": "herbert-johnson-house-wingspread"
+    },
+    {
+      "slug": "herman-mossberg-house"
+    },
+    {
+      "slug": "hills-decaro-house"
+    },
+    {
+      "slug": "hillside-home-school"
     },
     {
       "slug": "hotel-lautner-hubbard"
@@ -178,10 +421,94 @@
       "slug": "house-of-spirit"
     },
     {
+      "slug": "howard-ball-house"
+    },
+    {
+      "slug": "howard-helen-anthony-house"
+    },
+    {
       "slug": "hunter-house"
     },
     {
+      "slug": "ina-morris-harper-house"
+    },
+    {
+      "slug": "ingwald-moe-house"
+    },
+    {
+      "slug": "interlochen-center-for-the-arts"
+    },
+    {
+      "slug": "isabel-martin-graycliff-house"
+    },
+    {
+      "slug": "j-a-sweeton-house"
+    },
+    {
+      "slug": "j-willis-hughes-house-fountainhead"
+    },
+    {
+      "slug": "jack-lamberson-house"
+    },
+    {
+      "slug": "james-christie-house"
+    },
+    {
+      "slug": "james-mcbean-house"
+    },
+    {
+      "slug": "john-dobkins-house"
+    },
+    {
+      "slug": "john-e-christian-house-samara"
+    },
+    {
+      "slug": "john-gillin-house"
+    },
+    {
+      "slug": "john-haynes-house"
+    },
+    {
+      "slug": "john-pew-house"
+    },
+    {
+      "slug": "john-storer-house"
+    },
+    {
       "slug": "jones-house-own"
+    },
+    {
+      "slug": "joseph-bagley-house"
+    },
+    {
+      "slug": "joseph-euchtman-house"
+    },
+    {
+      "slug": "joseph-mollica-house"
+    },
+    {
+      "slug": "k-c-derhodes-house"
+    },
+    {
+      "slug": "kalamazoo-nature-center"
+    },
+    {
+      "slug": "kalita-humphreys-theater"
+    },
+    {
+      "slug": "karl-kundert-medical-clinic"
+    },
+    {
+      "slug": "karl-staley-house"
+    },
+    {
+      "slug": "keland-boyd-house"
+    },
+    {
+      "slug": "kentuck-knob"
+    },
+    {
+      "slug": "king-kamehameha-golf-club"
     },
     {
       "slug": "knight-house-duke"
@@ -190,40 +517,223 @@
       "slug": "lapp-riverhouse"
     },
     {
+      "slug": "laura-robeson-gale-rental-cottages-birch-brook"
+    },
+    {
       "slug": "lautner-house"
     },
     {
       "slug": "lencioni-residence-wave"
     },
     {
+      "slug": "leonard-service-station"
+    },
+    {
+      "slug": "lewis-h-goddard-house"
+    },
+    {
+      "slug": "lindholm-house-mantyla"
+    },
+    {
+      "slug": "lindholm-service-station"
+    },
+    {
+      "slug": "louis-penfield-house"
+    },
+    {
+      "slug": "lowell-walter-house-cedar-rock"
+    },
+    {
+      "slug": "malcolm-willey-house"
+    },
+    {
       "slug": "malibu-estate-own"
+    },
+    {
+      "slug": "marin-county-civic-center"
+    },
+    {
+      "slug": "maurice-greenberg-house"
+    },
+    {
+      "slug": "maximillian-hoffman-house"
+    },
+    {
+      "slug": "maynard-buehler-house"
+    },
+    {
+      "slug": "melvyn-maxwell-smith-house-myhaven"
+    },
+    {
+      "slug": "meyer-may-house"
+    },
+    {
+      "slug": "meyers-medical-clinic"
+    },
+    {
+      "slug": "midland-center-for-the-arts"
+    },
+    {
+      "slug": "midland-high-school"
     },
     {
       "slug": "mischel-house-sunspot"
     },
     {
+      "slug": "monona-terrace"
+    },
+    {
       "slug": "myers-residence"
+    },
+    {
+      "slug": "nathan-rubin-house"
+    },
+    {
+      "slug": "norman-lykes-house"
     },
     {
       "slug": "notz-house"
     },
     {
+      "slug": "oscar-c-diehl-house"
+    },
+    {
+      "slug": "parents-children-s-schoolhouse"
+    },
+    {
+      "slug": "patrick-kinney-house"
+    },
+    {
+      "slug": "paul-olfelt-house"
+    },
+    {
+      "slug": "paul-trier-house"
+    },
+    {
       "slug": "peters-margedant-house"
+    },
+    {
+      "slug": "pieper-house"
+    },
+    {
+      "slug": "pilgrim-congregational-church"
+    },
+    {
+      "slug": "pope-leighy-house"
+    },
+    {
+      "slug": "pottery-house"
+    },
+    {
+      "slug": "price-tower"
+    },
+    {
+      "slug": "quintin-blair-house"
+    },
+    {
+      "slug": "randall-fawcett-house"
     },
     {
       "slug": "rattenbury-residence"
     },
     {
+      "slug": "ray-brandes-house"
+    },
+    {
+      "slug": "raymond-carlson-house"
+    },
+    {
+      "slug": "rayward-house-tirranna"
+    },
+    {
       "slug": "reed-house"
+    },
+    {
+      "slug": "rev-jesse-r-zeigler-house"
+    },
+    {
+      "slug": "richard-davis-house-woodside"
+    },
+    {
+      "slug": "richard-lloyd-jones-house-westhope"
+    },
+    {
+      "slug": "richards-bungalow"
+    },
+    {
+      "slug": "richards-duplex-apartments"
+    },
+    {
+      "slug": "richards-small-house"
+    },
+    {
+      "slug": "riverrock-house"
+    },
+    {
+      "slug": "robert-berger-house"
     },
     {
       "slug": "robert-d-winn-house"
     },
     {
+      "slug": "robert-goodall-residence"
+    },
+    {
+      "slug": "robert-lamp-house"
+    },
+    {
+      "slug": "robert-llewellyn-wright-house"
+    },
+    {
+      "slug": "robert-rae-levin-house"
+    },
+    {
+      "slug": "robert-sunday-house"
+    },
+    {
+      "slug": "roland-reisley-house"
+    },
+    {
+      "slug": "romeo-and-juliet-windmill"
+    },
+    {
+      "slug": "rose-pauson-house"
+    },
+    {
+      "slug": "rosenbaum-house"
+    },
+    {
       "slug": "ross-house"
     },
     {
+      "slug": "russell-kraus-house"
+    },
+    {
+      "slug": "samuel-dorothy-eppstein-house"
+    },
+    {
+      "slug": "samuel-freeman-house"
+    },
+    {
+      "slug": "sander-house-springbough"
+    },
+    {
+      "slug": "sc-johnson-administration-building"
+    },
+    {
+      "slug": "sc-johnson-research-tower"
+    },
+    {
+      "slug": "seamour-shavin-house"
+    },
+    {
+      "slug": "seth-peterson-cottage"
+    },
+    {
       "slug": "sheats-goldstein-residence"
+    },
+    {
+      "slug": "sidney-bazett-house"
     },
     {
       "slug": "silvertop-reiner-residence"
@@ -235,7 +745,64 @@
       "slug": "smith-house"
     },
     {
+      "slug": "snow-flake-motel"
+    },
+    {
+      "slug": "socrates-zaferious-house"
+    },
+    {
+      "slug": "sol-friedman-toyhill-house"
+    },
+    {
+      "slug": "spring-house-lewis"
+    },
+    {
+      "slug": "st-john-s-lutheran-church"
+    },
+    {
+      "slug": "stephen-hunt-bungalow"
+    },
+    {
+      "slug": "sterling-kinney-house"
+    },
+    {
+      "slug": "stevens-plantation-auldbrass"
+    },
+    {
       "slug": "stoneflower"
+    },
+    {
+      "slug": "stuart-richardson-house"
+    },
+    {
+      "slug": "suntop-homes"
+    },
+    {
+      "slug": "taliesin-west"
+    },
+    {
+      "slug": "taliesin"
+    },
+    {
+      "slug": "teaters-knoll"
+    },
+    {
+      "slug": "theodore-baird-house"
+    },
+    {
+      "slug": "theodore-pappas-house"
+    },
+    {
+      "slug": "thomas-h-gale-summer-cottage"
+    },
+    {
+      "slug": "thomas-keys-house"
+    },
+    {
+      "slug": "thomas-p-hardy-house"
+    },
+    {
+      "slug": "toufic-kalil-house"
     },
     {
       "slug": "towsley-house"
@@ -247,13 +814,61 @@
       "slug": "ultimate-house"
     },
     {
+      "slug": "unitarian-meeting-house"
+    },
+    {
+      "slug": "unity-chapel"
+    },
+    {
+      "slug": "v-c-morris-gift-store"
+    },
+    {
+      "slug": "walter-davidson-house"
+    },
+    {
+      "slug": "walter-gerts-summer-cottage"
+    },
+    {
+      "slug": "walter-rudin-house"
+    },
+    {
       "slug": "walton-house"
+    },
+    {
+      "slug": "ward-mccartney-house"
     },
     {
       "slug": "whitman-house"
     },
     {
+      "slug": "wichita-state-university-corbin-education-center"
+    },
+    {
+      "slug": "wilbur-pearce-house"
+    },
+    {
+      "slug": "william-boswell-house"
+    },
+    {
+      "slug": "william-cass-house"
+    },
+    {
+      "slug": "william-heath-house"
+    },
+    {
+      "slug": "william-mary-palmer-house"
+    },
+    {
+      "slug": "william-thaxton-house"
+    },
+    {
+      "slug": "william-tracy-house"
+    },
+    {
       "slug": "wood-peterson-house"
+    },
+    {
+      "slug": "wyoming-valley-grammar-school"
     },
     {
       "slug": "wystrach-adams-residence"
@@ -263,6 +878,9 @@
     },
     {
       "slug": "yates-residence"
+    },
+    {
+      "slug": "zimmerman-house"
     }
   ]
 }

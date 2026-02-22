@@ -1,0 +1,1632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCM Heritage | Organic Architecture Collection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* === DESIGN TOKENS === */
+        :root {
+            --red: #BF0A30;
+            --navy: #002868;
+            --gold: #D4B270;
+            --black: #000000;
+            --white: #FFFFFF;
+
+            /* Organic Earth Tones */
+            --prairie-sand: #C4A77D;
+            --prairie-earth: #8B7355;
+            --prairie-moss: #6B7B59;
+            --prairie-stone: #9A9A8A;
+            --prairie-horizon: #E8DFD0;
+
+            /* Shadows - Cantilever Style */
+            --shadow-sm: 2px 2px 0 var(--black);
+            --shadow-md: 4px 4px 0 var(--black);
+            --shadow-lg: 6px 6px 0 var(--black);
+            --shadow-cantilever: 8px 0 0 var(--black);
+        }
+
+        /* === RESET & BASE === */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--prairie-horizon);
+            color: var(--black);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* === PRAIRIE LINES PATTERN === */
+        .prairie-lines {
+            position: relative;
+        }
+
+        .prairie-lines::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: repeating-linear-gradient(
+                to bottom,
+                var(--prairie-earth) 0px,
+                var(--prairie-earth) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+        }
+
+        .prairie-lines-top::before {
+            top: 0;
+        }
+
+        .prairie-lines-bottom::before {
+            bottom: 0;
+        }
+
+        /* 5-Line Prairie Band */
+        .prairie-band {
+            height: 12px;
+            background:
+                linear-gradient(to bottom,
+                    var(--prairie-earth) 0px, var(--prairie-earth) 1px,
+                    transparent 1px, transparent 3px,
+                    var(--gold) 3px, var(--gold) 4px,
+                    transparent 4px, transparent 6px,
+                    var(--prairie-earth) 6px, var(--prairie-earth) 7px,
+                    transparent 7px, transparent 9px,
+                    var(--gold) 9px, var(--gold) 10px,
+                    transparent 10px, transparent 12px
+                );
+            width: 100%;
+        }
+
+        .prairie-band-thick {
+            height: 20px;
+            background:
+                linear-gradient(to bottom,
+                    var(--prairie-earth) 0px, var(--prairie-earth) 2px,
+                    transparent 2px, transparent 5px,
+                    var(--gold) 5px, var(--gold) 7px,
+                    transparent 7px, transparent 10px,
+                    var(--prairie-earth) 10px, var(--prairie-earth) 12px,
+                    transparent 12px, transparent 15px,
+                    var(--gold) 15px, var(--gold) 17px,
+                    transparent 17px, transparent 20px
+                );
+        }
+
+        /* === THRESHOLD TRANSITIONS === */
+        .threshold {
+            padding: 40px 0;
+            background: linear-gradient(
+                to bottom,
+                var(--prairie-horizon) 0%,
+                var(--prairie-sand) 30%,
+                var(--prairie-earth) 50%,
+                var(--prairie-sand) 70%,
+                var(--prairie-horizon) 100%
+            );
+            position: relative;
+        }
+
+        .threshold-divider {
+            height: 60px;
+            background: linear-gradient(
+                to bottom,
+                transparent 0%,
+                var(--prairie-sand) 20%,
+                var(--prairie-earth) 50%,
+                var(--prairie-sand) 80%,
+                transparent 100%
+            );
+            margin: 40px 0;
+        }
+
+        /* === NAVIGATION - Compressed Header === */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--black);
+            padding: 8px 0;
+            border-bottom: 3px solid var(--gold);
+        }
+
+        nav::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: repeating-linear-gradient(
+                to bottom,
+                var(--prairie-earth) 0px, var(--prairie-earth) 1px,
+                transparent 1px, transparent 2px
+            );
+        }
+
+        .nav-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: 4px;
+        }
+
+        .nav-logo span {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 8px;
+        }
+
+        .nav-link {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--white);
+            text-decoration: none;
+            padding: 6px 12px;
+            border: 1px solid var(--prairie-earth);
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-link:hover {
+            background: var(--gold);
+            color: var(--black);
+            border-color: var(--gold);
+        }
+
+        /* === SECTIONS BASE === */
+        section {
+            min-height: 100vh;
+            padding: 100px 24px 60px;
+        }
+
+        .section-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* === HERO SECTION - Compression & Release === */
+        #hero {
+            background: linear-gradient(
+                to bottom,
+                var(--black) 0%,
+                var(--black) 40%,
+                var(--navy) 40%,
+                var(--navy) 45%,
+                var(--prairie-horizon) 45%
+            );
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-compression {
+            background: var(--black);
+            padding: 20px 40px;
+            margin-bottom: 0;
+        }
+
+        .hero-release {
+            background: var(--prairie-horizon);
+            padding: 80px 40px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            line-height: 1;
+            /* Strong Horizontal Emphasis */
+            transform: scaleY(0.85);
+            margin-bottom: 0;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(0.8rem, 2vw, 1rem);
+            color: var(--gold);
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-top: 12px;
+        }
+
+        .hero-horizontal-band {
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(
+                to right,
+                transparent 0%,
+                var(--gold) 10%,
+                var(--gold) 90%,
+                transparent 100%
+            );
+            margin: 20px 0;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--black);
+            max-width: 700px;
+            line-height: 1.8;
+        }
+
+        .hero-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .stat-block {
+            background: var(--white);
+            border: 2px solid var(--black);
+            padding: 20px 30px;
+            box-shadow: var(--shadow-cantilever);
+            /* Cantilever - extends right */
+            margin-right: -40px;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--prairie-earth);
+        }
+
+        .hero-cta {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 16px 48px;
+            background: var(--red);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border: 2px solid var(--black);
+            box-shadow: var(--shadow-md);
+            transition: all 0.2s ease;
+        }
+
+        .hero-cta:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* === HOMES GRID === */
+        #homes-grid {
+            background: var(--prairie-horizon);
+        }
+
+        .section-header {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--black);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            /* Horizontal emphasis */
+            transform: scaleY(0.9);
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 200px;
+            height: 8px;
+            margin-top: 15px;
+            background:
+                linear-gradient(to bottom,
+                    var(--gold) 0px, var(--gold) 2px,
+                    transparent 2px, transparent 3px,
+                    var(--prairie-earth) 3px, var(--prairie-earth) 5px,
+                    transparent 5px, transparent 6px,
+                    var(--gold) 6px, var(--gold) 8px
+                );
+        }
+
+        .property-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 40px;
+        }
+
+        .property-card {
+            background: var(--white);
+            border: 2px solid var(--black);
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            /* Horizontal emphasis - wide and low */
+            aspect-ratio: 16/10;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Cantilever effect - card extends beyond grid */
+        .property-card:nth-child(odd) {
+            transform: translateX(-10px);
+        }
+
+        .property-card:nth-child(even) {
+            transform: translateX(10px);
+        }
+
+        .property-image {
+            height: 55%;
+            background: linear-gradient(
+                135deg,
+                var(--prairie-stone) 0%,
+                var(--prairie-sand) 50%,
+                var(--prairie-earth) 100%
+            );
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--white);
+            text-shadow: 2px 2px 0 var(--black);
+        }
+
+        .property-status {
+            position: absolute;
+            top: 12px;
+            right: -8px; /* Cantilever */
+            padding: 6px 16px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 2px solid var(--black);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .status-sold {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .status-museum {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .status-for-sale {
+            background: var(--red);
+            color: var(--white);
+        }
+
+        .status-archived {
+            background: var(--prairie-stone);
+            color: var(--black);
+        }
+
+        .property-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-top: none;
+        }
+
+        .property-info::before {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 5px;
+            margin-bottom: 15px;
+            background:
+                linear-gradient(to bottom,
+                    var(--prairie-earth) 0px, var(--prairie-earth) 1px,
+                    transparent 1px, transparent 2px,
+                    var(--gold) 2px, var(--gold) 3px,
+                    transparent 3px, transparent 4px,
+                    var(--prairie-earth) 4px, var(--prairie-earth) 5px
+                );
+        }
+
+        .property-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--black);
+            margin-bottom: 5px;
+        }
+
+        .property-architect {
+            font-size: 0.8rem;
+            color: var(--prairie-earth);
+            margin-bottom: 10px;
+        }
+
+        .property-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .property-year {
+            font-size: 0.75rem;
+            color: var(--navy);
+        }
+
+        .property-price {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--red);
+        }
+
+        /* === HOMES LIST === */
+        #homes-list {
+            background: var(--white);
+        }
+
+        .property-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+        }
+
+        .property-table th {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--white);
+            background: var(--black);
+            padding: 16px 20px;
+            text-align: left;
+        }
+
+        .property-table th:first-child {
+            padding-left: 30px;
+        }
+
+        .property-table td {
+            padding: 20px;
+            font-size: 0.9rem;
+            position: relative;
+        }
+
+        .property-table td:first-child {
+            padding-left: 30px;
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        /* Prairie line row separators */
+        .property-table tr {
+            border-bottom: 1px solid var(--prairie-sand);
+            position: relative;
+        }
+
+        .property-table tbody tr::after {
+            content: '';
+            position: absolute;
+            left: 30px;
+            right: 30px;
+            bottom: 0;
+            height: 5px;
+            background:
+                linear-gradient(to bottom,
+                    transparent 0px,
+                    var(--prairie-sand) 1px,
+                    transparent 2px,
+                    var(--prairie-earth) 3px,
+                    transparent 4px
+                );
+            opacity: 0.5;
+        }
+
+        .property-table tbody tr:hover {
+            background: var(--prairie-horizon);
+        }
+
+        .table-status {
+            display: inline-block;
+            padding: 4px 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* === HOME DETAIL === */
+        #home-detail {
+            background: linear-gradient(
+                to bottom,
+                var(--black) 0%,
+                var(--black) 300px,
+                var(--prairie-horizon) 300px
+            );
+            padding-top: 80px;
+        }
+
+        .detail-hero {
+            background: linear-gradient(
+                135deg,
+                var(--prairie-earth) 0%,
+                var(--gold) 50%,
+                var(--prairie-sand) 100%
+            );
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border: 3px solid var(--black);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .detail-hero-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            color: var(--white);
+            text-shadow: 4px 4px 0 var(--black);
+            letter-spacing: 8px;
+        }
+
+        .detail-status-banner {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold);
+            color: var(--black);
+            padding: 12px 60px;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            border: 3px solid var(--black);
+            box-shadow: var(--shadow-md);
+        }
+
+        .detail-content {
+            margin-top: 80px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 60px;
+        }
+
+        .detail-main h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            /* Horizontal emphasis */
+            transform: scaleY(0.9);
+        }
+
+        .detail-architect-link {
+            font-size: 1.2rem;
+            color: var(--navy);
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .detail-description {
+            font-size: 1rem;
+            line-height: 2;
+            color: var(--black);
+            margin-bottom: 40px;
+        }
+
+        .detail-horizontal-divider {
+            width: 100%;
+            height: 20px;
+            margin: 40px 0;
+            background:
+                linear-gradient(to bottom,
+                    var(--prairie-earth) 0px, var(--prairie-earth) 2px,
+                    transparent 2px, transparent 5px,
+                    var(--gold) 5px, var(--gold) 7px,
+                    transparent 7px, transparent 10px,
+                    var(--prairie-earth) 10px, var(--prairie-earth) 12px,
+                    transparent 12px, transparent 15px,
+                    var(--gold) 15px, var(--gold) 17px,
+                    transparent 17px
+                );
+        }
+
+        .detail-specs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .spec-item {
+            text-align: center;
+            padding: 20px;
+            background: var(--white);
+            border: 2px solid var(--black);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .spec-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .spec-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--prairie-earth);
+            margin-top: 5px;
+        }
+
+        .detail-sidebar {
+            position: relative;
+        }
+
+        .sidebar-card {
+            background: var(--white);
+            border: 3px solid var(--black);
+            box-shadow: var(--shadow-lg);
+            padding: 30px;
+            position: sticky;
+            top: 100px;
+            /* Cantilever effect */
+            margin-left: -30px;
+        }
+
+        .sidebar-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--red);
+            margin-bottom: 20px;
+        }
+
+        .sidebar-info {
+            margin-bottom: 20px;
+        }
+
+        .sidebar-info-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid var(--prairie-sand);
+            font-size: 0.85rem;
+        }
+
+        .sidebar-info-label {
+            color: var(--prairie-earth);
+        }
+
+        .sidebar-info-value {
+            font-weight: 600;
+        }
+
+        /* === ARCHITECTS DIRECTORY === */
+        #architects {
+            background: var(--prairie-horizon);
+        }
+
+        .letter-section {
+            margin-bottom: 60px;
+        }
+
+        .letter-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .letter-char {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--navy);
+            width: 80px;
+            text-align: center;
+        }
+
+        /* Threshold between letters */
+        .letter-threshold {
+            flex-grow: 1;
+            height: 20px;
+            background: linear-gradient(
+                to bottom,
+                transparent 0%,
+                var(--prairie-sand) 30%,
+                var(--prairie-earth) 50%,
+                var(--prairie-sand) 70%,
+                transparent 100%
+            );
+        }
+
+        .architect-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            padding-left: 100px;
+        }
+
+        .architect-card {
+            background: var(--white);
+            border: 2px solid var(--black);
+            box-shadow: var(--shadow-md);
+            padding: 25px 30px;
+            display: flex;
+            flex-direction: column;
+            /* Horizontal emphasis */
+            min-height: 150px;
+        }
+
+        .architect-card::before {
+            content: '';
+            display: block;
+            width: 60%;
+            height: 5px;
+            margin-bottom: 15px;
+            background:
+                linear-gradient(to bottom,
+                    var(--gold) 0px, var(--gold) 1px,
+                    transparent 1px, transparent 2px,
+                    var(--prairie-earth) 2px, var(--prairie-earth) 3px,
+                    transparent 3px, transparent 4px,
+                    var(--gold) 4px, var(--gold) 5px
+                );
+        }
+
+        .architect-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--black);
+            margin-bottom: 5px;
+        }
+
+        .architect-years {
+            font-size: 0.8rem;
+            color: var(--prairie-earth);
+            margin-bottom: 10px;
+        }
+
+        .architect-bio {
+            font-size: 0.85rem;
+            color: var(--black);
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .architect-properties {
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px solid var(--prairie-sand);
+            font-size: 0.75rem;
+            color: var(--navy);
+            font-weight: 600;
+        }
+
+        /* === ARCHITECT DETAIL === */
+        #architect-detail {
+            background: var(--white);
+        }
+
+        .architect-hero {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 60px;
+            align-items: start;
+            margin-bottom: 60px;
+        }
+
+        .architect-portrait {
+            width: 300px;
+            height: 380px;
+            background: linear-gradient(
+                180deg,
+                var(--prairie-stone) 0%,
+                var(--prairie-earth) 100%
+            );
+            border: 3px solid var(--black);
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 6rem;
+            color: var(--white);
+            text-shadow: 3px 3px 0 var(--black);
+        }
+
+        .architect-info {
+            padding-top: 20px;
+        }
+
+        .architect-info h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--black);
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            /* Horizontal emphasis */
+            transform: scaleY(0.85);
+        }
+
+        .architect-tagline {
+            font-size: 1.2rem;
+            color: var(--gold);
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .architect-bio-full {
+            font-size: 1rem;
+            line-height: 2;
+            color: var(--black);
+            max-width: 800px;
+        }
+
+        /* Organic flow layout for works */
+        .architect-works {
+            margin-top: 60px;
+        }
+
+        .works-header {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 10px;
+        }
+
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .work-card {
+            background: var(--prairie-horizon);
+            border: 2px solid var(--black);
+            padding: 20px;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.2s ease;
+        }
+
+        .work-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .work-card:nth-child(1) {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .work-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .work-year {
+            font-size: 0.75rem;
+            color: var(--prairie-earth);
+        }
+
+        /* === FOOTER === */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 60px 24px 30px;
+            margin-top: 0;
+        }
+
+        footer::before {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 20px;
+            margin-bottom: 40px;
+            background:
+                linear-gradient(to bottom,
+                    var(--prairie-earth) 0px, var(--prairie-earth) 2px,
+                    transparent 2px, transparent 5px,
+                    var(--gold) 5px, var(--gold) 7px,
+                    transparent 7px, transparent 10px,
+                    var(--prairie-earth) 10px, var(--prairie-earth) 12px,
+                    transparent 12px, transparent 15px,
+                    var(--gold) 15px, var(--gold) 17px,
+                    transparent 17px
+                );
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+        }
+
+        .footer-logo span {
+            color: var(--gold);
+        }
+
+        .footer-text {
+            font-size: 0.75rem;
+            color: var(--prairie-stone);
+            letter-spacing: 2px;
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .stat-block {
+                margin-right: 0;
+            }
+
+            .hero-stats {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .detail-content {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar-card {
+                margin-left: 0;
+                position: relative;
+                top: 0;
+            }
+
+            .architect-hero {
+                grid-template-columns: 1fr;
+            }
+
+            .architect-portrait {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .works-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .work-card:nth-child(1) {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .property-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .property-card:nth-child(odd),
+            .property-card:nth-child(even) {
+                transform: none;
+            }
+
+            .property-table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            .detail-specs {
+                grid-template-columns: 1fr;
+            }
+
+            .architect-list {
+                padding-left: 0;
+                grid-template-columns: 1fr;
+            }
+
+            .letter-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .letter-threshold {
+                width: 100%;
+            }
+
+            .works-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .work-card:nth-child(1) {
+                grid-column: span 1;
+            }
+
+            .hero-title {
+                letter-spacing: 2px;
+            }
+
+            section {
+                padding: 80px 16px 40px;
+            }
+        }
+
+        /* === MOBILE NAV === */
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: 2px solid var(--gold);
+            color: var(--gold);
+            padding: 8px 16px;
+            cursor: pointer;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-nav-toggle {
+                display: block;
+            }
+
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--black);
+                padding: 20px;
+                border-top: 1px solid var(--prairie-earth);
+            }
+        }
+    </style>
+<script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script></head>
+<body>
+    <!-- NAVIGATION - Compressed Header -->
+    <nav>
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">MCM<span>HERITAGE</span></a>
+            <button class="mobile-nav-toggle" onclick="toggleNav()">MENU</button>
+            <div class="nav-links" id="navLinks">
+                <a href="#hero" class="nav-link">Home</a>
+                <a href="#homes-grid" class="nav-link">Grid</a>
+                <a href="#homes-list" class="nav-link">List</a>
+                <a href="#home-detail" class="nav-link">Detail</a>
+                <a href="#architects" class="nav-link">Architects</a>
+                <a href="#architect-detail" class="nav-link">Profile</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SECTION 1: HERO - Compression & Release -->
+    <section id="hero">
+        <div class="hero-compression">
+            <p class="hero-subtitle">California Organic Modernism</p>
+            <h1 class="hero-title">WHO DESIGNED YOUR HOME?</h1>
+            <div class="hero-horizontal-band"></div>
+        </div>
+        <div class="prairie-band-thick"></div>
+        <div class="hero-release">
+            <div class="section-container">
+                <div class="hero-content">
+                    <div>
+                        <p class="hero-description">
+                            The definitive archive of mid-century modern residential architecture.
+                            Discover masterworks by the pioneers of organic modernism, from Frank Lloyd Wright's
+                            Usonian vision to John Lautner's sculptural innovations. Each property represents
+                            a dialogue between structure and nature, interior and landscape, compression and release.
+                        </p>
+                        <a href="#homes-grid" class="hero-cta">Explore Collection</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-block">
+                            <div class="stat-number">64</div>
+                            <div class="stat-label">Properties</div>
+                        </div>
+                        <div class="stat-block">
+                            <div class="stat-number">12</div>
+                            <div class="stat-label">Architects</div>
+                        </div>
+                        <div class="stat-block">
+                            <div class="stat-number">1936</div>
+                            <div class="stat-label">Earliest</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: HOMES GRID -->
+    <section id="homes-grid">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Property Collection</h2>
+            </div>
+            <div class="prairie-band"></div>
+            <div class="property-grid" style="margin-top: 40px;">
+                <!-- Chemosphere -->
+                <div class="property-card">
+                    <div class="property-image">
+                        <span class="property-status status-sold">Sold</span>
+                    </div>
+                    <div class="property-info">
+                        <div>
+                            <h3 class="property-name">Chemosphere (Malin Residence)</h3>
+                            <p class="property-architect">John Lautner</p>
+                        </div>
+                        <div class="property-meta">
+                            <span class="property-year">1960 / Hollywood Hills</span>
+                            <span class="property-price">$1,000,000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sheats-Goldstein -->
+                <div class="property-card">
+                    <div class="property-image">
+                        <span class="property-status status-museum">Museum</span>
+                    </div>
+                    <div class="property-info">
+                        <div>
+                            <h3 class="property-name">Sheats-Goldstein Residence</h3>
+                            <p class="property-architect">John Lautner</p>
+                        </div>
+                        <div class="property-meta">
+                            <span class="property-year">1961 / Beverly Crest</span>
+                            <span class="property-price">$40,000,000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Garcia House -->
+                <div class="property-card">
+                    <div class="property-image">
+                        <span class="property-status status-sold">Sold</span>
+                    </div>
+                    <div class="property-info">
+                        <div>
+                            <h3 class="property-name">Garcia House</h3>
+                            <p class="property-architect">John Lautner</p>
+                        </div>
+                        <div class="property-meta">
+                            <span class="property-year">1962 / Hollywood Hills</span>
+                            <span class="property-price">$12,500,000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Foster Carling -->
+                <div class="property-card">
+                    <div class="property-image">
+                        <span class="property-status status-sold">Sold</span>
+                    </div>
+                    <div class="property-info">
+                        <div>
+                            <h3 class="property-name">Foster Carling Residence</h3>
+                            <p class="property-architect">John Lautner</p>
+                        </div>
+                        <div class="property-meta">
+                            <span class="property-year">1949 / Hollywood Hills</span>
+                            <span class="property-price">$3,250,000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lautner House -->
+                <div class="property-card">
+                    <div class="property-image">
+                        <span class="property-status status-archived">Archived</span>
+                    </div>
+                    <div class="property-info">
+                        <div>
+                            <h3 class="property-name">Lautner House</h3>
+                            <p class="property-architect">John Lautner</p>
+                        </div>
+                        <div class="property-meta">
+                            <span class="property-year">1939 / Silver Lake</span>
+                            <span class="property-price">$1,670,000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Threshold Transition -->
+    <div class="threshold-divider"></div>
+
+    <!-- SECTION 3: HOMES LIST -->
+    <section id="homes-list">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Complete Registry</h2>
+            </div>
+            <div class="prairie-band"></div>
+            <table class="property-table">
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Architect</th>
+                        <th>Year</th>
+                        <th>Location</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Chemosphere (Malin Residence)</td>
+                        <td>John Lautner</td>
+                        <td>1960</td>
+                        <td>Hollywood Hills</td>
+                        <td>$1,000,000</td>
+                        <td><span class="table-status status-sold">Sold</span></td>
+                    </tr>
+                    <tr>
+                        <td>Sheats-Goldstein Residence</td>
+                        <td>John Lautner</td>
+                        <td>1961</td>
+                        <td>Beverly Crest</td>
+                        <td>$40,000,000</td>
+                        <td><span class="table-status status-museum">Museum</span></td>
+                    </tr>
+                    <tr>
+                        <td>Garcia House</td>
+                        <td>John Lautner</td>
+                        <td>1962</td>
+                        <td>Hollywood Hills</td>
+                        <td>$12,500,000</td>
+                        <td><span class="table-status status-sold">Sold</span></td>
+                    </tr>
+                    <tr>
+                        <td>Foster Carling Residence</td>
+                        <td>John Lautner</td>
+                        <td>1949</td>
+                        <td>Hollywood Hills</td>
+                        <td>$3,250,000</td>
+                        <td><span class="table-status status-sold">Sold</span></td>
+                    </tr>
+                    <tr>
+                        <td>Lautner House</td>
+                        <td>John Lautner</td>
+                        <td>1939</td>
+                        <td>Silver Lake</td>
+                        <td>$1,670,000</td>
+                        <td><span class="table-status status-archived">Archived</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Threshold Transition -->
+    <div class="threshold-divider"></div>
+
+    <!-- SECTION 4: HOME DETAIL - Sheats-Goldstein -->
+    <section id="home-detail">
+        <div class="section-container">
+            <div class="detail-hero">
+                <span class="detail-hero-text">SG</span>
+                <div class="detail-status-banner">Museum Collection</div>
+            </div>
+
+            <div class="detail-content">
+                <div class="detail-main">
+                    <h1>Sheats-Goldstein Residence</h1>
+                    <a href="#architect-detail" class="detail-architect-link">by John Lautner</a>
+
+                    <p class="detail-description">
+                        Perched on a Beverly Crest hillside, the Sheats-Goldstein Residence represents the apex of
+                        John Lautner's organic architecture philosophy. The structure emerges from the landscape like
+                        a geological formation, its coffered concrete ceiling flowing seamlessly into the surrounding
+                        terrain. Glass walls dissolve the boundary between interior and exterior, while the dramatic
+                        cantilevers create a sense of weightlessness. In 2016, owner James Goldstein bequeathed the
+                        property to LACMA, ensuring its preservation as a museum of architectural achievement.
+                    </p>
+
+                    <div class="detail-horizontal-divider"></div>
+
+                    <div class="detail-specs">
+                        <div class="spec-item">
+                            <div class="spec-value">1961</div>
+                            <div class="spec-label">Year Built</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-value">10,000</div>
+                            <div class="spec-label">Square Feet</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-value">4</div>
+                            <div class="spec-label">Bedrooms</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-value">5</div>
+                            <div class="spec-label">Bathrooms</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-value">3.5</div>
+                            <div class="spec-label">Acres</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-value">LACMA</div>
+                            <div class="spec-label">Owned By</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-sidebar">
+                    <div class="sidebar-card">
+                        <div class="sidebar-price">$40,000,000</div>
+                        <div class="prairie-band"></div>
+                        <div class="sidebar-info" style="margin-top: 20px;">
+                            <div class="sidebar-info-item">
+                                <span class="sidebar-info-label">Status</span>
+                                <span class="sidebar-info-value">Museum</span>
+                            </div>
+                            <div class="sidebar-info-item">
+                                <span class="sidebar-info-label">Location</span>
+                                <span class="sidebar-info-value">Beverly Crest, CA</span>
+                            </div>
+                            <div class="sidebar-info-item">
+                                <span class="sidebar-info-label">Style</span>
+                                <span class="sidebar-info-value">Organic Modern</span>
+                            </div>
+                            <div class="sidebar-info-item">
+                                <span class="sidebar-info-label">Features</span>
+                                <span class="sidebar-info-value">Pool, Tennis Court</span>
+                            </div>
+                            <div class="sidebar-info-item">
+                                <span class="sidebar-info-label">Tours</span>
+                                <span class="sidebar-info-value">By Appointment</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Threshold Transition -->
+    <div class="threshold-divider"></div>
+
+    <!-- SECTION 5: ARCHITECTS DIRECTORY -->
+    <section id="architects">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Architects Directory</h2>
+            </div>
+            <div class="prairie-band" style="margin-bottom: 50px;"></div>
+
+            <!-- Letter A -->
+            <div class="letter-section">
+                <div class="letter-header">
+                    <span class="letter-char">A</span>
+                    <div class="letter-threshold"></div>
+                </div>
+                <div class="architect-list">
+                    <div class="architect-card">
+                        <h3 class="architect-name">Alden B. Dow</h3>
+                        <p class="architect-years">1904 - 1983</p>
+                        <p class="architect-bio">Wright apprentice and Michigan native. Developed organic modernism suited to Midwestern landscapes with innovative use of unit blocks.</p>
+                        <p class="architect-properties">27 properties in archive</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Letter E -->
+            <div class="letter-section">
+                <div class="letter-header">
+                    <span class="letter-char">E</span>
+                    <div class="letter-threshold"></div>
+                </div>
+                <div class="architect-list">
+                    <div class="architect-card">
+                        <h3 class="architect-name">E. Fay Jones</h3>
+                        <p class="architect-years">1921 - 2004</p>
+                        <p class="architect-bio">AIA Gold Medal recipient. Best known for Thorncrown Chapel, he brought Wright's organic principles to the Ozarks with ethereal timber structures.</p>
+                        <p class="architect-properties">8 properties in archive</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Letter J -->
+            <div class="letter-section">
+                <div class="letter-header">
+                    <span class="letter-char">J</span>
+                    <div class="letter-threshold"></div>
+                </div>
+                <div class="architect-list">
+                    <div class="architect-card">
+                        <h3 class="architect-name">John Lautner</h3>
+                        <p class="architect-years">1911 - 1994</p>
+                        <p class="architect-bio">Master of California organic modernism. Apprentice of Frank Lloyd Wright who developed a unique sculptural approach to residential architecture.</p>
+                        <p class="architect-properties">29 properties in archive</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Threshold Transition -->
+    <div class="threshold-divider"></div>
+
+    <!-- SECTION 6: ARCHITECT DETAIL - John Lautner -->
+    <section id="architect-detail">
+        <div class="section-container">
+            <div class="architect-hero">
+                <div class="architect-portrait">JL</div>
+                <div class="architect-info">
+                    <h1>John Lautner</h1>
+                    <p class="architect-tagline">"Architecture should be the background for life."</p>
+                    <div class="prairie-band" style="margin-bottom: 30px;"></div>
+                    <p class="architect-bio-full">
+                        John Edward Lautner (1911-1994) emerged from Frank Lloyd Wright's Taliesin Fellowship to
+                        become one of the most innovative architects of the twentieth century. Where Wright emphasized
+                        horizontal prairie lines, Lautner developed a more sculptural approach, treating each commission
+                        as a unique response to site, client, and the possibilities of structure.
+                        <br><br>
+                        His California residences, from the octagonal Chemosphere perched on a concrete pedestal to the
+                        cave-like Sheats-Goldstein, represent organic architecture evolved beyond its prairie origins.
+                        Lautner embraced dramatic cantilevers, sweeping curves, and the integration of interior and
+                        landscape that continues to influence contemporary practice.
+                    </p>
+                </div>
+            </div>
+
+            <div class="detail-horizontal-divider"></div>
+
+            <div class="architect-works">
+                <h2 class="works-header">Selected Works</h2>
+                <div class="prairie-band"></div>
+                <div class="works-grid">
+                    <div class="work-card">
+                        <h4 class="work-name">Sheats-Goldstein Residence</h4>
+                        <p class="work-year">1961 / Beverly Crest</p>
+                    </div>
+                    <div class="work-card">
+                        <h4 class="work-name">Chemosphere</h4>
+                        <p class="work-year">1960 / Hollywood Hills</p>
+                    </div>
+                    <div class="work-card">
+                        <h4 class="work-name">Garcia House</h4>
+                        <p class="work-year">1962 / Hollywood Hills</p>
+                    </div>
+                    <div class="work-card">
+                        <h4 class="work-name">Foster Carling</h4>
+                        <p class="work-year">1949 / Hollywood Hills</p>
+                    </div>
+                    <div class="work-card">
+                        <h4 class="work-name">Lautner House</h4>
+                        <p class="work-year">1939 / Silver Lake</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">MCM<span>HERITAGE</span></div>
+            <p class="footer-text">ORGANIC ARCHITECTURE ARCHIVE / EST. 2024</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile navigation toggle
+        function toggleNav() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile nav if open
+                    document.getElementById('navLinks').classList.remove('active');
+                }
+            });
+        });
+
+        // Add scroll-based effects for compression/release
+        window.addEventListener('scroll', () => {
+            const hero = document.querySelector('.hero-compression');
+            const scrollY = window.scrollY;
+
+            if (hero && scrollY < 400) {
+                const scale = 1 - (scrollY * 0.0005);
+                hero.style.transform = `scaleY(${Math.max(scale, 0.8)})`;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,30 +1,18 @@
+import { redirect } from "next/navigation";
 import { Suspense } from "react";
 import propertiesData from "@/data/properties.json";
 import architectsData from "@/data/architects.json";
 import { type Property, type Architect } from "@/types";
 import { HomeClient } from "./HomeClient";
+import { CompassIcon } from "@/components/icons/CompassIcon";
 
 // Cast to proper types
 const propertiesRaw = propertiesData as Property[];
 const architectsRaw = architectsData as Architect[];
 
-function TableSkeleton() {
-  return (
-    <section className="py-20 px-12">
-      <div className="flex justify-between items-center mb-12">
-        <div className="h-4 w-32 bg-black/10 animate-pulse" />
-        <div className="h-4 w-24 bg-black/10 animate-pulse" />
-      </div>
-      <div className="space-y-4">
-        {[1, 2, 3, 4].map((i) => (
-          <div key={i} className="h-16 bg-black/5 animate-pulse" />
-        ))}
-      </div>
-    </section>
-  );
-}
-
 export default function HomePage() {
+  // Temporary redirect to archive page
+  redirect('/homes');
   // Join properties with architect names
   const properties = propertiesRaw.map((property) => {
     const architect = architectsRaw.find((a) => a.id === property.architect_id);
@@ -40,16 +28,13 @@ export default function HomePage() {
     .filter((p) => p.status === "active")
     .slice(0, 3);
 
-  // Get homes for table - newest active listings (sorted by year_built descending)
-  const tableProperties = properties
-    .filter((p) => p.status === "active")
-    .sort((a, b) => (b.year_built || 0) - (a.year_built || 0))
-    .slice(0, 4);
-
   return (
     <>
       {/* Hero Section */}
       <section className="v2-hero">
+        <div className="mb-6">
+          <CompassIcon size="hero" />
+        </div>
         <h1 className="v2-hero-title">
           <span>ARCHITECT</span>
           <span>DESIGNED</span>
@@ -59,11 +44,8 @@ export default function HomePage() {
       </section>
 
       {/* Featured Properties */}
-      <Suspense fallback={<TableSkeleton />}>
-        <HomeClient
-          featuredProperties={featuredProperties}
-          tableProperties={tableProperties}
-        />
+      <Suspense fallback={null}>
+        <HomeClient featuredProperties={featuredProperties} />
       </Suspense>
     </>
   );

@@ -2,13 +2,10 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import propertiesDataRaw from "@/data/properties.json";
 import architectsDataRaw from "@/data/architects.json";
-import { formatPrice, formatLocation, type Property, type Architect } from "@/types";
+import { formatPrice, formatLocation, getPropertyBadgeType, type Property, type Architect } from "@/types";
 import { Badge } from "@/components/ui/Badge";
-import { PrairieLines } from "@/components/ui/PrairieLines";
-import { NewsletterCTA } from "@/components/ui/NewsletterCTA";
-import { StarIcon } from "@/components/icons/StarIcon";
-import { PropertyAlertButton } from "@/components/property/PropertyAlertButton";
 import { ReferenceLink } from "@/components/ui/ReferenceLink";
+import { ViewPhotosButton } from "@/components/ui/ViewPhotosButton";
 import { getGeneratedSvgUrl } from "@/lib/generated-houses";
 import { getHeroImageUrl } from "@/lib/hero-images";
 import { getArchitectPortraitUrl } from "@/lib/architect-portraits";
@@ -49,9 +46,9 @@ export default async function PropertyDetailPage({ params }: PageProps) {
 
   const architect = architectsData.find((a) => a.id === property.architect_id);
   const location = formatLocation(property.parsed_city, property.parsed_state);
-  const price = property.last_sale_price
-    ? formatPrice(property.last_sale_price)
-    : "PRICE UPON REQUEST";
+  const price = property.status === "active"
+    ? (property.listing_price ? `Listed for ${formatPrice(property.listing_price)}` : "Price not listed")
+    : (property.last_sale_price ? formatPrice(property.last_sale_price) : "PRICE UPON REQUEST");
 
   // Get hero image (prioritize JPG photos over SVG illustrations)
   const heroImageUrl = getHeroImageUrl(property.slug);
@@ -61,187 +58,172 @@ export default async function PropertyDetailPage({ params }: PageProps) {
   // Get architect portrait if available
   const architectPortraitUrl = architect ? getArchitectPortraitUrl(architect.slug) : null;
 
-  // Get related properties by the same architect
-  const relatedProperties = propertiesData
-    .filter((p) => p.architect_id === property.architect_id && p.id !== property.id)
-    .slice(0, 4)
-    .map((p) => ({
-      ...p,
-      architect_name: architect?.name,
-    }));
-
   const isTaliesin = architect?.fellowship_years !== null;
 
   return (
     <>
-      {/* Hero Section - Massive Typography */}
+      {/* Hero Section - Split Layout */}
       <section className="border-b border-black">
         <div className="container py-16 md:py-24">
-          {/* Breadcrumb */}
-          <nav className="mb-8">
-            <ol className="flex items-center gap-2 text-[10px] tracking-[0.15em] opacity-50">
-              <li>
-                <Link href="/homes" className="hover:opacity-100 transition-opacity">
-                  HOMES
+          <div className="flex flex-col-reverse lg:flex-row lg:items-start lg:justify-between gap-8 lg:gap-12">
+            {/* Left: Content */}
+            <div className="flex-1">
+              {/* Breadcrumb */}
+              <nav className="mb-8" aria-label="Breadcrumb">
+                <Link
+                  href="/homes"
+                  className="inline-flex items-center gap-3 text-sm font-semibold tracking-[0.1em] hover:underline underline-offset-4 transition-opacity"
+                >
+                  <img
+                    src="/icons/logo-transparent.png"
+                    alt=""
+                    aria-hidden="true"
+                    className="w-5 h-5 object-contain"
+                  />
+                  <span className="opacity-60">ARCHIVE</span>
+                  <span className="opacity-60">/</span>
+                  <span>{property.home_name.toUpperCase()}</span>
                 </Link>
-              </li>
-              <li>/</li>
-              <li className="opacity-100 font-bold">{property.home_name.toUpperCase()}</li>
-            </ol>
-          </nav>
+              </nav>
 
-          {/* Architect */}
-          {architect && (
-            <Link
-              href={`/architects/${architect.slug}`}
-              className="inline-flex items-center gap-2 text-xs tracking-[0.15em] mb-4 opacity-60 hover:opacity-100 transition-opacity"
-            >
-              <StarIcon size={12} active={isTaliesin} />
-              <span className="uppercase">{architect.name}</span>
-              {isTaliesin && (
-                <span className="fellowship-badge ml-2">Taliesin {architect.fellowship_years}</span>
+              {/* Architect */}
+              {architect && (
+                <Link
+                  href={`/architects/${architect.slug}`}
+                  className="inline-flex items-center gap-2 text-xs tracking-[0.15em] mb-4 opacity-60 hover:opacity-100 transition-opacity"
+                >
+                  <span className="uppercase">{architect.name}</span>
+                  {isTaliesin && (
+                    <span className="fellowship-badge ml-2">Taliesin {architect.fellowship_years}</span>
+                  )}
+                </Link>
               )}
-            </Link>
-          )}
 
-          {/* Title */}
-          <h1 className="animate-fade-up mb-6">{property.home_name}</h1>
+              {/* Title */}
+              <h1 className="animate-fade-up mb-6">{property.home_name}</h1>
 
-          {/* Quick Stats */}
-          <div className="flex flex-wrap items-center gap-4 text-xs tracking-[0.1em]">
-            <span className="opacity-60">{property.year_built}</span>
-            <span className="opacity-30">//</span>
-            <span className="opacity-60">{location}</span>
-            <span className="opacity-30">//</span>
-            <Badge status={property.status} />
-            {property.preservation_status && (
-              <>
+              {/* Quick Stats */}
+              <div className="flex flex-wrap items-center gap-4 text-xs tracking-[0.1em]">
+                <span className="opacity-60">{property.year_built}</span>
                 <span className="opacity-30">//</span>
-                <span className="text-gold text-[10px] tracking-[0.2em]">{property.preservation_status}</span>
-              </>
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* Prairie Lines */}
-      <div className="container">
-        <PrairieLines />
-      </div>
-
-      {/* Data Grid */}
-      <section className="border-b border-black">
-        <div className="data-grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
-          <div className="data-cell animate-fade-up animate-delay-1">
-            <div className="data-label">Year</div>
-            <div className="data-value">{property.year_built}</div>
-          </div>
-          <div className="data-cell animate-fade-up animate-delay-2">
-            <div className="data-label">Location</div>
-            <div className="data-value text-base">{property.parsed_city || "—"}</div>
-            <div className="text-xs opacity-50 mt-1">{property.parsed_state}</div>
-          </div>
-          <div className="data-cell animate-fade-up animate-delay-3">
-            <div className="data-label">Status</div>
-            <div className="mt-2">
-              <Badge status={property.status} />
-            </div>
-          </div>
-          <div className="data-cell animate-fade-up animate-delay-4">
-            <div className="data-label">Price</div>
-            <div className={`data-value ${property.status === 'active' ? 'text-red' : ''}`}>
-              {property.last_sale_price ? formatPrice(property.last_sale_price) : "—"}
-            </div>
-          </div>
-          {property.square_footage && (
-            <div className="data-cell animate-fade-up">
-              <div className="data-label">Size</div>
-              <div className="data-value">{property.square_footage.toLocaleString()}</div>
-              <div className="text-xs opacity-50 mt-1">SQ FT</div>
-            </div>
-          )}
-          {(property.bedrooms || property.bathrooms) && (
-            <div className="data-cell animate-fade-up">
-              <div className="data-label">Beds / Baths</div>
-              <div className="data-value">
-                {property.bedrooms || "—"} / {property.bathrooms || "—"}
+                <span className="opacity-60">{location}</span>
+                <span className="opacity-30">//</span>
+                <Badge status={getPropertyBadgeType(property)} />
+                {property.preservation_status && (
+                  <>
+                    <span className="opacity-30">//</span>
+                    <span className="text-gold text-[10px] tracking-[0.2em]">{property.preservation_status}</span>
+                  </>
+                )}
               </div>
             </div>
-          )}
-        </div>
-      </section>
 
-      {/* Property Image */}
-      {propertyImageUrl && (
-        <section className="border-b border-black bg-sand">
-          <div className="aspect-[21/9] relative overflow-hidden">
-            <img
-              src={propertyImageUrl}
-              alt={property.home_name}
-              className="w-full h-full object-cover"
-            />
-          </div>
-        </section>
-      )}
-
-      {/* Content Grid */}
-      <section className="border-b border-black">
-        <div className="container py-16 md:py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-20">
-            {/* Main Content */}
-            <div className="lg:col-span-2">
-              {/* The Story */}
-              <div className="mb-12">
-                <h2 className="mb-6">THE STORY</h2>
-                <div className="accent-border">
-                  <p className="text-sm leading-relaxed opacity-80">
-                    {property.description ||
-                      `This ${property.year_built} residence by ${architect?.name || 'a master architect'} exemplifies thoughtful architectural design with its integration of indoor and outdoor spaces, use of natural materials, and response to the surrounding landscape.`
-                    }
-                  </p>
-                  {property.significance && (
-                    <p className="text-sm leading-relaxed opacity-80 mt-4">
-                      <span className="font-bold">SIGNIFICANCE:</span> {property.significance}
-                    </p>
-                  )}
-                  {property.curator_notes && (
-                    <p className="text-xs leading-relaxed opacity-50 mt-4 italic">
-                      NOTE: {property.curator_notes}
-                    </p>
-                  )}
+            {/* Right: Story + View Photos */}
+            <div className="lg:flex-shrink-0 lg:self-start lg:max-w-lg flex flex-col gap-4">
+              {/* Property Image */}
+              {propertyImageUrl && (
+                <div className="w-full aspect-[4/3] rounded overflow-hidden">
+                  <img
+                    src={propertyImageUrl}
+                    alt={property.home_name}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
+              )}
+
+              {/* Story Content */}
+              <div>
+                <p className="text-sm leading-relaxed opacity-80">
+                  {property.description ||
+                    `This ${property.year_built} residence by ${architect?.name || 'a master architect'} exemplifies thoughtful architectural design with its integration of indoor and outdoor spaces, use of natural materials, and response to the surrounding landscape.`
+                  }
+                </p>
+                {property.significance && (
+                  <p className="text-sm leading-relaxed opacity-80 mt-4">
+                    <span className="font-bold">SIGNIFICANCE:</span> {property.significance}
+                  </p>
+                )}
+                {property.curator_notes && (
+                  <p className="text-xs leading-relaxed opacity-50 mt-4 italic">
+                    NOTE: {property.curator_notes}
+                  </p>
+                )}
+              </div>
+
+              {/* Button */}
+              <div>
+                <ViewPhotosButton url={property.best_image_url} />
               </div>
             </div>
+          </div>
+        </div>
+      </section>
 
-            {/* Sidebar */}
-            <div className="lg:col-span-1 space-y-8">
-              {/* Details Card */}
-              <div className="border border-black p-6">
-                <h3 className="mb-6 text-[11px] tracking-[0.2em] opacity-60">DETAILS</h3>
-                <dl className="space-y-4">
-                  {property.client_owner && (
-                    <div className="flex justify-between text-xs">
-                      <dt className="opacity-50">Original Owner</dt>
-                      <dd className="font-bold text-right max-w-[60%]">{property.client_owner}</dd>
-                    </div>
-                  )}
-                  {property.current_owner && (
-                    <div className="flex justify-between text-xs">
-                      <dt className="opacity-50">Current Owner</dt>
-                      <dd className="font-bold text-right max-w-[60%]">{property.current_owner}</dd>
-                    </div>
-                  )}
-                  {property.last_sale_date && (
-                    <div className="flex justify-between text-xs">
-                      <dt className="opacity-50">Last Sale</dt>
-                      <dd className="font-bold">{property.last_sale_date}</dd>
-                    </div>
-                  )}
-                </dl>
-              </div>
+      {/* Bottom Section - 3 Column Cards */}
+      <section className="border-b border-black bg-black/[0.02]">
+        <div className="container py-16 md:py-20">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            {/* Details Card */}
+            <div className="border border-black p-6 bg-white">
+              <h3 className="mb-6 text-[11px] tracking-[0.2em] opacity-60">DETAILS</h3>
+              <dl className="space-y-4">
+                {property.year_built && (
+                  <div className="flex justify-between text-xs">
+                    <dt className="opacity-50">Year Built</dt>
+                    <dd className="font-bold">{property.year_built}</dd>
+                  </div>
+                )}
+                {location && (
+                  <div className="flex justify-between text-xs">
+                    <dt className="opacity-50">Location</dt>
+                    <dd className="font-bold text-right max-w-[60%]">{location}</dd>
+                  </div>
+                )}
+                {property.client_owner && (
+                  <div className="flex justify-between text-xs">
+                    <dt className="opacity-50">Original Owner</dt>
+                    <dd className="font-bold text-right max-w-[60%]">{property.client_owner}</dd>
+                  </div>
+                )}
+                {property.current_owner && (
+                  <div className="flex justify-between text-xs">
+                    <dt className="opacity-50">Current Owner</dt>
+                    <dd className="font-bold text-right max-w-[60%]">{property.current_owner}</dd>
+                  </div>
+                )}
+                {property.square_footage && (
+                  <div className="flex justify-between text-xs">
+                    <dt className="opacity-50">Size</dt>
+                    <dd className="font-bold">{property.square_footage.toLocaleString()} sq ft</dd>
+                  </div>
+                )}
+                {(property.bedrooms || property.bathrooms) && (
+                  <div className="flex justify-between text-xs">
+                    <dt className="opacity-50">Beds / Baths</dt>
+                    <dd className="font-bold">{property.bedrooms || "—"} / {property.bathrooms || "—"}</dd>
+                  </div>
+                )}
+                {property.last_sale_date && (
+                  <div className="flex justify-between text-xs">
+                    <dt className="opacity-50">Last Sale</dt>
+                    <dd className="font-bold">{property.last_sale_date}</dd>
+                  </div>
+                )}
+                {property.last_sale_price && (
+                  <div className="flex justify-between text-xs">
+                    <dt className="opacity-50">Price</dt>
+                    <dd className={`font-bold ${property.status === 'active' ? 'text-red' : ''}`}>
+                      {property.status === 'sold' ? 'SOLD FOR ' : ''}{formatPrice(property.last_sale_price)}
+                    </dd>
+                  </div>
+                )}
+              </dl>
+            </div>
 
-              {/* References Card */}
-              <div className="border border-black p-6">
+            {/* References & Purchase History Card */}
+            <div className="border border-black p-6 bg-white">
+              {/* References Section */}
+              <div className="mb-6">
                 <h3 className="mb-4 text-[11px] tracking-[0.2em] opacity-60">REFERENCES</h3>
                 {isValidUrl(property.best_image_url) ? (
                   <div className="space-y-2">
@@ -254,113 +236,61 @@ export default async function PropertyDetailPage({ params }: PageProps) {
                 )}
               </div>
 
-              {/* Watch for Listing Card - only for off-market properties */}
-              {property.status !== 'active' && (
-                <div className="border border-black bg-black/[0.02] p-6">
-                  <h3 className="mb-2 text-[11px] tracking-[0.2em]">INTERESTED?</h3>
-                  <p className="text-xs opacity-60 mb-4">
-                    Get notified when this property becomes available.
-                  </p>
-                  <PropertyAlertButton
-                    propertyId={property.id}
-                    propertyName={property.home_name}
-                    variant="sidebar"
-                  />
-                </div>
-              )}
+              {/* Divider */}
+              <div className="border-t border-black/20 my-6"></div>
 
-              {/* Architect Card */}
-              {architect && (
-                <Link
-                  href={`/architects/${architect.slug}`}
-                  className="block border border-black p-6 hover:bg-black/[0.02] transition-colors group"
-                >
-                  <div className="flex items-center gap-3 mb-4">
-                    <StarIcon size={16} active={isTaliesin} />
-                    <span className="text-[10px] tracking-[0.15em] uppercase opacity-60">Architect</span>
-                  </div>
-                  {/* Architect Portrait */}
-                  {architectPortraitUrl && (
-                    <div className="mb-4">
-                      <img
-                        src={architectPortraitUrl}
-                        alt={`Portrait of ${architect.name}`}
-                        className="w-24 h-24 object-contain grayscale group-hover:grayscale-0 transition-all"
-                      />
-                    </div>
-                  )}
-                  <h3 className="text-sm mb-2 group-hover:underline underline-offset-4">{architect.name}</h3>
-                  {architect.fellowship_years && (
-                    <p className="text-[10px] tracking-[0.1em] opacity-50 mb-2">
-                      TALIESIN {architect.fellowship_years}
-                    </p>
-                  )}
-                  <p className="text-xs opacity-60 line-clamp-3">
-                    {architect.biography?.slice(0, 150)}...
-                  </p>
-                </Link>
-              )}
+              {/* Purchase History Section */}
+              <div>
+                <h3 className="mb-4 text-[11px] tracking-[0.2em] opacity-60">PURCHASE HISTORY</h3>
+                {property.listing_source_url ? (
+                  <a
+                    href={property.listing_source_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-red hover:underline"
+                  >
+                    View listing source →
+                  </a>
+                ) : (
+                  <p className="text-xs opacity-40 italic">Data unknown currently</p>
+                )}
+              </div>
             </div>
+
+            {/* Architect Card */}
+            {architect && (
+              <Link
+                href={`/architects/${architect.slug}`}
+                className="block border border-black p-6 bg-white hover:bg-black/[0.02] transition-colors group"
+              >
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="text-[10px] tracking-[0.15em] uppercase opacity-60">Architect</span>
+                </div>
+                {/* Architect Portrait */}
+                {architectPortraitUrl && (
+                  <div className="mb-4">
+                    <img
+                      src={architectPortraitUrl}
+                      alt={`Portrait of ${architect.name}`}
+                      className="w-24 h-24 object-contain grayscale group-hover:grayscale-0 transition-all"
+                    />
+                  </div>
+                )}
+                <h3 className="text-sm mb-2 group-hover:underline underline-offset-4">{architect.name}</h3>
+                {architect.fellowship_years && (
+                  <p className="text-[10px] tracking-[0.1em] opacity-50 mb-2">
+                    TALIESIN {architect.fellowship_years}
+                  </p>
+                )}
+                <p className="text-xs opacity-60 line-clamp-3">
+                  {architect.biography?.slice(0, 150)}...
+                </p>
+              </Link>
+            )}
           </div>
         </div>
       </section>
 
-      {/* Related Properties */}
-      {relatedProperties.length > 0 && (
-        <section className="border-b border-black">
-          <div className="container py-16">
-            <div className="flex justify-between items-center mb-8">
-              <h2 className="text-lg">MORE FROM {architect?.name?.toUpperCase()}</h2>
-              <Link
-                href={`/architects/${architect?.slug}`}
-                className="text-[10px] tracking-[0.1em] opacity-50 hover:opacity-100 border-b border-transparent hover:border-black transition-all"
-              >
-                VIEW ALL
-              </Link>
-            </div>
-
-            {/* Table Header */}
-            <div className="hidden md:grid grid-cols-[40px_1fr_80px_140px_100px_120px] gap-4 py-3 border-b-2 border-black text-[9px] tracking-[0.15em] opacity-50 uppercase">
-              <div></div>
-              <div>Property</div>
-              <div>Year</div>
-              <div>Location</div>
-              <div className="text-right">Status</div>
-              <div className="text-right">Price</div>
-            </div>
-
-            {/* Related Property Rows */}
-            {relatedProperties.map((p) => {
-              const relLocation = formatLocation(p.parsed_city, p.parsed_state);
-              const relPrice = p.last_sale_price ? formatPrice(p.last_sale_price) : "Upon Request";
-
-              return (
-                <Link
-                  key={p.id}
-                  href={`/homes/${p.slug}`}
-                  className="property-row grid grid-cols-1 md:grid-cols-[40px_1fr_80px_140px_100px_120px] gap-2 md:gap-4"
-                >
-                  <div className="hidden md:flex justify-center">
-                    <StarIcon size={10} active={isTaliesin} />
-                  </div>
-                  <div className="text-xs font-bold">{p.home_name}</div>
-                  <div className="text-[11px] opacity-60">{p.year_built}</div>
-                  <div className="text-[11px] tracking-[0.02em]">{relLocation}</div>
-                  <div className="md:text-right">
-                    <Badge status={p.status} />
-                  </div>
-                  <div className={`font-bold text-xs md:text-right ${p.status === 'active' ? 'text-red' : ''}`}>
-                    {relPrice}
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        </section>
-      )}
-
-      {/* Newsletter CTA */}
-      <NewsletterCTA />
     </>
   );
 }

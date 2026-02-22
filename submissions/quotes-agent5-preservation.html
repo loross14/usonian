@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USONIAN | National Registry of Architectural Heritage</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+    <style>
+        :root {
+            --red: #BF0A30;
+            --navy: #002868;
+            --gold: #D4B270;
+            --black: #000000;
+            --white: #FFFFFF;
+            --shadow-sm: 2px 2px 0;
+            --shadow-md: 4px 4px 0;
+            --shadow-lg: 6px 6px 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background-color: #F5F3EF;
+            color: var(--black);
+            line-height: 1.6;
+        }
+
+        /* =====================================================
+           HERO SECTION - Official Registry Header
+           ===================================================== */
+        .hero {
+            background: linear-gradient(135deg, var(--navy) 0%, #001845 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 40px,
+                    rgba(255,255,255,0.02) 40px,
+                    rgba(255,255,255,0.02) 41px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 40px,
+                    rgba(255,255,255,0.02) 40px,
+                    rgba(255,255,255,0.02) 41px
+                );
+            pointer-events: none;
+        }
+
+        /* Official Seal */
+        .official-seal {
+            width: 180px;
+            height: 180px;
+            border: 4px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-bottom: 40px;
+            background: radial-gradient(circle, rgba(212,178,112,0.1) 0%, transparent 70%);
+        }
+
+        .official-seal::before {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border: 2px dashed var(--gold);
+            border-radius: 50%;
+            opacity: 0.5;
+        }
+
+        .official-seal::after {
+            content: 'EST. MMXXIV';
+            position: absolute;
+            bottom: -30px;
+            font-size: 10px;
+            letter-spacing: 4px;
+            color: var(--gold);
+        }
+
+        /* Compass Logo */
+        .compass-logo {
+            width: 80px;
+            height: 80px;
+            position: relative;
+        }
+
+        .compass-logo svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .seal-text {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+        }
+
+        .seal-text-path {
+            fill: none;
+        }
+
+        .seal-text text {
+            font-family: 'Playfair Display', serif;
+            font-size: 11px;
+            fill: var(--gold);
+            letter-spacing: 3px;
+        }
+
+        /* Registry Header */
+        .registry-header {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .registry-label {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--navy);
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 4px;
+            padding: 8px 24px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .registry-label::before,
+        .registry-label::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40px;
+            height: 2px;
+            background: var(--gold);
+        }
+
+        .registry-label::before {
+            right: 100%;
+            margin-right: 15px;
+        }
+
+        .registry-label::after {
+            left: 100%;
+            margin-left: 15px;
+        }
+
+        .proclamation {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.1;
+            margin-bottom: 20px;
+            text-shadow: var(--shadow-md) rgba(0,0,0,0.3);
+        }
+
+        .proclamation-quotes {
+            color: var(--gold);
+            font-style: italic;
+        }
+
+        .proclamation-main {
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+        }
+
+        .subtitle-plaque {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid var(--gold);
+            padding: 15px 30px;
+            margin-top: 30px;
+            display: inline-block;
+        }
+
+        .subtitle-plaque p {
+            color: var(--white);
+            font-size: 12px;
+            letter-spacing: 2px;
+            opacity: 0.9;
+        }
+
+        /* Registry Stats */
+        .registry-stats {
+            display: flex;
+            gap: 60px;
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(212,178,112,0.3);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--gold);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 9px;
+            letter-spacing: 3px;
+            color: rgba(255,255,255,0.7);
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+
+        /* =====================================================
+           SECTION 2 - Property Cards with Preservation Plaques
+           ===================================================== */
+        .properties-section {
+            padding: 100px 40px;
+            background: linear-gradient(180deg, #F5F3EF 0%, #EDE9E3 100%);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .official-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--navy);
+            color: var(--white);
+            padding: 10px 20px;
+            font-size: 10px;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+
+        .official-badge .star {
+            color: var(--gold);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--navy);
+            text-transform: uppercase;
+            letter-spacing: 6px;
+        }
+
+        /* Property Cards */
+        .property-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .property-card {
+            background: var(--white);
+            border: 3px solid var(--navy);
+            box-shadow: var(--shadow-lg) var(--navy);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .property-card:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 9px 9px 0 var(--navy);
+        }
+
+        /* Registry Number Badge */
+        .registry-number {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: var(--red);
+            color: var(--white);
+            padding: 8px 15px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            z-index: 10;
+        }
+
+        .registry-number::before {
+            content: 'NRHP #';
+        }
+
+        /* Property Image Area */
+        .property-image {
+            height: 250px;
+            background: linear-gradient(45deg, var(--navy) 0%, #003366 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .property-image::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background:
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 20px,
+                    rgba(255,255,255,0.03) 20px,
+                    rgba(255,255,255,0.03) 21px
+                );
+        }
+
+        .property-icon {
+            width: 120px;
+            height: 120px;
+            border: 2px solid rgba(255,255,255,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .property-icon svg {
+            width: 60px;
+            height: 60px;
+            stroke: var(--gold);
+            fill: none;
+            stroke-width: 1;
+        }
+
+        /* Preservation Plaque */
+        .preservation-plaque {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            right: 15px;
+            background: var(--gold);
+            padding: 12px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .plaque-text {
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--navy);
+        }
+
+        .plaque-status {
+            background: var(--navy);
+            color: var(--white);
+            padding: 4px 10px;
+            font-size: 8px;
+            letter-spacing: 1px;
+        }
+
+        /* Property Details */
+        .property-details {
+            padding: 30px;
+        }
+
+        .property-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--navy);
+            margin-bottom: 5px;
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+        }
+
+        .property-name::before {
+            content: '"';
+            color: var(--red);
+            font-size: 2rem;
+        }
+
+        .property-name::after {
+            content: '"';
+            color: var(--red);
+            font-size: 2rem;
+        }
+
+        .property-architect {
+            font-size: 12px;
+            color: var(--navy);
+            opacity: 0.7;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .property-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0,40,104,0.1);
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+
+        .meta-label {
+            font-size: 9px;
+            letter-spacing: 2px;
+            color: rgba(0,40,104,0.5);
+            text-transform: uppercase;
+        }
+
+        .meta-value {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        .meta-value.price {
+            color: var(--red);
+        }
+
+        /* Archive Reference */
+        .archive-ref {
+            background: rgba(0,40,104,0.05);
+            padding: 15px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .archive-code {
+            font-size: 10px;
+            color: var(--navy);
+            opacity: 0.6;
+        }
+
+        .archive-code::before {
+            content: '[';
+        }
+
+        .archive-code::after {
+            content: ']';
+        }
+
+        .donor-credit {
+            font-size: 8px;
+            font-style: italic;
+            color: var(--navy);
+            opacity: 0.5;
+            max-width: 200px;
+            text-align: right;
+        }
+
+        /* =====================================================
+           SECTION 3 - Classification System
+           ===================================================== */
+        .classification-section {
+            padding: 100px 40px;
+            background: var(--navy);
+            position: relative;
+        }
+
+        .classification-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: repeating-linear-gradient(
+                90deg,
+                var(--red) 0px,
+                var(--red) 40px,
+                var(--white) 40px,
+                var(--white) 80px,
+                var(--navy) 80px,
+                var(--navy) 120px
+            );
+        }
+
+        .classification-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .classification-header .official-badge {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        .classification-header .section-title {
+            color: var(--white);
+        }
+
+        .classification-subtitle {
+            color: rgba(255,255,255,0.6);
+            font-size: 12px;
+            letter-spacing: 3px;
+            margin-top: 15px;
+        }
+
+        /* Tier Cards */
+        .tier-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tier-card {
+            background: var(--white);
+            padding: 40px 30px;
+            position: relative;
+            border-left: 5px solid var(--gold);
+            transition: all 0.3s ease;
+        }
+
+        .tier-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .tier-card.landmark {
+            border-left-color: var(--red);
+        }
+
+        .tier-card.contributing {
+            border-left-color: var(--navy);
+        }
+
+        .tier-card.eligible {
+            border-left-color: var(--gold);
+        }
+
+        /* Tier Badge */
+        .tier-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 15px;
+            margin-bottom: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .tier-card.landmark .tier-badge {
+            background: var(--red);
+            color: var(--white);
+        }
+
+        .tier-card.contributing .tier-badge {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .tier-card.eligible .tier-badge {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        .tier-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--navy);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: baseline;
+        }
+
+        .tier-name::before {
+            content: '"';
+            color: var(--red);
+            margin-right: 5px;
+        }
+
+        .tier-name::after {
+            content: '"';
+            color: var(--red);
+            margin-left: 5px;
+        }
+
+        .tier-description {
+            font-size: 13px;
+            color: var(--navy);
+            opacity: 0.7;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .tier-criteria {
+            list-style: none;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0,40,104,0.1);
+        }
+
+        .tier-criteria li {
+            font-size: 11px;
+            color: var(--navy);
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            border-bottom: 1px dashed rgba(0,40,104,0.1);
+        }
+
+        .tier-criteria li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 12px;
+            border: 2px solid var(--gold);
+        }
+
+        .tier-card.landmark .tier-criteria li::before {
+            background: var(--red);
+            border-color: var(--red);
+        }
+
+        .tier-card.contributing .tier-criteria li::before {
+            background: var(--navy);
+            border-color: var(--navy);
+        }
+
+        /* Registry Footer */
+        .registry-footer {
+            margin-top: 80px;
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .footer-seal {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .footer-compass {
+            width: 50px;
+            height: 50px;
+        }
+
+        .footer-compass svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .footer-text {
+            color: rgba(255,255,255,0.5);
+            font-size: 10px;
+            letter-spacing: 3px;
+        }
+
+        .footer-quote {
+            color: var(--gold);
+            font-family: 'Playfair Display', serif;
+            font-size: 14px;
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        .footer-quote::before,
+        .footer-quote::after {
+            content: '"';
+            color: var(--red);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 40px 20px;
+            }
+
+            .proclamation {
+                letter-spacing: 2px;
+            }
+
+            .registry-stats {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .property-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tier-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- =====================================================
+         HERO SECTION - Official Registry Header
+         ===================================================== -->
+    <section class="hero">
+        <!-- Official Seal with Compass -->
+        <div class="official-seal">
+            <div class="compass-logo">
+                <svg viewBox="0 0 100 100">
+                    <!-- Compass legs -->
+                    <line x1="50" y1="10" x2="30" y2="85" stroke="#D4B270" stroke-width="3"/>
+                    <line x1="50" y1="10" x2="70" y2="85" stroke="#D4B270" stroke-width="3"/>
+                    <!-- Compass pivot -->
+                    <circle cx="50" cy="10" r="6" fill="#D4B270"/>
+                    <!-- Compass hinge -->
+                    <circle cx="50" cy="30" r="4" fill="none" stroke="#D4B270" stroke-width="2"/>
+                    <!-- Pencil tip on right leg -->
+                    <polygon points="70,85 66,95 74,95" fill="#D4B270"/>
+                    <!-- Point on left leg -->
+                    <circle cx="30" cy="88" r="3" fill="#D4B270"/>
+                </svg>
+            </div>
+            <svg class="seal-text" viewBox="0 0 180 180">
+                <defs>
+                    <path id="textCircle" d="M 90,90 m -70,0 a 70,70 0 1,1 140,0 a 70,70 0 1,1 -140,0"/>
+                </defs>
+                <text>
+                    <textPath href="#textCircle" startOffset="25%">NATIONAL REGISTRY OF ARCHITECTURAL HERITAGE</textPath>
+                </text>
+            </svg>
+        </div>
+
+        <!-- Registry Header -->
+        <div class="registry-header">
+            <div class="registry-label">OFFICIAL PROCLAMATION</div>
+
+            <h1 class="proclamation">
+                <span class="proclamation-quotes">"</span>
+                <span class="proclamation-main">Who Designed<br>Your Home?</span>
+                <span class="proclamation-quotes">"</span>
+            </h1>
+
+            <div class="subtitle-plaque">
+                <p>LISTED ON THE NATIONAL REGISTER OF HISTORIC PLACES</p>
+            </div>
+        </div>
+
+        <!-- Registry Stats -->
+        <div class="registry-stats">
+            <div class="stat-item">
+                <span class="stat-number">2,847</span>
+                <span class="stat-label">"Listed" Properties</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">156</span>
+                <span class="stat-label">"Landmark" Designations</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">43</span>
+                <span class="stat-label">"Master" Architects</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- =====================================================
+         SECTION 2 - Property Cards with Preservation Plaques
+         ===================================================== -->
+    <section class="properties-section">
+        <div class="section-header">
+            <div class="official-badge">
+                <span class="star">&#9733;</span>
+                LANDMARK
+                <span class="star">&#9733;</span>
+            </div>
+            <h2 class="section-title">"Contributing Structures"</h2>
+        </div>
+
+        <div class="property-grid">
+            <!-- Property 1: Chemosphere -->
+            <article class="property-card">
+                <span class="registry-number">60-001247</span>
+                <div class="property-image">
+                    <div class="property-icon">
+                        <svg viewBox="0 0 100 100">
+                            <!-- Octagonal shape representing Chemosphere -->
+                            <polygon points="50,10 80,25 90,55 80,85 50,95 20,85 10,55 20,25" stroke-width="2"/>
+                            <line x1="50" y1="95" x2="50" y2="120" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="preservation-plaque">
+                        <span class="plaque-text">LISTED ON THE NATIONAL REGISTER</span>
+                        <span class="plaque-status">SOLD</span>
+                    </div>
+                </div>
+                <div class="property-details">
+                    <h3 class="property-name">Chemosphere</h3>
+                    <p class="property-architect">Designed by John Lautner, FAIA</p>
+                    <div class="property-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Date Erected</span>
+                            <span class="meta-value">1960</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Last Transaction</span>
+                            <span class="meta-value price">$1,000,000</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Classification</span>
+                            <span class="meta-value">"Contributing"</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Condition</span>
+                            <span class="meta-value">"Preserved"</span>
+                        </div>
+                    </div>
+                    <div class="archive-ref">
+                        <span class="archive-code">ARCH.1960.LAU.001</span>
+                        <span class="donor-credit">"Preserved Through The Generosity of Private Collection"</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Property 2: Sheats-Goldstein -->
+            <article class="property-card">
+                <span class="registry-number">61-003892</span>
+                <div class="property-image">
+                    <div class="property-icon">
+                        <svg viewBox="0 0 100 100">
+                            <!-- Angular modernist form -->
+                            <polygon points="10,80 50,30 90,80" stroke-width="2"/>
+                            <line x1="25" y1="65" x2="75" y2="65" stroke-width="2"/>
+                            <rect x="40" y="55" width="20" height="25" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="preservation-plaque">
+                        <span class="plaque-text">LACMA PERMANENT COLLECTION</span>
+                        <span class="plaque-status">MUSEUM</span>
+                    </div>
+                </div>
+                <div class="property-details">
+                    <h3 class="property-name">Sheats-Goldstein</h3>
+                    <p class="property-architect">Designed by John Lautner, FAIA</p>
+                    <div class="property-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Date Erected</span>
+                            <span class="meta-value">1961</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Assessed Value</span>
+                            <span class="meta-value price">$40,000,000</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Classification</span>
+                            <span class="meta-value">"Landmark"</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Condition</span>
+                            <span class="meta-value">"Exemplary"</span>
+                        </div>
+                    </div>
+                    <div class="archive-ref">
+                        <span class="archive-code">ARCH.1961.LAU.002</span>
+                        <span class="donor-credit">"Donated to LACMA by James Goldstein, 2016"</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Property 3: Garcia House -->
+            <article class="property-card">
+                <span class="registry-number">62-004156</span>
+                <div class="property-image">
+                    <div class="property-icon">
+                        <svg viewBox="0 0 100 100">
+                            <!-- Rainbow arch form -->
+                            <path d="M 10,80 Q 50,10 90,80" fill="none" stroke-width="2"/>
+                            <line x1="10" y1="80" x2="90" y2="80" stroke-width="2"/>
+                            <rect x="35" y="60" width="30" height="20" stroke-width="2"/>
+                        </svg>
+                    </div>
+                    <div class="preservation-plaque">
+                        <span class="plaque-text">LISTED ON THE NATIONAL REGISTER</span>
+                        <span class="plaque-status">SOLD</span>
+                    </div>
+                </div>
+                <div class="property-details">
+                    <h3 class="property-name">Garcia House</h3>
+                    <p class="property-architect">Designed by John Lautner, FAIA</p>
+                    <div class="property-meta">
+                        <div class="meta-item">
+                            <span class="meta-label">Date Erected</span>
+                            <span class="meta-value">1962</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Last Transaction</span>
+                            <span class="meta-value price">$12,500,000</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Classification</span>
+                            <span class="meta-value">"Contributing"</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Condition</span>
+                            <span class="meta-value">"Restored"</span>
+                        </div>
+                    </div>
+                    <div class="archive-ref">
+                        <span class="archive-code">ARCH.1962.LAU.003</span>
+                        <span class="donor-credit">"Preservation Easement Recorded 2018"</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- =====================================================
+         SECTION 3 - Classification System
+         ===================================================== -->
+    <section class="classification-section">
+        <div class="classification-header">
+            <div class="official-badge">OFFICIAL DESIGNATION SYSTEM</div>
+            <h2 class="section-title">"Preservation Tiers"</h2>
+            <p class="classification-subtitle">CRITERIA FOR ARCHITECTURAL SIGNIFICANCE</p>
+        </div>
+
+        <div class="tier-grid">
+            <!-- Tier 1: Landmark -->
+            <div class="tier-card landmark">
+                <div class="tier-badge">
+                    <span>&#9733;</span>
+                    TIER I
+                    <span>&#9733;</span>
+                </div>
+                <h3 class="tier-name">LANDMARK</h3>
+                <p class="tier-description">
+                    Properties of exceptional national significance. Architectural works that have profoundly influenced the course of American design history.
+                </p>
+                <ul class="tier-criteria">
+                    <li>Direct association with master architect</li>
+                    <li>Exceptional integrity of original design</li>
+                    <li>Documented historical significance</li>
+                    <li>Public accessibility provisions</li>
+                </ul>
+            </div>
+
+            <!-- Tier 2: Contributing -->
+            <div class="tier-card contributing">
+                <div class="tier-badge">TIER II</div>
+                <h3 class="tier-name">CONTRIBUTING STRUCTURE</h3>
+                <p class="tier-description">
+                    Properties that contribute to the character of a historic district. Works that embody distinctive characteristics of a period or method.
+                </p>
+                <ul class="tier-criteria">
+                    <li>Designed by recognized architect</li>
+                    <li>Substantial original fabric retained</li>
+                    <li>Compatible alterations documented</li>
+                    <li>Maintenance covenant in place</li>
+                </ul>
+            </div>
+
+            <!-- Tier 3: Eligible -->
+            <div class="tier-card eligible">
+                <div class="tier-badge">TIER III</div>
+                <h3 class="tier-name">ELIGIBLE</h3>
+                <p class="tier-description">
+                    Properties that meet the criteria for listing but have not yet been formally nominated. Candidates for future preservation action.
+                </p>
+                <ul class="tier-criteria">
+                    <li>Meets age threshold (50+ years)</li>
+                    <li>Architectural merit evident</li>
+                    <li>Research documentation pending</li>
+                    <li>Owner consent not yet obtained</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Registry Footer -->
+        <footer class="registry-footer">
+            <div class="footer-seal">
+                <div class="footer-compass">
+                    <svg viewBox="0 0 100 100">
+                        <line x1="50" y1="10" x2="30" y2="85" stroke="#D4B270" stroke-width="2"/>
+                        <line x1="50" y1="10" x2="70" y2="85" stroke="#D4B270" stroke-width="2"/>
+                        <circle cx="50" cy="10" r="5" fill="#D4B270"/>
+                        <circle cx="50" cy="30" r="3" fill="none" stroke="#D4B270" stroke-width="1.5"/>
+                    </svg>
+                </div>
+                <span class="footer-text">USONIAN ARCHITECTURAL REGISTRY</span>
+                <span class="footer-quote">Every Great Structure Deserves Recognition</span>
+            </div>
+        </footer>
+    </section>
+</body>
+</html>

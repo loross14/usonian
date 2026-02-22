@@ -31,10 +31,12 @@ export const metadata: Metadata = {
     "organic architecture",
   ],
   icons: {
-    icon: "/icons/logo.jpg",
-    apple: "/icons/logo.jpg",
+    icon: "/icons/Usonian-Logo.png",
+    apple: "/icons/Usonian-Logo.png",
   },
 };
+
+const showHeader = process.env.NEXT_PUBLIC_DISABLE_HEADER !== 'true';
 
 export default function RootLayout({
   children,
@@ -46,7 +48,7 @@ export default function RootLayout({
       <body className={`${jetbrainsMono.variable} ${playfair.variable}`}>
         <Script src="https://mcp.figma.com/mcp/html-to-design/capture.js" strategy="afterInteractive" />
         <div className="grid-overlay" />
-        <Header />
+        {showHeader && <Header />}
         <main className="relative z-10">{children}</main>
         <Footer />
       </body>

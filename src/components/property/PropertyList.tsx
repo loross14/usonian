@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { StarIcon } from "@/components/icons/StarIcon";
 import { formatPrice, formatLocation, type Property } from "@/types";
 
 interface EnhancedProperty extends Property {
@@ -81,10 +80,19 @@ export function PropertyList({ properties, totalCount }: PropertyListProps) {
             property.parsed_city,
             property.parsed_state
           );
-          const price = property.last_sale_price
-            ? formatPrice(property.last_sale_price)
-            : "N/A";
           const isForSale = property.status === "active";
+          const isSold = property.status === "sold";
+
+          let price: string;
+          if (isForSale) {
+            price = property.listing_price
+              ? formatPrice(property.listing_price)
+              : "Price not listed";
+          } else if (isSold && property.last_sale_price) {
+            price = formatPrice(property.last_sale_price);
+          } else {
+            price = property.last_sale_price ? formatPrice(property.last_sale_price) : "N/A";
+          }
 
           return (
             <Link
@@ -93,8 +101,8 @@ export function PropertyList({ properties, totalCount }: PropertyListProps) {
               className="table-row"
               style={{ animationDelay: `${0.5 + idx * 0.05}s` }}
             >
-              {/* Star */}
-              <StarIcon size={16} active={property.is_taliesin} />
+              {/* Empty column for alignment */}
+              <div></div>
 
               {/* Architect */}
               <div className="architect-name">{property.architect_name}</div>

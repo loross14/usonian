@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-02-21",
-  "total_count": 51,
+  "generated_at": "2026-02-22",
+  "total_count": 294,
   "properties": [
     {
       "slug": "lautner-house",
@@ -307,6 +307,1464 @@
       "home_name": "Atlanta Residence",
       "svg_file": "atlanta-residence.svg",
       "year_built": 1974
+    },
+    {
+      "slug": "meyer-may-house",
+      "home_name": "Meyer May House",
+      "svg_file": "meyer-may-house.svg",
+      "year_built": 0
+    },
+    {
+      "slug": "david-m-amberg-house",
+      "home_name": "David M. Amberg House",
+      "svg_file": "david-m-amberg-house.svg",
+      "year_built": 1910
+    },
+    {
+      "slug": "thomas-h-gale-summer-cottage",
+      "home_name": "Thomas H. Gale Summer Cottage",
+      "svg_file": "thomas-h-gale-summer-cottage.svg",
+      "year_built": 0
+    },
+    {
+      "slug": "george-mary-gerts-summer-cottage",
+      "home_name": "George & Mary Gerts Summer Cottage",
+      "svg_file": "george-mary-gerts-summer-cottage.svg",
+      "year_built": 0
+    },
+    {
+      "slug": "walter-gerts-summer-cottage",
+      "home_name": "Walter Gerts Summer Cottage",
+      "svg_file": "walter-gerts-summer-cottage.svg",
+      "year_built": 0
+    },
+    {
+      "slug": "laura-robeson-gale-rental-cottages-birch-brook",
+      "home_name": "Laura Robeson Gale Rental Cottages (Birch Brook)",
+      "svg_file": "laura-robeson-gale-rental-cottages-birch-brook.svg",
+      "year_built": 1907
+    },
+    {
+      "slug": "arthur-heurtley-summer-cottage",
+      "home_name": "Arthur Heurtley Summer Cottage",
+      "svg_file": "arthur-heurtley-summer-cottage.svg",
+      "year_built": 0
+    },
+    {
+      "slug": "ernest-vosburgh-house",
+      "home_name": "Ernest Vosburgh House",
+      "svg_file": "ernest-vosburgh-house.svg",
+      "year_built": 0
+    },
+    {
+      "slug": "joseph-bagley-house",
+      "home_name": "Joseph Bagley House",
+      "svg_file": "joseph-bagley-house.svg",
+      "year_built": 1916
+    },
+    {
+      "slug": "abby-beecher-roberts-house-deertrack",
+      "home_name": "Abby Beecher Roberts House (Deertrack)",
+      "svg_file": "abby-beecher-roberts-house-deertrack.svg",
+      "year_built": 0
+    },
+    {
+      "slug": "goetsch-winckler-house",
+      "home_name": "Goetsch-Winckler House",
+      "svg_file": "goetsch-winckler-house.svg",
+      "year_built": 1940
+    },
+    {
+      "slug": "erling-katherine-brauner-house",
+      "home_name": "Erling & Katherine Brauner House",
+      "svg_file": "erling-katherine-brauner-house.svg",
+      "year_built": 0
+    },
+    {
+      "slug": "gregor-elizabeth-affleck-house",
+      "home_name": "Gregor & Elizabeth Affleck House",
+      "svg_file": "gregor-elizabeth-affleck-house.svg",
+      "year_built": 0
+    },
+    {
+      "slug": "melvyn-maxwell-smith-house-myhaven",
+      "home_name": "Melvyn Maxwell Smith House (MyHaven)",
+      "svg_file": "melvyn-maxwell-smith-house-myhaven.svg",
+      "year_built": 1950
+    },
+    {
+      "slug": "carlton-d-wall-house-snowflake",
+      "home_name": "Carlton D. Wall House (Snowflake)",
+      "svg_file": "carlton-d-wall-house-snowflake.svg",
+      "year_built": 0
+    },
+    {
+      "slug": "lewis-h-goddard-house",
+      "home_name": "Lewis H. Goddard House",
+      "svg_file": "lewis-h-goddard-house.svg",
+      "year_built": 0
+    },
+    {
+      "slug": "dorothy-h-turkel-house",
+      "home_name": "Dorothy H. Turkel House",
+      "svg_file": "dorothy-h-turkel-house.svg",
+      "year_built": 0
+    },
+    {
+      "slug": "william-mary-palmer-house",
+      "home_name": "William & Mary Palmer House",
+      "svg_file": "william-mary-palmer-house.svg",
+      "year_built": 1950
+    },
+    {
+      "slug": "haddock-house",
+      "home_name": "Haddock House",
+      "svg_file": "haddock-house.svg",
+      "year_built": 1979
+    },
+    {
+      "slug": "amy-alpaugh-studio-residence",
+      "home_name": "Amy Alpaugh Studio Residence",
+      "svg_file": "amy-alpaugh-studio-residence.svg",
+      "year_built": 1947
+    },
+    {
+      "slug": "howard-helen-anthony-house",
+      "home_name": "Howard & Helen Anthony House",
+      "svg_file": "howard-helen-anthony-house.svg",
+      "year_built": 0
+    },
+    {
+      "slug": "ina-morris-harper-house",
+      "home_name": "Ina Morris Harper House",
+      "svg_file": "ina-morris-harper-house.svg",
+      "year_built": 0
+    },
+    {
+      "slug": "carl-schultz-house",
+      "home_name": "Carl Schultz House",
+      "svg_file": "carl-schultz-house.svg",
+      "year_built": 1959
+    },
+    {
+      "slug": "david-christine-weisblat-house",
+      "home_name": "David & Christine Weisblat House",
+      "svg_file": "david-christine-weisblat-house.svg",
+      "year_built": 1951
+    },
+    {
+      "slug": "eric-pat-pratt-house",
+      "home_name": "Eric & Pat Pratt House",
+      "svg_file": "eric-pat-pratt-house.svg",
+      "year_built": 0
+    },
+    {
+      "slug": "samuel-dorothy-eppstein-house",
+      "home_name": "Samuel & Dorothy Eppstein House",
+      "svg_file": "samuel-dorothy-eppstein-house.svg",
+      "year_built": 1953
+    },
+    {
+      "slug": "curtis-lillian-meyer-house",
+      "home_name": "Curtis & Lillian Meyer House",
+      "svg_file": "curtis-lillian-meyer-house.svg",
+      "year_built": 0
+    },
+    {
+      "slug": "robert-rae-levin-house",
+      "home_name": "Robert & Rae Levin House",
+      "svg_file": "robert-rae-levin-house.svg",
+      "year_built": 0
+    },
+    {
+      "slug": "eric-v-brown-house",
+      "home_name": "Eric V. Brown House",
+      "svg_file": "eric-v-brown-house.svg",
+      "year_built": 1951
+    },
+    {
+      "slug": "ward-mccartney-house",
+      "home_name": "Ward McCartney House",
+      "svg_file": "ward-mccartney-house.svg",
+      "year_built": 0
+    },
+    {
+      "slug": "robert-d-winn-house",
+      "home_name": "Robert D. Winn House",
+      "svg_file": "robert-d-winn-house.svg",
+      "year_built": 0
+    },
+    {
+      "slug": "george-blossom-summer-house",
+      "home_name": "George Blossom Summer House",
+      "svg_file": "george-blossom-summer-house.svg",
+      "year_built": 1894
+    },
+    {
+      "slug": "fair-lane-henry-clara-ford-estate",
+      "home_name": "Fair Lane (Henry & Clara Ford Estate)",
+      "svg_file": "fair-lane-henry-clara-ford-estate.svg",
+      "year_built": 0
+    },
+    {
+      "slug": "church-of-saint-mary",
+      "home_name": "Church of Saint Mary",
+      "svg_file": "church-of-saint-mary.svg",
+      "year_built": 1969
+    },
+    {
+      "slug": "snow-flake-motel",
+      "home_name": "Snow Flake Motel",
+      "svg_file": "snow-flake-motel.svg",
+      "year_built": 1962
+    },
+    {
+      "slug": "robert-goodall-residence",
+      "home_name": "Robert Goodall Residence",
+      "svg_file": "robert-goodall-residence.svg",
+      "year_built": 1935
+    },
+    {
+      "slug": "fonken-house",
+      "home_name": "Fonken House",
+      "svg_file": "fonken-house.svg",
+      "year_built": 0
+    },
+    {
+      "slug": "earl-stein-house",
+      "home_name": "Earl Stein House",
+      "svg_file": "earl-stein-house.svg",
+      "year_built": 0
+    },
+    {
+      "slug": "grace-a-dow-memorial-library",
+      "home_name": "Grace A. Dow Memorial Library",
+      "svg_file": "grace-a-dow-memorial-library.svg",
+      "year_built": 0
+    },
+    {
+      "slug": "midland-center-for-the-arts",
+      "home_name": "Midland Center for the Arts",
+      "svg_file": "midland-center-for-the-arts.svg",
+      "year_built": 0
+    },
+    {
+      "slug": "st-john-s-lutheran-church",
+      "home_name": "St. John's Lutheran Church",
+      "svg_file": "st-john-s-lutheran-church.svg",
+      "year_built": 0
+    },
+    {
+      "slug": "first-united-methodist-church",
+      "home_name": "First United Methodist Church",
+      "svg_file": "first-united-methodist-church.svg",
+      "year_built": 0
+    },
+    {
+      "slug": "arbury-residence",
+      "home_name": "Arbury Residence",
+      "svg_file": "arbury-residence.svg",
+      "year_built": 1939
+    },
+    {
+      "slug": "george-greene-house",
+      "home_name": "George Greene House",
+      "svg_file": "george-greene-house.svg",
+      "year_built": 1935
+    },
+    {
+      "slug": "oscar-c-diehl-house",
+      "home_name": "Oscar C. Diehl House",
+      "svg_file": "oscar-c-diehl-house.svg",
+      "year_built": 0
+    },
+    {
+      "slug": "howard-ball-house",
+      "home_name": "Howard Ball House",
+      "svg_file": "howard-ball-house.svg",
+      "year_built": 1935
+    },
+    {
+      "slug": "parents-children-s-schoolhouse",
+      "home_name": "Parents' & Children's Schoolhouse",
+      "svg_file": "parents-children-s-schoolhouse.svg",
+      "year_built": 1938
+    },
+    {
+      "slug": "midland-high-school",
+      "home_name": "Midland High School",
+      "svg_file": "midland-high-school.svg",
+      "year_built": 0
+    },
+    {
+      "slug": "ann-arbor-city-hall-guy-larcom-building",
+      "home_name": "Ann Arbor City Hall (Guy Larcom Building)",
+      "svg_file": "ann-arbor-city-hall-guy-larcom-building.svg",
+      "year_built": 0
+    },
+    {
+      "slug": "ann-arbor-district-library",
+      "home_name": "Ann Arbor District Library",
+      "svg_file": "ann-arbor-district-library.svg",
+      "year_built": 1957
+    },
+    {
+      "slug": "interlochen-center-for-the-arts",
+      "home_name": "Interlochen Center for the Arts",
+      "svg_file": "interlochen-center-for-the-arts.svg",
+      "year_built": 0
+    },
+    {
+      "slug": "kalamazoo-nature-center",
+      "home_name": "Kalamazoo Nature Center",
+      "svg_file": "kalamazoo-nature-center.svg",
+      "year_built": 1964
+    },
+    {
+      "slug": "leonard-service-station",
+      "home_name": "Leonard Service Station",
+      "svg_file": "leonard-service-station.svg",
+      "year_built": 1960
+    },
+    {
+      "slug": "greenhills-school",
+      "home_name": "Greenhills School",
+      "svg_file": "greenhills-school.svg",
+      "year_built": 0
+    },
+    {
+      "slug": "calvin-campbell-residence",
+      "home_name": "Calvin Campbell Residence",
+      "svg_file": "calvin-campbell-residence.svg",
+      "year_built": 1940
+    },
+    {
+      "slug": "norman-lykes-house",
+      "home_name": "Norman Lykes House",
+      "svg_file": "norman-lykes-house.svg",
+      "year_built": 1967
+    },
+    {
+      "slug": "benjamin-adelman-house",
+      "home_name": "Benjamin Adelman House",
+      "svg_file": "benjamin-adelman-house.svg",
+      "year_built": 1952
+    },
+    {
+      "slug": "spring-house-lewis",
+      "home_name": "Spring House (George Lewis House)",
+      "svg_file": "spring-house-lewis.svg",
+      "year_built": 1954
+    },
+    {
+      "slug": "hills-decaro-house",
+      "home_name": "Hills-DeCaro House",
+      "svg_file": "hills-decaro-house.svg",
+      "year_built": 1906
+    },
+    {
+      "slug": "george-c-stewart-house",
+      "home_name": "George C. Stewart House",
+      "svg_file": "george-c-stewart-house.svg",
+      "year_built": 1909
+    },
+    {
+      "slug": "aline-barnsdall-hollyhock-house",
+      "home_name": "Aline Barnsdall Hollyhock House",
+      "svg_file": "aline-barnsdall-hollyhock-house.svg",
+      "year_built": 1921
+    },
+    {
+      "slug": "charles-ennis-house",
+      "home_name": "Charles Ennis House",
+      "svg_file": "charles-ennis-house.svg",
+      "year_built": 1923
+    },
+    {
+      "slug": "samuel-freeman-house",
+      "home_name": "Samuel Freeman House",
+      "svg_file": "samuel-freeman-house.svg",
+      "year_built": 1923
+    },
+    {
+      "slug": "john-storer-house",
+      "home_name": "John Storer House",
+      "svg_file": "john-storer-house.svg",
+      "year_built": 1923
+    },
+    {
+      "slug": "alice-millard-house",
+      "home_name": "Alice Millard House",
+      "svg_file": "alice-millard-house.svg",
+      "year_built": 1923
+    },
+    {
+      "slug": "hanna-house",
+      "home_name": "Hanna House",
+      "svg_file": "hanna-house.svg",
+      "year_built": 1936
+    },
+    {
+      "slug": "sidney-bazett-house",
+      "home_name": "Sidney Bazett House",
+      "svg_file": "sidney-bazett-house.svg",
+      "year_built": 1938
+    },
+    {
+      "slug": "george-sturges-house",
+      "home_name": "George Sturges House",
+      "svg_file": "george-sturges-house.svg",
+      "year_built": 1939
+    },
+    {
+      "slug": "arch-oboler-gatehouse",
+      "home_name": "Arch Oboler Gatehouse",
+      "svg_file": "arch-oboler-gatehouse.svg",
+      "year_built": 1940
+    },
+    {
+      "slug": "v-c-morris-gift-store",
+      "home_name": "V.C. Morris Gift Store",
+      "svg_file": "v-c-morris-gift-store.svg",
+      "year_built": 1948
+    },
+    {
+      "slug": "maynard-buehler-house",
+      "home_name": "Maynard Buehler House",
+      "svg_file": "maynard-buehler-house.svg",
+      "year_built": 1948
+    },
+    {
+      "slug": "robert-berger-house",
+      "home_name": "Robert Berger House",
+      "svg_file": "robert-berger-house.svg",
+      "year_built": 1950
+    },
+    {
+      "slug": "arthur-mathews-house",
+      "home_name": "Arthur Mathews House",
+      "svg_file": "arthur-mathews-house.svg",
+      "year_built": 1950
+    },
+    {
+      "slug": "wilbur-pearce-house",
+      "home_name": "Wilbur Pearce House",
+      "svg_file": "wilbur-pearce-house.svg",
+      "year_built": 1950
+    },
+    {
+      "slug": "della-walker-house",
+      "home_name": "Della Walker House",
+      "svg_file": "della-walker-house.svg",
+      "year_built": 1951
+    },
+    {
+      "slug": "anderton-court-shops",
+      "home_name": "Anderton Court Shops",
+      "svg_file": "anderton-court-shops.svg",
+      "year_built": 1952
+    },
+    {
+      "slug": "karl-kundert-medical-clinic",
+      "home_name": "Karl Kundert Medical Clinic",
+      "svg_file": "karl-kundert-medical-clinic.svg",
+      "year_built": 1955
+    },
+    {
+      "slug": "randall-fawcett-house",
+      "home_name": "Randall Fawcett House",
+      "svg_file": "randall-fawcett-house.svg",
+      "year_built": 1955
+    },
+    {
+      "slug": "marin-county-civic-center",
+      "home_name": "Marin County Civic Center",
+      "svg_file": "marin-county-civic-center.svg",
+      "year_built": 1957
+    },
+    {
+      "slug": "pilgrim-congregational-church",
+      "home_name": "Pilgrim Congregational Church",
+      "svg_file": "pilgrim-congregational-church.svg",
+      "year_built": 1958
+    },
+    {
+      "slug": "george-ablin-house",
+      "home_name": "George Ablin House",
+      "svg_file": "george-ablin-house.svg",
+      "year_built": 1958
+    },
+    {
+      "slug": "feldman-house",
+      "home_name": "Feldman House",
+      "svg_file": "feldman-house.svg",
+      "year_built": 1974
+    },
+    {
+      "slug": "unity-chapel",
+      "home_name": "Unity Chapel",
+      "svg_file": "unity-chapel.svg",
+      "year_built": 1886
+    },
+    {
+      "slug": "romeo-and-juliet-windmill",
+      "home_name": "Romeo and Juliet Windmill",
+      "svg_file": "romeo-and-juliet-windmill.svg",
+      "year_built": 1896
+    },
+    {
+      "slug": "fred-jones-house",
+      "home_name": "Fred Jones House",
+      "svg_file": "fred-jones-house.svg",
+      "year_built": 1900
+    },
+    {
+      "slug": "henry-wallis-cottage",
+      "home_name": "Henry Wallis Cottage",
+      "svg_file": "henry-wallis-cottage.svg",
+      "year_built": 1900
+    },
+    {
+      "slug": "george-spencer-house",
+      "home_name": "George Spencer House",
+      "svg_file": "george-spencer-house.svg",
+      "year_built": 1902
+    },
+    {
+      "slug": "hillside-home-school",
+      "home_name": "Hillside Home School",
+      "svg_file": "hillside-home-school.svg",
+      "year_built": 1902
+    },
+    {
+      "slug": "robert-lamp-house",
+      "home_name": "Robert Lamp House",
+      "svg_file": "robert-lamp-house.svg",
+      "year_built": 1903
+    },
+    {
+      "slug": "a-p-johnson-house",
+      "home_name": "A.P. Johnson House",
+      "svg_file": "a-p-johnson-house.svg",
+      "year_built": 1905
+    },
+    {
+      "slug": "thomas-p-hardy-house",
+      "home_name": "Thomas P. Hardy House",
+      "svg_file": "thomas-p-hardy-house.svg",
+      "year_built": 1905
+    },
+    {
+      "slug": "andrew-porter-house",
+      "home_name": "Andrew Porter House",
+      "svg_file": "andrew-porter-house.svg",
+      "year_built": 1907
+    },
+    {
+      "slug": "eugene-gilmore-house",
+      "home_name": "Eugene Gilmore House",
+      "svg_file": "eugene-gilmore-house.svg",
+      "year_built": 1908
+    },
+    {
+      "slug": "taliesin",
+      "home_name": "Taliesin",
+      "svg_file": "taliesin.svg",
+      "year_built": 1911
+    },
+    {
+      "slug": "a-d-german-warehouse",
+      "home_name": "A.D. German Warehouse",
+      "svg_file": "a-d-german-warehouse.svg",
+      "year_built": 1915
+    },
+    {
+      "slug": "richards-duplex-apartments",
+      "home_name": "Richards Duplex Apartments",
+      "svg_file": "richards-duplex-apartments.svg",
+      "year_built": 1916
+    },
+    {
+      "slug": "richards-small-house",
+      "home_name": "Richards Small House",
+      "svg_file": "richards-small-house.svg",
+      "year_built": 1916
+    },
+    {
+      "slug": "richards-bungalow",
+      "home_name": "Richards Bungalow",
+      "svg_file": "richards-bungalow.svg",
+      "year_built": 1916
+    },
+    {
+      "slug": "frederick-bogk-house",
+      "home_name": "Frederick Bogk House",
+      "svg_file": "frederick-bogk-house.svg",
+      "year_built": 1916
+    },
+    {
+      "slug": "elizabeth-murphy-house",
+      "home_name": "Elizabeth Murphy House",
+      "svg_file": "elizabeth-murphy-house.svg",
+      "year_built": 1917
+    },
+    {
+      "slug": "stephen-hunt-bungalow",
+      "home_name": "Stephen Hunt Bungalow",
+      "svg_file": "stephen-hunt-bungalow.svg",
+      "year_built": 1917
+    },
+    {
+      "slug": "herbert-jacobs-i-house",
+      "home_name": "Herbert Jacobs I House",
+      "svg_file": "herbert-jacobs-i-house.svg",
+      "year_built": 1937
+    },
+    {
+      "slug": "sc-johnson-administration-building",
+      "home_name": "SC Johnson Administration Building",
+      "svg_file": "sc-johnson-administration-building.svg",
+      "year_built": 1936
+    },
+    {
+      "slug": "sc-johnson-research-tower",
+      "home_name": "SC Johnson Research Tower",
+      "svg_file": "sc-johnson-research-tower.svg",
+      "year_built": 1950
+    },
+    {
+      "slug": "herbert-johnson-house-wingspread",
+      "home_name": "Herbert Johnson House Wingspread",
+      "svg_file": "herbert-johnson-house-wingspread.svg",
+      "year_built": 1937
+    },
+    {
+      "slug": "bernard-schwartz-house",
+      "home_name": "Bernard Schwartz House",
+      "svg_file": "bernard-schwartz-house.svg",
+      "year_built": 1939
+    },
+    {
+      "slug": "john-pew-house",
+      "home_name": "John Pew House",
+      "svg_file": "john-pew-house.svg",
+      "year_built": 1940
+    },
+    {
+      "slug": "unitarian-meeting-house",
+      "home_name": "Unitarian Meeting House",
+      "svg_file": "unitarian-meeting-house.svg",
+      "year_built": 1947
+    },
+    {
+      "slug": "herbert-jacobs-ii-house",
+      "home_name": "Herbert Jacobs II House",
+      "svg_file": "herbert-jacobs-ii-house.svg",
+      "year_built": 1948
+    },
+    {
+      "slug": "albert-adelman-house",
+      "home_name": "Albert Adelman House",
+      "svg_file": "albert-adelman-house.svg",
+      "year_built": 1948
+    },
+    {
+      "slug": "patrick-kinney-house",
+      "home_name": "Patrick Kinney House",
+      "svg_file": "patrick-kinney-house.svg",
+      "year_built": 1951
+    },
+    {
+      "slug": "clarke-arnold-house",
+      "home_name": "Clarke Arnold House",
+      "svg_file": "clarke-arnold-house.svg",
+      "year_built": 1954
+    },
+    {
+      "slug": "keland-boyd-house",
+      "home_name": "Keland Boyd House",
+      "svg_file": "keland-boyd-house.svg",
+      "year_built": 1954
+    },
+    {
+      "slug": "maurice-greenberg-house",
+      "home_name": "Maurice Greenberg House",
+      "svg_file": "maurice-greenberg-house.svg",
+      "year_built": 1954
+    },
+    {
+      "slug": "eugene-van-tamlen-house",
+      "home_name": "Eugene Van Tamlen House",
+      "svg_file": "eugene-van-tamlen-house.svg",
+      "year_built": 1956
+    },
+    {
+      "slug": "annunciation-greek-orthodox-church",
+      "home_name": "Annunciation Greek Orthodox Church",
+      "svg_file": "annunciation-greek-orthodox-church.svg",
+      "year_built": 1956
+    },
+    {
+      "slug": "walter-rudin-house",
+      "home_name": "Walter Rudin House",
+      "svg_file": "walter-rudin-house.svg",
+      "year_built": 1957
+    },
+    {
+      "slug": "wyoming-valley-grammar-school",
+      "home_name": "Wyoming Valley Grammar School",
+      "svg_file": "wyoming-valley-grammar-school.svg",
+      "year_built": 1957
+    },
+    {
+      "slug": "duey-wright-house",
+      "home_name": "Duey Wright House",
+      "svg_file": "duey-wright-house.svg",
+      "year_built": 1957
+    },
+    {
+      "slug": "frank-iber-house",
+      "home_name": "Frank Iber House",
+      "svg_file": "frank-iber-house.svg",
+      "year_built": 1957
+    },
+    {
+      "slug": "arnold-jackson-house",
+      "home_name": "Arnold Jackson House",
+      "svg_file": "arnold-jackson-house.svg",
+      "year_built": 1957
+    },
+    {
+      "slug": "seth-peterson-cottage",
+      "home_name": "Seth Peterson Cottage",
+      "svg_file": "seth-peterson-cottage.svg",
+      "year_built": 1957
+    },
+    {
+      "slug": "joseph-mollica-house",
+      "home_name": "Joseph Mollica House",
+      "svg_file": "joseph-mollica-house.svg",
+      "year_built": 1958
+    },
+    {
+      "slug": "monona-terrace",
+      "home_name": "Monona Terrace",
+      "svg_file": "monona-terrace.svg",
+      "year_built": 1994
+    },
+    {
+      "slug": "fallingwater",
+      "home_name": "Fallingwater",
+      "svg_file": "fallingwater.svg",
+      "year_built": 1935
+    },
+    {
+      "slug": "suntop-homes",
+      "home_name": "Suntop Homes",
+      "svg_file": "suntop-homes.svg",
+      "year_built": 1939
+    },
+    {
+      "slug": "kentuck-knob",
+      "home_name": "Kentuck Knob",
+      "svg_file": "kentuck-knob.svg",
+      "year_built": 1954
+    },
+    {
+      "slug": "beth-sholom-synagogue",
+      "home_name": "Beth Sholom Synagogue",
+      "svg_file": "beth-sholom-synagogue.svg",
+      "year_built": 1954
+    },
+    {
+      "slug": "don-duncan-house",
+      "home_name": "Don Duncan House",
+      "svg_file": "don-duncan-house.svg",
+      "year_built": 1957
+    },
+    {
+      "slug": "george-barton-house",
+      "home_name": "George Barton House",
+      "svg_file": "george-barton-house.svg",
+      "year_built": 1903
+    },
+    {
+      "slug": "darwin-martin-house",
+      "home_name": "Darwin Martin House",
+      "svg_file": "darwin-martin-house.svg",
+      "year_built": 1904
+    },
+    {
+      "slug": "darwin-martin-gardener-s-cottage",
+      "home_name": "Darwin Martin Gardener's Cottage",
+      "svg_file": "darwin-martin-gardener-s-cottage.svg",
+      "year_built": 1905
+    },
+    {
+      "slug": "william-heath-house",
+      "home_name": "William Heath House",
+      "svg_file": "william-heath-house.svg",
+      "year_built": 1905
+    },
+    {
+      "slug": "walter-davidson-house",
+      "home_name": "Walter Davidson House",
+      "svg_file": "walter-davidson-house.svg",
+      "year_built": 1908
+    },
+    {
+      "slug": "edward-boynton-house",
+      "home_name": "Edward Boynton House",
+      "svg_file": "edward-boynton-house.svg",
+      "year_built": 1908
+    },
+    {
+      "slug": "isabel-martin-graycliff-house",
+      "home_name": "Isabel Martin Graycliff House",
+      "svg_file": "isabel-martin-graycliff-house.svg",
+      "year_built": 1927
+    },
+    {
+      "slug": "sol-friedman-toyhill-house",
+      "home_name": "Sol Friedman Toyhill House",
+      "svg_file": "sol-friedman-toyhill-house.svg",
+      "year_built": 1949
+    },
+    {
+      "slug": "edward-serlin-house",
+      "home_name": "Edward Serlin House",
+      "svg_file": "edward-serlin-house.svg",
+      "year_built": 1949
+    },
+    {
+      "slug": "ben-rebhuhn-house",
+      "home_name": "Ben Rebhuhn House",
+      "svg_file": "ben-rebhuhn-house.svg",
+      "year_built": 1951
+    },
+    {
+      "slug": "roland-reisley-house",
+      "home_name": "Roland Reisley House",
+      "svg_file": "roland-reisley-house.svg",
+      "year_built": 1951
+    },
+    {
+      "slug": "chahroudi-cottage",
+      "home_name": "Chahroudi Cottage",
+      "svg_file": "chahroudi-cottage.svg",
+      "year_built": 1951
+    },
+    {
+      "slug": "maximillian-hoffman-house",
+      "home_name": "Maximillian Hoffman House",
+      "svg_file": "maximillian-hoffman-house.svg",
+      "year_built": 1955
+    },
+    {
+      "slug": "guggenheim-museum",
+      "home_name": "Guggenheim Museum",
+      "svg_file": "guggenheim-museum.svg",
+      "year_built": 1959
+    },
+    {
+      "slug": "william-cass-house",
+      "home_name": "William Cass House",
+      "svg_file": "william-cass-house.svg",
+      "year_built": 1959
+    },
+    {
+      "slug": "socrates-zaferious-house",
+      "home_name": "Socrates Zaferious House",
+      "svg_file": "socrates-zaferious-house.svg",
+      "year_built": 1961
+    },
+    {
+      "slug": "burton-westcott-house",
+      "home_name": "Burton Westcott House",
+      "svg_file": "burton-westcott-house.svg",
+      "year_built": 1908
+    },
+    {
+      "slug": "charles-weltzheimer-house",
+      "home_name": "Charles Weltzheimer House",
+      "svg_file": "charles-weltzheimer-house.svg",
+      "year_built": 1948
+    },
+    {
+      "slug": "karl-staley-house",
+      "home_name": "Karl Staley House",
+      "svg_file": "karl-staley-house.svg",
+      "year_built": 1951
+    },
+    {
+      "slug": "nathan-rubin-house",
+      "home_name": "Nathan Rubin House",
+      "svg_file": "nathan-rubin-house.svg",
+      "year_built": 1951
+    },
+    {
+      "slug": "louis-penfield-house",
+      "home_name": "Louis Penfield House",
+      "svg_file": "louis-penfield-house.svg",
+      "year_built": 1953
+    },
+    {
+      "slug": "john-dobkins-house",
+      "home_name": "John Dobkins House",
+      "svg_file": "john-dobkins-house.svg",
+      "year_built": 1954
+    },
+    {
+      "slug": "ellis-feiman-house",
+      "home_name": "Ellis Feiman House",
+      "svg_file": "ellis-feiman-house.svg",
+      "year_built": 1954
+    },
+    {
+      "slug": "cedric-boulter-house",
+      "home_name": "Cedric Boulter House",
+      "svg_file": "cedric-boulter-house.svg",
+      "year_built": 1954
+    },
+    {
+      "slug": "gerald-tonkens-house",
+      "home_name": "Gerald Tonkens House",
+      "svg_file": "gerald-tonkens-house.svg",
+      "year_built": 1955
+    },
+    {
+      "slug": "meyers-medical-clinic",
+      "home_name": "Meyers Medical Clinic",
+      "svg_file": "meyers-medical-clinic.svg",
+      "year_built": 1956
+    },
+    {
+      "slug": "william-boswell-house",
+      "home_name": "William Boswell House",
+      "svg_file": "william-boswell-house.svg",
+      "year_built": 1957
+    },
+    {
+      "slug": "riverrock-house",
+      "home_name": "RiverRock House",
+      "svg_file": "riverrock-house.svg",
+      "year_built": 1959
+    },
+    {
+      "slug": "rosenbaum-house",
+      "home_name": "Rosenbaum House",
+      "svg_file": "rosenbaum-house.svg",
+      "year_built": 1939
+    },
+    {
+      "slug": "arizona-biltmore-hotel",
+      "home_name": "Arizona Biltmore Hotel",
+      "svg_file": "arizona-biltmore-hotel.svg",
+      "year_built": 1929
+    },
+    {
+      "slug": "taliesin-west",
+      "home_name": "Taliesin West",
+      "svg_file": "taliesin-west.svg",
+      "year_built": 1937
+    },
+    {
+      "slug": "rose-pauson-house",
+      "home_name": "Rose Pauson House",
+      "svg_file": "rose-pauson-house.svg",
+      "year_built": 1939
+    },
+    {
+      "slug": "raymond-carlson-house",
+      "home_name": "Raymond Carlson House",
+      "svg_file": "raymond-carlson-house.svg",
+      "year_built": 1950
+    },
+    {
+      "slug": "david-wright-house",
+      "home_name": "David Wright House",
+      "svg_file": "david-wright-house.svg",
+      "year_built": 1951
+    },
+    {
+      "slug": "pieper-house",
+      "home_name": "Pieper House",
+      "svg_file": "pieper-house.svg",
+      "year_built": 1952
+    },
+    {
+      "slug": "boomer-cottage",
+      "home_name": "Boomer Cottage",
+      "svg_file": "boomer-cottage.svg",
+      "year_built": 1953
+    },
+    {
+      "slug": "harold-price-house",
+      "home_name": "Harold Price House",
+      "svg_file": "harold-price-house.svg",
+      "year_built": 1954
+    },
+    {
+      "slug": "gammage-auditorium",
+      "home_name": "Gammage Auditorium",
+      "svg_file": "gammage-auditorium.svg",
+      "year_built": 1959
+    },
+    {
+      "slug": "first-christian-church",
+      "home_name": "First Christian Church",
+      "svg_file": "first-christian-church.svg",
+      "year_built": 1972
+    },
+    {
+      "slug": "k-c-derhodes-house",
+      "home_name": "K.C. DeRhodes House",
+      "svg_file": "k-c-derhodes-house.svg",
+      "year_built": 1906
+    },
+    {
+      "slug": "ingwald-moe-house",
+      "home_name": "Ingwald Moe House",
+      "svg_file": "ingwald-moe-house.svg",
+      "year_built": 1908
+    },
+    {
+      "slug": "andrew-armstrong-house",
+      "home_name": "Andrew Armstrong House",
+      "svg_file": "andrew-armstrong-house.svg",
+      "year_built": 1939
+    },
+    {
+      "slug": "herman-mossberg-house",
+      "home_name": "Herman Mossberg House",
+      "svg_file": "herman-mossberg-house.svg",
+      "year_built": 1949
+    },
+    {
+      "slug": "richard-davis-house-woodside",
+      "home_name": "Richard Davis House Woodside",
+      "svg_file": "richard-davis-house-woodside.svg",
+      "year_built": 1950
+    },
+    {
+      "slug": "john-haynes-house",
+      "home_name": "John Haynes House",
+      "svg_file": "john-haynes-house.svg",
+      "year_built": 1951
+    },
+    {
+      "slug": "john-e-christian-house-samara",
+      "home_name": "John E. Christian House Samara",
+      "svg_file": "john-e-christian-house-samara.svg",
+      "year_built": 1954
+    },
+    {
+      "slug": "george-stockman-house",
+      "home_name": "George Stockman House",
+      "svg_file": "george-stockman-house.svg",
+      "year_built": 1908
+    },
+    {
+      "slug": "city-national-bank-and-hotel",
+      "home_name": "City National Bank and Hotel",
+      "svg_file": "city-national-bank-and-hotel.svg",
+      "year_built": 1909
+    },
+    {
+      "slug": "delbert-meier-house",
+      "home_name": "Delbert Meier House",
+      "svg_file": "delbert-meier-house.svg",
+      "year_built": 1917
+    },
+    {
+      "slug": "lowell-walter-house-cedar-rock",
+      "home_name": "Lowell Walter House Cedar Rock",
+      "svg_file": "lowell-walter-house-cedar-rock.svg",
+      "year_built": 1945
+    },
+    {
+      "slug": "alvin-miller-house",
+      "home_name": "Alvin Miller House",
+      "svg_file": "alvin-miller-house.svg",
+      "year_built": 1946
+    },
+    {
+      "slug": "douglas-grant-house",
+      "home_name": "Douglas Grant House",
+      "svg_file": "douglas-grant-house.svg",
+      "year_built": 1946
+    },
+    {
+      "slug": "caroll-alsop-house",
+      "home_name": "Caroll Alsop House",
+      "svg_file": "caroll-alsop-house.svg",
+      "year_built": 1948
+    },
+    {
+      "slug": "jack-lamberson-house",
+      "home_name": "Jack Lamberson House",
+      "svg_file": "jack-lamberson-house.svg",
+      "year_built": 1948
+    },
+    {
+      "slug": "robert-sunday-house",
+      "home_name": "Robert Sunday House",
+      "svg_file": "robert-sunday-house.svg",
+      "year_built": 1955
+    },
+    {
+      "slug": "paul-trier-house",
+      "home_name": "Paul Trier House",
+      "svg_file": "paul-trier-house.svg",
+      "year_built": 1957
+    },
+    {
+      "slug": "malcolm-willey-house",
+      "home_name": "Malcolm Willey House",
+      "svg_file": "malcolm-willey-house.svg",
+      "year_built": 1933
+    },
+    {
+      "slug": "bubilian-house",
+      "home_name": "Bubilian House",
+      "svg_file": "bubilian-house.svg",
+      "year_built": 1947
+    },
+    {
+      "slug": "henry-neils-house",
+      "home_name": "Henry Neils House",
+      "svg_file": "henry-neils-house.svg",
+      "year_built": 1950
+    },
+    {
+      "slug": "thomas-keys-house",
+      "home_name": "Thomas Keys House",
+      "svg_file": "thomas-keys-house.svg",
+      "year_built": 1950
+    },
+    {
+      "slug": "elam-house",
+      "home_name": "Elam House",
+      "svg_file": "elam-house.svg",
+      "year_built": 1951
+    },
+    {
+      "slug": "lindholm-house-mantyla",
+      "home_name": "Lindholm House Mantyla",
+      "svg_file": "lindholm-house-mantyla.svg",
+      "year_built": 1952
+    },
+    {
+      "slug": "donald-lovness-house",
+      "home_name": "Donald Lovness House",
+      "svg_file": "donald-lovness-house.svg",
+      "year_built": 1955
+    },
+    {
+      "slug": "lindholm-service-station",
+      "home_name": "Lindholm Service Station",
+      "svg_file": "lindholm-service-station.svg",
+      "year_built": 1956
+    },
+    {
+      "slug": "fasbender-medical-clinic",
+      "home_name": "Fasbender Medical Clinic",
+      "svg_file": "fasbender-medical-clinic.svg",
+      "year_built": 1957
+    },
+    {
+      "slug": "james-mcbean-house",
+      "home_name": "James McBean House",
+      "svg_file": "james-mcbean-house.svg",
+      "year_built": 1957
+    },
+    {
+      "slug": "paul-olfelt-house",
+      "home_name": "Paul Olfelt House",
+      "svg_file": "paul-olfelt-house.svg",
+      "year_built": 1958
+    },
+    {
+      "slug": "edward-la-fond-house",
+      "home_name": "Edward La Fond House",
+      "svg_file": "edward-la-fond-house.svg",
+      "year_built": 1960
+    },
+    {
+      "slug": "henry-j-allen-house",
+      "home_name": "Henry J. Allen House",
+      "svg_file": "henry-j-allen-house.svg",
+      "year_built": 1917
+    },
+    {
+      "slug": "wichita-state-university-corbin-education-center",
+      "home_name": "Wichita State University Corbin Education Center",
+      "svg_file": "wichita-state-university-corbin-education-center.svg",
+      "year_built": 1957
+    },
+    {
+      "slug": "sander-house-springbough",
+      "home_name": "Sander House Springbough",
+      "svg_file": "sander-house-springbough.svg",
+      "year_built": 1953
+    },
+    {
+      "slug": "rayward-house-tirranna",
+      "home_name": "Rayward House Tirranna",
+      "svg_file": "rayward-house-tirranna.svg",
+      "year_built": 1955
+    },
+    {
+      "slug": "dudley-spencer-house",
+      "home_name": "Dudley Spencer House",
+      "svg_file": "dudley-spencer-house.svg",
+      "year_built": 1956
+    },
+    {
+      "slug": "florida-southern-college",
+      "home_name": "Florida Southern College",
+      "svg_file": "florida-southern-college.svg",
+      "year_built": 1938
+    },
+    {
+      "slug": "rev-jesse-r-zeigler-house",
+      "home_name": "Rev. Jesse R. Zeigler House",
+      "svg_file": "rev-jesse-r-zeigler-house.svg",
+      "year_built": 1910
+    },
+    {
+      "slug": "joseph-euchtman-house",
+      "home_name": "Joseph Euchtman House",
+      "svg_file": "joseph-euchtman-house.svg",
+      "year_built": 1940
+    },
+    {
+      "slug": "robert-llewellyn-wright-house",
+      "home_name": "Robert Llewellyn Wright House",
+      "svg_file": "robert-llewellyn-wright-house.svg",
+      "year_built": 1953
+    },
+    {
+      "slug": "theodore-baird-house",
+      "home_name": "Theodore Baird House",
+      "svg_file": "theodore-baird-house.svg",
+      "year_built": 1940
+    },
+    {
+      "slug": "charnley-norwood-house",
+      "home_name": "Charnley-Norwood House",
+      "svg_file": "charnley-norwood-house.svg",
+      "year_built": 1890
+    },
+    {
+      "slug": "j-willis-hughes-house-fountainhead",
+      "home_name": "J. Willis Hughes House Fountainhead",
+      "svg_file": "j-willis-hughes-house-fountainhead.svg",
+      "year_built": 1948
+    },
+    {
+      "slug": "clarence-sondern-house",
+      "home_name": "Clarence Sondern House",
+      "svg_file": "clarence-sondern-house.svg",
+      "year_built": 1940
+    },
+    {
+      "slug": "community-christian-church",
+      "home_name": "Community Christian Church",
+      "svg_file": "community-christian-church.svg",
+      "year_built": 1940
+    },
+    {
+      "slug": "russell-kraus-house",
+      "home_name": "Russell Kraus House",
+      "svg_file": "russell-kraus-house.svg",
+      "year_built": 1951
+    },
+    {
+      "slug": "theodore-pappas-house",
+      "home_name": "Theodore Pappas House",
+      "svg_file": "theodore-pappas-house.svg",
+      "year_built": 1955
+    },
+    {
+      "slug": "frank-bott-house",
+      "home_name": "Frank Bott House",
+      "svg_file": "frank-bott-house.svg",
+      "year_built": 1956
+    },
+    {
+      "slug": "alpine-meadows-ranch-writers-cabin",
+      "home_name": "Alpine Meadows Ranch Writers Cabin",
+      "svg_file": "alpine-meadows-ranch-writers-cabin.svg",
+      "year_built": 1905
+    },
+    {
+      "slug": "alpine-meadows-ranch-farmhouse",
+      "home_name": "Alpine Meadows Ranch Farmhouse",
+      "svg_file": "alpine-meadows-ranch-farmhouse.svg",
+      "year_built": 1905
+    },
+    {
+      "slug": "harvey-p-sutton-house",
+      "home_name": "Harvey P. Sutton House",
+      "svg_file": "harvey-p-sutton-house.svg",
+      "year_built": 1905
+    },
+    {
+      "slug": "zimmerman-house",
+      "home_name": "Zimmerman House",
+      "svg_file": "zimmerman-house.svg",
+      "year_built": 1952
+    },
+    {
+      "slug": "toufic-kalil-house",
+      "home_name": "Toufic Kalil House",
+      "svg_file": "toufic-kalil-house.svg",
+      "year_built": 1955
+    },
+    {
+      "slug": "james-christie-house",
+      "home_name": "James Christie House",
+      "svg_file": "james-christie-house.svg",
+      "year_built": 1940
+    },
+    {
+      "slug": "stuart-richardson-house",
+      "home_name": "Stuart Richardson House",
+      "svg_file": "stuart-richardson-house.svg",
+      "year_built": 1941
+    },
+    {
+      "slug": "j-a-sweeton-house",
+      "home_name": "J.A. Sweeton House",
+      "svg_file": "j-a-sweeton-house.svg",
+      "year_built": 1959
+    },
+    {
+      "slug": "friedman-house-fir-tree",
+      "home_name": "Friedman House Fir Tree",
+      "svg_file": "friedman-house-fir-tree.svg",
+      "year_built": 1945
+    },
+    {
+      "slug": "pottery-house",
+      "home_name": "Pottery House",
+      "svg_file": "pottery-house.svg",
+      "year_built": 1984
+    },
+    {
+      "slug": "richard-lloyd-jones-house-westhope",
+      "home_name": "Richard Lloyd Jones House Westhope",
+      "svg_file": "richard-lloyd-jones-house-westhope.svg",
+      "year_built": 1929
+    },
+    {
+      "slug": "price-tower",
+      "home_name": "Price Tower",
+      "svg_file": "price-tower.svg",
+      "year_built": 1952
+    },
+    {
+      "slug": "harold-price-jr-house",
+      "home_name": "Harold Price Jr. House",
+      "svg_file": "harold-price-jr-house.svg",
+      "year_built": 1954
+    },
+    {
+      "slug": "gordon-house",
+      "home_name": "Gordon House",
+      "svg_file": "gordon-house.svg",
+      "year_built": 1963
+    },
+    {
+      "slug": "stevens-plantation-auldbrass",
+      "home_name": "Stevens Plantation Auldbrass",
+      "svg_file": "stevens-plantation-auldbrass.svg",
+      "year_built": 1940
+    },
+    {
+      "slug": "austin-house-broad-margin",
+      "home_name": "Austin House Broad Margin",
+      "svg_file": "austin-house-broad-margin.svg",
+      "year_built": 1951
+    },
+    {
+      "slug": "seamour-shavin-house",
+      "home_name": "Seamour Shavin House",
+      "svg_file": "seamour-shavin-house.svg",
+      "year_built": 1950
+    },
+    {
+      "slug": "john-gillin-house",
+      "home_name": "John Gillin House",
+      "svg_file": "john-gillin-house.svg",
+      "year_built": 1950
+    },
+    {
+      "slug": "william-thaxton-house",
+      "home_name": "William Thaxton House",
+      "svg_file": "william-thaxton-house.svg",
+      "year_built": 1954
+    },
+    {
+      "slug": "kalita-humphreys-theater",
+      "home_name": "Kalita Humphreys Theater",
+      "svg_file": "kalita-humphreys-theater.svg",
+      "year_built": 1955
+    },
+    {
+      "slug": "sterling-kinney-house",
+      "home_name": "Sterling Kinney House",
+      "svg_file": "sterling-kinney-house.svg",
+      "year_built": 1957
+    },
+    {
+      "slug": "donald-stromquist-house",
+      "home_name": "Donald Stromquist House",
+      "svg_file": "donald-stromquist-house.svg",
+      "year_built": 1958
+    },
+    {
+      "slug": "pope-leighy-house",
+      "home_name": "Pope-Leighy House",
+      "svg_file": "pope-leighy-house.svg",
+      "year_built": 1941
+    },
+    {
+      "slug": "chauncey-l-griggs-house",
+      "home_name": "Chauncey L. Griggs House",
+      "svg_file": "chauncey-l-griggs-house.svg",
+      "year_built": 1946
+    },
+    {
+      "slug": "ray-brandes-house",
+      "home_name": "Ray Brandes House",
+      "svg_file": "ray-brandes-house.svg",
+      "year_built": 1952
+    },
+    {
+      "slug": "william-tracy-house",
+      "home_name": "William Tracy House",
+      "svg_file": "william-tracy-house.svg",
+      "year_built": 1954
+    },
+    {
+      "slug": "quintin-blair-house",
+      "home_name": "Quintin Blair House",
+      "svg_file": "quintin-blair-house.svg",
+      "year_built": 1952
+    },
+    {
+      "slug": "teaters-knoll",
+      "home_name": "Teaters Knoll",
+      "svg_file": "teaters-knoll.svg",
+      "year_built": 1952
+    },
+    {
+      "slug": "king-kamehameha-golf-club",
+      "home_name": "King Kamehameha Golf Club",
+      "svg_file": "king-kamehameha-golf-club.svg",
+      "year_built": 1993
     }
   ]
 }

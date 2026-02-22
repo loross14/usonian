@@ -1,0 +1,1776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>"USONIAN" — (a website about houses)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --red: #BF0A30;
+            --navy: #002868;
+            --gold: #D4B270;
+            --black: #000000;
+            --white: #FFFFFF;
+            --shadow-sm: 2px 2px 0;
+            --shadow-md: 4px 4px 0;
+            --shadow-lg: 6px 6px 0;
+            --spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--white);
+            color: var(--black);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* "NAVIGATION" (this helps you move around) */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            border-bottom: 3px solid var(--black);
+            z-index: 1000;
+            padding: 1rem 2rem;
+        }
+
+        .nav-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            text-decoration: none;
+            color: var(--black);
+        }
+
+        .nav-logo::before {
+            content: '"';
+            color: var(--red);
+        }
+
+        .nav-logo::after {
+            content: '"';
+            color: var(--red);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            padding: 0.5rem 1rem;
+            background: var(--black);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: 2px solid var(--black);
+            transition: all 0.3s var(--spring);
+        }
+
+        .nav-link:hover {
+            background: var(--white);
+            color: var(--black);
+            transform: translate(-2px, -2px);
+            box-shadow: var(--shadow-sm) var(--black);
+        }
+
+        .nav-link.active {
+            background: var(--red);
+            border-color: var(--red);
+        }
+
+        /* Section base */
+        .section {
+            display: none;
+            min-height: 100vh;
+            padding: 100px 2rem 4rem;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .section-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* "LABEL" (what you call things) */
+        .label {
+            display: inline-block;
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--black);
+            opacity: 0.6;
+            margin-bottom: 0.5rem;
+        }
+
+        .label::before {
+            content: '"';
+        }
+
+        .label::after {
+            content: '"';
+        }
+
+        /* Status badges */
+        .status {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .status::before {
+            content: '"';
+        }
+
+        .status::after {
+            content: '"';
+        }
+
+        .status-sold {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .status-for-sale {
+            background: var(--red);
+            color: var(--white);
+        }
+
+        .status-museum {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .status-archived {
+            background: var(--black);
+            color: var(--white);
+            opacity: 0.5;
+        }
+
+        /* ========================================
+           SECTION 1: "HERO" (the big dramatic part)
+           ======================================== */
+        #hero {
+            background: var(--black);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            margin-bottom: 2rem;
+            opacity: 0.6;
+        }
+
+        .hero-headline {
+            font-size: clamp(3rem, 10vw, 8rem);
+            font-weight: 900;
+            line-height: 0.95;
+            margin-bottom: 2rem;
+        }
+
+        .hero-headline .quotes {
+            color: var(--red);
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin-bottom: 3rem;
+            opacity: 0.8;
+        }
+
+        .hero-subtitle em {
+            font-style: normal;
+            color: var(--gold);
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.25rem 2.5rem;
+            background: var(--red);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border: 3px solid var(--red);
+            transition: all 0.3s var(--spring);
+        }
+
+        .hero-cta:hover {
+            background: var(--white);
+            color: var(--red);
+            transform: translate(-4px, -4px);
+            box-shadow: var(--shadow-md) var(--red);
+        }
+
+        .hero-cta-label {
+            font-size: 0.6rem;
+            opacity: 0.7;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+            padding-top: 4rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--gold);
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            opacity: 0.6;
+        }
+
+        .stat-label::before {
+            content: '"';
+        }
+
+        .stat-label::after {
+            content: '"';
+        }
+
+        .hero-featured {
+            margin-top: 4rem;
+        }
+
+        .hero-featured-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 2rem;
+            opacity: 0.6;
+        }
+
+        .hero-featured-title::before {
+            content: '( ';
+        }
+
+        .hero-featured-title::after {
+            content: ' )';
+        }
+
+        .featured-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* ========================================
+           "CARDS" (rectangles with information)
+           ======================================== */
+        .card {
+            background: var(--white);
+            border: 3px solid var(--black);
+            padding: 1.5rem;
+            transition: all 0.3s var(--spring);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .card::before {
+            content: attr(data-meta);
+            position: absolute;
+            top: -10px;
+            left: 1rem;
+            background: var(--white);
+            padding: 0 0.5rem;
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.5;
+        }
+
+        .card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: var(--shadow-md) var(--black);
+        }
+
+        .card-dark {
+            background: rgba(255,255,255,0.05);
+            border-color: rgba(255,255,255,0.3);
+            color: var(--white);
+        }
+
+        .card-dark:hover {
+            box-shadow: var(--shadow-md) rgba(255,255,255,0.3);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            background: var(--black);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-image::after {
+            content: '"IMAGE PLACEHOLDER"';
+            opacity: 0.5;
+        }
+
+        .card-image-real {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-year {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background: var(--black);
+            color: var(--white);
+            padding: 0.25rem 0.5rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-architect {
+            font-size: 0.75rem;
+            opacity: 0.7;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-architect::before {
+            content: 'by "';
+        }
+
+        .card-architect::after {
+            content: '"';
+        }
+
+        .card-location {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.5;
+            margin-bottom: 1rem;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .card-price {
+            font-weight: 700;
+        }
+
+        .card-price::before {
+            content: '"';
+            color: var(--red);
+        }
+
+        .card-price::after {
+            content: '"';
+            color: var(--red);
+        }
+
+        /* ========================================
+           SECTION 2: "HOMES GRID" (boxes in rows)
+           ======================================== */
+        #homes-grid {
+            background: #f5f5f5;
+        }
+
+        .section-header {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+
+        .section-title .quotes {
+            color: var(--red);
+        }
+
+        .section-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            max-width: 600px;
+        }
+
+        .section-subtitle::before {
+            content: '( ';
+        }
+
+        .section-subtitle::after {
+            content: ' )';
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .filter-bar {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1rem;
+            background: var(--white);
+            border: 2px solid var(--black);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: all 0.3s var(--spring);
+        }
+
+        .filter-btn::before {
+            content: '"';
+        }
+
+        .filter-btn::after {
+            content: '"';
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--black);
+            color: var(--white);
+            transform: translate(-2px, -2px);
+            box-shadow: var(--shadow-sm) var(--black);
+        }
+
+        /* ========================================
+           SECTION 3: "HOMES LIST" (a table, basically)
+           ======================================== */
+        #homes-list {
+            background: var(--white);
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+        }
+
+        .table th {
+            text-align: left;
+            padding: 1rem;
+            background: var(--black);
+            color: var(--white);
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 500;
+        }
+
+        .table th::before {
+            content: '"';
+            opacity: 0.5;
+        }
+
+        .table th::after {
+            content: '"';
+            opacity: 0.5;
+        }
+
+        .table td {
+            padding: 1rem;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            vertical-align: middle;
+        }
+
+        .table tr {
+            transition: all 0.2s ease;
+        }
+
+        .table tbody tr:hover {
+            background: #f5f5f5;
+        }
+
+        .table-property {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .table-thumb {
+            width: 60px;
+            height: 40px;
+            background: var(--black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 0.5rem;
+        }
+
+        .table-name {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        .view-link {
+            color: var(--red);
+            text-decoration: none;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .view-link::before {
+            content: '"';
+        }
+
+        .view-link::after {
+            content: '"';
+        }
+
+        .view-link:hover {
+            text-decoration: underline;
+        }
+
+        /* ========================================
+           SECTION 4: "HOME DETAIL" (one house, big)
+           ======================================== */
+        #home-detail {
+            background: var(--white);
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+
+        @media (min-width: 1024px) {
+            .detail-grid {
+                grid-template-columns: 2fr 1fr;
+            }
+        }
+
+        .detail-hero {
+            background: var(--black);
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            position: relative;
+        }
+
+        .detail-hero::after {
+            content: '"HERO IMAGE" (imagine something impressive here)';
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.5;
+        }
+
+        .detail-hero-badge {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+        }
+
+        .detail-content h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .detail-content h1::before {
+            content: '"';
+            color: var(--red);
+        }
+
+        .detail-content h1::after {
+            content: '"';
+            color: var(--red);
+        }
+
+        .detail-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .detail-meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .detail-meta-label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            opacity: 0.5;
+        }
+
+        .detail-meta-label::before {
+            content: '"';
+        }
+
+        .detail-meta-label::after {
+            content: '"';
+        }
+
+        .detail-meta-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .detail-description {
+            margin-bottom: 2rem;
+            opacity: 0.8;
+            line-height: 1.8;
+        }
+
+        .detail-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .feature {
+            padding: 1rem;
+            background: #f5f5f5;
+            border: 2px solid var(--black);
+        }
+
+        .feature-label {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            opacity: 0.5;
+            margin-bottom: 0.25rem;
+        }
+
+        .feature-label::before {
+            content: '"';
+        }
+
+        .feature-label::after {
+            content: '"';
+        }
+
+        .feature-value {
+            font-weight: 700;
+        }
+
+        .detail-sidebar {
+            position: sticky;
+            top: 100px;
+        }
+
+        .sidebar-card {
+            background: var(--black);
+            color: var(--white);
+            padding: 2rem;
+            border: 3px solid var(--black);
+        }
+
+        .sidebar-card-title {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 1.5rem;
+            opacity: 0.6;
+        }
+
+        .sidebar-card-title::before {
+            content: '"';
+        }
+
+        .sidebar-card-title::after {
+            content: '"';
+        }
+
+        .sidebar-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-price-note {
+            font-size: 0.7rem;
+            opacity: 0.6;
+            margin-bottom: 2rem;
+        }
+
+        .sidebar-price-note::before {
+            content: '(';
+        }
+
+        .sidebar-price-note::after {
+            content: ')';
+        }
+
+        .sidebar-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: var(--red);
+            color: var(--white);
+            border: none;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s var(--spring);
+        }
+
+        .sidebar-btn::before {
+            content: '"';
+        }
+
+        .sidebar-btn::after {
+            content: '"';
+        }
+
+        .sidebar-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: var(--shadow-sm) var(--red);
+        }
+
+        .sidebar-btn-secondary {
+            background: transparent;
+            border: 2px solid var(--white);
+        }
+
+        .sidebar-btn-secondary:hover {
+            background: var(--white);
+            color: var(--black);
+            box-shadow: var(--shadow-sm) var(--white);
+        }
+
+        /* ========================================
+           SECTION 5: "ARCHITECTS" (the people)
+           ======================================== */
+        #architects {
+            background: #f5f5f5;
+        }
+
+        .architect-list {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .architect-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--red);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .architect-letter::before {
+            content: '"';
+            opacity: 0.3;
+        }
+
+        .architect-letter::after {
+            content: '"';
+            opacity: 0.3;
+        }
+
+        .architect-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            background: var(--white);
+            border: 2px solid var(--black);
+            transition: all 0.3s var(--spring);
+            cursor: pointer;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .architect-item:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: var(--shadow-md) var(--black);
+        }
+
+        .architect-info {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .architect-avatar {
+            width: 60px;
+            height: 60px;
+            background: var(--black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        .architect-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .architect-dates {
+            font-size: 0.75rem;
+            opacity: 0.6;
+        }
+
+        .architect-dates::before {
+            content: '(';
+        }
+
+        .architect-dates::after {
+            content: ')';
+        }
+
+        .architect-stats {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .architect-stat {
+            text-align: center;
+        }
+
+        .architect-stat-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+        }
+
+        .architect-stat-label {
+            font-size: 0.6rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.5;
+        }
+
+        .architect-stat-label::before {
+            content: '"';
+        }
+
+        .architect-stat-label::after {
+            content: '"';
+        }
+
+        /* ========================================
+           SECTION 6: "ARCHITECT DETAIL" (one person)
+           ======================================== */
+        #architect-detail {
+            background: var(--white);
+        }
+
+        .profile-header {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        @media (min-width: 768px) {
+            .profile-header {
+                grid-template-columns: 200px 1fr;
+            }
+        }
+
+        .profile-avatar {
+            width: 200px;
+            height: 250px;
+            background: var(--black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            position: relative;
+        }
+
+        .profile-avatar::after {
+            content: '"PORTRAIT"';
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.5;
+        }
+
+        .profile-avatar-initials {
+            position: absolute;
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            font-weight: 900;
+            opacity: 0.2;
+        }
+
+        .profile-info h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-info h1::before {
+            content: '"';
+            color: var(--red);
+        }
+
+        .profile-info h1::after {
+            content: '"';
+            color: var(--red);
+        }
+
+        .profile-dates {
+            font-size: 1rem;
+            opacity: 0.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-dates::before {
+            content: '( ';
+        }
+
+        .profile-dates::after {
+            content: ' )';
+        }
+
+        .profile-bio {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .profile-stats {
+            display: flex;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .profile-stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--red);
+        }
+
+        .profile-stat-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            opacity: 0.6;
+        }
+
+        .profile-stat-label::before {
+            content: '"';
+        }
+
+        .profile-stat-label::after {
+            content: '"';
+        }
+
+        .profile-properties {
+            margin-top: 4rem;
+        }
+
+        .profile-properties-title {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .profile-properties-title::before {
+            content: '"';
+            color: var(--red);
+        }
+
+        .profile-properties-title::after {
+            content: '"';
+            color: var(--red);
+        }
+
+        .profile-properties-subtitle {
+            font-size: 0.75rem;
+            opacity: 0.5;
+            margin-left: 0.5rem;
+        }
+
+        .profile-properties-subtitle::before {
+            content: '(';
+        }
+
+        .profile-properties-subtitle::after {
+            content: ')';
+        }
+
+        /* ========================================
+           "FOOTER" (the bottom part)
+           ======================================== */
+        .footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 4rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo::before {
+            content: '"';
+            color: var(--red);
+        }
+
+        .footer-logo::after {
+            content: '"';
+            color: var(--red);
+        }
+
+        .footer-tagline {
+            font-size: 0.8rem;
+            opacity: 0.6;
+            margin-bottom: 2rem;
+        }
+
+        .footer-tagline::before {
+            content: '( ';
+        }
+
+        .footer-tagline::after {
+            content: ' )';
+        }
+
+        .footer-meta {
+            font-size: 0.7rem;
+            opacity: 0.4;
+        }
+
+        .footer-meta::before {
+            content: '"';
+        }
+
+        .footer-meta::after {
+            content: '"';
+        }
+
+        /* Utility */
+        .mt-2 { margin-top: 2rem; }
+        .mb-2 { margin-bottom: 2rem; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-inner {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-links {
+                justify-content: center;
+            }
+
+            .detail-features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+<script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script></head>
+<body>
+
+    <!-- "NAVIGATION" (this helps you move around) -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="#" class="nav-logo" onclick="showSection('hero')">USONIAN</a>
+            <div class="nav-links">
+                <a href="#" class="nav-link active" data-section="hero">"HOME"</a>
+                <a href="#" class="nav-link" data-section="homes-grid">"GRID"</a>
+                <a href="#" class="nav-link" data-section="homes-list">"LIST"</a>
+                <a href="#" class="nav-link" data-section="home-detail">"DETAIL"</a>
+                <a href="#" class="nav-link" data-section="architects">"ARCHITECTS"</a>
+                <a href="#" class="nav-link" data-section="architect-detail">"PROFILE"</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========================================
+         SECTION 1: "HERO" (the big dramatic part)
+         ======================================== -->
+    <section id="hero" class="section active">
+        <div class="section-inner">
+            <div class="hero-content">
+                <p class="hero-eyebrow">"HERO SECTION" (you're looking at it right now)</p>
+
+                <h1 class="hero-headline">
+                    <span class="quotes">"</span>WHO DESIGNED<br>YOUR HOME?<span class="quotes">"</span>
+                </h1>
+
+                <p class="hero-subtitle">
+                    This is a <em>"website"</em> about mid-century modern architecture.
+                    We put things in "quotation marks" because we're self-aware like that.
+                </p>
+
+                <a href="#" class="hero-cta" onclick="showSection('homes-grid')">
+                    <span>
+                        <span class="hero-cta-label">(this is a)</span><br>
+                        "BUTTON"
+                    </span>
+                    <span>&rarr;</span>
+                </a>
+
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">47</div>
+                        <div class="stat-label">PROPERTIES</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">12</div>
+                        <div class="stat-label">ARCHITECTS</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">$127M</div>
+                        <div class="stat-label">TOTAL VALUE</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">1939</div>
+                        <div class="stat-label">OLDEST</div>
+                    </div>
+                </div>
+
+                <div class="hero-featured">
+                    <h3 class="hero-featured-title">FEATURED PROPERTIES</h3>
+                    <div class="featured-cards">
+                        <div class="card card-dark" data-meta="you're looking at a card" onclick="showSection('home-detail')">
+                            <div class="card-image">
+                                <span class="card-year">1960</span>
+                            </div>
+                            <h3 class="card-title">Chemosphere</h3>
+                            <p class="card-architect">John Lautner</p>
+                            <p class="card-location">Hollywood Hills, CA</p>
+                            <div class="card-footer">
+                                <span class="card-price">$1,000,000</span>
+                                <span class="status status-sold">SOLD</span>
+                            </div>
+                        </div>
+                        <div class="card card-dark" data-meta="another card">
+                            <div class="card-image">
+                                <span class="card-year">1961</span>
+                            </div>
+                            <h3 class="card-title">Sheats-Goldstein</h3>
+                            <p class="card-architect">John Lautner</p>
+                            <p class="card-location">Beverly Crest, CA</p>
+                            <div class="card-footer">
+                                <span class="card-price">$40,000,000</span>
+                                <span class="status status-museum">MUSEUM</span>
+                            </div>
+                        </div>
+                        <div class="card card-dark" data-meta="yes, also a card">
+                            <div class="card-image">
+                                <span class="card-year">1962</span>
+                            </div>
+                            <h3 class="card-title">Garcia House</h3>
+                            <p class="card-architect">John Lautner</p>
+                            <p class="card-location">Hollywood Hills, CA</p>
+                            <div class="card-footer">
+                                <span class="card-price">$12,500,000</span>
+                                <span class="status status-sold">SOLD</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SECTION 2: "HOMES GRID" (boxes in rows)
+         ======================================== -->
+    <section id="homes-grid" class="section">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="label">SECTION</span>
+                <h2 class="section-title"><span class="quotes">"</span>HOMES<span class="quotes">"</span></h2>
+                <p class="section-subtitle">these are rectangles containing information about houses</p>
+            </div>
+
+            <div class="filter-bar">
+                <button class="filter-btn active">ALL</button>
+                <button class="filter-btn">SOLD</button>
+                <button class="filter-btn">MUSEUM</button>
+                <button class="filter-btn">ARCHIVED</button>
+            </div>
+
+            <div class="grid">
+                <div class="card" data-meta="card component" onclick="showSection('home-detail')">
+                    <div class="card-image">
+                        <span class="card-year">1960</span>
+                    </div>
+                    <h3 class="card-title">Chemosphere (Malin Residence)</h3>
+                    <p class="card-architect">John Lautner</p>
+                    <p class="card-location">Hollywood Hills, CA</p>
+                    <div class="card-footer">
+                        <span class="card-price">$1,000,000</span>
+                        <span class="status status-sold">SOLD</span>
+                    </div>
+                </div>
+
+                <div class="card" data-meta="card component">
+                    <div class="card-image">
+                        <span class="card-year">1961</span>
+                    </div>
+                    <h3 class="card-title">Sheats-Goldstein Residence</h3>
+                    <p class="card-architect">John Lautner</p>
+                    <p class="card-location">Beverly Crest, CA</p>
+                    <div class="card-footer">
+                        <span class="card-price">$40,000,000</span>
+                        <span class="status status-museum">MUSEUM</span>
+                    </div>
+                </div>
+
+                <div class="card" data-meta="card component">
+                    <div class="card-image">
+                        <span class="card-year">1962</span>
+                    </div>
+                    <h3 class="card-title">Garcia House</h3>
+                    <p class="card-architect">John Lautner</p>
+                    <p class="card-location">Hollywood Hills, CA</p>
+                    <div class="card-footer">
+                        <span class="card-price">$12,500,000</span>
+                        <span class="status status-sold">SOLD</span>
+                    </div>
+                </div>
+
+                <div class="card" data-meta="card component">
+                    <div class="card-image">
+                        <span class="card-year">1949</span>
+                    </div>
+                    <h3 class="card-title">Foster Carling Residence</h3>
+                    <p class="card-architect">John Lautner</p>
+                    <p class="card-location">Hollywood Hills, CA</p>
+                    <div class="card-footer">
+                        <span class="card-price">$3,250,000</span>
+                        <span class="status status-sold">SOLD</span>
+                    </div>
+                </div>
+
+                <div class="card" data-meta="card component">
+                    <div class="card-image">
+                        <span class="card-year">1939</span>
+                    </div>
+                    <h3 class="card-title">Lautner House</h3>
+                    <p class="card-architect">John Lautner</p>
+                    <p class="card-location">Silver Lake, CA</p>
+                    <div class="card-footer">
+                        <span class="card-price">$1,670,000</span>
+                        <span class="status status-archived">ARCHIVED</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SECTION 3: "HOMES LIST" (a table, basically)
+         ======================================== -->
+    <section id="homes-list" class="section">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="label">SECTION</span>
+                <h2 class="section-title"><span class="quotes">"</span>TABLE VIEW<span class="quotes">"</span></h2>
+                <p class="section-subtitle">the same data, but in rows instead of boxes</p>
+            </div>
+
+            <div class="table-wrapper">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>PROPERTY</th>
+                            <th>ARCHITECT</th>
+                            <th>YEAR</th>
+                            <th>LOCATION</th>
+                            <th>PRICE</th>
+                            <th>STATUS</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="table-property">
+                                    <div class="table-thumb">"IMG"</div>
+                                    <span class="table-name">Chemosphere</span>
+                                </div>
+                            </td>
+                            <td>John Lautner</td>
+                            <td>1960</td>
+                            <td>Hollywood Hills</td>
+                            <td>$1,000,000</td>
+                            <td><span class="status status-sold">SOLD</span></td>
+                            <td><a href="#" class="view-link" onclick="showSection('home-detail')">VIEW</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="table-property">
+                                    <div class="table-thumb">"IMG"</div>
+                                    <span class="table-name">Sheats-Goldstein</span>
+                                </div>
+                            </td>
+                            <td>John Lautner</td>
+                            <td>1961</td>
+                            <td>Beverly Crest</td>
+                            <td>$40,000,000</td>
+                            <td><span class="status status-museum">MUSEUM</span></td>
+                            <td><a href="#" class="view-link">VIEW</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="table-property">
+                                    <div class="table-thumb">"IMG"</div>
+                                    <span class="table-name">Garcia House</span>
+                                </div>
+                            </td>
+                            <td>John Lautner</td>
+                            <td>1962</td>
+                            <td>Hollywood Hills</td>
+                            <td>$12,500,000</td>
+                            <td><span class="status status-sold">SOLD</span></td>
+                            <td><a href="#" class="view-link">VIEW</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="table-property">
+                                    <div class="table-thumb">"IMG"</div>
+                                    <span class="table-name">Foster Carling</span>
+                                </div>
+                            </td>
+                            <td>John Lautner</td>
+                            <td>1949</td>
+                            <td>Hollywood Hills</td>
+                            <td>$3,250,000</td>
+                            <td><span class="status status-sold">SOLD</span></td>
+                            <td><a href="#" class="view-link">VIEW</a></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="table-property">
+                                    <div class="table-thumb">"IMG"</div>
+                                    <span class="table-name">Lautner House</span>
+                                </div>
+                            </td>
+                            <td>John Lautner</td>
+                            <td>1939</td>
+                            <td>Silver Lake</td>
+                            <td>$1,670,000</td>
+                            <td><span class="status status-archived">ARCHIVED</span></td>
+                            <td><a href="#" class="view-link">VIEW</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SECTION 4: "HOME DETAIL" (one house, big)
+         ======================================== -->
+    <section id="home-detail" class="section">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="label">PROPERTY DETAIL</span>
+            </div>
+
+            <div class="detail-hero">
+                <span class="detail-hero-badge status status-sold">SOLD</span>
+            </div>
+
+            <div class="detail-grid mt-2">
+                <div class="detail-content">
+                    <h1>Chemosphere</h1>
+                    <p style="font-size: 0.8rem; opacity: 0.6; margin-bottom: 1rem;">(also known as the "Malin Residence" if you're being formal)</p>
+
+                    <div class="detail-meta">
+                        <div class="detail-meta-item">
+                            <span class="detail-meta-label">ARCHITECT</span>
+                            <span class="detail-meta-value">John Lautner</span>
+                        </div>
+                        <div class="detail-meta-item">
+                            <span class="detail-meta-label">YEAR</span>
+                            <span class="detail-meta-value">1960</span>
+                        </div>
+                        <div class="detail-meta-item">
+                            <span class="detail-meta-label">LOCATION</span>
+                            <span class="detail-meta-value">Hollywood Hills, CA</span>
+                        </div>
+                    </div>
+
+                    <p class="detail-description">
+                        "THIS IS THE DESCRIPTION SECTION" - The Chemosphere is an octagon-shaped house
+                        perched on a concrete column on a steep hillside. It's been called "the most modern
+                        home built in the world" which is quite a "claim" to make. The house was featured
+                        in numerous films and has become an icon of California modernist architecture.
+                        (You're reading marketing copy right now, by the way.)
+                    </p>
+
+                    <div class="detail-features">
+                        <div class="feature">
+                            <div class="feature-label">BEDROOMS</div>
+                            <div class="feature-value">1</div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-label">BATHROOMS</div>
+                            <div class="feature-value">2</div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-label">SQ FT</div>
+                            <div class="feature-value">2,200</div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-label">LOT SIZE</div>
+                            <div class="feature-value">0.23 acres</div>
+                        </div>
+                    </div>
+
+                    <a href="#" class="view-link" onclick="showSection('architect-detail')">"VIEW ARCHITECT PROFILE" &rarr;</a>
+                </div>
+
+                <div class="detail-sidebar">
+                    <div class="sidebar-card">
+                        <div class="sidebar-card-title">PRICING INFORMATION</div>
+                        <div class="sidebar-price">$1,000,000</div>
+                        <div class="sidebar-price-note">last sold price, which is honestly a steal</div>
+
+                        <button class="sidebar-btn">INQUIRE</button>
+                        <button class="sidebar-btn sidebar-btn-secondary">SCHEDULE TOUR</button>
+
+                        <p style="font-size: 0.65rem; opacity: 0.5; margin-top: 1rem; text-align: center;">
+                            (these buttons don't do anything, this is a "demo")
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SECTION 5: "ARCHITECTS" (the people)
+         ======================================== -->
+    <section id="architects" class="section">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="label">DIRECTORY</span>
+                <h2 class="section-title"><span class="quotes">"</span>ARCHITECTS<span class="quotes">"</span></h2>
+                <p class="section-subtitle">humans who designed the buildings</p>
+            </div>
+
+            <div class="architect-list">
+                <div class="architect-letter">A</div>
+
+                <div class="architect-item">
+                    <div class="architect-info">
+                        <div class="architect-avatar">AD</div>
+                        <div>
+                            <div class="architect-name">Alden B. Dow</div>
+                            <div class="architect-dates">1904-1983</div>
+                        </div>
+                    </div>
+                    <div class="architect-stats">
+                        <div class="architect-stat">
+                            <div class="architect-stat-value">27</div>
+                            <div class="architect-stat-label">PROPERTIES</div>
+                        </div>
+                        <span class="view-link">"VIEW" &rarr;</span>
+                    </div>
+                </div>
+
+                <div class="architect-letter">E</div>
+
+                <div class="architect-item">
+                    <div class="architect-info">
+                        <div class="architect-avatar">EJ</div>
+                        <div>
+                            <div class="architect-name">E. Fay Jones</div>
+                            <div class="architect-dates">1921-2004</div>
+                        </div>
+                    </div>
+                    <div class="architect-stats">
+                        <div class="architect-stat">
+                            <div class="architect-stat-value">8</div>
+                            <div class="architect-stat-label">PROPERTIES</div>
+                        </div>
+                        <span class="view-link">"VIEW" &rarr;</span>
+                    </div>
+                </div>
+
+                <div class="architect-letter">J</div>
+
+                <div class="architect-item" onclick="showSection('architect-detail')">
+                    <div class="architect-info">
+                        <div class="architect-avatar">JL</div>
+                        <div>
+                            <div class="architect-name">John Lautner</div>
+                            <div class="architect-dates">1911-1994</div>
+                        </div>
+                    </div>
+                    <div class="architect-stats">
+                        <div class="architect-stat">
+                            <div class="architect-stat-value">5</div>
+                            <div class="architect-stat-label">PROPERTIES</div>
+                        </div>
+                        <span class="view-link">"VIEW" &rarr;</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================================
+         SECTION 6: "ARCHITECT DETAIL" (one person)
+         ======================================== -->
+    <section id="architect-detail" class="section">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="label">ARCHITECT PROFILE</span>
+            </div>
+
+            <div class="profile-header">
+                <div class="profile-avatar">
+                    <span class="profile-avatar-initials">JL</span>
+                </div>
+                <div class="profile-info">
+                    <h1>John Lautner</h1>
+                    <p class="profile-dates">1911-1994, lived 83 years</p>
+                    <p class="profile-bio">
+                        "THIS IS A BIOGRAPHY" - John Lautner was an American architect known for his
+                        innovative and futuristic designs. A former student of Frank Lloyd Wright,
+                        Lautner developed his own distinctive style that emphasized organic forms,
+                        dramatic structural solutions, and the integration of indoor and outdoor spaces.
+                        His work is considered a "masterclass" in California organic modernism.
+                    </p>
+                    <div class="profile-stats">
+                        <div>
+                            <div class="profile-stat-number">5</div>
+                            <div class="profile-stat-label">PROPERTIES</div>
+                        </div>
+                        <div>
+                            <div class="profile-stat-number">1939</div>
+                            <div class="profile-stat-label">FIRST WORK</div>
+                        </div>
+                        <div>
+                            <div class="profile-stat-number">1962</div>
+                            <div class="profile-stat-label">LAST WORK</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-properties">
+                <h3 class="profile-properties-title">
+                    Properties
+                    <span class="profile-properties-subtitle">things this person designed</span>
+                </h3>
+
+                <div class="grid">
+                    <div class="card" data-meta="property card" onclick="showSection('home-detail')">
+                        <div class="card-image">
+                            <span class="card-year">1960</span>
+                        </div>
+                        <h3 class="card-title">Chemosphere</h3>
+                        <p class="card-architect">John Lautner</p>
+                        <p class="card-location">Hollywood Hills, CA</p>
+                        <div class="card-footer">
+                            <span class="card-price">$1,000,000</span>
+                            <span class="status status-sold">SOLD</span>
+                        </div>
+                    </div>
+
+                    <div class="card" data-meta="property card">
+                        <div class="card-image">
+                            <span class="card-year">1961</span>
+                        </div>
+                        <h3 class="card-title">Sheats-Goldstein</h3>
+                        <p class="card-architect">John Lautner</p>
+                        <p class="card-location">Beverly Crest, CA</p>
+                        <div class="card-footer">
+                            <span class="card-price">$40,000,000</span>
+                            <span class="status status-museum">MUSEUM</span>
+                        </div>
+                    </div>
+
+                    <div class="card" data-meta="property card">
+                        <div class="card-image">
+                            <span class="card-year">1962</span>
+                        </div>
+                        <h3 class="card-title">Garcia House</h3>
+                        <p class="card-architect">John Lautner</p>
+                        <p class="card-location">Hollywood Hills, CA</p>
+                        <div class="card-footer">
+                            <span class="card-price">$12,500,000</span>
+                            <span class="status status-sold">SOLD</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- "FOOTER" (the bottom part) -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-logo">USONIAN</div>
+            <p class="footer-tagline">a website about architecture, with quotation marks</p>
+            <p class="footer-meta">AGENT 1: IRONY & QUOTES - Virgil Abloh Philosophy Applied</p>
+        </div>
+    </footer>
+
+    <script>
+        // "JAVASCRIPT" (makes things interactive)
+
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Show target section
+            document.getElementById(sectionId).classList.add('active');
+
+            // Update nav
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.dataset.section === sectionId) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Nav link handlers
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                showSection(link.dataset.section);
+            });
+        });
+
+        // Filter buttons (visual only for demo)
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+
+        // Console easter egg
+        console.log('%c"CONSOLE"', 'font-size: 24px; font-weight: bold;');
+        console.log('(you opened the developer tools, how meta)');
+        console.log('');
+        console.log('This is Agent 1: THE QUOTATION MARKS');
+        console.log('Applying Virgil Abloh\'s "Irony & Quotes" philosophy to USONIAN architecture.');
+        console.log('');
+        console.log('"Everything is designed. Few things are designed well." - Brian Reed');
+    </script>
+
+</body>
+</html>

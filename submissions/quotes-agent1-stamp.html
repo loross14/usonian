@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USONIAN | The Architect's Stamp</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+    <style>
+        :root {
+            --red: #BF0A30;
+            --navy: #002868;
+            --gold: #D4B270;
+            --black: #000000;
+            --white: #FFFFFF;
+            --shadow-sm: 2px 2px 0;
+            --shadow-md: 4px 4px 0;
+            --shadow-lg: 6px 6px 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--white);
+            color: var(--black);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* ===== ARCHITECTURAL STAMP COMPONENTS ===== */
+
+        .stamp {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 16px;
+            border: 3px solid currentColor;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            position: relative;
+            background: transparent;
+        }
+
+        .stamp--certified {
+            color: var(--red);
+            border-color: var(--red);
+            transform: rotate(-3deg);
+        }
+
+        .stamp--approved {
+            color: var(--navy);
+            border-color: var(--navy);
+            border-style: double;
+            border-width: 4px;
+        }
+
+        .stamp--registered {
+            color: var(--gold);
+            border-color: var(--gold);
+            background: var(--navy);
+        }
+
+        .stamp--verified {
+            color: var(--white);
+            background: var(--red);
+            border-color: var(--red);
+        }
+
+        /* Circular Seal */
+        .seal {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid var(--navy);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: var(--white);
+        }
+
+        .seal::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px dashed var(--navy);
+            transform: scale(0.85);
+        }
+
+        .seal::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 1px solid var(--navy);
+            transform: scale(0.7);
+        }
+
+        .seal__text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--navy);
+            text-align: center;
+            z-index: 1;
+        }
+
+        .seal__compass {
+            font-size: 24px;
+            color: var(--navy);
+            z-index: 1;
+        }
+
+        /* Date Stamp */
+        .date-stamp {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--red);
+            letter-spacing: 0.05em;
+            padding: 4px 8px;
+            border: 1px solid var(--red);
+            display: inline-block;
+        }
+
+        /* Registration Number */
+        .reg-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            color: var(--gold);
+            letter-spacing: 0.2em;
+            opacity: 0.8;
+        }
+
+        /* Embossed Effect */
+        .embossed {
+            color: transparent;
+            background: linear-gradient(145deg, var(--white) 0%, #e6e6e6 50%, var(--white) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            text-shadow:
+                1px 1px 1px rgba(255,255,255,0.8),
+                -1px -1px 1px rgba(0,0,0,0.1);
+            position: relative;
+        }
+
+        .embossed::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--navy);
+            opacity: 0.15;
+            z-index: -1;
+        }
+
+        /* ===== HERO SECTION ===== */
+
+        .hero {
+            min-height: 100vh;
+            background: var(--navy);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 40px,
+                    rgba(212, 178, 112, 0.03) 40px,
+                    rgba(212, 178, 112, 0.03) 41px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 40px,
+                    rgba(212, 178, 112, 0.03) 40px,
+                    rgba(212, 178, 112, 0.03) 41px
+                );
+        }
+
+        .hero__nav {
+            position: absolute;
+            top: 40px;
+            left: 60px;
+            right: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .hero__logo {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .compass-icon {
+            width: 48px;
+            height: 48px;
+            position: relative;
+        }
+
+        .compass-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 0.3em;
+        }
+
+        .hero__stamp-badge {
+            position: absolute;
+            top: 40px;
+            right: 60px;
+            z-index: 10;
+        }
+
+        .hero__content {
+            position: relative;
+            z-index: 5;
+            max-width: 900px;
+        }
+
+        .hero__eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .hero__eyebrow .stamp {
+            font-size: 12px;
+        }
+
+        .hero__headline {
+            font-size: clamp(48px, 8vw, 96px);
+            font-weight: 900;
+            color: var(--white);
+            line-height: 1.1;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .hero__headline .bracket {
+            color: var(--gold);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .hero__headline .certified-mark {
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero__headline .certified-mark::after {
+            content: '[CERTIFIED]';
+            position: absolute;
+            top: -20px;
+            right: -40px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--red);
+            transform: rotate(12deg);
+            border: 2px solid var(--red);
+            padding: 4px 8px;
+            background: var(--navy);
+        }
+
+        .hero__subhead {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 16px;
+            color: var(--gold);
+            letter-spacing: 0.1em;
+            margin-bottom: 50px;
+            max-width: 600px;
+        }
+
+        .hero__cta {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .btn {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            padding: 16px 32px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn--primary {
+            background: var(--red);
+            color: var(--white);
+            box-shadow: var(--shadow-md) var(--black);
+        }
+
+        .btn--primary:hover {
+            box-shadow: var(--shadow-lg) var(--black);
+            transform: translate(-2px, -2px);
+        }
+
+        .btn--outline {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn--outline:hover {
+            background: var(--white);
+            color: var(--navy);
+        }
+
+        .hero__seal {
+            position: absolute;
+            right: 100px;
+            bottom: 100px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 6px solid var(--gold);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 40, 104, 0.9);
+            z-index: 5;
+        }
+
+        .hero__seal::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 3px dashed var(--gold);
+            transform: scale(0.85);
+            opacity: 0.6;
+        }
+
+        .hero__seal::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid var(--gold);
+            transform: scale(0.7);
+            opacity: 0.4;
+        }
+
+        .hero__seal-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .hero__seal-compass {
+            width: 60px;
+            height: 60px;
+            margin: 10px 0;
+            z-index: 1;
+        }
+
+        .hero__seal-compass svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero__seal-year {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--gold);
+            z-index: 1;
+        }
+
+        /* ===== PROPERTY CARDS SECTION ===== */
+
+        .section {
+            padding: 100px 60px;
+        }
+
+        .section--properties {
+            background: var(--white);
+        }
+
+        .section__header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 60px;
+        }
+
+        .section__title-group {
+            max-width: 600px;
+        }
+
+        .section__eyebrow {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--red);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section__eyebrow::before {
+            content: '';
+            width: 30px;
+            height: 2px;
+            background: var(--red);
+        }
+
+        .section__title {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 20px;
+        }
+
+        .section__subtitle {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            color: var(--black);
+            opacity: 0.7;
+            line-height: 1.8;
+        }
+
+        .property-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .property-card {
+            background: var(--white);
+            border: 3px solid var(--navy);
+            position: relative;
+            box-shadow: var(--shadow-lg) var(--navy);
+            transition: all 0.3s ease;
+        }
+
+        .property-card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 10px 10px 0 var(--navy);
+        }
+
+        .property-card__image {
+            height: 240px;
+            background: linear-gradient(135deg, var(--navy) 0%, #001845 100%);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .property-card__image-placeholder {
+            font-family: 'Playfair Display', serif;
+            font-size: 72px;
+            color: var(--gold);
+            opacity: 0.3;
+        }
+
+        .property-card__stamp {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            transform: rotate(12deg);
+        }
+
+        .property-card__body {
+            padding: 30px;
+        }
+
+        .property-card__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .property-card__name {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+
+        .property-card__architect {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--red);
+            letter-spacing: 0.1em;
+        }
+
+        .property-card__seal {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--navy);
+            flex-shrink: 0;
+        }
+
+        .property-card__seal-year {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--gold);
+            font-weight: 700;
+        }
+
+        .property-card__meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .property-card__tag {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            padding: 6px 12px;
+            border: 1px solid var(--navy);
+            color: var(--navy);
+            letter-spacing: 0.1em;
+        }
+
+        .property-card__price {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--black);
+            margin-bottom: 16px;
+        }
+
+        .property-card__footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 40, 104, 0.2);
+        }
+
+        .property-card__reg {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9px;
+            color: var(--gold);
+            letter-spacing: 0.15em;
+        }
+
+        .property-card__status {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 6px 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        .property-card__status--sold {
+            background: var(--red);
+            color: var(--white);
+        }
+
+        .property-card__status--museum {
+            background: var(--navy);
+            color: var(--gold);
+        }
+
+        /* ===== STAMP SYSTEM SECTION ===== */
+
+        .section--stamps {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .section--stamps .section__eyebrow {
+            color: var(--gold);
+        }
+
+        .section--stamps .section__eyebrow::before {
+            background: var(--gold);
+        }
+
+        .section--stamps .section__title {
+            color: var(--white);
+        }
+
+        .section--stamps .section__subtitle {
+            color: var(--gold);
+            opacity: 0.8;
+        }
+
+        .stamps-showcase {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .stamp-type {
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px solid rgba(212, 178, 112, 0.3);
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .stamp-type::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            height: 4px;
+            background: var(--gold);
+        }
+
+        .stamp-type__icon {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .stamp-type__name {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+
+        .stamp-type__desc {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--gold);
+            opacity: 0.8;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .stamp-type__example {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            color: var(--white);
+            letter-spacing: 0.1em;
+        }
+
+        /* Certification Stamp Style */
+        .cert-stamp {
+            width: 80px;
+            height: 80px;
+            border: 4px solid var(--red);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(-5deg);
+            background: transparent;
+        }
+
+        .cert-stamp__text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--red);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Approval Stamp Style */
+        .approval-stamp {
+            width: 80px;
+            height: 80px;
+            border: 5px double var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .approval-stamp::before,
+        .approval-stamp::after {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border: 2px solid var(--gold);
+        }
+
+        .approval-stamp::before {
+            top: -6px;
+            left: -6px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .approval-stamp::after {
+            bottom: -6px;
+            right: -6px;
+            border-left: none;
+            border-top: none;
+        }
+
+        .approval-stamp__text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9px;
+            font-weight: 700;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        /* Registration Seal Style */
+        .reg-seal {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid var(--white);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .reg-seal::before {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 1px dashed var(--white);
+        }
+
+        .reg-seal__compass {
+            width: 30px;
+            height: 30px;
+        }
+
+        .reg-seal__compass svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Verification Stamp Style */
+        .verify-stamp {
+            width: 80px;
+            height: 40px;
+            background: var(--red);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .verify-stamp::before,
+        .verify-stamp::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+        }
+
+        .verify-stamp::before {
+            left: -10px;
+            border-width: 20px 10px 20px 0;
+            border-color: transparent var(--red) transparent transparent;
+        }
+
+        .verify-stamp::after {
+            right: -10px;
+            border-width: 20px 0 20px 10px;
+            border-color: transparent transparent transparent var(--red);
+        }
+
+        .verify-stamp__text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9px;
+            font-weight: 700;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--black);
+            padding: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer__logo {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .footer__logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 0.3em;
+        }
+
+        .footer__stamp {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--gold);
+            letter-spacing: 0.15em;
+        }
+
+        .footer__credits {
+            text-align: right;
+        }
+
+        .footer__credit-line {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--white);
+            opacity: 0.6;
+            margin-bottom: 8px;
+        }
+
+        .footer__seal {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: flex-end;
+        }
+
+        .footer__seal-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            color: var(--gold);
+            letter-spacing: 0.1em;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .property-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stamps-showcase {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 40px 30px;
+            }
+
+            .section {
+                padding: 60px 30px;
+            }
+
+            .property-grid,
+            .stamps-showcase {
+                grid-template-columns: 1fr;
+            }
+
+            .hero__seal {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero">
+        <nav class="hero__nav">
+            <div class="hero__logo">
+                <div class="compass-icon">
+                    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="24" cy="6" r="4" stroke="#D4B270" stroke-width="2" fill="none"/>
+                        <line x1="24" y1="10" x2="24" y2="18" stroke="#D4B270" stroke-width="2"/>
+                        <line x1="24" y1="18" x2="12" y2="44" stroke="#D4B270" stroke-width="2.5"/>
+                        <line x1="24" y1="18" x2="36" y2="44" stroke="#D4B270" stroke-width="2.5"/>
+                        <circle cx="24" cy="18" r="3" fill="#D4B270"/>
+                        <line x1="12" y1="44" x2="16" y2="44" stroke="#D4B270" stroke-width="3"/>
+                        <line x1="32" y1="44" x2="36" y2="44" stroke="#D4B270" stroke-width="3"/>
+                    </svg>
+                </div>
+                <span class="logo-text">USONIAN</span>
+            </div>
+        </nav>
+
+        <div class="hero__content">
+            <div class="hero__eyebrow">
+                <span class="stamp stamp--certified">[CERTIFIED]</span>
+                <span class="date-stamp">VERIFIED 2024.02.22</span>
+            </div>
+
+            <h1 class="hero__headline">
+                <span class="bracket">[</span>WHO DESIGNED<br>
+                YOUR <span class="certified-mark">HOME</span>?<span class="bracket">]</span>
+            </h1>
+
+            <p class="hero__subhead">
+                Every architectural masterpiece deserves its stamp of authenticity.
+                We verify, certify, and register the provenance of America's most
+                significant residential designs.
+            </p>
+
+            <div class="hero__cta">
+                <a href="#" class="btn btn--primary">VERIFY PROPERTY</a>
+                <a href="#" class="btn btn--outline">VIEW REGISTRY</a>
+            </div>
+        </div>
+
+        <div class="hero__seal">
+            <span class="hero__seal-text">ARCHITECTURAL</span>
+            <div class="hero__seal-compass">
+                <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="24" cy="6" r="3" stroke="#D4B270" stroke-width="1.5" fill="none"/>
+                    <line x1="24" y1="9" x2="24" y2="15" stroke="#D4B270" stroke-width="1.5"/>
+                    <line x1="24" y1="15" x2="14" y2="40" stroke="#D4B270" stroke-width="2"/>
+                    <line x1="24" y1="15" x2="34" y2="40" stroke="#D4B270" stroke-width="2"/>
+                    <circle cx="24" cy="15" r="2" fill="#D4B270"/>
+                </svg>
+            </div>
+            <span class="hero__seal-text">REGISTRY</span>
+            <span class="hero__seal-year">EST. 2024</span>
+        </div>
+    </section>
+
+    <!-- ===== PROPERTY CARDS SECTION ===== -->
+    <section class="section section--properties">
+        <div class="section__header">
+            <div class="section__title-group">
+                <div class="section__eyebrow">Stamped Collection</div>
+                <h2 class="section__title">Certified Properties</h2>
+                <p class="section__subtitle">
+                    Each property in our registry carries the official seal of
+                    architectural authenticity, verified through rigorous
+                    documentation and provenance research.
+                </p>
+            </div>
+            <div class="stamp stamp--approved">APPROVED</div>
+        </div>
+
+        <div class="property-grid">
+            <!-- Property Card 1 -->
+            <article class="property-card">
+                <div class="property-card__image">
+                    <span class="property-card__image-placeholder">CH</span>
+                    <div class="property-card__stamp stamp stamp--certified">[CERTIFIED]</div>
+                </div>
+                <div class="property-card__body">
+                    <div class="property-card__header">
+                        <div>
+                            <h3 class="property-card__name">Chemosphere</h3>
+                            <span class="property-card__architect">JOHN LAUTNER</span>
+                        </div>
+                        <div class="property-card__seal">
+                            <span class="property-card__seal-year">1960</span>
+                        </div>
+                    </div>
+                    <div class="property-card__meta">
+                        <span class="property-card__tag">MODERNIST</span>
+                        <span class="property-card__tag">HOLLYWOOD HILLS</span>
+                        <span class="property-card__tag">ICONIC</span>
+                    </div>
+                    <div class="property-card__price">$1,000,000</div>
+                    <div class="property-card__footer">
+                        <span class="property-card__reg">REG# USN-1960-0042-LA</span>
+                        <span class="property-card__status property-card__status--sold">SOLD</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Property Card 2 -->
+            <article class="property-card">
+                <div class="property-card__image">
+                    <span class="property-card__image-placeholder">SG</span>
+                    <div class="property-card__stamp stamp stamp--registered">REGISTERED</div>
+                </div>
+                <div class="property-card__body">
+                    <div class="property-card__header">
+                        <div>
+                            <h3 class="property-card__name">Sheats-Goldstein</h3>
+                            <span class="property-card__architect">JOHN LAUTNER</span>
+                        </div>
+                        <div class="property-card__seal">
+                            <span class="property-card__seal-year">1961</span>
+                        </div>
+                    </div>
+                    <div class="property-card__meta">
+                        <span class="property-card__tag">MODERNIST</span>
+                        <span class="property-card__tag">BEL AIR</span>
+                        <span class="property-card__tag">LANDMARK</span>
+                    </div>
+                    <div class="property-card__price">$40,000,000</div>
+                    <div class="property-card__footer">
+                        <span class="property-card__reg">REG# USN-1961-0089-LA</span>
+                        <span class="property-card__status property-card__status--museum">MUSEUM</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Property Card 3 -->
+            <article class="property-card">
+                <div class="property-card__image">
+                    <span class="property-card__image-placeholder">GH</span>
+                    <div class="property-card__stamp stamp stamp--verified">VERIFIED</div>
+                </div>
+                <div class="property-card__body">
+                    <div class="property-card__header">
+                        <div>
+                            <h3 class="property-card__name">Garcia House</h3>
+                            <span class="property-card__architect">JOHN LAUTNER</span>
+                        </div>
+                        <div class="property-card__seal">
+                            <span class="property-card__seal-year">1962</span>
+                        </div>
+                    </div>
+                    <div class="property-card__meta">
+                        <span class="property-card__tag">MODERNIST</span>
+                        <span class="property-card__tag">MULHOLLAND</span>
+                        <span class="property-card__tag">RAINBOW</span>
+                    </div>
+                    <div class="property-card__price">$12,500,000</div>
+                    <div class="property-card__footer">
+                        <span class="property-card__reg">REG# USN-1962-0156-LA</span>
+                        <span class="property-card__status property-card__status--sold">SOLD</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- ===== STAMP SYSTEM SECTION ===== -->
+    <section class="section section--stamps">
+        <div class="section__header">
+            <div class="section__title-group">
+                <div class="section__eyebrow">Authentication System</div>
+                <h2 class="section__title">The Stamp Registry</h2>
+                <p class="section__subtitle">
+                    Our multi-tier certification system ensures every property
+                    is properly documented, verified, and authenticated.
+                </p>
+            </div>
+        </div>
+
+        <div class="stamps-showcase">
+            <!-- Stamp Type 1: Certified -->
+            <div class="stamp-type">
+                <div class="stamp-type__icon">
+                    <div class="cert-stamp">
+                        <span class="cert-stamp__text">Certified</span>
+                    </div>
+                </div>
+                <h3 class="stamp-type__name">[CERTIFIED]</h3>
+                <p class="stamp-type__desc">
+                    Initial verification of architectural authorship and
+                    construction authenticity completed.
+                </p>
+                <div class="stamp-type__example">[CERTIFIED] LAUTNER 1960</div>
+            </div>
+
+            <!-- Stamp Type 2: Approved -->
+            <div class="stamp-type">
+                <div class="stamp-type__icon">
+                    <div class="approval-stamp">
+                        <span class="approval-stamp__text">Approved</span>
+                    </div>
+                </div>
+                <h3 class="stamp-type__name">APPROVED</h3>
+                <p class="stamp-type__desc">
+                    Full documentation review and provenance chain
+                    verification successfully completed.
+                </p>
+                <div class="stamp-type__example">APPROVED 2024.02.22</div>
+            </div>
+
+            <!-- Stamp Type 3: Registered -->
+            <div class="stamp-type">
+                <div class="stamp-type__icon">
+                    <div class="reg-seal">
+                        <div class="reg-seal__compass">
+                            <svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="15" cy="4" r="2" stroke="#FFFFFF" stroke-width="1" fill="none"/>
+                                <line x1="15" y1="6" x2="15" y2="10" stroke="#FFFFFF" stroke-width="1"/>
+                                <line x1="15" y1="10" x2="8" y2="26" stroke="#FFFFFF" stroke-width="1.5"/>
+                                <line x1="15" y1="10" x2="22" y2="26" stroke="#FFFFFF" stroke-width="1.5"/>
+                                <circle cx="15" cy="10" r="1.5" fill="#FFFFFF"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                <h3 class="stamp-type__name">REGISTERED</h3>
+                <p class="stamp-type__desc">
+                    Official entry into the USONIAN national registry
+                    with unique identification number.
+                </p>
+                <div class="stamp-type__example">REG# USN-1960-0042-LA</div>
+            </div>
+
+            <!-- Stamp Type 4: Verified -->
+            <div class="stamp-type">
+                <div class="stamp-type__icon">
+                    <div class="verify-stamp">
+                        <span class="verify-stamp__text">Verified</span>
+                    </div>
+                </div>
+                <h3 class="stamp-type__name">VERIFIED</h3>
+                <p class="stamp-type__desc">
+                    Physical site inspection completed with current
+                    condition and preservation status confirmed.
+                </p>
+                <div class="stamp-type__example">VERIFIED 2024.02.22</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer__logo">
+            <div class="compass-icon">
+                <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="24" cy="6" r="4" stroke="#D4B270" stroke-width="2" fill="none"/>
+                    <line x1="24" y1="10" x2="24" y2="18" stroke="#D4B270" stroke-width="2"/>
+                    <line x1="24" y1="18" x2="12" y2="44" stroke="#D4B270" stroke-width="2.5"/>
+                    <line x1="24" y1="18" x2="36" y2="44" stroke="#D4B270" stroke-width="2.5"/>
+                    <circle cx="24" cy="18" r="3" fill="#D4B270"/>
+                    <line x1="12" y1="44" x2="16" y2="44" stroke="#D4B270" stroke-width="3"/>
+                    <line x1="32" y1="44" x2="36" y2="44" stroke="#D4B270" stroke-width="3"/>
+                </svg>
+            </div>
+            <div>
+                <span class="footer__logo-text">USONIAN</span>
+                <div class="footer__stamp">THE ARCHITECT'S STAMP</div>
+            </div>
+        </div>
+
+        <div class="footer__credits">
+            <p class="footer__credit-line">CONCEPT: VIRGIL ABLOH "QUOTES" PHILOSOPHY</p>
+            <p class="footer__credit-line">INTERPRETATION: ARCHITECTURAL CERTIFICATION STAMPS</p>
+            <div class="footer__seal">
+                <span class="footer__seal-text">[AGENT 1]</span>
+                <span class="footer__seal-text">VERIFIED 2024.02.22</span>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

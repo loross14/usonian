@@ -1,0 +1,1703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCM Platform | The Grid Breaker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ============================================
+           AGENT 2: THE GRID BREAKER
+           Virgil Abloh "3% Rule" Implementation
+           ============================================ */
+
+        :root {
+            /* Design Tokens - DO NOT CHANGE */
+            --red: #BF0A30;
+            --navy: #002868;
+            --gold: #D4B270;
+            --black: #000000;
+            --white: #FFFFFF;
+
+            /* 3% Drift Variables */
+            --drift-xs: 3px;    /* ~3% of 100px */
+            --drift-sm: 7px;    /* 3% of ~230px */
+            --drift-md: 12px;   /* 3% of ~400px */
+            --drift-lg: 18px;   /* 3% of ~600px */
+
+            /* Asymmetric Spacing */
+            --space-almost-16: 17px;
+            --space-almost-24: 23px;
+            --space-almost-32: 31px;
+            --space-almost-48: 46px;
+            --space-almost-64: 67px;
+            --space-almost-80: 82px;
+            --space-almost-100: 97px;
+
+            /* Shadows */
+            --shadow-sm: 2px 2px 0 var(--black);
+            --shadow-md: 4px 4px 0 var(--black);
+            --shadow-lg: 6px 6px 0 var(--black);
+
+            /* Spring Easing */
+            --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+            --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--white);
+            color: var(--black);
+            font-size: 14px;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ============================================
+           NAVIGATION - Off-kilter alignment
+           ============================================ */
+
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--white);
+            border-bottom: 2px solid var(--black);
+            padding: 18px var(--space-almost-48); /* 3% drift from 16px */
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1440px;
+            margin: 0 auto;
+            /* Subtle asymmetry */
+            padding-left: 3%;
+            padding-right: 2%;
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            text-decoration: none;
+            color: var(--black);
+            /* Off-grid positioning */
+            transform: translateY(-1px);
+        }
+
+        .nav-logo span {
+            color: var(--red);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--space-almost-32); /* 31px instead of 32px */
+            list-style: none;
+            /* Asymmetric shift */
+            margin-right: -2%;
+        }
+
+        .nav-links a {
+            font-size: 12px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            text-decoration: none;
+            color: var(--black);
+            padding: 8px 0;
+            position: relative;
+            transition: color 0.3s var(--spring);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -3%; /* Off-grid */
+            width: 106%; /* Oversized */
+            height: 2px;
+            background: var(--red);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s var(--spring);
+        }
+
+        .nav-links a:hover {
+            color: var(--red);
+        }
+
+        .nav-links a:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* ============================================
+           SECTION STYLES
+           ============================================ */
+
+        section {
+            min-height: 100vh;
+            padding: 120px var(--space-almost-48) var(--space-almost-80);
+        }
+
+        .section-inner {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: var(--space-almost-64);
+            /* Asymmetric left alignment */
+            margin-left: 3%;
+        }
+
+        .section-label {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--red);
+            margin-bottom: var(--space-almost-16);
+            display: block;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-size: clamp(42px, 8vw, 86px);
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+        }
+
+        h2 {
+            font-size: clamp(32px, 5vw, 52px);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        h3 {
+            font-size: 26px;
+            line-height: 1.2;
+        }
+
+        /* ============================================
+           SECTION 1: HERO
+           ============================================ */
+
+        #hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            background: var(--white);
+            /* Asymmetric padding */
+            padding-left: 7%;
+            padding-right: 4%;
+        }
+
+        .hero-content {
+            display: grid;
+            /* ASYMMETRIC COLUMNS: 47/53 split */
+            grid-template-columns: 47fr 53fr;
+            gap: var(--space-almost-64);
+            align-items: center;
+        }
+
+        .hero-text {
+            /* Off-grid drift */
+            transform: translateX(-3%);
+        }
+
+        .hero-headline {
+            margin-bottom: var(--space-almost-32);
+        }
+
+        .hero-headline em {
+            font-style: italic;
+            color: var(--red);
+        }
+
+        .hero-subtext {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--black);
+            opacity: 0.75;
+            max-width: 420px;
+            /* Asymmetric margin */
+            margin-left: 2%;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: var(--space-almost-48);
+            margin-top: var(--space-almost-48);
+            /* Staggered alignment */
+            padding-left: 4%;
+        }
+
+        .stat {
+            /* Each stat slightly different */
+        }
+
+        .stat:nth-child(1) { transform: translateY(0); }
+        .stat:nth-child(2) { transform: translateY(3px); }
+        .stat:nth-child(3) { transform: translateY(-2px); }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 700;
+            color: var(--black);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--black);
+            opacity: 0.6;
+            margin-top: 6px;
+        }
+
+        .hero-cards {
+            display: grid;
+            /* ASYMMETRIC: uneven gaps */
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-almost-24) 19px; /* 23px x 19px */
+            /* Off-grid shift */
+            transform: translateX(2%);
+        }
+
+        .hero-card {
+            background: var(--white);
+            border: 2px solid var(--black);
+            box-shadow: var(--shadow-md);
+            padding: var(--space-almost-24);
+            transition: all 0.4s var(--spring);
+        }
+
+        .hero-card:first-child {
+            /* Oversized first card */
+            grid-column: span 2;
+            margin-left: -3%;
+        }
+
+        .hero-card:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 140px;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--black) 100%);
+            margin-bottom: var(--space-almost-16);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-card:first-child .card-image {
+            height: 180px;
+        }
+
+        .card-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255,255,255,0.03) 10px,
+                rgba(255,255,255,0.03) 20px
+            );
+        }
+
+        .card-status {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            padding: 4px 10px;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .status-sold {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .status-museum {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .status-sale {
+            background: var(--red);
+            color: var(--white);
+        }
+
+        .status-archived {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .card-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .card-architect {
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .card-year, .card-price {
+            font-size: 11px;
+        }
+
+        .card-price {
+            font-weight: 600;
+        }
+
+        /* ============================================
+           SECTION 2: HOMES GRID
+           ASYMMETRIC GRID - The heart of 3% Rule
+           ============================================ */
+
+        #homes-grid {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        #homes-grid .section-label {
+            color: var(--gold);
+        }
+
+        .grid-asymmetric {
+            display: grid;
+            /* ASYMMETRIC COLUMNS: 31% / 38% / 31% */
+            grid-template-columns: 31fr 38fr 31fr;
+            /* UNEVEN GAPS */
+            gap: var(--space-almost-32) 27px;
+            /* Off-grid container */
+            margin-left: -2%;
+            margin-right: 1%;
+        }
+
+        .grid-card {
+            background: var(--white);
+            color: var(--black);
+            border: 2px solid var(--white);
+            transition: all 0.4s var(--spring);
+        }
+
+        /* Staggered vertical rhythm */
+        .grid-card:nth-child(1) { transform: translateY(0); }
+        .grid-card:nth-child(2) { transform: translateY(12px); }
+        .grid-card:nth-child(3) { transform: translateY(-8px); }
+        .grid-card:nth-child(4) { transform: translateY(18px); }
+        .grid-card:nth-child(5) { transform: translateY(6px); }
+        .grid-card:nth-child(6) { transform: translateY(-14px); }
+
+        .grid-card:hover {
+            transform: translate(-3px, -3px) !important;
+            box-shadow: 6px 6px 0 var(--gold);
+        }
+
+        .grid-card-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--navy) 0%, #1a1a2e 100%);
+            position: relative;
+        }
+
+        /* Varying image heights for asymmetry */
+        .grid-card:nth-child(2) .grid-card-image { height: 240px; }
+        .grid-card:nth-child(4) .grid-card-image { height: 180px; }
+        .grid-card:nth-child(5) .grid-card-image { height: 220px; }
+
+        .grid-card-content {
+            padding: var(--space-almost-24);
+        }
+
+        .grid-card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .grid-card-architect {
+            font-size: 12px;
+            opacity: 0.7;
+            margin-bottom: 16px;
+        }
+
+        .grid-card-details {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+
+        /* ============================================
+           SECTION 3: HOMES LIST
+           Off-kilter table alignment
+           ============================================ */
+
+        #homes-list {
+            background: #FAFAFA;
+        }
+
+        .list-table {
+            width: 100%;
+            border-collapse: collapse;
+            /* Off-grid table */
+            margin-left: 2%;
+            margin-right: -2%;
+        }
+
+        .list-table thead {
+            border-bottom: 2px solid var(--black);
+        }
+
+        .list-table th {
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            text-align: left;
+            padding: var(--space-almost-16) var(--space-almost-24);
+            color: var(--black);
+            opacity: 0.6;
+        }
+
+        /* ASYMMETRIC COLUMN WIDTHS */
+        .list-table th:nth-child(1) { width: 27%; }
+        .list-table th:nth-child(2) { width: 19%; }
+        .list-table th:nth-child(3) { width: 17%; }
+        .list-table th:nth-child(4) { width: 11%; }
+        .list-table th:nth-child(5) { width: 14%; }
+        .list-table th:nth-child(6) { width: 12%; }
+
+        .list-table tbody tr {
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            transition: all 0.3s var(--spring);
+        }
+
+        /* Staggered row offsets */
+        .list-table tbody tr:nth-child(odd) {
+            transform: translateX(3px);
+        }
+
+        .list-table tbody tr:nth-child(even) {
+            transform: translateX(-2px);
+        }
+
+        .list-table tbody tr:hover {
+            background: var(--white);
+            transform: translateX(8px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .list-table td {
+            padding: var(--space-almost-24);
+            vertical-align: middle;
+        }
+
+        .list-property-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .list-architect {
+            font-size: 13px;
+        }
+
+        .list-location {
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        .list-year {
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .list-price {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .list-status {
+            display: inline-block;
+            padding: 4px 12px;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        /* ============================================
+           SECTION 4: HOME DETAIL
+           Sheats-Goldstein Residence
+           ============================================ */
+
+        #home-detail {
+            background: var(--white);
+        }
+
+        .detail-layout {
+            display: grid;
+            /* ASYMMETRIC: 58/42 split */
+            grid-template-columns: 58fr 42fr;
+            gap: var(--space-almost-64);
+            /* Off-grid positioning */
+            margin-left: -1%;
+        }
+
+        .detail-gallery {
+            position: relative;
+        }
+
+        .detail-main-image {
+            width: 100%;
+            height: 500px;
+            background: linear-gradient(160deg, var(--navy) 0%, #0a0a1a 100%);
+            border: 2px solid var(--black);
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            /* Off-grid shift */
+            transform: translateX(-3%);
+        }
+
+        .detail-main-image::before {
+            content: '"SHEATS-GOLDSTEIN"';
+            position: absolute;
+            bottom: 24px;
+            left: 24px;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            color: var(--white);
+            opacity: 0.6;
+        }
+
+        .detail-thumbs {
+            display: flex;
+            gap: 14px; /* Not 12 or 16 */
+            margin-top: var(--space-almost-24);
+            /* Asymmetric alignment */
+            padding-left: 6%;
+        }
+
+        .detail-thumb {
+            width: 77px; /* Not 80 */
+            height: 62px; /* Not 60 or 64 */
+            background: var(--black);
+            border: 2px solid var(--black);
+            cursor: pointer;
+            transition: all 0.3s var(--spring);
+        }
+
+        .detail-thumb:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .detail-info {
+            /* Off-grid shift */
+            transform: translateX(2%);
+        }
+
+        .detail-status {
+            display: inline-block;
+            padding: 6px 16px;
+            background: var(--gold);
+            color: var(--black);
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: var(--space-almost-24);
+        }
+
+        .detail-title {
+            margin-bottom: var(--space-almost-16);
+        }
+
+        .detail-architect {
+            font-size: 18px;
+            margin-bottom: var(--space-almost-32);
+            /* Asymmetric indent */
+            padding-left: 3%;
+        }
+
+        .detail-architect a {
+            color: var(--red);
+            text-decoration: none;
+            border-bottom: 1px solid var(--red);
+        }
+
+        .detail-specs {
+            display: grid;
+            /* ASYMMETRIC: 48/52 */
+            grid-template-columns: 48fr 52fr;
+            gap: var(--space-almost-24) 18px;
+            margin-bottom: var(--space-almost-48);
+            /* Off-grid */
+            margin-left: -2%;
+        }
+
+        .spec-item {
+            padding: var(--space-almost-16) 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .spec-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.6;
+            margin-bottom: 4px;
+        }
+
+        .spec-value {
+            font-size: 15px;
+            font-weight: 500;
+        }
+
+        .detail-description {
+            font-size: 14px;
+            line-height: 1.8;
+            opacity: 0.85;
+            /* Asymmetric margins */
+            margin-left: 4%;
+            margin-right: 2%;
+        }
+
+        .detail-cta {
+            margin-top: var(--space-almost-48);
+            display: flex;
+            gap: var(--space-almost-16);
+            /* Off-grid */
+            padding-left: 3%;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            border: 2px solid var(--black);
+            cursor: pointer;
+            transition: all 0.4s var(--spring);
+        }
+
+        .btn-primary {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--red);
+            border-color: var(--red);
+            transform: translate(-2px, -2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        .btn-secondary:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            transform: translate(-2px, -2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* ============================================
+           SECTION 5: ARCHITECTS DIRECTORY
+           Staggered A-Z cards
+           ============================================ */
+
+        #architects {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        #architects .section-label {
+            color: var(--gold);
+        }
+
+        #architects h2 {
+            color: var(--white);
+        }
+
+        .architects-grid {
+            display: grid;
+            /* ASYMMETRIC COLUMNS */
+            grid-template-columns: 33fr 34fr 33fr;
+            gap: var(--space-almost-32) 22px;
+        }
+
+        .architect-card {
+            background: var(--white);
+            color: var(--black);
+            border: 2px solid var(--white);
+            padding: var(--space-almost-32);
+            transition: all 0.4s var(--spring);
+            position: relative;
+        }
+
+        /* STAGGERED POSITIONING - Core 3% Rule */
+        .architect-card:nth-child(1) {
+            transform: translateY(0) translateX(0);
+        }
+        .architect-card:nth-child(2) {
+            transform: translateY(24px) translateX(3%);
+        }
+        .architect-card:nth-child(3) {
+            transform: translateY(-12px) translateX(-2%);
+        }
+
+        .architect-card:hover {
+            transform: translate(-4px, -4px) !important;
+            box-shadow: 8px 8px 0 var(--gold);
+        }
+
+        .architect-initial {
+            position: absolute;
+            top: -18px;
+            left: 24px;
+            font-family: 'Playfair Display', serif;
+            font-size: 72px;
+            font-weight: 700;
+            color: var(--red);
+            line-height: 1;
+            /* Off-grid */
+            transform: translateX(-3px);
+        }
+
+        .architect-avatar {
+            width: 82px; /* Not 80 */
+            height: 82px;
+            background: var(--black);
+            margin-bottom: var(--space-almost-24);
+            margin-top: var(--space-almost-32);
+            /* Asymmetric positioning */
+            margin-left: 47%;
+            transform: translateX(-50%);
+        }
+
+        .architect-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .architect-years {
+            font-size: 13px;
+            opacity: 0.6;
+            margin-bottom: var(--space-almost-16);
+        }
+
+        .architect-bio {
+            font-size: 13px;
+            line-height: 1.6;
+            opacity: 0.8;
+            margin-bottom: var(--space-almost-24);
+        }
+
+        .architect-stat {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            padding-top: var(--space-almost-16);
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .architect-stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--red);
+        }
+
+        .architect-stat-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            opacity: 0.6;
+        }
+
+        /* ============================================
+           SECTION 6: ARCHITECT DETAIL
+           E. Fay Jones Profile
+           ============================================ */
+
+        #architect-detail {
+            background: #FAFAFA;
+        }
+
+        .architect-detail-layout {
+            display: grid;
+            /* ASYMMETRIC: 42/58 (reverse of home detail) */
+            grid-template-columns: 42fr 58fr;
+            gap: var(--space-almost-80);
+            /* Off-grid */
+            margin-right: -3%;
+        }
+
+        .architect-profile {
+            /* Sticky with off-grid positioning */
+            position: sticky;
+            top: 120px;
+            transform: translateX(3%);
+        }
+
+        .architect-portrait {
+            width: 100%;
+            height: 380px;
+            background: linear-gradient(135deg, var(--black) 0%, var(--navy) 100%);
+            border: 2px solid var(--black);
+            box-shadow: var(--shadow-lg);
+            margin-bottom: var(--space-almost-32);
+            position: relative;
+        }
+
+        .architect-portrait::after {
+            content: 'E. FAY JONES';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 16px;
+            background: var(--black);
+            color: var(--white);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-align: center;
+        }
+
+        .profile-meta {
+            /* Asymmetric padding */
+            padding-left: 4%;
+            padding-right: 2%;
+        }
+
+        .profile-name {
+            margin-bottom: 8px;
+        }
+
+        .profile-dates {
+            font-size: 14px;
+            opacity: 0.7;
+            margin-bottom: var(--space-almost-24);
+        }
+
+        .profile-accolade {
+            display: inline-block;
+            padding: 8px 16px;
+            background: var(--gold);
+            color: var(--black);
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-bottom: var(--space-almost-32);
+            /* Off-grid */
+            transform: translateX(-3%);
+        }
+
+        .profile-bio {
+            font-size: 14px;
+            line-height: 1.8;
+            opacity: 0.85;
+        }
+
+        .architect-works {
+            /* Off-grid */
+            transform: translateX(-2%);
+        }
+
+        .works-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: var(--space-almost-32);
+            padding-bottom: var(--space-almost-16);
+            border-bottom: 2px solid var(--black);
+        }
+
+        .works-count {
+            font-size: 13px;
+            opacity: 0.6;
+        }
+
+        .works-grid {
+            display: grid;
+            /* ASYMMETRIC: 52/48 */
+            grid-template-columns: 52fr 48fr;
+            gap: var(--space-almost-24) 19px;
+        }
+
+        .work-card {
+            background: var(--white);
+            border: 2px solid var(--black);
+            transition: all 0.4s var(--spring);
+        }
+
+        /* Staggered work cards */
+        .work-card:nth-child(1) { transform: translateY(0); }
+        .work-card:nth-child(2) { transform: translateY(14px); }
+        .work-card:nth-child(3) { transform: translateY(-8px); }
+        .work-card:nth-child(4) { transform: translateY(6px); }
+
+        .work-card:hover {
+            transform: translate(-3px, -3px) !important;
+            box-shadow: var(--shadow-md);
+        }
+
+        .work-card-image {
+            width: 100%;
+            height: 160px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+        }
+
+        .work-card-content {
+            padding: var(--space-almost-24);
+        }
+
+        .work-card-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .work-card-meta {
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        /* ============================================
+           FOOTER
+           ============================================ */
+
+        .footer {
+            background: var(--black);
+            color: var(--white);
+            padding: var(--space-almost-80) var(--space-almost-48);
+            /* Asymmetric padding */
+            padding-left: 6%;
+            padding-right: 4%;
+        }
+
+        .footer-inner {
+            max-width: 1440px;
+            margin: 0 auto;
+            display: grid;
+            /* ASYMMETRIC: 38/31/31 */
+            grid-template-columns: 38fr 31fr 31fr;
+            gap: var(--space-almost-64);
+        }
+
+        .footer-brand {
+            /* Off-grid */
+            transform: translateX(-2%);
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: var(--space-almost-24);
+        }
+
+        .footer-logo span {
+            color: var(--red);
+        }
+
+        .footer-tagline {
+            font-size: 13px;
+            opacity: 0.7;
+            line-height: 1.7;
+            max-width: 320px;
+        }
+
+        .footer-links h4 {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: var(--space-almost-24);
+            color: var(--gold);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            font-size: 13px;
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: var(--space-almost-32);
+            margin-top: var(--space-almost-48);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 11px;
+            opacity: 0.5;
+        }
+
+        .footer-credit {
+            /* Off-grid */
+            transform: translateX(3%);
+        }
+
+        /* ============================================
+           RESPONSIVE - Maintain asymmetry
+           ============================================ */
+
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: var(--space-almost-48);
+            }
+
+            .hero-text {
+                transform: translateX(-2%);
+            }
+
+            .hero-cards {
+                transform: translateX(1%);
+            }
+
+            .grid-asymmetric {
+                grid-template-columns: 48fr 52fr;
+            }
+
+            .detail-layout,
+            .architect-detail-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .detail-main-image {
+                transform: translateX(-1%);
+            }
+
+            .footer-inner {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 100px var(--space-almost-24) var(--space-almost-64);
+            }
+
+            .nav {
+                padding: 14px var(--space-almost-24);
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-card:first-child {
+                grid-column: span 1;
+                margin-left: -2%;
+            }
+
+            .grid-asymmetric {
+                grid-template-columns: 1fr;
+                margin-left: -1%;
+                margin-right: 0;
+            }
+
+            .grid-card:nth-child(n) {
+                transform: translateY(0) translateX(0);
+            }
+
+            .grid-card:nth-child(odd) {
+                transform: translateX(-2%);
+            }
+
+            .grid-card:nth-child(even) {
+                transform: translateX(2%);
+            }
+
+            .list-table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            .architects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .architect-card:nth-child(n) {
+                transform: translateY(0) translateX(0);
+            }
+
+            .architect-card:nth-child(odd) {
+                transform: translateX(-1%);
+            }
+
+            .architect-card:nth-child(even) {
+                transform: translateX(2%);
+            }
+
+            .works-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-inner {
+                grid-template-columns: 1fr;
+                gap: var(--space-almost-48);
+            }
+        }
+
+        /* ============================================
+           UTILITY CLASSES
+           ============================================ */
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        /* Quotation marks for Abloh style */
+        .quote-mark::before {
+            content: '"';
+        }
+
+        .quote-mark::after {
+            content: '"';
+        }
+    </style>
+<script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script></head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="#hero" class="nav-logo">MCM<span>.</span>PLATFORM</a>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#homes-grid">Grid View</a></li>
+                <li><a href="#homes-list">List View</a></li>
+                <li><a href="#home-detail">Property</a></li>
+                <li><a href="#architects">Architects</a></li>
+                <li><a href="#architect-detail">Profile</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Section 1: Hero -->
+    <section id="hero">
+        <div class="section-inner">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <span class="section-label">Mid-Century Modern</span>
+                    <h1 class="hero-headline">WHO <em>DESIGNED</em><br>YOUR HOME?</h1>
+                    <p class="hero-subtext">
+                        Architecture is not about buildings. It's about the ideas behind them.
+                        Discover the masters who shaped California's modernist landscape.
+                    </p>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <div class="stat-number">127</div>
+                            <div class="stat-label">Properties</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">43</div>
+                            <div class="stat-label">Architects</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">1939</div>
+                            <div class="stat-label">Since</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-cards">
+                    <div class="hero-card">
+                        <div class="card-image">
+                            <span class="card-status status-museum">Museum</span>
+                        </div>
+                        <div class="card-name">Sheats-Goldstein Residence</div>
+                        <div class="card-architect">John Lautner</div>
+                        <div class="card-meta">
+                            <span class="card-year">1961</span>
+                            <span class="card-price">$40,000,000</span>
+                        </div>
+                    </div>
+                    <div class="hero-card">
+                        <div class="card-image">
+                            <span class="card-status status-sold">Sold</span>
+                        </div>
+                        <div class="card-name">Chemosphere</div>
+                        <div class="card-architect">John Lautner</div>
+                        <div class="card-meta">
+                            <span class="card-year">1960</span>
+                            <span class="card-price">$1,000,000</span>
+                        </div>
+                    </div>
+                    <div class="hero-card">
+                        <div class="card-image">
+                            <span class="card-status status-sold">Sold</span>
+                        </div>
+                        <div class="card-name">Garcia House</div>
+                        <div class="card-architect">John Lautner</div>
+                        <div class="card-meta">
+                            <span class="card-year">1962</span>
+                            <span class="card-price">$12,500,000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Homes Grid -->
+    <section id="homes-grid">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-label">Browse Collection</span>
+                <h2>Properties</h2>
+            </div>
+            <div class="grid-asymmetric">
+                <div class="grid-card">
+                    <div class="grid-card-image">
+                        <span class="card-status status-sold">Sold</span>
+                    </div>
+                    <div class="grid-card-content">
+                        <h3 class="grid-card-title">Chemosphere</h3>
+                        <p class="grid-card-architect">John Lautner, 1960</p>
+                        <div class="grid-card-details">
+                            <span>Hollywood Hills</span>
+                            <span>$1,000,000</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-card">
+                    <div class="grid-card-image">
+                        <span class="card-status status-museum">Museum</span>
+                    </div>
+                    <div class="grid-card-content">
+                        <h3 class="grid-card-title">Sheats-Goldstein Residence</h3>
+                        <p class="grid-card-architect">John Lautner, 1961</p>
+                        <div class="grid-card-details">
+                            <span>Beverly Crest</span>
+                            <span>$40,000,000</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-card">
+                    <div class="grid-card-image">
+                        <span class="card-status status-sold">Sold</span>
+                    </div>
+                    <div class="grid-card-content">
+                        <h3 class="grid-card-title">Garcia House</h3>
+                        <p class="grid-card-architect">John Lautner, 1962</p>
+                        <div class="grid-card-details">
+                            <span>Hollywood Hills</span>
+                            <span>$12,500,000</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-card">
+                    <div class="grid-card-image">
+                        <span class="card-status status-sold">Sold</span>
+                    </div>
+                    <div class="grid-card-content">
+                        <h3 class="grid-card-title">Foster Carling Residence</h3>
+                        <p class="grid-card-architect">John Lautner, 1949</p>
+                        <div class="grid-card-details">
+                            <span>Hollywood Hills</span>
+                            <span>$3,250,000</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-card">
+                    <div class="grid-card-image">
+                        <span class="card-status status-archived">Archived</span>
+                    </div>
+                    <div class="grid-card-content">
+                        <h3 class="grid-card-title">Lautner House</h3>
+                        <p class="grid-card-architect">John Lautner, 1939</p>
+                        <div class="grid-card-details">
+                            <span>Silver Lake</span>
+                            <span>$1,670,000</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-card">
+                    <div class="grid-card-image">
+                        <span class="card-status status-sale">For Sale</span>
+                    </div>
+                    <div class="grid-card-content">
+                        <h3 class="grid-card-title">Thorncrown Chapel</h3>
+                        <p class="grid-card-architect">E. Fay Jones, 1980</p>
+                        <div class="grid-card-details">
+                            <span>Eureka Springs, AR</span>
+                            <span>Inquire</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Homes List -->
+    <section id="homes-list">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-label">Full Catalog</span>
+                <h2>All Properties</h2>
+            </div>
+            <table class="list-table">
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Architect</th>
+                        <th>Location</th>
+                        <th>Year</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="list-property-name">Chemosphere (Malin Residence)</span></td>
+                        <td class="list-architect">John Lautner</td>
+                        <td class="list-location">Hollywood Hills, CA</td>
+                        <td class="list-year">1960</td>
+                        <td class="list-price">$1,000,000</td>
+                        <td><span class="list-status status-sold">Sold</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="list-property-name">Sheats-Goldstein Residence</span></td>
+                        <td class="list-architect">John Lautner</td>
+                        <td class="list-location">Beverly Crest, CA</td>
+                        <td class="list-year">1961</td>
+                        <td class="list-price">$40,000,000</td>
+                        <td><span class="list-status status-museum">Museum</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="list-property-name">Garcia House</span></td>
+                        <td class="list-architect">John Lautner</td>
+                        <td class="list-location">Hollywood Hills, CA</td>
+                        <td class="list-year">1962</td>
+                        <td class="list-price">$12,500,000</td>
+                        <td><span class="list-status status-sold">Sold</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="list-property-name">Foster Carling Residence</span></td>
+                        <td class="list-architect">John Lautner</td>
+                        <td class="list-location">Hollywood Hills, CA</td>
+                        <td class="list-year">1949</td>
+                        <td class="list-price">$3,250,000</td>
+                        <td><span class="list-status status-sold">Sold</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="list-property-name">Lautner House</span></td>
+                        <td class="list-architect">John Lautner</td>
+                        <td class="list-location">Silver Lake, CA</td>
+                        <td class="list-year">1939</td>
+                        <td class="list-price">$1,670,000</td>
+                        <td><span class="list-status status-archived">Archived</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Section 4: Home Detail -->
+    <section id="home-detail">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-label">Property Detail</span>
+            </div>
+            <div class="detail-layout">
+                <div class="detail-gallery">
+                    <div class="detail-main-image"></div>
+                    <div class="detail-thumbs">
+                        <div class="detail-thumb"></div>
+                        <div class="detail-thumb"></div>
+                        <div class="detail-thumb"></div>
+                        <div class="detail-thumb"></div>
+                    </div>
+                </div>
+                <div class="detail-info">
+                    <span class="detail-status">Museum</span>
+                    <h2 class="detail-title">Sheats-Goldstein Residence</h2>
+                    <p class="detail-architect">Designed by <a href="#architect-detail">John Lautner</a></p>
+                    <div class="detail-specs">
+                        <div class="spec-item">
+                            <div class="spec-label">Year Built</div>
+                            <div class="spec-value">1961</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Location</div>
+                            <div class="spec-value">Beverly Crest, CA</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Square Footage</div>
+                            <div class="spec-value">6,000 sq ft</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Lot Size</div>
+                            <div class="spec-value">1.1 acres</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Value</div>
+                            <div class="spec-value">$40,000,000</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="spec-label">Status</div>
+                            <div class="spec-value">LACMA Collection</div>
+                        </div>
+                    </div>
+                    <p class="detail-description">
+                        The Sheats-Goldstein Residence is a masterwork of organic architecture,
+                        featuring Lautner's signature use of concrete, glass, and natural forms.
+                        Perched in the hills of Beverly Crest, the home dissolves the boundary
+                        between interior and exterior, creating a continuous flow with the landscape.
+                        James Goldstein bequeathed the property to LACMA in 2016, ensuring its
+                        preservation as a cultural landmark.
+                    </p>
+                    <div class="detail-cta">
+                        <a href="#" class="btn btn-primary">Schedule Tour</a>
+                        <a href="#" class="btn btn-secondary">Download Brief</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Architects Directory -->
+    <section id="architects">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-label">The Masters</span>
+                <h2>Architects</h2>
+            </div>
+            <div class="architects-grid">
+                <div class="architect-card">
+                    <span class="architect-initial">J</span>
+                    <div class="architect-avatar"></div>
+                    <h3 class="architect-name">John Lautner</h3>
+                    <p class="architect-years">1911 - 1994</p>
+                    <p class="architect-bio">
+                        Master of California organic modernism. His buildings embrace
+                        nature and express the boundless possibilities of space.
+                    </p>
+                    <div class="architect-stat">
+                        <span class="architect-stat-number">5</span>
+                        <span class="architect-stat-label">Properties Listed</span>
+                    </div>
+                </div>
+                <div class="architect-card">
+                    <span class="architect-initial">E</span>
+                    <div class="architect-avatar"></div>
+                    <h3 class="architect-name">E. Fay Jones</h3>
+                    <p class="architect-years">1921 - 2004</p>
+                    <p class="architect-bio">
+                        AIA Gold Medal recipient. Known for Thorncrown Chapel and
+                        an extensive body of residential organic architecture.
+                    </p>
+                    <div class="architect-stat">
+                        <span class="architect-stat-number">8</span>
+                        <span class="architect-stat-label">Properties Listed</span>
+                    </div>
+                </div>
+                <div class="architect-card">
+                    <span class="architect-initial">A</span>
+                    <div class="architect-avatar"></div>
+                    <h3 class="architect-name">Alden B. Dow</h3>
+                    <p class="architect-years">1904 - 1983</p>
+                    <p class="architect-bio">
+                        Frank Lloyd Wright apprentice who developed his own distinctive
+                        style of organic architecture in Michigan.
+                    </p>
+                    <div class="architect-stat">
+                        <span class="architect-stat-number">27</span>
+                        <span class="architect-stat-label">Properties Listed</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6: Architect Detail -->
+    <section id="architect-detail">
+        <div class="section-inner">
+            <div class="section-header">
+                <span class="section-label">Architect Profile</span>
+            </div>
+            <div class="architect-detail-layout">
+                <div class="architect-profile">
+                    <div class="architect-portrait"></div>
+                    <div class="profile-meta">
+                        <h2 class="profile-name">E. Fay Jones</h2>
+                        <p class="profile-dates">1921 - 2004</p>
+                        <span class="profile-accolade">AIA Gold Medal 1990</span>
+                        <p class="profile-bio">
+                            Euine Fay Jones was an American architect from Arkansas,
+                            best known for Thorncrown Chapel in Eureka Springs. A student
+                            of Frank Lloyd Wright, Jones developed a distinctive approach
+                            to organic architecture that harmonized with the Ozark landscape.
+                            His work emphasized natural materials, abundant light, and a
+                            spiritual connection between structure and site.
+                        </p>
+                    </div>
+                </div>
+                <div class="architect-works">
+                    <div class="works-header">
+                        <h3>Notable Works</h3>
+                        <span class="works-count">8 properties in collection</span>
+                    </div>
+                    <div class="works-grid">
+                        <div class="work-card">
+                            <div class="work-card-image"></div>
+                            <div class="work-card-content">
+                                <h4 class="work-card-name">Thorncrown Chapel</h4>
+                                <p class="work-card-meta">Eureka Springs, AR | 1980</p>
+                            </div>
+                        </div>
+                        <div class="work-card">
+                            <div class="work-card-image"></div>
+                            <div class="work-card-content">
+                                <h4 class="work-card-name">Cooper Memorial Chapel</h4>
+                                <p class="work-card-meta">Bella Vista, AR | 1988</p>
+                            </div>
+                        </div>
+                        <div class="work-card">
+                            <div class="work-card-image"></div>
+                            <div class="work-card-content">
+                                <h4 class="work-card-name">Mildred B. Cooper Chapel</h4>
+                                <p class="work-card-meta">Bella Vista, AR | 1988</p>
+                            </div>
+                        </div>
+                        <div class="work-card">
+                            <div class="work-card-image"></div>
+                            <div class="work-card-content">
+                                <h4 class="work-card-name">Pinecote Pavilion</h4>
+                                <p class="work-card-meta">Picayune, MS | 1990</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="footer-logo">MCM<span>.</span>PLATFORM</div>
+                <p class="footer-tagline">
+                    Documenting the architecture that defined a generation.
+                    Every home tells a story of vision, craft, and the
+                    relentless pursuit of beauty.
+                </p>
+            </div>
+            <div class="footer-links">
+                <h4>Explore</h4>
+                <ul>
+                    <li><a href="#homes-grid">All Properties</a></li>
+                    <li><a href="#architects">Architects</a></li>
+                    <li><a href="#">Movements</a></li>
+                    <li><a href="#">Timeline</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="#">Our Mission</a></li>
+                    <li><a href="#">Submit Property</a></li>
+                    <li><a href="#">Press</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2024 MCM Platform. All rights reserved.</span>
+                <span class="footer-credit">Agent 2: The Grid Breaker</span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

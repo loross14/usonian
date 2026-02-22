@@ -2,10 +2,9 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import architectsData from "@/data/architects.json";
 import propertiesData from "@/data/properties.json";
-import { formatPrice, formatLocation, type Architect, type Property } from "@/types";
+import { formatPrice, formatLocation, getPropertyBadgeType, type Architect, type Property } from "@/types";
 import { PrairieLines } from "@/components/ui/PrairieLines";
 import { NewsletterCTA } from "@/components/ui/NewsletterCTA";
-import { StarIcon } from "@/components/icons/StarIcon";
 import { Badge } from "@/components/ui/Badge";
 import { ReferenceLink } from "@/components/ui/ReferenceLink";
 import { getArchitectPortraitUrl, getArchitectPortraitWideUrl } from "@/lib/architect-portraits";
@@ -76,22 +75,26 @@ export default async function ArchitectDetailPage({ params }: PageProps) {
       <section className="border-b border-black">
         <div className="container py-16 md:py-24">
           {/* Breadcrumb */}
-          <nav className="mb-8">
-            <ol className="flex items-center gap-2 text-[10px] tracking-[0.15em] opacity-50">
-              <li>
-                <Link href="/architects" className="hover:opacity-100 transition-opacity">
-                  ARCHITECTS
-                </Link>
-              </li>
-              <li>/</li>
-              <li className="opacity-100 font-bold">{architect.name.toUpperCase()}</li>
-            </ol>
+          <nav className="mb-8" aria-label="Breadcrumb">
+            <Link
+              href="/architects"
+              className="inline-flex items-center gap-3 text-sm font-semibold tracking-[0.1em] hover:underline underline-offset-4 transition-opacity"
+            >
+              <img
+                src="/icons/logo-transparent.png"
+                alt=""
+                aria-hidden="true"
+                className="w-5 h-5 object-contain"
+              />
+              <span className="opacity-60">ARCHITECTS</span>
+              <span className="opacity-60">/</span>
+              <span>{architect.name.toUpperCase()}</span>
+            </Link>
           </nav>
 
           {/* Fellowship */}
           {isTaliesin && (
             <div className="flex items-center gap-3 mb-4">
-              <StarIcon size={16} active />
               <span className="fellowship-badge">Taliesin {architect.fellowship_years}</span>
             </div>
           )}
@@ -218,9 +221,8 @@ export default async function ArchitectDetailPage({ params }: PageProps) {
                     href={`/homes/${property.slug}`}
                     className="property-row grid grid-cols-1 md:grid-cols-[40px_1fr_80px_160px_100px_140px] gap-2 md:gap-4"
                   >
-                    {/* Star */}
+                    {/* Empty column for alignment */}
                     <div className="hidden md:flex justify-center">
-                      <StarIcon size={10} active={isTaliesin} />
                     </div>
                     {/* Name */}
                     <div className="text-xs font-bold">
@@ -239,7 +241,7 @@ export default async function ArchitectDetailPage({ params }: PageProps) {
                     </div>
                     {/* Status */}
                     <div className="md:text-right">
-                      <Badge status={property.status} />
+                      <Badge status={getPropertyBadgeType(property)} />
                     </div>
                     {/* Price */}
                     <div className={`font-bold text-xs md:text-right ${property.status === 'active' ? 'text-red' : ''}`}>

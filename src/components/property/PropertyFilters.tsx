@@ -2,24 +2,26 @@
 
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { useCallback } from "react";
-import type { StatusFilter, Architect } from "@/types";
+import type { ExperienceFilter, Architect } from "@/types";
 
 interface PropertyFiltersProps {
   architects: Architect[];
   states: string[];
   counts: {
     all: number;
-    active: number;
-    sold: number;
-    museum: number;
+    sale: number;
+    visit: number;
+    stay: number;
+    offmarket: number;
   };
 }
 
-const STATUS_TABS: Array<{ value: StatusFilter; label: string }> = [
+const EXPERIENCE_TABS: Array<{ value: ExperienceFilter; label: string }> = [
   { value: "all", label: "ALL" },
-  { value: "active", label: "FOR SALE" },
-  { value: "sold", label: "SOLD" },
-  { value: "museum", label: "MUSEUM" },
+  { value: "sale", label: "FOR SALE" },
+  { value: "visit", label: "VISIT" },
+  { value: "stay", label: "STAY" },
+  { value: "offmarket", label: "OFF-MARKET" },
 ];
 
 export function PropertyFilters({
@@ -30,7 +32,7 @@ export function PropertyFilters({
   const router = useRouter();
   const pathname = usePathname();
 
-  const currentStatus = (searchParams.get("status") as StatusFilter) || "all";
+  const currentStatus = (searchParams.get("status") as ExperienceFilter) || "all";
   const currentArchitect = searchParams.get("architect");
   const currentState = searchParams.get("state");
   const currentYear = searchParams.get("year");
@@ -57,9 +59,9 @@ export function PropertyFilters({
   return (
     <div className="filter-bar">
       <div style={{ display: "flex", alignItems: "center" }}>
-        {/* Status Tabs */}
+        {/* Experience Tabs */}
         <div className="filter-tabs">
-          {STATUS_TABS.map((tab) => (
+          {EXPERIENCE_TABS.map((tab) => (
             <button
               key={tab.value}
               onClick={() =>

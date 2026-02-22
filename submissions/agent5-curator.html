@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHO DESIGNED YOUR HOME? | An Exhibition of Architectural Masterworks</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --red: #BF0A30;
+            --navy: #002868;
+            --gold: #D4B270;
+            --black: #000000;
+            --white: #FFFFFF;
+            --shadow-sm: 2px 2px 0 var(--black);
+            --shadow-md: 4px 4px 0 var(--black);
+            --shadow-lg: 6px 6px 0 var(--black);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 1.7;
+            color: var(--black);
+            background-color: var(--white);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--white);
+            border-bottom: 2px solid var(--black);
+            padding: 1rem 2rem;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--black);
+            text-decoration: none;
+            padding: 0.5rem 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            border-bottom-color: var(--black);
+        }
+
+        /* Sections */
+        section {
+            min-height: 100vh;
+            padding: 8rem 2rem 4rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Hero Section */
+        #hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: var(--white);
+            padding-top: 10rem;
+        }
+
+        .exhibition-title {
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            letter-spacing: -0.03em;
+        }
+
+        .exhibition-subtitle {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: var(--black);
+            opacity: 0.7;
+            margin-bottom: 4rem;
+        }
+
+        .collection-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 4rem;
+            border: 2px solid var(--black);
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 400;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            opacity: 0.7;
+        }
+
+        .museum-info {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-top: 4rem;
+            opacity: 0.6;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 6rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--black);
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 1rem;
+        }
+
+        .section-header .gallery-note {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            opacity: 0.6;
+        }
+
+        /* Property Grid (Artwork Grid) */
+        .artwork-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 4rem;
+        }
+
+        .artwork-card {
+            background: var(--white);
+            border: 2px solid var(--black);
+            box-shadow: var(--shadow-md);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .artwork-card:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .artwork-image {
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+            border-bottom: 2px solid var(--black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .artwork-image::before {
+            content: '';
+            position: absolute;
+            inset: 20px;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .artwork-placeholder {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-style: italic;
+            opacity: 0.15;
+        }
+
+        /* Status Badges */
+        .status-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.4rem 0.8rem;
+            font-size: 9px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            border: 2px solid var(--black);
+        }
+
+        .status-sold {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .status-museum {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .status-for-sale {
+            background: var(--red);
+            color: var(--white);
+        }
+
+        .status-archived {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        /* Tombstone Label */
+        .tombstone {
+            padding: 2rem;
+        }
+
+        .tombstone-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .tombstone-artist {
+            font-size: 13px;
+            margin-bottom: 1rem;
+        }
+
+        .tombstone-details {
+            font-size: 11px;
+            line-height: 1.8;
+            opacity: 0.7;
+        }
+
+        .tombstone-details span {
+            display: block;
+        }
+
+        .accession-number {
+            font-size: 10px;
+            opacity: 0.5;
+            margin-top: 1rem;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Catalog List View */
+        .catalog-list {
+            border: 2px solid var(--black);
+        }
+
+        .catalog-header {
+            display: grid;
+            grid-template-columns: 100px 2fr 1.5fr 1fr 1fr 120px;
+            gap: 1rem;
+            padding: 1rem 2rem;
+            background: var(--black);
+            color: var(--white);
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        .catalog-row {
+            display: grid;
+            grid-template-columns: 100px 2fr 1.5fr 1fr 1fr 120px;
+            gap: 1rem;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--black);
+            align-items: center;
+            transition: background 0.2s;
+        }
+
+        .catalog-row:last-child {
+            border-bottom: none;
+        }
+
+        .catalog-row:hover {
+            background: rgba(0,0,0,0.02);
+        }
+
+        .catalog-accession {
+            font-size: 10px;
+            opacity: 0.5;
+        }
+
+        .catalog-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+        }
+
+        .catalog-artist {
+            font-size: 12px;
+        }
+
+        .catalog-date,
+        .catalog-location {
+            font-size: 11px;
+            opacity: 0.7;
+        }
+
+        .catalog-status {
+            text-align: right;
+        }
+
+        .catalog-status .status-badge {
+            position: static;
+            display: inline-block;
+        }
+
+        /* Home Detail (Full Museum Label) */
+        .detail-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            margin-bottom: 6rem;
+        }
+
+        .detail-image {
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, #f0f0f0 0%, #e8e8e8 50%, #e0e0e0 100%);
+            border: 2px solid var(--black);
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .detail-image::before {
+            content: '';
+            position: absolute;
+            inset: 30px;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .detail-placeholder {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-style: italic;
+            opacity: 0.12;
+        }
+
+        .museum-label {
+            padding: 3rem 0;
+        }
+
+        .museum-label-header {
+            border-bottom: 2px solid var(--black);
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .museum-label h1 {
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+        }
+
+        .museum-label .artist-name {
+            font-size: 1.25rem;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1.5rem;
+        }
+
+        .museum-label .medium-date {
+            font-size: 12px;
+            opacity: 0.7;
+            margin-bottom: 0.5rem;
+        }
+
+        .museum-label .dimensions {
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        .label-section {
+            margin-bottom: 2rem;
+        }
+
+        .label-section-title {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 0.75rem;
+            opacity: 0.5;
+        }
+
+        .label-section-content {
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .provenance-list {
+            list-style: none;
+        }
+
+        .provenance-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            font-size: 12px;
+        }
+
+        .provenance-list li:last-child {
+            border-bottom: none;
+        }
+
+        .provenance-date {
+            opacity: 0.5;
+            margin-right: 1rem;
+        }
+
+        .view-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            background: var(--gold);
+            border: 2px solid var(--black);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-top: 1rem;
+        }
+
+        .view-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--black);
+        }
+
+        /* Architects Directory */
+        .artists-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .artist-card {
+            border: 2px solid var(--black);
+            padding: 2rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .artist-card:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .artist-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .artist-dates {
+            font-size: 12px;
+            opacity: 0.6;
+            margin-bottom: 1rem;
+        }
+
+        .artist-bio {
+            font-size: 12px;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .artist-works-count {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            opacity: 0.5;
+        }
+
+        /* Architect Detail (Exhibition History) */
+        .artist-detail-header {
+            text-align: center;
+            padding: 4rem 0;
+            border-bottom: 2px solid var(--black);
+            margin-bottom: 4rem;
+        }
+
+        .artist-detail-header h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            margin-bottom: 1rem;
+        }
+
+        .artist-detail-header .nationality-dates {
+            font-size: 14px;
+            opacity: 0.7;
+            margin-bottom: 2rem;
+        }
+
+        .artist-detail-header .artist-statement {
+            max-width: 700px;
+            margin: 0 auto;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-style: italic;
+            line-height: 1.8;
+        }
+
+        .exhibition-history {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .exhibition-section {
+            margin-bottom: 4rem;
+        }
+
+        .exhibition-section h3 {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--black);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+        }
+
+        .exhibition-item {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 2rem;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .exhibition-year {
+            font-size: 12px;
+            opacity: 0.5;
+        }
+
+        .exhibition-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .exhibition-venue {
+            font-size: 12px;
+            opacity: 0.7;
+        }
+
+        .bibliography-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            font-size: 12px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 11px;
+            opacity: 0.6;
+            letter-spacing: 0.1em;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .detail-hero {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .catalog-header,
+            .catalog-row {
+                grid-template-columns: 80px 1fr 1fr 100px;
+            }
+
+            .catalog-location,
+            .catalog-date {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+            }
+
+            nav a {
+                font-size: 10px;
+            }
+
+            section {
+                padding: 6rem 1rem 3rem;
+            }
+
+            .collection-stats {
+                padding: 2rem;
+                gap: 2rem;
+            }
+
+            .artwork-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .catalog-header,
+            .catalog-row {
+                grid-template-columns: 1fr auto;
+                padding: 1rem;
+            }
+
+            .catalog-accession,
+            .catalog-artist {
+                display: none;
+            }
+
+            .exhibition-item {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+<script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script></head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#hero" class="active">Exhibition</a></li>
+            <li><a href="#grid">Gallery View</a></li>
+            <li><a href="#list">Catalog</a></li>
+            <li><a href="#detail">Featured Work</a></li>
+            <li><a href="#artists">Artists</a></li>
+            <li><a href="#artist-detail">Artist Focus</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO / GALLERY ENTRANCE -->
+    <section id="hero">
+        <div class="container">
+            <p class="exhibition-subtitle">A Curatorial Exhibition of Architectural Masterworks</p>
+            <h1 class="exhibition-title">Who Designed<br>Your Home?</h1>
+            <p class="exhibition-subtitle">California Organic Modernism, 1939-1994</p>
+
+            <div class="collection-stats">
+                <div class="stat">
+                    <span class="stat-number">5</span>
+                    <span class="stat-label">Works in Collection</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">4</span>
+                    <span class="stat-label">Artists Represented</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">1</span>
+                    <span class="stat-label">Currently on View</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">1939</span>
+                    <span class="stat-label">Earliest Work</span>
+                </div>
+            </div>
+
+            <p class="museum-info">Los Angeles County Museum of Art | Permanent Collection</p>
+        </div>
+    </section>
+
+    <!-- HOMES GRID (Gallery View) -->
+    <section id="grid">
+        <div class="container">
+            <div class="section-header">
+                <h2>Works in Collection</h2>
+                <p class="gallery-note">Gallery View | 5 Architectural Masterworks</p>
+            </div>
+
+            <div class="artwork-grid">
+                <!-- Chemosphere -->
+                <article class="artwork-card">
+                    <div class="artwork-image">
+                        <span class="status-badge status-sold">Sold</span>
+                        <span class="artwork-placeholder">I</span>
+                    </div>
+                    <div class="tombstone">
+                        <h3 class="tombstone-title">Chemosphere (Malin Residence)</h3>
+                        <p class="tombstone-artist">John Lautner (American, 1911-1994)</p>
+                        <div class="tombstone-details">
+                            <span>1960</span>
+                            <span>Concrete, steel, glass</span>
+                            <span>Hollywood Hills, California</span>
+                            <span>Acquired 2023 | $1,000,000</span>
+                        </div>
+                        <p class="accession-number">2023.LAU.001</p>
+                    </div>
+                </article>
+
+                <!-- Sheats-Goldstein -->
+                <article class="artwork-card">
+                    <div class="artwork-image">
+                        <span class="status-badge status-museum">Museum</span>
+                        <span class="artwork-placeholder">II</span>
+                    </div>
+                    <div class="tombstone">
+                        <h3 class="tombstone-title">Sheats-Goldstein Residence</h3>
+                        <p class="tombstone-artist">John Lautner (American, 1911-1994)</p>
+                        <div class="tombstone-details">
+                            <span>1961</span>
+                            <span>Concrete, glass, coffered ceiling system</span>
+                            <span>Beverly Crest, California</span>
+                            <span>Gift to LACMA, 2016 | $40,000,000</span>
+                        </div>
+                        <p class="accession-number">2016.LAU.002</p>
+                    </div>
+                </article>
+
+                <!-- Garcia House -->
+                <article class="artwork-card">
+                    <div class="artwork-image">
+                        <span class="status-badge status-sold">Sold</span>
+                        <span class="artwork-placeholder">III</span>
+                    </div>
+                    <div class="tombstone">
+                        <h3 class="tombstone-title">Garcia House</h3>
+                        <p class="tombstone-artist">John Lautner (American, 1911-1994)</p>
+                        <div class="tombstone-details">
+                            <span>1962</span>
+                            <span>Concrete, steel, glass curtain walls</span>
+                            <span>Hollywood Hills, California</span>
+                            <span>Acquired 2022 | $12,500,000</span>
+                        </div>
+                        <p class="accession-number">2022.LAU.003</p>
+                    </div>
+                </article>
+
+                <!-- Foster Carling -->
+                <article class="artwork-card">
+                    <div class="artwork-image">
+                        <span class="status-badge status-sold">Sold</span>
+                        <span class="artwork-placeholder">IV</span>
+                    </div>
+                    <div class="tombstone">
+                        <h3 class="tombstone-title">Foster Carling Residence</h3>
+                        <p class="tombstone-artist">John Lautner (American, 1911-1994)</p>
+                        <div class="tombstone-details">
+                            <span>1949</span>
+                            <span>Wood, glass, native stone</span>
+                            <span>Hollywood Hills, California</span>
+                            <span>Acquired 2021 | $3,250,000</span>
+                        </div>
+                        <p class="accession-number">2021.LAU.004</p>
+                    </div>
+                </article>
+
+                <!-- Lautner House -->
+                <article class="artwork-card">
+                    <div class="artwork-image">
+                        <span class="status-badge status-archived">Archived</span>
+                        <span class="artwork-placeholder">V</span>
+                    </div>
+                    <div class="tombstone">
+                        <h3 class="tombstone-title">Lautner House</h3>
+                        <p class="tombstone-artist">John Lautner (American, 1911-1994)</p>
+                        <div class="tombstone-details">
+                            <span>1939</span>
+                            <span>Redwood, glass, concrete</span>
+                            <span>Silver Lake, California</span>
+                            <span>On permanent loan | $1,670,000</span>
+                        </div>
+                        <p class="accession-number">1939.LAU.005</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOMES LIST (Catalog Format) -->
+    <section id="list">
+        <div class="container">
+            <div class="section-header">
+                <h2>Collection Catalog</h2>
+                <p class="gallery-note">Accession Reference | Complete Holdings</p>
+            </div>
+
+            <div class="catalog-list">
+                <div class="catalog-header">
+                    <span>Accession</span>
+                    <span>Title</span>
+                    <span>Artist</span>
+                    <span>Date</span>
+                    <span>Location</span>
+                    <span>Status</span>
+                </div>
+
+                <div class="catalog-row">
+                    <span class="catalog-accession">2023.LAU.001</span>
+                    <span class="catalog-title">Chemosphere (Malin Residence)</span>
+                    <span class="catalog-artist">John Lautner</span>
+                    <span class="catalog-date">1960</span>
+                    <span class="catalog-location">Hollywood Hills</span>
+                    <span class="catalog-status"><span class="status-badge status-sold">Sold</span></span>
+                </div>
+
+                <div class="catalog-row">
+                    <span class="catalog-accession">2016.LAU.002</span>
+                    <span class="catalog-title">Sheats-Goldstein Residence</span>
+                    <span class="catalog-artist">John Lautner</span>
+                    <span class="catalog-date">1961</span>
+                    <span class="catalog-location">Beverly Crest</span>
+                    <span class="catalog-status"><span class="status-badge status-museum">Museum</span></span>
+                </div>
+
+                <div class="catalog-row">
+                    <span class="catalog-accession">2022.LAU.003</span>
+                    <span class="catalog-title">Garcia House</span>
+                    <span class="catalog-artist">John Lautner</span>
+                    <span class="catalog-date">1962</span>
+                    <span class="catalog-location">Hollywood Hills</span>
+                    <span class="catalog-status"><span class="status-badge status-sold">Sold</span></span>
+                </div>
+
+                <div class="catalog-row">
+                    <span class="catalog-accession">2021.LAU.004</span>
+                    <span class="catalog-title">Foster Carling Residence</span>
+                    <span class="catalog-artist">John Lautner</span>
+                    <span class="catalog-date">1949</span>
+                    <span class="catalog-location">Hollywood Hills</span>
+                    <span class="catalog-status"><span class="status-badge status-sold">Sold</span></span>
+                </div>
+
+                <div class="catalog-row">
+                    <span class="catalog-accession">1939.LAU.005</span>
+                    <span class="catalog-title">Lautner House</span>
+                    <span class="catalog-artist">John Lautner</span>
+                    <span class="catalog-date">1939</span>
+                    <span class="catalog-location">Silver Lake</span>
+                    <span class="catalog-status"><span class="status-badge status-archived">Archived</span></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOME DETAIL (Full Museum Label) -->
+    <section id="detail">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Work</h2>
+                <p class="gallery-note">Currently on View | Gallery 3</p>
+            </div>
+
+            <div class="detail-hero">
+                <div class="detail-image">
+                    <span class="detail-placeholder">II</span>
+                </div>
+
+                <div class="museum-label">
+                    <div class="museum-label-header">
+                        <h1>Sheats-Goldstein Residence</h1>
+                        <p class="artist-name">John Lautner (American, 1911-1994)</p>
+                        <p class="medium-date">Concrete, glass, coffered ceiling system, integrated furnishings</p>
+                        <p class="medium-date">1961, with additions 1963 and 1989</p>
+                        <p class="dimensions">10,000 sq. ft. living space; 3.5 acres site</p>
+                    </div>
+
+                    <div class="label-section">
+                        <p class="label-section-title">About This Work</p>
+                        <p class="label-section-content">
+                            Considered among the most significant residential works of twentieth-century American architecture, the Sheats-Goldstein Residence exemplifies John Lautner's philosophy of organic modernism. The structure emerges from its hillside site in Beverly Crest, its triangulated concrete forms and expansive glass walls creating a seamless dialogue between interior space and the Los Angeles basin beyond. The coffered concrete ceiling system, a signature Lautner innovation, eliminates the need for traditional support columns while providing integrated climate control.
+                        </p>
+                    </div>
+
+                    <div class="label-section">
+                        <p class="label-section-title">Provenance</p>
+                        <ul class="provenance-list">
+                            <li><span class="provenance-date">1961-1972</span>Helen and Paul Sheats, Los Angeles (commissioned from the architect)</li>
+                            <li><span class="provenance-date">1972-2016</span>James F. Goldstein, Los Angeles (acquired from the Sheats estate)</li>
+                            <li><span class="provenance-date">2016-present</span>Gift to LACMA from James F. Goldstein; on permanent loan to the donor</li>
+                        </ul>
+                    </div>
+
+                    <div class="label-section">
+                        <p class="label-section-title">Exhibition History</p>
+                        <ul class="provenance-list">
+                            <li><span class="provenance-date">2016</span>"Living Architecture: John Lautner in Los Angeles," LACMA</li>
+                            <li><span class="provenance-date">2008</span>"Between Earth and Heaven: The Architecture of John Lautner," Hammer Museum</li>
+                            <li><span class="provenance-date">1994</span>"John Lautner: A Retrospective," MAK Center for Art and Architecture</li>
+                        </ul>
+                    </div>
+
+                    <div class="label-section">
+                        <p class="label-section-title">Credit Line</p>
+                        <p class="label-section-content">
+                            Gift of James F. Goldstein, 2016<br>
+                            Accession Number: 2016.LAU.002
+                        </p>
+                    </div>
+
+                    <div class="view-status">
+                        <span class="view-indicator"></span>
+                        Currently on View
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ARCHITECTS DIRECTORY (Artists in Collection) -->
+    <section id="artists">
+        <div class="container">
+            <div class="section-header">
+                <h2>Artists in Collection</h2>
+                <p class="gallery-note">Alphabetical Directory | A-Z</p>
+            </div>
+
+            <div class="artists-grid">
+                <article class="artist-card">
+                    <h3 class="artist-name">Alden B. Dow</h3>
+                    <p class="artist-dates">American, 1904-1983</p>
+                    <p class="artist-bio">
+                        Taliesin Fellow and recipient of the Paris Grand Prix in 1937. Dow's work synthesized organic principles with an innovative use of unit blocks, creating residential and institutional buildings that embody the midwestern landscape.
+                    </p>
+                    <p class="artist-works-count">0 Works in Collection</p>
+                </article>
+
+                <article class="artist-card">
+                    <h3 class="artist-name">E. Fay Jones</h3>
+                    <p class="artist-dates">American, 1921-2004</p>
+                    <p class="artist-bio">
+                        AIA Gold Medal recipient whose Thorncrown Chapel stands among the most acclaimed religious structures of the twentieth century. Jones translated Wright's organic vocabulary into the Ozark vernacular.
+                    </p>
+                    <p class="artist-works-count">0 Works in Collection</p>
+                </article>
+
+                <article class="artist-card">
+                    <h3 class="artist-name">John Lautner</h3>
+                    <p class="artist-dates">American, 1911-1994</p>
+                    <p class="artist-bio">
+                        Master of California organic modernism whose residential works redefined the relationship between architecture and landscape. Lautner's bold structural innovations and sculptural forms have influenced generations of architects.
+                    </p>
+                    <p class="artist-works-count">5 Works in Collection</p>
+                </article>
+
+                <article class="artist-card">
+                    <h3 class="artist-name">Edgar Tafel</h3>
+                    <p class="artist-dates">American, 1912-2011</p>
+                    <p class="artist-bio">
+                        Former Taliesin Fellow who worked on Fallingwater. Author of "Apprentice to Genius: Years with Frank Lloyd Wright," a seminal account of the Taliesin experience. Practiced architecture in New York for six decades.
+                    </p>
+                    <p class="artist-works-count">0 Works in Collection</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ARCHITECT DETAIL (Exhibition History Format) -->
+    <section id="artist-detail">
+        <div class="container">
+            <div class="artist-detail-header">
+                <h1>Edgar Tafel</h1>
+                <p class="nationality-dates">American, 1912-2011</p>
+                <p class="artist-statement">
+                    "Architecture is not about making buildings. It is about making places for people to live their lives. Every line drawn, every material chosen, must serve the human spirit."
+                </p>
+            </div>
+
+            <div class="exhibition-history">
+                <div class="exhibition-section">
+                    <h3>Biography</h3>
+                    <p class="label-section-content" style="margin-bottom: 2rem;">
+                        Edgar Tafel joined Frank Lloyd Wright's Taliesin Fellowship in 1932 at age nineteen, becoming one of the most accomplished apprentices of his generation. He worked directly on Fallingwater (1935-1939), the Kaufmann family's residence that would become the most celebrated house of the twentieth century. After leaving Taliesin, Tafel established his own practice in New York City, where he designed residences, religious buildings, and institutional structures for nearly six decades.
+                    </p>
+                    <p class="label-section-content">
+                        His 1979 memoir "Apprentice to Genius: Years with Frank Lloyd Wright" remains an essential primary source on the Taliesin experience, offering intimate accounts of Wright's teaching methods, the daily life of the Fellowship, and the collaborative process behind Wright's greatest works. Tafel received numerous honors including the AIA New York Chapter Medal of Honor.
+                    </p>
+                </div>
+
+                <div class="exhibition-section">
+                    <h3>Selected Works</h3>
+                    <div class="exhibition-item">
+                        <span class="exhibition-year">1956</span>
+                        <div>
+                            <p class="exhibition-title">First Presbyterian Church</p>
+                            <p class="exhibition-venue">Cottage Grove, Oregon</p>
+                        </div>
+                    </div>
+                    <div class="exhibition-item">
+                        <span class="exhibition-year">1962</span>
+                        <div>
+                            <p class="exhibition-title">Grace Lutheran Church</p>
+                            <p class="exhibition-venue">Clarksburg, West Virginia</p>
+                        </div>
+                    </div>
+                    <div class="exhibition-item">
+                        <span class="exhibition-year">1972</span>
+                        <div>
+                            <p class="exhibition-title">Tafel Residence</p>
+                            <p class="exhibition-venue">North Salem, New York</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exhibition-section">
+                    <h3>Exhibition History</h3>
+                    <div class="exhibition-item">
+                        <span class="exhibition-year">2012</span>
+                        <div>
+                            <p class="exhibition-title">Edgar Tafel: From Taliesin to New York</p>
+                            <p class="exhibition-venue">Center for Architecture, New York</p>
+                        </div>
+                    </div>
+                    <div class="exhibition-item">
+                        <span class="exhibition-year">1994</span>
+                        <div>
+                            <p class="exhibition-title">The Taliesin Fellows</p>
+                            <p class="exhibition-venue">National Building Museum, Washington D.C.</p>
+                        </div>
+                    </div>
+                    <div class="exhibition-item">
+                        <span class="exhibition-year">1985</span>
+                        <div>
+                            <p class="exhibition-title">Frank Lloyd Wright and His Apprentices</p>
+                            <p class="exhibition-venue">Museum of Modern Art, New York</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="exhibition-section">
+                    <h3>Selected Bibliography</h3>
+                    <div class="bibliography-item">
+                        Tafel, Edgar. <em>Apprentice to Genius: Years with Frank Lloyd Wright.</em> New York: McGraw-Hill, 1979.
+                    </div>
+                    <div class="bibliography-item">
+                        Tafel, Edgar. <em>About Wright: An Album of Recollections by Those Who Knew Frank Lloyd Wright.</em> New York: John Wiley & Sons, 1993.
+                    </div>
+                    <div class="bibliography-item">
+                        Pfeiffer, Bruce Brooks. "Edgar Tafel: A Taliesin Legacy." <em>Architectural Record</em>, March 2011, pp. 42-48.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>WHO DESIGNED YOUR HOME? | An Exhibition of Architectural Masterworks</p>
+            <p style="margin-top: 1rem;">This exhibition is made possible by generous support from the Architecture and Design Council</p>
+            <p style="margin-top: 2rem; opacity: 0.4;">Agent 5: The Museum Label | Curatorial Approach to Property Presentation</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling and active nav state
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
+
+                // Update active state
+                document.querySelectorAll('nav a').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Update active nav on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

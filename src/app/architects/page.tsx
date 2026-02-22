@@ -1,13 +1,10 @@
 import Link from "next/link";
 import architectsData from "@/data/architects.json";
-import propertiesData from "@/data/properties.json";
-import { PrairieLines } from "@/components/ui/PrairieLines";
-import { StarIcon } from "@/components/icons/StarIcon";
-import { type Architect, type Property } from "@/types";
+import { CompassIcon } from "@/components/icons/CompassIcon";
+import { type Architect } from "@/types";
 
 // Cast to proper types
 const architects = architectsData as Architect[];
-const properties = propertiesData as Property[];
 
 export const metadata = {
   title: "Usonian",
@@ -31,56 +28,32 @@ export default function ArchitectsPage() {
     return acc;
   }, {} as Record<string, Architect[]>);
 
-  // Stats
-  const totalArchitects = architects.length;
-  const taliesinCount = architects.filter((a) => a.fellowship_years).length;
-  const totalProperties = properties.length;
-
-  // Get year range
-  const years = architects
-    .flatMap((a) => [a.birth_year, a.death_year])
-    .filter((y): y is number => y !== null && y !== undefined);
-  const yearRange = years.length > 0
-    ? `${Math.min(...years)}-${new Date().getFullYear()}`
-    : "—";
-
   return (
     <>
       {/* Hero Section */}
       <section className="border-b border-black">
         <div className="container py-16 md:py-24">
-          <h1 className="animate-fade-up mb-4">ARCHITECTS</h1>
-          <p className="text-xs tracking-[0.15em] opacity-50 max-w-xl animate-fade-up animate-delay-1">
-            <span className="text-red font-bold">{totalArchitects}</span> MASTERS OF THE ORGANIC TRADITION.
-            BROWSE ALPHABETICALLY OR FILTER BY FELLOWSHIP.
-          </p>
-        </div>
-      </section>
+          {/* Breadcrumb */}
+          <nav className="mb-8">
+            <Link
+              href="/homes"
+              className="inline-flex items-center gap-3 text-sm font-semibold tracking-[0.1em] hover:underline underline-offset-4 transition-opacity"
+            >
+              <img
+                src="/icons/logo-transparent.png"
+                alt=""
+                aria-hidden="true"
+                className="w-5 h-5 object-contain"
+              />
+              <span className="opacity-60">ARCHIVE</span>
+              <span className="opacity-60">/</span>
+              <span>ARCHITECTS</span>
+            </Link>
+          </nav>
 
-      {/* Prairie Lines */}
-      <div className="container">
-        <PrairieLines />
-      </div>
-
-      {/* Stats Bar */}
-      <section className="border-b border-black">
-        <div className="data-grid grid-cols-2 md:grid-cols-4">
-          <div className="data-cell animate-fade-up animate-delay-1">
-            <div className="data-label">Architects</div>
-            <div className="data-value">{totalArchitects}</div>
-          </div>
-          <div className="data-cell animate-fade-up animate-delay-2">
-            <div className="data-label">Taliesin Fellows</div>
-            <div className="data-value text-red">{taliesinCount}</div>
-          </div>
-          <div className="data-cell animate-fade-up animate-delay-3">
-            <div className="data-label">Properties</div>
-            <div className="data-value">{totalProperties}</div>
-          </div>
-          <div className="data-cell animate-fade-up animate-delay-4">
-            <div className="data-label">Time Span</div>
-            <div className="data-value">{yearRange}</div>
-          </div>
+          <h1 className="animate-fade-up">
+            ARCHITECTS<CompassIcon size="period" className="ml-1 align-baseline" />
+          </h1>
         </div>
       </section>
 
@@ -109,7 +82,6 @@ export default function ArchitectsPage() {
                     >
                       {/* Name & Fellowship */}
                       <div className="flex flex-wrap items-center gap-4">
-                        <StarIcon size={14} active={isTaliesin} />
                         <span className="font-bold text-sm tracking-[0.02em] uppercase group-hover:underline underline-offset-4">
                           {architect.name}
                         </span>

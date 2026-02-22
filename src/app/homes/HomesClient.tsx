@@ -1,18 +1,27 @@
 "use client";
 
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
-import { useMemo, useState, useCallback } from "react";
+import { useMemo, useState, useCallback, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { PropertyList } from "@/components/property/PropertyList";
 import { PropertyCard } from "@/components/property/PropertyCard";
-import { ViewToggle } from "@/components/ui/ViewToggle";
-import { YearRangeSlider } from "@/components/ui/YearRangeSlider";
+import { HeroFilter } from "@/components/ui/HeroFilter";
+
+import { CountdownLoader } from "@/components/pagination/CountdownLoader";
+import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
+
 import {
-  STATUS_FILTER_MAP,
+  matchesExperienceFilter,
   type Property,
   type Architect,
-  type StatusFilter,
-  type PropertyStatus,
+  type ExperienceFilter,
 } from "@/types";
+
+// localStorage key for persisting experience filter preference
+const FILTER_STORAGE_KEY = "usonian-archive-experience-filter";
+
+// Valid experience filter values
+const VALID_FILTERS: ExperienceFilter[] = ["all", "sale", "visit", "stay", "offmarket"];
 
 interface EnhancedProperty extends Property {
   architect_name?: string;
@@ -25,52 +34,80 @@ interface HomesClientProps {
   states: string[];
   counts: {
     all: number;
-    active: number;
-    sold: number;
-    museum: number;
+    sale: number;
+    visit: number;
+    stay: number;
+    offmarket: number;
   };
 }
-
-const STATUS_TABS: Array<{ value: StatusFilter; label: string }> = [
-  { value: "all", label: "ALL" },
-  { value: "active", label: "FOR SALE" },
-  { value: "sold", label: "SOLD / OFF-MARKET" },
-  { value: "museum", label: "MUSEUM" },
-];
 
 export function HomesClient({
   properties,
   architects,
   states,
-  counts,
 }: HomesClientProps) {
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
   const [view, setView] = useState<"list" | "grid">("grid");
+  const [portalContainer, setPortalContainer] = useState<HTMLElement | null>(null);
 
-  // Calculate year bounds from data
-  const yearBounds = useMemo(() => {
-    const years = properties.map((p) => p.year_built).filter(Boolean) as number[];
-    return {
-      min: Math.min(...years),
-      max: Math.max(...years),
-    };
-  }, [properties]);
+  // Experience filter state - initialized to "sale" (default), then updated on mount
+  // Priority: URL param > localStorage > default ("sale")
+  const [currentStatus, setCurrentStatus] = useState<ExperienceFilter>("sale");
+  const [isStatusInitialized, setIsStatusInitialized] = useState(false);
 
-  // Year range state - initialize from URL or use full range
-  const getYearRangeFromUrl = useCallback(() => {
-    const minYear = searchParams.get("yearMin");
-    const maxYear = searchParams.get("yearMax");
-    return [
-      minYear ? parseInt(minYear, 10) : yearBounds.min,
-      maxYear ? parseInt(maxYear, 10) : yearBounds.max,
-    ] as [number, number];
-  }, [searchParams, yearBounds]);
+  // Find the portal target on mount
+  useEffect(() => {
+    const slot = document.getElementById("hero-filter-slot");
+    setPortalContainer(slot);
+  }, []);
 
-  const [yearRange, setYearRange] = useState<[number, number]>(getYearRangeFromUrl);
+  // Initialize filter from URL or localStorage on mount (client-side only)
+  useEffect(() => {
+    const urlStatus = searchParams.get("status") as ExperienceFilter;
 
-  const currentStatus = (searchParams.get("status") as StatusFilter) || "all";
+    // If URL has a valid filter, use it
+    if (urlStatus && VALID_FILTERS.includes(urlStatus)) {
+      setCurrentStatus(urlStatus);
+      // Also persist to localStorage
+      localStorage.setItem(FILTER_STORAGE_KEY, urlStatus);
+    } else {
+      // No URL param - check localStorage
+      const stored = localStorage.getItem(FILTER_STORAGE_KEY) as ExperienceFilter;
+      if (stored && VALID_FILTERS.includes(stored)) {
+        setCurrentStatus(stored);
+        // Update URL to match stored preference
+        const params = new URLSearchParams(searchParams.toString());
+        if (stored === "sale") {
+          // "sale" is the default, so we can omit it from URL or keep it clean
+          params.delete("status");
+        } else {
+          params.set("status", stored);
+        }
+        router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+      }
+      // Otherwise, keep the default "sale"
+    }
+    setIsStatusInitialized(true);
+  }, []); // Only run on mount
+
+  // Sync filter state when URL changes (e.g., browser back/forward)
+  useEffect(() => {
+    if (!isStatusInitialized) return;
+
+    const urlStatus = searchParams.get("status") as ExperienceFilter;
+    if (urlStatus && VALID_FILTERS.includes(urlStatus)) {
+      if (urlStatus !== currentStatus) {
+        setCurrentStatus(urlStatus);
+        localStorage.setItem(FILTER_STORAGE_KEY, urlStatus);
+      }
+    } else if (!urlStatus && currentStatus !== "sale") {
+      // URL has no status param, default to "sale"
+      setCurrentStatus("sale");
+    }
+  }, [searchParams, isStatusInitialized]);
+
   const currentArchitect = searchParams.get("architect");
   const currentState = searchParams.get("state");
 
@@ -79,8 +116,18 @@ export function HomesClient({
       const params = new URLSearchParams(searchParams.toString());
       if (value) {
         params.set(key, value);
+        // Persist experience filter to localStorage
+        if (key === "status") {
+          localStorage.setItem(FILTER_STORAGE_KEY, value);
+          setCurrentStatus(value as ExperienceFilter);
+        }
       } else {
         params.delete(key);
+        // When clearing status, default to "sale" and persist
+        if (key === "status") {
+          localStorage.setItem(FILTER_STORAGE_KEY, "sale");
+          setCurrentStatus("sale");
+        }
       }
       router.push(`${pathname}?${params.toString()}`, { scroll: false });
     },
@@ -88,17 +135,12 @@ export function HomesClient({
   );
 
   const filteredProperties = useMemo(() => {
-    const status = (searchParams.get("status") as StatusFilter) || "all";
     const architectId = searchParams.get("architect");
     const stateFilter = searchParams.get("state");
 
     return properties.filter((property) => {
-      // Status filter
-      const statusValues = STATUS_FILTER_MAP[status];
-      if (
-        statusValues &&
-        !statusValues.includes(property.status as PropertyStatus)
-      ) {
+      // Experience filter - use currentStatus state (which handles URL/localStorage/default priority)
+      if (!matchesExperienceFilter(property, currentStatus)) {
         return false;
       }
 
@@ -112,21 +154,9 @@ export function HomesClient({
         return false;
       }
 
-      // Year range filter
-      if (property.year_built) {
-        if (property.year_built < yearRange[0] || property.year_built > yearRange[1]) {
-          return false;
-        }
-      }
-
       return true;
     });
-  }, [properties, searchParams, yearRange]);
-
-  // Calculate year span
-  const years = properties.map((p) => p.year_built).filter(Boolean);
-  const minYear = Math.min(...years);
-  const maxYear = Math.max(...years);
+  }, [properties, searchParams, currentStatus]);
 
   const architectOptions = architects
     .filter((a) => a.property_count && a.property_count > 0)
@@ -136,113 +166,25 @@ export function HomesClient({
 
   return (
     <>
-      {/* Stats Grid */}
-      <section className="stats-section">
-        <div className="container">
-          <div className="stats-grid">
-            <div className="stat-cell">
-              <div className="stat-label">Total Properties</div>
-              <div className="stat-value">{counts.all}</div>
-            </div>
-            <div className="stat-cell">
-              <div className="stat-label">For Sale</div>
-              <div className="stat-value">
-                <span className="accent">{counts.active}</span>
-              </div>
-            </div>
-            <div className="stat-cell">
-              <div className="stat-label">Architects</div>
-              <div className="stat-value">{architects.length}</div>
-            </div>
-            <div className="stat-cell">
-              <div className="stat-label">Year Span</div>
-              <div className="stat-value">
-                {minYear}
-                <span className="accent">-</span>
-                {maxYear}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Filter Bar */}
-      <section className="filter-section">
-        <div className="container">
-          <div className="filter-bar">
-            <div style={{ display: "flex", alignItems: "center" }}>
-              {/* Status Tabs */}
-              <div className="filter-tabs">
-                {STATUS_TABS.map((tab) => (
-                  <button
-                    key={tab.value}
-                    onClick={() =>
-                      updateFilter("status", tab.value === "all" ? null : tab.value)
-                    }
-                    className={`filter-tab ${currentStatus === tab.value ? "active" : ""}`}
-                  >
-                    {tab.label}
-                  </button>
-                ))}
-              </div>
-
-              {/* View Toggle */}
-              <ViewToggle view={view} onChange={setView} />
-            </div>
-
-            {/* Filter Dropdowns */}
-            <div className="filter-dropdowns">
-              <select
-                className="filter-dropdown"
-                value={currentArchitect || ""}
-                onChange={(e) => updateFilter("architect", e.target.value || null)}
-              >
-                <option value="">ARCHITECT</option>
-                {architectOptions.map((a) => (
-                  <option key={a.id} value={a.id}>
-                    {a.name}
-                  </option>
-                ))}
-              </select>
-
-              <select
-                className="filter-dropdown"
-                value={currentState || ""}
-                onChange={(e) => updateFilter("state", e.target.value || null)}
-              >
-                <option value="">LOCATION</option>
-                {stateOptions.map((s) => (
-                  <option key={s} value={s}>
-                    {s}
-                  </option>
-                ))}
-              </select>
-
-              <YearRangeSlider
-                min={yearBounds.min}
-                max={yearBounds.max}
-                value={yearRange}
-                onChange={(newRange) => {
-                  setYearRange(newRange);
-                  // Update URL params
-                  const params = new URLSearchParams(searchParams.toString());
-                  if (newRange[0] !== yearBounds.min) {
-                    params.set("yearMin", newRange[0].toString());
-                  } else {
-                    params.delete("yearMin");
-                  }
-                  if (newRange[1] !== yearBounds.max) {
-                    params.set("yearMax", newRange[1].toString());
-                  } else {
-                    params.delete("yearMax");
-                  }
-                  router.push(`${pathname}?${params.toString()}`, { scroll: false });
-                }}
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Hero Filter - rendered via portal into hero section */}
+      {portalContainer &&
+        createPortal(
+          <HeroFilter
+            currentStatus={currentStatus}
+            onStatusChange={(status) =>
+              updateFilter("status", status === "all" ? null : status)
+            }
+            view={view}
+            onViewChange={setView}
+            currentArchitect={currentArchitect}
+            architectOptions={architectOptions}
+            onArchitectChange={(id) => updateFilter("architect", id)}
+            currentState={currentState}
+            stateOptions={stateOptions}
+            onStateChange={(state) => updateFilter("state", state)}
+          />,
+          portalContainer
+        )}
 
       {/* Property Display */}
       {view === "list" ? (
@@ -251,28 +193,80 @@ export function HomesClient({
           totalCount={properties.length}
         />
       ) : (
-        <section className="table-section">
-          <div className="container py-10">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredProperties.map((property, idx) => (
-                <div
-                  key={property.id}
-                  className={`animate-fade-up animate-delay-${Math.min(idx + 1, 8)}`}
-                >
-                  <PropertyCard property={property} variant="v2" />
-                </div>
-              ))}
-            </div>
-            {filteredProperties.length === 0 && (
-              <div className="py-8 text-center">
-                <p className="text-[11px] tracking-[0.15em] opacity-50 uppercase mb-2">
-                  No properties match your filters
-                </p>
-              </div>
-            )}
-          </div>
-        </section>
+        <CountdownScrollGrid properties={filteredProperties} />
       )}
     </>
+  );
+}
+
+// ============================================================================
+// GRID IMPLEMENTATIONS
+// ============================================================================
+
+/**
+ * CountdownScrollGrid - "THE COUNTDOWN"
+ * Shows remaining count as descending counter: «187 MORE»
+ */
+function CountdownScrollGrid({ properties }: { properties: EnhancedProperty[] }) {
+  const {
+    visibleItems,
+    sentinelRef,
+    isLoading,
+    isComplete,
+    loadedCount,
+    totalCount,
+    remainingCount,
+  } = useInfiniteScroll({
+    items: properties,
+    batchSize: 9,
+    loadDelay: 400,
+  });
+
+  return (
+    <section className="table-section">
+      <div className="container py-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {visibleItems.map((property, idx) => {
+            const batchIndex = Math.floor(idx / 9);
+            const currentBatch = Math.floor((visibleItems.length - 1) / 9);
+            const shouldAnimate = batchIndex === currentBatch;
+            const indexInBatch = idx % 9;
+
+            return (
+              <div
+                key={property.id}
+                className={shouldAnimate ? "animate-fade-up" : ""}
+                style={{
+                  animationDelay: shouldAnimate ? `${indexInBatch * 50}ms` : undefined,
+                }}
+              >
+                <PropertyCard property={property} variant="v2" />
+              </div>
+            );
+          })}
+        </div>
+
+        {properties.length === 0 && (
+          <div className="py-8 text-center">
+            <p className="text-[11px] tracking-[0.15em] opacity-50 uppercase mb-2">
+              No properties match your filters
+            </p>
+          </div>
+        )}
+
+        {properties.length > 0 && (
+          <>
+            <CountdownLoader
+              isLoading={isLoading}
+              isComplete={isComplete}
+              loadedCount={loadedCount}
+              totalCount={totalCount}
+              remainingCount={remainingCount}
+            />
+            <div ref={sentinelRef} style={{ height: "1px" }} />
+          </>
+        )}
+      </div>
+    </section>
   );
 }

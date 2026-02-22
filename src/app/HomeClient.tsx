@@ -12,7 +12,6 @@ interface EnhancedProperty extends Property {
 
 interface HomeClientProps {
   featuredProperties: EnhancedProperty[];
-  tableProperties: EnhancedProperty[];
 }
 
 function getStatusBadgeClass(status: string): string {
@@ -46,40 +45,10 @@ function getStatusLabel(status: string): string {
   }
 }
 
-function getStatusDotClass(status: string): string {
-  switch (status) {
-    case "active":
-      return "v2-status-dot v2-status-dot--active";
-    case "pending":
-      return "v2-status-dot v2-status-dot--pending";
-    default:
-      return "v2-status-dot";
-  }
-}
-
-function getStatusText(status: string): string {
-  switch (status) {
-    case "active":
-      return "Available";
-    case "pending":
-      return "Pending";
-    case "sold":
-    case "archived":
-      return "Off Market";
-    case "museum":
-    case "donated":
-      return "Museum";
-    default:
-      return "Off Market";
-  }
-}
-
 export function HomeClient({
   featuredProperties,
-  tableProperties,
 }: HomeClientProps) {
   const featuredCount = featuredProperties.length.toString().padStart(2, "0");
-  const tableCount = tableProperties.length.toString().padStart(2, "0");
 
   return (
     <>
@@ -127,58 +96,6 @@ export function HomeClient({
               </Link>
             );
           })}
-        </div>
-      </section>
-
-      {/* Homes Table Section */}
-      <section className="v2-table-section">
-        <div className="v2-section-header">
-          <h2 className="v2-section-title">HOMES</h2>
-          <span className="v2-section-count">{tableCount} NEW LISTINGS</span>
-        </div>
-        <table className="v2-sale-table">
-          <thead>
-            <tr>
-              <th>Property</th>
-              <th>Year</th>
-              <th>Location</th>
-              <th>Status</th>
-              <th>Price</th>
-            </tr>
-          </thead>
-          <tbody>
-            {tableProperties.map((property, idx) => {
-              const price = property.last_sale_price
-                ? formatPrice(property.last_sale_price)
-                : "Upon Request";
-              const location = `${property.parsed_city || ""}, ${property.parsed_state || ""}`.replace(/^, |, $/g, "");
-
-              return (
-                <tr
-                  key={property.id}
-                  tabIndex={0}
-                  onClick={() => (window.location.href = `/homes/${property.slug}`)}
-                  style={{ animationDelay: `${idx * 0.1}s` }}
-                >
-                  <td className="v2-property-cell">{property.home_name}</td>
-                  <td className="v2-year-cell">{property.year_built}</td>
-                  <td className="v2-location-cell">{location}</td>
-                  <td className="v2-status-cell">
-                    <span className={getStatusDotClass(property.status)}></span>
-                    {getStatusText(property.status)}
-                  </td>
-                  <td className="v2-price-cell">{price}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-
-        {/* See All CTA */}
-        <div className="v2-see-all-cta">
-          <Link href="/homes" className="v2-see-all-button">
-            SEE ALL HOMES
-          </Link>
         </div>
       </section>
     </>

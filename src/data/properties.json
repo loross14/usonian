@@ -25,7 +25,10 @@
     "last_sale_price": 1670000,
     "last_sale_date": "Apr 2020",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/lautner-house.jpg",
+    "is_visitable": true,
+    "is_rental": false
   },
   {
     "id": "foster-carling-residence",
@@ -53,7 +56,10 @@
     "last_sale_price": 3250000,
     "last_sale_date": "Jul 2014",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/foster-carling-residence.jpg",
+    "is_visitable": true,
+    "is_rental": false
   },
   {
     "id": "chemosphere-malin-residence",
@@ -81,7 +87,10 @@
     "last_sale_price": 1000000,
     "last_sale_date": "1997",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/chemosphere-malin-residence.jpg",
+    "is_visitable": true,
+    "is_rental": false
   },
   {
     "id": "sheats-goldstein-residence",
@@ -109,7 +118,10 @@
     "last_sale_price": 40000000,
     "last_sale_date": "2016 bequest",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/sheats-goldstein-residence.jpg",
+    "is_visitable": true,
+    "is_rental": false
   },
   {
     "id": "garcia-house",
@@ -137,7 +149,10 @@
     "last_sale_price": 12500000,
     "last_sale_date": "Mar 2023",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/garcia-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "silvertop-reiner-residence",
@@ -165,7 +180,10 @@
     "last_sale_price": 8550000,
     "last_sale_date": "Oct 2014",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/silvertop-reiner-residence.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "elrod-house",
@@ -193,7 +211,10 @@
     "last_sale_price": 7700000,
     "last_sale_date": "Jul 2016",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/elrod-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "bob-hope-residence",
@@ -221,7 +242,10 @@
     "last_sale_price": 13000000,
     "last_sale_date": "Nov 2016",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/bob-hope-residence.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "arango-house",
@@ -249,7 +273,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/arango-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "hotel-lautner-hubbard",
@@ -277,7 +304,10 @@
     "last_sale_price": null,
     "last_sale_date": "2008",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/hotel-lautner-hubbard.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "jones-house-own",
@@ -305,7 +335,10 @@
     "last_sale_price": null,
     "last_sale_date": "$0 (Donated)",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/jones-house-own.jpg",
+    "is_visitable": true,
+    "is_rental": false
   },
   {
     "id": "brothers-house-the-gray",
@@ -333,7 +366,10 @@
     "last_sale_price": null,
     "last_sale_date": "2021",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/brothers-house-the-gray.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "stoneflower",
@@ -361,7 +397,10 @@
     "last_sale_price": null,
     "last_sale_date": "2006",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/stoneflower.jpg",
+    "is_visitable": true,
+    "is_rental": false
   },
   {
     "id": "walton-house",
@@ -389,7 +428,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/walton-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "hunter-house",
@@ -417,7 +459,10 @@
     "last_sale_price": 1250000,
     "last_sale_date": "Jul 8 2022",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/hunter-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "yarbrough-house-pebble-hill",
@@ -445,7 +490,10 @@
     "last_sale_price": 1500000,
     "last_sale_date": "Apr 5 2022",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/yarbrough-house-pebble-hill.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "reed-house",
@@ -473,7 +521,10 @@
     "last_sale_price": null,
     "last_sale_date": "2021",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/reed-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "buckley-house",
@@ -501,7 +552,10 @@
     "last_sale_price": null,
     "last_sale_date": "2014",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/buckley-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "dow-house-studio",
@@ -529,7 +583,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/dow-house-studio.jpg",
+    "is_visitable": true,
+    "is_rental": false
   },
   {
     "id": "towsley-house",
@@ -557,7 +614,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/towsley-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "whitman-house",
@@ -585,7 +645,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/whitman-house.jpg",
+    "is_visitable": true,
+    "is_rental": false
   },
   {
     "id": "gallery-house",
@@ -613,7 +676,10 @@
     "last_sale_price": 860000,
     "last_sale_date": "Jun 24 2025",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/gallery-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "yates-residence",
@@ -641,7 +707,10 @@
     "last_sale_price": 488000,
     "last_sale_date": "Aug 25 2025",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/yates-residence.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "ashmun-house-timber-teepee",
@@ -669,7 +738,12 @@
     "last_sale_price": 1180000,
     "last_sale_date": "Aug 24 2023",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/ashmun-house-timber-teepee.jpg",
+    "is_visitable": false,
+    "is_rental": false,
+    "listing_price": 1995000,
+    "listing_source_url": "https://www.zillow.com/homedetails/11-Snowfield-Ct-Midland-MI-48640/91726914_zpid/"
   },
   {
     "id": "smith-house",
@@ -697,7 +771,10 @@
     "last_sale_price": 959000,
     "last_sale_date": "Oct 15 2024",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/smith-house.jpg",
+    "is_visitable": true,
+    "is_rental": false
   },
   {
     "id": "knight-house-duke",
@@ -725,7 +802,10 @@
     "last_sale_price": 60000,
     "last_sale_date": "Dec 23 2008",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/knight-house-duke.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "dome-house-woods-residence",
@@ -753,7 +833,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/dome-house-woods-residence.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "deconcini-house",
@@ -781,7 +864,10 @@
     "last_sale_price": 1795000,
     "last_sale_date": "Jan 29 2019",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/deconcini-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "peters-margedant-house",
@@ -809,7 +895,10 @@
     "last_sale_price": null,
     "last_sale_date": "2016",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/peters-margedant-house.jpg",
+    "is_visitable": true,
+    "is_rental": false
   },
   {
     "id": "ultimate-house",
@@ -837,7 +926,10 @@
     "last_sale_price": 830000,
     "last_sale_date": "Aug 31 2022",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/ultimate-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "anderson-residence",
@@ -865,7 +957,12 @@
     "last_sale_price": 1400000,
     "last_sale_date": "Aug 1 2019",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/anderson-residence.jpg",
+    "is_visitable": false,
+    "is_rental": false,
+    "listing_price": 8800000,
+    "listing_source_url": "https://www.ocregister.com/2024/09/26/rancho-palos-verdes-mid-century-modern-stunner-on-over-3-acres-seeks-8-8m/"
   },
   {
     "id": "mischel-house-sunspot",
@@ -893,7 +990,10 @@
     "last_sale_price": 3400000,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/mischel-house-sunspot.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "albert-house-lighthouse",
@@ -921,7 +1021,10 @@
     "last_sale_price": 895000,
     "last_sale_date": "Jul 29 2009",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/albert-house-lighthouse.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "alpern-residence",
@@ -949,7 +1052,10 @@
     "last_sale_price": 3505000,
     "last_sale_date": "Aug 14 2023",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/alpern-residence.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "bookstaber-house",
@@ -977,7 +1083,10 @@
     "last_sale_price": 992999,
     "last_sale_date": "Aug 20 2025",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/bookstaber-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "notz-house",
@@ -1005,7 +1114,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/notz-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "fineman-house",
@@ -1033,7 +1145,10 @@
     "last_sale_price": 152000,
     "last_sale_date": "2016-2017",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/fineman-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "lapp-riverhouse",
@@ -1061,7 +1176,12 @@
     "last_sale_price": null,
     "last_sale_date": "Aug 24 2006",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/lapp-riverhouse.jpg",
+    "is_visitable": false,
+    "is_rental": false,
+    "listing_price": 2300000,
+    "listing_source_url": "https://www.dwell.com/article/lapp-riverhouse-arthur-dyson-sanger-california-real-estate-85aaed6b"
   },
   {
     "id": "creek-house",
@@ -1089,7 +1209,10 @@
     "last_sale_price": 599000,
     "last_sale_date": "Jun 16 2020",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/creek-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "lencioni-residence-wave",
@@ -1117,7 +1240,10 @@
     "last_sale_price": 599000,
     "last_sale_date": "Jun 16 2020",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/lencioni-residence-wave.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "skyfire-own",
@@ -1145,7 +1271,10 @@
     "last_sale_price": 2500000,
     "last_sale_date": "Mar 26 2021",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/skyfire-own.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "ross-house",
@@ -1173,7 +1302,10 @@
     "last_sale_price": 2660000,
     "last_sale_date": "Oct 9 2024",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/ross-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "wystrach-adams-residence",
@@ -1201,7 +1333,10 @@
     "last_sale_price": 3580000,
     "last_sale_date": "Jun 8 2022",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/wystrach-adams-residence.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "malibu-estate-own",
@@ -1229,7 +1364,10 @@
     "last_sale_price": 940000,
     "last_sale_date": "Oct 18 2019",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/malibu-estate-own.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "wood-peterson-house",
@@ -1257,7 +1395,10 @@
     "last_sale_price": 1060000,
     "last_sale_date": "2025",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/wood-peterson-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "anderson-house",
@@ -1285,7 +1426,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/anderson-house.jpg",
+    "is_visitable": true,
+    "is_rental": false
   },
   {
     "id": "house-of-spirit",
@@ -1313,7 +1457,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/house-of-spirit.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "myers-residence",
@@ -1341,7 +1488,12 @@
     "last_sale_price": null,
     "last_sale_date": "First listing 2022",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/myers-residence.jpg",
+    "is_visitable": false,
+    "is_rental": false,
+    "listing_price": 5900000,
+    "listing_source_url": "https://azarchitecture.com/listing/the-myers-residence-desert-highlands/"
   },
   {
     "id": "rattenbury-residence",
@@ -1360,16 +1512,21 @@
     "preservation_status": null,
     "significance": null,
     "description": null,
-    "curator_notes": null,
+    "curator_notes": "Sold January 2021 for record-breaking $2.15M in Maplewood. Featured in \"The Marvelous Mrs. Maisel\" Season 3.",
     "square_footage": null,
     "bedrooms": null,
     "bathrooms": null,
-    "status": "active",
+    "status": "sold",
     "best_image_url": "https://jerseydigs.com/john-rattenbury-designed-frank-lloyd-wright-apprentice-for-sale-15-tower-drive-unit-19-maplewood/",
     "last_sale_price": 2151000,
-    "last_sale_date": "Jan 15 2021",
+    "last_sale_date": "Jan 2021",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/rattenbury-residence.jpg",
+    "is_visitable": false,
+    "is_rental": false,
+    "listing_price": null,
+    "listing_source_url": null
   },
   {
     "id": "trinkaus-house",
@@ -1397,7 +1554,10 @@
     "last_sale_price": 1250000,
     "last_sale_date": "Nov 22 2024",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/trinkaus-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "atlanta-residence",
@@ -1425,7 +1585,10 @@
     "last_sale_price": 890000,
     "last_sale_date": "Jul 15 2021",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/atlanta-residence.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "meyer-may-house",
@@ -1453,7 +1616,10 @@
     "last_sale_price": null,
     "last_sale_date": "1985",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/meyer-may-house.jpg",
+    "is_visitable": true,
+    "is_rental": false
   },
   {
     "id": "david-m-amberg-house",
@@ -1481,7 +1647,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/david-m-amberg-house.jpg",
+    "is_visitable": false,
+    "is_rental": true
   },
   {
     "id": "thomas-h-gale-summer-cottage",
@@ -1509,7 +1678,10 @@
     "last_sale_price": 815000,
     "last_sale_date": "July 24 2023",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/thomas-h-gale-summer-cottage.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "george-mary-gerts-summer-cottage",
@@ -1537,7 +1709,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/george-mary-gerts-summer-cottage.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "walter-gerts-summer-cottage",
@@ -1565,7 +1740,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/walter-gerts-summer-cottage.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "laura-robeson-gale-rental-cottages-birch-brook",
@@ -1593,7 +1771,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/laura-robeson-gale-rental-cottages-birch-brook.jpg",
+    "is_visitable": false,
+    "is_rental": true
   },
   {
     "id": "arthur-heurtley-summer-cottage",
@@ -1621,7 +1802,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/arthur-heurtley-summer-cottage.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "ernest-vosburgh-house",
@@ -1649,7 +1833,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/ernest-vosburgh-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "joseph-bagley-house",
@@ -1677,7 +1864,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/joseph-bagley-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "abby-beecher-roberts-house-deertrack",
@@ -1705,7 +1895,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/abby-beecher-roberts-house-deertrack.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "goetsch-winckler-house",
@@ -1733,7 +1926,10 @@
     "last_sale_price": null,
     "last_sale_date": "2023",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/goetsch-winckler-house.jpg",
+    "is_visitable": true,
+    "is_rental": false
   },
   {
     "id": "erling-katherine-brauner-house",
@@ -1761,7 +1957,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/erling-katherine-brauner-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "gregor-elizabeth-affleck-house",
@@ -1789,7 +1988,10 @@
     "last_sale_price": null,
     "last_sale_date": "1978",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/gregor-elizabeth-affleck-house.jpg",
+    "is_visitable": true,
+    "is_rental": false
   },
   {
     "id": "melvyn-maxwell-smith-house-myhaven",
@@ -1817,7 +2019,10 @@
     "last_sale_price": null,
     "last_sale_date": "2017",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/melvyn-maxwell-smith-house-myhaven.jpg",
+    "is_visitable": true,
+    "is_rental": false
   },
   {
     "id": "carlton-d-wall-house-snowflake",
@@ -1845,7 +2050,10 @@
     "last_sale_price": null,
     "last_sale_date": "Late 1980s",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/carlton-d-wall-house-snowflake.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "lewis-h-goddard-house",
@@ -1873,7 +2081,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/lewis-h-goddard-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "dorothy-h-turkel-house",
@@ -1901,7 +2112,10 @@
     "last_sale_price": null,
     "last_sale_date": "2006",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/dorothy-h-turkel-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "william-mary-palmer-house",
@@ -1929,7 +2143,10 @@
     "last_sale_price": 900000,
     "last_sale_date": "March 2009",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/william-mary-palmer-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "haddock-house",
@@ -1957,7 +2174,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/haddock-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "amy-alpaugh-studio-residence",
@@ -1985,7 +2205,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/amy-alpaugh-studio-residence.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "howard-helen-anthony-house",
@@ -2013,7 +2236,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/howard-helen-anthony-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "ina-morris-harper-house",
@@ -2041,7 +2267,10 @@
     "last_sale_price": 1825000,
     "last_sale_date": "October 25 2021",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/ina-morris-harper-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "carl-schultz-house",
@@ -2069,7 +2298,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/carl-schultz-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "david-christine-weisblat-house",
@@ -2097,7 +2329,12 @@
     "last_sale_price": 1444000,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-21"
+    "updated_at": "2026-02-21",
+    "hero_image": "/ai-images/hero/david-christine-weisblat-house.jpg",
+    "is_visitable": true,
+    "is_rental": false,
+    "listing_price": 1444000,
+    "listing_source_url": "https://weisblathouse.com/"
   },
   {
     "id": "eric-pat-pratt-house",
@@ -2125,7 +2362,10 @@
     "last_sale_price": 1800000,
     "last_sale_date": "June 2024",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/eric-pat-pratt-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "samuel-dorothy-eppstein-house",
@@ -2153,7 +2393,12 @@
     "last_sale_price": 2100000,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-21"
+    "updated_at": "2026-02-21",
+    "hero_image": "/ai-images/hero/samuel-dorothy-eppstein-house.jpg",
+    "is_visitable": true,
+    "is_rental": true,
+    "listing_price": 2100000,
+    "listing_source_url": "https://www.airbnb.com/rooms/16024637"
   },
   {
     "id": "curtis-lillian-meyer-house",
@@ -2181,7 +2426,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/curtis-lillian-meyer-house.jpg",
+    "is_visitable": false,
+    "is_rental": true
   },
   {
     "id": "robert-rae-levin-house",
@@ -2209,7 +2457,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/robert-rae-levin-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "eric-v-brown-house",
@@ -2237,7 +2488,10 @@
     "last_sale_price": null,
     "last_sale_date": "2002",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/eric-v-brown-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "ward-mccartney-house",
@@ -2256,16 +2510,21 @@
     "preservation_status": null,
     "significance": null,
     "description": null,
-    "curator_notes": "Diamond-shaped module design—one of only two homes Wright designed using this system. Concrete blocks with red tidewater cypress.",
+    "curator_notes": "Listed at $790,000 in March 2024, sold for $670,000 in July 2024.",
     "square_footage": null,
     "bedrooms": null,
     "bathrooms": null,
-    "status": "active",
+    "status": "sold",
     "best_image_url": null,
-    "last_sale_price": 790000,
-    "last_sale_date": "March 2024",
+    "last_sale_price": 670000,
+    "last_sale_date": "Jul 2024",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/ward-mccartney-house.jpg",
+    "is_visitable": false,
+    "is_rental": false,
+    "listing_price": null,
+    "listing_source_url": null
   },
   {
     "id": "robert-d-winn-house",
@@ -2293,7 +2552,12 @@
     "last_sale_price": 1850000,
     "last_sale_date": "June 2024",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/robert-d-winn-house.jpg",
+    "is_visitable": false,
+    "is_rental": false,
+    "listing_price": 1850000,
+    "listing_source_url": "https://www.zillow.com/homedetails/721-Parkview-Ave-Kalamazoo-MI-49008/73937291_zpid/"
   },
   {
     "id": "george-blossom-summer-house",
@@ -2321,7 +2585,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/george-blossom-summer-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "fair-lane-henry-clara-ford-estate",
@@ -2349,7 +2616,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/fair-lane-henry-clara-ford-estate.jpg",
+    "is_visitable": true,
+    "is_rental": false
   },
   {
     "id": "church-of-saint-mary",
@@ -2377,7 +2647,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/church-of-saint-mary.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "snow-flake-motel",
@@ -2405,7 +2678,10 @@
     "last_sale_price": null,
     "last_sale_date": "Demolished 2006",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/snow-flake-motel.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "robert-goodall-residence",
@@ -2433,7 +2709,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/robert-goodall-residence.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "fonken-house",
@@ -2461,7 +2740,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/fonken-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "earl-stein-house",
@@ -2489,7 +2771,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/earl-stein-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "grace-a-dow-memorial-library",
@@ -2517,7 +2802,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/grace-a-dow-memorial-library.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "midland-center-for-the-arts",
@@ -2545,7 +2833,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/midland-center-for-the-arts.jpg",
+    "is_visitable": true,
+    "is_rental": false
   },
   {
     "id": "st-john-s-lutheran-church",
@@ -2573,7 +2864,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/st-john-s-lutheran-church.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "first-united-methodist-church",
@@ -2601,7 +2895,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/first-united-methodist-church.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "arbury-residence",
@@ -2629,7 +2926,12 @@
     "last_sale_price": 2400000,
     "last_sale_date": "2024",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/arbury-residence.jpg",
+    "is_visitable": false,
+    "is_rental": false,
+    "listing_price": 2400000,
+    "listing_source_url": "https://www.detroitnews.com/story/business/real-estate/2024/10/11/mi-dream-home-midland-mid-20th-century-was-designed-by-dow-scion/75583335007/"
   },
   {
     "id": "george-greene-house",
@@ -2657,7 +2959,10 @@
     "last_sale_price": 675000,
     "last_sale_date": "2014",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/george-greene-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "oscar-c-diehl-house",
@@ -2685,7 +2990,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/oscar-c-diehl-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "howard-ball-house",
@@ -2713,7 +3021,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/howard-ball-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "parents-children-s-schoolhouse",
@@ -2741,7 +3052,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/parents-children-s-schoolhouse.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "midland-high-school",
@@ -2769,7 +3083,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/midland-high-school.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "ann-arbor-city-hall-guy-larcom-building",
@@ -2797,7 +3114,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/ann-arbor-city-hall-guy-larcom-building.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "ann-arbor-district-library",
@@ -2825,7 +3145,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/ann-arbor-district-library.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "interlochen-center-for-the-arts",
@@ -2853,7 +3176,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/interlochen-center-for-the-arts.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "kalamazoo-nature-center",
@@ -2881,7 +3207,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/kalamazoo-nature-center.jpg",
+    "is_visitable": true,
+    "is_rental": false
   },
   {
     "id": "leonard-service-station",
@@ -2909,7 +3238,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/leonard-service-station.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "greenhills-school",
@@ -2937,7 +3269,10 @@
     "last_sale_price": null,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/greenhills-school.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "calvin-campbell-residence",
@@ -2956,16 +3291,21 @@
     "preservation_status": null,
     "significance": null,
     "description": null,
-    "curator_notes": "Two-and-a-half story home adjacent to Dow Gardens. Pink brick with wood trim. NRHP listed.",
+    "curator_notes": "Listed at $775,000 in Jan 2023, now off-market. Last sale was March 2017 for $515,000.",
     "square_footage": null,
     "bedrooms": null,
     "bathrooms": null,
-    "status": "active",
+    "status": "archived",
     "best_image_url": null,
     "last_sale_price": 775000,
     "last_sale_date": "N/A",
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/calvin-campbell-residence.jpg",
+    "is_visitable": false,
+    "is_rental": false,
+    "listing_price": null,
+    "listing_source_url": null
   },
   {
     "id": "norman-lykes-house",
@@ -2993,7 +3333,12 @@
     "last_sale_price": 8800000,
     "last_sale_date": null,
     "created_at": "2026-02-21",
-    "updated_at": "2026-02-21"
+    "updated_at": "2026-02-21",
+    "hero_image": "/ai-images/hero/norman-lykes-house.jpg",
+    "is_visitable": false,
+    "is_rental": true,
+    "listing_price": 8800000,
+    "listing_source_url": "https://normanlykes.com/"
   },
   {
     "id": "benjamin-adelman-house",
@@ -3021,7 +3366,12 @@
     "last_sale_price": 4950000,
     "last_sale_date": null,
     "created_at": "2026-02-21",
-    "updated_at": "2026-02-21"
+    "updated_at": "2026-02-21",
+    "hero_image": "/ai-images/hero/benjamin-adelman-house.jpg",
+    "is_visitable": false,
+    "is_rental": false,
+    "listing_price": 4950000,
+    "listing_source_url": "https://thebrokery.com/"
   },
   {
     "id": "spring-house-lewis",
@@ -3049,7 +3399,12 @@
     "last_sale_price": 2128000,
     "last_sale_date": null,
     "created_at": "2026-02-21",
-    "updated_at": "2026-02-21"
+    "updated_at": "2026-02-21",
+    "hero_image": "/ai-images/hero/spring-house-lewis.jpg",
+    "is_visitable": true,
+    "is_rental": false,
+    "listing_price": 2128000,
+    "listing_source_url": "https://www.preservespringhouse.org/"
   },
   {
     "id": "hills-decaro-house",
@@ -3077,7 +3432,12 @@
     "last_sale_price": 2295000,
     "last_sale_date": "Sep 2025",
     "created_at": "2026-02-21",
-    "updated_at": "2026-02-21"
+    "updated_at": "2026-02-21",
+    "hero_image": "/ai-images/hero/hills-decaro-house.jpg",
+    "is_visitable": true,
+    "is_rental": false,
+    "listing_price": 2295000,
+    "listing_source_url": "https://flwright.org/explore/hills-house"
   },
   {
     "id": "george-c-stewart-house",
@@ -3105,7 +3465,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/george-c-stewart-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "aline-barnsdall-hollyhock-house",
@@ -3133,7 +3496,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/aline-barnsdall-hollyhock-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "charles-ennis-house",
@@ -3161,7 +3527,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/charles-ennis-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "samuel-freeman-house",
@@ -3189,7 +3558,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/samuel-freeman-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "john-storer-house",
@@ -3217,7 +3589,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/john-storer-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "alice-millard-house",
@@ -3245,7 +3620,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/alice-millard-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "hanna-house",
@@ -3273,7 +3651,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/hanna-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "sidney-bazett-house",
@@ -3301,7 +3682,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/sidney-bazett-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "george-sturges-house",
@@ -3329,7 +3713,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/george-sturges-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "arch-oboler-gatehouse",
@@ -3357,7 +3744,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/arch-oboler-gatehouse.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "v-c-morris-gift-store",
@@ -3385,7 +3775,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/v-c-morris-gift-store.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "maynard-buehler-house",
@@ -3413,7 +3806,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/maynard-buehler-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "robert-berger-house",
@@ -3441,7 +3837,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/robert-berger-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "arthur-mathews-house",
@@ -3469,7 +3868,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/arthur-mathews-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "wilbur-pearce-house",
@@ -3497,7 +3899,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/wilbur-pearce-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "della-walker-house",
@@ -3525,7 +3930,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/della-walker-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "anderton-court-shops",
@@ -3553,7 +3961,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/anderton-court-shops.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "karl-kundert-medical-clinic",
@@ -3581,7 +3992,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/karl-kundert-medical-clinic.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "randall-fawcett-house",
@@ -3609,7 +4023,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/randall-fawcett-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "marin-county-civic-center",
@@ -3637,7 +4054,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/marin-county-civic-center.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "pilgrim-congregational-church",
@@ -3665,7 +4085,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/pilgrim-congregational-church.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "george-ablin-house",
@@ -3693,7 +4116,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/george-ablin-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "feldman-house",
@@ -3721,7 +4147,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/feldman-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "unity-chapel",
@@ -3749,7 +4178,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/unity-chapel.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "romeo-and-juliet-windmill",
@@ -3777,7 +4209,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/romeo-and-juliet-windmill.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "fred-jones-house",
@@ -3805,7 +4240,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/fred-jones-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "henry-wallis-cottage",
@@ -3833,7 +4271,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/henry-wallis-cottage.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "george-spencer-house",
@@ -3861,7 +4302,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/george-spencer-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "hillside-home-school",
@@ -3889,7 +4333,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/hillside-home-school.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "robert-lamp-house",
@@ -3917,7 +4364,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/robert-lamp-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "a-p-johnson-house",
@@ -3945,7 +4395,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/a-p-johnson-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "thomas-p-hardy-house",
@@ -3973,7 +4426,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/thomas-p-hardy-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "andrew-porter-house",
@@ -4001,7 +4457,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/andrew-porter-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "eugene-gilmore-house",
@@ -4029,7 +4488,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/eugene-gilmore-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "taliesin",
@@ -4057,7 +4519,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/taliesin.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "a-d-german-warehouse",
@@ -4085,7 +4550,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/a-d-german-warehouse.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "richards-duplex-apartments",
@@ -4113,7 +4581,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/richards-duplex-apartments.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "richards-small-house",
@@ -4141,7 +4612,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/richards-small-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "richards-bungalow",
@@ -4169,7 +4643,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/richards-bungalow.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "frederick-bogk-house",
@@ -4197,7 +4674,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/frederick-bogk-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "elizabeth-murphy-house",
@@ -4225,7 +4705,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/elizabeth-murphy-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "stephen-hunt-bungalow",
@@ -4253,7 +4736,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/stephen-hunt-bungalow.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "herbert-jacobs-i-house",
@@ -4281,7 +4767,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/herbert-jacobs-i-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "sc-johnson-administration-building",
@@ -4309,7 +4798,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/sc-johnson-administration-building.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "sc-johnson-research-tower",
@@ -4337,7 +4829,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/sc-johnson-research-tower.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "herbert-johnson-house-wingspread",
@@ -4365,7 +4860,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/herbert-johnson-house-wingspread.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "bernard-schwartz-house",
@@ -4393,7 +4891,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/bernard-schwartz-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "john-pew-house",
@@ -4421,7 +4922,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/john-pew-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "unitarian-meeting-house",
@@ -4449,7 +4953,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/unitarian-meeting-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "herbert-jacobs-ii-house",
@@ -4477,7 +4984,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/herbert-jacobs-ii-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "albert-adelman-house",
@@ -4505,7 +5015,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/albert-adelman-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "patrick-kinney-house",
@@ -4533,7 +5046,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/patrick-kinney-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "clarke-arnold-house",
@@ -4561,7 +5077,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/clarke-arnold-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "keland-boyd-house",
@@ -4589,7 +5108,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/keland-boyd-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "maurice-greenberg-house",
@@ -4617,7 +5139,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/maurice-greenberg-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "eugene-van-tamlen-house",
@@ -4645,7 +5170,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/eugene-van-tamlen-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "annunciation-greek-orthodox-church",
@@ -4673,7 +5201,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/annunciation-greek-orthodox-church.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "walter-rudin-house",
@@ -4701,7 +5232,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/walter-rudin-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "wyoming-valley-grammar-school",
@@ -4729,7 +5263,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/wyoming-valley-grammar-school.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "duey-wright-house",
@@ -4757,7 +5294,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/duey-wright-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "frank-iber-house",
@@ -4785,7 +5325,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/frank-iber-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "arnold-jackson-house",
@@ -4813,7 +5356,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/arnold-jackson-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "seth-peterson-cottage",
@@ -4841,7 +5387,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/seth-peterson-cottage.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "joseph-mollica-house",
@@ -4869,7 +5418,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/joseph-mollica-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "monona-terrace",
@@ -4897,7 +5449,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/monona-terrace.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "fallingwater",
@@ -4925,7 +5480,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/fallingwater.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "suntop-homes",
@@ -4953,7 +5511,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/suntop-homes.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "kentuck-knob",
@@ -4981,7 +5542,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/kentuck-knob.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "beth-sholom-synagogue",
@@ -5009,7 +5573,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/beth-sholom-synagogue.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "don-duncan-house",
@@ -5037,7 +5604,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/don-duncan-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "george-barton-house",
@@ -5065,7 +5635,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/george-barton-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "darwin-martin-house",
@@ -5093,7 +5666,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/darwin-martin-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "darwin-martin-gardener-s-cottage",
@@ -5121,7 +5697,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/darwin-martin-gardener-s-cottage.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "william-heath-house",
@@ -5149,7 +5728,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/william-heath-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "walter-davidson-house",
@@ -5177,7 +5759,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/walter-davidson-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "edward-boynton-house",
@@ -5205,7 +5790,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/edward-boynton-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "isabel-martin-graycliff-house",
@@ -5233,7 +5821,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/isabel-martin-graycliff-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "sol-friedman-toyhill-house",
@@ -5261,7 +5852,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/sol-friedman-toyhill-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "edward-serlin-house",
@@ -5289,7 +5883,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/edward-serlin-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "ben-rebhuhn-house",
@@ -5317,7 +5914,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/ben-rebhuhn-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "roland-reisley-house",
@@ -5345,7 +5945,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/roland-reisley-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "chahroudi-cottage",
@@ -5373,7 +5976,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/chahroudi-cottage.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "maximillian-hoffman-house",
@@ -5401,7 +6007,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/maximillian-hoffman-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "guggenheim-museum",
@@ -5429,7 +6038,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/guggenheim-museum.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "william-cass-house",
@@ -5457,7 +6069,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/william-cass-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "socrates-zaferious-house",
@@ -5485,7 +6100,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/socrates-zaferious-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "burton-westcott-house",
@@ -5513,7 +6131,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/burton-westcott-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "charles-weltzheimer-house",
@@ -5541,7 +6162,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/charles-weltzheimer-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "karl-staley-house",
@@ -5569,7 +6193,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/karl-staley-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "nathan-rubin-house",
@@ -5597,7 +6224,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/nathan-rubin-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "louis-penfield-house",
@@ -5625,7 +6255,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/louis-penfield-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "john-dobkins-house",
@@ -5653,7 +6286,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/john-dobkins-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "ellis-feiman-house",
@@ -5681,7 +6317,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/ellis-feiman-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "cedric-boulter-house",
@@ -5709,7 +6348,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/cedric-boulter-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "gerald-tonkens-house",
@@ -5737,7 +6379,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/gerald-tonkens-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "meyers-medical-clinic",
@@ -5765,7 +6410,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/meyers-medical-clinic.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "william-boswell-house",
@@ -5793,7 +6441,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/william-boswell-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "riverrock-house",
@@ -5821,7 +6472,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/riverrock-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "rosenbaum-house",
@@ -5849,7 +6503,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/rosenbaum-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "arizona-biltmore-hotel",
@@ -5877,7 +6534,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/arizona-biltmore-hotel.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "taliesin-west",
@@ -5905,7 +6565,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/taliesin-west.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "rose-pauson-house",
@@ -5933,7 +6596,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/rose-pauson-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "raymond-carlson-house",
@@ -5961,7 +6627,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/raymond-carlson-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "david-wright-house",
@@ -5989,7 +6658,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/david-wright-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "pieper-house",
@@ -6017,7 +6689,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/pieper-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "boomer-cottage",
@@ -6045,7 +6720,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/boomer-cottage.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "harold-price-house",
@@ -6073,7 +6751,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/harold-price-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "gammage-auditorium",
@@ -6101,7 +6782,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/gammage-auditorium.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "first-christian-church",
@@ -6129,7 +6813,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/first-christian-church.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "k-c-derhodes-house",
@@ -6157,7 +6844,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/k-c-derhodes-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "ingwald-moe-house",
@@ -6185,7 +6875,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/ingwald-moe-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "andrew-armstrong-house",
@@ -6213,7 +6906,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/andrew-armstrong-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "herman-mossberg-house",
@@ -6241,7 +6937,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/herman-mossberg-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "richard-davis-house-woodside",
@@ -6269,7 +6968,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/richard-davis-house-woodside.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "john-haynes-house",
@@ -6297,7 +6999,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/john-haynes-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "john-e-christian-house-samara",
@@ -6325,7 +7030,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/john-e-christian-house-samara.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "george-stockman-house",
@@ -6353,7 +7061,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/george-stockman-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "city-national-bank-and-hotel",
@@ -6381,7 +7092,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/city-national-bank-and-hotel.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "delbert-meier-house",
@@ -6409,7 +7123,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/delbert-meier-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "lowell-walter-house-cedar-rock",
@@ -6437,7 +7154,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/lowell-walter-house-cedar-rock.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "alvin-miller-house",
@@ -6465,7 +7185,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/alvin-miller-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "douglas-grant-house",
@@ -6493,7 +7216,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/douglas-grant-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "caroll-alsop-house",
@@ -6521,7 +7247,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/caroll-alsop-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "jack-lamberson-house",
@@ -6549,7 +7278,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/jack-lamberson-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "robert-sunday-house",
@@ -6577,7 +7309,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/robert-sunday-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "paul-trier-house",
@@ -6605,7 +7340,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/paul-trier-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "malcolm-willey-house",
@@ -6633,7 +7371,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/malcolm-willey-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "bubilian-house",
@@ -6661,7 +7402,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/bubilian-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "henry-neils-house",
@@ -6689,7 +7433,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/henry-neils-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "thomas-keys-house",
@@ -6717,7 +7464,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/thomas-keys-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "elam-house",
@@ -6745,7 +7495,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/elam-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "lindholm-house-mantyla",
@@ -6773,7 +7526,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/lindholm-house-mantyla.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "donald-lovness-house",
@@ -6801,7 +7557,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/donald-lovness-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "lindholm-service-station",
@@ -6829,7 +7588,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/lindholm-service-station.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "fasbender-medical-clinic",
@@ -6857,7 +7619,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/fasbender-medical-clinic.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "james-mcbean-house",
@@ -6885,7 +7650,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/james-mcbean-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "paul-olfelt-house",
@@ -6913,7 +7681,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/paul-olfelt-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "edward-la-fond-house",
@@ -6941,7 +7712,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/edward-la-fond-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "henry-j-allen-house",
@@ -6969,7 +7743,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/henry-j-allen-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "wichita-state-university-corbin-education-center",
@@ -6997,7 +7774,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/wichita-state-university-corbin-education-center.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "sander-house-springbough",
@@ -7025,7 +7805,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/sander-house-springbough.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "rayward-house-tirranna",
@@ -7053,7 +7836,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/rayward-house-tirranna.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "dudley-spencer-house",
@@ -7081,7 +7867,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/dudley-spencer-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "florida-southern-college",
@@ -7109,7 +7898,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/florida-southern-college.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "rev-jesse-r-zeigler-house",
@@ -7137,7 +7929,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/rev-jesse-r-zeigler-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "joseph-euchtman-house",
@@ -7165,7 +7960,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/joseph-euchtman-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "robert-llewellyn-wright-house",
@@ -7193,7 +7991,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/robert-llewellyn-wright-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "theodore-baird-house",
@@ -7221,7 +8022,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/theodore-baird-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "charnley-norwood-house",
@@ -7249,7 +8053,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/charnley-norwood-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "j-willis-hughes-house-fountainhead",
@@ -7277,7 +8084,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/j-willis-hughes-house-fountainhead.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "clarence-sondern-house",
@@ -7305,7 +8115,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/clarence-sondern-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "community-christian-church",
@@ -7333,7 +8146,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/community-christian-church.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "russell-kraus-house",
@@ -7361,7 +8177,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/russell-kraus-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "theodore-pappas-house",
@@ -7389,7 +8208,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/theodore-pappas-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "frank-bott-house",
@@ -7417,7 +8239,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/frank-bott-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "alpine-meadows-ranch-writers-cabin",
@@ -7445,7 +8270,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/alpine-meadows-ranch-writers-cabin.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "alpine-meadows-ranch-farmhouse",
@@ -7473,7 +8301,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/alpine-meadows-ranch-farmhouse.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "harvey-p-sutton-house",
@@ -7501,7 +8332,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/harvey-p-sutton-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "zimmerman-house",
@@ -7529,7 +8363,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/zimmerman-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "toufic-kalil-house",
@@ -7557,7 +8394,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/toufic-kalil-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "james-christie-house",
@@ -7585,7 +8425,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/james-christie-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "stuart-richardson-house",
@@ -7613,7 +8456,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/stuart-richardson-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "j-a-sweeton-house",
@@ -7641,7 +8487,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/j-a-sweeton-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "friedman-house-fir-tree",
@@ -7669,7 +8518,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/friedman-house-fir-tree.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "pottery-house",
@@ -7697,7 +8549,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/pottery-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "richard-lloyd-jones-house-westhope",
@@ -7725,7 +8580,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/richard-lloyd-jones-house-westhope.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "price-tower",
@@ -7753,7 +8611,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/price-tower.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "harold-price-jr-house",
@@ -7781,7 +8642,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/harold-price-jr-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "gordon-house",
@@ -7809,7 +8673,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/gordon-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "stevens-plantation-auldbrass",
@@ -7837,7 +8704,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/stevens-plantation-auldbrass.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "austin-house-broad-margin",
@@ -7865,7 +8735,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/austin-house-broad-margin.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "seamour-shavin-house",
@@ -7893,7 +8766,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/seamour-shavin-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "john-gillin-house",
@@ -7921,7 +8797,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/john-gillin-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "william-thaxton-house",
@@ -7949,7 +8828,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/william-thaxton-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "kalita-humphreys-theater",
@@ -7977,7 +8859,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/kalita-humphreys-theater.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "sterling-kinney-house",
@@ -8005,7 +8890,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/sterling-kinney-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "donald-stromquist-house",
@@ -8033,7 +8921,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/donald-stromquist-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "pope-leighy-house",
@@ -8061,7 +8952,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/pope-leighy-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "chauncey-l-griggs-house",
@@ -8089,7 +8983,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/chauncey-l-griggs-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "ray-brandes-house",
@@ -8117,7 +9014,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/ray-brandes-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "william-tracy-house",
@@ -8145,7 +9045,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/william-tracy-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "quintin-blair-house",
@@ -8173,7 +9076,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/quintin-blair-house.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "teaters-knoll",
@@ -8201,7 +9107,10 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/teaters-knoll.jpg",
+    "is_visitable": false,
+    "is_rental": false
   },
   {
     "id": "king-kamehameha-golf-club",
@@ -8229,6 +9138,9 @@
     "last_sale_price": null,
     "last_sale_date": null,
     "created_at": "2026-02-22",
-    "updated_at": "2026-02-22"
+    "updated_at": "2026-02-22",
+    "hero_image": "/ai-images/hero/king-kamehameha-golf-club.jpg",
+    "is_visitable": false,
+    "is_rental": false
   }
 ]

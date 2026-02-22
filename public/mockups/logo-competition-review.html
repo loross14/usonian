@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Logo Design Competition Review</title>
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --red: #BF0A30;
+      --navy: #002868;
+      --gold: #D4B270;
+      --black: #000000;
+      --white: #FFFFFF;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--black);
+      color: var(--white);
+      min-height: 100vh;
+    }
+
+    .review-header {
+      text-align: center;
+      padding: 48px 24px;
+      border-bottom: 2px solid var(--white);
+    }
+
+    .review-header h1 {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin-bottom: 16px;
+    }
+
+    .review-header p {
+      font-size: 14px;
+      opacity: 0.6;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .variations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 2px;
+      background: var(--white);
+    }
+
+    .variation {
+      background: var(--black);
+    }
+
+    .variation-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 24px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .variation-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      background: var(--red);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .variation-title {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    .variation-link {
+      font-size: 11px;
+      color: var(--gold);
+      text-decoration: none;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+
+    .variation-link:hover {
+      opacity: 1;
+      text-decoration: underline;
+    }
+
+    .variation-preview {
+      width: 100%;
+      height: 400px;
+      border: none;
+      background: var(--white);
+    }
+
+    .variation-description {
+      padding: 16px 24px;
+      font-size: 12px;
+      line-height: 1.6;
+      opacity: 0.7;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .review-footer {
+      text-align: center;
+      padding: 48px 24px;
+      border-top: 2px solid var(--white);
+    }
+
+    .review-footer p {
+      font-size: 12px;
+      opacity: 0.5;
+    }
+
+    @media (max-width: 768px) {
+      .variations-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .variation-preview {
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="review-header">
+    <h1>LOGO DESIGN COMPETITION</h1>
+    <p>5 variations of the Usonian logo integration. Compare header treatments, interactions, and overall aesthetic. Click "Open Full" to see the complete mockup.</p>
+  </header>
+
+  <div class="variations-grid">
+    <!-- Variation 1: Minimal Icon -->
+    <div class="variation">
+      <div class="variation-header">
+        <div style="display: flex; align-items: center; gap: 16px;">
+          <span class="variation-number">1</span>
+          <span class="variation-title">MINIMAL ICON</span>
+        </div>
+        <a href="logo-variation-1-minimal.html" target="_blank" class="variation-link">OPEN FULL &rarr;</a>
+      </div>
+      <iframe src="logo-variation-1-minimal.html" class="variation-preview"></iframe>
+      <div class="variation-description">
+        Small compass icon only (24-32px). Subtle, clean placement. Lets the icon speak for itself without text.
+      </div>
+    </div>
+
+    <!-- Variation 2: Full Logo Prominent -->
+    <div class="variation">
+      <div class="variation-header">
+        <div style="display: flex; align-items: center; gap: 16px;">
+          <span class="variation-number">2</span>
+          <span class="variation-title">FULL LOGO PROMINENT</span>
+        </div>
+        <a href="logo-variation-2-prominent.html" target="_blank" class="variation-link">OPEN FULL &rarr;</a>
+      </div>
+      <iframe src="logo-variation-2-prominent.html" class="variation-preview"></iframe>
+      <div class="variation-description">
+        Full logo with icon + text as hero element. Centered, larger size (56px). Makes a bold brand statement.
+      </div>
+    </div>
+
+    <!-- Variation 3: Icon + Separate Text -->
+    <div class="variation">
+      <div class="variation-header">
+        <div style="display: flex; align-items: center; gap: 16px;">
+          <span class="variation-number">3</span>
+          <span class="variation-title">ICON + SEPARATE TEXT</span>
+        </div>
+        <a href="logo-variation-3-split.html" target="_blank" class="variation-link">OPEN FULL &rarr;</a>
+      </div>
+      <iframe src="logo-variation-3-split.html" class="variation-preview"></iframe>
+      <div class="variation-description">
+        Compass icon paired with separately styled "USONIAN" text. Balanced composition with visual distinction.
+      </div>
+    </div>
+
+    <!-- Variation 4: Animated/Interactive -->
+    <div class="variation">
+      <div class="variation-header">
+        <div style="display: flex; align-items: center; gap: 16px;">
+          <span class="variation-number">4</span>
+          <span class="variation-title">ANIMATED / INTERACTIVE</span>
+        </div>
+        <a href="logo-variation-4-animated.html" target="_blank" class="variation-link">OPEN FULL &rarr;</a>
+      </div>
+      <iframe src="logo-variation-4-animated.html" class="variation-preview"></iframe>
+      <div class="variation-description">
+        Logo with hover effects, subtle breathing animation, and golden glow. Modern, dynamic, delightful.
+      </div>
+    </div>
+
+    <!-- Variation 5: Brutalist Bold -->
+    <div class="variation">
+      <div class="variation-header">
+        <div style="display: flex; align-items: center; gap: 16px;">
+          <span class="variation-number">5</span>
+          <span class="variation-title">BRUTALIST BOLD</span>
+        </div>
+        <a href="logo-variation-5-brutalist.html" target="_blank" class="variation-link">OPEN FULL &rarr;</a>
+      </div>
+      <iframe src="logo-variation-5-brutalist.html" class="variation-preview"></iframe>
+      <div class="variation-description">
+        Large, high-contrast treatment. Black header, thick borders, industrial aesthetic. Maximum impact.
+      </div>
+    </div>
+  </div>
+
+  <footer class="review-footer">
+    <p>USONIAN LOGO COMPETITION &bull; 5 VARIATIONS &bull; READY FOR FIGMA REVIEW</p>
+  </footer>
+</body>
+</html>

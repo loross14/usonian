@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -47,6 +48,16 @@ export function Footer() {
           <div className="text-sm font-bold tracking-[0.1em] uppercase">
             USONIAN
           </div>
+
+          {/* Navigation */}
+          <nav className="flex gap-6 text-[11px] font-bold tracking-[0.1em] uppercase">
+            <Link href="/homes" className="hover:opacity-70 transition-opacity">
+              Homes
+            </Link>
+            <Link href="/architects" className="hover:opacity-70 transition-opacity">
+              Architects
+            </Link>
+          </nav>
 
           {/* Newsletter Form */}
           <form

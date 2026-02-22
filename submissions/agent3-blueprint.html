@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCM PLATFORM // STRUCTURE EXPOSED</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --red: #BF0A30;
+            --navy: #002868;
+            --gold: #D4B270;
+            --black: #000000;
+            --white: #FFFFFF;
+            --grid-color: rgba(0, 40, 104, 0.15);
+            --blueprint-line: rgba(0, 40, 104, 0.3);
+            --safety-yellow: #FFD700;
+            --safety-black: #000000;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--white);
+            color: var(--black);
+            font-size: 14px;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        /* EXPOSED GRID OVERLAY */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(var(--grid-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 9999;
+            opacity: 0.5;
+        }
+
+        /* STRUCTURAL LABEL */
+        .struct-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 9px;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            color: var(--navy);
+            opacity: 0.6;
+            position: absolute;
+            top: -18px;
+            left: 0;
+        }
+
+        .struct-label::before {
+            content: '//';
+            margin-right: 4px;
+            color: var(--red);
+        }
+
+        /* COORDINATES */
+        .coords {
+            font-size: 10px;
+            color: var(--navy);
+            opacity: 0.7;
+            font-weight: 400;
+        }
+
+        /* INDEX NUMBERS */
+        .index {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--red);
+            margin-right: 12px;
+            min-width: 32px;
+            display: inline-block;
+        }
+
+        /* SAFETY STRIPING */
+        .safety-border {
+            background: repeating-linear-gradient(
+                45deg,
+                var(--safety-yellow),
+                var(--safety-yellow) 8px,
+                var(--safety-black) 8px,
+                var(--safety-black) 16px
+            );
+            padding: 3px;
+        }
+
+        .safety-border-inner {
+            background: var(--white);
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--white);
+            border-bottom: 2px dashed var(--blueprint-line);
+            padding: 16px 40px;
+        }
+
+        .nav-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+        .nav-inner::before {
+            content: 'NAV_CONTAINER';
+            position: absolute;
+            top: -24px;
+            left: 0;
+            font-size: 9px;
+            color: var(--navy);
+            opacity: 0.5;
+            letter-spacing: 0.1em;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--black);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-marker {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            color: var(--red);
+            font-weight: 400;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--black);
+            text-decoration: none;
+            letter-spacing: 0.05em;
+            padding: 8px 12px;
+            border: 1px dashed transparent;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .nav-links a:hover {
+            border-color: var(--navy);
+            background: rgba(0, 40, 104, 0.05);
+        }
+
+        .nav-links a.active {
+            border: 1px solid var(--red);
+            color: var(--red);
+        }
+
+        /* SECTIONS */
+        section {
+            min-height: 100vh;
+            padding: 120px 40px 80px;
+            position: relative;
+            border-bottom: 2px dashed var(--blueprint-line);
+        }
+
+        section::before {
+            content: attr(data-section);
+            position: absolute;
+            top: 100px;
+            right: 40px;
+            font-size: 10px;
+            letter-spacing: 0.15em;
+            color: var(--navy);
+            opacity: 0.4;
+            writing-mode: vertical-rl;
+        }
+
+        .section-inner {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* STATUS BADGES */
+        .status {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            padding: 4px 12px;
+            display: inline-block;
+        }
+
+        .status-sold {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .status-sale {
+            background: var(--red);
+            color: var(--white);
+        }
+
+        .status-museum {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .status-archived {
+            background: var(--black);
+            color: var(--white);
+            opacity: 0.7;
+        }
+
+        /* HERO SECTION */
+        #hero {
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--white) 0%, rgba(0, 40, 104, 0.03) 100%);
+        }
+
+        .hero-content {
+            position: relative;
+        }
+
+        .hero-label {
+            font-size: 11px;
+            letter-spacing: 0.2em;
+            color: var(--red);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .hero-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--red);
+            max-width: 120px;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(48px, 8vw, 96px);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 32px;
+            position: relative;
+        }
+
+        .hero-title span {
+            display: block;
+        }
+
+        .hero-title .accent {
+            color: var(--red);
+            font-style: italic;
+        }
+
+        .hero-subtitle {
+            font-size: 14px;
+            max-width: 500px;
+            color: var(--navy);
+            margin-bottom: 48px;
+            padding-left: 24px;
+            border-left: 3px solid var(--gold);
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            max-width: 800px;
+            padding: 32px;
+            border: 2px dashed var(--blueprint-line);
+            position: relative;
+        }
+
+        .hero-stats::before {
+            content: 'STATS_GRID [4x1]';
+            position: absolute;
+            top: -24px;
+            left: 0;
+            font-size: 9px;
+            color: var(--navy);
+            opacity: 0.5;
+            letter-spacing: 0.1em;
+        }
+
+        .stat-item {
+            text-align: left;
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .stat-item::before {
+            content: attr(data-index);
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--red);
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--black);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            color: var(--navy);
+            opacity: 0.7;
+        }
+
+        /* HOMES GRID */
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 32px;
+            position: relative;
+        }
+
+        .properties-grid::before {
+            content: 'GRID_CONTAINER [auto-fill, minmax(340px, 1fr)]';
+            position: absolute;
+            top: -28px;
+            left: 0;
+            font-size: 9px;
+            color: var(--navy);
+            opacity: 0.5;
+            letter-spacing: 0.05em;
+        }
+
+        .property-card {
+            border: 2px dashed var(--blueprint-line);
+            padding: 24px;
+            position: relative;
+            background: var(--white);
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .property-card::before {
+            content: attr(data-index);
+            position: absolute;
+            top: -12px;
+            left: 16px;
+            background: var(--white);
+            padding: 0 8px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--red);
+        }
+
+        .property-card::after {
+            content: attr(data-coords);
+            position: absolute;
+            bottom: 8px;
+            right: 12px;
+            font-size: 9px;
+            color: var(--navy);
+            opacity: 0.5;
+        }
+
+        .property-card:hover {
+            box-shadow: 6px 6px 0 var(--navy);
+            transform: translate(-3px, -3px);
+        }
+
+        .property-card-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--navy) 0%, rgba(0, 40, 104, 0.7) 100%);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border: 1px solid var(--blueprint-line);
+        }
+
+        .property-card-image::before {
+            content: 'IMAGE_PLACEHOLDER';
+            font-size: 10px;
+            color: var(--white);
+            opacity: 0.6;
+            letter-spacing: 0.1em;
+        }
+
+        .property-card-image::after {
+            content: attr(data-dims);
+            position: absolute;
+            bottom: 8px;
+            left: 8px;
+            font-size: 9px;
+            color: var(--white);
+            opacity: 0.5;
+        }
+
+        .property-card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .property-card-architect {
+            font-size: 12px;
+            color: var(--navy);
+            margin-bottom: 16px;
+        }
+
+        .property-card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 16px;
+            border-top: 1px dashed var(--blueprint-line);
+        }
+
+        .property-card-price {
+            font-weight: 600;
+            color: var(--black);
+        }
+
+        .property-card-year {
+            font-size: 11px;
+            color: var(--navy);
+            opacity: 0.7;
+        }
+
+        /* HOMES LIST TABLE */
+        .properties-table {
+            width: 100%;
+            border-collapse: collapse;
+            position: relative;
+        }
+
+        .properties-table::before {
+            content: 'TABLE_ELEMENT [5 cols x 5 rows]';
+            position: absolute;
+            top: -28px;
+            left: 0;
+            font-size: 9px;
+            color: var(--navy);
+            opacity: 0.5;
+            letter-spacing: 0.05em;
+        }
+
+        .properties-table th,
+        .properties-table td {
+            padding: 16px 20px;
+            text-align: left;
+            border: 1px dashed var(--blueprint-line);
+        }
+
+        .properties-table th {
+            background: var(--navy);
+            color: var(--white);
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+        }
+
+        .properties-table tr {
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .properties-table tbody tr:hover {
+            background: rgba(0, 40, 104, 0.03);
+            transform: translateX(4px);
+        }
+
+        .properties-table td:first-child {
+            font-weight: 600;
+            color: var(--red);
+            width: 60px;
+        }
+
+        .row-index {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--red);
+        }
+
+        /* HOME DETAIL */
+        .detail-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .detail-header::before {
+            content: 'DETAIL_GRID [2 cols]';
+            position: absolute;
+            top: -28px;
+            left: 0;
+            font-size: 9px;
+            color: var(--navy);
+            opacity: 0.5;
+            letter-spacing: 0.05em;
+        }
+
+        .detail-image {
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, var(--navy) 0%, rgba(0, 40, 104, 0.7) 100%);
+            border: 3px solid var(--black);
+            box-shadow: 6px 6px 0 var(--black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .detail-image::before {
+            content: 'PRIMARY_IMAGE';
+            font-size: 12px;
+            color: var(--white);
+            opacity: 0.6;
+            letter-spacing: 0.15em;
+        }
+
+        .detail-image::after {
+            content: 'DIMS: 1200x900px';
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            font-size: 9px;
+            color: var(--white);
+            opacity: 0.5;
+        }
+
+        .detail-info {
+            padding: 24px;
+            border: 2px dashed var(--blueprint-line);
+            position: relative;
+        }
+
+        .detail-info::before {
+            content: 'INFO_CONTAINER';
+            position: absolute;
+            top: -16px;
+            left: 16px;
+            background: var(--white);
+            padding: 0 8px;
+            font-size: 9px;
+            color: var(--navy);
+            opacity: 0.6;
+            letter-spacing: 0.1em;
+        }
+
+        .detail-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .detail-architect {
+            font-size: 14px;
+            color: var(--navy);
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .detail-architect::before {
+            content: 'by';
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .detail-specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .spec-item {
+            padding: 16px;
+            background: rgba(0, 40, 104, 0.03);
+            border-left: 3px solid var(--navy);
+            position: relative;
+        }
+
+        .spec-item::before {
+            content: attr(data-index);
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            font-size: 9px;
+            color: var(--red);
+            opacity: 0.6;
+        }
+
+        .spec-label {
+            font-size: 9px;
+            letter-spacing: 0.15em;
+            color: var(--navy);
+            opacity: 0.6;
+            margin-bottom: 4px;
+        }
+
+        .spec-value {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--black);
+        }
+
+        .blueprint-box {
+            margin-top: 40px;
+            padding: 32px;
+            background: repeating-linear-gradient(
+                45deg,
+                var(--safety-yellow),
+                var(--safety-yellow) 8px,
+                var(--safety-black) 8px,
+                var(--safety-black) 16px
+            );
+        }
+
+        .blueprint-inner {
+            background: var(--white);
+            padding: 32px;
+            border: 2px solid var(--black);
+        }
+
+        .blueprint-title {
+            font-size: 12px;
+            letter-spacing: 0.2em;
+            color: var(--red);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .blueprint-title::before {
+            content: '//';
+        }
+
+        .blueprint-coords {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .coord-item {
+            font-size: 14px;
+            color: var(--navy);
+        }
+
+        .coord-item strong {
+            color: var(--black);
+            margin-right: 8px;
+        }
+
+        /* ARCHITECTS DIRECTORY */
+        .architects-section {
+            position: relative;
+        }
+
+        .section-marker {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--navy);
+            opacity: 0.15;
+            position: absolute;
+            left: -20px;
+        }
+
+        .architect-list {
+            list-style: none;
+        }
+
+        .architect-item {
+            display: flex;
+            align-items: center;
+            padding: 24px;
+            border: 1px dashed var(--blueprint-line);
+            margin-bottom: 16px;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .architect-item::before {
+            content: attr(data-index);
+            position: absolute;
+            left: -48px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--red);
+        }
+
+        .architect-item:hover {
+            background: rgba(0, 40, 104, 0.03);
+            transform: translateX(8px);
+            box-shadow: 4px 4px 0 var(--navy);
+        }
+
+        .architect-letter {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--navy);
+            width: 60px;
+            text-align: center;
+            margin-right: 24px;
+            opacity: 0.3;
+        }
+
+        .architect-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 700;
+            flex: 1;
+        }
+
+        .architect-years {
+            font-size: 12px;
+            color: var(--navy);
+            opacity: 0.7;
+            margin-right: 24px;
+        }
+
+        .architect-count {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--white);
+            background: var(--navy);
+            padding: 4px 12px;
+        }
+
+        /* ARCHITECT DETAIL */
+        .architect-hero {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 48px;
+            padding: 40px;
+            border: 3px solid var(--black);
+            box-shadow: 6px 6px 0 var(--black);
+            position: relative;
+            margin-bottom: 48px;
+        }
+
+        .architect-hero::before {
+            content: 'ARCHITECT_PROFILE_FRAME';
+            position: absolute;
+            top: -16px;
+            left: 24px;
+            background: var(--white);
+            padding: 0 12px;
+            font-size: 9px;
+            color: var(--navy);
+            opacity: 0.6;
+            letter-spacing: 0.1em;
+        }
+
+        .architect-portrait {
+            aspect-ratio: 3/4;
+            background: linear-gradient(135deg, var(--navy) 0%, rgba(0, 40, 104, 0.7) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border: 2px dashed var(--blueprint-line);
+        }
+
+        .architect-portrait::before {
+            content: 'PORTRAIT';
+            font-size: 11px;
+            color: var(--white);
+            opacity: 0.6;
+            letter-spacing: 0.15em;
+        }
+
+        .architect-portrait::after {
+            content: '300x400px';
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            font-size: 9px;
+            color: var(--white);
+            opacity: 0.5;
+        }
+
+        .architect-bio h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            line-height: 1.1;
+        }
+
+        .architect-bio .subtitle {
+            font-size: 14px;
+            color: var(--gold);
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        .architect-meta {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 32px;
+            padding: 24px;
+            background: rgba(0, 40, 104, 0.03);
+            border: 1px dashed var(--blueprint-line);
+            position: relative;
+        }
+
+        .architect-meta::before {
+            content: 'META_GRID [3 cols]';
+            position: absolute;
+            top: -12px;
+            left: 12px;
+            background: var(--white);
+            padding: 0 8px;
+            font-size: 9px;
+            color: var(--navy);
+            opacity: 0.5;
+        }
+
+        .meta-item {
+            position: relative;
+            padding-left: 24px;
+        }
+
+        .meta-item::before {
+            content: attr(data-index);
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 9px;
+            color: var(--red);
+        }
+
+        .meta-label {
+            font-size: 9px;
+            letter-spacing: 0.15em;
+            color: var(--navy);
+            opacity: 0.6;
+            margin-bottom: 4px;
+        }
+
+        .meta-value {
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .architect-desc {
+            line-height: 1.8;
+            color: var(--black);
+            max-width: 600px;
+        }
+
+        /* SECTION TITLES */
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 48px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::before {
+            content: '//';
+            color: var(--red);
+            margin-right: 16px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--gold);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .detail-header,
+            .architect-hero {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 100px 20px 60px;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .detail-specs {
+                grid-template-columns: 1fr;
+            }
+
+            .properties-table {
+                font-size: 12px;
+            }
+
+            .properties-table th,
+            .properties-table td {
+                padding: 12px 8px;
+            }
+
+            .blueprint-coords {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* UTILITY */
+        .mb-lg { margin-bottom: 48px; }
+        .mb-md { margin-bottom: 32px; }
+        .mb-sm { margin-bottom: 16px; }
+
+        .text-navy { color: var(--navy); }
+        .text-red { color: var(--red); }
+        .text-gold { color: var(--gold); }
+    </style>
+<script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script></head>
+<body>
+    <!-- NAVIGATION FRAME -->
+    <nav>
+        <div class="nav-inner">
+            <a href="#hero" class="logo">
+                <span class="logo-marker">[MCM]</span>
+                ARCHITECTURE PLATFORM
+            </a>
+            <ul class="nav-links">
+                <li><a href="#hero" class="active">[00] HOME</a></li>
+                <li><a href="#homes-grid">[01] GRID</a></li>
+                <li><a href="#homes-list">[02] LIST</a></li>
+                <li><a href="#home-detail">[03] DETAIL</a></li>
+                <li><a href="#architects">[04] ARCHITECTS</a></li>
+                <li><a href="#architect-detail">[05] PROFILE</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- SECTION 00: HERO -->
+    <section id="hero" data-section="SECTION_00 // HERO">
+        <div class="section-inner">
+            <div class="hero-content">
+                <div class="hero-label">[STRUCTURE_EXPOSED] EST. 2024</div>
+                <h1 class="hero-title">
+                    <span>WHO DESIGNED</span>
+                    <span class="accent">YOUR HOME?</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Discover the architects behind mid-century modern masterpieces.
+                    Every structure tells a story. Every blueprint reveals intention.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat-item" data-index="[01]">
+                        <span class="stat-number">847</span>
+                        <span class="stat-label">PROPERTIES</span>
+                    </div>
+                    <div class="stat-item" data-index="[02]">
+                        <span class="stat-number">156</span>
+                        <span class="stat-label">ARCHITECTS</span>
+                    </div>
+                    <div class="stat-item" data-index="[03]">
+                        <span class="stat-number">1939</span>
+                        <span class="stat-label">EARLIEST_YEAR</span>
+                    </div>
+                    <div class="stat-item" data-index="[04]">
+                        <span class="stat-number">$40M</span>
+                        <span class="stat-label">HIGHEST_PRICE</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 01: HOMES GRID -->
+    <section id="homes-grid" data-section="SECTION_01 // HOMES_GRID">
+        <div class="section-inner">
+            <h2 class="section-title">Properties Grid</h2>
+            <div class="properties-grid">
+                <div class="property-card" data-index="[01]" data-coords="[34.1127°N, 118.3682°W]">
+                    <div class="property-card-image" data-dims="800x600px"></div>
+                    <h3 class="property-card-title">Chemosphere</h3>
+                    <p class="property-card-architect">John Lautner // Hollywood Hills</p>
+                    <div class="property-card-meta">
+                        <span class="property-card-price">$1,000,000</span>
+                        <span class="status status-sold">SOLD</span>
+                    </div>
+                    <span class="property-card-year">1960-01-01</span>
+                </div>
+
+                <div class="property-card" data-index="[02]" data-coords="[34.1036°N, 118.4456°W]">
+                    <div class="property-card-image" data-dims="800x600px"></div>
+                    <h3 class="property-card-title">Sheats-Goldstein Residence</h3>
+                    <p class="property-card-architect">John Lautner // Beverly Crest</p>
+                    <div class="property-card-meta">
+                        <span class="property-card-price">$40,000,000</span>
+                        <span class="status status-museum">MUSEUM</span>
+                    </div>
+                    <span class="property-card-year">1961-01-01</span>
+                </div>
+
+                <div class="property-card" data-index="[03]" data-coords="[34.1145°N, 118.3701°W]">
+                    <div class="property-card-image" data-dims="800x600px"></div>
+                    <h3 class="property-card-title">Garcia House</h3>
+                    <p class="property-card-architect">John Lautner // Hollywood Hills</p>
+                    <div class="property-card-meta">
+                        <span class="property-card-price">$12,500,000</span>
+                        <span class="status status-sold">SOLD</span>
+                    </div>
+                    <span class="property-card-year">1962-01-01</span>
+                </div>
+
+                <div class="property-card" data-index="[04]" data-coords="[34.1089°N, 118.3654°W]">
+                    <div class="property-card-image" data-dims="800x600px"></div>
+                    <h3 class="property-card-title">Foster Carling Residence</h3>
+                    <p class="property-card-architect">John Lautner // Hollywood Hills</p>
+                    <div class="property-card-meta">
+                        <span class="property-card-price">$3,250,000</span>
+                        <span class="status status-sold">SOLD</span>
+                    </div>
+                    <span class="property-card-year">1949-01-01</span>
+                </div>
+
+                <div class="property-card" data-index="[05]" data-coords="[34.0867°N, 118.2682°W]">
+                    <div class="property-card-image" data-dims="800x600px"></div>
+                    <h3 class="property-card-title">Lautner House</h3>
+                    <p class="property-card-architect">John Lautner // Silver Lake</p>
+                    <div class="property-card-meta">
+                        <span class="property-card-price">$1,670,000</span>
+                        <span class="status status-archived">ARCHIVED</span>
+                    </div>
+                    <span class="property-card-year">1939-01-01</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 02: HOMES LIST -->
+    <section id="homes-list" data-section="SECTION_02 // HOMES_LIST">
+        <div class="section-inner">
+            <h2 class="section-title">Properties List</h2>
+            <table class="properties-table">
+                <thead>
+                    <tr>
+                        <th>INDEX</th>
+                        <th>PROPERTY_NAME</th>
+                        <th>ARCHITECT</th>
+                        <th>YEAR_ISO</th>
+                        <th>LOCATION</th>
+                        <th>PRICE_USD</th>
+                        <th>STATUS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="row-index">[01]</span></td>
+                        <td>Chemosphere (Malin Residence)</td>
+                        <td>John Lautner</td>
+                        <td>1960-01-01</td>
+                        <td>Hollywood Hills</td>
+                        <td>$1,000,000</td>
+                        <td><span class="status status-sold">SOLD</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="row-index">[02]</span></td>
+                        <td>Sheats-Goldstein Residence</td>
+                        <td>John Lautner</td>
+                        <td>1961-01-01</td>
+                        <td>Beverly Crest</td>
+                        <td>$40,000,000</td>
+                        <td><span class="status status-museum">MUSEUM</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="row-index">[03]</span></td>
+                        <td>Garcia House</td>
+                        <td>John Lautner</td>
+                        <td>1962-01-01</td>
+                        <td>Hollywood Hills</td>
+                        <td>$12,500,000</td>
+                        <td><span class="status status-sold">SOLD</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="row-index">[04]</span></td>
+                        <td>Foster Carling Residence</td>
+                        <td>John Lautner</td>
+                        <td>1949-01-01</td>
+                        <td>Hollywood Hills</td>
+                        <td>$3,250,000</td>
+                        <td><span class="status status-sold">SOLD</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="row-index">[05]</span></td>
+                        <td>Lautner House</td>
+                        <td>John Lautner</td>
+                        <td>1939-01-01</td>
+                        <td>Silver Lake</td>
+                        <td>$1,670,000</td>
+                        <td><span class="status status-archived">ARCHIVED</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- SECTION 03: HOME DETAIL -->
+    <section id="home-detail" data-section="SECTION_03 // HOME_DETAIL">
+        <div class="section-inner">
+            <h2 class="section-title">Property Detail</h2>
+            <div class="detail-header">
+                <div class="detail-image"></div>
+                <div class="detail-info">
+                    <h3 class="detail-title">Garcia House</h3>
+                    <p class="detail-architect">John Lautner</p>
+                    <div class="detail-specs">
+                        <div class="spec-item" data-index="[01]">
+                            <span class="spec-label">LOCATION</span>
+                            <span class="spec-value">Hollywood Hills, CA</span>
+                        </div>
+                        <div class="spec-item" data-index="[02]">
+                            <span class="spec-label">YEAR_COMPLETED</span>
+                            <span class="spec-value">1962-01-01</span>
+                        </div>
+                        <div class="spec-item" data-index="[03]">
+                            <span class="spec-label">PRICE_USD</span>
+                            <span class="spec-value">$12,500,000</span>
+                        </div>
+                        <div class="spec-item" data-index="[04]">
+                            <span class="spec-label">STATUS</span>
+                            <span class="status status-sold">SOLD</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="blueprint-box">
+                <div class="blueprint-inner">
+                    <div class="blueprint-title">BLUEPRINT_SPECIFICATIONS</div>
+                    <div class="blueprint-coords">
+                        <div class="coord-item">
+                            <strong>COORDS:</strong> [34.1145°N, 118.3701°W]
+                        </div>
+                        <div class="coord-item">
+                            <strong>ELEVATION:</strong> 1,247 ft
+                        </div>
+                        <div class="coord-item">
+                            <strong>LOT_SIZE:</strong> 0.34 acres
+                        </div>
+                        <div class="coord-item">
+                            <strong>SQFT:</strong> 3,200
+                        </div>
+                        <div class="coord-item">
+                            <strong>STRUCTURE_TYPE:</strong> Cantilevered
+                        </div>
+                        <div class="coord-item">
+                            <strong>MATERIALS:</strong> Concrete, Glass, Steel
+                        </div>
+                        <div class="coord-item">
+                            <strong>RECORD_ID:</strong> MCM-1962-JL-003
+                        </div>
+                        <div class="coord-item">
+                            <strong>LAST_UPDATED:</strong> 2024-02-22T00:00:00Z
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 04: ARCHITECTS DIRECTORY -->
+    <section id="architects" data-section="SECTION_04 // ARCHITECTS_DIRECTORY">
+        <div class="section-inner">
+            <h2 class="section-title">Architects Directory</h2>
+
+            <div class="architects-section mb-lg">
+                <span class="section-marker">A</span>
+                <ul class="architect-list" style="margin-left: 60px;">
+                    <li class="architect-item" data-index="[A-01]">
+                        <span class="architect-letter">A</span>
+                        <span class="architect-name">Alden B. Dow</span>
+                        <span class="architect-years">1904-1983</span>
+                        <span class="architect-count">27 PROPERTIES</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="architects-section mb-lg">
+                <span class="section-marker">E</span>
+                <ul class="architect-list" style="margin-left: 60px;">
+                    <li class="architect-item" data-index="[E-01]">
+                        <span class="architect-letter">E</span>
+                        <span class="architect-name">E. Fay Jones</span>
+                        <span class="architect-years">1921-2004</span>
+                        <span class="architect-count">8 PROPERTIES</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="architects-section mb-lg">
+                <span class="section-marker">J</span>
+                <ul class="architect-list" style="margin-left: 60px;">
+                    <li class="architect-item" data-index="[J-01]">
+                        <span class="architect-letter">J</span>
+                        <span class="architect-name">John Lautner</span>
+                        <span class="architect-years">1911-1994</span>
+                        <span class="architect-count">5 PROPERTIES</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 05: ARCHITECT DETAIL -->
+    <section id="architect-detail" data-section="SECTION_05 // ARCHITECT_DETAIL">
+        <div class="section-inner">
+            <h2 class="section-title">Architect Profile</h2>
+
+            <div class="architect-hero">
+                <div class="architect-portrait"></div>
+                <div class="architect-bio">
+                    <h2>Alden B. Dow</h2>
+                    <p class="subtitle">Wright Apprentice // Michigan Modernist</p>
+
+                    <div class="architect-meta">
+                        <div class="meta-item" data-index="[01]">
+                            <span class="meta-label">BIRTH_DATE</span>
+                            <span class="meta-value">1904-04-10</span>
+                        </div>
+                        <div class="meta-item" data-index="[02]">
+                            <span class="meta-label">DEATH_DATE</span>
+                            <span class="meta-value">1983-08-20</span>
+                        </div>
+                        <div class="meta-item" data-index="[03]">
+                            <span class="meta-label">PROPERTIES_COUNT</span>
+                            <span class="meta-value">27</span>
+                        </div>
+                        <div class="meta-item" data-index="[04]">
+                            <span class="meta-label">PRIMARY_REGION</span>
+                            <span class="meta-value">Michigan, USA</span>
+                        </div>
+                        <div class="meta-item" data-index="[05]">
+                            <span class="meta-label">STYLE_TAGS</span>
+                            <span class="meta-value">Organic, Usonian</span>
+                        </div>
+                        <div class="meta-item" data-index="[06]">
+                            <span class="meta-label">RECORD_ID</span>
+                            <span class="meta-value">ARCH-1904-ABD</span>
+                        </div>
+                    </div>
+
+                    <p class="architect-desc">
+                        Alden B. Dow apprenticed under Frank Lloyd Wright at Taliesin and brought
+                        organic architecture principles to Michigan's landscape. Known for his
+                        innovative use of concrete block and integration of buildings with their
+                        natural surroundings, Dow created 27 documented residential masterworks
+                        that continue to influence mid-century modern preservation efforts.
+                    </p>
+                </div>
+            </div>
+
+            <div class="blueprint-box">
+                <div class="blueprint-inner">
+                    <div class="blueprint-title">STRUCTURAL_METADATA</div>
+                    <div class="blueprint-coords">
+                        <div class="coord-item">
+                            <strong>COORDS_STUDIO:</strong> [43.6156°N, 84.2459°W]
+                        </div>
+                        <div class="coord-item">
+                            <strong>AIA_MEMBERSHIP:</strong> FAIA
+                        </div>
+                        <div class="coord-item">
+                            <strong>MENTOR:</strong> Frank Lloyd Wright
+                        </div>
+                        <div class="coord-item">
+                            <strong>SCHOOL:</strong> Columbia University
+                        </div>
+                        <div class="coord-item">
+                            <strong>ACTIVE_YEARS:</strong> 1934-1983
+                        </div>
+                        <div class="coord-item">
+                            <strong>ARCHIVE_LOC:</strong> Alden B. Dow Home and Studio
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER FRAME -->
+    <footer style="padding: 60px 40px; border-top: 3px solid var(--black); background: var(--navy); color: var(--white); position: relative;">
+        <div class="section-inner" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px;">
+            <div>
+                <span style="font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700;">[MCM] ARCHITECTURE PLATFORM</span>
+                <br>
+                <span style="font-size: 11px; opacity: 0.6; margin-top: 8px; display: block;">STRUCTURE_EXPOSED // AGENT_03 // 2024</span>
+            </div>
+            <div style="font-size: 10px; opacity: 0.6; text-align: right;">
+                <div>BUILD_VERSION: 1.0.0</div>
+                <div>TIMESTAMP: 2024-02-22T00:00:00Z</div>
+                <div>FRAMEWORK: Vanilla HTML/CSS</div>
+            </div>
+        </div>
+        <div style="position: absolute; top: 0; left: 0; right: 0; height: 6px; background: repeating-linear-gradient(90deg, var(--safety-yellow), var(--safety-yellow) 20px, var(--safety-black) 20px, var(--safety-black) 40px);"></div>
+    </footer>
+
+    <script>
+        // Active nav state based on scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -15,7 +15,12 @@ export function Badge({ status, className = "", variant = "inline" }: BadgeProps
     switch (status) {
       case 'active':
         return 'bg-red text-white';
+      case 'stay':
+        return 'bg-green text-white';
+      case 'visit':
+        return 'bg-gold text-black';
       case 'sold':
+      case 'archived':
         return 'bg-navy text-white';
       case 'museum':
       case 'donated':

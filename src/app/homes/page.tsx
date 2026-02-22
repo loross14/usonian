@@ -1,9 +1,9 @@
 import { Suspense } from "react";
 import propertiesData from "@/data/properties.json";
 import architectsData from "@/data/architects.json";
-import { type Property, type Architect } from "@/types";
-import { PrairieLines } from "@/components/ui/PrairieLines";
+import { matchesExperienceFilter, type Property, type Architect } from "@/types";
 import { HomesClient } from "./HomesClient";
+import { CompassIcon } from "@/components/icons/CompassIcon";
 
 // Cast to proper types
 const propertiesRaw = propertiesData as Property[];
@@ -30,9 +30,16 @@ function FiltersSkeleton() {
   );
 }
 
-export default function HomesPage() {
+export default async function HomesPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ limit?: string }>;
+}) {
+  const params = await searchParams;
+  const limit = params.limit ? parseInt(params.limit, 10) : undefined;
+
   // Join properties with architect names
-  const properties = propertiesRaw.map((property) => {
+  const allProperties = propertiesRaw.map((property) => {
     const architect = architectsRaw.find((a) => a.id === property.architect_id);
     return {
       ...property,
@@ -41,39 +48,42 @@ export default function HomesPage() {
     };
   });
 
+  // Apply limit if specified (for Figma capture)
+  const properties = limit ? allProperties.slice(0, limit) : allProperties;
+
   // Get unique states for filter dropdown
   const uniqueStates = [
     ...new Set(properties.map((p) => p.parsed_state).filter(Boolean)),
   ] as string[];
 
-  // Stats
-  const totalProperties = properties.length;
-  const activeCount = properties.filter((p) => p.status === "active").length;
-  const soldCount = properties.filter(
-    (p) => p.status === "sold" || p.status === "archived"
-  ).length;
-  const museumCount = properties.filter(
-    (p) => p.status === "museum" || p.status === "donated"
-  ).length;
+  // Stats (use allProperties for accurate counts) - experience-based filters
+  const totalProperties = allProperties.length;
+  const saleCount = allProperties.filter((p) => matchesExperienceFilter(p, 'sale')).length;
+  const visitCount = allProperties.filter((p) => matchesExperienceFilter(p, 'visit')).length;
+  const stayCount = allProperties.filter((p) => matchesExperienceFilter(p, 'stay')).length;
+  const offmarketCount = allProperties.filter((p) => matchesExperienceFilter(p, 'offmarket')).length;
 
   return (
     <>
       {/* Hero Section */}
-      <section className="border-b border-black">
-        <div className="container py-16 md:py-24">
-          <h1 className="animate-fade-up mb-4">HOMES</h1>
-          <p className="text-xs tracking-[0.15em] opacity-50 max-w-xl animate-fade-up animate-delay-1">
-            A CURATED INDEX OF {totalProperties} ARCHITECT-DESIGNED RESIDENCES.
-            <br />
-            BROWSE BY ARCHITECT, LOCATION, OR STATUS.
-          </p>
+      <section>
+        <div className="container py-8 md:py-12">
+          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 lg:gap-12">
+            {/* Left: Title + Subtitle */}
+            <div className="flex-shrink-0 max-w-xl">
+              <h1 className="animate-fade-up mb-4">
+                ARCHIVE<CompassIcon size="period" className="ml-1 align-baseline" />
+              </h1>
+              <p className="text-xs tracking-[0.15em] animate-fade-up animate-delay-1" style={{ color: 'var(--v2-red)' }}>
+                CELEBRATING 250 YEARS OF AMERICAN ARCHITECTURE.
+              </p>
+            </div>
+
+            {/* Right: Filter slot (rendered via portal from HomesClient) */}
+            <div id="hero-filter-slot" className="lg:flex-shrink-0 lg:mt-2" />
+          </div>
         </div>
       </section>
-
-      {/* Prairie Lines */}
-      <div className="container">
-        <PrairieLines />
-      </div>
 
       {/* Client-side Filters and List */}
       <Suspense fallback={<FiltersSkeleton />}>
@@ -83,9 +93,10 @@ export default function HomesPage() {
           states={uniqueStates}
           counts={{
             all: totalProperties,
-            active: activeCount,
-            sold: soldCount,
-            museum: museumCount,
+            sale: saleCount,
+            visit: visitCount,
+            stay: stayCount,
+            offmarket: offmarketCount,
           }}
         />
       </Suspense>

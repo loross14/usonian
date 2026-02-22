@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USONIAN | Terminal Philosophy - "Quotes" Concept</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* === DESIGN TOKENS === */
+        :root {
+            --red: #BF0A30;
+            --navy: #002868;
+            --gold: #D4B270;
+            --black: #000000;
+            --white: #FFFFFF;
+
+            /* Terminal Extensions */
+            --terminal-bg: #0D0D0D;
+            --terminal-text: #E0E0E0;
+            --terminal-dim: #666666;
+            --terminal-success: #4ADE80;
+            --terminal-warning: #FBBF24;
+
+            /* Shadows */
+            --shadow-sm: 2px 2px 0 var(--black);
+            --shadow-md: 4px 4px 0 var(--black);
+            --shadow-lg: 6px 6px 0 var(--black);
+        }
+
+        /* === RESET & BASE === */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background: var(--terminal-bg);
+            color: var(--terminal-text);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        /* === SELECTION STYLING === */
+        ::selection {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        /* === BLINKING CURSOR === */
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 0.6em;
+            height: 1.1em;
+            background: var(--gold);
+            animation: blink 1s infinite;
+            vertical-align: text-bottom;
+            margin-left: 2px;
+        }
+
+        /* === SCANLINE EFFECT === */
+        .scanlines {
+            position: relative;
+        }
+
+        .scanlines::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                to bottom,
+                transparent 0px,
+                transparent 2px,
+                rgba(0, 0, 0, 0.1) 2px,
+                rgba(0, 0, 0, 0.1) 4px
+            );
+            pointer-events: none;
+        }
+
+        /* === HEADER / NAV BAR === */
+        .terminal-header {
+            background: var(--navy);
+            border-bottom: 3px solid var(--gold);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-prompt {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .prompt-symbol {
+            color: var(--red);
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: 0.15em;
+        }
+
+        .nav-commands {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-cmd {
+            color: var(--terminal-dim);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.2s;
+        }
+
+        .nav-cmd:hover {
+            color: var(--gold);
+        }
+
+        .nav-cmd::before {
+            content: '$ ';
+            color: var(--terminal-dim);
+        }
+
+        /* === ASCII COMPASS LOGO === */
+        .ascii-compass {
+            font-size: 0.65rem;
+            line-height: 1.1;
+            color: var(--gold);
+            white-space: pre;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* === HERO SECTION === */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background:
+                radial-gradient(ellipse at 20% 80%, rgba(191, 10, 48, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(0, 40, 104, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .terminal-window {
+            background: var(--black);
+            border: 2px solid var(--terminal-dim);
+            border-radius: 8px;
+            overflow: hidden;
+            max-width: 900px;
+            box-shadow: var(--shadow-lg), 0 0 60px rgba(212, 178, 112, 0.1);
+        }
+
+        .terminal-titlebar {
+            background: linear-gradient(to bottom, #3a3a3a, #2a2a2a);
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid var(--terminal-dim);
+        }
+
+        .terminal-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .terminal-btn.close { background: #ff5f57; }
+        .terminal-btn.min { background: #ffbd2e; }
+        .terminal-btn.max { background: #28ca41; }
+
+        .terminal-title {
+            flex: 1;
+            text-align: center;
+            color: var(--terminal-dim);
+            font-size: 0.75rem;
+        }
+
+        .terminal-body {
+            padding: 30px 40px;
+            font-size: 1rem;
+        }
+
+        .terminal-line {
+            margin-bottom: 12px;
+        }
+
+        .terminal-line.dim {
+            color: var(--terminal-dim);
+            font-size: 0.85rem;
+        }
+
+        .prompt {
+            color: var(--gold);
+        }
+
+        .command {
+            color: var(--white);
+        }
+
+        .flag {
+            color: var(--red);
+        }
+
+        .value {
+            color: var(--terminal-success);
+        }
+
+        .path {
+            color: var(--navy);
+            background: rgba(0, 40, 104, 0.3);
+            padding: 0 4px;
+        }
+
+        .comment {
+            color: var(--terminal-dim);
+            font-style: italic;
+        }
+
+        .output {
+            color: var(--gold);
+            padding-left: 20px;
+            border-left: 2px solid var(--terminal-dim);
+            margin: 20px 0;
+        }
+
+        .hero-question {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--white);
+            margin: 30px 0 20px;
+            line-height: 1.2;
+        }
+
+        .hero-question .quote-marks {
+            color: var(--red);
+        }
+
+        .system-info {
+            color: var(--terminal-dim);
+            font-size: 0.8rem;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(102, 102, 102, 0.3);
+        }
+
+        .status-tag {
+            display: inline-block;
+            padding: 2px 8px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .status-tag.info {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .status-tag.ok {
+            background: var(--terminal-success);
+            color: var(--black);
+        }
+
+        .status-tag.warn {
+            background: var(--terminal-warning);
+            color: var(--black);
+        }
+
+        /* === SECTION STYLING === */
+        section {
+            padding: 80px 60px;
+        }
+
+        .section-header {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title::before {
+            content: '>';
+            color: var(--red);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .section-subtitle {
+            color: var(--terminal-dim);
+            font-size: 0.85rem;
+            margin-top: 10px;
+            padding-left: 25px;
+        }
+
+        .section-subtitle::before {
+            content: '// ';
+            color: var(--gold);
+        }
+
+        /* === PROPERTY CARDS AS TERMINAL OUTPUT === */
+        .property-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+        }
+
+        .property-card {
+            background: var(--black);
+            border: 2px solid var(--terminal-dim);
+            padding: 0;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .property-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md), 0 0 30px rgba(212, 178, 112, 0.15);
+        }
+
+        .property-card-header {
+            background: linear-gradient(to right, var(--navy), rgba(0, 40, 104, 0.7));
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--terminal-dim);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .property-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .property-id {
+            color: var(--terminal-dim);
+            font-size: 0.75rem;
+        }
+
+        .property-card-body {
+            padding: 25px 20px;
+        }
+
+        .property-output {
+            margin-bottom: 15px;
+        }
+
+        .property-output .output-prefix {
+            color: var(--gold);
+            margin-right: 5px;
+        }
+
+        .property-flags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 20px 0;
+            font-size: 0.85rem;
+        }
+
+        .property-flag {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .property-flag .flag-name {
+            color: var(--red);
+        }
+
+        .property-flag .flag-value {
+            color: var(--terminal-success);
+        }
+
+        .property-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin: 15px 0;
+        }
+
+        .property-price::before {
+            content: '>>> ';
+            color: var(--terminal-dim);
+            font-size: 1rem;
+        }
+
+        .property-status {
+            display: inline-block;
+            padding: 6px 16px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .property-status.sold {
+            background: var(--red);
+            color: var(--white);
+        }
+
+        .property-status.museum {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .property-status.available {
+            background: var(--terminal-success);
+            color: var(--black);
+        }
+
+        .property-card-footer {
+            border-top: 1px solid var(--terminal-dim);
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.75rem;
+            color: var(--terminal-dim);
+        }
+
+        .view-cmd {
+            color: var(--gold);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .view-cmd:hover {
+            color: var(--white);
+        }
+
+        .view-cmd::before {
+            content: '$ ';
+        }
+
+        /* === COMMAND REFERENCE SECTION === */
+        .command-ref-section {
+            background: linear-gradient(to bottom, rgba(0, 40, 104, 0.1), transparent);
+            border-top: 3px solid var(--navy);
+        }
+
+        .command-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .command-group {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--terminal-dim);
+            padding: 25px;
+        }
+
+        .command-group-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--gold);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--terminal-dim);
+        }
+
+        .command-item {
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .command-syntax {
+            color: var(--white);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .command-desc {
+            color: var(--terminal-dim);
+            font-size: 0.8rem;
+            padding-left: 15px;
+        }
+
+        .command-example {
+            background: var(--black);
+            padding: 15px 20px;
+            margin-top: 20px;
+            border-left: 3px solid var(--red);
+            font-size: 0.85rem;
+        }
+
+        /* === ASCII ART SECTION === */
+        .ascii-section {
+            text-align: center;
+            padding: 60px 40px;
+            border-top: 1px solid var(--terminal-dim);
+            border-bottom: 1px solid var(--terminal-dim);
+        }
+
+        .ascii-large {
+            font-size: 0.55rem;
+            line-height: 1.15;
+            color: var(--gold);
+            display: inline-block;
+            text-align: left;
+        }
+
+        .ascii-caption {
+            color: var(--terminal-dim);
+            font-size: 0.8rem;
+            margin-top: 20px;
+        }
+
+        /* === FOOTER === */
+        .terminal-footer {
+            background: var(--black);
+            border-top: 3px solid var(--gold);
+            padding: 40px 60px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .footer-text {
+            color: var(--terminal-dim);
+            font-size: 0.8rem;
+        }
+
+        .footer-cmd {
+            color: var(--terminal-dim);
+            font-size: 0.85rem;
+        }
+
+        .footer-cmd::before {
+            content: '$ ';
+            color: var(--gold);
+        }
+
+        /* === DECORATIVE ELEMENTS === */
+        .gold-line {
+            height: 3px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+            margin: 0;
+        }
+
+        .navy-accent {
+            width: 60px;
+            height: 4px;
+            background: var(--navy);
+            margin: 20px 0;
+        }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 768px) {
+            .terminal-header {
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px;
+            }
+
+            .hero {
+                padding: 40px 20px;
+            }
+
+            .hero-question {
+                font-size: 2rem;
+            }
+
+            .terminal-body {
+                padding: 20px;
+                font-size: 0.85rem;
+            }
+
+            section {
+                padding: 40px 20px;
+            }
+
+            .property-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ascii-large {
+                font-size: 0.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="terminal-header">
+        <div class="logo-prompt">
+            <span class="prompt-symbol">></span>
+            <span class="logo-text">USONIAN</span>
+        </div>
+        <nav class="nav-commands">
+            <a href="#" class="nav-cmd">browse --all</a>
+            <a href="#" class="nav-cmd">filter --architect</a>
+            <a href="#" class="nav-cmd">about</a>
+            <a href="#" class="nav-cmd">help</a>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero scanlines">
+        <div class="terminal-window">
+            <div class="terminal-titlebar">
+                <div class="terminal-btn close"></div>
+                <div class="terminal-btn min"></div>
+                <div class="terminal-btn max"></div>
+                <span class="terminal-title">usonian.terminal -- 80x24</span>
+            </div>
+            <div class="terminal-body">
+                <div class="terminal-line dim">
+                    <span class="comment">// USONIAN Real Estate Intelligence System v2.1</span>
+                </div>
+                <div class="terminal-line dim">
+                    <span class="comment">// Connecting "ARCHITECTURE" with "INTENTION"</span>
+                </div>
+                <br>
+                <div class="terminal-line">
+                    <span class="prompt">usonian@heritage</span>:<span class="path">/homes/collection/</span>$
+                </div>
+                <div class="terminal-line">
+                    <span class="command">cat</span> <span class="value">manifesto.txt</span>
+                </div>
+                <div class="output">
+                    <p>Every "LABEL" is a question.</p>
+                    <p>Every "STATUS" is a story.</p>
+                    <p>Every "PRICE" is a conversation.</p>
+                </div>
+
+                <h1 class="hero-question">
+                    <span class="quote-marks">"</span>WHO DESIGNED YOUR HOME?<span class="quote-marks">"</span><span class="cursor"></span>
+                </h1>
+
+                <div class="terminal-line">
+                    <span class="prompt">></span> <span class="command">usonian</span> <span class="flag">--query</span>=<span class="value">"mid-century modern"</span> <span class="flag">--location</span>=<span class="value">"los-angeles"</span>
+                </div>
+
+                <div class="system-info">
+                    <span class="status-tag info">[INFO]</span> System initialized.
+                    <span class="status-tag ok">[OK]</span> 847 properties indexed.
+                    <span class="status-tag warn">[WARN]</span> 3 new listings pending review.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="gold-line">
+
+    <!-- ASCII COMPASS SECTION -->
+    <section class="ascii-section">
+        <pre class="ascii-large">
+                            .
+                           /|\
+                          / | \
+                         /  |  \
+                        /   |   \
+                       /    |    \
+                      /     |     \
+                     /      |      \
+                    /       |       \
+                   /________|________\
+                   \        |        /
+                    \       |       /
+                     \      |      /
+                      \     |     /
+                       \    |    /
+                        \   |   /
+                         \  |  /
+                          \ | /
+                           \|/
+                       _____|_____
+                      /           \
+                     /             \
+                    /_______________\
+        </pre>
+        <p class="ascii-caption">// THE "COMPASS" - DRAFTING THE AMERICAN DREAM SINCE 2024</p>
+    </section>
+
+    <!-- PROPERTY LISTINGS SECTION -->
+    <section id="listings">
+        <div class="section-header">
+            <h2 class="section-title">"FEATURED" PROPERTIES</h2>
+            <p class="section-subtitle">Results from: $ usonian --filter="lautner" --sort="price-desc"</p>
+        </div>
+
+        <div class="property-grid">
+            <!-- CHEMOSPHERE -->
+            <article class="property-card">
+                <div class="property-card-header">
+                    <span class="property-name">"CHEMOSPHERE"</span>
+                    <span class="property-id">#LAU-001</span>
+                </div>
+                <div class="property-card-body">
+                    <div class="property-output">
+                        <span class="output-prefix">>>></span>
+                        <span class="value">John Lautner</span>
+                    </div>
+                    <div class="property-flags">
+                        <span class="property-flag">
+                            <span class="flag-name">--year</span>=<span class="flag-value">1960</span>
+                        </span>
+                        <span class="property-flag">
+                            <span class="flag-name">--style</span>=<span class="flag-value">"organic"</span>
+                        </span>
+                        <span class="property-flag">
+                            <span class="flag-name">--bedrooms</span>=<span class="flag-value">1</span>
+                        </span>
+                        <span class="property-flag">
+                            <span class="flag-name">-featured</span>
+                        </span>
+                    </div>
+                    <div class="property-price">$1,000,000</div>
+                    <span class="property-status sold">--status=SOLD</span>
+                </div>
+                <div class="property-card-footer">
+                    <span>/homes/chemosphere/</span>
+                    <a href="#" class="view-cmd">view --details</a>
+                </div>
+            </article>
+
+            <!-- SHEATS-GOLDSTEIN -->
+            <article class="property-card">
+                <div class="property-card-header">
+                    <span class="property-name">"SHEATS-GOLDSTEIN"</span>
+                    <span class="property-id">#LAU-002</span>
+                </div>
+                <div class="property-card-body">
+                    <div class="property-output">
+                        <span class="output-prefix">>>></span>
+                        <span class="value">John Lautner</span>
+                    </div>
+                    <div class="property-flags">
+                        <span class="property-flag">
+                            <span class="flag-name">--year</span>=<span class="flag-value">1961</span>
+                        </span>
+                        <span class="property-flag">
+                            <span class="flag-name">--style</span>=<span class="flag-value">"brutalist-organic"</span>
+                        </span>
+                        <span class="property-flag">
+                            <span class="flag-name">--sqft</span>=<span class="flag-value">10000</span>
+                        </span>
+                        <span class="property-flag">
+                            <span class="flag-name">-iconic</span>
+                        </span>
+                    </div>
+                    <div class="property-price">$40,000,000</div>
+                    <span class="property-status museum">--status=MUSEUM</span>
+                </div>
+                <div class="property-card-footer">
+                    <span>/homes/sheats-goldstein/</span>
+                    <a href="#" class="view-cmd">view --details</a>
+                </div>
+            </article>
+
+            <!-- GARCIA HOUSE -->
+            <article class="property-card">
+                <div class="property-card-header">
+                    <span class="property-name">"GARCIA HOUSE"</span>
+                    <span class="property-id">#LAU-003</span>
+                </div>
+                <div class="property-card-body">
+                    <div class="property-output">
+                        <span class="output-prefix">>>></span>
+                        <span class="value">John Lautner</span>
+                    </div>
+                    <div class="property-flags">
+                        <span class="property-flag">
+                            <span class="flag-name">--year</span>=<span class="flag-value">1962</span>
+                        </span>
+                        <span class="property-flag">
+                            <span class="flag-name">--style</span>=<span class="flag-value">"rainbow"</span>
+                        </span>
+                        <span class="property-flag">
+                            <span class="flag-name">--view</span>=<span class="flag-value">"canyon"</span>
+                        </span>
+                        <span class="property-flag">
+                            <span class="flag-name">-restored</span>
+                        </span>
+                    </div>
+                    <div class="property-price">$12,500,000</div>
+                    <span class="property-status sold">--status=SOLD</span>
+                </div>
+                <div class="property-card-footer">
+                    <span>/homes/garcia-house/</span>
+                    <a href="#" class="view-cmd">view --details</a>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <hr class="gold-line">
+
+    <!-- COMMAND REFERENCE SECTION -->
+    <section class="command-ref-section">
+        <div class="section-header">
+            <h2 class="section-title">"TERMINAL" VOCABULARY</h2>
+            <p class="section-subtitle">The language of intentional real estate</p>
+        </div>
+
+        <div class="command-grid">
+            <!-- PROMPTS -->
+            <div class="command-group">
+                <h3 class="command-group-title">// PROMPT SYNTAX</h3>
+                <div class="command-item">
+                    <div class="command-syntax"><span class="prompt">></span> LABEL</div>
+                    <div class="command-desc">Primary navigation prompt</div>
+                </div>
+                <div class="command-item">
+                    <div class="command-syntax"><span class="prompt">$</span> COMMAND</div>
+                    <div class="command-desc">Execute search or action</div>
+                </div>
+                <div class="command-item">
+                    <div class="command-syntax"><span class="comment">// NOTE</span></div>
+                    <div class="command-desc">Contextual information</div>
+                </div>
+                <div class="command-example">
+                    <span class="prompt">></span> <span class="command">usonian</span> <span class="flag">--browse</span>
+                </div>
+            </div>
+
+            <!-- FLAGS -->
+            <div class="command-group">
+                <h3 class="command-group-title">// FLAGS & OPTIONS</h3>
+                <div class="command-item">
+                    <div class="command-syntax"><span class="flag">--year</span>=<span class="value">VALUE</span></div>
+                    <div class="command-desc">Construction year filter</div>
+                </div>
+                <div class="command-item">
+                    <div class="command-syntax"><span class="flag">--status</span>=<span class="value">SOLD|AVAILABLE|MUSEUM</span></div>
+                    <div class="command-desc">Listing status indicator</div>
+                </div>
+                <div class="command-item">
+                    <div class="command-syntax"><span class="flag">-featured</span></div>
+                    <div class="command-desc">Boolean flag for highlights</div>
+                </div>
+                <div class="command-example">
+                    <span class="flag">--architect</span>=<span class="value">"neutra"</span> <span class="flag">-available</span>
+                </div>
+            </div>
+
+            <!-- PATHS -->
+            <div class="command-group">
+                <h3 class="command-group-title">// FILE PATHS</h3>
+                <div class="command-item">
+                    <div class="command-syntax"><span class="path">/homes/</span></div>
+                    <div class="command-desc">Property directory root</div>
+                </div>
+                <div class="command-item">
+                    <div class="command-syntax"><span class="path">/architects/</span></div>
+                    <div class="command-desc">Designer profiles</div>
+                </div>
+                <div class="command-item">
+                    <div class="command-syntax"><span class="path">/movements/mid-century/</span></div>
+                    <div class="command-desc">Architectural movements</div>
+                </div>
+                <div class="command-example">
+                    <span class="command">cd</span> <span class="path">/homes/case-study-houses/</span>
+                </div>
+            </div>
+
+            <!-- STATUS -->
+            <div class="command-group">
+                <h3 class="command-group-title">// SYSTEM MESSAGES</h3>
+                <div class="command-item">
+                    <div class="command-syntax"><span class="status-tag info">[INFO]</span></div>
+                    <div class="command-desc">Informational context</div>
+                </div>
+                <div class="command-item">
+                    <div class="command-syntax"><span class="status-tag ok">[OK]</span></div>
+                    <div class="command-desc">Success confirmation</div>
+                </div>
+                <div class="command-item">
+                    <div class="command-syntax"><span class="status-tag warn">[WARN]</span></div>
+                    <div class="command-desc">Attention required</div>
+                </div>
+                <div class="command-example">
+                    <span class="status-tag ok">[OK]</span> Property saved to watchlist
+                </div>
+            </div>
+
+            <!-- OUTPUT -->
+            <div class="command-group">
+                <h3 class="command-group-title">// OUTPUT FORMAT</h3>
+                <div class="command-item">
+                    <div class="command-syntax"><span class="output-prefix">>>></span> RESULT</div>
+                    <div class="command-desc">Command output/response</div>
+                </div>
+                <div class="command-item">
+                    <div class="command-syntax"><span class="cursor"></span></div>
+                    <div class="command-desc">Active/awaiting input</div>
+                </div>
+                <div class="command-item">
+                    <div class="command-syntax">"QUOTED"</div>
+                    <div class="command-desc">Emphasized labels (Abloh-style)</div>
+                </div>
+                <div class="command-example">
+                    <span class="output-prefix">>>></span> <span class="value">3 properties found</span>
+                </div>
+            </div>
+
+            <!-- PHILOSOPHY -->
+            <div class="command-group">
+                <h3 class="command-group-title">// "PHILOSOPHY"</h3>
+                <div class="command-item">
+                    <div class="command-syntax">"QUOTES" = "QUESTIONS"</div>
+                    <div class="command-desc">Labels invite inquiry</div>
+                </div>
+                <div class="command-item">
+                    <div class="command-syntax">TERMINAL = INTENTION</div>
+                    <div class="command-desc">Every command is deliberate</div>
+                </div>
+                <div class="command-item">
+                    <div class="command-syntax">ARCHITECTURE = INTERFACE</div>
+                    <div class="command-desc">Homes as user experience</div>
+                </div>
+                <div class="command-example">
+                    <span class="comment">// "WHAT MAKES A HOUSE A HOME?"</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="terminal-footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <pre class="ascii-compass">  /\
+ /  \
+/____\
+  ||</pre>
+                <div>
+                    <div class="prompt-symbol" style="display: inline;">></div>
+                    <span class="logo-text" style="font-size: 1.2rem;">USONIAN</span>
+                    <p class="footer-text">// "ARCHITECTURE" FOR THE "PEOPLE"</p>
+                </div>
+            </div>
+            <div class="footer-cmd">exit --preserve-session<span class="cursor"></span></div>
+        </div>
+    </footer>
+
+    <!-- FIGMA CAPTURE SCRIPT -->
+    <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+
+</body>
+</html>

@@ -24,8 +24,15 @@ export interface Property {
   bathrooms: number | null;
   status: string;
   best_image_url: string | null;
+  hero_image?: string;
   last_sale_price?: number | null;
   last_sale_date?: string | null;
+  listing_price?: number | null;  // Current listing price for active properties
+  listing_source_url?: string | null;  // Source URL for listing price
+  is_visitable?: boolean;  // Can you tour/visit this property?
+  is_rental?: boolean;     // Can you rent/stay overnight?
+  visit_url?: string;      // Link to tour booking
+  rental_url?: string;     // Link to Airbnb/rental listing
   created_at: string;
   updated_at: string;
 }
@@ -107,12 +114,38 @@ export interface PropertyFilters {
   preservation_status?: PreservationStatus;
 }
 
-// URL filter types
-export type StatusFilter = 'all' | 'active' | 'sold' | 'museum';
+// URL filter types - Experience-based filtering
+export type ExperienceFilter = 'all' | 'sale' | 'visit' | 'stay' | 'offmarket';
 
-export const STATUS_FILTER_MAP: Record<StatusFilter, PropertyStatus[] | null> = {
+// Legacy type alias for backwards compatibility
+export type StatusFilter = ExperienceFilter;
+
+// Filter logic helper - determines if a property matches a filter
+export function matchesExperienceFilter(property: Property, filter: ExperienceFilter): boolean {
+  switch (filter) {
+    case 'all':
+      return true;
+    case 'sale':
+      return property.status === 'active';
+    case 'visit':
+      return property.is_visitable === true;
+    case 'stay':
+      return property.is_rental === true;
+    case 'offmarket':
+      // Everything that's not for sale, visitable, or rentable
+      return property.status !== 'active' &&
+             property.is_visitable !== true &&
+             property.is_rental !== true;
+    default:
+      return true;
+  }
+}
+
+// Legacy STATUS_FILTER_MAP for any remaining usages
+export const STATUS_FILTER_MAP: Record<string, PropertyStatus[] | null> = {
   all: null,
   active: ['active'],
+  sale: ['active'],
   sold: ['sold', 'archived'],
   museum: ['museum', 'donated'],
 };
@@ -121,12 +154,23 @@ export const STATUS_FILTER_MAP: Record<StatusFilter, PropertyStatus[] | null> = 
 export function getStatusLabel(status: string): string {
   const labels: Record<string, string> = {
     active: 'For Sale',
-    sold: 'Sold',
+    sold: 'Off-Market',
     archived: 'Off-Market',
     donated: 'Donated',
     museum: 'Museum',
+    // Experience-based labels
+    visit: 'Visit',
+    stay: 'Stay',
   };
   return labels[status] || status;
+}
+
+// Get the primary experience badge for a property (priority-ordered)
+export function getPropertyBadgeType(property: Property): string {
+  if (property.status === 'active') return 'active';
+  if (property.is_rental === true) return 'stay';
+  if (property.is_visitable === true) return 'visit';
+  return property.status; // fallback to actual status (sold, archived, etc.)
 }
 
 export function getStatusBadgeClass(status: string): string {
