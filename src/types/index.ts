@@ -54,6 +54,7 @@ export interface Architect {
   biography: string | null;
   fellowship_years: string | null;
   image_url: string | null;
+  wikipedia_url: string | null;
   property_count?: number;
 }
 

@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usonian | Architect-Designed Homes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #FAF8F5;
+            --navy: #1a1a2e;
+            --terracotta: #C27254;
+        }
+
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--cream);
+            color: var(--navy);
+            line-height: 1.6;
+            font-weight: 300;
+            overflow-x: hidden;
+        }
+
+        /* Organic shape - subtle curved element */
+        .organic-curve {
+            position: fixed;
+            top: -20vh;
+            right: -10vw;
+            width: 60vw;
+            height: 80vh;
+            background: linear-gradient(135deg, rgba(194, 114, 84, 0.03) 0%, transparent 70%);
+            border-radius: 0 0 0 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Navigation - barely there */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 2.5rem 5vw;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            mix-blend-mode: multiply;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--navy);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--navy);
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+        }
+
+        /* Hero - asymmetric, breathing */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 5vw;
+            padding-top: 15vh;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 65vw;
+            margin-left: 8vw;
+        }
+
+        .hero-tagline {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 300;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 3rem;
+        }
+
+        .hero-tagline em {
+            font-style: italic;
+            color: var(--terracotta);
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            font-weight: 300;
+            max-width: 28rem;
+            opacity: 0.7;
+            line-height: 1.8;
+            margin-left: 0.5rem;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 4rem;
+            left: 5vw;
+            font-size: 0.65rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            opacity: 0.4;
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+        }
+
+        /* Section spacing - generous */
+        section {
+            padding: 12vh 5vw;
+            position: relative;
+        }
+
+        /* Philosophy section - offset, asymmetric */
+        .philosophy {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 12vw;
+        }
+
+        .philosophy-content {
+            max-width: 32rem;
+        }
+
+        .section-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.875rem;
+            color: var(--terracotta);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.1em;
+        }
+
+        .philosophy h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 300;
+            line-height: 1.3;
+            margin-bottom: 2rem;
+        }
+
+        .philosophy p {
+            font-size: 0.9375rem;
+            opacity: 0.7;
+            line-height: 1.9;
+        }
+
+        /* Featured homes - no cards, pure content */
+        .featured {
+            padding-top: 15vh;
+        }
+
+        .featured-header {
+            margin-left: 8vw;
+            margin-bottom: 8vh;
+        }
+
+        .featured-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 300;
+        }
+
+        .homes-flow {
+            display: flex;
+            flex-direction: column;
+            gap: 12vh;
+        }
+
+        .home-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5vw;
+            align-items: center;
+        }
+
+        .home-item:nth-child(even) {
+            direction: rtl;
+        }
+
+        .home-item:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .home-item:nth-child(1) {
+            margin-left: 5vw;
+        }
+
+        .home-item:nth-child(2) {
+            margin-right: 8vw;
+        }
+
+        .home-item:nth-child(3) {
+            margin-left: 12vw;
+        }
+
+        .home-image {
+            aspect-ratio: 4/3;
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.08) 0%, rgba(26, 26, 46, 0.03) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .home-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(45deg, transparent 48%, rgba(194, 114, 84, 0.1) 50%, transparent 52%),
+                linear-gradient(-45deg, transparent 48%, rgba(194, 114, 84, 0.05) 50%, transparent 52%);
+        }
+
+        .home-image-placeholder {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.875rem;
+            font-style: italic;
+            opacity: 0.3;
+        }
+
+        .home-info {
+            padding: 2rem 0;
+        }
+
+        .home-architect {
+            font-size: 0.6875rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            opacity: 0.5;
+            margin-bottom: 1rem;
+        }
+
+        .home-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            margin-bottom: 0.75rem;
+        }
+
+        .home-location {
+            font-size: 0.875rem;
+            opacity: 0.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .home-details {
+            display: flex;
+            gap: 2rem;
+            font-size: 0.75rem;
+            opacity: 0.5;
+        }
+
+        .home-detail span {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            display: block;
+            color: var(--navy);
+            opacity: 1;
+            margin-bottom: 0.25rem;
+        }
+
+        /* Architects section - minimal list */
+        .architects {
+            padding-top: 18vh;
+            padding-bottom: 18vh;
+        }
+
+        .architects-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 8vh;
+            padding: 0 8vw;
+        }
+
+        .architects-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 300;
+        }
+
+        .architects-header a {
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--terracotta);
+        }
+
+        .architects-list {
+            padding: 0 8vw;
+        }
+
+        .architect-row {
+            display: flex;
+            align-items: baseline;
+            padding: 2rem 0;
+            border-bottom: 1px solid rgba(26, 26, 46, 0.06);
+        }
+
+        .architect-row:first-child {
+            border-top: 1px solid rgba(26, 26, 46, 0.06);
+        }
+
+        .architect-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.75rem;
+            font-weight: 400;
+            flex: 1;
+        }
+
+        .architect-specialty {
+            font-size: 0.75rem;
+            opacity: 0.5;
+            flex: 1;
+        }
+
+        .architect-homes {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.125rem;
+            color: var(--terracotta);
+            width: 4rem;
+            text-align: right;
+        }
+
+        /* CTA section - breathing space */
+        .cta {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 10vh 5vw;
+        }
+
+        .cta h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 300;
+            max-width: 20ch;
+            margin-bottom: 3rem;
+            line-height: 1.2;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--cream);
+            background-color: var(--navy);
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: var(--terracotta);
+        }
+
+        /* Footer - whisper quiet */
+        footer {
+            padding: 6rem 5vw 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .footer-left {
+            max-width: 20rem;
+        }
+
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .footer-tagline {
+            font-size: 0.8125rem;
+            opacity: 0.5;
+            font-style: italic;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .footer-right {
+            text-align: right;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            font-size: 0.6875rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--navy);
+            opacity: 0.4;
+        }
+
+        .footer-copyright {
+            font-size: 0.6875rem;
+            opacity: 0.3;
+        }
+
+        /* Subtle organic decoration */
+        .organic-line {
+            position: absolute;
+            width: 1px;
+            height: 15vh;
+            background: linear-gradient(to bottom, transparent, var(--terracotta), transparent);
+            opacity: 0.2;
+        }
+
+        .line-1 {
+            left: 15vw;
+            top: 85vh;
+        }
+
+        .line-2 {
+            right: 25vw;
+            top: 180vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="organic-curve"></div>
+    <div class="organic-line line-1"></div>
+    <div class="organic-line line-2"></div>
+
+    <nav>
+        <div class="logo">Usonian</div>
+        <ul class="nav-links">
+            <li><a href="#">Homes</a></li>
+            <li><a href="#">Architects</a></li>
+            <li><a href="#">Philosophy</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-tagline">
+                Where architecture<br>
+                becomes <em>landscape</em>
+            </h1>
+            <p class="hero-subtitle">
+                Discover homes designed by visionary architects
+                who understood that great architecture doesn't
+                compete with nature, it converses with it.
+            </p>
+        </div>
+        <span class="scroll-hint">Scroll to explore</span>
+    </section>
+
+    <section class="philosophy">
+        <div class="philosophy-content">
+            <span class="section-number">01</span>
+            <h2>The Usonian ideal begins with the land itself</h2>
+            <p>
+                Every home in our collection emerges from its site
+                as naturally as a tree from soil. We believe architecture
+                should honor the horizontal line of the earth,
+                the rhythm of seasons, the poetry of shelter.
+            </p>
+        </div>
+    </section>
+
+    <section class="featured">
+        <div class="featured-header">
+            <span class="section-number">02</span>
+            <h2>Featured Homes</h2>
+        </div>
+
+        <div class="homes-flow">
+            <article class="home-item">
+                <div class="home-image">
+                    <span class="home-image-placeholder">Image</span>
+                </div>
+                <div class="home-info">
+                    <p class="home-architect">Richard Neutra</p>
+                    <h3 class="home-name">Kaufmann Desert House</h3>
+                    <p class="home-location">Palm Springs, California</p>
+                    <div class="home-details">
+                        <div class="home-detail">
+                            <span>1946</span>
+                            Year
+                        </div>
+                        <div class="home-detail">
+                            <span>3,200</span>
+                            Sq. Ft.
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="home-item">
+                <div class="home-image">
+                    <span class="home-image-placeholder">Image</span>
+                </div>
+                <div class="home-info">
+                    <p class="home-architect">Frank Lloyd Wright</p>
+                    <h3 class="home-name">Jacobs House I</h3>
+                    <p class="home-location">Madison, Wisconsin</p>
+                    <div class="home-details">
+                        <div class="home-detail">
+                            <span>1937</span>
+                            Year
+                        </div>
+                        <div class="home-detail">
+                            <span>1,550</span>
+                            Sq. Ft.
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="home-item">
+                <div class="home-image">
+                    <span class="home-image-placeholder">Image</span>
+                </div>
+                <div class="home-info">
+                    <p class="home-architect">Craig Ellwood</p>
+                    <h3 class="home-name">Smith House</h3>
+                    <p class="home-location">Crestwood Hills, Los Angeles</p>
+                    <div class="home-details">
+                        <div class="home-detail">
+                            <span>1958</span>
+                            Year
+                        </div>
+                        <div class="home-detail">
+                            <span>2,400</span>
+                            Sq. Ft.
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <section class="architects">
+        <div class="architects-header">
+            <div>
+                <span class="section-number">03</span>
+                <h2>Our Architects</h2>
+            </div>
+            <a href="#">View all</a>
+        </div>
+
+        <div class="architects-list">
+            <div class="architect-row">
+                <span class="architect-name">Frank Lloyd Wright</span>
+                <span class="architect-specialty">Organic Architecture</span>
+                <span class="architect-homes">47</span>
+            </div>
+            <div class="architect-row">
+                <span class="architect-name">Richard Neutra</span>
+                <span class="architect-specialty">Desert Modernism</span>
+                <span class="architect-homes">23</span>
+            </div>
+            <div class="architect-row">
+                <span class="architect-name">Rudolf Schindler</span>
+                <span class="architect-specialty">Space Architecture</span>
+                <span class="architect-homes">18</span>
+            </div>
+            <div class="architect-row">
+                <span class="architect-name">Craig Ellwood</span>
+                <span class="architect-specialty">Case Study Houses</span>
+                <span class="architect-homes">12</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <h2>Begin your conversation with architecture</h2>
+        <a href="#" class="cta-button">Explore Homes</a>
+    </section>
+
+    <footer>
+        <div class="footer-left">
+            <div class="footer-logo">Usonian</div>
+            <p class="footer-tagline">Nature's geometry, not man's grid</p>
+        </div>
+        <div class="footer-right">
+            <div class="footer-links">
+                <a href="#">Instagram</a>
+                <a href="#">Pinterest</a>
+                <a href="#">Newsletter</a>
+            </div>
+            <p class="footer-copyright">2024 Usonian. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

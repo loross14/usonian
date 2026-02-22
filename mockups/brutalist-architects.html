@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USONIAN / Architects</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --white: #FFFFFF;
+            --black: #000000;
+            --red: #BF0A30;
+            --navy: #002868;
+            --gold: #D4B270;
+            --grid-line: rgba(0, 0, 0, 0.06);
+        }
+
+        html {
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', 'Space Mono', 'Courier New', monospace;
+            background-color: var(--white);
+            color: var(--black);
+            line-height: 1.4;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* FLW-INSPIRED ANIMATIONS */
+        @keyframes draw-line {
+            0% {
+                width: 0;
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            100% {
+                width: 100%;
+                opacity: 1;
+            }
+        }
+
+        @keyframes fade-up {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes star-pulse {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.6;
+                transform: scale(0.9);
+            }
+        }
+
+        @keyframes prairie-draw {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+
+        /* ANIMATION CLASSES */
+        .animate-fade-up {
+            animation: fade-up 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        .animate-delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .animate-delay-2 {
+            animation-delay: 0.2s;
+        }
+
+        .animate-delay-3 {
+            animation-delay: 0.3s;
+        }
+
+        .animate-delay-4 {
+            animation-delay: 0.4s;
+        }
+
+        /* PRAIRIE LINES DECORATIVE ELEMENT */
+        .prairie-lines {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin: 40px 0;
+            overflow: hidden;
+        }
+
+        .prairie-lines .line {
+            height: 1px;
+            background-color: var(--red);
+            animation: prairie-draw 1.2s ease-out forwards;
+        }
+
+        .prairie-lines .line:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .prairie-lines .line:nth-child(2) {
+            animation-delay: 0.15s;
+        }
+
+        .prairie-lines .line:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        /* VISIBLE GRID SYSTEM */
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .grid-overlay::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+            background-size: 80px 80px;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 60px;
+        }
+
+        /* HEADER - TERMINAL STYLE */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--black);
+            margin-bottom: 80px;
+        }
+
+        .logo {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+        }
+
+        .logo::before {
+            content: '> ';
+            opacity: 0.4;
+        }
+
+        nav {
+            display: flex;
+            gap: 40px;
+        }
+
+        nav a {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--black);
+            text-decoration: none;
+            opacity: 0.5;
+            transition: opacity 0.2s;
+        }
+
+        nav a:hover,
+        nav a.active {
+            opacity: 1;
+        }
+
+        /* PAGE TITLE - MASSIVE */
+        .page-header {
+            margin-bottom: 40px;
+        }
+
+        .page-title {
+            font-size: clamp(60px, 10vw, 120px);
+            font-weight: 700;
+            line-height: 0.85;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .page-subtitle {
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            opacity: 0.5;
+        }
+
+        .page-subtitle span {
+            color: var(--red);
+            font-weight: 700;
+            opacity: 1;
+        }
+
+        /* LETTER SECTION */
+        .letter-section {
+            margin-bottom: 80px;
+        }
+
+        .letter-marker {
+            font-size: 120px;
+            font-weight: 700;
+            line-height: 1;
+            letter-spacing: -0.05em;
+            color: var(--red);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .letter-marker::after {
+            content: '';
+            position: absolute;
+            bottom: 20px;
+            left: 100px;
+            right: 0;
+            height: 1px;
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        /* STAR ICON */
+        .star-icon {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        .star-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .star-icon.featured svg {
+            fill: var(--red);
+            animation: star-pulse 2s ease-in-out infinite;
+        }
+
+        .star-icon.inactive svg {
+            fill: var(--black);
+            opacity: 0.3;
+        }
+
+        /* ARCHITECT ENTRIES */
+        .architect-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .architect-entry {
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            gap: 40px;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            align-items: baseline;
+            text-decoration: none;
+            color: var(--black);
+            transition: all 0.15s ease;
+        }
+
+        .architect-entry:hover {
+            background-color: rgba(0, 0, 0, 0.02);
+            padding-left: 20px;
+            margin-left: -20px;
+            padding-right: 20px;
+            margin-right: -20px;
+        }
+
+        .architect-entry:hover .architect-name {
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        .architect-name {
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            text-transform: uppercase;
+        }
+
+        .architect-years {
+            font-size: 14px;
+            font-weight: 400;
+            opacity: 0.5;
+            white-space: nowrap;
+        }
+
+        .architect-count {
+            font-size: 14px;
+            font-weight: 700;
+            text-align: right;
+            min-width: 140px;
+        }
+
+        .architect-count span {
+            font-weight: 400;
+            opacity: 0.5;
+        }
+
+        /* FELLOWSHIP BADGE */
+        .fellowship-badge {
+            display: inline-block;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border: 1px solid var(--black);
+            margin-left: 16px;
+            vertical-align: middle;
+            opacity: 0.6;
+        }
+
+        /* STATS BAR */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background-color: var(--navy);
+            margin-bottom: 100px;
+        }
+
+        .stat-cell {
+            background-color: var(--white);
+            padding: 30px 24px;
+        }
+
+        .stat-label {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            opacity: 0.4;
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        /* NEWSLETTER + ALERTS CTA SECTION */
+        .cta-section {
+            background-color: var(--navy);
+            margin: 100px -60px 0 -60px;
+            padding: 80px 60px;
+        }
+
+        .cta-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .cta-column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cta-heading {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 16px;
+        }
+
+        .cta-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--white);
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+        }
+
+        .cta-description {
+            font-size: 13px;
+            color: var(--white);
+            opacity: 0.7;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .cta-form {
+            display: flex;
+            gap: 12px;
+        }
+
+        .cta-input {
+            flex: 1;
+            padding: 14px 16px;
+            font-family: inherit;
+            font-size: 13px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--white);
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .cta-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .cta-input:focus {
+            border-color: var(--gold);
+        }
+
+        .cta-button {
+            padding: 14px 24px;
+            font-family: inherit;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            background-color: var(--gold);
+            color: var(--navy);
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .cta-button:hover {
+            background-color: #E5C485;
+        }
+
+        .cta-button:active {
+            transform: scale(0.98);
+        }
+
+        /* FOOTER - NAVY WITH GOLD ACCENTS */
+        .site-footer {
+            background-color: var(--navy);
+            margin: 0 -60px;
+            padding: 60px 60px 40px 60px;
+        }
+
+        .footer-content {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding-bottom: 40px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
+        .footer-logo::before {
+            content: '> ';
+            opacity: 0.4;
+        }
+
+        .footer-nav {
+            display: flex;
+            gap: 40px;
+        }
+
+        .footer-nav a {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.5;
+            transition: opacity 0.2s;
+        }
+
+        .footer-nav a:hover {
+            opacity: 1;
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-left {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--white);
+            opacity: 0.4;
+        }
+
+        .footer-right {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--gold);
+            opacity: 0.7;
+        }
+
+        .footer-divider {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gold), transparent);
+            margin: 20px 0;
+            opacity: 0.3;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .container {
+                padding: 30px 40px;
+            }
+
+            .letter-marker {
+                font-size: 80px;
+            }
+
+            .letter-marker::after {
+                left: 70px;
+            }
+
+            .architect-entry {
+                grid-template-columns: 1fr auto;
+            }
+
+            .architect-years {
+                display: none;
+            }
+
+            .stats-bar {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .cta-section {
+                margin: 100px -40px 0 -40px;
+                padding: 60px 40px;
+            }
+
+            .cta-container {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .site-footer {
+                margin: 0 -40px;
+                padding: 60px 40px 40px 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 24px;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+
+            .page-title {
+                font-size: 48px;
+            }
+
+            .letter-marker {
+                font-size: 60px;
+            }
+
+            .letter-marker::after {
+                display: none;
+            }
+
+            .architect-entry {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .architect-count {
+                text-align: left;
+                min-width: auto;
+            }
+
+            .fellowship-badge {
+                display: block;
+                margin-left: 0;
+                margin-top: 8px;
+                width: fit-content;
+            }
+
+            .stats-bar {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                gap: 20px;
+                flex-wrap: wrap;
+            }
+
+            .cta-section {
+                margin: 80px -24px 0 -24px;
+                padding: 40px 24px;
+            }
+
+            .cta-form {
+                flex-direction: column;
+            }
+
+            .cta-button {
+                width: 100%;
+            }
+
+            .site-footer {
+                margin: 0 -24px;
+                padding: 40px 24px 30px 24px;
+            }
+
+            .footer-top {
+                flex-direction: column;
+                gap: 24px;
+            }
+
+            .footer-nav {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="grid-overlay"></div>
+
+<div class="container">
+
+    <header>
+        <div class="logo">USONIAN</div>
+        <nav>
+            <a href="#">Homes</a>
+            <a href="#" class="active">Architects</a>
+            <a href="#">About</a>
+        </nav>
+    </header>
+
+    <section class="page-header">
+        <h1 class="page-title animate-fade-up">ARCHITECTS</h1>
+        <p class="page-subtitle animate-fade-up animate-delay-1"><span>21</span> MASTERS OF THE ORGANIC TRADITION</p>
+    </section>
+
+    <!-- Prairie Lines Decorative Element -->
+    <div class="prairie-lines">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+
+    <div class="stats-bar">
+        <div class="stat-cell animate-fade-up animate-delay-1">
+            <div class="stat-label">Architects</div>
+            <div class="stat-value">21</div>
+        </div>
+        <div class="stat-cell animate-fade-up animate-delay-2">
+            <div class="stat-label">Taliesin Fellows</div>
+            <div class="stat-value">14</div>
+        </div>
+        <div class="stat-cell animate-fade-up animate-delay-3">
+            <div class="stat-label">Properties</div>
+            <div class="stat-value">51</div>
+        </div>
+        <div class="stat-cell animate-fade-up animate-delay-4">
+            <div class="stat-label">Time Span</div>
+            <div class="stat-value">1904-2023</div>
+        </div>
+    </div>
+
+    <!-- LETTER A -->
+    <section class="letter-section">
+        <div class="letter-marker">A</div>
+        <div class="architect-list">
+            <a href="/architects/aaron-green" class="architect-entry">
+                <div>
+                    <span class="star-icon featured">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                        </svg>
+                    </span>
+                    <span class="architect-name">AARON GREEN</span>
+                    <span class="fellowship-badge">Taliesin 1940-1951</span>
+                </div>
+                <span class="architect-years">1917 - 2001</span>
+                <span class="architect-count">2 <span>properties</span></span>
+            </a>
+            <a href="/architects/alden-b-dow" class="architect-entry">
+                <div>
+                    <span class="star-icon featured">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                        </svg>
+                    </span>
+                    <span class="architect-name">ALDEN B. DOW</span>
+                    <span class="fellowship-badge">Taliesin 1933-1934</span>
+                </div>
+                <span class="architect-years">1904 - 1983</span>
+                <span class="architect-count">8 <span>properties</span></span>
+            </a>
+            <a href="/architects/allan-gelbin" class="architect-entry">
+                <div>
+                    <span class="star-icon inactive">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                        </svg>
+                    </span>
+                    <span class="architect-name">ALLAN GELBIN</span>
+                </div>
+                <span class="architect-years">-</span>
+                <span class="architect-count">1 <span>property</span></span>
+            </a>
+            <a href="/architects/arthur-dyson" class="architect-entry">
+                <div>
+                    <span class="star-icon inactive">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                        </svg>
+                    </span>
+                    <span class="architect-name">ARTHUR DYSON</span>
+                </div>
+                <span class="architect-years">1940 - present</span>
+                <span class="architect-count">3 <span>properties</span></span>
+            </a>
+        </div>
+    </section>
+
+    <!-- LETTER C -->
+    <section class="letter-section">
+        <div class="letter-marker">C</div>
+        <div class="architect-list">
+            <a href="/architects/cornelia-brierly" class="architect-entry">
+                <div>
+                    <span class="star-icon featured">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                        </svg>
+                    </span>
+                    <span class="architect-name">CORNELIA BRIERLY</span>
+                    <span class="fellowship-badge">Taliesin 1934-2012</span>
+                </div>
+                <span class="architect-years">1913 - 2012</span>
+                <span class="architect-count">2 <span>properties</span></span>
+            </a>
+        </div>
+    </section>
+
+    <!-- LETTER E -->
+    <section class="letter-section">
+        <div class="letter-marker">E</div>
+        <div class="architect-list">
+            <a href="/architects/e-fay-jones" class="architect-entry">
+                <div>
+                    <span class="star-icon featured">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                        </svg>
+                    </span>
+                    <span class="architect-name">E. FAY JONES</span>
+                    <span class="fellowship-badge">Taliesin 1953</span>
+                </div>
+                <span class="architect-years">1921 - 2004</span>
+                <span class="architect-count">8 <span>properties</span></span>
+            </a>
+            <a href="/architects/edgar-tafel" class="architect-entry">
+                <div>
+                    <span class="star-icon featured">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                        </svg>
+                    </span>
+                    <span class="architect-name">EDGAR TAFEL</span>
+                    <span class="fellowship-badge">Taliesin 1932-1941</span>
+                </div>
+                <span class="architect-years">1912 - 2011</span>
+                <span class="architect-count">3 <span>properties</span></span>
+            </a>
+            <a href="/architects/elizabeth-wright-ingraham" class="architect-entry">
+                <div>
+                    <span class="star-icon inactive">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                        </svg>
+                    </span>
+                    <span class="architect-name">ELIZABETH WRIGHT INGRAHAM</span>
+                </div>
+                <span class="architect-years">1922 - 2013</span>
+                <span class="architect-count">2 <span>properties</span></span>
+            </a>
+            <a href="/architects/eric-lloyd-wright" class="architect-entry">
+                <div>
+                    <span class="star-icon inactive">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                        </svg>
+                    </span>
+                    <span class="architect-name">ERIC LLOYD WRIGHT</span>
+                </div>
+                <span class="architect-years">1929 - 2023</span>
+                <span class="architect-count">3 <span>properties</span></span>
+            </a>
+            <a href="/architects/eugene-masselink" class="architect-entry">
+                <div>
+                    <span class="star-icon inactive">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                        </svg>
+                    </span>
+                    <span class="architect-name">EUGENE MASSELINK</span>
+                </div>
+                <span class="architect-years">1910 - 1962</span>
+                <span class="architect-count">0 <span>properties</span></span>
+            </a>
+        </div>
+    </section>
+
+    <!-- LETTER J -->
+    <section class="letter-section">
+        <div class="letter-marker">J</div>
+        <div class="architect-list">
+            <a href="/architects/john-dekoven-hill" class="architect-entry">
+                <div>
+                    <span class="star-icon inactive">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                        </svg>
+                    </span>
+                    <span class="architect-name">JOHN DEKOVEN HILL</span>
+                </div>
+                <span class="architect-years">1920 - 1996</span>
+                <span class="architect-count">0 <span>properties</span></span>
+            </a>
+            <a href="/architects/john-h-howe" class="architect-entry">
+                <div>
+                    <span class="star-icon featured">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                        </svg>
+                    </span>
+                    <span class="architect-name">JOHN H. HOWE</span>
+                    <span class="fellowship-badge">Taliesin 1932-1997</span>
+                </div>
+                <span class="architect-years">1913 - 1997</span>
+                <span class="architect-count">0 <span>properties</span></span>
+            </a>
+            <a href="/architects/john-lautner" class="architect-entry">
+                <div>
+                    <span class="star-icon featured">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                        </svg>
+                    </span>
+                    <span class="architect-name">JOHN LAUTNER</span>
+                    <span class="fellowship-badge">Taliesin 1933-1939</span>
+                </div>
+                <span class="architect-years">1911 - 1994</span>
+                <span class="architect-count">10 <span>properties</span></span>
+            </a>
+            <a href="/architects/john-rattenbury" class="architect-entry">
+                <div>
+                    <span class="star-icon inactive">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                        </svg>
+                    </span>
+                    <span class="architect-name">JOHN RATTENBURY</span>
+                </div>
+                <span class="architect-years">-</span>
+                <span class="architect-count">2 <span>properties</span></span>
+            </a>
+        </div>
+    </section>
+
+    <!-- LETTER P -->
+    <section class="letter-section">
+        <div class="letter-marker">P</div>
+        <div class="architect-list">
+            <a href="/architects/paolo-soleri" class="architect-entry">
+                <div>
+                    <span class="star-icon featured">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                        </svg>
+                    </span>
+                    <span class="architect-name">PAOLO SOLERI</span>
+                    <span class="fellowship-badge">Taliesin 1947-1949</span>
+                </div>
+                <span class="architect-years">1919 - 2013</span>
+                <span class="architect-count">2 <span>properties</span></span>
+            </a>
+            <a href="/architects/paul-tuttle" class="architect-entry">
+                <div>
+                    <span class="star-icon featured">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                        </svg>
+                    </span>
+                    <span class="architect-name">PAUL TUTTLE</span>
+                    <span class="fellowship-badge">Taliesin 1941</span>
+                </div>
+                <span class="architect-years">1918 - 2002</span>
+                <span class="architect-count">0 <span>properties</span></span>
+            </a>
+        </div>
+    </section>
+
+    <!-- LETTER R -->
+    <section class="letter-section">
+        <div class="letter-marker">R</div>
+        <div class="architect-list">
+            <a href="/architects/robert-miller-green" class="architect-entry">
+                <div>
+                    <span class="star-icon inactive">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                        </svg>
+                    </span>
+                    <span class="architect-name">ROBERT MILLER GREEN</span>
+                </div>
+                <span class="architect-years">-</span>
+                <span class="architect-count">1 <span>property</span></span>
+            </a>
+        </div>
+    </section>
+
+    <!-- LETTER S -->
+    <section class="letter-section">
+        <div class="letter-marker">S</div>
+        <div class="architect-list">
+            <a href="/architects/shao-fang-sheng" class="architect-entry">
+                <div>
+                    <span class="star-icon featured">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                        </svg>
+                    </span>
+                    <span class="architect-name">SHAO FANG SHENG</span>
+                    <span class="fellowship-badge">Taliesin 1947-</span>
+                </div>
+                <span class="architect-years">1918 - 2009</span>
+                <span class="architect-count">1 <span>property</span></span>
+            </a>
+        </div>
+    </section>
+
+    <!-- LETTER V -->
+    <section class="letter-section">
+        <div class="letter-marker">V</div>
+        <div class="architect-list">
+            <a href="/architects/vernon-swaback" class="architect-entry">
+                <div>
+                    <span class="star-icon featured">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                        </svg>
+                    </span>
+                    <span class="architect-name">VERNON SWABACK</span>
+                    <span class="fellowship-badge">Taliesin 1957-1978</span>
+                </div>
+                <span class="architect-years">1944 - present</span>
+                <span class="architect-count">1 <span>property</span></span>
+            </a>
+        </div>
+    </section>
+
+    <!-- LETTER W -->
+    <section class="letter-section">
+        <div class="letter-marker">W</div>
+        <div class="architect-list">
+            <a href="/architects/william-wesley-peters" class="architect-entry">
+                <div>
+                    <span class="star-icon featured">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                        </svg>
+                    </span>
+                    <span class="architect-name">WILLIAM WESLEY PETERS</span>
+                    <span class="fellowship-badge">Taliesin 1932-1991</span>
+                </div>
+                <span class="architect-years">1912 - 1991</span>
+                <span class="architect-count">2 <span>properties</span></span>
+            </a>
+        </div>
+    </section>
+
+    <!-- LETTER Y -->
+    <section class="letter-section">
+        <div class="letter-marker">Y</div>
+        <div class="architect-list">
+            <a href="/architects/yen-liang" class="architect-entry">
+                <div>
+                    <span class="star-icon featured">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                        </svg>
+                    </span>
+                    <span class="architect-name">YEN LIANG</span>
+                    <span class="fellowship-badge">Taliesin 1932</span>
+                </div>
+                <span class="architect-years">-</span>
+                <span class="architect-count">0 <span>properties</span></span>
+            </a>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER + ALERTS CTA SECTION -->
+    <section class="cta-section">
+        <div class="cta-container">
+            <div class="cta-column">
+                <span class="cta-heading">Weekly Newsletter</span>
+                <h3 class="cta-title">Stay Connected</h3>
+                <p class="cta-description">Receive curated updates on newly listed architect-designed homes, market insights, and preservation stories from the organic architecture tradition.</p>
+                <form class="cta-form">
+                    <input type="email" class="cta-input" placeholder="Enter your email address">
+                    <button type="submit" class="cta-button">Subscribe</button>
+                </form>
+            </div>
+            <div class="cta-column">
+                <span class="cta-heading">Property Alerts</span>
+                <h3 class="cta-title">Never Miss a Listing</h3>
+                <p class="cta-description">Create custom alerts for specific architects, regions, or price ranges. Be the first to know when rare properties come to market.</p>
+                <form class="cta-form">
+                    <input type="email" class="cta-input" placeholder="Enter your email address">
+                    <button type="submit" class="cta-button">Create Alert</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-top">
+                <div class="footer-logo">USONIAN</div>
+                <nav class="footer-nav">
+                    <a href="#">Homes</a>
+                    <a href="#">Architects</a>
+                    <a href="#">About</a>
+                    <a href="#">Contact</a>
+                    <a href="#">Privacy</a>
+                </nav>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-bottom">
+                <div class="footer-left">
+                    <span>USONIAN / Architect-Designed Homes</span>
+                </div>
+                <div class="footer-right">
+                    <span>v.3.0.1 / 2024</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</div>
+
+</body>
+</html>

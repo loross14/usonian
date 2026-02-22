@@ -8,8 +8,10 @@ import { PrairieLines } from "@/components/ui/PrairieLines";
 import { NewsletterCTA } from "@/components/ui/NewsletterCTA";
 import { StarIcon } from "@/components/icons/StarIcon";
 import { PropertyAlertButton } from "@/components/property/PropertyAlertButton";
+import { ReferenceLink } from "@/components/ui/ReferenceLink";
 import { getGeneratedSvgUrl } from "@/lib/generated-houses";
 import { getArchitectPortraitUrl } from "@/lib/architect-portraits";
+import { isValidUrl } from "@/lib/url-helpers";
 
 // Cast JSON data to proper types
 const propertiesData = propertiesDataRaw as Property[];
@@ -233,6 +235,20 @@ export default async function PropertyDetailPage({ params }: PageProps) {
                     </div>
                   )}
                 </dl>
+              </div>
+
+              {/* References Card */}
+              <div className="border border-black p-6">
+                <h3 className="mb-4 text-[11px] tracking-[0.2em] opacity-60">REFERENCES</h3>
+                {isValidUrl(property.best_image_url) ? (
+                  <div className="space-y-2">
+                    <ReferenceLink url={property.best_image_url} />
+                  </div>
+                ) : (
+                  <p className="text-xs opacity-40 italic">
+                    No external references available
+                  </p>
+                )}
               </div>
 
               {/* Watch for Listing Card - only for off-market properties */}

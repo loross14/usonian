@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USONIAN / Architect-Designed Homes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --white: #FFFFFF;
+            --black: #000000;
+            --red: #BF0A30;
+            --grid-line: rgba(0, 0, 0, 0.08);
+        }
+
+        html {
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', 'Space Mono', 'Courier New', monospace;
+            background-color: var(--white);
+            color: var(--black);
+            line-height: 1.4;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* VISIBLE GRID SYSTEM */
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .grid-overlay::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+            background-size: 120px 120px;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        /* HEADER - RAW DATA FORMAT */
+        header {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: start;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--black);
+        }
+
+        .logo {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            font-weight: 400;
+            opacity: 0.5;
+        }
+
+        .meta-info {
+            text-align: right;
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            opacity: 0.6;
+        }
+
+        .meta-info div {
+            margin-bottom: 4px;
+        }
+
+        /* HERO - MASSIVE TYPOGRAPHY */
+        .hero {
+            padding: 120px 0;
+            border-bottom: 1px solid var(--black);
+        }
+
+        .hero-headline {
+            font-size: clamp(48px, 8vw, 96px);
+            font-weight: 700;
+            line-height: 0.95;
+            letter-spacing: -0.03em;
+            margin-bottom: 60px;
+            text-transform: uppercase;
+        }
+
+        .hero-headline .accent {
+            color: var(--red);
+        }
+
+        .hero-subtext {
+            font-size: 14px;
+            max-width: 600px;
+            opacity: 0.7;
+            letter-spacing: 0.02em;
+        }
+
+        /* DATA STRIP */
+        .data-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background-color: var(--black);
+            margin: 80px 0;
+        }
+
+        .data-cell {
+            background-color: var(--white);
+            padding: 40px;
+        }
+
+        .data-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            opacity: 0.5;
+            margin-bottom: 12px;
+        }
+
+        .data-value {
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .data-unit {
+            font-size: 14px;
+            font-weight: 400;
+            opacity: 0.5;
+        }
+
+        /* RAW LISTING DATA */
+        .listings-section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 60px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--black);
+        }
+
+        .section-title {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-weight: 400;
+        }
+
+        .section-count {
+            font-size: 11px;
+            opacity: 0.5;
+        }
+
+        /* LISTING AS RAW DATA TABLE */
+        .listing-grid {
+            display: grid;
+            gap: 0;
+        }
+
+        .listing-row {
+            display: grid;
+            grid-template-columns: 60px 1fr 200px 150px 150px;
+            gap: 40px;
+            padding: 24px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            align-items: baseline;
+        }
+
+        .listing-row:hover {
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+
+        .listing-index {
+            font-size: 11px;
+            opacity: 0.4;
+            font-weight: 400;
+        }
+
+        .listing-name {
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .listing-architect {
+            font-size: 12px;
+            opacity: 0.6;
+            margin-top: 4px;
+            font-weight: 400;
+        }
+
+        .listing-location {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .listing-year {
+            font-size: 14px;
+            opacity: 0.6;
+        }
+
+        .listing-price {
+            font-size: 14px;
+            font-weight: 700;
+            text-align: right;
+        }
+
+        /* PHILOSOPHY BLOCK */
+        .philosophy {
+            padding: 120px 0;
+            border-top: 1px solid var(--black);
+            border-bottom: 1px solid var(--black);
+        }
+
+        .philosophy-text {
+            font-size: clamp(24px, 4vw, 48px);
+            font-weight: 400;
+            line-height: 1.3;
+            max-width: 1000px;
+            letter-spacing: -0.02em;
+        }
+
+        .philosophy-text em {
+            font-style: normal;
+            opacity: 0.4;
+        }
+
+        /* ARCHITECTS INDEX */
+        .architects-section {
+            padding: 80px 0;
+        }
+
+        .architect-list {
+            column-count: 3;
+            column-gap: 60px;
+        }
+
+        .architect-item {
+            font-size: 13px;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            break-inside: avoid;
+        }
+
+        .architect-item:hover {
+            opacity: 0.6;
+        }
+
+        .architect-count {
+            float: right;
+            opacity: 0.4;
+            font-size: 11px;
+        }
+
+        /* FOOTER - TERMINAL STYLE */
+        footer {
+            padding: 60px 0;
+            border-top: 1px solid var(--black);
+            margin-top: 80px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 60px;
+        }
+
+        .footer-col-title {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            opacity: 0.4;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .footer-links a {
+            color: var(--black);
+            text-decoration: none;
+            opacity: 0.7;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            opacity: 0.5;
+        }
+
+        /* CTA - MINIMAL */
+        .cta-section {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .cta-text {
+            font-size: 18px;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 20px 60px;
+            border: 1px solid var(--black);
+            background: transparent;
+            color: var(--black);
+            font-family: inherit;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .cta-button:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        /* COORDINATES DISPLAY */
+        .coordinates {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            font-size: 10px;
+            opacity: 0.3;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            z-index: 10;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .listing-row {
+                grid-template-columns: 40px 1fr 120px 100px;
+            }
+
+            .listing-year {
+                display: none;
+            }
+
+            .architect-list {
+                column-count: 2;
+            }
+
+            .data-strip {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 24px;
+            }
+
+            .hero {
+                padding: 80px 0;
+            }
+
+            .listing-row {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .listing-index {
+                display: none;
+            }
+
+            .listing-price {
+                text-align: left;
+            }
+
+            .architect-list {
+                column-count: 1;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .data-strip {
+                grid-template-columns: 1fr;
+            }
+
+            .coordinates {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="grid-overlay"></div>
+
+<div class="container">
+
+    <header>
+        <div class="logo">
+            USONIAN <span>/ Platform</span>
+        </div>
+        <div class="meta-info">
+            <div>EST. 2024</div>
+            <div>37.7749° N, 122.4194° W</div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1 class="hero-headline">
+            Architect<span class="accent">.</span><br>
+            Designed<br>
+            Homes
+        </h1>
+        <p class="hero-subtext">
+            A curated index of residential architecture. No staging. No filters.
+            Raw documentation of designed spaces available for acquisition.
+        </p>
+    </section>
+
+    <div class="data-strip">
+        <div class="data-cell">
+            <div class="data-label">Active Listings</div>
+            <div class="data-value">247</div>
+        </div>
+        <div class="data-cell">
+            <div class="data-label">Verified Architects</div>
+            <div class="data-value">89</div>
+        </div>
+        <div class="data-cell">
+            <div class="data-label">Avg. Price</div>
+            <div class="data-value">2.4<span class="data-unit">M</span></div>
+        </div>
+        <div class="data-cell">
+            <div class="data-label">Markets</div>
+            <div class="data-value">12</div>
+        </div>
+    </div>
+
+    <section class="listings-section">
+        <div class="section-header">
+            <span class="section-title">Current Index</span>
+            <span class="section-count">Showing 8 of 247</span>
+        </div>
+
+        <div class="listing-grid">
+            <div class="listing-row">
+                <span class="listing-index">001</span>
+                <div>
+                    <div class="listing-name">Stahl House (Case Study #22)</div>
+                    <div class="listing-architect">Pierre Koenig</div>
+                </div>
+                <div class="listing-location">Los Angeles, CA</div>
+                <div class="listing-year">1960</div>
+                <div class="listing-price">$12,500,000</div>
+            </div>
+
+            <div class="listing-row">
+                <span class="listing-index">002</span>
+                <div>
+                    <div class="listing-name">Eames House (Case Study #8)</div>
+                    <div class="listing-architect">Charles & Ray Eames</div>
+                </div>
+                <div class="listing-location">Pacific Palisades, CA</div>
+                <div class="listing-year">1949</div>
+                <div class="listing-price">$8,200,000</div>
+            </div>
+
+            <div class="listing-row">
+                <span class="listing-index">003</span>
+                <div>
+                    <div class="listing-name">Farnsworth House</div>
+                    <div class="listing-architect">Ludwig Mies van der Rohe</div>
+                </div>
+                <div class="listing-location">Plano, IL</div>
+                <div class="listing-year">1951</div>
+                <div class="listing-price">$4,800,000</div>
+            </div>
+
+            <div class="listing-row">
+                <span class="listing-index">004</span>
+                <div>
+                    <div class="listing-name">Kaufmann Desert House</div>
+                    <div class="listing-architect">Richard Neutra</div>
+                </div>
+                <div class="listing-location">Palm Springs, CA</div>
+                <div class="listing-year">1946</div>
+                <div class="listing-price">$16,900,000</div>
+            </div>
+
+            <div class="listing-row">
+                <span class="listing-index">005</span>
+                <div>
+                    <div class="listing-name">Glass House</div>
+                    <div class="listing-architect">Philip Johnson</div>
+                </div>
+                <div class="listing-location">New Canaan, CT</div>
+                <div class="listing-year">1949</div>
+                <div class="listing-price">$7,100,000</div>
+            </div>
+
+            <div class="listing-row">
+                <span class="listing-index">006</span>
+                <div>
+                    <div class="listing-name">Chemosphere</div>
+                    <div class="listing-architect">John Lautner</div>
+                </div>
+                <div class="listing-location">Los Angeles, CA</div>
+                <div class="listing-year">1960</div>
+                <div class="listing-price">$3,200,000</div>
+            </div>
+
+            <div class="listing-row">
+                <span class="listing-index">007</span>
+                <div>
+                    <div class="listing-name">Sheats-Goldstein Residence</div>
+                    <div class="listing-architect">John Lautner</div>
+                </div>
+                <div class="listing-location">Los Angeles, CA</div>
+                <div class="listing-year">1963</div>
+                <div class="listing-price">$42,000,000</div>
+            </div>
+
+            <div class="listing-row">
+                <span class="listing-index">008</span>
+                <div>
+                    <div class="listing-name">Lovell Health House</div>
+                    <div class="listing-architect">Richard Neutra</div>
+                </div>
+                <div class="listing-location">Los Angeles, CA</div>
+                <div class="listing-year">1929</div>
+                <div class="listing-price">$8,500,000</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="philosophy">
+        <p class="philosophy-text">
+            "Truth in materials. No veneer." <em>— We document architecture as it exists.
+            Unfiltered. Unstaged. The structure speaks. The concrete shows its form marks.
+            The steel reveals its welds.</em>
+        </p>
+    </section>
+
+    <section class="architects-section">
+        <div class="section-header">
+            <span class="section-title">Architect Index</span>
+            <span class="section-count">A–Z</span>
+        </div>
+
+        <div class="architect-list">
+            <div class="architect-item">Aalto, Alvar <span class="architect-count">3</span></div>
+            <div class="architect-item">Ando, Tadao <span class="architect-count">7</span></div>
+            <div class="architect-item">Barragán, Luis <span class="architect-count">2</span></div>
+            <div class="architect-item">Breuer, Marcel <span class="architect-count">8</span></div>
+            <div class="architect-item">Eames, Charles <span class="architect-count">4</span></div>
+            <div class="architect-item">Gehry, Frank <span class="architect-count">12</span></div>
+            <div class="architect-item">Gropius, Walter <span class="architect-count">5</span></div>
+            <div class="architect-item">Johnson, Philip <span class="architect-count">9</span></div>
+            <div class="architect-item">Kahn, Louis <span class="architect-count">6</span></div>
+            <div class="architect-item">Koenig, Pierre <span class="architect-count">11</span></div>
+            <div class="architect-item">Lautner, John <span class="architect-count">18</span></div>
+            <div class="architect-item">Le Corbusier <span class="architect-count">4</span></div>
+            <div class="architect-item">Mies van der Rohe <span class="architect-count">7</span></div>
+            <div class="architect-item">Neutra, Richard <span class="architect-count">24</span></div>
+            <div class="architect-item">Niemeyer, Oscar <span class="architect-count">3</span></div>
+            <div class="architect-item">Pei, I.M. <span class="architect-count">5</span></div>
+            <div class="architect-item">Piano, Renzo <span class="architect-count">2</span></div>
+            <div class="architect-item">Saarinen, Eero <span class="architect-count">6</span></div>
+            <div class="architect-item">Schindler, R.M. <span class="architect-count">15</span></div>
+            <div class="architect-item">Siza, Álvaro <span class="architect-count">4</span></div>
+            <div class="architect-item">Taniguchi, Yoshio <span class="architect-count">2</span></div>
+            <div class="architect-item">Williams, Paul R. <span class="architect-count">19</span></div>
+            <div class="architect-item">Wright, Frank Lloyd <span class="architect-count">31</span></div>
+            <div class="architect-item">Zumthor, Peter <span class="architect-count">3</span></div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <p class="cta-text">Submit your architect-designed property for review.</p>
+        <a href="#" class="cta-button">Request Access</a>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <div class="footer-col-title">Platform</div>
+                <ul class="footer-links">
+                    <li><a href="#">Browse Index</a></li>
+                    <li><a href="#">Architect Directory</a></li>
+                    <li><a href="#">Market Data</a></li>
+                    <li><a href="#">Documentation</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="footer-col-title">Resources</div>
+                <ul class="footer-links">
+                    <li><a href="#">Submission Guidelines</a></li>
+                    <li><a href="#">Verification Process</a></li>
+                    <li><a href="#">Photography Standards</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="footer-col-title">Contact</div>
+                <ul class="footer-links">
+                    <li><a href="#">hello@usonian.co</a></li>
+                    <li><a href="#">Press Inquiries</a></li>
+                    <li><a href="#">Partner With Us</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>© 2024 Usonian Platform</span>
+            <span>Version 3.0.1</span>
+        </div>
+    </footer>
+
+</div>
+
+<div class="coordinates">
+    40.7128° N / 74.0060° W
+</div>
+
+</body>
+</html>

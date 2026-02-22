@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHEMOSPHERE / USONIAN</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --white: #FFFFFF;
+            --black: #000000;
+            --red: #BF0A30;
+            --navy: #002868;
+            --gold: #D4B270;
+            --grid-line: rgba(0, 0, 0, 0.08);
+        }
+
+        html {
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', 'Space Mono', 'Courier New', monospace;
+            background-color: var(--white);
+            color: var(--black);
+            line-height: 1.4;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* FLW-INSPIRED ANIMATIONS */
+        @keyframes draw-line {
+            from {
+                transform: scaleX(0);
+                transform-origin: left center;
+            }
+            to {
+                transform: scaleX(1);
+                transform-origin: left center;
+            }
+        }
+
+        @keyframes fade-up {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes star-pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes prairie-draw {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        .animate-fade-up {
+            animation: fade-up 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        .animate-delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .animate-delay-2 {
+            animation-delay: 0.2s;
+        }
+
+        .animate-delay-3 {
+            animation-delay: 0.3s;
+        }
+
+        .animate-delay-4 {
+            animation-delay: 0.4s;
+        }
+
+        /* PRAIRIE LINES DECORATIVE ELEMENT */
+        .prairie-lines {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            padding: 40px 0;
+            overflow: hidden;
+        }
+
+        .prairie-line {
+            height: 1px;
+            background-color: var(--red);
+            animation: prairie-draw 1.2s ease-out forwards;
+        }
+
+        .prairie-line:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .prairie-line:nth-child(2) {
+            animation-delay: 0.15s;
+        }
+
+        .prairie-line:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        /* STATUS BADGES */
+        .status-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        .status-badge.for-sale {
+            background-color: var(--red);
+        }
+
+        .status-badge.sold {
+            background-color: var(--navy);
+        }
+
+        .status-badge.museum {
+            background-color: var(--gold);
+            color: var(--black);
+        }
+
+        /* STAR ICON */
+        .star-icon {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+            animation: star-pulse 2s ease-in-out infinite;
+        }
+
+        .star-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: var(--red);
+        }
+
+        /* VISIBLE GRID SYSTEM */
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .grid-overlay::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+            background-size: 120px 120px;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1440px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        /* HEADER - RAW DATA FORMAT */
+        header {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: start;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--black);
+        }
+
+        .logo {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            font-weight: 400;
+            opacity: 0.5;
+        }
+
+        .nav {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav a {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--black);
+            text-decoration: none;
+            opacity: 0.6;
+            transition: opacity 0.2s ease;
+        }
+
+        .nav a:hover {
+            opacity: 1;
+        }
+
+        /* BREADCRUMB */
+        .breadcrumb {
+            padding: 24px 0;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .breadcrumb a {
+            color: var(--black);
+            text-decoration: none;
+            opacity: 0.5;
+        }
+
+        .breadcrumb a:hover {
+            opacity: 1;
+        }
+
+        .breadcrumb-separator {
+            color: var(--red);
+            margin: 0 12px;
+            font-weight: 700;
+        }
+
+        .breadcrumb-current {
+            opacity: 1;
+        }
+
+        /* HERO - MASSIVE TYPOGRAPHY */
+        .hero {
+            padding: 100px 0 80px 0;
+            border-bottom: 1px solid var(--black);
+        }
+
+        .property-title {
+            font-size: clamp(56px, 10vw, 120px);
+            font-weight: 700;
+            line-height: 0.9;
+            letter-spacing: -0.04em;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+
+        .property-subtitle {
+            font-size: 16px;
+            font-weight: 400;
+            opacity: 0.5;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 60px;
+        }
+
+        .architect-line {
+            display: flex;
+            align-items: baseline;
+            gap: 16px;
+        }
+
+        .architect-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            opacity: 0.4;
+        }
+
+        .architect-name {
+            font-size: clamp(24px, 4vw, 42px);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--red);
+        }
+
+        /* DATA GRID - RAW EXPOSED */
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 1px;
+            background-color: var(--black);
+            margin: 80px 0;
+        }
+
+        .data-cell {
+            background-color: var(--white);
+            padding: 32px 24px;
+        }
+
+        .data-label {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            opacity: 0.4;
+            margin-bottom: 12px;
+        }
+
+        .data-value {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .data-value.small {
+            font-size: 14px;
+            font-weight: 400;
+        }
+
+        .data-value .divider {
+            opacity: 0.3;
+            margin: 0 8px;
+        }
+
+        /* GEOMETRIC PLACEHOLDER */
+        .visual-block {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1px;
+            background-color: var(--black);
+            margin-bottom: 80px;
+        }
+
+        .placeholder-geometric {
+            background-color: var(--white);
+            padding: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+        }
+
+        .octagon-placeholder {
+            width: 200px;
+            height: 200px;
+            background: var(--black);
+            clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+            position: relative;
+        }
+
+        .octagon-placeholder::after {
+            content: 'FORM';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--white);
+            font-size: 10px;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+        }
+
+        /* DESCRIPTION BLOCK */
+        .description-block {
+            background-color: var(--white);
+            padding: 60px;
+        }
+
+        .description-title {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            opacity: 0.4;
+            margin-bottom: 24px;
+        }
+
+        .description-text {
+            font-size: 14px;
+            line-height: 1.8;
+            max-width: 600px;
+            opacity: 0.8;
+        }
+
+        /* PRESERVATION BADGE */
+        .preservation-badge {
+            display: inline-block;
+            padding: 16px 24px;
+            border: 1px solid var(--black);
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            margin: 60px 0;
+        }
+
+        .preservation-badge::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: var(--black);
+            margin-right: 12px;
+        }
+
+        /* INQUIRE BUTTON */
+        .cta-section {
+            padding: 80px 0;
+            border-top: 1px solid var(--black);
+            border-bottom: 1px solid var(--black);
+        }
+
+        .inquire-button {
+            display: inline-block;
+            padding: 24px 80px;
+            border: 2px solid var(--black);
+            background: transparent;
+            color: var(--black);
+            font-family: inherit;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .inquire-button:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+
+        /* RELATED PROPERTIES */
+        .related-section {
+            padding: 80px 0;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 40px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--black);
+        }
+
+        .section-title {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-weight: 400;
+        }
+
+        .section-count {
+            font-size: 10px;
+            opacity: 0.4;
+            letter-spacing: 0.1em;
+        }
+
+        .related-grid {
+            display: grid;
+            gap: 0;
+        }
+
+        .related-row {
+            display: grid;
+            grid-template-columns: 40px 1fr 180px 120px 140px;
+            gap: 40px;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            align-items: center;
+            font-size: 13px;
+        }
+
+        .related-row:hover {
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+
+        .related-index {
+            font-size: 10px;
+            opacity: 0.3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .related-name {
+            font-weight: 700;
+        }
+
+        .related-architect {
+            opacity: 0.6;
+        }
+
+        .related-year {
+            opacity: 0.5;
+        }
+
+        .related-price {
+            text-align: right;
+            font-weight: 700;
+        }
+
+        /* NEWSLETTER + ALERTS CTA SECTION */
+        .newsletter-cta {
+            background-color: var(--navy);
+            color: var(--white);
+            padding: 80px 40px;
+            margin: 0 -40px;
+        }
+
+        .newsletter-cta-inner {
+            max-width: 1360px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+
+        .newsletter-col h3 {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: var(--gold);
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .newsletter-col p {
+            font-size: 12px;
+            opacity: 0.7;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 12px;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 16px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            background: transparent;
+            color: var(--white);
+            font-family: inherit;
+            font-size: 12px;
+            letter-spacing: 0.05em;
+        }
+
+        .newsletter-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .newsletter-btn {
+            padding: 16px 32px;
+            background: var(--gold);
+            border: none;
+            color: var(--navy);
+            font-family: inherit;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .newsletter-btn:hover {
+            background: var(--white);
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 60px 0;
+            border-top: 1px solid var(--black);
+            margin-top: 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 60px;
+        }
+
+        .footer-col-title {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            opacity: 0.4;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            font-size: 11px;
+            margin-bottom: 8px;
+        }
+
+        .footer-links a {
+            color: var(--black);
+            text-decoration: none;
+            opacity: 0.6;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            background-color: var(--navy);
+            color: var(--white);
+            margin: 60px -40px -60px -40px;
+            padding: 30px 40px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            opacity: 1;
+        }
+
+        .footer-bottom span {
+            opacity: 0.6;
+        }
+
+        /* COORDINATES DISPLAY */
+        .coordinates {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            font-size: 9px;
+            opacity: 0.25;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            z-index: 10;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .data-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .visual-block {
+                grid-template-columns: 1fr;
+            }
+
+            .related-row {
+                grid-template-columns: 1fr 120px 100px;
+            }
+
+            .related-index,
+            .related-architect {
+                display: none;
+            }
+
+            .newsletter-cta-inner {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 24px;
+            }
+
+            .nav {
+                display: none;
+            }
+
+            .hero {
+                padding: 60px 0;
+            }
+
+            .data-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .visual-block {
+                grid-template-columns: 1fr;
+            }
+
+            .placeholder-geometric {
+                min-height: 300px;
+            }
+
+            .description-block {
+                padding: 40px 24px;
+            }
+
+            .related-row {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .related-price {
+                text-align: left;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .coordinates {
+                display: none;
+            }
+
+            .newsletter-cta {
+                padding: 60px 24px;
+                margin: 0 -24px;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .footer-bottom {
+                margin: 60px -24px -60px -24px;
+                padding: 30px 24px;
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="grid-overlay"></div>
+
+<div class="container">
+
+    <header>
+        <div class="logo">
+            USONIAN <span>/ Platform</span>
+        </div>
+        <nav class="nav">
+            <a href="#">Homes</a>
+            <a href="#">Architects</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <div class="breadcrumb">
+        <a href="#">HOMES</a>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current">CHEMOSPHERE</span>
+    </div>
+
+    <section class="hero">
+        <h1 class="property-title animate-fade-up">CHEMOSPHERE</h1>
+        <p class="property-subtitle animate-fade-up animate-delay-1">(Malin Residence)</p>
+        <div class="architect-line animate-fade-up animate-delay-2">
+            <span class="architect-label">Architect</span>
+            <span class="architect-name">JOHN LAUTNER</span>
+        </div>
+    </section>
+
+    <!-- Prairie Lines Element -->
+    <div class="prairie-lines">
+        <div class="prairie-line"></div>
+        <div class="prairie-line"></div>
+        <div class="prairie-line"></div>
+    </div>
+
+    <div class="data-grid">
+        <div class="data-cell animate-fade-up animate-delay-1">
+            <div class="data-label">Year</div>
+            <div class="data-value">1960</div>
+        </div>
+        <div class="data-cell animate-fade-up animate-delay-2">
+            <div class="data-label">Location</div>
+            <div class="data-value small">Hollywood Hills, CA</div>
+        </div>
+        <div class="data-cell animate-fade-up animate-delay-3">
+            <div class="data-label">Status</div>
+            <div class="data-value"><span class="status-badge sold">SOLD</span></div>
+        </div>
+        <div class="data-cell animate-fade-up animate-delay-4">
+            <div class="data-label">Price</div>
+            <div class="data-value">$1,000,000</div>
+        </div>
+        <div class="data-cell animate-fade-up animate-delay-3">
+            <div class="data-label">Sq Ft</div>
+            <div class="data-value">2,200</div>
+        </div>
+        <div class="data-cell animate-fade-up animate-delay-4">
+            <div class="data-label">Beds / Baths</div>
+            <div class="data-value">1<span class="divider">|</span>1</div>
+        </div>
+    </div>
+
+    <div class="visual-block">
+        <div class="placeholder-geometric">
+            <div class="octagon-placeholder"></div>
+        </div>
+        <div class="description-block">
+            <div class="description-title">Architectural Overview</div>
+            <p class="description-text">
+                The Chemosphere is an octagon-shaped house perched atop a concrete column,
+                designed to address the near-impossible 45-degree slope of the site.
+                Commissioned by Leonard Malin, an aerospace engineer, the residence
+                exemplifies Lautner's engineering ingenuity and his refusal to be
+                constrained by conventional building methods.
+            </p>
+            <br>
+            <p class="description-text">
+                The structure rises 29 feet above the hillside, accessed originally by
+                funicular railway. The octagonal form maximizes floor space while
+                minimizing the structural footprint. Floor-to-ceiling windows provide
+                360-degree views of the San Fernando Valley. The residence has been
+                featured in numerous films, most notably "Body Double" (1984).
+            </p>
+        </div>
+    </div>
+
+    <div class="preservation-badge">
+        Los Angeles Historic-Cultural Monument No. 703
+    </div>
+
+    <section class="cta-section">
+        <button class="inquire-button">INQUIRE</button>
+    </section>
+
+    <section class="related-section">
+        <div class="section-header">
+            <span class="section-title">Related Properties</span>
+            <span class="section-count">By John Lautner</span>
+        </div>
+
+        <div class="related-grid">
+            <div class="related-row">
+                <span class="related-index">
+                    <span class="star-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                        </svg>
+                    </span>
+                </span>
+                <span class="related-name">Sheats-Goldstein Residence <span class="status-badge for-sale">For Sale</span></span>
+                <span class="related-architect">John Lautner</span>
+                <span class="related-year">1963</span>
+                <span class="related-price">$42,000,000</span>
+            </div>
+            <div class="related-row">
+                <span class="related-index">
+                    <span class="star-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                        </svg>
+                    </span>
+                </span>
+                <span class="related-name">Elrod House <span class="status-badge museum">Museum</span></span>
+                <span class="related-architect">John Lautner</span>
+                <span class="related-year">1968</span>
+                <span class="related-price">$8,000,000</span>
+            </div>
+            <div class="related-row">
+                <span class="related-index">
+                    <span class="star-icon">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                        </svg>
+                    </span>
+                </span>
+                <span class="related-name">Silvertop (Reiner Residence) <span class="status-badge sold">Sold</span></span>
+                <span class="related-architect">John Lautner</span>
+                <span class="related-year">1957</span>
+                <span class="related-price">$7,500,000</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter + Alerts CTA Section -->
+    <section class="newsletter-cta">
+        <div class="newsletter-cta-inner">
+            <div class="newsletter-col">
+                <h3>Weekly Newsletter</h3>
+                <p>Curated listings, market insights, and architectural discoveries delivered to your inbox every Thursday.</p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Enter your email address">
+                    <button type="submit" class="newsletter-btn">Subscribe</button>
+                </form>
+            </div>
+            <div class="newsletter-col">
+                <h3>Property Alerts</h3>
+                <p>Be the first to know when new mid-century properties hit the market. Set custom filters by architect, location, or price range.</p>
+                <form class="newsletter-form">
+                    <input type="email" class="newsletter-input" placeholder="Enter your email address">
+                    <button type="submit" class="newsletter-btn">Create Alert</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <div class="footer-col-title">Platform</div>
+                <ul class="footer-links">
+                    <li><a href="#">Browse Index</a></li>
+                    <li><a href="#">Architect Directory</a></li>
+                    <li><a href="#">Market Data</a></li>
+                    <li><a href="#">Documentation</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="footer-col-title">Resources</div>
+                <ul class="footer-links">
+                    <li><a href="#">Submission Guidelines</a></li>
+                    <li><a href="#">Verification Process</a></li>
+                    <li><a href="#">Photography Standards</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+            <div>
+                <div class="footer-col-title">Contact</div>
+                <ul class="footer-links">
+                    <li><a href="#">hello@usonian.co</a></li>
+                    <li><a href="#">Press Inquiries</a></li>
+                    <li><a href="#">Partner With Us</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <span>2024 Usonian Platform</span>
+            <span>Version 3.0.1</span>
+        </div>
+    </footer>
+
+</div>
+
+<div class="coordinates">
+    34.1225 N / 118.3617 W
+</div>
+
+</body>
+</html>

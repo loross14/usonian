@@ -21,7 +21,7 @@
     "biography": "Alden Ball Dow was an American architect who studied under Frank Lloyd Wright at Taliesin. Son of Herbert Henry Dow, founder of Dow Chemical Company, he became one of Michigan's most celebrated architects. His Home and Studio in Midland is a National Historic Landmark, and he won the Paris Grand Prix in 1937.",
     "fellowship_years": "1933-1934",
     "image_url": null,
-    "property_count": 8
+    "property_count": 27
   },
   {
     "id": "allan-gelbin",
@@ -120,6 +120,18 @@
     "property_count": 0
   },
   {
+    "id": "frank-lloyd-wright",
+    "slug": "frank-lloyd-wright",
+    "name": "Frank Lloyd Wright",
+    "birth_year": 1867,
+    "death_year": 1959,
+    "birthplace": "Richland Center, Wisconsin",
+    "biography": "Frank Lloyd Wright was an American architect who designed more than 1,000 structures over a creative period of 70 years. He pioneered organic architecture, promoting harmony between human habitation and nature. His work includes Unity Temple, Fallingwater, and the Guggenheim Museum.",
+    "fellowship_years": null,
+    "image_url": null,
+    "property_count": 32
+  },
+  {
     "id": "john-dekoven-hill",
     "slug": "john-dekoven-hill",
     "name": "John deKoven Hill",
@@ -166,6 +178,30 @@
     "fellowship_years": null,
     "image_url": null,
     "property_count": 2
+  },
+  {
+    "id": "marion-mahony-griffin",
+    "slug": "marion-mahony-griffin",
+    "name": "Marion Mahony Griffin",
+    "birth_year": 1871,
+    "death_year": 1961,
+    "birthplace": "Chicago, Illinois",
+    "biography": "Marion Mahony Griffin was one of the first licensed female architects in the world. She worked in Frank Lloyd Wright's Oak Park studio and was renowned for her architectural renderings. With her husband Walter Burley Griffin, she designed Canberra, Australia's capital city.",
+    "fellowship_years": null,
+    "image_url": null,
+    "property_count": 1
+  },
+  {
+    "id": "mortimer-j-matthews",
+    "slug": "mortimer-j-matthews",
+    "name": "Mortimer J. Matthews",
+    "birth_year": null,
+    "death_year": null,
+    "birthplace": null,
+    "biography": "Mortimer J. Matthews was an architect associated with the organic architecture movement. He is known for designing the Snow Flake Motel in Michigan, which featured a distinctive six-pointed snowflake pattern.",
+    "fellowship_years": null,
+    "image_url": null,
+    "property_count": 0
   },
   {
     "id": "paolo-soleri",
@@ -216,6 +252,18 @@
     "property_count": 1
   },
   {
+    "id": "taliesin-associated-architects",
+    "slug": "taliesin-associated-architects",
+    "name": "Taliesin Associated Architects",
+    "birth_year": null,
+    "death_year": null,
+    "birthplace": null,
+    "biography": "Taliesin Associated Architects was the successor firm to Frank Lloyd Wright's practice, continuing to design buildings in the organic architecture tradition after Wright's death in 1959. The firm completed many of Wright's unfinished projects and designed new works.",
+    "fellowship_years": null,
+    "image_url": null,
+    "property_count": 1
+  },
+  {
     "id": "vernon-swaback",
     "slug": "vernon-swaback",
     "name": "Vernon Swaback",
@@ -237,7 +285,7 @@
     "biography": "William Wesley Peters was a prominent American architect who became one of Frank Lloyd Wright's most trusted apprentices and son-in-law. After Wright's death, he led Taliesin Associated Architects and oversaw the completion of many Wright projects.",
     "fellowship_years": "1932-1991",
     "image_url": null,
-    "property_count": 2
+    "property_count": 4
   },
   {
     "id": "yen-liang",

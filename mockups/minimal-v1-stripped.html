@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USONIAN</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #FAFAF8;
+            color: #002868;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        header {
+            padding: 48px 64px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+        }
+
+        nav a {
+            font-size: 13px;
+            font-weight: 300;
+            color: #002868;
+            text-decoration: none;
+            letter-spacing: 0.05em;
+        }
+
+        .hero {
+            padding: 120px 64px 160px;
+        }
+
+        .hero h1 {
+            font-size: 18px;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+            max-width: 400px;
+        }
+
+        .properties {
+            padding: 0 64px 160px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 64px;
+        }
+
+        .card {
+            cursor: pointer;
+        }
+
+        .card-image {
+            aspect-ratio: 4/3;
+            background: #E8E8E4;
+            margin-bottom: 24px;
+        }
+
+        .card-architect {
+            font-size: 13px;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            margin-bottom: 6px;
+        }
+
+        .card-location {
+            font-size: 12px;
+            font-weight: 300;
+            opacity: 0.6;
+            margin-bottom: 12px;
+        }
+
+        .card-price {
+            font-size: 14px;
+            font-weight: 400;
+            color: #BF0A30;
+        }
+
+        @media (max-width: 900px) {
+            header, .hero, .properties {
+                padding-left: 32px;
+                padding-right: 32px;
+            }
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">USONIAN</div>
+    <nav>
+        <a href="#">Browse</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>Architect-designed homes for sale across America.</h1>
+</section>
+
+<section class="properties">
+    <div class="grid">
+        <article class="card">
+            <div class="card-image"></div>
+            <div class="card-architect">Richard Neutra</div>
+            <div class="card-location">Palm Springs, CA</div>
+            <div class="card-price">$2,400,000</div>
+        </article>
+
+        <article class="card">
+            <div class="card-image"></div>
+            <div class="card-architect">Frank Lloyd Wright</div>
+            <div class="card-location">Oak Park, IL</div>
+            <div class="card-price">$1,850,000</div>
+        </article>
+
+        <article class="card">
+            <div class="card-image"></div>
+            <div class="card-architect">Craig Ellwood</div>
+            <div class="card-location">Los Angeles, CA</div>
+            <div class="card-price">$3,200,000</div>
+        </article>
+    </div>
+</section>
+
+<script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+</body>
+</html>

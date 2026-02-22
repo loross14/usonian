@@ -7,7 +7,9 @@ import { PrairieLines } from "@/components/ui/PrairieLines";
 import { NewsletterCTA } from "@/components/ui/NewsletterCTA";
 import { StarIcon } from "@/components/icons/StarIcon";
 import { Badge } from "@/components/ui/Badge";
+import { ReferenceLink } from "@/components/ui/ReferenceLink";
 import { getArchitectPortraitUrl, getArchitectPortraitWideUrl } from "@/lib/architect-portraits";
+import { isValidUrl } from "@/lib/url-helpers";
 
 // Cast to proper types
 const architects = architectsData as Architect[];
@@ -168,6 +170,14 @@ export default async function ArchitectDetailPage({ params }: PageProps) {
                   {architect.biography || `${architect.name} was a master architect of the organic architecture tradition.`}
                 </p>
               </div>
+
+              {/* Wikipedia Link */}
+              {isValidUrl(architect.wikipedia_url) && (
+                <div className="mt-8">
+                  <h3 className="mb-3 text-[10px] tracking-[0.2em] opacity-50">LEARN MORE</h3>
+                  <ReferenceLink url={architect.wikipedia_url} label="Wikipedia" />
+                </div>
+              )}
             </div>
           </div>
         </div>

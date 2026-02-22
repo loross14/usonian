@@ -14,6 +14,50 @@ const OUTPUT_DIR = path.join(ARCH_ROOT, 'mcm-platform/src/data')
 
 // Known architect data (verified from research)
 const KNOWN_ARCHITECTS: Record<string, Omit<Architect, 'property_count'>> = {
+  'frank-lloyd-wright': {
+    id: 'frank-lloyd-wright',
+    slug: 'frank-lloyd-wright',
+    name: 'Frank Lloyd Wright',
+    birth_year: 1867,
+    death_year: 1959,
+    birthplace: 'Richland Center, Wisconsin',
+    biography: "Frank Lloyd Wright was an American architect who designed more than 1,000 structures over a creative period of 70 years. He pioneered organic architecture, promoting harmony between human habitation and nature. His work includes Unity Temple, Fallingwater, and the Guggenheim Museum.",
+    fellowship_years: null,
+    image_url: null,
+  },
+  'marion-mahony-griffin': {
+    id: 'marion-mahony-griffin',
+    slug: 'marion-mahony-griffin',
+    name: 'Marion Mahony Griffin',
+    birth_year: 1871,
+    death_year: 1961,
+    birthplace: 'Chicago, Illinois',
+    biography: "Marion Mahony Griffin was one of the first licensed female architects in the world. She worked in Frank Lloyd Wright's Oak Park studio and was renowned for her architectural renderings. With her husband Walter Burley Griffin, she designed Canberra, Australia's capital city.",
+    fellowship_years: null,
+    image_url: null,
+  },
+  'mortimer-j-matthews': {
+    id: 'mortimer-j-matthews',
+    slug: 'mortimer-j-matthews',
+    name: 'Mortimer J. Matthews',
+    birth_year: null,
+    death_year: null,
+    birthplace: null,
+    biography: "Mortimer J. Matthews was an architect associated with the organic architecture movement. He is known for designing the Snow Flake Motel in Michigan, which featured a distinctive six-pointed snowflake pattern.",
+    fellowship_years: null,
+    image_url: null,
+  },
+  'taliesin-associated-architects': {
+    id: 'taliesin-associated-architects',
+    slug: 'taliesin-associated-architects',
+    name: 'Taliesin Associated Architects',
+    birth_year: null,
+    death_year: null,
+    birthplace: null,
+    biography: "Taliesin Associated Architects was the successor firm to Frank Lloyd Wright's practice, continuing to design buildings in the organic architecture tradition after Wright's death in 1959. The firm completed many of Wright's unfinished projects and designed new works.",
+    fellowship_years: null,
+    image_url: null,
+  },
   'aaron-green': {
     id: 'aaron-green',
     slug: 'aaron-green',
@@ -249,6 +293,12 @@ const KNOWN_ARCHITECTS: Record<string, Omit<Architect, 'property_count'>> = {
 
 // CSV architect name to ID mapping
 const CSV_ARCHITECT_TO_ID: Record<string, string> = {
+  'Frank Lloyd Wright': 'frank-lloyd-wright',
+  'Marion Mahony Griffin': 'marion-mahony-griffin',
+  'Marion Mahony Griffin / Van Tine': 'marion-mahony-griffin',
+  'Mortimer J. Matthews': 'mortimer-j-matthews',
+  'Taliesin Associated Architects': 'taliesin-associated-architects',
+  'Wright Affiliate': 'taliesin-associated-architects',
   'John Lautner': 'john-lautner',
   'E. Fay Jones': 'e-fay-jones',
   'Alden B. Dow': 'alden-b-dow',
