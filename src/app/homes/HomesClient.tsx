@@ -5,6 +5,7 @@ import { useMemo, useState, useCallback } from "react";
 import { PropertyList } from "@/components/property/PropertyList";
 import { PropertyCard } from "@/components/property/PropertyCard";
 import { ViewToggle } from "@/components/ui/ViewToggle";
+import { YearRangeSlider } from "@/components/ui/YearRangeSlider";
 import {
   STATUS_FILTER_MAP,
   type Property,
@@ -46,12 +47,32 @@ export function HomesClient({
   const searchParams = useSearchParams();
   const router = useRouter();
   const pathname = usePathname();
-  const [view, setView] = useState<"list" | "grid">("list");
+  const [view, setView] = useState<"list" | "grid">("grid");
+
+  // Calculate year bounds from data
+  const yearBounds = useMemo(() => {
+    const years = properties.map((p) => p.year_built).filter(Boolean) as number[];
+    return {
+      min: Math.min(...years),
+      max: Math.max(...years),
+    };
+  }, [properties]);
+
+  // Year range state - initialize from URL or use full range
+  const getYearRangeFromUrl = useCallback(() => {
+    const minYear = searchParams.get("yearMin");
+    const maxYear = searchParams.get("yearMax");
+    return [
+      minYear ? parseInt(minYear, 10) : yearBounds.min,
+      maxYear ? parseInt(maxYear, 10) : yearBounds.max,
+    ] as [number, number];
+  }, [searchParams, yearBounds]);
+
+  const [yearRange, setYearRange] = useState<[number, number]>(getYearRangeFromUrl);
 
   const currentStatus = (searchParams.get("status") as StatusFilter) || "all";
   const currentArchitect = searchParams.get("architect");
   const currentState = searchParams.get("state");
-  const currentYear = searchParams.get("year");
 
   const updateFilter = useCallback(
     (key: string, value: string | null) => {
@@ -91,9 +112,16 @@ export function HomesClient({
         return false;
       }
 
+      // Year range filter
+      if (property.year_built) {
+        if (property.year_built < yearRange[0] || property.year_built > yearRange[1]) {
+          return false;
+        }
+      }
+
       return true;
     });
-  }, [properties, searchParams]);
+  }, [properties, searchParams, yearRange]);
 
   // Calculate year span
   const years = properties.map((p) => p.year_built).filter(Boolean);
@@ -190,19 +218,27 @@ export function HomesClient({
                 ))}
               </select>
 
-              <select
-                className="filter-dropdown"
-                value={currentYear || ""}
-                onChange={(e) => updateFilter("year", e.target.value || null)}
-              >
-                <option value="">YEAR</option>
-                <option value="1930s">1930s</option>
-                <option value="1940s">1940s</option>
-                <option value="1950s">1950s</option>
-                <option value="1960s">1960s</option>
-                <option value="1970s">1970s</option>
-                <option value="1980s">1980s</option>
-              </select>
+              <YearRangeSlider
+                min={yearBounds.min}
+                max={yearBounds.max}
+                value={yearRange}
+                onChange={(newRange) => {
+                  setYearRange(newRange);
+                  // Update URL params
+                  const params = new URLSearchParams(searchParams.toString());
+                  if (newRange[0] !== yearBounds.min) {
+                    params.set("yearMin", newRange[0].toString());
+                  } else {
+                    params.delete("yearMin");
+                  }
+                  if (newRange[1] !== yearBounds.max) {
+                    params.set("yearMax", newRange[1].toString());
+                  } else {
+                    params.delete("yearMax");
+                  }
+                  router.push(`${pathname}?${params.toString()}`, { scroll: false });
+                }}
+              />
             </div>
           </div>
         </div>

@@ -134,7 +134,7 @@ export function HomeClient({
       <section className="v2-table-section">
         <div className="v2-section-header">
           <h2 className="v2-section-title">HOMES</h2>
-          <span className="v2-section-count">{tableCount} AVAILABLE</span>
+          <span className="v2-section-count">{tableCount} NEW LISTINGS</span>
         </div>
         <table className="v2-sale-table">
           <thead>

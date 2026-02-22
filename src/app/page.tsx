@@ -40,8 +40,11 @@ export default function HomePage() {
     .filter((p) => p.status === "active")
     .slice(0, 3);
 
-  // Get homes for table - first 4
-  const tableProperties = properties.slice(0, 4);
+  // Get homes for table - newest active listings (sorted by year_built descending)
+  const tableProperties = properties
+    .filter((p) => p.status === "active")
+    .sort((a, b) => (b.year_built || 0) - (a.year_built || 0))
+    .slice(0, 4);
 
   return (
     <>

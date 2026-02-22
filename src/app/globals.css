@@ -718,6 +718,83 @@ a:hover {
   outline-offset: -2px;
 }
 
+/* Year Range Slider */
+.year-range-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 160px;
+  padding: 8px 16px;
+  border: 1px solid var(--black);
+  background: var(--white);
+}
+
+.year-range-labels {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 11px;
+  font-family: var(--font-mono);
+  letter-spacing: 0.1em;
+  font-weight: 500;
+}
+
+.year-range-separator {
+  opacity: 0.4;
+}
+
+.year-range-track {
+  position: relative;
+  height: 4px;
+  margin: 8px 0;
+  cursor: pointer;
+}
+
+.year-range-track-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.year-range-track-active {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  background: var(--red);
+}
+
+.year-range-handle {
+  position: absolute;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  background: var(--black);
+  border: 2px solid var(--white);
+  transform: translate(-50%, -50%);
+  cursor: grab;
+  transition: transform 0.1s ease;
+  z-index: 1;
+}
+
+.year-range-handle:hover {
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.year-range-handle.dragging {
+  cursor: grabbing;
+  transform: translate(-50%, -50%) scale(1.2);
+  background: var(--red);
+}
+
+.year-range-handle:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
+}
+
 /* ============================================
    V2 TABLE SECTION (from mockup)
    ============================================ */
@@ -1179,7 +1256,7 @@ a:hover {
 }
 
 .view-toggle-btn {
-  padding: 10px 14px;
+  padding: 12px 20px;
   font-size: 11px;
   letter-spacing: 0.1em;
   font-weight: 500;
