@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   },
 };
 
-const showHeader = process.env.NEXT_PUBLIC_DISABLE_HEADER !== 'true';
+const showHeader = false;
 
 export default function RootLayout({
   children,
