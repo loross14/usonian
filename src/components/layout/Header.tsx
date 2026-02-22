@@ -25,13 +25,13 @@ export function Header() {
           <div className="hidden md:flex items-center gap-10">
             <Link
               href="/homes"
-              className="text-[11px] font-medium uppercase tracking-[0.15em] text-black opacity-50 hover:opacity-100 transition-opacity"
+              className="nav-link-v2 text-[11px] font-medium uppercase tracking-[0.15em] text-black"
             >
               Homes
             </Link>
             <Link
               href="/architects"
-              className="text-[11px] font-medium uppercase tracking-[0.15em] text-black opacity-50 hover:opacity-100 transition-opacity"
+              className="nav-link-v2 text-[11px] font-medium uppercase tracking-[0.15em] text-black"
             >
               Architects
             </Link>

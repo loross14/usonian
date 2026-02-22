@@ -1,0 +1,130 @@
+/* V2 Design System Tokens
+ * Steve Jobs Philosophy: Simplicity through constraint
+ * - Only 5 colors
+ * - Only 3 opacity values
+ * - Only 3 letter-spacing values
+ * - Standardized timing
+ */
+
+:root {
+  /* ==========================================
+   * V2 COLOR PALETTE
+   * Exactly 5 colors - no exceptions
+   * ========================================== */
+  --v2-red: #BF0A30;
+  --v2-navy: #002868;
+  --v2-gold: #D4B270;
+  --v2-black: #000000;
+  --v2-white: #FFFFFF;
+
+  /* Semantic aliases */
+  --color-accent: var(--v2-red);
+  --color-primary: var(--v2-black);
+  --color-secondary: var(--v2-navy);
+  --color-highlight: var(--v2-gold);
+  --color-background: var(--v2-white);
+
+  /* ==========================================
+   * OPACITY SCALE
+   * Steve Jobs: Only 3 values, no magic numbers
+   * ========================================== */
+  --opacity-muted: 0.4;      /* Labels, hints, disabled */
+  --opacity-secondary: 0.6;  /* Secondary text, borders */
+  --opacity-primary: 1;      /* Primary content */
+
+  /* ==========================================
+   * TYPOGRAPHY SCALE
+   * Minimum 11px for accessibility
+   * ========================================== */
+  --text-xs: 11px;           /* Labels, badges, meta */
+  --text-sm: 13px;           /* Secondary content */
+  --text-base: 16px;         /* Body text */
+  --text-lg: 20px;           /* Subheadings */
+  --text-xl: 24px;           /* Section titles */
+  --text-2xl: 32px;          /* Page titles */
+  --text-display: clamp(3rem, 10vw, 6rem);  /* Hero titles */
+  --text-hero: clamp(4rem, 15vw, 10rem);    /* Massive hero */
+
+  /* ==========================================
+   * LETTER SPACING
+   * Only 3 values - tight, normal, wide
+   * ========================================== */
+  --tracking-tight: -0.02em;  /* Large display text */
+  --tracking-normal: 0;       /* Body text */
+  --tracking-wide: 0.1em;     /* Labels, all-caps */
+
+  /* ==========================================
+   * LINE HEIGHT
+   * ========================================== */
+  --leading-none: 0.85;       /* Display text */
+  --leading-tight: 1.1;       /* Headings */
+  --leading-normal: 1.4;      /* Body */
+  --leading-relaxed: 1.7;     /* Long-form prose */
+
+  /* ==========================================
+   * ANIMATION TIMING
+   * Consistent feel across all interactions
+   * ========================================== */
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);  /* Overshoot bounce */
+  --ease-out: cubic-bezier(0.33, 1, 0.68, 1);        /* Smooth deceleration */
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);     /* Symmetric */
+
+  --duration-instant: 0.08s;   /* Click feedback */
+  --duration-fast: 0.2s;       /* Hover states */
+  --duration-normal: 0.4s;     /* Transitions */
+  --duration-slow: 0.6s;       /* Entrance animations */
+  --duration-dramatic: 0.9s;   /* Hero entrances */
+
+  /* Stagger delays for cascade animations */
+  --stagger-fast: 0.05s;
+  --stagger-normal: 0.08s;
+  --stagger-slow: 0.1s;
+
+  /* ==========================================
+   * SPACING
+   * Consistent section padding
+   * ========================================== */
+  --section-padding-y: 80px;
+  --section-padding-x: 48px;
+  --container-max: 1200px;
+
+  --gap-xs: 4px;
+  --gap-sm: 8px;
+  --gap-md: 16px;
+  --gap-lg: 24px;
+  --gap-xl: 32px;
+  --gap-2xl: 48px;
+
+  /* ==========================================
+   * BORDERS
+   * ========================================== */
+  --border-thin: 1px solid var(--v2-black);
+  --border-thick: 2px solid var(--v2-black);
+  --border-accent: 2px solid var(--v2-red);
+  --border-muted: 1px solid rgba(0, 0, 0, 0.1);
+
+  /* ==========================================
+   * SHADOWS
+   * Brutalist offset shadows
+   * ========================================== */
+  --shadow-sm: 2px 2px 0 var(--v2-black);
+  --shadow-md: 4px 4px 0 var(--v2-black);
+  --shadow-lg: 6px 6px 0 var(--v2-black);
+  --shadow-hover: -6px 6px 0 var(--v2-black);
+}
+
+/* Responsive token overrides */
+@media (max-width: 768px) {
+  :root {
+    --section-padding-y: 60px;
+    --section-padding-x: 24px;
+    --gap-2xl: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --section-padding-y: 40px;
+    --section-padding-x: 16px;
+  }
+}

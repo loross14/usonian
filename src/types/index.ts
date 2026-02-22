@@ -107,12 +107,22 @@ export interface PropertyFilters {
   preservation_status?: PreservationStatus;
 }
 
+// URL filter types
+export type StatusFilter = 'all' | 'active' | 'sold' | 'museum';
+
+export const STATUS_FILTER_MAP: Record<StatusFilter, PropertyStatus[] | null> = {
+  all: null,
+  active: ['active'],
+  sold: ['sold', 'archived'],
+  museum: ['museum', 'donated'],
+};
+
 // Display helpers
 export function getStatusLabel(status: string): string {
   const labels: Record<string, string> = {
     active: 'For Sale',
     sold: 'Sold',
-    archived: 'Archived',
+    archived: 'Off-Market',
     donated: 'Donated',
     museum: 'Museum',
   };

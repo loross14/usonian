@@ -18,7 +18,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "Usonian | Curated Architect-Designed Homes",
+  title: "Usonian",
   description:
     "Discover exceptional architect-designed homes by master architects. A curated collection of architectural landmarks.",
   keywords: [
@@ -30,6 +30,10 @@ export const metadata: Metadata = {
     "Frank Lloyd Wright",
     "organic architecture",
   ],
+  icons: {
+    icon: "/icons/logo.jpg",
+    apple: "/icons/logo.jpg",
+  },
 };
 
 export default function RootLayout({

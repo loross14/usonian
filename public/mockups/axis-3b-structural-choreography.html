@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Axis 3B: Structural Choreography | Usonian</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <style>
+    :root {
+      --red: #BF0A30;
+      --navy: #002868;
+      --gold: #D4B270;
+      --black: #000000;
+      --white: #FFFFFF;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-mono);
+      line-height: 1.4;
+      background: var(--white);
+      color: var(--black);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .upgrade-badge {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--gold);
+      color: var(--black);
+      padding: 12px 20px;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      font-weight: 700;
+      z-index: 1000;
+    }
+
+    header {
+      border-bottom: 1px solid var(--black);
+      padding: 20px 0;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo { font-size: 14px; font-weight: 700; letter-spacing: 0.1em; }
+
+    /* HERO */
+    .hero {
+      padding: 60px 0;
+      border-bottom: 1px solid var(--black);
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      line-height: 0.9;
+      letter-spacing: -0.04em;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    h1 .accent { color: var(--gold); }
+
+    .hero-subtitle {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      opacity: 0.5;
+    }
+
+    /* SECTION */
+    .demo-section {
+      padding: 60px 0;
+      border-bottom: 1px solid var(--black);
+    }
+
+    h2 {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      margin-bottom: 32px;
+      opacity: 0.5;
+    }
+
+    /* INPUT FOCUS CHOREOGRAPHY */
+    .input-demo {
+      max-width: 500px;
+      margin-bottom: 40px;
+    }
+
+    @keyframes input-focus-expand {
+      from { padding: 12px 16px; }
+      to { padding: 20px 16px 16px 16px; }
+    }
+
+    @keyframes placeholder-float {
+      from { opacity: 1; transform: translateY(0); font-size: 14px; }
+      to { opacity: 0.7; transform: translateY(-24px); font-size: 10px; }
+    }
+
+    @keyframes focus-bar-enter {
+      from { transform: scaleX(0); transform-origin: left; }
+      to { transform: scaleX(1); transform-origin: left; }
+    }
+
+    .input-wrapper {
+      position: relative;
+      margin-bottom: 24px;
+    }
+
+    .input-label {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      margin-bottom: 8px;
+      opacity: 0.5;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 12px 16px;
+      font-family: inherit;
+      font-size: 14px;
+      border: 1px solid rgba(0,0,0,0.2);
+      background: white;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .input-field.focused {
+      animation: input-focus-expand 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      border-color: var(--gold);
+    }
+
+    .focus-bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      width: 100%;
+      background: var(--gold);
+      transform: scaleX(0);
+    }
+
+    .input-field.focused + .focus-bar {
+      animation: focus-bar-enter 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    .floating-label {
+      position: absolute;
+      left: 16px;
+      top: 32px;
+      font-size: 10px;
+      color: var(--gold);
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      animation: placeholder-float 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    /* BUTTON STATE MACHINE */
+    .button-demo {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    @keyframes btn-hover-lift {
+      from { transform: translateY(0); }
+      to { transform: translateY(-3px); }
+    }
+
+    @keyframes btn-press {
+      from { transform: translateY(-3px); box-shadow: 0 6px 12px rgba(0,0,0,0.15); }
+      to { transform: translateY(0); box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    }
+
+    @keyframes btn-loading {
+      0% { background: linear-gradient(180deg, var(--black) 0%, var(--gold) 0%); }
+      100% { background: linear-gradient(180deg, var(--black) 100%, var(--gold) 100%); }
+    }
+
+    @keyframes btn-success {
+      0% { transform: scale(0.95); background: var(--gold); }
+      50% { transform: scale(1.02); }
+      100% { transform: scale(1); background: var(--gold); }
+    }
+
+    @keyframes btn-error-shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-4px); }
+      75% { transform: translateX(4px); }
+    }
+
+    .btn {
+      padding: 16px 32px;
+      font-family: inherit;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .btn-idle {
+      background: var(--black);
+      color: white;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .btn-hover {
+      background: var(--black);
+      color: white;
+      animation: btn-hover-lift 0.2s forwards;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
+    .btn-press {
+      background: var(--black);
+      color: white;
+      animation: btn-press 0.15s forwards;
+    }
+
+    .btn-loading {
+      animation: btn-loading 1.5s ease-out forwards;
+      color: white;
+      pointer-events: none;
+    }
+
+    .btn-success {
+      animation: btn-success 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      color: var(--black);
+    }
+
+    .btn-error {
+      background: var(--red);
+      color: white;
+      animation: btn-error-shake 0.3s ease-out;
+    }
+
+    .btn-label {
+      font-size: 9px;
+      opacity: 0.5;
+      margin-top: 8px;
+      text-align: center;
+    }
+
+    /* VALIDATION FEEDBACK */
+    .validation-demo {
+      max-width: 500px;
+      margin-bottom: 40px;
+    }
+
+    @keyframes validation-check-slide {
+      from { opacity: 0; transform: translateX(12px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes validation-error-slide {
+      from { opacity: 0; transform: translateX(-12px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .validation-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      margin-bottom: 8px;
+    }
+
+    .validation-success {
+      color: var(--gold);
+      animation: validation-check-slide 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    .validation-error {
+      color: var(--red);
+      animation: validation-error-slide 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    .validation-icon {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* TOAST DEMO */
+    .toast-demo {
+      position: relative;
+      height: 200px;
+      border: 1px dashed rgba(0,0,0,0.2);
+      margin-bottom: 40px;
+    }
+
+    @keyframes toast-slide-in {
+      from { opacity: 0; transform: translateX(100%); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes toast-progress {
+      from { width: 100%; }
+      to { width: 0; }
+    }
+
+    .toast {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      min-width: 280px;
+      padding: 16px;
+      background: white;
+      border: 1px solid rgba(0,0,0,0.1);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      animation: toast-slide-in 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    .toast-success { border-left: 3px solid var(--gold); }
+    .toast-error { border-left: 3px solid var(--red); }
+
+    .toast-content {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .toast-icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+    }
+
+    .toast-success .toast-icon { color: var(--gold); }
+    .toast-error .toast-icon { color: var(--red); }
+
+    .toast-message {
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .toast-progress {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), var(--black));
+      animation: toast-progress 4s linear forwards;
+    }
+
+    /* NOTES */
+    .upgrade-notes {
+      padding: 40px;
+      background: rgba(0,0,0,0.02);
+      margin-top: 40px;
+    }
+
+    .upgrade-notes h3 {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      margin-bottom: 16px;
+    }
+
+    .upgrade-notes ul {
+      list-style: none;
+      font-size: 12px;
+      line-height: 2;
+    }
+
+    .upgrade-notes li {
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .upgrade-notes li::before {
+      content: '+';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="upgrade-badge">AXIS 3B: STRUCTURAL CHOREOGRAPHY</div>
+
+  <header>
+    <div class="container header-content">
+      <div class="logo">USONIAN</div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>FORM<span class="accent">.</span><br>MOTION</h1>
+      <p class="hero-subtitle">BUTTON STATE MACHINE + INPUT CHOREOGRAPHY + VALIDATION FLOW</p>
+    </div>
+  </section>
+
+  <section class="demo-section">
+    <div class="container">
+      <h2>INPUT FOCUS: Y-AXIS EXPAND + FLOATING LABEL</h2>
+      <div class="input-demo">
+        <div class="input-wrapper">
+          <label class="input-label">EMAIL ADDRESS</label>
+          <input type="email" class="input-field focused" placeholder="" value="john@example.com">
+          <div class="focus-bar"></div>
+          <span class="floating-label">Enter your email...</span>
+        </div>
+      </div>
+
+      <h2>BUTTON STATES: IDLE → HOVER → PRESS → LOADING → SUCCESS/ERROR</h2>
+      <div class="button-demo">
+        <div>
+          <button class="btn btn-idle">SUBSCRIBE</button>
+          <div class="btn-label">IDLE</div>
+        </div>
+        <div>
+          <button class="btn btn-hover">SUBSCRIBE</button>
+          <div class="btn-label">HOVER (Y-lift)</div>
+        </div>
+        <div>
+          <button class="btn btn-press">SUBSCRIBE</button>
+          <div class="btn-label">PRESS (Y-compress)</div>
+        </div>
+        <div>
+          <button class="btn btn-loading">PROCESSING...</button>
+          <div class="btn-label">LOADING (Y-fill)</div>
+        </div>
+        <div>
+          <button class="btn btn-success">SUCCESS!</button>
+          <div class="btn-label">SUCCESS (scale)</div>
+        </div>
+        <div>
+          <button class="btn btn-error">ERROR</button>
+          <div class="btn-label">ERROR (X-shake)</div>
+        </div>
+      </div>
+
+      <h2>VALIDATION: X-AXIS SLIDE FEEDBACK</h2>
+      <div class="validation-demo">
+        <div class="validation-item validation-success">
+          <svg class="validation-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12l5 5L19 7"/>
+          </svg>
+          <span>Valid email format</span>
+        </div>
+        <div class="validation-item validation-success">
+          <svg class="validation-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12l5 5L19 7"/>
+          </svg>
+          <span>Email length OK</span>
+        </div>
+        <div class="validation-item validation-error">
+          <svg class="validation-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+          <span>Domain not allowed</span>
+        </div>
+      </div>
+
+      <h2>TOAST NOTIFICATIONS: X-AXIS SLIDE + PROGRESS BAR</h2>
+      <div class="toast-demo">
+        <div class="toast toast-success">
+          <div class="toast-content">
+            <svg class="toast-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12l5 5L19 7"/>
+            </svg>
+            <div class="toast-message">
+              <strong>Successfully subscribed!</strong><br>
+              <span style="opacity:0.7;font-size:11px;">Check your inbox for confirmation.</span>
+            </div>
+          </div>
+          <div class="toast-progress"></div>
+        </div>
+      </div>
+
+      <div class="upgrade-notes">
+        <h3>STRUCTURAL CHOREOGRAPHY: KEY FEATURES</h3>
+        <ul>
+          <li>Input focus: Y-axis padding expansion (12px → 20px)</li>
+          <li>Floating label: migrates upward with scale reduction</li>
+          <li>Focus bar: X-axis scaleX from left origin</li>
+          <li>Button hover: Y-lift (-3px) with shadow growth</li>
+          <li>Button press: Y-compress with shadow shrink</li>
+          <li>Button loading: Y-axis gradient fill (bottom → top)</li>
+          <li>Success: scale pulse (0.95 → 1.02 → 1)</li>
+          <li>Error: X-axis shake (-4px → +4px)</li>
+          <li>Validation: success slides from right, error from left</li>
+          <li>Toast: slides from right with X-axis progress bar</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

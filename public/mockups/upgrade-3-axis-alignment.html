@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upgrade 3: Axis Alignment | Usonian</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <style>
+    :root {
+      --red: #BF0A30;
+      --navy: #002868;
+      --gold: #D4B270;
+      --black: #000000;
+      --white: #FFFFFF;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-mono);
+      line-height: 1.4;
+      background: var(--white);
+      color: var(--black);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* UPGRADE BADGE */
+    .upgrade-badge {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--gold);
+      color: var(--black);
+      padding: 12px 20px;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      font-weight: 700;
+      z-index: 1000;
+    }
+
+    /* HEADER */
+    header {
+      border-bottom: 1px solid var(--black);
+      padding: 20px 0;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+
+    /* NAV WITH AXIS ANIMATION */
+    nav {
+      display: flex;
+      gap: 32px;
+    }
+
+    nav a {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      color: var(--black);
+      opacity: 0.6;
+      position: relative;
+      transition: opacity 0.2s ease;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--red);
+      transition: width 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    nav a:hover {
+      opacity: 1;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--black);
+    }
+
+    h1 {
+      font-size: clamp(3rem, 10vw, 6rem);
+      line-height: 0.85;
+      letter-spacing: -0.04em;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    h1 .accent {
+      color: var(--red);
+    }
+
+    .hero-subtitle {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      opacity: 0.5;
+    }
+
+    /* PRAIRIE LINES */
+    .prairie-lines {
+      display: flex;
+      gap: 4px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--black);
+    }
+
+    .line {
+      height: 2px;
+      background: var(--red);
+      flex: 1;
+      animation: line-draw 1.2s ease-out forwards;
+      transform-origin: left;
+    }
+
+    .line:nth-child(2) { animation-delay: 0.1s; }
+    .line:nth-child(3) { animation-delay: 0.2s; }
+
+    @keyframes line-draw {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+
+    /* INTERACTION DEMO SECTION */
+    .demo-section {
+      padding: 60px 0;
+      border-bottom: 1px solid var(--black);
+    }
+
+    h2 {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      margin-bottom: 32px;
+      opacity: 0.5;
+    }
+
+    /* CARD AXIS HOVER */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      border: 1px solid var(--black);
+      padding: 32px;
+      background: var(--white);
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  box-shadow 0.35s ease-out;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      /* X+Y axis movement creates perspective */
+      transform: translateX(6px) translateY(-6px);
+      box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.15),
+                  6px 6px 0 rgba(0, 0, 0, 0.08);
+    }
+
+    .card-title {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .card-meta {
+      font-size: 10px;
+      opacity: 0.5;
+    }
+
+    /* BADGE AXIS ANIMATION */
+    .badge {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      font-weight: 700;
+      background: var(--red);
+      color: var(--white);
+      animation: badge-axis-enter 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      margin-top: 16px;
+    }
+
+    @keyframes badge-axis-enter {
+      from {
+        opacity: 0;
+        transform: translateX(-12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .card:hover .badge {
+      animation: badge-axis-pulse 0.3s ease-out;
+    }
+
+    @keyframes badge-axis-pulse {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(2px); }
+    }
+
+    /* BUTTON AXIS PRESS */
+    .buttons-demo {
+      display: flex;
+      gap: 16px;
+      margin-top: 40px;
+    }
+
+    .btn {
+      padding: 16px 32px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      border: 2px solid var(--black);
+      background: var(--white);
+      cursor: pointer;
+      transition: all 0.15s ease-out;
+      box-shadow: 4px 4px 0 var(--black);
+    }
+
+    .btn:hover {
+      box-shadow: 6px 6px 0 var(--black);
+    }
+
+    .btn:active {
+      /* Horizontal compression feedback */
+      transform: scaleX(0.98) scaleY(1.02);
+      box-shadow: 2px 2px 0 var(--black);
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      border-color: var(--black);
+    }
+
+    /* INPUT AXIS ANIMATION */
+    .input-demo {
+      margin-top: 40px;
+    }
+
+    .input-axis {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      padding: 16px;
+      border: 1px solid rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 400px;
+      position: relative;
+      transition: border-color 0.2s ease;
+      outline: none;
+    }
+
+    .input-wrapper {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .input-wrapper::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--red);
+      transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .input-wrapper:focus-within::after {
+      width: 100%;
+    }
+
+    .input-axis:focus {
+      border-color: var(--red);
+    }
+
+    /* STAR ICON ANIMATION */
+    .star-demo {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+      margin-top: 40px;
+    }
+
+    .star-icon {
+      width: 32px;
+      height: 32px;
+      color: var(--gold);
+      cursor: pointer;
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .star-icon:hover {
+      animation: star-axis-bounce 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    @keyframes star-axis-bounce {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+      100% { transform: translateY(0); }
+    }
+
+    .star-icon.pulse {
+      animation: star-pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes star-pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.7; transform: scale(0.95); }
+    }
+
+    /* EASING VISUALIZATION */
+    .easing-demo {
+      margin-top: 60px;
+      padding: 40px;
+      background: rgba(0,0,0,0.02);
+    }
+
+    .easing-demo h3 {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      margin-bottom: 24px;
+      opacity: 0.5;
+    }
+
+    .easing-box {
+      width: 60px;
+      height: 60px;
+      background: var(--red);
+      animation: easing-demo-move 2s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+    }
+
+    @keyframes easing-demo-move {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(200px); }
+    }
+
+    .easing-label {
+      font-size: 10px;
+      opacity: 0.6;
+      margin-top: 16px;
+    }
+
+    /* UPGRADE NOTES */
+    .upgrade-notes {
+      padding: 40px;
+      background: var(--white);
+      border: 1px solid var(--black);
+      margin: 40px 0;
+    }
+
+    .upgrade-notes h3 {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      margin-bottom: 16px;
+    }
+
+    .upgrade-notes ul {
+      list-style: none;
+      font-size: 12px;
+      line-height: 2;
+    }
+
+    .upgrade-notes li {
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .upgrade-notes li::before {
+      content: '+';
+      position: absolute;
+      left: 0;
+      color: var(--red);
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="upgrade-badge">UPGRADE 3: AXIS ALIGNMENT</div>
+
+  <header>
+    <div class="container header-content">
+      <div class="logo">USONIAN</div>
+      <nav>
+        <a href="#">HOMES</a>
+        <a href="#">ARCHITECTS</a>
+        <a href="#">ABOUT</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>ARCHITECT<span class="accent">.</span><br>DESIGNED<br>HOMES</h1>
+      <p class="hero-subtitle">X/Y AXIS-CONSTRAINED MICRO-INTERACTIONS WITH ARCHITECTURAL EASING</p>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="prairie-lines">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+  </div>
+
+  <section class="demo-section">
+    <div class="container">
+      <h2>CARD HOVER: X+Y AXIS MOVEMENT (HOVER ME)</h2>
+      <div class="cards-grid">
+        <div class="card">
+          <div class="card-title">CHEMOSPHERE</div>
+          <div class="card-meta">1960 / LOS ANGELES, CA</div>
+          <span class="badge">FOR SALE</span>
+        </div>
+        <div class="card">
+          <div class="card-title">SILVERTOP</div>
+          <div class="card-meta">1963 / LOS ANGELES, CA</div>
+          <span class="badge" style="background: var(--navy);">SOLD</span>
+        </div>
+        <div class="card">
+          <div class="card-title">ELROD HOUSE</div>
+          <div class="card-meta">1968 / PALM SPRINGS, CA</div>
+          <span class="badge" style="background: var(--gold); color: var(--black);">MUSEUM</span>
+        </div>
+      </div>
+
+      <h2>BUTTON PRESS: HORIZONTAL COMPRESSION (CLICK ME)</h2>
+      <div class="buttons-demo">
+        <button class="btn btn-primary">GET NOTIFIED</button>
+        <button class="btn">VIEW ARCHIVE</button>
+      </div>
+
+      <h2 style="margin-top: 40px;">INPUT FOCUS: BORDER DRAWS ALONG X-AXIS</h2>
+      <div class="input-demo">
+        <div class="input-wrapper">
+          <input type="email" class="input-axis" placeholder="Enter your email...">
+        </div>
+      </div>
+
+      <h2 style="margin-top: 40px;">STAR ICONS: VERTICAL BOUNCE ON HOVER</h2>
+      <div class="star-demo">
+        <svg class="star-icon" viewBox="0 0 24 24" fill="currentColor">
+          <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+        </svg>
+        <svg class="star-icon" viewBox="0 0 24 24" fill="currentColor">
+          <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+        </svg>
+        <svg class="star-icon pulse" viewBox="0 0 24 24" fill="currentColor">
+          <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+        </svg>
+        <span style="font-size: 10px; opacity: 0.5;">(Last one pulses automatically)</span>
+      </div>
+
+      <div class="easing-demo">
+        <h3>CUBIC-BEZIER(0.34, 1.56, 0.64, 1) — SUBTLE OVERSHOOT</h3>
+        <div class="easing-box"></div>
+        <div class="easing-label">The overshoot creates intentional, refined motion — not cartoonish</div>
+      </div>
+
+      <div class="upgrade-notes">
+        <h3>KEY CHANGES</h3>
+        <ul>
+          <li>Nav links: X-axis underline draw on hover</li>
+          <li>Cards: Combined X+Y translate creates perspective depth</li>
+          <li>Buttons: Horizontal scaleX compression on press</li>
+          <li>Inputs: Border draws along X-axis on focus</li>
+          <li>Badges: Slide in from left (X-axis entry)</li>
+          <li>Stars: Vertical bounce on interaction</li>
+          <li>Easing: cubic-bezier(0.34, 1.56, 0.64, 1) for subtle overshoot</li>
+          <li>Implementation complexity: MEDIUM (~2-3 days)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

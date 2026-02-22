@@ -1,0 +1,402 @@
+/* V2 Animation System
+ * All animations constrained to X/Y axes
+ * Consistent spring easing throughout
+ * Respects reduced motion preferences
+ */
+
+/* ==========================================
+ * ENTRANCE ANIMATIONS
+ * Used for page load and scroll-triggered reveals
+ * ========================================== */
+
+/* Hero title - dramatic skew entrance */
+@keyframes skew-enter {
+  from {
+    opacity: 0;
+    transform: translateX(-60px) skewY(-2deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) skewY(0);
+  }
+}
+
+/* Hero title - larger movement for main pages */
+@keyframes hero-skew-enter {
+  from {
+    opacity: 0;
+    transform: translateX(-80px) skewY(-2deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) skewY(0);
+  }
+}
+
+/* Staggered name lines */
+@keyframes name-line-enter {
+  from {
+    opacity: 0;
+    transform: translateX(-60px) skewY(-2deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) skewY(0);
+  }
+}
+
+/* Cascade from left - for grids and lists */
+@keyframes cascade-x {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Cascade from bottom - vertical reveal */
+@keyframes cascade-y {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Badge slide in from left */
+@keyframes badge-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Stats cell entrance */
+@keyframes cell-enter {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Table row cascade */
+@keyframes row-cascade {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Letter marker scale in */
+@keyframes letter-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ==========================================
+ * LINE DRAW ANIMATIONS
+ * For borders and dividers
+ * ========================================== */
+
+/* Horizontal line draw (left to right) */
+@keyframes line-draw-x {
+  from {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  to {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+/* Vertical line draw (top to bottom) */
+@keyframes line-draw-y {
+  from {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  to {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+}
+
+/* Nav underline draw */
+@keyframes underline-draw {
+  from {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  to {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+/* Quote border reveal */
+@keyframes quote-border-draw {
+  from {
+    transform: scaleY(0);
+    transform-origin: top;
+  }
+  to {
+    transform: scaleY(1);
+    transform-origin: top;
+  }
+}
+
+/* ==========================================
+ * INTERACTION ANIMATIONS
+ * Hover, click, focus feedback
+ * ========================================== */
+
+/* Button press squish */
+@keyframes press-squish {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scaleX(0.98) scaleY(1.02);
+  }
+}
+
+/* Filter tab press */
+@keyframes tab-press {
+  0%, 100% {
+    transform: scaleX(1) scaleY(1);
+  }
+  50% {
+    transform: scaleX(0.98) scaleY(1.02);
+  }
+}
+
+/* Star pulse on featured items */
+@keyframes star-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.05);
+  }
+}
+
+/* Arrow reveal on hover */
+@keyframes arrow-reveal {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ==========================================
+ * PRAIRIE LINE ANIMATIONS
+ * Staggered line reveals
+ * ========================================== */
+
+@keyframes prairie-draw {
+  from {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  to {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+/* ==========================================
+ * UTILITY CLASSES
+ * Apply animations via class names
+ * ========================================== */
+
+/* Entrance animations */
+.animate-skew-enter {
+  animation: skew-enter var(--duration-slow) var(--ease-spring) forwards;
+}
+
+.animate-hero-enter {
+  animation: hero-skew-enter var(--duration-dramatic) var(--ease-spring) forwards;
+}
+
+.animate-cascade-x {
+  animation: cascade-x var(--duration-slow) var(--ease-spring) forwards;
+}
+
+.animate-cascade-y {
+  animation: cascade-y var(--duration-slow) var(--ease-spring) forwards;
+}
+
+.animate-badge-slide {
+  animation: badge-slide-in var(--duration-normal) var(--ease-spring) forwards;
+}
+
+.animate-row-cascade {
+  animation: row-cascade var(--duration-slow) var(--ease-spring) forwards;
+}
+
+.animate-letter-scale {
+  animation: letter-scale-in var(--duration-slow) var(--ease-spring) forwards;
+}
+
+/* Line draws */
+.animate-line-x {
+  animation: line-draw-x var(--duration-slow) var(--ease-spring) forwards;
+}
+
+.animate-line-y {
+  animation: line-draw-y var(--duration-slow) var(--ease-spring) forwards;
+}
+
+.animate-underline {
+  animation: underline-draw var(--duration-normal) var(--ease-spring) forwards;
+}
+
+/* Interactive */
+.animate-press {
+  animation: press-squish var(--duration-instant) var(--ease-spring);
+}
+
+.animate-star-pulse {
+  animation: star-pulse 4s ease-in-out infinite;
+}
+
+/* Stagger delay utilities */
+.stagger-1 { animation-delay: calc(var(--stagger-normal) * 1); }
+.stagger-2 { animation-delay: calc(var(--stagger-normal) * 2); }
+.stagger-3 { animation-delay: calc(var(--stagger-normal) * 3); }
+.stagger-4 { animation-delay: calc(var(--stagger-normal) * 4); }
+.stagger-5 { animation-delay: calc(var(--stagger-normal) * 5); }
+.stagger-6 { animation-delay: calc(var(--stagger-normal) * 6); }
+.stagger-7 { animation-delay: calc(var(--stagger-normal) * 7); }
+.stagger-8 { animation-delay: calc(var(--stagger-normal) * 8); }
+
+/* Initial state for animated elements */
+.animate-on-scroll {
+  opacity: 0;
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+}
+
+/* ==========================================
+ * HOVER TRANSITIONS
+ * Consistent hover states
+ * ========================================== */
+
+.hover-lift {
+  transition: transform var(--duration-fast) var(--ease-spring),
+              box-shadow var(--duration-fast) var(--ease-spring);
+}
+
+.hover-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+/* V2 diagonal hover for cards */
+.hover-diagonal {
+  transition: transform var(--duration-fast) var(--ease-spring),
+              box-shadow var(--duration-fast) var(--ease-spring);
+}
+
+.hover-diagonal:hover {
+  transform: translateX(6px) translateY(-6px);
+  box-shadow: var(--shadow-hover);
+}
+
+/* Border highlight on hover */
+.hover-border-left {
+  transition: border-color var(--duration-fast) var(--ease-spring),
+              padding-left var(--duration-fast) var(--ease-spring),
+              background-color var(--duration-fast) var(--ease-spring);
+  border-left: 3px solid transparent;
+}
+
+.hover-border-left:hover {
+  border-left-color: var(--v2-red);
+  padding-left: 12px;
+  background-color: rgba(191, 10, 48, 0.04);
+}
+
+/* Nav link underline */
+.hover-underline {
+  position: relative;
+}
+
+.hover-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--v2-red);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--duration-fast) var(--ease-spring);
+}
+
+.hover-underline:hover::after {
+  transform: scaleX(1);
+}
+
+/* ==========================================
+ * FOCUS STATES
+ * Accessibility-first focus indicators
+ * ========================================== */
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--v2-red);
+  outline-offset: 2px;
+}
+
+/* ==========================================
+ * REDUCED MOTION
+ * Respect user preferences
+ * ========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .animate-star-pulse {
+    animation: none;
+  }
+}

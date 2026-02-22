@@ -10,6 +10,7 @@ import { StarIcon } from "@/components/icons/StarIcon";
 import { PropertyAlertButton } from "@/components/property/PropertyAlertButton";
 import { ReferenceLink } from "@/components/ui/ReferenceLink";
 import { getGeneratedSvgUrl } from "@/lib/generated-houses";
+import { getHeroImageUrl } from "@/lib/hero-images";
 import { getArchitectPortraitUrl } from "@/lib/architect-portraits";
 import { isValidUrl } from "@/lib/url-helpers";
 
@@ -33,7 +34,7 @@ export async function generateMetadata({ params }: PageProps) {
   if (!property) return { title: "Property Not Found" };
 
   return {
-    title: `${property.home_name} | Usonian`,
+    title: "Usonian",
     description: property.description || `${property.home_name} by ${property.architect_id}`,
   };
 }
@@ -52,8 +53,10 @@ export default async function PropertyDetailPage({ params }: PageProps) {
     ? formatPrice(property.last_sale_price)
     : "PRICE UPON REQUEST";
 
-  // Use generated SVG as primary hero image
+  // Get hero image (prioritize JPG photos over SVG illustrations)
+  const heroImageUrl = getHeroImageUrl(property.slug);
   const generatedSvgUrl = getGeneratedSvgUrl(property.slug);
+  const propertyImageUrl = heroImageUrl || generatedSvgUrl;
 
   // Get architect portrait if available
   const architectPortraitUrl = architect ? getArchitectPortraitUrl(architect.slug) : null;
@@ -169,11 +172,11 @@ export default async function PropertyDetailPage({ params }: PageProps) {
       </section>
 
       {/* Property Image */}
-      {generatedSvgUrl && (
+      {propertyImageUrl && (
         <section className="border-b border-black bg-sand">
           <div className="aspect-[21/9] relative overflow-hidden">
             <img
-              src={generatedSvgUrl}
+              src={propertyImageUrl}
               alt={property.home_name}
               className="w-full h-full object-cover"
             />

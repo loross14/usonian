@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Image Generation Strategy 2026 - USONIAN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Colors */
+      --red: #BF0A30;
+      --navy: #002868;
+      --gold: #D4B270;
+      --black: #000000;
+      --white: #FFFFFF;
+
+      /* Typography */
+      --font-family: 'JetBrains Mono', monospace;
+      --font-size-xs: 11px;
+      --font-size-sm: 12px;
+      --font-size-md: 14px;
+      --font-size-lg: 16px;
+      --font-size-xl: 18px;
+      --font-size-2xl: 32px;
+      --font-size-3xl: 48px;
+      --letter-spacing-tight: -0.02em;
+      --letter-spacing-normal: 0;
+      --letter-spacing-wide: 0.1em;
+
+      /* Spacing */
+      --section-padding: 80px;
+      --section-padding-x: 48px;
+      --gap-sm: 8px;
+      --gap-md: 16px;
+      --gap-lg: 24px;
+      --gap-xl: 48px;
+
+      /* Opacity */
+      --opacity-muted: 0.4;
+      --opacity-secondary: 0.6;
+      --opacity-full: 1;
+
+      /* Animation */
+      --easing: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --duration-entrance: 0.6s;
+      --duration-hover: 0.2s;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--white);
+      color: var(--black);
+      line-height: 1.6;
+    }
+
+    /* ==================== HEADER ==================== */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--gap-lg) var(--section-padding-x);
+      background: var(--white);
+      z-index: 998;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: var(--letter-spacing-wide);
+      color: var(--black);
+      text-decoration: none;
+    }
+
+    .nav {
+      display: flex;
+      gap: 40px;
+    }
+
+    .nav-link {
+      font-size: var(--font-size-sm);
+      font-weight: 500;
+      letter-spacing: var(--letter-spacing-wide);
+      color: var(--black);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--red);
+      transition: width var(--duration-hover) var(--easing);
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* ==================== HERO SECTION ==================== */
+    .hero {
+      min-height: 60vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 140px var(--section-padding-x) var(--section-padding);
+      background: linear-gradient(135deg, var(--navy) 0%, var(--black) 100%);
+      color: var(--white);
+    }
+
+    .hero-label {
+      font-size: var(--font-size-xs);
+      font-weight: 500;
+      letter-spacing: var(--letter-spacing-wide);
+      color: var(--gold);
+      margin-bottom: var(--gap-md);
+      animation: hero-title-enter var(--duration-entrance) var(--easing) forwards;
+    }
+
+    .hero-title {
+      font-size: clamp(36px, 6vw, 72px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: var(--letter-spacing-tight);
+      color: var(--white);
+      animation: hero-title-enter var(--duration-entrance) var(--easing) 0.1s forwards;
+      opacity: 0;
+    }
+
+    .hero-title span {
+      display: block;
+    }
+
+    .hero-subtitle {
+      margin-top: 24px;
+      font-size: var(--font-size-lg);
+      font-weight: 400;
+      color: var(--white);
+      opacity: var(--opacity-secondary);
+      max-width: 600px;
+      animation: hero-title-enter var(--duration-entrance) var(--easing) 0.2s forwards;
+      opacity: 0;
+    }
+
+    @keyframes hero-title-enter {
+      0% {
+        transform: translateX(-40px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: var(--opacity-full);
+      }
+    }
+
+    /* ==================== SECTION STYLES ==================== */
+    .section {
+      padding: var(--section-padding) var(--section-padding-x);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--gap-xl);
+    }
+
+    .section-title {
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      letter-spacing: var(--letter-spacing-wide);
+      color: var(--black);
+    }
+
+    .section-count {
+      font-size: var(--font-size-xs);
+      font-weight: 400;
+      color: var(--navy);
+      opacity: var(--opacity-secondary);
+    }
+
+    .section-dark {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .section-dark .section-title {
+      color: var(--white);
+    }
+
+    .section-dark .section-count {
+      color: var(--gold);
+    }
+
+    /* ==================== WHY AI SECTION ==================== */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--gap-lg);
+    }
+
+    .why-card {
+      padding: var(--gap-lg);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .why-card-title {
+      font-size: var(--font-size-xl);
+      font-weight: 600;
+      margin-bottom: var(--gap-sm);
+      color: var(--navy);
+    }
+
+    .why-card-desc {
+      font-size: var(--font-size-md);
+      opacity: var(--opacity-secondary);
+    }
+
+    .why-card-stat {
+      margin-top: var(--gap-md);
+      font-size: var(--font-size-2xl);
+      font-weight: 700;
+      color: var(--red);
+    }
+
+    /* ==================== MODEL TABLE ==================== */
+    .model-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .model-table thead {
+      border-bottom: 2px solid var(--white);
+    }
+
+    .model-table th {
+      font-size: var(--font-size-xs);
+      font-weight: 600;
+      letter-spacing: var(--letter-spacing-wide);
+      text-transform: uppercase;
+      text-align: left;
+      padding: var(--gap-md) 0;
+      color: var(--gold);
+    }
+
+    .model-table tbody tr {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .model-table td {
+      padding: 20px 0;
+      font-size: var(--font-size-md);
+      vertical-align: middle;
+    }
+
+    .model-table .model-name {
+      font-weight: 600;
+      color: var(--white);
+    }
+
+    .model-table .model-use {
+      opacity: var(--opacity-secondary);
+    }
+
+    .model-table .model-api {
+      font-size: var(--font-size-sm);
+    }
+
+    .model-table .model-cost {
+      font-weight: 600;
+      color: var(--gold);
+    }
+
+    .badge-recommended {
+      display: inline-block;
+      padding: 2px 8px;
+      font-size: var(--font-size-xs);
+      font-weight: 600;
+      background: var(--red);
+      color: var(--white);
+      margin-left: 8px;
+    }
+
+    /* ==================== LORA SECTION ==================== */
+    .lora-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap-xl);
+    }
+
+    .lora-info h3 {
+      font-size: var(--font-size-xl);
+      font-weight: 600;
+      margin-bottom: var(--gap-md);
+    }
+
+    .lora-info p {
+      font-size: var(--font-size-md);
+      opacity: var(--opacity-secondary);
+      margin-bottom: var(--gap-lg);
+    }
+
+    .lora-specs {
+      background: rgba(0, 0, 0, 0.03);
+      padding: var(--gap-lg);
+      border-left: 3px solid var(--navy);
+    }
+
+    .lora-specs h4 {
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      letter-spacing: var(--letter-spacing-wide);
+      margin-bottom: var(--gap-md);
+    }
+
+    .spec-row {
+      display: flex;
+      justify-content: space-between;
+      padding: var(--gap-sm) 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .spec-label {
+      font-size: var(--font-size-sm);
+      opacity: var(--opacity-secondary);
+    }
+
+    .spec-value {
+      font-size: var(--font-size-sm);
+      font-weight: 500;
+    }
+
+    .lora-visual {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--black) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: var(--font-size-sm);
+      letter-spacing: var(--letter-spacing-wide);
+      min-height: 300px;
+    }
+
+    /* ==================== PROMPT SECTION ==================== */
+    .prompt-box {
+      background: var(--black);
+      color: var(--white);
+      padding: var(--gap-lg);
+      font-size: var(--font-size-md);
+      line-height: 1.8;
+      border-left: 3px solid var(--gold);
+    }
+
+    .prompt-var {
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .prompt-examples {
+      margin-top: var(--gap-xl);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--gap-lg);
+    }
+
+    .prompt-example {
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      padding: var(--gap-lg);
+    }
+
+    .prompt-example h4 {
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      margin-bottom: var(--gap-sm);
+      color: var(--navy);
+    }
+
+    .prompt-example p {
+      font-size: var(--font-size-sm);
+      opacity: var(--opacity-secondary);
+    }
+
+    /* ==================== IMAGE VARIANTS ==================== */
+    .variants-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--gap-lg);
+    }
+
+    .variant-card {
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: var(--gap-lg);
+    }
+
+    .variant-preview {
+      background: rgba(255, 255, 255, 0.05);
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--gap-md);
+      font-size: var(--font-size-xs);
+      color: var(--gold);
+      letter-spacing: var(--letter-spacing-wide);
+    }
+
+    .variant-name {
+      font-size: var(--font-size-lg);
+      font-weight: 600;
+      margin-bottom: var(--gap-sm);
+    }
+
+    .variant-dims {
+      font-size: var(--font-size-sm);
+      opacity: var(--opacity-secondary);
+    }
+
+    .variant-use {
+      margin-top: var(--gap-sm);
+      font-size: var(--font-size-xs);
+      color: var(--gold);
+    }
+
+    /* ==================== PIPELINE SECTION ==================== */
+    .pipeline-flow {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--gap-xl) 0;
+    }
+
+    .pipeline-step {
+      flex: 1;
+      text-align: center;
+      padding: var(--gap-lg);
+    }
+
+    .pipeline-number {
+      width: 48px;
+      height: 48px;
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--font-size-lg);
+      font-weight: 700;
+      margin: 0 auto var(--gap-md);
+    }
+
+    .pipeline-title {
+      font-size: var(--font-size-md);
+      font-weight: 600;
+      margin-bottom: var(--gap-sm);
+    }
+
+    .pipeline-desc {
+      font-size: var(--font-size-sm);
+      opacity: var(--opacity-secondary);
+    }
+
+    .pipeline-arrow {
+      font-size: 24px;
+      color: var(--navy);
+      opacity: var(--opacity-muted);
+    }
+
+    /* ==================== COST SECTION ==================== */
+    .cost-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: var(--gap-xl);
+    }
+
+    .cost-breakdown {
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      padding: var(--gap-lg);
+    }
+
+    .cost-row {
+      display: flex;
+      justify-content: space-between;
+      padding: var(--gap-md) 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .cost-row:last-child {
+      border-bottom: none;
+      padding-top: var(--gap-lg);
+      margin-top: var(--gap-sm);
+      border-top: 2px solid var(--black);
+    }
+
+    .cost-label {
+      font-size: var(--font-size-md);
+    }
+
+    .cost-value {
+      font-size: var(--font-size-md);
+      font-weight: 500;
+    }
+
+    .cost-total .cost-label,
+    .cost-total .cost-value {
+      font-size: var(--font-size-xl);
+      font-weight: 700;
+    }
+
+    .cost-total .cost-value {
+      color: var(--red);
+    }
+
+    .cost-summary {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--black) 100%);
+      color: var(--white);
+      padding: var(--gap-xl);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .cost-summary-label {
+      font-size: var(--font-size-xs);
+      letter-spacing: var(--letter-spacing-wide);
+      color: var(--gold);
+      margin-bottom: var(--gap-sm);
+    }
+
+    .cost-summary-value {
+      font-size: var(--font-size-3xl);
+      font-weight: 700;
+    }
+
+    .cost-summary-note {
+      margin-top: var(--gap-md);
+      font-size: var(--font-size-sm);
+      opacity: var(--opacity-secondary);
+    }
+
+    /* ==================== COMPARISON SECTION ==================== */
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap-xl);
+    }
+
+    .comparison-card {
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .comparison-header {
+      padding: var(--gap-md) var(--gap-lg);
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      letter-spacing: var(--letter-spacing-wide);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .comparison-header.old {
+      background: rgba(0, 0, 0, 0.03);
+      color: var(--black);
+      opacity: var(--opacity-secondary);
+    }
+
+    .comparison-header.new {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .comparison-preview {
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--font-size-sm);
+      letter-spacing: var(--letter-spacing-wide);
+    }
+
+    .comparison-preview.svg-style {
+      background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+      color: var(--black);
+      opacity: var(--opacity-secondary);
+    }
+
+    .comparison-preview.ai-style {
+      background: linear-gradient(135deg, var(--gold) 0%, #c4a05a 100%);
+      color: var(--black);
+    }
+
+    .comparison-features {
+      padding: var(--gap-lg);
+    }
+
+    .comparison-feature {
+      display: flex;
+      align-items: center;
+      gap: var(--gap-sm);
+      padding: var(--gap-sm) 0;
+      font-size: var(--font-size-sm);
+    }
+
+    .feature-icon {
+      width: 16px;
+      height: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .feature-icon.check {
+      color: #22C55E;
+    }
+
+    .feature-icon.x {
+      color: var(--red);
+    }
+
+    /* ==================== CTA SECTION ==================== */
+    .cta-section {
+      padding: var(--section-padding) var(--section-padding-x);
+      background: linear-gradient(135deg, var(--navy) 0%, var(--black) 100%);
+      color: var(--white);
+      text-align: center;
+    }
+
+    .cta-title {
+      font-size: var(--font-size-2xl);
+      font-weight: 600;
+      margin-bottom: var(--gap-md);
+    }
+
+    .cta-subtitle {
+      font-size: var(--font-size-md);
+      opacity: var(--opacity-secondary);
+      margin-bottom: var(--gap-xl);
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-steps {
+      display: flex;
+      justify-content: center;
+      gap: var(--gap-xl);
+      margin-top: var(--gap-xl);
+    }
+
+    .cta-step {
+      text-align: center;
+    }
+
+    .cta-step-number {
+      font-size: var(--font-size-2xl);
+      font-weight: 700;
+      color: var(--gold);
+    }
+
+    .cta-step-text {
+      font-size: var(--font-size-sm);
+      margin-top: var(--gap-sm);
+      opacity: var(--opacity-secondary);
+    }
+
+    /* ==================== FOOTER ==================== */
+    .footer {
+      padding: var(--section-padding-x);
+      background: var(--black);
+      color: var(--white);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo {
+      font-size: var(--font-size-md);
+      font-weight: 700;
+      letter-spacing: var(--letter-spacing-wide);
+    }
+
+    .footer-copy {
+      font-size: var(--font-size-xs);
+      opacity: var(--opacity-muted);
+    }
+
+    /* ==================== RESPONSIVE ==================== */
+    @media (max-width: 768px) {
+      :root {
+        --section-padding: 60px;
+        --section-padding-x: 24px;
+      }
+
+      .why-grid,
+      .prompt-examples,
+      .variants-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .lora-grid,
+      .comparison-grid,
+      .cost-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pipeline-flow {
+        flex-direction: column;
+        gap: var(--gap-lg);
+      }
+
+      .pipeline-arrow {
+        transform: rotate(90deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <a href="#" class="logo">USONIAN</a>
+    <nav class="nav">
+      <a href="#" class="nav-link">HOMES</a>
+      <a href="#" class="nav-link">ARCHITECTS</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <p class="hero-label">CONTENT STRATEGY 2026</p>
+    <h1 class="hero-title">
+      <span>AI IMAGE</span>
+      <span>GENERATION</span>
+    </h1>
+    <p class="hero-subtitle">
+      Modern AI models for photorealistic architectural imagery.
+      Replace hand-coded SVGs with FLUX, LoRA training, and automated pipelines.
+    </p>
+  </section>
+
+  <!-- Why AI Section -->
+  <section class="section" id="why">
+    <div class="section-header">
+      <h2 class="section-title">WHY AI OVER SVG</h2>
+      <span class="section-count">THE CASE FOR CHANGE</span>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <h3 class="why-card-title">Quality</h3>
+        <p class="why-card-desc">Photorealistic renders capture the true essence of mid-century modern architecture</p>
+        <p class="why-card-stat">10x</p>
+      </div>
+      <div class="why-card">
+        <h3 class="why-card-title">Scale</h3>
+        <p class="why-card-desc">Generate 200+ images in hours instead of weeks of manual SVG creation</p>
+        <p class="why-card-stat">52 homes</p>
+      </div>
+      <div class="why-card">
+        <h3 class="why-card-title">Cost</h3>
+        <p class="why-card-desc">Total generation cost for entire property catalog with variants</p>
+        <p class="why-card-stat">$10</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Model Options Section -->
+  <section class="section section-dark" id="models">
+    <div class="section-header">
+      <h2 class="section-title">MODEL OPTIONS</h2>
+      <span class="section-count">2026 LANDSCAPE</span>
+    </div>
+    <table class="model-table">
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>Best For</th>
+          <th>API</th>
+          <th>Cost/Image</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="model-name">FLUX.1.1 Pro <span class="badge-recommended">RECOMMENDED</span></td>
+          <td class="model-use">Photorealistic architecture</td>
+          <td class="model-api">Replicate, Runware</td>
+          <td class="model-cost">~$0.03</td>
+        </tr>
+        <tr>
+          <td class="model-name">Stable Diffusion 3.5</td>
+          <td class="model-use">Stylized illustrations</td>
+          <td class="model-api">Stability AI</td>
+          <td class="model-cost">~$0.02</td>
+        </tr>
+        <tr>
+          <td class="model-name">Midjourney v7</td>
+          <td class="model-use">Artistic renders</td>
+          <td class="model-api">Discord / API</td>
+          <td class="model-cost">~$0.05</td>
+        </tr>
+        <tr>
+          <td class="model-name">DALL-E 3</td>
+          <td class="model-use">Conceptual imagery</td>
+          <td class="model-api">OpenAI API</td>
+          <td class="model-cost">~$0.04</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- LoRA Training Section -->
+  <section class="section" id="lora">
+    <div class="section-header">
+      <h2 class="section-title">STYLE CONSISTENCY</h2>
+      <span class="section-count">LORA TRAINING</span>
+    </div>
+    <div class="lora-grid">
+      <div class="lora-info">
+        <h3>Custom LoRA Model</h3>
+        <p>
+          Train a custom LoRA (Low-Rank Adaptation) model on 10-20 reference images
+          to ensure consistent visual style across all generated property images.
+        </p>
+        <div class="lora-specs">
+          <h4>TRAINING SPECS</h4>
+          <div class="spec-row">
+            <span class="spec-label">Platform</span>
+            <span class="spec-value">Replicate / Civitai</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Base Model</span>
+            <span class="spec-value">FLUX.1 or SDXL</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Training Images</span>
+            <span class="spec-value">15 high-quality MCM photos</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Output Size</span>
+            <span class="spec-value">~50MB .safetensors</span>
+          </div>
+          <div class="spec-row">
+            <span class="spec-label">Training Time</span>
+            <span class="spec-value">~30 minutes</span>
+          </div>
+        </div>
+      </div>
+      <div class="lora-visual">
+        [LORA TRAINING DIAGRAM]
+      </div>
+    </div>
+  </section>
+
+  <!-- Prompt Engineering Section -->
+  <section class="section" id="prompts">
+    <div class="section-header">
+      <h2 class="section-title">PROMPT ENGINEERING</h2>
+      <span class="section-count">MASTER TEMPLATE</span>
+    </div>
+    <div class="prompt-box">
+      <span class="prompt-var">[PROPERTY_NAME]</span>, mid-century modern architecture,<br>
+      <span class="prompt-var">[ARCHITECT_STYLE]</span> design language,<br>
+      exterior photograph, golden hour lighting,<br>
+      architectural photography, 35mm lens,<br>
+      warm color palette, earth tones,<br>
+      <span class="prompt-var">[UNIQUE_FEATURE]</span>, professional real estate photography<br>
+      --style usonian_mcm_v1 --ar 16:9
+    </div>
+    <div class="prompt-examples">
+      <div class="prompt-example">
+        <h4>Chemosphere</h4>
+        <p>
+          <strong>NAME:</strong> "Chemosphere house"<br>
+          <strong>STYLE:</strong> "John Lautner organic"<br>
+          <strong>FEATURE:</strong> "octagonal structure on single concrete pole"
+        </p>
+      </div>
+      <div class="prompt-example">
+        <h4>Sheats-Goldstein</h4>
+        <p>
+          <strong>NAME:</strong> "Sheats-Goldstein Residence"<br>
+          <strong>STYLE:</strong> "John Lautner organic"<br>
+          <strong>FEATURE:</strong> "coffered concrete ceiling, infinity pool"
+        </p>
+      </div>
+      <div class="prompt-example">
+        <h4>Winn House</h4>
+        <p>
+          <strong>NAME:</strong> "Robert Winn House"<br>
+          <strong>STYLE:</strong> "Frank Lloyd Wright Usonian"<br>
+          <strong>FEATURE:</strong> "two-story horizontal bands, cantilever roof"
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image Variants Section -->
+  <section class="section section-dark" id="variants">
+    <div class="section-header">
+      <h2 class="section-title">IMAGE VARIANTS</h2>
+      <span class="section-count">PER PROPERTY</span>
+    </div>
+    <div class="variants-grid">
+      <div class="variant-card">
+        <div class="variant-preview">1920 x 1080</div>
+        <h3 class="variant-name">Hero</h3>
+        <p class="variant-dims">1920 x 1080px</p>
+        <p class="variant-use">Property detail page</p>
+      </div>
+      <div class="variant-card">
+        <div class="variant-preview">800 x 600</div>
+        <h3 class="variant-name">Card</h3>
+        <p class="variant-dims">800 x 600px</p>
+        <p class="variant-use">Homepage, listings grid</p>
+      </div>
+      <div class="variant-card">
+        <div class="variant-preview">400 x 300</div>
+        <h3 class="variant-name">Thumbnail</h3>
+        <p class="variant-dims">400 x 300px</p>
+        <p class="variant-use">Table view, search</p>
+      </div>
+      <div class="variant-card">
+        <div class="variant-preview">1200 x 630</div>
+        <h3 class="variant-name">Social</h3>
+        <p class="variant-dims">1200 x 630px</p>
+        <p class="variant-use">OG image, Twitter</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pipeline Section -->
+  <section class="section" id="pipeline">
+    <div class="section-header">
+      <h2 class="section-title">PIPELINE WORKFLOW</h2>
+      <span class="section-count">5 STEPS</span>
+    </div>
+    <div class="pipeline-flow">
+      <div class="pipeline-step">
+        <div class="pipeline-number">1</div>
+        <h3 class="pipeline-title">Collect</h3>
+        <p class="pipeline-desc">Gather 15-20 reference MCM photos</p>
+      </div>
+      <span class="pipeline-arrow">&rarr;</span>
+      <div class="pipeline-step">
+        <div class="pipeline-number">2</div>
+        <h3 class="pipeline-title">Train</h3>
+        <p class="pipeline-desc">Create custom LoRA model</p>
+      </div>
+      <span class="pipeline-arrow">&rarr;</span>
+      <div class="pipeline-step">
+        <div class="pipeline-number">3</div>
+        <h3 class="pipeline-title">Prompt</h3>
+        <p class="pipeline-desc">Build property-specific prompts</p>
+      </div>
+      <span class="pipeline-arrow">&rarr;</span>
+      <div class="pipeline-step">
+        <div class="pipeline-number">4</div>
+        <h3 class="pipeline-title">Generate</h3>
+        <p class="pipeline-desc">Batch generate via API</p>
+      </div>
+      <span class="pipeline-arrow">&rarr;</span>
+      <div class="pipeline-step">
+        <div class="pipeline-number">5</div>
+        <h3 class="pipeline-title">Deploy</h3>
+        <p class="pipeline-desc">Upload to CDN, update site</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cost Section -->
+  <section class="section" id="cost">
+    <div class="section-header">
+      <h2 class="section-title">COST ESTIMATE</h2>
+      <span class="section-count">52 PROPERTIES</span>
+    </div>
+    <div class="cost-grid">
+      <div class="cost-breakdown">
+        <div class="cost-row">
+          <span class="cost-label">Hero images (52 x $0.03)</span>
+          <span class="cost-value">$1.56</span>
+        </div>
+        <div class="cost-row">
+          <span class="cost-label">Card images (52 x $0.03)</span>
+          <span class="cost-value">$1.56</span>
+        </div>
+        <div class="cost-row">
+          <span class="cost-label">Thumbnails (52 x $0.02)</span>
+          <span class="cost-value">$1.04</span>
+        </div>
+        <div class="cost-row">
+          <span class="cost-label">Social cards (52 x $0.03)</span>
+          <span class="cost-value">$1.56</span>
+        </div>
+        <div class="cost-row">
+          <span class="cost-label">LoRA training (one-time)</span>
+          <span class="cost-value">$5.00</span>
+        </div>
+        <div class="cost-row cost-total">
+          <span class="cost-label">TOTAL</span>
+          <span class="cost-value">~$11</span>
+        </div>
+      </div>
+      <div class="cost-summary">
+        <p class="cost-summary-label">TOTAL COST</p>
+        <p class="cost-summary-value">$11</p>
+        <p class="cost-summary-note">
+          208 images generated in under 2 hours
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison Section -->
+  <section class="section" id="comparison">
+    <div class="section-header">
+      <h2 class="section-title">BEFORE / AFTER</h2>
+      <span class="section-count">VISUAL COMPARISON</span>
+    </div>
+    <div class="comparison-grid">
+      <div class="comparison-card">
+        <div class="comparison-header old">CURRENT: SVG APPROACH</div>
+        <div class="comparison-preview svg-style">[FLAT SVG ILLUSTRATION]</div>
+        <div class="comparison-features">
+          <div class="comparison-feature">
+            <span class="feature-icon x">&times;</span>
+            <span>Simple geometric shapes</span>
+          </div>
+          <div class="comparison-feature">
+            <span class="feature-icon x">&times;</span>
+            <span>Limited detail at small sizes</span>
+          </div>
+          <div class="comparison-feature">
+            <span class="feature-icon x">&times;</span>
+            <span>Hours to create each</span>
+          </div>
+          <div class="comparison-feature">
+            <span class="feature-icon x">&times;</span>
+            <span>Doesn't capture real architecture</span>
+          </div>
+        </div>
+      </div>
+      <div class="comparison-card">
+        <div class="comparison-header new">NEW: AI GENERATION</div>
+        <div class="comparison-preview ai-style">[PHOTOREALISTIC RENDER]</div>
+        <div class="comparison-features">
+          <div class="comparison-feature">
+            <span class="feature-icon check">&check;</span>
+            <span>Photorealistic quality</span>
+          </div>
+          <div class="comparison-feature">
+            <span class="feature-icon check">&check;</span>
+            <span>Stunning at any size</span>
+          </div>
+          <div class="comparison-feature">
+            <span class="feature-icon check">&check;</span>
+            <span>Seconds to generate</span>
+          </div>
+          <div class="comparison-feature">
+            <span class="feature-icon check">&check;</span>
+            <span>True architectural representation</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section" id="next">
+    <h2 class="cta-title">Next Steps</h2>
+    <p class="cta-subtitle">
+      Approve strategy, then begin implementation pipeline
+    </p>
+    <div class="cta-steps">
+      <div class="cta-step">
+        <p class="cta-step-number">01</p>
+        <p class="cta-step-text">Collect reference photos</p>
+      </div>
+      <div class="cta-step">
+        <p class="cta-step-number">02</p>
+        <p class="cta-step-text">Train custom LoRA</p>
+      </div>
+      <div class="cta-step">
+        <p class="cta-step-number">03</p>
+        <p class="cta-step-text">Generate test batch</p>
+      </div>
+      <div class="cta-step">
+        <p class="cta-step-number">04</p>
+        <p class="cta-step-text">Review &amp; iterate</p>
+      </div>
+      <div class="cta-step">
+        <p class="cta-step-number">05</p>
+        <p class="cta-step-text">Scale to all 52</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-logo">USONIAN</div>
+    <span class="footer-copy">&copy; 2026 USONIAN - AI Image Strategy</span>
+  </footer>
+
+  <!-- Figma Capture Script -->
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+</body>
+</html>

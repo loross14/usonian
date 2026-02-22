@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>John Lautner | Usonian V2 Architect Detail</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <style>
+    :root {
+      --red: #BF0A30;
+      --navy: #002868;
+      --gold: #D4B270;
+      --black: #000000;
+      --white: #FFFFFF;
+      --font-mono: 'JetBrains Mono', monospace;
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-mono);
+      line-height: 1.4;
+      background: var(--white);
+      color: var(--black);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* ========================================
+       HEADER WITH BREADCRUMB
+    ======================================== */
+    header {
+      border-bottom: 1px solid var(--black);
+      padding: 20px 0;
+      position: relative;
+      z-index: 100;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+    }
+
+    .breadcrumb a {
+      color: var(--black);
+      text-decoration: none;
+      opacity: 0.4;
+      transition: opacity 0.3s ease;
+    }
+
+    .breadcrumb a:focus-visible {
+      outline: 2px solid var(--red);
+      outline-offset: 2px;
+    }
+
+    .breadcrumb a:hover {
+      opacity: 1;
+    }
+
+    .breadcrumb-separator {
+      opacity: 0.4;
+    }
+
+    .breadcrumb-current {
+      color: var(--red);
+      font-weight: 700;
+    }
+
+    /* ========================================
+       HERO SECTION
+    ======================================== */
+    .hero {
+      padding: 100px 0 80px;
+      border-bottom: 1px solid var(--black);
+      overflow: hidden;
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-content {
+      width: 100%;
+    }
+
+    .hero-name {
+      margin-bottom: 40px;
+    }
+
+    .name-line {
+      font-size: clamp(4rem, 15vw, 10rem);
+      line-height: 0.85;
+      letter-spacing: -0.04em;
+      font-weight: 700;
+      text-transform: uppercase;
+      display: block;
+      opacity: 0;
+    }
+
+    @keyframes name-stagger-enter {
+      from {
+        opacity: 0;
+        transform: translateX(-80px) skewY(-2deg);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0) skewY(0);
+      }
+    }
+
+    .name-line:nth-child(1) {
+      animation: name-stagger-enter 0.6s var(--ease-spring) 0.1s forwards;
+    }
+
+    .name-line:nth-child(2) {
+      animation: name-stagger-enter 0.6s var(--ease-spring) 0.2s forwards;
+      color: var(--red);
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+
+    .hero-dates {
+      font-size: 14px;
+      letter-spacing: 0.1em;
+      opacity: 0;
+      animation: hero-meta-enter 0.6s var(--ease-spring) 0.5s forwards;
+    }
+
+    .hero-birthplace {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      opacity: 0;
+      animation: hero-meta-enter 0.6s var(--ease-spring) 0.5s forwards;
+    }
+
+    .fellowship-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: var(--gold);
+      color: var(--black);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      opacity: 0;
+      animation: badge-enter 0.6s var(--ease-spring) 0.6s forwards;
+    }
+
+    @keyframes hero-meta-enter {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 0.6; transform: translateY(0); }
+    }
+
+    @keyframes badge-enter {
+      from { opacity: 0; transform: translateY(20px) scale(0.9); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    /* ========================================
+       HERO IMAGE PLACEHOLDER
+    ======================================== */
+    .hero-image-placeholder {
+      width: 100%;
+      height: 400px;
+      background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+      border: 3px dashed var(--red);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 60px;
+    }
+
+    .hero-image-placeholder-text {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--red);
+    }
+
+    .hero-image-placeholder-subtext {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--black);
+      opacity: 0.4;
+      margin-top: 8px;
+    }
+
+    /* ========================================
+       BIO SECTION - 2 COLUMN
+    ======================================== */
+    .bio-section {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--black);
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      opacity: 0.4;
+      margin-bottom: 32px;
+    }
+
+    .bio-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+    }
+
+    @media (max-width: 768px) {
+      .bio-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    .bio-text {
+      font-size: 14px;
+      line-height: 1.8;
+      opacity: 0.6;
+    }
+
+    .quote-block {
+      position: relative;
+      padding-left: 32px;
+    }
+
+    .quote-border {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--gold);
+      transform: scaleY(0);
+      transform-origin: top;
+    }
+
+    @keyframes quote-border-draw {
+      from { transform: scaleY(0); }
+      to { transform: scaleY(1); }
+    }
+
+    .quote-border.animate {
+      animation: quote-border-draw 0.8s var(--ease-spring) forwards;
+    }
+
+    .quote-text {
+      font-size: 18px;
+      font-style: italic;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .quote-text::before {
+      content: '"';
+      color: var(--gold);
+      font-size: 48px;
+      line-height: 0;
+      vertical-align: -0.25em;
+      margin-right: 4px;
+    }
+
+    .quote-text::after {
+      content: '"';
+      color: var(--gold);
+      font-size: 48px;
+      line-height: 0;
+      vertical-align: -0.25em;
+      margin-left: 4px;
+    }
+
+    .quote-attribution {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      opacity: 0.4;
+    }
+
+    /* ========================================
+       STATS GRID
+    ======================================== */
+    .stats-section {
+      padding: 60px 0;
+      border-bottom: 1px solid var(--black);
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    @media (max-width: 768px) {
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .stat-cell {
+      background: var(--black);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 40px;
+      text-align: center;
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+
+    @keyframes stats-cascade {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .stat-cell.animate:nth-child(1) { animation: stats-cascade 0.6s var(--ease-spring) 0s forwards; }
+    .stat-cell.animate:nth-child(2) { animation: stats-cascade 0.6s var(--ease-spring) 0.1s forwards; }
+    .stat-cell.animate:nth-child(3) { animation: stats-cascade 0.6s var(--ease-spring) 0.2s forwards; }
+
+    .stat-number {
+      font-size: 64px;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      opacity: 0.4;
+    }
+
+    /* ========================================
+       PROPERTIES TABLE
+    ======================================== */
+    .properties-section {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--black);
+    }
+
+    .properties-table {
+      border: 1px solid var(--black);
+    }
+
+    .table-header {
+      display: grid;
+      grid-template-columns: 2fr 80px 140px 100px 140px;
+      gap: 16px;
+      padding: 16px 20px;
+      border-bottom: 2px solid var(--black);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      opacity: 0.4;
+    }
+
+    @media (max-width: 900px) {
+      .table-header {
+        display: none;
+      }
+    }
+
+    .table-row {
+      display: grid;
+      grid-template-columns: 2fr 80px 140px 100px 140px;
+      gap: 16px;
+      padding: 20px;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      font-size: 12px;
+      opacity: 0;
+      transform: translateX(-40px);
+      align-items: center;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .table-row:hover {
+      background-color: rgba(191, 10, 48, 0.04);
+    }
+
+    .table-row:focus-visible {
+      outline: 2px solid var(--red);
+      outline-offset: -2px;
+    }
+
+    @media (max-width: 900px) {
+      .table-row {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+    }
+
+    @keyframes table-row-cascade {
+      from {
+        opacity: 0;
+        transform: translateX(-40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .table-row.animate:nth-child(2) { animation: table-row-cascade 0.5s var(--ease-spring) 0s forwards; }
+    .table-row.animate:nth-child(3) { animation: table-row-cascade 0.5s var(--ease-spring) 0.1s forwards; }
+    .table-row.animate:nth-child(4) { animation: table-row-cascade 0.5s var(--ease-spring) 0.2s forwards; }
+    .table-row.animate:nth-child(5) { animation: table-row-cascade 0.5s var(--ease-spring) 0.3s forwards; }
+    .table-row.animate:nth-child(6) { animation: table-row-cascade 0.5s var(--ease-spring) 0.4s forwards; }
+    .table-row.animate:nth-child(7) { animation: table-row-cascade 0.5s var(--ease-spring) 0.5s forwards; }
+
+    .table-row:last-child {
+      border-bottom: none;
+    }
+
+    .property-name {
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .star-icon {
+      color: var(--gold);
+      font-size: 14px;
+    }
+
+    .star-icon.featured {
+      color: var(--gold);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+    }
+
+    .badge-sale {
+      background: var(--red);
+      color: var(--white);
+    }
+
+    .badge-sold {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    .badge-museum {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    .property-price {
+      font-weight: 700;
+      color: var(--red);
+    }
+
+    /* ========================================
+       EXPLORE MORE CTA
+    ======================================== */
+    .explore-section {
+      padding: 100px 0;
+      border-bottom: 1px solid var(--black);
+      text-align: center;
+    }
+
+    .explore-title {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      opacity: 0.4;
+      margin-bottom: 24px;
+    }
+
+    .explore-heading {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 40px;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 16px 48px;
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s var(--ease-spring);
+    }
+
+    .btn-primary:hover {
+      background: var(--red);
+    }
+
+    .btn-primary:focus-visible {
+      outline: 2px solid var(--red);
+      outline-offset: 2px;
+    }
+
+    .btn-primary:active {
+      transform: scaleX(0.95);
+    }
+
+    /* ========================================
+       FOOTER
+    ======================================== */
+    .footer {
+      padding: 32px 48px;
+      background: var(--red);
+      color: var(--white);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+
+    .footer-form {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .footer-input {
+      padding: 12px 20px;
+      font-family: inherit;
+      font-size: 12px;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      color: white;
+      outline: none;
+      min-width: 250px;
+    }
+
+    .footer-input::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .footer-input:focus {
+      border-color: white;
+    }
+
+    .footer-button {
+      padding: 12px 24px;
+      font-family: inherit;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      background: white;
+      color: var(--red);
+      border: none;
+      cursor: pointer;
+    }
+
+    .footer-copy {
+      font-size: 11px;
+      opacity: 0.7;
+    }
+
+    @media (max-width: 768px) {
+      .footer {
+        flex-direction: column;
+        gap: 24px;
+        text-align: center;
+      }
+      .footer-form {
+        flex-direction: column;
+        width: 100%;
+      }
+      .footer-input {
+        width: 100%;
+        min-width: auto;
+      }
+    }
+
+    /* ========================================
+       SCROLL ANIMATIONS OBSERVER
+    ======================================== */
+    .observe-animate {
+      opacity: 0;
+    }
+
+    .observe-animate.visible {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-content">
+      <div class="logo">USONIAN</div>
+      <div class="breadcrumb">
+        <a href="#">ARCHITECTS</a>
+        <span class="breadcrumb-separator">></span>
+        <span class="breadcrumb-current">LAUTNER</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-name">
+          <span class="name-line">JOHN</span>
+          <span class="name-line">LAUTNER</span>
+        </div>
+        <div class="hero-meta">
+          <div class="hero-dates">1911 - 1994</div>
+          <div class="hero-birthplace">MARQUETTE, MICHIGAN</div>
+          <div class="fellowship-badge">
+            <span>&#9733;</span>
+            TALIESIN FELLOW (1933-1939)
+          </div>
+        </div>
+        <div class="hero-image-placeholder">
+          <div class="hero-image-placeholder-text">ARCHITECT PORTRAIT REQUIRED</div>
+          <div class="hero-image-placeholder-subtext">1200 x 800 minimum</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Bio Section -->
+  <section class="bio-section" id="bio">
+    <div class="container">
+      <div class="section-label">BIOGRAPHY</div>
+      <div class="bio-grid">
+        <div class="bio-text">
+          John Lautner was an American architect known for his innovative and futuristic designs. A student of Frank Lloyd Wright at Taliesin, Lautner developed a distinctive style that emphasized the relationship between architecture and nature, using unconventional materials and bold geometric forms.
+          <br><br>
+          His work pushed the boundaries of structural engineering and spatial design, creating homes that seemed to defy gravity and merge seamlessly with their surroundings. Lautner's buildings are characterized by dramatic cantilevers, curved concrete shells, and expansive glass walls that blur the line between interior and exterior spaces.
+        </div>
+        <div class="quote-block">
+          <div class="quote-border" id="quoteBorder"></div>
+          <p class="quote-text">The purpose of architecture is to create an atmosphere in which man can live, work, and enjoy.</p>
+          <p class="quote-attribution">- JOHN LAUTNER</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section class="stats-section" id="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-cell" data-animate="stats">
+          <div class="stat-number">31</div>
+          <div class="stat-label">PROPERTIES INDEXED</div>
+        </div>
+        <div class="stat-cell" data-animate="stats">
+          <div class="stat-number">55</div>
+          <div class="stat-label">ACTIVE YEARS</div>
+        </div>
+        <div class="stat-cell" data-animate="stats">
+          <div class="stat-number">4</div>
+          <div class="stat-label">NOTABLE WORKS</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Properties Section -->
+  <section class="properties-section" id="properties">
+    <div class="container">
+      <div class="section-label">INDEXED PROPERTIES</div>
+      <div class="properties-table">
+        <div class="table-header">
+          <div>PROPERTY</div>
+          <div>YEAR</div>
+          <div>LOCATION</div>
+          <div>STATUS</div>
+          <div>PRICE</div>
+        </div>
+        <div class="table-row" data-animate="table">
+          <div class="property-name">
+            <span class="star-icon featured">&#9733;</span>
+            Chemosphere
+          </div>
+          <div>1960</div>
+          <div>Los Angeles</div>
+          <span class="badge badge-sale">FOR SALE</span>
+          <div class="property-price">$18,500,000</div>
+        </div>
+        <div class="table-row" data-animate="table">
+          <div class="property-name">
+            <span class="star-icon featured">&#9733;</span>
+            Silvertop
+          </div>
+          <div>1963</div>
+          <div>Los Angeles</div>
+          <span class="badge badge-sold">SOLD</span>
+          <div>-</div>
+        </div>
+        <div class="table-row" data-animate="table">
+          <div class="property-name">
+            <span class="star-icon featured">&#9733;</span>
+            Elrod House
+          </div>
+          <div>1968</div>
+          <div>Palm Springs</div>
+          <span class="badge badge-museum">MUSEUM</span>
+          <div>-</div>
+        </div>
+        <div class="table-row" data-animate="table">
+          <div class="property-name">
+            <span class="star-icon featured">&#9733;</span>
+            Sheats-Goldstein
+          </div>
+          <div>1963</div>
+          <div>Los Angeles</div>
+          <span class="badge badge-museum">MUSEUM</span>
+          <div>-</div>
+        </div>
+        <div class="table-row" data-animate="table">
+          <div class="property-name">Garcia House</div>
+          <div>1962</div>
+          <div>Los Angeles</div>
+          <span class="badge badge-sale">FOR SALE</span>
+          <div class="property-price">$4,900,000</div>
+        </div>
+        <div class="table-row" data-animate="table">
+          <div class="property-name">Wolff House</div>
+          <div>1961</div>
+          <div>Los Angeles</div>
+          <span class="badge badge-sold">SOLD</span>
+          <div>-</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Explore More CTA -->
+  <section class="explore-section" id="explore">
+    <div class="container">
+      <div class="explore-title">DISCOVER MORE</div>
+      <h2 class="explore-heading">Explore the Masters of<br>Mid-Century Design</h2>
+      <a href="#" class="btn-primary">BROWSE ALL ARCHITECTS</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-logo">USONIAN</div>
+    <form class="footer-form">
+      <input type="email" class="footer-input" placeholder="Enter your email">
+      <button type="submit" class="footer-button">Subscribe</button>
+    </form>
+    <span class="footer-copy">&copy; 2024 USONIAN</span>
+  </footer>
+
+  <script>
+    // Intersection Observer for scroll-triggered animations
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.2
+    };
+
+    const animationObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const target = entry.target;
+
+          // Quote border animation
+          if (target.id === 'quoteBorder') {
+            target.classList.add('animate');
+          }
+
+          // Stats cascade animation
+          if (target.dataset.animate === 'stats') {
+            target.classList.add('animate');
+          }
+
+          // Table row cascade animation
+          if (target.dataset.animate === 'table') {
+            target.classList.add('animate');
+          }
+        }
+      });
+    }, observerOptions);
+
+    // Observe elements
+    document.getElementById('quoteBorder') && animationObserver.observe(document.getElementById('quoteBorder'));
+    document.querySelectorAll('[data-animate="stats"]').forEach(el => animationObserver.observe(el));
+    document.querySelectorAll('[data-animate="table"]').forEach(el => animationObserver.observe(el));
+
+    // Button press animation
+    document.querySelectorAll('.btn-primary').forEach(btn => {
+      btn.addEventListener('mousedown', () => {
+        btn.style.animation = 'btn-press 0.2s var(--ease-spring)';
+      });
+      btn.addEventListener('animationend', () => {
+        btn.style.animation = '';
+      });
+    });
+  </script>
+</body>
+</html>

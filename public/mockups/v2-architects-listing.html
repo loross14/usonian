@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Architects | Usonian V2</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <style>
+    :root {
+      --red: #BF0A30;
+      --navy: #002868;
+      --gold: #D4B270;
+      --black: #000000;
+      --white: #FFFFFF;
+      --font-mono: 'JetBrains Mono', monospace;
+      --easing: cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-mono);
+      line-height: 1.4;
+      background: var(--white);
+      color: var(--black);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* HEADER */
+    header {
+      border-bottom: 1px solid var(--black);
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      background: var(--white);
+      z-index: 100;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+
+    nav {
+      display: flex;
+      gap: 32px;
+    }
+
+    nav a {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      color: var(--black);
+      position: relative;
+      transition: color 0.3s var(--easing);
+    }
+
+    nav a:hover {
+      color: var(--red);
+    }
+
+    nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--red);
+      animation: nav-indicator 0.4s var(--easing) forwards;
+    }
+
+    @keyframes nav-indicator {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* HERO WITH SKEW ENTRY */
+    .hero {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--black);
+      overflow: hidden;
+    }
+
+    @keyframes hero-skew-enter {
+      from {
+        opacity: 0;
+        transform: translateX(-60px) skewY(-2deg);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0) skewY(0);
+      }
+    }
+
+    .hero-title {
+      font-size: clamp(4rem, 12vw, 8rem);
+      line-height: 0.85;
+      letter-spacing: -0.04em;
+      font-weight: 700;
+      text-transform: uppercase;
+      display: flex;
+      align-items: baseline;
+      gap: 24px;
+      animation: hero-skew-enter 0.9s var(--easing) forwards;
+    }
+
+    .hero-accent-number {
+      font-size: clamp(2rem, 6vw, 4rem);
+      color: var(--red);
+      font-weight: 700;
+    }
+
+    /* STATS GRID */
+    .stats-section {
+      padding: 60px 0;
+      border-bottom: 1px solid var(--black);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--black);
+      border: 1px solid var(--black);
+    }
+
+    @keyframes stat-cell-enter {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .stat-cell {
+      background: var(--white);
+      padding: 32px 24px;
+      text-align: center;
+      animation: stat-cell-enter 0.6s var(--easing) forwards;
+      opacity: 0;
+    }
+
+    .stat-cell:nth-child(1) { animation-delay: 0.2s; }
+    .stat-cell:nth-child(2) { animation-delay: 0.3s; }
+    .stat-cell:nth-child(3) { animation-delay: 0.4s; }
+    .stat-cell:nth-child(4) { animation-delay: 0.5s; }
+
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--red);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    /* ALPHABETICAL DIRECTORY */
+    .directory-section {
+      padding: 60px 0;
+    }
+
+
+    /* LETTER SECTION */
+    .letter-section {
+      margin-bottom: 64px;
+    }
+
+    @keyframes letter-marker-reveal {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .letter-marker {
+      position: relative;
+      margin-bottom: 24px;
+    }
+
+    .letter-marker .letter {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--red);
+      line-height: 0.9;
+      animation: letter-marker-reveal 0.6s var(--easing) forwards;
+      opacity: 0;
+    }
+
+    @keyframes letter-line-draw {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+
+    .letter-marker .letter-line {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--black);
+      transform-origin: left;
+      transform: scaleX(0);
+      animation: letter-line-draw 0.8s var(--easing) 0.3s forwards;
+    }
+
+    /* ARCHITECT ROWS */
+    .architect-list {
+      padding-left: 40px;
+    }
+
+    @keyframes architect-row-cascade {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .architect-row {
+      display: grid;
+      grid-template-columns: 1fr 140px 120px 100px;
+      gap: 24px;
+      align-items: center;
+      padding: 16px 20px;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      opacity: 0;
+      animation: architect-row-cascade 0.5s var(--easing) forwards;
+      transition: background 0.3s var(--easing), padding-left 0.3s var(--easing);
+      cursor: pointer;
+    }
+
+    .architect-row:hover {
+      background: rgba(191, 10, 48, 0.08);
+      padding-left: 32px;
+    }
+
+    .architect-row:hover .architect-name {
+      color: var(--red);
+    }
+
+    .architect-row:hover .row-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .architect-row:focus-visible {
+      outline: 2px solid var(--red);
+      outline-offset: -2px;
+      background: rgba(191, 10, 48, 0.08);
+    }
+
+    .row-arrow {
+      font-size: 14px;
+      opacity: 0.4;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      transform: translateX(-4px);
+    }
+
+    /* Cascade stagger delays - applied per letter section */
+    .letter-section:nth-child(1) .architect-row:nth-child(1) { animation-delay: 0.25s; }
+    .letter-section:nth-child(2) .architect-row:nth-child(1) { animation-delay: 0.05s; }
+    .letter-section:nth-child(2) .architect-row:nth-child(2) { animation-delay: 0.10s; }
+    .letter-section:nth-child(3) .architect-row:nth-child(1) { animation-delay: 0.05s; }
+    .letter-section:nth-child(4) .architect-row:nth-child(1) { animation-delay: 0.05s; }
+    .letter-section:nth-child(5) .architect-row:nth-child(1) { animation-delay: 0.05s; }
+    .letter-section:nth-child(6) .architect-row:nth-child(1) { animation-delay: 0.05s; }
+    .letter-section:nth-child(7) .architect-row:nth-child(1) { animation-delay: 0.05s; }
+
+    .architect-name {
+      font-weight: 700;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .architect-years {
+      font-size: 12px;
+      opacity: 0.6;
+    }
+
+    .architect-properties {
+      font-size: 12px;
+    }
+
+    .architect-properties strong {
+      color: var(--red);
+    }
+
+    /* FELLOWSHIP STAR */
+    .fellowship-star {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      background: var(--gold);
+      color: var(--black);
+      font-size: 11px;
+      font-weight: 700;
+      position: relative;
+    }
+
+    .fellowship-star::before {
+      content: 'T';
+    }
+
+    .fellowship-badge {
+      display: inline-block;
+      padding: 4px 8px;
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      background: var(--gold);
+      color: var(--black);
+      font-weight: 700;
+    }
+
+    /* FOOTER NOTES */
+    .directory-footer {
+      margin-top: 60px;
+      padding: 32px;
+      background: rgba(0,0,0,0.02);
+      border: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .footer-legend {
+      display: flex;
+      gap: 40px;
+      margin-bottom: 16px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+    }
+
+    .footer-note {
+      font-size: 11px;
+      opacity: 0.4;
+      letter-spacing: 0.05em;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .architect-row {
+        grid-template-columns: 1fr 100px;
+      }
+
+      .architect-years,
+      .architect-properties {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-title {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .letter-marker .letter {
+        font-size: 2.5rem;
+      }
+
+      .architect-list {
+        padding-left: 16px;
+      }
+
+      nav {
+        gap: 16px;
+      }
+    }
+
+    /* ========================================
+       FOOTER
+    ======================================== */
+    .footer {
+      padding: 32px 48px;
+      background: var(--red);
+      color: var(--white);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+
+    .footer-form {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .footer-input {
+      padding: 12px 20px;
+      font-family: inherit;
+      font-size: 12px;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      color: white;
+      outline: none;
+      min-width: 250px;
+    }
+
+    .footer-input::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .footer-input:focus {
+      border-color: white;
+    }
+
+    .footer-button {
+      padding: 12px 24px;
+      font-family: inherit;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      background: white;
+      color: var(--red);
+      border: none;
+      cursor: pointer;
+    }
+
+    .footer-copy {
+      font-size: 11px;
+      opacity: 0.7;
+    }
+
+    @media (max-width: 768px) {
+      .footer {
+        flex-direction: column;
+        gap: 24px;
+        text-align: center;
+      }
+      .footer-form {
+        flex-direction: column;
+        width: 100%;
+      }
+      .footer-input {
+        width: 100%;
+        min-width: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-content">
+      <div class="logo">USONIAN</div>
+      <nav>
+        <a href="#">HOMES</a>
+        <a href="#" class="active">ARCHITECTS</a>
+        <a href="#">LEARN</a>
+        <a href="#">ABOUT</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h1 class="hero-title">
+        ARCHITECTS
+        <span class="hero-accent-number">21</span>
+      </h1>
+    </div>
+  </section>
+
+  <!-- Stats Grid -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-cell">
+          <div class="stat-number">21</div>
+          <div class="stat-label">Architects</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-number">15</div>
+          <div class="stat-label">Taliesin Fellows</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-number">127</div>
+          <div class="stat-label">Properties</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-number">1936-1970</div>
+          <div class="stat-label">Years Active</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Directory -->
+  <section class="directory-section">
+    <div class="container">
+      <!-- Letter A -->
+      <div class="letter-section">
+        <div class="letter-marker">
+          <span class="letter">A</span>
+          <div class="letter-line"></div>
+        </div>
+        <div class="architect-list">
+          <div class="architect-row" tabindex="0">
+            <div class="architect-name">
+              Alden B. Dow
+              <span class="fellowship-star"></span>
+            </div>
+            <div class="architect-years">1904-1983</div>
+            <div class="architect-properties"><strong>3</strong> properties</div>
+            <div class="row-arrow">&rarr;</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Letter B -->
+      <div class="letter-section">
+        <div class="letter-marker">
+          <span class="letter">B</span>
+          <div class="letter-line"></div>
+        </div>
+        <div class="architect-list">
+          <div class="architect-row" tabindex="0">
+            <div class="architect-name">Bruce Goff</div>
+            <div class="architect-years">1904-1982</div>
+            <div class="architect-properties"><strong>5</strong> properties</div>
+            <div class="row-arrow">&rarr;</div>
+          </div>
+          <div class="architect-row" tabindex="0">
+            <div class="architect-name">Bart Prince</div>
+            <div class="architect-years">1947-present</div>
+            <div class="architect-properties"><strong>4</strong> properties</div>
+            <div class="row-arrow">&rarr;</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Letter C -->
+      <div class="letter-section">
+        <div class="letter-marker">
+          <span class="letter">C</span>
+          <div class="letter-line"></div>
+        </div>
+        <div class="architect-list">
+          <div class="architect-row" tabindex="0">
+            <div class="architect-name">
+              Charles Montooth
+              <span class="fellowship-star"></span>
+            </div>
+            <div class="architect-years">1921-2007</div>
+            <div class="architect-properties"><strong>2</strong> properties</div>
+            <div class="row-arrow">&rarr;</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Letter E -->
+      <div class="letter-section">
+        <div class="letter-marker">
+          <span class="letter">E</span>
+          <div class="letter-line"></div>
+        </div>
+        <div class="architect-list">
+          <div class="architect-row" tabindex="0">
+            <div class="architect-name">
+              E. Fay Jones
+              <span class="fellowship-star"></span>
+            </div>
+            <div class="architect-years">1921-2004</div>
+            <div class="architect-properties"><strong>8</strong> properties</div>
+            <div class="row-arrow">&rarr;</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Letter J -->
+      <div class="letter-section">
+        <div class="letter-marker">
+          <span class="letter">J</span>
+          <div class="letter-line"></div>
+        </div>
+        <div class="architect-list">
+          <div class="architect-row" tabindex="0">
+            <div class="architect-name">
+              John Lautner
+              <span class="fellowship-star"></span>
+            </div>
+            <div class="architect-years">1911-1994</div>
+            <div class="architect-properties"><strong>31</strong> properties</div>
+            <div class="row-arrow">&rarr;</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Letter P -->
+      <div class="letter-section">
+        <div class="letter-marker">
+          <span class="letter">P</span>
+          <div class="letter-line"></div>
+        </div>
+        <div class="architect-list">
+          <div class="architect-row" tabindex="0">
+            <div class="architect-name">
+              Paolo Soleri
+              <span class="fellowship-star"></span>
+            </div>
+            <div class="architect-years">1919-2013</div>
+            <div class="architect-properties"><strong>6</strong> properties</div>
+            <div class="row-arrow">&rarr;</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Letter W -->
+      <div class="letter-section">
+        <div class="letter-marker">
+          <span class="letter">W</span>
+          <div class="letter-line"></div>
+        </div>
+        <div class="architect-list">
+          <div class="architect-row" tabindex="0">
+            <div class="architect-name">
+              William Wesley Peters
+              <span class="fellowship-star"></span>
+            </div>
+            <div class="architect-years">1912-1991</div>
+            <div class="architect-properties"><strong>4</strong> properties</div>
+            <div class="row-arrow">&rarr;</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Legend -->
+      <div class="directory-footer">
+        <div class="footer-legend">
+          <div class="legend-item">
+            <span class="fellowship-star"></span>
+            <span>Taliesin Fellow</span>
+          </div>
+          <div class="legend-item">
+            <span class="fellowship-badge">TALIESIN</span>
+            <span>Frank Lloyd Wright apprentice</span>
+          </div>
+        </div>
+        <p class="footer-note">Data includes architects with verified mid-century modern residential work in the Usonian registry. Years active: 1936-1970.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-logo">USONIAN</div>
+    <form class="footer-form">
+      <input type="email" class="footer-input" placeholder="Enter your email">
+      <button type="submit" class="footer-button">Subscribe</button>
+    </form>
+    <span class="footer-copy">&copy; 2024 USONIAN</span>
+  </footer>
+
+</body>
+</html>

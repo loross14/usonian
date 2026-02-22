@@ -1,72 +1,72 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
   <defs>
     <style>
-      
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-        }
-        .house-main { animation: float 6s ease-in-out infinite; }
-    
+      @keyframes float {
+        0% { transform: translateY(8px); opacity: 0; }
+        100% { transform: translateY(0px); opacity: 1; }
+      }
+      .house-main {
+        animation: float 0.6s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+        opacity: 0;
+      }
     </style>
     <linearGradient id="pole-grad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:rgb(55, 52, 50);stop-opacity:1" />
-      <stop offset="50%" style="stop-color:rgb(90,85,80);stop-opacity:1" />
-      <stop offset="100%" style="stop-color:rgb(55, 52, 50);stop-opacity:1" />
+      <stop offset="0%" style="stop-color:rgb(55, 52, 50)" />
+      <stop offset="50%" style="stop-color:rgb(90,85,80)" />
+      <stop offset="100%" style="stop-color:rgb(55, 52, 50)" />
     </linearGradient>
+    <!-- Subtle shadow filter -->
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="rgb(55, 52, 50)" flood-opacity="0.15"/>
+    </filter>
   </defs>
 
   <!-- White Background -->
   <rect width="400" height="300" fill="white"/>
 
-  <!-- Steep hillside - the Chemosphere sits on a 45-degree slope -->
-  <path d="M 0 180 L 160 280 L 400 280 L 400 300 L 0 300 Z" fill="rgb(205, 188, 162)" opacity="0.4"/>
-  <path d="M 0 200 L 140 290 L 400 290 L 400 300 L 0 300 Z" fill="rgb(205, 188, 162)" opacity="0.3"/>
+  <!-- Hillside - simplified, single layer -->
+  <path d="M 0 220 Q 100 200 200 240 Q 300 280 400 260 L 400 300 L 0 300 Z" fill="rgb(205, 188, 162)" opacity="0.4"/>
 
-  <g class="house-main">
-    <!-- The iconic single concrete pole/pedestal - tall and narrow -->
+  <g class="house-main" filter="url(#shadow)">
+    <!-- The iconic single concrete pole -->
     <polygon
-      points="190,155 210,155 218,270 182,270"
+      points="190,155 210,155 218,255 182,255"
       fill="url(#pole-grad)"
     />
 
-    <!-- Pole base - buried foundation hint -->
-    <ellipse cx="200" cy="270" rx="25" ry="8" fill="rgb(55, 52, 50)" opacity="0.5"/>
+    <!-- Pole base -->
+    <ellipse cx="200" cy="255" rx="22" ry="6" fill="rgb(55, 52, 50)" opacity="0.6"/>
 
     <!-- Main octagonal UFO body -->
     <polygon
-      points="200,63 292,78 330,115 292,152 200,167 108,152 70,115 108,78"
+      points="200,60 295,75 335,115 295,155 200,170 105,155 65,115 105,75"
       fill="rgb(252, 250, 247)"
       stroke="rgb(55, 52, 50)"
       stroke-width="2"
     />
 
-    <!-- Roof overhang/cap - slightly raised center -->
+    <!-- Roof band -->
     <polygon
-      points="200,68 140,88 260,88"
+      points="200,60 295,75 295,85 200,70 105,85 105,75"
       fill="rgb(82, 90, 100)"
-      class="accent"
     />
 
-    <!-- Horizontal roof line -->
-    <line x1="70" y1="90" x2="330" y2="90" stroke="rgb(55, 52, 50)" stroke-width="2"/>
+    <!-- Roof edge line -->
+    <line x1="65" y1="90" x2="335" y2="90" stroke="rgb(55, 52, 50)" stroke-width="2"/>
 
-    <!-- Window band around entire perimeter -->
-    <g class="windows">
-      <!-- Front windows - continuous band -->
-      <rect x="85" y="105" width="230" height="28" fill="rgb(212, 178, 112)" opacity="0.7"/>
+    <!-- Window band - continuous wraparound -->
+    <rect x="80" y="105" width="240" height="30" fill="rgb(212, 178, 112)" opacity="0.8"/>
 
-      <!-- Window mullions -->
-      <line x1="115" y1="105" x2="115" y2="133" stroke="rgb(55, 52, 50)" stroke-width="1"/>
-      <line x1="145" y1="105" x2="145" y2="133" stroke="rgb(55, 52, 50)" stroke-width="1"/>
-      <line x1="175" y1="105" x2="175" y2="133" stroke="rgb(55, 52, 50)" stroke-width="1"/>
-      <line x1="200" y1="105" x2="200" y2="133" stroke="rgb(55, 52, 50)" stroke-width="1"/>
-      <line x1="225" y1="105" x2="225" y2="133" stroke="rgb(55, 52, 50)" stroke-width="1"/>
-      <line x1="255" y1="105" x2="255" y2="133" stroke="rgb(55, 52, 50)" stroke-width="1"/>
-      <line x1="285" y1="105" x2="285" y2="133" stroke="rgb(55, 52, 50)" stroke-width="1"/>
-    </g>
+    <!-- Window mullions -->
+    <line x1="110" y1="105" x2="110" y2="135" stroke="rgb(55, 52, 50)" stroke-width="1"/>
+    <line x1="140" y1="105" x2="140" y2="135" stroke="rgb(55, 52, 50)" stroke-width="1"/>
+    <line x1="170" y1="105" x2="170" y2="135" stroke="rgb(55, 52, 50)" stroke-width="1"/>
+    <line x1="200" y1="105" x2="200" y2="135" stroke="rgb(55, 52, 50)" stroke-width="1"/>
+    <line x1="230" y1="105" x2="230" y2="135" stroke="rgb(55, 52, 50)" stroke-width="1"/>
+    <line x1="260" y1="105" x2="260" y2="135" stroke="rgb(55, 52, 50)" stroke-width="1"/>
+    <line x1="290" y1="105" x2="290" y2="135" stroke="rgb(55, 52, 50)" stroke-width="1"/>
 
-    <!-- Funicular track hint (access to the house) -->
-    <line x1="100" y1="165" x2="50" y2="250" stroke="rgb(55, 52, 50)" stroke-width="2" stroke-dasharray="5,5"/>
+    <!-- Funicular track - signature detail -->
+    <line x1="95" y1="168" x2="40" y2="260" stroke="rgb(55, 52, 50)" stroke-width="2" stroke-dasharray="6,4"/>
   </g>
 </svg>

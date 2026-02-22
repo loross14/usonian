@@ -3,9 +3,11 @@ import { getStatusLabel } from "@/types";
 interface BadgeProps {
   status: string;
   className?: string;
+  /** Use v2 positioning (absolute top-right) for card overlays */
+  variant?: "inline" | "overlay";
 }
 
-export function Badge({ status, className = "" }: BadgeProps) {
+export function Badge({ status, className = "", variant = "inline" }: BadgeProps) {
   const label = getStatusLabel(status);
 
   // Map status to brutalist badge class
@@ -23,9 +25,11 @@ export function Badge({ status, className = "" }: BadgeProps) {
     }
   };
 
+  const positionClass = variant === "overlay" ? "status-badge-v2" : "";
+
   return (
     <span
-      className={`status-badge ${getBadgeClass(status)} ${className}`}
+      className={`status-badge ${getBadgeClass(status)} ${positionClass} ${className}`}
     >
       {label}
     </span>

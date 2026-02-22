@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: PageProps) {
   if (!architect) return { title: "Architect Not Found" };
 
   return {
-    title: `${architect.name} | Usonian`,
+    title: "Usonian",
     description: architect.biography?.slice(0, 160) || `Properties by ${architect.name}`,
   };
 }

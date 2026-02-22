@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Content Agent System - USONIAN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --red: #BF0A30;
+      --navy: #002868;
+      --gold: #D4B270;
+      --black: #000000;
+      --white: #FFFFFF;
+      --terracotta: #C4715B;
+      --sand: #D4C4A8;
+      --font-family: 'JetBrains Mono', monospace;
+      --font-size-xs: 11px;
+      --font-size-sm: 12px;
+      --font-size-md: 14px;
+      --font-size-lg: 16px;
+      --font-size-xl: 18px;
+      --font-size-2xl: 32px;
+      --font-size-3xl: 48px;
+      --letter-spacing-wide: 0.1em;
+      --letter-spacing-tight: -0.02em;
+      --section-padding: 80px;
+      --section-padding-x: 48px;
+      --gap-sm: 8px;
+      --gap-md: 16px;
+      --gap-lg: 24px;
+      --gap-xl: 48px;
+      --opacity-muted: 0.4;
+      --opacity-secondary: 0.6;
+      --easing: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --duration-entrance: 0.6s;
+      --duration-hover: 0.2s;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-family);
+      background-color: var(--white);
+      color: var(--black);
+      line-height: 1.6;
+    }
+
+    /* Header */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--gap-lg) var(--section-padding-x);
+      background: var(--white);
+      z-index: 998;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: var(--letter-spacing-wide);
+    }
+
+    .nav { display: flex; gap: 40px; }
+    .nav-link {
+      font-size: var(--font-size-sm);
+      font-weight: 500;
+      letter-spacing: var(--letter-spacing-wide);
+      color: var(--black);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 4px;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--red);
+      transition: width var(--duration-hover) var(--easing);
+    }
+    .nav-link:hover::after { width: 100%; }
+
+    /* Hero */
+    .hero {
+      min-height: 50vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 140px var(--section-padding-x) var(--section-padding);
+      background: linear-gradient(135deg, var(--navy) 0%, var(--black) 100%);
+      color: var(--white);
+    }
+    .hero-label {
+      font-size: var(--font-size-xs);
+      font-weight: 500;
+      letter-spacing: var(--letter-spacing-wide);
+      color: var(--gold);
+      margin-bottom: var(--gap-md);
+    }
+    .hero-title {
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: var(--letter-spacing-tight);
+    }
+    .hero-subtitle {
+      margin-top: 20px;
+      font-size: var(--font-size-lg);
+      opacity: var(--opacity-secondary);
+      max-width: 600px;
+    }
+
+    /* Section */
+    .section {
+      padding: var(--section-padding) var(--section-padding-x);
+    }
+    .section-dark {
+      background: var(--black);
+      color: var(--white);
+    }
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--gap-xl);
+    }
+    .section-title {
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      letter-spacing: var(--letter-spacing-wide);
+    }
+    .section-count {
+      font-size: var(--font-size-xs);
+      font-weight: 400;
+      color: var(--navy);
+      opacity: var(--opacity-secondary);
+    }
+    .section-dark .section-count { color: var(--gold); }
+
+    /* Architecture Diagram */
+    .architecture-box {
+      background: var(--black);
+      color: var(--white);
+      padding: var(--gap-xl);
+      font-size: var(--font-size-sm);
+      line-height: 1.4;
+      border-left: 3px solid var(--gold);
+      white-space: pre;
+      overflow-x: auto;
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--gap-lg);
+    }
+    .skill-card {
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: var(--gap-lg);
+    }
+    .skill-trigger {
+      font-size: var(--font-size-xs);
+      color: var(--gold);
+      margin-bottom: var(--gap-sm);
+    }
+    .skill-name {
+      font-size: var(--font-size-lg);
+      font-weight: 600;
+      margin-bottom: var(--gap-sm);
+    }
+    .skill-desc {
+      font-size: var(--font-size-sm);
+      opacity: var(--opacity-secondary);
+    }
+
+    /* Sample Gallery */
+    .gallery-tabs {
+      display: flex;
+      gap: var(--gap-md);
+      margin-bottom: var(--gap-xl);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    .gallery-tab {
+      padding: var(--gap-md) var(--gap-lg);
+      font-size: var(--font-size-sm);
+      font-weight: 500;
+      letter-spacing: var(--letter-spacing-wide);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all var(--duration-hover);
+    }
+    .gallery-tab:hover { color: var(--navy); }
+    .gallery-tab.active {
+      border-bottom-color: var(--red);
+      color: var(--red);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--gap-lg);
+    }
+    .gallery-card {
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform var(--duration-hover) var(--easing);
+    }
+    .gallery-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+    .gallery-image {
+      width: 100%;
+      height: 200px;
+      background: linear-gradient(135deg, var(--sand) 0%, var(--terracotta) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--font-size-xs);
+      letter-spacing: var(--letter-spacing-wide);
+      color: var(--black);
+      opacity: var(--opacity-secondary);
+    }
+    .gallery-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .gallery-info { padding: var(--gap-md); }
+    .gallery-property {
+      font-size: var(--font-size-md);
+      font-weight: 600;
+      margin-bottom: var(--gap-sm);
+    }
+    .gallery-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: var(--font-size-xs);
+      opacity: var(--opacity-secondary);
+    }
+    .gallery-badge {
+      display: inline-block;
+      padding: 2px 6px;
+      font-size: var(--font-size-xs);
+      font-weight: 600;
+      background: var(--navy);
+      color: var(--white);
+    }
+    .gallery-badge.grok { background: var(--red); }
+
+    /* Prompt Playground */
+    .prompt-playground {
+      background: var(--black);
+      color: var(--white);
+      padding: var(--gap-xl);
+    }
+    .prompt-template {
+      font-size: var(--font-size-md);
+      line-height: 2;
+      margin-bottom: var(--gap-xl);
+    }
+    .prompt-var {
+      color: var(--gold);
+      font-weight: 600;
+    }
+    .prompt-controls {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--gap-lg);
+    }
+    .prompt-control label {
+      display: block;
+      font-size: var(--font-size-xs);
+      letter-spacing: var(--letter-spacing-wide);
+      color: var(--gold);
+      margin-bottom: var(--gap-sm);
+    }
+    .prompt-control select,
+    .prompt-control input {
+      width: 100%;
+      padding: var(--gap-md);
+      font-family: var(--font-family);
+      font-size: var(--font-size-md);
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--white);
+    }
+    .prompt-control select:focus,
+    .prompt-control input:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+    .generate-btn {
+      margin-top: var(--gap-xl);
+      padding: var(--gap-md) var(--gap-xl);
+      font-family: var(--font-family);
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      letter-spacing: var(--letter-spacing-wide);
+      background: var(--red);
+      color: var(--white);
+      border: none;
+      cursor: pointer;
+      transition: background var(--duration-hover);
+    }
+    .generate-btn:hover { background: #9A0826; }
+
+    /* API Comparison */
+    .api-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .api-table thead {
+      border-bottom: 2px solid var(--black);
+    }
+    .api-table th {
+      font-size: var(--font-size-xs);
+      font-weight: 600;
+      letter-spacing: var(--letter-spacing-wide);
+      text-transform: uppercase;
+      text-align: left;
+      padding: var(--gap-md) 0;
+    }
+    .api-table tbody tr {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    .api-table td {
+      padding: 20px 0;
+      font-size: var(--font-size-md);
+    }
+    .api-table .cost { font-weight: 600; color: var(--red); }
+    .badge-rec {
+      display: inline-block;
+      padding: 2px 8px;
+      font-size: var(--font-size-xs);
+      font-weight: 600;
+      background: var(--navy);
+      color: var(--white);
+      margin-left: 8px;
+    }
+
+    /* Cost Calculator */
+    .cost-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: var(--gap-xl);
+    }
+    .cost-controls {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--gap-lg);
+    }
+    .cost-control label {
+      display: block;
+      font-size: var(--font-size-xs);
+      letter-spacing: var(--letter-spacing-wide);
+      margin-bottom: var(--gap-sm);
+      opacity: var(--opacity-secondary);
+    }
+    .cost-control input {
+      width: 100%;
+      padding: var(--gap-md);
+      font-family: var(--font-family);
+      font-size: var(--font-size-lg);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    .cost-summary {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--black) 100%);
+      color: var(--white);
+      padding: var(--gap-xl);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
+    .cost-label {
+      font-size: var(--font-size-xs);
+      letter-spacing: var(--letter-spacing-wide);
+      color: var(--gold);
+      margin-bottom: var(--gap-sm);
+    }
+    .cost-value {
+      font-size: var(--font-size-3xl);
+      font-weight: 700;
+    }
+    .cost-note {
+      margin-top: var(--gap-md);
+      font-size: var(--font-size-sm);
+      opacity: var(--opacity-secondary);
+    }
+
+    /* Checklist */
+    .checklist {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--gap-lg);
+    }
+    .checklist-group h4 {
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      letter-spacing: var(--letter-spacing-wide);
+      margin-bottom: var(--gap-md);
+      color: var(--gold);
+    }
+    .checklist-item {
+      display: flex;
+      align-items: center;
+      gap: var(--gap-sm);
+      padding: var(--gap-sm) 0;
+      font-size: var(--font-size-sm);
+    }
+    .checklist-box {
+      width: 16px;
+      height: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    /* Footer */
+    .footer {
+      padding: var(--section-padding-x);
+      background: var(--black);
+      color: var(--white);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-logo {
+      font-size: var(--font-size-md);
+      font-weight: 700;
+      letter-spacing: var(--letter-spacing-wide);
+    }
+    .footer-copy {
+      font-size: var(--font-size-xs);
+      opacity: var(--opacity-muted);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      :root {
+        --section-padding: 60px;
+        --section-padding-x: 24px;
+      }
+      .skills-grid,
+      .gallery-grid,
+      .prompt-controls,
+      .cost-controls,
+      .checklist {
+        grid-template-columns: 1fr;
+      }
+      .cost-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <span class="logo">USONIAN</span>
+    <nav class="nav">
+      <a href="#gallery" class="nav-link">GALLERY</a>
+      <a href="#prompts" class="nav-link">PROMPTS</a>
+      <a href="#api" class="nav-link">API</a>
+      <a href="#cost" class="nav-link">COST</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <p class="hero-label">MCM PLATFORM 2026</p>
+    <h1 class="hero-title">Content Agent<br>System</h1>
+    <p class="hero-subtitle">
+      AI-powered image generation for 52 architect-designed homes.
+      Gemini + Grok agents with unified style control.
+    </p>
+  </section>
+
+  <!-- Architecture -->
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">SYSTEM ARCHITECTURE</h2>
+      <span class="section-count">4 AGENTS</span>
+    </div>
+    <div class="architecture-box">
+┌─────────────────────────────────────────────────────────────┐
+│                    CONTENT MANAGER AGENT                     │
+│                       /content /cm                           │
+│                                                              │
+│  - Orchestrate image generation workflow                     │
+│  - Select appropriate image generator per property           │
+│  - Track generation status in JSON                           │
+│  - Quality control and art style consistency                 │
+└──────────────────────┬──────────────────────────────────────┘
+                       │
+         ┌─────────────┴─────────────┐
+         ▼                           ▼
+┌─────────────────────┐   ┌─────────────────────┐
+│   GEMINI AGENT      │   │    GROK AGENT       │
+│   /gemini /imagen   │   │   /grok /xai        │
+│                     │   │                     │
+│ - Imagen 4 ($0.02)  │   │ - grok-imagine      │
+│ - Gemini 3 Pro      │   │   ($0.02/image)     │
+│ - 4K capability     │   │ - Style transfer    │
+│ - Multi-reference   │   │ - Image editing     │
+└─────────────────────┘   └─────────────────────┘
+         │                           │
+         └─────────────┬─────────────┘
+                       ▼
+              ┌─────────────────┐
+              │  ART STYLE      │
+              │  /style         │
+              │                 │
+              │ Prompt templates│
+              │ Quality checks  │
+              └─────────────────┘</div>
+  </section>
+
+  <!-- Skills -->
+  <section class="section section-dark">
+    <div class="section-header">
+      <h2 class="section-title">REGISTERED SKILLS</h2>
+      <span class="section-count">4 NEW SKILLS</span>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <p class="skill-trigger">/content /cm</p>
+        <h3 class="skill-name">Content Manager</h3>
+        <p class="skill-desc">Orchestrate workflow, coordinate agents, track progress</p>
+      </div>
+      <div class="skill-card">
+        <p class="skill-trigger">/gemini /imagen</p>
+        <h3 class="skill-name">Gemini Image</h3>
+        <p class="skill-desc">Generate via Imagen 4 or Gemini 3 Pro (up to 4K)</p>
+      </div>
+      <div class="skill-card">
+        <p class="skill-trigger">/grok /xai</p>
+        <h3 class="skill-name">Grok Image</h3>
+        <p class="skill-desc">Style exploration, thumbnails, batch generation</p>
+      </div>
+      <div class="skill-card">
+        <p class="skill-trigger">/style /art-style</p>
+        <h3 class="skill-name">Art Style Guide</h3>
+        <p class="skill-desc">Prompt templates, quality checklist, style validation</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sample Gallery -->
+  <section class="section" id="gallery">
+    <div class="section-header">
+      <h2 class="section-title">SAMPLE GALLERY</h2>
+      <span class="section-count">STYLE EXPLORATION</span>
+    </div>
+    <div class="gallery-tabs">
+      <span class="gallery-tab active">ALL SAMPLES</span>
+      <span class="gallery-tab">CHEMOSPHERE</span>
+      <span class="gallery-tab">SHEATS-GOLDSTEIN</span>
+      <span class="gallery-tab">FALLINGWATER</span>
+    </div>
+    <div class="gallery-grid">
+      <!-- Sample 1: Chemosphere -->
+      <div class="gallery-card">
+        <div class="gallery-image" id="sample-1">[CHEMOSPHERE - GEMINI]</div>
+        <div class="gallery-info">
+          <h3 class="gallery-property">Chemosphere</h3>
+          <div class="gallery-meta">
+            <span>John Lautner, 1960</span>
+            <span class="gallery-badge">GEMINI</span>
+          </div>
+        </div>
+      </div>
+      <!-- Sample 2 -->
+      <div class="gallery-card">
+        <div class="gallery-image" id="sample-2">[CHEMOSPHERE - GROK]</div>
+        <div class="gallery-info">
+          <h3 class="gallery-property">Chemosphere</h3>
+          <div class="gallery-meta">
+            <span>John Lautner, 1960</span>
+            <span class="gallery-badge grok">GROK</span>
+          </div>
+        </div>
+      </div>
+      <!-- Sample 3 -->
+      <div class="gallery-card">
+        <div class="gallery-image" id="sample-3">[CHEMOSPHERE - VAR 3]</div>
+        <div class="gallery-info">
+          <h3 class="gallery-property">Chemosphere</h3>
+          <div class="gallery-meta">
+            <span>Cinematic style</span>
+            <span class="gallery-badge grok">GROK</span>
+          </div>
+        </div>
+      </div>
+      <!-- Sample 4: Sheats-Goldstein -->
+      <div class="gallery-card">
+        <div class="gallery-image" id="sample-4">[SHEATS-GOLDSTEIN - GEMINI]</div>
+        <div class="gallery-info">
+          <h3 class="gallery-property">Sheats-Goldstein</h3>
+          <div class="gallery-meta">
+            <span>John Lautner, 1963</span>
+            <span class="gallery-badge">GEMINI</span>
+          </div>
+        </div>
+      </div>
+      <!-- Sample 5 -->
+      <div class="gallery-card">
+        <div class="gallery-image" id="sample-5">[SHEATS-GOLDSTEIN - GROK]</div>
+        <div class="gallery-info">
+          <h3 class="gallery-property">Sheats-Goldstein</h3>
+          <div class="gallery-meta">
+            <span>John Lautner, 1963</span>
+            <span class="gallery-badge grok">GROK</span>
+          </div>
+        </div>
+      </div>
+      <!-- Sample 6 -->
+      <div class="gallery-card">
+        <div class="gallery-image" id="sample-6">[FALLINGWATER - GEMINI]</div>
+        <div class="gallery-info">
+          <h3 class="gallery-property">Fallingwater</h3>
+          <div class="gallery-meta">
+            <span>Frank Lloyd Wright, 1939</span>
+            <span class="gallery-badge">GEMINI</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Prompt Playground -->
+  <section class="section" id="prompts">
+    <div class="section-header">
+      <h2 class="section-title">PROMPT PLAYGROUND</h2>
+      <span class="section-count">BUILD CUSTOM PROMPTS</span>
+    </div>
+    <div class="prompt-playground">
+      <div class="prompt-template">
+        <span class="prompt-var">{property_name}</span>, mid-century modern architecture by <span class="prompt-var">{architect_name}</span>,<br>
+        exterior photograph, golden hour lighting, professional architectural photography,<br>
+        warm earth tones, 35mm lens, shallow depth of field,<br>
+        <span class="prompt-var">{unique_features}</span>, pristine condition, museum quality,<br>
+        <span class="prompt-var">{architect_modifiers}</span>, <span class="prompt-var">{property_type_modifiers}</span>
+      </div>
+      <div class="prompt-controls">
+        <div class="prompt-control">
+          <label>PROPERTY</label>
+          <select id="property-select">
+            <option>Chemosphere</option>
+            <option>Sheats-Goldstein Residence</option>
+            <option>Fallingwater</option>
+            <option>Kaufmann Desert House</option>
+            <option>Thorncrown Chapel</option>
+          </select>
+        </div>
+        <div class="prompt-control">
+          <label>ARCHITECT</label>
+          <select id="architect-select">
+            <option>John Lautner</option>
+            <option>Frank Lloyd Wright</option>
+            <option>Richard Neutra</option>
+            <option>E. Fay Jones</option>
+          </select>
+        </div>
+        <div class="prompt-control">
+          <label>STYLE VARIATION</label>
+          <select id="style-select">
+            <option>Classic Photography</option>
+            <option>Cinematic</option>
+            <option>Editorial</option>
+          </select>
+        </div>
+        <div class="prompt-control">
+          <label>API</label>
+          <select id="api-select">
+            <option>Grok ($0.02)</option>
+            <option>Gemini Imagen 4 ($0.02)</option>
+            <option>Gemini 3 Pro ($0.07)</option>
+          </select>
+        </div>
+        <div class="prompt-control">
+          <label>ASPECT RATIO</label>
+          <select id="aspect-select">
+            <option>16:9 (Hero)</option>
+            <option>3:2 (Card)</option>
+            <option>4:3 (Thumbnail)</option>
+            <option>1:1 (Square)</option>
+          </select>
+        </div>
+        <div class="prompt-control">
+          <label>RESOLUTION</label>
+          <select id="resolution-select">
+            <option>2K (2048px)</option>
+            <option>1K (1024px)</option>
+            <option>4K (4096px)</option>
+          </select>
+        </div>
+      </div>
+      <button class="generate-btn">GENERATE SAMPLE</button>
+    </div>
+  </section>
+
+  <!-- API Comparison -->
+  <section class="section" id="api">
+    <div class="section-header">
+      <h2 class="section-title">API COMPARISON</h2>
+      <span class="section-count">YOUR ACCOUNTS</span>
+    </div>
+    <table class="api-table">
+      <thead>
+        <tr>
+          <th>Model</th>
+          <th>Provider</th>
+          <th>Max Resolution</th>
+          <th>Best For</th>
+          <th>Cost</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>grok-imagine-image <span class="badge-rec">EXPLORATION</span></td>
+          <td>xAI (Grok)</td>
+          <td>2K</td>
+          <td>Style exploration, thumbnails</td>
+          <td class="cost">$0.02</td>
+        </tr>
+        <tr>
+          <td>Imagen 4 <span class="badge-rec">PRODUCTION</span></td>
+          <td>Google (Gemini)</td>
+          <td>2K</td>
+          <td>Card images, social</td>
+          <td class="cost">$0.02</td>
+        </tr>
+        <tr>
+          <td>Gemini 3 Pro</td>
+          <td>Google (Gemini)</td>
+          <td>4K</td>
+          <td>Hero images, 4K assets</td>
+          <td class="cost">$0.07</td>
+        </tr>
+        <tr>
+          <td>grok-imagine-image-pro</td>
+          <td>xAI (Grok)</td>
+          <td>2K</td>
+          <td>Style transfer, editing</td>
+          <td class="cost">$0.07</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Cost Calculator -->
+  <section class="section section-dark" id="cost">
+    <div class="section-header">
+      <h2 class="section-title">COST CALCULATOR</h2>
+      <span class="section-count">52 PROPERTIES</span>
+    </div>
+    <div class="cost-grid">
+      <div>
+        <div class="cost-controls">
+          <div class="cost-control">
+            <label>PROPERTIES</label>
+            <input type="number" id="prop-count" value="52">
+          </div>
+          <div class="cost-control">
+            <label>HERO IMAGES ($0.07)</label>
+            <input type="number" id="hero-count" value="52">
+          </div>
+          <div class="cost-control">
+            <label>CARD IMAGES ($0.02)</label>
+            <input type="number" id="card-count" value="52">
+          </div>
+          <div class="cost-control">
+            <label>THUMBNAILS ($0.02)</label>
+            <input type="number" id="thumb-count" value="52">
+          </div>
+          <div class="cost-control">
+            <label>SOCIAL CARDS ($0.02)</label>
+            <input type="number" id="social-count" value="52">
+          </div>
+          <div class="cost-control">
+            <label>STYLE SAMPLES ($0.02)</label>
+            <input type="number" id="sample-count" value="15">
+          </div>
+        </div>
+      </div>
+      <div class="cost-summary">
+        <p class="cost-label">ESTIMATED TOTAL</p>
+        <p class="cost-value">$10.78</p>
+        <p class="cost-note">208 production images + 15 samples</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quality Checklist -->
+  <section class="section section-dark">
+    <div class="section-header">
+      <h2 class="section-title">QUALITY CHECKLIST</h2>
+      <span class="section-count">APPROVAL CRITERIA</span>
+    </div>
+    <div class="checklist">
+      <div class="checklist-group">
+        <h4>COMPOSITION</h4>
+        <div class="checklist-item"><span class="checklist-box"></span> Property is clearly the focal point</div>
+        <div class="checklist-item"><span class="checklist-box"></span> Rule of thirds applied</div>
+        <div class="checklist-item"><span class="checklist-box"></span> Horizon line is level</div>
+        <div class="checklist-item"><span class="checklist-box"></span> No distracting elements</div>
+      </div>
+      <div class="checklist-group">
+        <h4>LIGHTING</h4>
+        <div class="checklist-item"><span class="checklist-box"></span> Golden hour warmth present</div>
+        <div class="checklist-item"><span class="checklist-box"></span> Shadows add depth</div>
+        <div class="checklist-item"><span class="checklist-box"></span> No harsh midday light</div>
+        <div class="checklist-item"><span class="checklist-box"></span> Interior lights visible if dusk</div>
+      </div>
+      <div class="checklist-group">
+        <h4>ACCURACY</h4>
+        <div class="checklist-item"><span class="checklist-box"></span> Architectural style is correct</div>
+        <div class="checklist-item"><span class="checklist-box"></span> Key features are visible</div>
+        <div class="checklist-item"><span class="checklist-box"></span> Landscaping is appropriate</div>
+        <div class="checklist-item"><span class="checklist-box"></span> No anachronistic elements</div>
+      </div>
+      <div class="checklist-group">
+        <h4>TECHNICAL</h4>
+        <div class="checklist-item"><span class="checklist-box"></span> No artifacts or distortions</div>
+        <div class="checklist-item"><span class="checklist-box"></span> Appropriate resolution</div>
+        <div class="checklist-item"><span class="checklist-box"></span> Correct aspect ratio</div>
+        <div class="checklist-item"><span class="checklist-box"></span> Natural-looking (not over-processed)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-logo">USONIAN</div>
+    <span class="footer-copy">&copy; 2026 Content Agent System</span>
+  </footer>
+
+  <!-- Figma Capture Script -->
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+</body>
+</html>

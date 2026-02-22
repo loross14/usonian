@@ -10,6 +10,7 @@
  *   npx tsx scripts/research-agent.ts property "Chemosphere"
  *   npx tsx scripts/research-agent.ts listings
  *   npx tsx scripts/research-agent.ts flw-monitor    # Monitor FLW properties
+ *   npx tsx scripts/research-agent.ts flw-sites      # Gap analysis by state
  */
 
 import * as fs from 'fs'
@@ -86,6 +87,48 @@ const FLW_MONITORED_PROPERTIES = [
   { id: 'spring-house-lewis', name: 'Spring House', location: 'Tallahassee, FL', price: 2128000 },
   { id: 'david-christine-weisblat-house', name: 'Weisblat House', location: 'Galesburg, MI', price: 1444000 },
   { id: 'samuel-dorothy-eppstein-house', name: 'Eppstein House', location: 'Galesburg, MI', price: 2100000 },
+]
+
+// All US states with FLW sites (from franklloydwrightsites.com)
+const FLW_SITES_STATES = [
+  { state: 'Alabama', slug: 'alabama', abbrev: 'AL' },
+  { state: 'Arizona', slug: 'arizona', abbrev: 'AZ' },
+  { state: 'Arkansas', slug: 'arkansas', abbrev: 'AR' },
+  { state: 'California', slug: 'california', abbrev: 'CA' },
+  { state: 'Connecticut', slug: 'connecticut', abbrev: 'CT' },
+  { state: 'Delaware', slug: 'delaware', abbrev: 'DE' },
+  { state: 'Florida', slug: 'florida', abbrev: 'FL' },
+  { state: 'Hawaii', slug: 'hawaii', abbrev: 'HI' },
+  { state: 'Idaho', slug: 'idaho', abbrev: 'ID' },
+  { state: 'Illinois', slug: 'illinois', abbrev: 'IL' },
+  { state: 'Indiana', slug: 'indiana', abbrev: 'IN' },
+  { state: 'Iowa', slug: 'iowa', abbrev: 'IA' },
+  { state: 'Kansas', slug: 'kansas', abbrev: 'KS' },
+  { state: 'Kentucky', slug: 'kentucky', abbrev: 'KY' },
+  { state: 'Maryland', slug: 'maryland', abbrev: 'MD' },
+  { state: 'Massachusetts', slug: 'massachusetts', abbrev: 'MA' },
+  { state: 'Michigan', slug: 'michigan', abbrev: 'MI' },
+  { state: 'Minnesota', slug: 'minnesota', abbrev: 'MN' },
+  { state: 'Mississippi', slug: 'mississippi', abbrev: 'MS' },
+  { state: 'Missouri', slug: 'missouri', abbrev: 'MO' },
+  { state: 'Montana', slug: 'montana', abbrev: 'MT' },
+  { state: 'Nebraska', slug: 'nebraska', abbrev: 'NE' },
+  { state: 'New Hampshire', slug: 'newhampshire', abbrev: 'NH' },
+  { state: 'New Jersey', slug: 'new-jersey', abbrev: 'NJ' },
+  { state: 'New Mexico', slug: 'newmexico', abbrev: 'NM' },
+  { state: 'New York', slug: 'newyork', abbrev: 'NY' },
+  { state: 'Ohio', slug: 'ohio', abbrev: 'OH' },
+  { state: 'Oklahoma', slug: 'oklahoma', abbrev: 'OK' },
+  { state: 'Oregon', slug: 'oregon', abbrev: 'OR' },
+  { state: 'Pennsylvania', slug: 'pennsylvania', abbrev: 'PA' },
+  { state: 'South Carolina', slug: 'south-carolina', abbrev: 'SC' },
+  { state: 'Tennessee', slug: 'tennessee', abbrev: 'TN' },
+  { state: 'Texas', slug: 'texas', abbrev: 'TX' },
+  { state: 'Utah', slug: 'utah', abbrev: 'UT' },
+  { state: 'Virginia', slug: 'virginia', abbrev: 'VA' },
+  { state: 'Washington', slug: 'washington', abbrev: 'WA' },
+  { state: 'Wisconsin', slug: 'wisconsin', abbrev: 'WI' },
+  { state: 'Wyoming', slug: 'wyoming', abbrev: 'WY' },
 ]
 
 // Generate daily report template
@@ -346,6 +389,79 @@ Last baseline: ${date}
 `
 }
 
+// Generate FLW sites gap analysis report
+function generateFlwSitesReport(): string {
+  const properties = loadProperties()
+  const date = new Date().toISOString().split('T')[0]
+
+  // Get all FLW properties from our database
+  const flwProperties = properties.filter(p =>
+    p.architect_id === 'frank-lloyd-wright'
+  )
+
+  // Group by state
+  const byState: Record<string, Property[]> = {}
+  for (const p of flwProperties) {
+    const state = (p.parsed_state || 'Unknown') as string
+    if (!byState[state]) byState[state] = []
+    byState[state].push(p)
+  }
+
+  // Count states represented
+  const statesRepresented = Object.keys(byState).filter(s => s !== 'Unknown').length
+
+  // Generate state-by-state analysis
+  const stateAnalysis = FLW_SITES_STATES.map(s => {
+    const stateProps = byState[s.abbrev] || []
+    const propList = stateProps.length > 0
+      ? stateProps.map(p => `  - ${p.home_name} (${p.parsed_city || 'Unknown'})`).join('\n')
+      : '  _No properties in database_'
+
+    return `### ${s.state} (${s.abbrev})
+- **In Database**: ${stateProps.length} properties
+- **On franklloydwrightsites.com**: [View all](https://franklloydwrightsites.com/sites/${s.slug}/)
+- **Our Properties**:
+${propList}`
+  }).join('\n\n')
+
+  // Generate gap checklist
+  const gapChecklist = FLW_SITES_STATES.map(s => {
+    const count = (byState[s.abbrev] || []).length
+    return `| ${s.abbrev} | ${count} | [ ] | |`
+  }).join('\n')
+
+  return `# FLW Sites Gap Analysis - ${date}
+
+## Summary
+- **Total FLW in Database**: ${flwProperties.length}
+- **States Represented**: ${statesRepresented} of ${FLW_SITES_STATES.length}
+- **Source**: [franklloydwrightsites.com](https://franklloydwrightsites.com/sites/)
+
+## State-by-State Analysis
+
+${stateAnalysis}
+
+## Gap Checklist
+
+Compare our database count against franklloydwrightsites.com for each state:
+
+| State | DB Count | Checked | Notes |
+|-------|----------|---------|-------|
+${gapChecklist}
+
+## Research Tasks
+
+1. Visit each state page on franklloydwrightsites.com
+2. Compare site count against our DB count
+3. Note missing properties for future data entry
+4. Prioritize states with largest gaps
+
+---
+Generated by MCM Research Agent - FLW Sites
+Source: franklloydwrightsites.com
+`
+}
+
 // Generate listings search template
 function generateListingsTemplate(): string {
   const architects = loadArchitects()
@@ -464,6 +580,15 @@ async function main() {
       break
     }
 
+    case 'flw-sites': {
+      const report = generateFlwSitesReport()
+      const filename = `flw-sites-${date}.md`
+      fs.writeFileSync(path.join(REPORTS_DIR, filename), report)
+      console.log(`FLW Sites report generated: reports/${filename}`)
+      console.log(report)
+      break
+    }
+
     case 'help':
     default:
       console.log(`
@@ -478,6 +603,7 @@ Commands:
   property "<name>"          Generate property research template
   listings                   Generate listings search template
   flw-monitor                Monitor FLW properties for price/status changes
+  flw-sites                  Gap analysis: compare DB against franklloydwrightsites.com
   help                       Show this help message
 
 Examples:
@@ -486,6 +612,7 @@ Examples:
   npx tsx scripts/research-agent.ts property "Chemosphere"
   npx tsx scripts/research-agent.ts listings
   npx tsx scripts/research-agent.ts flw-monitor
+  npx tsx scripts/research-agent.ts flw-sites
 
 Reports are saved to: ./reports/
 `)

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upgrade 2: Depth Layer | Usonian</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <style>
+    :root {
+      /* ORIGINAL COLORS */
+      --red: #BF0A30;
+      --navy: #002868;
+      --gold: #D4B270;
+      --black: #000000;
+      --white: #FFFFFF;
+
+      /* NEW: THREE-TIER ACCENT SYSTEM */
+      --accent-tertiary: #E8B8B8;    /* Muted decorative red */
+      --accent-secondary: #BF0A30;   /* Primary red */
+      --accent-primary: #D4B270;     /* Gold elevated to PRIMARY */
+      --interactive-dark: #1A1F4A;   /* Navy accent */
+
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-mono);
+      line-height: 1.4;
+      background: var(--white);
+      color: var(--black);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    /* UPGRADE BADGE */
+    .upgrade-badge {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--accent-primary);
+      color: var(--black);
+      padding: 12px 20px;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      font-weight: 700;
+      z-index: 1000;
+    }
+
+    /* HEADER */
+    header {
+      border-bottom: 1px solid var(--black);
+      padding: 20px 0;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+
+    nav {
+      display: flex;
+      gap: 32px;
+    }
+
+    nav a {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      color: var(--black);
+      opacity: 0.6;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--black);
+    }
+
+    h1 {
+      font-size: clamp(3rem, 10vw, 6rem);
+      line-height: 0.85;
+      letter-spacing: -0.04em;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    h1 .accent {
+      color: var(--accent-secondary);
+    }
+
+    .hero-subtitle {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      opacity: 0.5;
+    }
+
+    /* PRAIRIE LINES - NOW MUTED (TIER 1) */
+    .prairie-lines {
+      display: flex;
+      gap: 4px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--black);
+    }
+
+    .line {
+      height: 2px;
+      background: var(--accent-tertiary); /* CHANGED: muted red */
+      flex: 1;
+    }
+
+    /* COLOR TIER DEMO */
+    .tier-demo {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-bottom: 1px solid var(--black);
+    }
+
+    .tier {
+      padding: 40px;
+      border-right: 1px solid var(--black);
+      text-align: center;
+    }
+
+    .tier:last-child {
+      border-right: none;
+    }
+
+    .tier-label {
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      opacity: 0.5;
+      margin-bottom: 16px;
+    }
+
+    .tier-swatch {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 16px;
+      border: 1px solid var(--black);
+    }
+
+    .tier-1 .tier-swatch { background: var(--accent-tertiary); }
+    .tier-2 .tier-swatch { background: var(--accent-secondary); }
+    .tier-3 .tier-swatch { background: var(--accent-primary); }
+
+    .tier-name {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+
+    .tier-use {
+      font-size: 10px;
+      opacity: 0.6;
+      margin-top: 8px;
+    }
+
+    /* BADGES DEMO */
+    .badges-section {
+      padding: 60px 0;
+      border-bottom: 1px solid var(--black);
+    }
+
+    h2 {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      margin-bottom: 32px;
+      opacity: 0.5;
+    }
+
+    .badges-grid {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      padding: 6px 12px;
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      font-weight: 700;
+    }
+
+    .badge-active {
+      background: var(--accent-secondary);
+      color: var(--white);
+    }
+
+    .badge-sold {
+      background: var(--interactive-dark);
+      color: var(--white);
+    }
+
+    .badge-museum {
+      background: var(--accent-primary);
+      color: var(--interactive-dark);
+    }
+
+    .badge-archived {
+      background: var(--accent-tertiary);
+      color: var(--accent-secondary);
+    }
+
+    /* PROPERTY TABLE DEMO */
+    .table-section {
+      padding: 60px 0;
+      border-bottom: 1px solid var(--black);
+    }
+
+    .property-row {
+      display: grid;
+      grid-template-columns: 40px 1fr 100px 140px 100px;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      align-items: center;
+      transition: all 0.2s ease;
+    }
+
+    .property-row:hover {
+      background: rgba(212, 178, 112, 0.04);
+      border-left: 3px solid var(--accent-tertiary);
+      padding-left: 16px;
+      margin-left: -19px;
+    }
+
+    .property-row.featured {
+      border-left: 3px solid var(--accent-primary);
+      background: rgba(212, 178, 112, 0.02);
+      padding-left: 16px;
+      margin-left: -19px;
+    }
+
+    .star {
+      color: var(--accent-primary);
+    }
+
+    .star.inactive {
+      color: var(--accent-tertiary);
+    }
+
+    .property-name {
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .property-year {
+      font-size: 11px;
+      opacity: 0.6;
+    }
+
+    .property-location {
+      font-size: 11px;
+    }
+
+    /* CTA BUTTONS */
+    .cta-section {
+      padding: 60px 0;
+      background: rgba(0,0,0,0.02);
+    }
+
+    .cta-grid {
+      display: flex;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .btn {
+      padding: 16px 32px;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent-primary);
+      color: var(--interactive-dark);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-secondary);
+      color: var(--white);
+    }
+
+    .btn-secondary {
+      background: var(--interactive-dark);
+      color: var(--white);
+    }
+
+    .btn-secondary:hover {
+      background: var(--accent-secondary);
+    }
+
+    /* UPGRADE NOTES */
+    .upgrade-notes {
+      padding: 40px;
+      background: var(--white);
+      border: 1px solid var(--black);
+      margin: 40px 0;
+    }
+
+    .upgrade-notes h3 {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      margin-bottom: 16px;
+    }
+
+    .upgrade-notes ul {
+      list-style: none;
+      font-size: 12px;
+      line-height: 2;
+    }
+
+    .upgrade-notes li {
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .upgrade-notes li::before {
+      content: '+';
+      position: absolute;
+      left: 0;
+      color: var(--accent-primary);
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="upgrade-badge">UPGRADE 2: DEPTH LAYER</div>
+
+  <header>
+    <div class="container header-content">
+      <div class="logo">USONIAN</div>
+      <nav>
+        <a href="#">HOMES</a>
+        <a href="#">ARCHITECTS</a>
+        <a href="#">ABOUT</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>ARCHITECT<span class="accent">.</span><br>DESIGNED<br>HOMES</h1>
+      <p class="hero-subtitle">THREE-TIER COLOR SYSTEM: MUTED RED / BOLD RED / GOLD</p>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="prairie-lines">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+  </div>
+
+  <section class="tier-demo">
+    <div class="tier tier-1">
+      <div class="tier-label">TIER 1: DECORATIVE</div>
+      <div class="tier-swatch"></div>
+      <div class="tier-name">#E8B8B8</div>
+      <div class="tier-use">Prairie lines, dividers, inactive states</div>
+    </div>
+    <div class="tier tier-2">
+      <div class="tier-label">TIER 2: INFORMATIONAL</div>
+      <div class="tier-swatch"></div>
+      <div class="tier-name">#BF0A30</div>
+      <div class="tier-use">Active listings, status badges, CTAs</div>
+    </div>
+    <div class="tier tier-3">
+      <div class="tier-label">TIER 3: PREMIUM</div>
+      <div class="tier-swatch"></div>
+      <div class="tier-name">#D4B270</div>
+      <div class="tier-use">Museum/historic, featured, primary actions</div>
+    </div>
+  </section>
+
+  <section class="badges-section">
+    <div class="container">
+      <h2>STATUS BADGES WITH SEMANTIC COLOR</h2>
+      <div class="badges-grid">
+        <span class="badge badge-active">FOR SALE</span>
+        <span class="badge badge-sold">SOLD</span>
+        <span class="badge badge-museum">MUSEUM</span>
+        <span class="badge badge-archived">ARCHIVED</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="table-section">
+    <div class="container">
+      <h2>PROPERTY TABLE WITH HOVER STATES</h2>
+      <div class="property-row featured">
+        <span class="star">&#9733;</span>
+        <span class="property-name">Chemosphere (Malin Residence)</span>
+        <span class="property-year">1960</span>
+        <span class="property-location">Los Angeles, CA</span>
+        <span class="badge badge-museum">MUSEUM</span>
+      </div>
+      <div class="property-row">
+        <span class="star">&#9733;</span>
+        <span class="property-name">Silvertop</span>
+        <span class="property-year">1963</span>
+        <span class="property-location">Los Angeles, CA</span>
+        <span class="badge badge-sold">SOLD</span>
+      </div>
+      <div class="property-row">
+        <span class="star inactive">&#9734;</span>
+        <span class="property-name">Carling House</span>
+        <span class="property-year">1947</span>
+        <span class="property-location">Los Angeles, CA</span>
+        <span class="badge badge-active">FOR SALE</span>
+      </div>
+      <div class="property-row">
+        <span class="star inactive">&#9734;</span>
+        <span class="property-name">Notz House</span>
+        <span class="property-year">1953</span>
+        <span class="property-location">Pittsburgh, PA</span>
+        <span class="badge badge-archived">ARCHIVED</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container">
+      <h2>CTA BUTTONS</h2>
+      <div class="cta-grid">
+        <button class="btn btn-primary">GET NOTIFIED</button>
+        <button class="btn btn-secondary">VIEW ARCHIVE</button>
+      </div>
+
+      <div class="upgrade-notes">
+        <h3>KEY CHANGES</h3>
+        <ul>
+          <li>New muted red (#E8B8B8) for decorative elements</li>
+          <li>Gold elevated to primary action color</li>
+          <li>Navy accent (#1A1F4A) for secondary/sold states</li>
+          <li>Prairie lines fade into background (no longer compete)</li>
+          <li>Museum/premium properties shine with gold badges</li>
+          <li>Table hover shows subtle gold border + background</li>
+          <li>Implementation complexity: MEDIUM (~2-3 hours)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Axis 3A: Threshold Cascades | Usonian</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <style>
+    :root {
+      --red: #BF0A30;
+      --navy: #002868;
+      --gold: #D4B270;
+      --black: #000000;
+      --white: #FFFFFF;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-mono);
+      line-height: 1.4;
+      background: var(--white);
+      color: var(--black);
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    .upgrade-badge {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--red);
+      color: var(--white);
+      padding: 12px 20px;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      font-weight: 700;
+      z-index: 1000;
+    }
+
+    header {
+      border-bottom: 1px solid var(--black);
+      padding: 20px 0;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+
+    nav {
+      display: flex;
+      gap: 32px;
+    }
+
+    nav a {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      color: var(--black);
+      position: relative;
+    }
+
+    nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--red);
+      animation: nav-indicator 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    @keyframes nav-indicator {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* HERO WITH CASCADE REVEAL */
+    .hero {
+      padding: 80px 0;
+      border-bottom: 1px solid var(--black);
+      overflow: hidden;
+    }
+
+    @keyframes hero-title-enter {
+      from {
+        opacity: 0;
+        transform: translateX(-60px) skewY(-2deg);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0) skewY(0);
+      }
+    }
+
+    @keyframes hero-subtitle-enter {
+      from { opacity: 0; transform: translateX(40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    h1 {
+      font-size: clamp(3rem, 10vw, 6rem);
+      line-height: 0.85;
+      letter-spacing: -0.04em;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      animation: hero-title-enter 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    h1 .accent { color: var(--red); }
+
+    .hero-subtitle {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      opacity: 0;
+      animation: hero-subtitle-enter 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s forwards;
+    }
+
+    /* PRAIRIE LINES WITH ACCENT REVEAL */
+    .prairie-lines {
+      display: flex;
+      gap: 4px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--black);
+    }
+
+    @keyframes line-accent {
+      from { transform: scaleX(0); transform-origin: left; }
+      to { transform: scaleX(1); transform-origin: left; }
+    }
+
+    .line {
+      height: 2px;
+      background: var(--red);
+      flex: 1;
+      animation: line-accent 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    .line:nth-child(2) { animation-delay: 0.1s; }
+    .line:nth-child(3) { animation-delay: 0.2s; }
+
+    /* DEMO SECTIONS */
+    .demo-section {
+      padding: 60px 0;
+      border-bottom: 1px solid var(--black);
+    }
+
+    h2 {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      margin-bottom: 32px;
+      opacity: 0.5;
+    }
+
+    /* SKELETON LOADING DEMO */
+    .skeleton-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    @keyframes skeleton-breath-x {
+      0%, 100% { opacity: 0.6; transform: scaleX(1); }
+      50% { opacity: 1; transform: scaleX(1.02); }
+    }
+
+    @keyframes skeleton-shimmer {
+      0% { background-position: -400px 0; }
+      100% { background-position: 400px 0; }
+    }
+
+    .skeleton-card {
+      border: 1px solid rgba(0,0,0,0.1);
+      padding: 20px;
+    }
+
+    .skeleton {
+      background: linear-gradient(90deg, #f0f0f0 0%, #e8e8e8 50%, #f0f0f0 100%);
+      background-size: 800px 100%;
+      animation: skeleton-shimmer 1.5s infinite, skeleton-breath-x 2.5s ease-in-out infinite;
+      border-radius: 2px;
+    }
+
+    .skeleton-img { height: 120px; margin-bottom: 16px; }
+    .skeleton-title { height: 16px; width: 80%; margin-bottom: 8px; }
+    .skeleton-text { height: 12px; width: 60%; margin-bottom: 8px; }
+    .skeleton-price { height: 24px; width: 40%; margin-top: 16px; }
+
+    /* ROUTE TRANSITION DEMO */
+    .route-demo {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .route-box {
+      flex: 1;
+      border: 2px solid var(--black);
+      padding: 32px;
+      text-align: center;
+    }
+
+    @keyframes route-enter {
+      from { opacity: 0; transform: translateX(-100px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes route-exit {
+      from { opacity: 1; transform: translateX(0); }
+      to { opacity: 0; transform: translateX(100px); }
+    }
+
+    .route-enter {
+      animation: route-enter 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    .route-exit {
+      animation: route-exit 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+
+    .route-label {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      opacity: 0.5;
+      margin-bottom: 8px;
+    }
+
+    .route-name {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    /* TABLE ROW CASCADE */
+    @keyframes table-row-enter {
+      from { opacity: 0; transform: translateX(-40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .table-demo {
+      border: 1px solid var(--black);
+    }
+
+    .table-header {
+      display: grid;
+      grid-template-columns: 1fr 100px 140px 100px;
+      gap: 16px;
+      padding: 12px 16px;
+      border-bottom: 2px solid var(--black);
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      opacity: 0.5;
+    }
+
+    .table-row {
+      display: grid;
+      grid-template-columns: 1fr 100px 140px 100px;
+      gap: 16px;
+      padding: 16px;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      font-size: 12px;
+      animation: table-row-enter 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      opacity: 0;
+    }
+
+    .table-row:nth-child(2) { animation-delay: 0.1s; }
+    .table-row:nth-child(3) { animation-delay: 0.2s; }
+    .table-row:nth-child(4) { animation-delay: 0.3s; }
+    .table-row:nth-child(5) { animation-delay: 0.4s; }
+
+    .row-name { font-weight: 700; }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+    }
+
+    .badge-active { background: var(--red); color: white; }
+    .badge-sold { background: var(--navy); color: white; }
+
+    /* NOTES */
+    .upgrade-notes {
+      padding: 40px;
+      background: rgba(0,0,0,0.02);
+      margin-top: 40px;
+    }
+
+    .upgrade-notes h3 {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      margin-bottom: 16px;
+    }
+
+    .upgrade-notes ul {
+      list-style: none;
+      font-size: 12px;
+      line-height: 2;
+    }
+
+    .upgrade-notes li {
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .upgrade-notes li::before {
+      content: '+';
+      position: absolute;
+      left: 0;
+      color: var(--red);
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="upgrade-badge">AXIS 3A: THRESHOLD CASCADES</div>
+
+  <header>
+    <div class="container header-content">
+      <div class="logo">USONIAN</div>
+      <nav>
+        <a href="#" class="active">HOMES</a>
+        <a href="#">ARCHITECTS</a>
+        <a href="#">ABOUT</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <h1>ARCHITECT<span class="accent">.</span><br>DESIGNED<br>HOMES</h1>
+      <p class="hero-subtitle">PAGE TRANSITIONS WITH DIAGONAL CASCADE + SKEW ENTRY</p>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="prairie-lines">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+  </div>
+
+  <section class="demo-section">
+    <div class="container">
+      <h2>ROUTE TRANSITIONS: ENTER / EXIT</h2>
+      <div class="route-demo">
+        <div class="route-box route-enter">
+          <div class="route-label">ENTERING</div>
+          <div class="route-name">/homes</div>
+        </div>
+        <div class="route-box route-exit">
+          <div class="route-label">EXITING</div>
+          <div class="route-name">/architects</div>
+        </div>
+      </div>
+
+      <h2>SKELETON LOADING: BREATHING X-AXIS</h2>
+      <div class="skeleton-grid">
+        <div class="skeleton-card">
+          <div class="skeleton skeleton-img"></div>
+          <div class="skeleton skeleton-title"></div>
+          <div class="skeleton skeleton-text"></div>
+          <div class="skeleton skeleton-price"></div>
+        </div>
+        <div class="skeleton-card">
+          <div class="skeleton skeleton-img"></div>
+          <div class="skeleton skeleton-title"></div>
+          <div class="skeleton skeleton-text"></div>
+          <div class="skeleton skeleton-price"></div>
+        </div>
+        <div class="skeleton-card">
+          <div class="skeleton skeleton-img"></div>
+          <div class="skeleton skeleton-title"></div>
+          <div class="skeleton skeleton-text"></div>
+          <div class="skeleton skeleton-price"></div>
+        </div>
+      </div>
+
+      <h2>TABLE ROW CASCADE: STAGGERED X-AXIS ENTRY</h2>
+      <div class="table-demo">
+        <div class="table-header">
+          <div>PROPERTY</div>
+          <div>YEAR</div>
+          <div>LOCATION</div>
+          <div>STATUS</div>
+        </div>
+        <div class="table-row">
+          <div class="row-name">Chemosphere</div>
+          <div>1960</div>
+          <div>Los Angeles, CA</div>
+          <span class="badge badge-active">FOR SALE</span>
+        </div>
+        <div class="table-row">
+          <div class="row-name">Silvertop</div>
+          <div>1963</div>
+          <div>Los Angeles, CA</div>
+          <span class="badge badge-sold">SOLD</span>
+        </div>
+        <div class="table-row">
+          <div class="row-name">Elrod House</div>
+          <div>1968</div>
+          <div>Palm Springs, CA</div>
+          <span class="badge badge-active">FOR SALE</span>
+        </div>
+        <div class="table-row">
+          <div class="row-name">Garcia House</div>
+          <div>1962</div>
+          <div>Los Angeles, CA</div>
+          <span class="badge badge-sold">SOLD</span>
+        </div>
+      </div>
+
+      <div class="upgrade-notes">
+        <h3>THRESHOLD CASCADES: KEY FEATURES</h3>
+        <ul>
+          <li>Route transitions: X-axis slide with 0.8s duration</li>
+          <li>Hero reveals: Title skews -2deg then straightens</li>
+          <li>Skeleton breathing: scaleX pulse with shimmer</li>
+          <li>Table cascade: 0.1s stagger per row</li>
+          <li>Navigation feedback: Underline slides up on active</li>
+          <li>Easing: cubic-bezier(0.34, 1.56, 0.64, 1)</li>
+          <li>Implementation: RouteTransition wrapper + CSS keyframes</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

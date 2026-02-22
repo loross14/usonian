@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chemosphere | Usonian V2</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <style>
+    :root {
+      --red: #BF0A30;
+      --navy: #002868;
+      --gold: #D4B270;
+      --black: #000000;
+      --white: #FFFFFF;
+      --font-mono: 'JetBrains Mono', monospace;
+      --easing: cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-mono);
+      line-height: 1.4;
+      background: var(--white);
+      color: var(--black);
+      overflow-x: hidden;
+    }
+
+    /* ========================================
+       HEADER
+    ======================================== */
+    header {
+      position: sticky;
+      top: 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--black);
+      padding: 20px 40px;
+      z-index: 100;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .breadcrumb {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .breadcrumb a {
+      color: var(--black);
+      text-decoration: none;
+      opacity: 0.4;
+      transition: opacity 0.3s var(--easing);
+    }
+
+    .breadcrumb a:hover {
+      opacity: 1;
+    }
+
+    .breadcrumb span {
+      opacity: 0.4;
+    }
+
+    .breadcrumb .current {
+      opacity: 1;
+      font-weight: 700;
+    }
+
+    .logo {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+
+    nav {
+      display: flex;
+      gap: 32px;
+    }
+
+    nav a {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      color: var(--black);
+      position: relative;
+    }
+
+    nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--red);
+    }
+
+    /* ========================================
+       HERO SECTION
+    ======================================== */
+    .hero {
+      padding: 140px 40px 120px;
+      border-bottom: 1px solid var(--black);
+      overflow: hidden;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-content {
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    @keyframes hero-title-enter {
+      from {
+        opacity: 0;
+        transform: translateX(-80px) skewY(-2deg);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0) skewY(0);
+      }
+    }
+
+    @keyframes hero-subtitle-enter {
+      from { opacity: 0; transform: translateX(40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .hero h1 {
+      font-size: clamp(5rem, 14vw, 12rem);
+      line-height: 0.85;
+      letter-spacing: -0.04em;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+      animation: hero-title-enter 0.6s var(--easing) forwards;
+    }
+
+    .hero h1 .accent { color: var(--red); }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      opacity: 0;
+      animation: hero-subtitle-enter 0.6s var(--easing) 0.15s forwards;
+    }
+
+    .hero-meta .architect-link {
+      color: var(--red);
+      text-decoration: none;
+      font-weight: 700;
+      position: relative;
+    }
+
+    .hero-meta .architect-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0%;
+      height: 1px;
+      background: var(--red);
+      transition: width 0.4s var(--easing);
+    }
+
+    .hero-meta .architect-link:hover::after {
+      width: 100%;
+    }
+
+    .hero-meta .divider {
+      width: 40px;
+      height: 1px;
+      background: var(--black);
+      opacity: 0.4;
+    }
+
+    /* ========================================
+       PRAIRIE LINES
+    ======================================== */
+    .prairie-lines {
+      display: flex;
+      gap: 6px;
+      padding: 20px 40px;
+      border-bottom: 1px solid var(--black);
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    @keyframes line-draw {
+      from { transform: scaleX(0); transform-origin: left; }
+      to { transform: scaleX(1); transform-origin: left; }
+    }
+
+    .prairie-line {
+      height: 3px;
+      background: var(--red);
+      flex: 1;
+      transform: scaleX(0);
+      animation: line-draw 0.7s var(--easing) forwards;
+    }
+
+    .prairie-line:nth-child(1) { animation-delay: 0.2s; flex: 3; }
+    .prairie-line:nth-child(2) { animation-delay: 0.35s; flex: 1; }
+    .prairie-line:nth-child(3) { animation-delay: 0.5s; flex: 2; }
+
+    /* ========================================
+       DATA GRID
+    ======================================== */
+    .data-section {
+      padding: 60px 40px;
+      border-bottom: 1px solid var(--black);
+    }
+
+    .data-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+      max-width: 1400px;
+      margin: 0 auto;
+      border: 1px solid var(--black);
+    }
+
+    @keyframes data-cascade {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .data-cell {
+      padding: 32px 24px;
+      border-right: 1px solid var(--black);
+      opacity: 0;
+      animation: data-cascade 0.6s var(--easing) forwards;
+    }
+
+    .data-cell:last-child {
+      border-right: none;
+    }
+
+    .data-cell:nth-child(1) { animation-delay: 0.1s; }
+    .data-cell:nth-child(2) { animation-delay: 0.2s; }
+    .data-cell:nth-child(3) { animation-delay: 0.3s; }
+    .data-cell:nth-child(4) { animation-delay: 0.4s; }
+    .data-cell:nth-child(5) { animation-delay: 0.5s; }
+
+    .data-label {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      opacity: 0.4;
+      margin-bottom: 8px;
+    }
+
+    .data-value {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .data-value.price {
+      color: var(--red);
+    }
+
+    .data-value.status {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      padding: 6px 12px;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+    }
+
+    /* ========================================
+       BLUEPRINT IMAGE AREA
+    ======================================== */
+    .blueprint-section {
+      padding: 80px 40px;
+      border-bottom: 1px solid var(--black);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .blueprint-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    @keyframes blueprint-reveal {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      to {
+        opacity: 0.15;
+        transform: scale(1);
+      }
+    }
+
+    .blueprint-grid {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image:
+        linear-gradient(var(--navy) 1px, transparent 1px),
+        linear-gradient(90deg, var(--navy) 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0;
+      animation: blueprint-reveal 1.2s var(--easing) 0.5s forwards;
+      pointer-events: none;
+    }
+
+    .blueprint-image {
+      position: relative;
+      width: 100%;
+      height: 600px;
+      background: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .blueprint-placeholder {
+      color: var(--red);
+      font-size: 14px;
+      letter-spacing: 0.2em;
+      font-weight: 700;
+      opacity: 1;
+      z-index: 1;
+      padding: 24px 32px;
+      border: 2px dashed var(--red);
+    }
+
+    /* ========================================
+       STORY SECTION
+    ======================================== */
+    .story-section {
+      padding: 100px 40px;
+      border-bottom: 1px solid var(--black);
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 80px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .story-main {
+      position: relative;
+      padding-left: 40px;
+    }
+
+    .story-main::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--red);
+    }
+
+    .story-title {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      opacity: 0.4;
+      margin-bottom: 24px;
+    }
+
+    .story-text {
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+
+    .story-text:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .story-sidebar {
+      padding-top: 40px;
+    }
+
+    .sidebar-item {
+      margin-bottom: 32px;
+    }
+
+    .sidebar-label {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      opacity: 0.4;
+      margin-bottom: 8px;
+    }
+
+    .sidebar-value {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    /* ========================================
+       PRESERVATION BADGE
+    ======================================== */
+    @keyframes badge-slide-in {
+      from {
+        opacity: 0;
+        transform: translateX(-100px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    .preservation-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--navy);
+      color: var(--white);
+      padding: 16px 24px;
+      margin-top: 40px;
+      opacity: 0;
+      animation: badge-slide-in 0.6s var(--easing) forwards;
+      animation-play-state: paused;
+    }
+
+    .preservation-badge.animate {
+      animation-play-state: running;
+    }
+
+    .badge-icon {
+      width: 24px;
+      height: 24px;
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: var(--gold);
+    }
+
+    .badge-text {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      font-weight: 700;
+    }
+
+    /* ========================================
+       INQUIRE BUTTON
+    ======================================== */
+    .inquire-section {
+      padding: 80px 40px;
+      border-bottom: 1px solid var(--black);
+      text-align: center;
+    }
+
+    .inquire-btn {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      padding: 28px 80px;
+      font-family: var(--font-mono);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.15s var(--easing), box-shadow 0.15s var(--easing);
+      box-shadow: 0 4px 16px rgba(191, 10, 48, 0.25);
+    }
+
+    .inquire-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(191, 10, 48, 0.4);
+    }
+
+    .inquire-btn:active {
+      transform: translateY(2px) scale(0.98);
+      box-shadow: 0 2px 8px rgba(191, 10, 48, 0.2);
+    }
+
+    .inquire-btn:focus-visible {
+      outline: 3px solid var(--navy);
+      outline-offset: 4px;
+    }
+
+    .inquire-subtitle {
+      margin-top: 16px;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      opacity: 0.4;
+    }
+
+    /* ========================================
+       RELATED PROPERTIES
+    ======================================== */
+    .related-section {
+      padding: 80px 40px;
+      border-bottom: 1px solid var(--black);
+    }
+
+    .related-header {
+      max-width: 1400px;
+      margin: 0 auto 48px;
+    }
+
+    .related-title {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      opacity: 0.4;
+      margin-bottom: 8px;
+    }
+
+    .related-heading {
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .related-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    @keyframes related-cascade {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .related-row {
+      display: grid;
+      grid-template-columns: 200px 1fr 120px 120px 140px;
+      gap: 24px;
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+      align-items: center;
+      opacity: 0;
+      animation: related-cascade 0.6s var(--easing) forwards;
+      animation-play-state: paused;
+      text-decoration: none;
+      color: var(--black);
+      transition: background 0.3s var(--easing);
+      cursor: pointer;
+    }
+
+    .related-row:focus-visible {
+      outline: 3px solid var(--navy);
+      outline-offset: 2px;
+    }
+
+    .related-row.animate {
+      animation-play-state: running;
+    }
+
+    .related-row:nth-child(1) { animation-delay: 0.1s; }
+    .related-row:nth-child(2) { animation-delay: 0.2s; }
+    .related-row:nth-child(3) { animation-delay: 0.3s; }
+
+    .related-row:hover {
+      background: rgba(0,0,0,0.02);
+    }
+
+    .related-row:last-child {
+      border-bottom: none;
+    }
+
+    .related-thumb {
+      width: 200px;
+      height: 120px;
+      background: var(--black);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .related-thumb-placeholder {
+      color: var(--white);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      opacity: 0.6;
+    }
+
+    .related-name {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .related-meta {
+      font-size: 12px;
+      opacity: 0.6;
+    }
+
+    .related-arrow {
+      font-size: 18px;
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: opacity 0.3s var(--easing), transform 0.3s var(--easing);
+    }
+
+    .related-row:hover .related-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    /* ========================================
+       FOCUS STATES
+    ======================================== */
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--navy);
+      outline-offset: 2px;
+    }
+
+    /* ========================================
+       RESPONSIVE
+    ======================================== */
+    @media (max-width: 1024px) {
+      .data-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .data-cell:nth-child(3) {
+        border-right: none;
+      }
+
+      .data-cell:nth-child(4),
+      .data-cell:nth-child(5),
+      .data-cell:nth-child(6) {
+        border-top: 1px solid var(--black);
+      }
+
+      .story-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .related-row {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .related-thumb {
+        width: 100%;
+        height: 200px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .data-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .data-cell:nth-child(2),
+      .data-cell:nth-child(4) {
+        border-right: none;
+      }
+
+      .data-cell:nth-child(odd):not(:nth-child(1)) {
+        border-right: 1px solid var(--black);
+      }
+
+      .hero h1 {
+        font-size: clamp(3rem, 10vw, 5rem);
+      }
+    }
+
+    /* ========================================
+       FOOTER
+    ======================================== */
+    .footer {
+      padding: 32px 48px;
+      background: var(--red);
+      color: var(--white);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+
+    .footer-form {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .footer-input {
+      padding: 12px 20px;
+      font-family: inherit;
+      font-size: 12px;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      color: white;
+      outline: none;
+      min-width: 250px;
+    }
+
+    .footer-input::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .footer-input:focus {
+      border-color: white;
+    }
+
+    .footer-button {
+      padding: 12px 24px;
+      font-family: inherit;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      background: white;
+      color: var(--red);
+      border: none;
+      cursor: pointer;
+    }
+
+    .footer-copy {
+      font-size: 11px;
+      opacity: 0.7;
+    }
+
+    @media (max-width: 768px) {
+      .footer {
+        flex-direction: column;
+        gap: 24px;
+        text-align: center;
+      }
+      .footer-form {
+        flex-direction: column;
+        width: 100%;
+      }
+      .footer-input {
+        width: 100%;
+        min-width: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="header-content">
+      <div class="breadcrumb">
+        <a href="#">HOMES</a>
+        <span>&gt;</span>
+        <span class="current">CHEMOSPHERE</span>
+      </div>
+      <div class="logo">USONIAN</div>
+      <nav>
+        <a href="#" class="active">HOMES</a>
+        <a href="#">ARCHITECTS</a>
+        <a href="#">LEARN</a>
+        <a href="#">ABOUT</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero" id="hero">
+    <div class="hero-content">
+      <h1>CHEMO<span class="accent">-</span><br>SPHERE</h1>
+      <div class="hero-meta">
+        <span>MALIN RESIDENCE</span>
+        <div class="divider"></div>
+        <a href="#" class="architect-link">JOHN LAUTNER</a>
+        <div class="divider"></div>
+        <span>1960</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Prairie Lines -->
+  <div class="prairie-lines">
+    <div class="prairie-line"></div>
+    <div class="prairie-line"></div>
+    <div class="prairie-line"></div>
+  </div>
+
+  <!-- Data Grid Section -->
+  <section class="data-section" id="data">
+    <div class="data-grid">
+      <div class="data-cell">
+        <div class="data-label">YEAR</div>
+        <div class="data-value">1960</div>
+      </div>
+      <div class="data-cell">
+        <div class="data-label">LOCATION</div>
+        <div class="data-value">Los Angeles, CA</div>
+      </div>
+      <div class="data-cell">
+        <div class="data-label">STATUS</div>
+        <div class="data-value status">FOR SALE</div>
+      </div>
+      <div class="data-cell">
+        <div class="data-label">PRICE</div>
+        <div class="data-value price">$18,500,000</div>
+      </div>
+      <div class="data-cell">
+        <div class="data-label">SIZE</div>
+        <div class="data-value">2,200 sq ft</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blueprint Image Area -->
+  <section class="blueprint-section" id="blueprint">
+    <div class="blueprint-container">
+      <div class="blueprint-image">
+        <div class="blueprint-grid"></div>
+        <span class="blueprint-placeholder">HERO IMAGE REQUIRED</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story Section -->
+  <section class="story-section" id="story">
+    <div class="story-grid">
+      <div class="story-main">
+        <div class="story-title">THE STORY</div>
+        <p class="story-text">
+          Perched 150 feet above the ground on a single concrete column, the Chemosphere
+          represents one of the most daring architectural achievements of the 20th century.
+          John Lautner designed this octagonal residence when the steep hillside lot was
+          deemed unbuildable by conventional standards.
+        </p>
+        <p class="story-text">
+          The house became an instant icon, appearing in films and establishing Lautner
+          as a visionary who refused to accept limitations. Its flying saucer-like form
+          continues to captivate architects and enthusiasts alike, standing as a testament
+          to bold imagination and engineering prowess.
+        </p>
+        <p class="story-text">
+          Completely restored to its original glory while incorporating modern systems,
+          the Chemosphere offers a once-in-a-lifetime opportunity to own a piece of
+          architectural history that exists nowhere else on Earth.
+        </p>
+
+        <!-- Preservation Badge -->
+        <div class="preservation-badge" id="preservationBadge">
+          <div class="badge-icon">*</div>
+          <div class="badge-text">HISTORIC-CULTURAL MONUMENT</div>
+        </div>
+      </div>
+
+      <div class="story-sidebar">
+        <div class="sidebar-item">
+          <div class="sidebar-label">ARCHITECTURAL STYLE</div>
+          <div class="sidebar-value">Mid-Century Modern / Googie</div>
+        </div>
+        <div class="sidebar-item">
+          <div class="sidebar-label">CONSTRUCTION</div>
+          <div class="sidebar-value">Steel frame, concrete pedestal</div>
+        </div>
+        <div class="sidebar-item">
+          <div class="sidebar-label">LOT SIZE</div>
+          <div class="sidebar-value">0.24 acres</div>
+        </div>
+        <div class="sidebar-item">
+          <div class="sidebar-label">NOTABLE FEATURES</div>
+          <div class="sidebar-value">360-degree views, funicular access, radial floor plan</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Inquire Button -->
+  <section class="inquire-section">
+    <button class="inquire-btn">INQUIRE ABOUT THIS PROPERTY</button>
+    <p class="inquire-subtitle">Private showings available by appointment</p>
+  </section>
+
+  <!-- Related Properties -->
+  <section class="related-section" id="related">
+    <div class="related-header">
+      <div class="related-title">MORE FROM</div>
+      <h2 class="related-heading">John Lautner</h2>
+    </div>
+
+    <div class="related-grid">
+      <a href="#" class="related-row">
+        <div class="related-thumb">
+          <span class="related-thumb-placeholder">[ IMAGE ]</span>
+        </div>
+        <div class="related-info">
+          <div class="related-name">Silvertop</div>
+          <div class="related-meta">Los Angeles, CA</div>
+        </div>
+        <div class="related-meta">1963</div>
+        <div class="related-meta">$7,500,000</div>
+        <div class="related-arrow">&rarr;</div>
+      </a>
+
+      <a href="#" class="related-row">
+        <div class="related-thumb">
+          <span class="related-thumb-placeholder">[ IMAGE ]</span>
+        </div>
+        <div class="related-info">
+          <div class="related-name">Elrod House</div>
+          <div class="related-meta">Palm Springs, CA</div>
+        </div>
+        <div class="related-meta">1968</div>
+        <div class="related-meta">$8,000,000</div>
+        <div class="related-arrow">&rarr;</div>
+      </a>
+
+      <a href="#" class="related-row">
+        <div class="related-thumb">
+          <span class="related-thumb-placeholder">[ IMAGE ]</span>
+        </div>
+        <div class="related-info">
+          <div class="related-name">Garcia House</div>
+          <div class="related-meta">Los Angeles, CA</div>
+        </div>
+        <div class="related-meta">1962</div>
+        <div class="related-meta">$4,250,000</div>
+        <div class="related-arrow">&rarr;</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-logo">USONIAN</div>
+    <form class="footer-form">
+      <input type="email" class="footer-input" placeholder="Enter your email">
+      <button type="submit" class="footer-button">Subscribe</button>
+    </form>
+    <span class="footer-copy">&copy; 2024 USONIAN</span>
+  </footer>
+
+  <script>
+    // ========================================
+    // SCROLL-TRIGGERED ANIMATIONS
+    // ========================================
+    const preservationBadge = document.getElementById('preservationBadge');
+    const relatedRows = document.querySelectorAll('.related-row');
+
+    function checkScrollAnimations() {
+      const scrollPosition = window.pageYOffset + window.innerHeight;
+
+      // Preservation Badge
+      if (preservationBadge) {
+        const badgeTop = preservationBadge.offsetTop + preservationBadge.closest('section').offsetTop;
+        if (scrollPosition > badgeTop + 100) {
+          preservationBadge.classList.add('animate');
+        }
+      }
+
+      // Related Rows
+      relatedRows.forEach((row, index) => {
+        const rowTop = row.offsetTop + row.closest('section').offsetTop;
+        if (scrollPosition > rowTop + 50) {
+          row.classList.add('animate');
+        }
+      });
+    }
+
+    // ========================================
+    // SCROLL EVENT HANDLER
+    // ========================================
+    let ticking = false;
+
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          checkScrollAnimations();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+
+    // Initial call
+    checkScrollAnimations();
+
+    // ========================================
+    // INQUIRE BUTTON PRESS EFFECT
+    // ========================================
+    const inquireBtn = document.querySelector('.inquire-btn');
+
+    inquireBtn.addEventListener('mousedown', () => {
+      inquireBtn.style.transform = 'translateY(2px) scale(0.98)';
+    });
+
+    inquireBtn.addEventListener('mouseup', () => {
+      inquireBtn.style.transform = 'translateY(-2px)';
+    });
+
+    inquireBtn.addEventListener('mouseleave', () => {
+      inquireBtn.style.transform = '';
+    });
+  </script>
+</body>
+</html>

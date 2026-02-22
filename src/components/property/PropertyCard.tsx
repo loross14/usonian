@@ -4,33 +4,76 @@ import Link from "next/link";
 import Image from "next/image";
 import { Property, formatPrice, formatLocation, getStatusLabel } from "@/types";
 import { YearBadge } from "@/components/ui/YearBadge";
+import { Badge } from "@/components/ui/Badge";
 import { getGeneratedSvgUrl } from "@/lib/generated-houses";
+import { getHeroImageUrl } from "@/lib/hero-images";
 import { PropertyAlertButton } from "@/components/property/PropertyAlertButton";
 
 interface PropertyCardProps {
   property: Property & { architect_name?: string };
+  /** v2 uses brutalist card styling with red accents */
+  variant?: "default" | "v2";
 }
 
-export function PropertyCard({ property }: PropertyCardProps) {
+export function PropertyCard({ property, variant = "default" }: PropertyCardProps) {
   const location = formatLocation(property.parsed_city, property.parsed_state);
   const price = property.last_sale_price
     ? formatPrice(property.last_sale_price)
     : "Price Upon Request";
 
-  // Prioritize generated SVG (clean illustrations) over best_image_url (which may be broken page URLs)
+  // Prioritize: Hero JPG > Generated SVG > External URL
+  const heroImageUrl = getHeroImageUrl(property.slug);
   const generatedSvgUrl = getGeneratedSvgUrl(property.slug);
-  const imageUrl = generatedSvgUrl || property.best_image_url;
+  const imageUrl = heroImageUrl || generatedSvgUrl || property.best_image_url;
 
+  // V2 variant - brutalist card style
+  if (variant === "v2") {
+    const isForSale = property.status === "active";
+    const cardClass = `property-card-v2 ${isForSale ? "property-card-v2--for-sale" : ""}`;
+
+    return (
+      <Link href={`/homes/${property.slug}`} className={cardClass}>
+        {/* Status Badge - always visible */}
+        <Badge status={property.status} variant="overlay" />
+
+        {/* Image */}
+        <div className="relative h-[200px] bg-sand overflow-hidden mb-4">
+          {imageUrl && (
+            <img
+              src={imageUrl}
+              alt={property.home_name}
+              className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300"
+            />
+          )}
+        </div>
+
+        {/* Content */}
+        <h3 className="text-lg font-semibold mb-1">{property.home_name}</h3>
+        <div className="flex justify-between items-center mb-2">
+          <span className="text-[11px] opacity-60 tracking-wide uppercase">
+            {property.architect_name}
+          </span>
+          <span className="text-[11px] opacity-50">{property.year_built}</span>
+        </div>
+        <p className="text-sm opacity-60 mb-3">{location}</p>
+        <p className={`text-lg font-semibold ${isForSale ? "text-gold" : ""}`}>
+          {price}
+        </p>
+      </Link>
+    );
+  }
+
+  // Default variant - original organic style
   return (
     <article className="group">
       <Link href={`/homes/${property.slug}`} className="block">
         {/* Image Container */}
         <div className="relative aspect-16-9 overflow-hidden bg-sand mb-4">
           {imageUrl ? (
-            // Use img tag for SVGs to support animations, Image component for external photos
-            generatedSvgUrl ? (
+            // Use img tag for local images (hero JPGs, SVGs), Image component for external photos
+            heroImageUrl || generatedSvgUrl ? (
               <img
-                src={generatedSvgUrl}
+                src={imageUrl}
                 alt={property.home_name}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               />

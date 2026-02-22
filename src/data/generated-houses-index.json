@@ -1,312 +1,372 @@
 {
   "generated_at": "2026-02-21",
-  "total_count": 51,
+  "total_count": 52,
   "properties": [
     {
       "slug": "lautner-house",
       "home_name": "Lautner House",
       "svg_file": "lautner-house.svg",
-      "year_built": 1939
+      "year_built": 1939,
+      "hero_image": "/ai-images/hero/lautner-house.jpg"
     },
     {
       "slug": "foster-carling-residence",
       "home_name": "Foster Carling Residence",
       "svg_file": "foster-carling-residence.svg",
-      "year_built": 1949
+      "year_built": 1949,
+      "hero_image": "/ai-images/hero/foster-carling-residence.jpg"
     },
     {
       "slug": "chemosphere-malin-residence",
       "home_name": "Chemosphere (Malin Residence)",
       "svg_file": "chemosphere-malin-residence.svg",
-      "year_built": 1960
+      "year_built": 1960,
+      "hero_image": "/ai-images/hero/chemosphere-malin-residence.jpg"
     },
     {
       "slug": "sheats-goldstein-residence",
       "home_name": "Sheats-Goldstein Residence",
       "svg_file": "sheats-goldstein-residence.svg",
-      "year_built": 1961
+      "year_built": 1961,
+      "hero_image": "/ai-images/hero/sheats-goldstein-residence.jpg"
     },
     {
       "slug": "garcia-house",
       "home_name": "Garcia House",
       "svg_file": "garcia-house.svg",
-      "year_built": 1962
+      "year_built": 1962,
+      "hero_image": "/ai-images/hero/garcia-house.jpg"
     },
     {
       "slug": "silvertop-reiner-residence",
       "home_name": "Silvertop (Reiner Residence)",
       "svg_file": "silvertop-reiner-residence.svg",
-      "year_built": 1957
+      "year_built": 1957,
+      "hero_image": "/ai-images/hero/silvertop-reiner-residence.jpg"
     },
     {
       "slug": "elrod-house",
       "home_name": "Elrod House",
       "svg_file": "elrod-house.svg",
-      "year_built": 1968
+      "year_built": 1968,
+      "hero_image": "/ai-images/hero/elrod-house.jpg"
     },
     {
       "slug": "bob-hope-residence",
       "home_name": "Bob Hope Residence",
       "svg_file": "bob-hope-residence.svg",
-      "year_built": 1979
+      "year_built": 1979,
+      "hero_image": "/ai-images/hero/bob-hope-residence.jpg"
     },
     {
       "slug": "arango-house",
       "home_name": "Arango House",
       "svg_file": "arango-house.svg",
-      "year_built": 1973
+      "year_built": 1973,
+      "hero_image": "/ai-images/hero/arango-house.jpg"
     },
     {
       "slug": "hotel-lautner-hubbard",
       "home_name": "Hotel Lautner (Hubbard)",
       "svg_file": "hotel-lautner-hubbard.svg",
-      "year_built": 1947
+      "year_built": 1947,
+      "hero_image": "/ai-images/hero/hotel-lautner-hubbard.jpg"
     },
     {
       "slug": "jones-house-own",
       "home_name": "Jones House (own)",
       "svg_file": "jones-house-own.svg",
-      "year_built": 1955
+      "year_built": 1955,
+      "hero_image": "/ai-images/hero/jones-house-own.jpg"
     },
     {
       "slug": "brothers-house-the-gray",
       "home_name": "Brothers House (The Gray)",
       "svg_file": "brothers-house-the-gray.svg",
-      "year_built": 1956
+      "year_built": 1956,
+      "hero_image": "/ai-images/hero/brothers-house-the-gray.jpg"
     },
     {
       "slug": "stoneflower",
       "home_name": "Stoneflower",
       "svg_file": "stoneflower.svg",
-      "year_built": 1965
+      "year_built": 1965,
+      "hero_image": "/ai-images/hero/stoneflower.jpg"
     },
     {
       "slug": "walton-house",
       "home_name": "Walton House",
       "svg_file": "walton-house.svg",
-      "year_built": 1958
+      "year_built": 1958,
+      "hero_image": "/ai-images/hero/walton-house.jpg"
     },
     {
       "slug": "hunter-house",
       "home_name": "Hunter House",
       "svg_file": "hunter-house.svg",
-      "year_built": 1962
+      "year_built": 1962,
+      "hero_image": "/ai-images/hero/hunter-house.jpg"
     },
     {
       "slug": "yarbrough-house-pebble-hill",
       "home_name": "Yarbrough House (Pebble Hill)",
       "svg_file": "yarbrough-house-pebble-hill.svg",
-      "year_built": 1988
+      "year_built": 1988,
+      "hero_image": "/ai-images/hero/yarbrough-house-pebble-hill.jpg"
     },
     {
       "slug": "reed-house",
       "home_name": "Reed House",
       "svg_file": "reed-house.svg",
-      "year_built": 1978
+      "year_built": 1978,
+      "hero_image": "/ai-images/hero/reed-house.jpg"
     },
     {
       "slug": "buckley-house",
       "home_name": "Buckley House",
       "svg_file": "buckley-house.svg",
-      "year_built": 1967
+      "year_built": 1967,
+      "hero_image": "/ai-images/hero/buckley-house.jpg"
     },
     {
       "slug": "dow-house-studio",
       "home_name": "Dow House & Studio",
       "svg_file": "dow-house-studio.svg",
-      "year_built": 1936
+      "year_built": 1936,
+      "hero_image": "/ai-images/hero/dow-house-studio.jpg"
     },
     {
       "slug": "towsley-house",
       "home_name": "Towsley House",
       "svg_file": "towsley-house.svg",
-      "year_built": 1932
+      "year_built": 1932,
+      "hero_image": "/ai-images/hero/towsley-house.jpg"
     },
     {
       "slug": "whitman-house",
       "home_name": "Whitman House",
       "svg_file": "whitman-house.svg",
-      "year_built": 1936
+      "year_built": 1936,
+      "hero_image": "/ai-images/hero/whitman-house.jpg"
     },
     {
       "slug": "gallery-house",
       "home_name": "Gallery House",
       "svg_file": "gallery-house.svg",
-      "year_built": 1951
+      "year_built": 1951,
+      "hero_image": "/ai-images/hero/gallery-house.jpg"
     },
     {
       "slug": "yates-residence",
       "home_name": "Yates Residence",
       "svg_file": "yates-residence.svg",
-      "year_built": 0
+      "year_built": 0,
+      "hero_image": "/ai-images/hero/yates-residence.jpg"
     },
     {
       "slug": "ashmun-house-timber-teepee",
       "home_name": "Ashmun House (Timber Teepee)",
       "svg_file": "ashmun-house-timber-teepee.svg",
-      "year_built": 1951
+      "year_built": 1951,
+      "hero_image": "/ai-images/hero/ashmun-house-timber-teepee.jpg"
     },
     {
       "slug": "smith-house",
       "home_name": "Smith House",
       "svg_file": "smith-house.svg",
-      "year_built": 1940
+      "year_built": 1940,
+      "hero_image": "/ai-images/hero/smith-house.jpg"
     },
     {
       "slug": "knight-house-duke",
       "home_name": "Knight House (Duke)",
       "svg_file": "knight-house-duke.svg",
-      "year_built": 1966
+      "year_built": 1966,
+      "hero_image": "/ai-images/hero/knight-house-duke.jpg"
     },
     {
       "slug": "dome-house-woods-residence",
       "home_name": "Dome House (Woods Residence)",
       "svg_file": "dome-house-woods-residence.svg",
-      "year_built": 1950
+      "year_built": 1950,
+      "hero_image": "/ai-images/hero/dome-house-woods-residence.jpg"
     },
     {
       "slug": "deconcini-house",
       "home_name": "DeConcini House",
       "svg_file": "deconcini-house.svg",
-      "year_built": 1982
+      "year_built": 1982,
+      "hero_image": "/ai-images/hero/deconcini-house.jpg"
     },
     {
       "slug": "peters-margedant-house",
       "home_name": "Peters-Margedant House",
       "svg_file": "peters-margedant-house.svg",
-      "year_built": 1934
+      "year_built": 1934,
+      "hero_image": "/ai-images/hero/peters-margedant-house.jpg"
     },
     {
       "slug": "ultimate-house",
       "home_name": "Ultimate House",
       "svg_file": "ultimate-house.svg",
-      "year_built": 1963
+      "year_built": 1963,
+      "hero_image": "/ai-images/hero/ultimate-house.jpg"
     },
     {
       "slug": "anderson-residence",
       "home_name": "Anderson Residence",
       "svg_file": "anderson-residence.svg",
-      "year_built": 1959
+      "year_built": 1959,
+      "hero_image": "/ai-images/hero/anderson-residence.jpg"
     },
     {
       "slug": "mischel-house-sunspot",
       "home_name": "Mischel House (Sunspot)",
       "svg_file": "mischel-house-sunspot.svg",
-      "year_built": 1966
+      "year_built": 1966,
+      "hero_image": "/ai-images/hero/mischel-house-sunspot.jpg"
     },
     {
       "slug": "albert-house-lighthouse",
       "home_name": "Albert House (Lighthouse)",
       "svg_file": "albert-house-lighthouse.svg",
-      "year_built": 1939
+      "year_built": 1939,
+      "hero_image": "/ai-images/hero/albert-house-lighthouse.jpg"
     },
     {
       "slug": "alpern-residence",
       "home_name": "Alpern Residence",
       "svg_file": "alpern-residence.svg",
-      "year_built": 1950
+      "year_built": 1950,
+      "hero_image": "/ai-images/hero/alpern-residence.jpg"
     },
     {
       "slug": "bookstaber-house",
       "home_name": "Bookstaber House",
       "svg_file": "bookstaber-house.svg",
-      "year_built": 1949
+      "year_built": 1949,
+      "hero_image": "/ai-images/hero/bookstaber-house.jpg"
     },
     {
       "slug": "notz-house",
       "home_name": "Notz House",
       "svg_file": "notz-house.svg",
-      "year_built": 1939
+      "year_built": 1939,
+      "hero_image": "/ai-images/hero/notz-house.jpg"
     },
     {
       "slug": "fineman-house",
       "home_name": "Fineman House",
       "svg_file": "fineman-house.svg",
-      "year_built": 1952
+      "year_built": 1952,
+      "hero_image": "/ai-images/hero/fineman-house.jpg"
     },
     {
       "slug": "lapp-riverhouse",
       "home_name": "Lapp RiverHouse",
       "svg_file": "lapp-riverhouse.svg",
-      "year_built": 1990
+      "year_built": 1990,
+      "hero_image": "/ai-images/hero/lapp-riverhouse.jpg"
     },
     {
       "slug": "creek-house",
       "home_name": "Creek House",
       "svg_file": "creek-house.svg",
-      "year_built": 1986
+      "year_built": 1986,
+      "hero_image": "/ai-images/hero/creek-house.jpg"
     },
     {
       "slug": "lencioni-residence-wave",
       "home_name": "Lencioni Residence (Wave)",
       "svg_file": "lencioni-residence-wave.svg",
-      "year_built": 1985
+      "year_built": 1985,
+      "hero_image": "/ai-images/hero/lencioni-residence-wave.jpg"
     },
     {
       "slug": "skyfire-own",
       "home_name": "Skyfire (own)",
       "svg_file": "skyfire-own.svg",
-      "year_built": 1997
+      "year_built": 1997,
+      "hero_image": "/ai-images/hero/skyfire-own.jpg"
     },
     {
       "slug": "ross-house",
       "home_name": "Ross House",
       "svg_file": "ross-house.svg",
-      "year_built": 1957
+      "year_built": 1957,
+      "hero_image": "/ai-images/hero/ross-house.jpg"
     },
     {
       "slug": "wystrach-adams-residence",
       "home_name": "Wystrach-Adams Residence",
       "svg_file": "wystrach-adams-residence.svg",
-      "year_built": 0
+      "year_built": 0,
+      "hero_image": "/ai-images/hero/wystrach-adams-residence.jpg"
     },
     {
       "slug": "malibu-estate-own",
       "home_name": "Malibu Estate (own)",
       "svg_file": "malibu-estate-own.svg",
-      "year_built": 1986
+      "year_built": 1986,
+      "hero_image": "/ai-images/hero/malibu-estate-own.jpg"
     },
     {
       "slug": "wood-peterson-house",
       "home_name": "Wood-Peterson House",
       "svg_file": "wood-peterson-house.svg",
-      "year_built": 1951
+      "year_built": 1951,
+      "hero_image": "/ai-images/hero/wood-peterson-house.jpg"
     },
     {
       "slug": "anderson-house",
       "home_name": "Anderson House",
       "svg_file": "anderson-house.svg",
-      "year_built": 1950
+      "year_built": 1950,
+      "hero_image": "/ai-images/hero/anderson-house.jpg"
     },
     {
       "slug": "house-of-spirit",
       "home_name": "House of Spirit",
       "svg_file": "house-of-spirit.svg",
-      "year_built": 1957
+      "year_built": 1957,
+      "hero_image": "/ai-images/hero/house-of-spirit.jpg"
     },
     {
       "slug": "myers-residence",
       "home_name": "Myers Residence",
       "svg_file": "myers-residence.svg",
-      "year_built": 1991
+      "year_built": 1991,
+      "hero_image": "/ai-images/hero/myers-residence.jpg"
     },
     {
       "slug": "rattenbury-residence",
       "home_name": "Rattenbury Residence",
       "svg_file": "rattenbury-residence.svg",
-      "year_built": 0
+      "year_built": 0,
+      "hero_image": "/ai-images/hero/rattenbury-residence.jpg"
     },
     {
       "slug": "trinkaus-house",
       "home_name": "Trinkaus House",
       "svg_file": "trinkaus-house.svg",
-      "year_built": 1965
+      "year_built": 1965,
+      "hero_image": "/ai-images/hero/trinkaus-house.jpg"
     },
     {
       "slug": "atlanta-residence",
       "home_name": "Atlanta Residence",
       "svg_file": "atlanta-residence.svg",
-      "year_built": 1974
+      "year_built": 1974,
+      "hero_image": "/ai-images/hero/atlanta-residence.jpg"
+    },
+    {
+      "slug": "robert-d-winn-house",
+      "home_name": "Robert D. Winn House",
+      "svg_file": "robert-d-winn-house.svg",
+      "year_built": 1950,
+      "hero_image": "/ai-images/hero/robert-d-winn-house.jpg"
     }
-  ]
+  ],
+  "note": "~200 total properties in full dataset, 52 with images generated",
+  "images_generated": 52
 }

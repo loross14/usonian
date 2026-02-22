@@ -2,7 +2,6 @@ import Link from "next/link";
 import architectsData from "@/data/architects.json";
 import propertiesData from "@/data/properties.json";
 import { PrairieLines } from "@/components/ui/PrairieLines";
-import { NewsletterCTA } from "@/components/ui/NewsletterCTA";
 import { StarIcon } from "@/components/icons/StarIcon";
 import { type Architect, type Property } from "@/types";
 
@@ -11,7 +10,7 @@ const architects = architectsData as Architect[];
 const properties = propertiesData as Property[];
 
 export const metadata = {
-  title: "Architects | Usonian",
+  title: "Usonian",
   description:
     "Explore our collection of master architects, from Taliesin Fellows to independent visionaries.",
 };
@@ -141,9 +140,6 @@ export default function ArchitectsPage() {
           ))}
         </div>
       </section>
-
-      {/* Newsletter CTA */}
-      <NewsletterCTA />
     </>
   );
 }
