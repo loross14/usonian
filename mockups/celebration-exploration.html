@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Celebration Balloons Exploration | 10-Agent Design Study</title>
+  <style>
+    :root {
+      /* Core Celebration Palette */
+      --coral: #E63946;
+      --blue: #457B9D;
+      --gold: #F4A261;
+      --teal: #2A9D8F;
+      --purple: #9B5DE5;
+      --orange: #F77F00;
+
+      /* Light Mode */
+      --bg-light: #FFFEF5;
+      --bg-light-alt: #FDF8F0;
+
+      /* Dark Mode */
+      --bg-dark: #1A1A2E;
+      --bg-dark-alt: #16213E;
+
+      /* Caming */
+      --caming-light: #333;
+      --caming-dark: #E8E8E8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: linear-gradient(180deg, #FAFAFA 0%, #F5F5F5 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: #1a1a1a;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: #666;
+      font-weight: 400;
+    }
+
+    .palette-bar {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 24px;
+    }
+
+    .palette-swatch {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    .exploration-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+
+    .design-card {
+      background: white;
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .design-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    }
+
+    .design-card.dark-mode {
+      background: #2D2D3A;
+    }
+
+    .design-card.colorful-mode {
+      background: linear-gradient(135deg, #FFF5E6 0%, #FFE6F0 50%, #E6F0FF 100%);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 24px;
+    }
+
+    .design-number {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      color: var(--coral);
+      text-transform: uppercase;
+    }
+
+    .dark-mode .design-number {
+      color: var(--gold);
+    }
+
+    .design-title {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #1a1a1a;
+      margin-top: 4px;
+    }
+
+    .dark-mode .design-title {
+      color: #FFFEF5;
+    }
+
+    .design-category {
+      font-size: 0.8rem;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: rgba(230, 57, 70, 0.1);
+      color: var(--coral);
+      font-weight: 500;
+    }
+
+    .design-category.nature {
+      background: rgba(42, 157, 143, 0.1);
+      color: var(--teal);
+    }
+
+    .design-category.abstract {
+      background: rgba(155, 93, 229, 0.1);
+      color: var(--purple);
+    }
+
+    .dark-mode .design-category {
+      background: rgba(244, 162, 97, 0.2);
+      color: var(--gold);
+    }
+
+    .svg-container {
+      background: var(--bg-light);
+      border-radius: 12px;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .svg-container.dark-bg {
+      background: var(--bg-dark);
+    }
+
+    .svg-container.colorful-bg {
+      background: linear-gradient(135deg, #FFE8CC 0%, #FFD6E6 50%, #D6E6FF 100%);
+    }
+
+    .svg-container svg {
+      width: 100%;
+      max-width: 640px;
+      height: auto;
+    }
+
+    .design-description {
+      margin-top: 20px;
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .dark-mode .design-description {
+      color: #AAA;
+    }
+
+    .design-meta {
+      display: flex;
+      gap: 16px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+
+    .meta-tag {
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 4px;
+      background: #F0F0F0;
+      color: #666;
+    }
+
+    .dark-mode .meta-tag {
+      background: #3D3D4A;
+      color: #AAA;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 80px;
+      padding-top: 40px;
+      border-top: 1px solid #E0E0E0;
+    }
+
+    footer p {
+      color: #888;
+      font-size: 0.9rem;
+    }
+
+    /* Animation keyframes - will be used by SVGs */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    @keyframes gentle-float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      25% { transform: translateY(-3px) rotate(0.5deg); }
+      75% { transform: translateY(-5px) rotate(-0.5deg); }
+    }
+
+    @keyframes sway {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(2deg); }
+      75% { transform: rotate(-2deg); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
+    @keyframes shimmer {
+      0% { opacity: 0.3; }
+      50% { opacity: 0.6; }
+      100% { opacity: 0.3; }
+    }
+
+    @keyframes ripple {
+      0%, 100% { transform: scaleX(1); }
+      50% { transform: scaleX(1.02); }
+    }
+
+    @keyframes drift {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(4px); }
+      100% { transform: translateX(0); }
+    }
+
+    @keyframes glow {
+      0%, 100% { filter: brightness(1); }
+      50% { filter: brightness(1.15); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Celebration Balloons Exploration</h1>
+      <p class="subtitle">10 design variations exploring buoyancy, whimsy, and joyful energy</p>
+      <div class="palette-bar">
+        <div class="palette-swatch" style="background: var(--coral);" title="Coral #E63946"></div>
+        <div class="palette-swatch" style="background: var(--blue);" title="Blue #457B9D"></div>
+        <div class="palette-swatch" style="background: var(--gold);" title="Gold #F4A261"></div>
+        <div class="palette-swatch" style="background: var(--teal);" title="Teal #2A9D8F"></div>
+        <div class="palette-swatch" style="background: var(--purple);" title="Purple #9B5DE5"></div>
+        <div class="palette-swatch" style="background: var(--orange);" title="Orange #F77F00"></div>
+      </div>
+    </header>
+
+    <main class="exploration-grid">
+
+      <!-- DESIGN 01: Fallingwater Ascending -->
+      <article class="design-card">
+        <div class="card-header">
+          <div>
+            <span class="design-number">Design 01</span>
+            <h2 class="design-title">Fallingwater Ascending</h2>
+          </div>
+          <span class="design-category">Architecture</span>
+        </div>
+        <div class="svg-container">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 200">
+            <defs>
+              <style>
+                @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+                @keyframes floatSlow { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+                @keyframes sway { 0%, 100% { transform: rotate(-1deg); } 50% { transform: rotate(1deg); } }
+                @keyframes pulse { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+                @keyframes ripple { 0%, 100% { transform: scaleX(1); opacity: 0.5; } 50% { transform: scaleX(1.02); opacity: 0.7; } }
+                .terrace-1 { animation: float 4s ease-in-out infinite; }
+                .terrace-2 { animation: floatSlow 5s ease-in-out infinite 0.5s; }
+                .terrace-3 { animation: float 4.5s ease-in-out infinite 1s; }
+                .chimney { animation: sway 6s ease-in-out infinite; transform-origin: center bottom; }
+                .balloon-accent { animation: pulse 3s ease-in-out infinite; }
+                .water { animation: ripple 4s ease-in-out infinite; transform-origin: center; }
+                .string { animation: sway 5s ease-in-out infinite; transform-origin: top center; }
+              </style>
+              <linearGradient id="waterGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:#457B9D;stop-opacity:0.4" />
+                <stop offset="100%" style="stop-color:#2A9D8F;stop-opacity:0.6" />
+              </linearGradient>
+              <linearGradient id="goldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:#F4A261" />
+                <stop offset="100%" style="stop-color:#E9C46A" />
+              </linearGradient>
+              <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#333" flood-opacity="0.1"/>
+              </filter>
+            </defs>
+            <rect width="640" height="200" fill="#FFFEF5"/>
+            <g class="water">
+              <ellipse cx="320" cy="190" rx="180" ry="12" fill="url(#waterGrad)" opacity="0.5"/>
+              <ellipse cx="280" cy="185" rx="60" ry="6" fill="#457B9D" opacity="0.3"/>
+              <ellipse cx="380" cy="188" rx="80" ry="8" fill="#2A9D8F" opacity="0.25"/>
+            </g>
+            <g class="string" stroke="#CCC" stroke-width="1" fill="none" opacity="0.6">
+              <path d="M250 60 Q245 40 250 20"/>
+              <path d="M390 50 Q395 30 390 10"/>
+              <path d="M320 45 Q320 25 325 5"/>
+            </g>
+            <circle cx="250" cy="15" r="8" fill="#9B5DE5" class="balloon-accent" opacity="0.8"/>
+            <circle cx="390" cy="8" r="6" fill="#E63946" class="balloon-accent" opacity="0.8"/>
+            <circle cx="325" cy="5" r="7" fill="#F77F00" class="balloon-accent" opacity="0.8"/>
+            <g filter="url(#softShadow)">
+              <g class="chimney">
+                <rect x="300" y="55" width="40" height="100" rx="6" ry="6" fill="#A8A196" opacity="0.9"/>
+                <rect x="305" y="60" width="30" height="20" rx="4" ry="4" fill="#8B8478"/>
+                <rect x="308" y="50" width="24" height="10" rx="3" ry="3" fill="#7A7568"/>
+              </g>
+              <g class="terrace-3">
+                <rect x="270" y="60" width="100" height="18" rx="9" ry="9" fill="url(#goldGrad)" opacity="0.95"/>
+                <rect x="275" y="75" width="90" height="3" rx="1.5" ry="1.5" fill="#E63946" opacity="0.9"/>
+              </g>
+              <g class="terrace-1">
+                <rect x="220" y="90" width="140" height="22" rx="11" ry="11" fill="url(#goldGrad)"/>
+                <rect x="225" y="108" width="130" height="4" rx="2" ry="2" fill="#F77F00" opacity="0.9"/>
+                <circle cx="250" cy="100" r="5" fill="#457B9D" opacity="0.7"/>
+                <circle cx="270" cy="100" r="5" fill="#457B9D" opacity="0.7"/>
+                <circle cx="290" cy="100" r="5" fill="#457B9D" opacity="0.7"/>
+              </g>
+              <g class="terrace-2">
+                <rect x="180" y="125" width="180" height="28" rx="14" ry="14" fill="url(#goldGrad)"/>
+                <rect x="185" y="148" width="170" height="5" rx="2.5" ry="2.5" fill="#E63946"/>
+                <circle cx="210" cy="138" r="6" fill="#2A9D8F" opacity="0.6"/>
+                <circle cx="235" cy="138" r="6" fill="#2A9D8F" opacity="0.6"/>
+                <circle cx="260" cy="138" r="6" fill="#2A9D8F" opacity="0.6"/>
+                <circle cx="285" cy="138" r="6" fill="#2A9D8F" opacity="0.6"/>
+              </g>
+              <g class="terrace-1">
+                <rect x="340" y="100" width="80" height="16" rx="8" ry="8" fill="#E9C46A" opacity="0.9"/>
+                <rect x="345" y="113" width="70" height="3" rx="1.5" ry="1.5" fill="#F77F00" opacity="0.85"/>
+              </g>
+            </g>
+            <circle cx="150" cy="100" r="12" fill="#9B5DE5" opacity="0.5" class="balloon-accent"/>
+            <circle cx="490" cy="80" r="15" fill="#E63946" opacity="0.4" class="balloon-accent"/>
+            <circle cx="520" cy="130" r="10" fill="#2A9D8F" opacity="0.5" class="balloon-accent"/>
+            <circle cx="130" cy="150" r="8" fill="#F77F00" opacity="0.45" class="balloon-accent"/>
+            <circle cx="500" cy="50" r="6" fill="#457B9D" opacity="0.5" class="balloon-accent"/>
+            <ellipse cx="100" cy="140" rx="25" ry="40" fill="#2A9D8F" opacity="0.25"/>
+            <ellipse cx="540" cy="130" rx="30" ry="50" fill="#2A9D8F" opacity="0.2"/>
+            <ellipse cx="570" cy="145" rx="20" ry="35" fill="#457B9D" opacity="0.15"/>
+            <g opacity="0.4">
+              <circle cx="270" cy="165" r="4" fill="#457B9D" class="balloon-accent"/>
+              <circle cx="275" cy="172" r="3" fill="#457B9D" class="balloon-accent"/>
+              <circle cx="268" cy="178" r="3.5" fill="#2A9D8F" class="balloon-accent"/>
+            </g>
+          </svg>
+        </div>
+        <p class="design-description">This design transforms Fallingwater's iconic horizontal cantilevers into buoyant, pill-shaped forms with generous rounded corners, evoking floating platforms tethered by delicate balloon strings. The Cherokee Red accents become coral and orange highlight bands beneath each terrace, while circular window elements replace the rigid glass planes.</p>
+        <div class="design-meta">
+          <span class="meta-tag">Architecture</span>
+          <span class="meta-tag">Light Mode</span>
+          <span class="meta-tag">Animated</span>
+        </div>
+      </article>
+
+      <!-- DESIGN 02: Spiral Lantern Rising -->
+      <article class="design-card dark-mode">
+        <div class="card-header">
+          <div>
+            <span class="design-number">Design 02</span>
+            <h2 class="design-title">Spiral Lantern Rising</h2>
+          </div>
+          <span class="design-category">Architecture</span>
+        </div>
+        <div class="svg-container dark-bg">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 200">
+            <defs>
+              <linearGradient id="nightSky" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#0D1B2A"/>
+                <stop offset="50%" stop-color="#1A1A2E"/>
+                <stop offset="100%" stop-color="#16213E"/>
+              </linearGradient>
+              <radialGradient id="spiralGlow" cx="50%" cy="50%" r="60%">
+                <stop offset="0%" stop-color="#F4A261" stop-opacity="0.4"/>
+                <stop offset="100%" stop-color="#E63946" stop-opacity="0"/>
+              </radialGradient>
+              <radialGradient id="warmCore" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#F77F00"/>
+                <stop offset="100%" stop-color="#E63946"/>
+              </radialGradient>
+              <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="3" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <filter id="starGlow" x="-100%" y="-100%" width="300%" height="300%">
+                <feGaussianBlur stdDeviation="1" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+            <style>
+              @keyframes spiralRotate { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+              @keyframes pulseGlow { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+              @keyframes twinkle { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+              @keyframes floatUp { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-3px); } }
+              @keyframes windowFlicker { 0%, 90%, 100% { opacity: 0.8; } 92% { opacity: 0.3; } 95% { opacity: 0.9; } }
+              .spiral-group { transform-origin: 320px 130px; animation: spiralRotate 60s linear infinite; }
+              .glow-pulse { animation: pulseGlow 4s ease-in-out infinite; }
+              .star { animation: twinkle 3s ease-in-out infinite; }
+              .float { animation: floatUp 6s ease-in-out infinite; }
+              .window { animation: windowFlicker 8s ease-in-out infinite; }
+            </style>
+            <rect width="640" height="200" fill="url(#nightSky)"/>
+            <g filter="url(#starGlow)">
+              <circle class="star" cx="50" cy="25" r="1.5" fill="#E8E8E8"/>
+              <circle class="star" cx="120" cy="40" r="1" fill="#F4A261" style="animation-delay: -0.5s;"/>
+              <circle class="star" cx="180" cy="18" r="1.2" fill="#E8E8E8" style="animation-delay: -1s;"/>
+              <circle class="star" cx="250" cy="35" r="0.8" fill="#9B5DE5" style="animation-delay: -1.5s;"/>
+              <circle class="star" cx="400" cy="22" r="1.3" fill="#E8E8E8" style="animation-delay: -2s;"/>
+              <circle class="star" cx="480" cy="38" r="1" fill="#2A9D8F" style="animation-delay: -2.5s;"/>
+              <circle class="star" cx="550" cy="15" r="1.4" fill="#E8E8E8" style="animation-delay: -3s;"/>
+              <circle class="star" cx="590" cy="45" r="0.9" fill="#F4A261" style="animation-delay: -0.8s;"/>
+            </g>
+            <g fill="#0D1B2A" opacity="0.9">
+              <rect x="20" y="120" width="25" height="80"/>
+              <rect x="50" y="100" width="20" height="100"/>
+              <rect x="150" y="60" width="28" height="140"/>
+              <rect x="158" y="45" width="12" height="15"/>
+              <rect x="440" y="95" width="22" height="105"/>
+              <rect x="525" y="55" width="24" height="145"/>
+              <polygon points="537,55 525,75 549,75"/>
+              <polygon points="537,42 532,55 542,55"/>
+            </g>
+            <g class="window">
+              <rect x="155" y="70" width="3" height="4" fill="#F4A261" opacity="0.8"/>
+              <rect x="165" y="80" width="3" height="4" fill="#F77F00" opacity="0.7"/>
+              <rect x="530" y="65" width="3" height="4" fill="#F4A261" opacity="0.8"/>
+            </g>
+            <ellipse cx="320" cy="150" rx="90" ry="60" fill="url(#spiralGlow)" class="glow-pulse"/>
+            <g class="float">
+              <rect x="255" y="175" width="130" height="25" fill="#1A1A2E" rx="3"/>
+              <path d="M270 175 L275 140 L365 140 L370 175 Z" fill="#2A2A4A" stroke="#F4A261" stroke-width="0.5" opacity="0.8"/>
+              <g class="spiral-group" filter="url(#glow)">
+                <ellipse cx="320" cy="130" rx="65" ry="35" fill="none" stroke="#E63946" stroke-width="8" opacity="0.9"/>
+                <ellipse cx="320" cy="125" rx="52" ry="28" fill="none" stroke="#F77F00" stroke-width="7" opacity="0.85"/>
+                <ellipse cx="320" cy="120" rx="40" ry="22" fill="none" stroke="#F4A261" stroke-width="6" opacity="0.8"/>
+                <ellipse cx="320" cy="115" rx="28" ry="16" fill="none" stroke="#2A9D8F" stroke-width="5" opacity="0.85"/>
+                <ellipse cx="320" cy="110" rx="17" ry="10" fill="none" stroke="#9B5DE5" stroke-width="4" opacity="0.9"/>
+                <ellipse cx="320" cy="108" rx="8" ry="5" fill="url(#warmCore)" opacity="0.95"/>
+              </g>
+            </g>
+            <g filter="url(#glow)">
+              <circle class="float" cx="240" cy="100" r="6" fill="#E63946" opacity="0.7" style="animation-delay: -1s;"/>
+              <circle class="float" cx="400" cy="95" r="5" fill="#9B5DE5" opacity="0.6" style="animation-delay: -2s;"/>
+              <circle class="float" cx="260" cy="75" r="4" fill="#2A9D8F" opacity="0.65" style="animation-delay: -3s;"/>
+              <circle class="float" cx="385" cy="70" r="4.5" fill="#F77F00" opacity="0.6" style="animation-delay: -1.5s;"/>
+            </g>
+          </svg>
+        </div>
+        <p class="design-description">The Guggenheim's iconic spiral transforms into a luminous lantern rising against the Manhattan night. Concentric elliptical rings in coral, orange, gold, teal, and purple rotate slowly like celebration ribbons, while floating orbs ascend around the glowing museum.</p>
+        <div class="design-meta">
+          <span class="meta-tag">Architecture</span>
+          <span class="meta-tag">Dark Mode</span>
+          <span class="meta-tag">Animated</span>
+        </div>
+      </article>
+
+      <!-- DESIGN 03: Honeycomb Ascension -->
+      <article class="design-card">
+        <div class="card-header">
+          <div>
+            <span class="design-number">Design 03</span>
+            <h2 class="design-title">Honeycomb Ascension</h2>
+          </div>
+          <span class="design-category">Architecture</span>
+        </div>
+        <div class="svg-container">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 200">
+            <defs>
+              <style>
+                @keyframes float1 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+                @keyframes float2 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+                @keyframes float3 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+                @keyframes pulse1 { 0%, 100% { opacity: 0.85; transform: scale(1); } 50% { opacity: 1; transform: scale(1.03); } }
+                @keyframes glow { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+                .hex-cluster-1 { animation: float1 4s ease-in-out infinite; }
+                .hex-cluster-2 { animation: float2 5s ease-in-out infinite 0.5s; }
+                .hex-cluster-3 { animation: float3 4.5s ease-in-out infinite 1s; }
+                .hex-cluster-4 { animation: float1 5.5s ease-in-out infinite 0.3s; }
+                .hex-cluster-5 { animation: float2 4s ease-in-out infinite 0.8s; }
+                .hex-pulse-1 { animation: pulse1 3s ease-in-out infinite; transform-origin: center; }
+                .clerestory { animation: glow 2.5s ease-in-out infinite; }
+              </style>
+              <path id="hex-balloon" d="M0,-20 Q10,-20 17,-10 Q24,0 17,10 Q10,20 0,20 Q-10,20 -17,10 Q-24,0 -17,-10 Q-10,-20 0,-20 Z"/>
+              <path id="hex-large" d="M0,-28 Q14,-28 24,-14 Q34,0 24,14 Q14,28 0,28 Q-14,28 -24,14 Q-34,0 -24,-14 Q-14,-28 0,-28 Z"/>
+              <path id="hex-small" d="M0,-12 Q6,-12 10,-6 Q14,0 10,6 Q6,12 0,12 Q-6,12 -10,6 Q-14,0 -10,-6 Q-6,-12 0,-12 Z"/>
+              <linearGradient id="coralGrad3" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#E63946"/><stop offset="100%" stop-color="#D62839"/>
+              </linearGradient>
+              <linearGradient id="tealGrad3" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#3BB5A5"/><stop offset="100%" stop-color="#2A9D8F"/>
+              </linearGradient>
+              <linearGradient id="goldGrad3" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#F7B571"/><stop offset="100%" stop-color="#F4A261"/>
+              </linearGradient>
+              <linearGradient id="purpleGrad3" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#AC75ED"/><stop offset="100%" stop-color="#9B5DE5"/>
+              </linearGradient>
+              <linearGradient id="blueGrad3" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#5A8FB4"/><stop offset="100%" stop-color="#457B9D"/>
+              </linearGradient>
+              <linearGradient id="orangeGrad3" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#FF9520"/><stop offset="100%" stop-color="#F77F00"/>
+              </linearGradient>
+              <radialGradient id="windowGlow3" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#FFFEF5"/><stop offset="70%" stop-color="#F4A261" stop-opacity="0.4"/><stop offset="100%" stop-color="#F4A261" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <rect width="640" height="200" fill="#FFFEF5"/>
+            <g class="hex-cluster-1">
+              <g transform="translate(120, 85)" class="hex-pulse-1">
+                <use href="#hex-large" fill="url(#coralGrad3)"/>
+                <ellipse cx="-8" cy="-10" rx="6" ry="4" fill="white" opacity="0.3"/>
+              </g>
+              <g transform="translate(85, 60)"><use href="#hex-balloon" fill="url(#tealGrad3)"/></g>
+              <g transform="translate(155, 60)"><use href="#hex-balloon" fill="url(#goldGrad3)"/></g>
+              <g transform="translate(155, 110)"><use href="#hex-balloon" fill="url(#blueGrad3)"/></g>
+              <line x1="120" y1="113" x2="118" y2="155" stroke="#D4D4D4" stroke-width="1" opacity="0.6"/>
+            </g>
+            <g class="hex-cluster-2">
+              <g transform="translate(280, 70)" class="hex-pulse-1">
+                <use href="#hex-large" fill="url(#blueGrad3)"/>
+                <ellipse cx="0" cy="0" rx="12" ry="8" fill="url(#windowGlow3)" class="clerestory"/>
+              </g>
+              <g transform="translate(245, 45)"><use href="#hex-balloon" fill="url(#purpleGrad3)"/></g>
+              <g transform="translate(315, 45)"><use href="#hex-balloon" fill="url(#orangeGrad3)"/></g>
+              <line x1="280" y1="98" x2="282" y2="145" stroke="#D4D4D4" stroke-width="1" opacity="0.6"/>
+            </g>
+            <g class="hex-cluster-3">
+              <g transform="translate(400, 55)" class="hex-pulse-1">
+                <use href="#hex-large" fill="url(#tealGrad3)"/>
+              </g>
+              <g transform="translate(365, 80)"><use href="#hex-balloon" fill="url(#goldGrad3)"/></g>
+              <g transform="translate(435, 80)"><use href="#hex-balloon" fill="url(#coralGrad3)"/></g>
+              <line x1="400" y1="83" x2="398" y2="140" stroke="#D4D4D4" stroke-width="1" opacity="0.6"/>
+            </g>
+            <g class="hex-cluster-4">
+              <g transform="translate(530, 75)" class="hex-pulse-1">
+                <use href="#hex-large" fill="url(#purpleGrad3)"/>
+              </g>
+              <g transform="translate(495, 50)"><use href="#hex-balloon" fill="url(#orangeGrad3)"/></g>
+              <g transform="translate(565, 100)"><use href="#hex-balloon" fill="url(#goldGrad3)"/></g>
+              <line x1="530" y1="103" x2="528" y2="160" stroke="#D4D4D4" stroke-width="1" opacity="0.6"/>
+            </g>
+            <g class="hex-cluster-5">
+              <g transform="translate(60, 120)"><use href="#hex-small" fill="url(#blueGrad3)" opacity="0.7"/></g>
+              <g transform="translate(200, 140)"><use href="#hex-small" fill="url(#purpleGrad3)" opacity="0.6"/></g>
+              <g transform="translate(470, 135)"><use href="#hex-small" fill="url(#coralGrad3)" opacity="0.7"/></g>
+            </g>
+            <g opacity="0.5">
+              <circle cx="35" cy="50" r="3" fill="#F4A261" class="hex-cluster-2"/>
+              <circle cx="180" cy="35" r="2" fill="#2A9D8F" class="hex-cluster-3"/>
+              <circle cx="350" cy="150" r="2.5" fill="#9B5DE5" class="hex-cluster-1"/>
+              <circle cx="610" cy="85" r="3" fill="#F77F00" class="hex-cluster-5"/>
+            </g>
+          </svg>
+        </div>
+        <p class="design-description">This design transforms the Turkel House's signature hexagonal modules into buoyant, balloon-like clusters that drift weightlessly across the canvas. The honeycomb geometry is softened with rounded corners and gentle gradients, while subtle highlights give each hexagon a glossy, inflated quality.</p>
+        <div class="design-meta">
+          <span class="meta-tag">Architecture</span>
+          <span class="meta-tag">Light Mode</span>
+          <span class="meta-tag">Animated</span>
+        </div>
+      </article>
+
+      <!-- DESIGN 04: Prairie Ascension -->
+      <article class="design-card">
+        <div class="card-header">
+          <div>
+            <span class="design-number">Design 04</span>
+            <h2 class="design-title">Prairie Ascension</h2>
+          </div>
+          <span class="design-category">Architecture</span>
+        </div>
+        <div class="svg-container">
+          <svg viewBox="0 0 640 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <style>
+                @keyframes float1 { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-8px) rotate(2deg); } }
+                @keyframes float2 { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-12px) rotate(-3deg); } }
+                @keyframes float3 { 0%, 100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-6px) rotate(1.5deg); } }
+                @keyframes sway4 { 0%, 100% { transform: rotate(-2deg); } 50% { transform: rotate(2deg); } }
+                @keyframes pulse4 { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+                .float-slow { animation: float1 4s ease-in-out infinite; }
+                .float-med { animation: float2 3.5s ease-in-out infinite; }
+                .float-fast { animation: float3 3s ease-in-out infinite; }
+                .sway4 { animation: sway4 5s ease-in-out infinite; }
+                .pulse4 { animation: pulse4 4s ease-in-out infinite; }
+              </style>
+              <g id="chevron-balloon">
+                <path d="M0 -20 L15 0 L0 10 L-15 0 Z" fill="currentColor"/>
+                <line x1="0" y1="10" x2="0" y2="25" stroke="currentColor" stroke-width="1" opacity="0.6"/>
+              </g>
+              <g id="diamond-balloon">
+                <path d="M0 -18 L12 0 L0 18 L-12 0 Z" fill="none" stroke="currentColor" stroke-width="2.5"/>
+                <path d="M0 -10 L6 0 L0 10 L-6 0 Z" fill="currentColor" opacity="0.4"/>
+                <line x1="0" y1="18" x2="0" y2="32" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+              </g>
+              <g id="interlock-balloon">
+                <rect x="-12" y="-15" width="16" height="22" fill="currentColor" opacity="0.7" rx="2"/>
+                <rect x="-4" y="-10" width="16" height="22" fill="none" stroke="currentColor" stroke-width="2" rx="2"/>
+                <line x1="4" y1="12" x2="4" y2="28" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+              </g>
+              <g id="wheat-balloon">
+                <circle cx="0" cy="0" r="8" fill="currentColor" opacity="0.3"/>
+                <line x1="0" y1="-8" x2="0" y2="-22" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <line x1="0" y1="-8" x2="-8" y2="-20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="0" y1="-8" x2="8" y2="-20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="0" y1="8" x2="0" y2="22" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+              </g>
+              <g id="circle-cutout">
+                <circle cx="0" cy="0" r="16" fill="currentColor" opacity="0.8"/>
+                <circle cx="0" cy="0" r="8" fill="#FFFEF5"/>
+                <line x1="0" y1="16" x2="0" y2="32" stroke="currentColor" stroke-width="1" opacity="0.5"/>
+              </g>
+            </defs>
+            <rect width="640" height="200" fill="#FFFEF5"/>
+            <g opacity="0.05">
+              <line x1="0" y1="100" x2="640" y2="100" stroke="#2A9D8F" stroke-width="1"/>
+              <line x1="160" y1="0" x2="160" y2="200" stroke="#2A9D8F" stroke-width="1"/>
+              <line x1="320" y1="0" x2="320" y2="200" stroke="#2A9D8F" stroke-width="1"/>
+              <line x1="480" y1="0" x2="480" y2="200" stroke="#2A9D8F" stroke-width="1"/>
+            </g>
+            <g class="float-slow"><g transform="translate(85, 70)" color="#E63946"><use href="#circle-cutout"/></g></g>
+            <g class="float-med" style="animation-delay: 0.5s;"><g transform="translate(55, 120)" color="#457B9D"><use href="#chevron-balloon"/></g></g>
+            <g class="float-fast" style="animation-delay: 1s;"><g transform="translate(120, 95)" color="#F4A261"><use href="#diamond-balloon" transform="scale(0.8)"/></g></g>
+            <g class="float-med sway4" style="animation-delay: 0.3s;"><g transform="translate(200, 55)" color="#9B5DE5"><use href="#wheat-balloon"/></g></g>
+            <g class="float-slow" style="animation-delay: 0.7s;"><g transform="translate(175, 130)" color="#2A9D8F"><use href="#interlock-balloon"/></g></g>
+            <g class="float-fast pulse4" style="animation-delay: 1.2s;"><g transform="translate(240, 110)" color="#F77F00"><use href="#chevron-balloon" transform="scale(1.2) rotate(15)"/></g></g>
+            <g class="float-slow" style="animation-delay: 0.2s;"><g transform="translate(320, 65)" color="#E63946"><use href="#circle-cutout" transform="scale(1.4)"/></g></g>
+            <g class="float-med" style="animation-delay: 0.8s;"><g transform="translate(290, 130)" color="#457B9D"><use href="#diamond-balloon" transform="scale(1.1)"/></g></g>
+            <g class="float-fast sway4" style="animation-delay: 0.4s;"><g transform="translate(355, 115)" color="#F4A261"><use href="#wheat-balloon" transform="scale(0.9)"/></g></g>
+            <g class="float-med" style="animation-delay: 0.6s;"><g transform="translate(430, 75)" color="#2A9D8F"><use href="#interlock-balloon" transform="scale(1.1)"/></g></g>
+            <g class="float-slow pulse4" style="animation-delay: 1.1s;"><g transform="translate(465, 135)" color="#9B5DE5"><use href="#chevron-balloon" transform="rotate(-10)"/></g></g>
+            <g class="float-slow sway4" style="animation-delay: 0.1s;"><g transform="translate(535, 60)" color="#F4A261"><use href="#circle-cutout" transform="scale(1.1)"/></g></g>
+            <g class="float-med" style="animation-delay: 0.5s;"><g transform="translate(565, 120)" color="#E63946"><use href="#wheat-balloon" transform="scale(0.85)"/></g></g>
+            <g class="float-fast" style="animation-delay: 1.3s;"><g transform="translate(595, 85)" color="#457B9D"><use href="#chevron-balloon" transform="scale(0.9) rotate(8)"/></g></g>
+            <g class="float-fast pulse4" style="animation-delay: 0.2s;"><g transform="translate(140, 35)" color="#9B5DE5" opacity="0.6"><use href="#diamond-balloon" transform="scale(0.5)"/></g></g>
+            <g class="float-med" style="animation-delay: 0.7s;"><g transform="translate(380, 30)" color="#2A9D8F" opacity="0.5"><use href="#chevron-balloon" transform="scale(0.6)"/></g></g>
+          </svg>
+        </div>
+        <p class="design-description">This design transforms Frank Lloyd Wright's distinctive geometric window cutouts into a buoyant celebration. Chevrons, diamonds, interlocking rectangles, wheat sheaf radiations, and circles with negative space cutouts float across the canvas at varying heights and speeds.</p>
+        <div class="design-meta">
+          <span class="meta-tag">Architecture</span>
+          <span class="meta-tag">Light Mode</span>
+          <span class="meta-tag">Animated</span>
+        </div>
+      </article>
+
+      <!-- DESIGN 05: Floating Garden -->
+      <article class="design-card">
+        <div class="card-header">
+          <div>
+            <span class="design-number">Design 05</span>
+            <h2 class="design-title">Floating Garden</h2>
+          </div>
+          <span class="design-category nature">Nature</span>
+        </div>
+        <div class="svg-container">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 200">
+            <defs>
+              <style>
+                @keyframes float5 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+                @keyframes sway5 { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
+                @keyframes pulse5 { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.05); opacity: 0.9; } }
+                @keyframes drift5 { 0%, 100% { transform: translateX(0) translateY(0); } 25% { transform: translateX(3px) translateY(-5px); } 75% { transform: translateX(-3px) translateY(-3px); } }
+                .flower-1 { animation: float5 4s ease-in-out infinite; }
+                .flower-2 { animation: float5 4.5s ease-in-out infinite 0.5s; }
+                .flower-3 { animation: float5 3.8s ease-in-out infinite 1s; }
+                .flower-4 { animation: float5 5s ease-in-out infinite 0.3s; }
+                .flower-5 { animation: float5 4.2s ease-in-out infinite 0.8s; }
+                .flower-6 { animation: drift5 6s ease-in-out infinite; }
+                .stem5 { transform-origin: top center; animation: sway5 3s ease-in-out infinite; }
+                .petal-pulse { animation: pulse5 2s ease-in-out infinite; transform-origin: center; }
+                .leaf-sway5 { animation: sway5 4s ease-in-out infinite; transform-origin: bottom center; }
+              </style>
+              <radialGradient id="poppyGrad" cx="30%" cy="30%" r="70%"><stop offset="0%" stop-color="#FF6B6B"/><stop offset="100%" stop-color="#E63946"/></radialGradient>
+              <radialGradient id="tulipGrad" cx="30%" cy="30%" r="70%"><stop offset="0%" stop-color="#FFB380"/><stop offset="100%" stop-color="#F77F00"/></radialGradient>
+              <radialGradient id="purpleGrad5" cx="30%" cy="30%" r="70%"><stop offset="0%" stop-color="#B88AE8"/><stop offset="100%" stop-color="#9B5DE5"/></radialGradient>
+              <radialGradient id="blueGrad5" cx="30%" cy="30%" r="70%"><stop offset="0%" stop-color="#6FA8C5"/><stop offset="100%" stop-color="#457B9D"/></radialGradient>
+              <radialGradient id="goldGrad5" cx="30%" cy="30%" r="70%"><stop offset="0%" stop-color="#FFCF8A"/><stop offset="100%" stop-color="#F4A261"/></radialGradient>
+              <radialGradient id="tealGrad5" cx="30%" cy="30%" r="70%"><stop offset="0%" stop-color="#5CBFB3"/><stop offset="100%" stop-color="#2A9D8F"/></radialGradient>
+            </defs>
+            <rect width="640" height="200" fill="#FFFEF5"/>
+            <g class="flower-1">
+              <path class="stem5" d="M120 200 Q115 160, 125 130 Q130 110, 120 85" stroke="#7CB07C" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <ellipse class="leaf-sway5" cx="128" cy="145" rx="8" ry="4" fill="#8FBC8F" transform="rotate(-30 128 145)"/>
+              <circle cx="120" cy="55" r="32" fill="url(#poppyGrad)"/>
+              <ellipse cx="108" cy="45" rx="8" ry="6" fill="white" opacity="0.4"/>
+              <circle cx="120" cy="85" r="4" fill="#4A7C4A"/>
+              <circle class="petal-pulse" cx="105" cy="50" r="12" fill="#E63946" opacity="0.6"/>
+              <circle class="petal-pulse" cx="135" cy="50" r="12" fill="#E63946" opacity="0.6"/>
+              <circle cx="120" cy="58" r="8" fill="#2D2D2D" opacity="0.7"/>
+            </g>
+            <g class="flower-2">
+              <path class="stem5" d="M230 200 Q240 150, 225 110 Q218 90, 230 65" stroke="#7CB07C" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              <ellipse cx="230" cy="42" r="22" ry="28" fill="url(#tulipGrad)"/>
+              <ellipse cx="220" cy="32" rx="6" ry="8" fill="white" opacity="0.35"/>
+              <circle cx="230" cy="68" r="3" fill="#4A7C4A"/>
+            </g>
+            <g class="flower-3">
+              <path class="stem5" d="M340 200 Q330 140, 345 100 Q355 70, 340 50" stroke="#7CB07C" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <circle cx="340" cy="28" r="26" fill="url(#purpleGrad5)"/>
+              <ellipse cx="328" cy="18" rx="7" ry="5" fill="white" opacity="0.4"/>
+              <circle cx="340" cy="52" r="4" fill="#4A7C4A"/>
+              <circle class="petal-pulse" cx="320" cy="28" r="10" fill="#9B5DE5" opacity="0.7"/>
+              <circle class="petal-pulse" cx="360" cy="28" r="10" fill="#9B5DE5" opacity="0.7"/>
+              <circle cx="340" cy="30" r="6" fill="#F4A261"/>
+            </g>
+            <g class="flower-6">
+              <path d="M420 195 Q425 170, 418 155" stroke="#7CB07C" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <ellipse cx="418" cy="145" rx="10" ry="14" fill="url(#tealGrad5)"/>
+            </g>
+            <g class="flower-4">
+              <path class="stem5" d="M490 200 Q500 150, 485 110 Q478 85, 490 60" stroke="#7CB07C" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              <circle cx="490" cy="38" r="24" fill="url(#blueGrad5)"/>
+              <ellipse cx="480" cy="28" rx="6" ry="5" fill="white" opacity="0.35"/>
+              <circle cx="490" cy="60" r="3" fill="#4A7C4A"/>
+              <circle cx="490" cy="40" r="5" fill="#F4A261"/>
+            </g>
+            <g class="flower-5">
+              <path class="stem5" d="M580 200 Q570 155, 585 115 Q592 90, 580 65" stroke="#7CB07C" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+              <circle cx="580" cy="42" r="25" fill="url(#goldGrad5)"/>
+              <ellipse cx="570" cy="32" rx="6" ry="5" fill="white" opacity="0.4"/>
+              <circle cx="580" cy="42" r="7" fill="#E63946"/>
+            </g>
+            <g class="flower-6">
+              <ellipse cx="65" cy="140" rx="6" ry="8" fill="#E63946" opacity="0.7"/>
+              <line x1="65" y1="148" x2="65" y2="165" stroke="#7CB07C" stroke-width="1.5" stroke-linecap="round"/>
+              <ellipse cx="175" cy="120" rx="5" ry="7" fill="#9B5DE5" opacity="0.6"/>
+              <circle cx="290" cy="95" r="4" fill="#457B9D" opacity="0.5"/>
+              <circle cx="380" cy="110" r="5" fill="#F4A261" opacity="0.6"/>
+              <circle cx="540" cy="100" r="4" fill="#2A9D8F" opacity="0.5"/>
+            </g>
+            <circle cx="150" cy="85" r="3" fill="#E63946" opacity="0.4"/>
+            <circle cx="310" cy="130" r="2.5" fill="#9B5DE5" opacity="0.35"/>
+            <circle cx="520" cy="75" r="3" fill="#F77F00" opacity="0.4"/>
+          </svg>
+        </div>
+        <p class="design-description">This design transforms celebratory balloons into a floating garden of whimsical flower heads. Each bloom maintains the round, buoyant quality of balloons with radial gradients creating highlight spots like balloon shine. The stems curve gracefully like balloon strings.</p>
+        <div class="design-meta">
+          <span class="meta-tag">Nature</span>
+          <span class="meta-tag">Light Mode</span>
+          <span class="meta-tag">Animated</span>
+        </div>
+      </article>
+
+      <!-- DESIGN 06: Celestial Drift -->
+      <article class="design-card">
+        <div class="card-header">
+          <div>
+            <span class="design-number">Design 06</span>
+            <h2 class="design-title">Celestial Drift</h2>
+          </div>
+          <span class="design-category nature">Nature</span>
+        </div>
+        <div class="svg-container">
+          <svg viewBox="0 0 640 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:0.4" />
+                <stop offset="100%" style="stop-color:#FFFEF5;stop-opacity:1" />
+              </linearGradient>
+              <radialGradient id="sunGlow6" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" style="stop-color:#F4A261;stop-opacity:1" />
+                <stop offset="60%" style="stop-color:#F77F00;stop-opacity:0.8" />
+                <stop offset="100%" style="stop-color:#F77F00;stop-opacity:0" />
+              </radialGradient>
+              <linearGradient id="balloonGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:#E63946" /><stop offset="50%" style="stop-color:#E63946" /><stop offset="50%" style="stop-color:#FFFEF5" /><stop offset="100%" style="stop-color:#FFFEF5" />
+              </linearGradient>
+              <linearGradient id="balloonGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:#9B5DE5" /><stop offset="33%" style="stop-color:#9B5DE5" /><stop offset="33%" style="stop-color:#F4A261" /><stop offset="66%" style="stop-color:#F4A261" /><stop offset="66%" style="stop-color:#2A9D8F" /><stop offset="100%" style="stop-color:#2A9D8F" />
+              </linearGradient>
+              <linearGradient id="balloonGrad3" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" style="stop-color:#457B9D" /><stop offset="100%" style="stop-color:#2A9D8F" />
+              </linearGradient>
+            </defs>
+            <style>
+              @keyframes cloudDrift1 { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(25px); } }
+              @keyframes cloudDrift2 { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-20px); } }
+              @keyframes sunPulse6 { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.08); opacity: 0.9; } }
+              @keyframes balloonFloat1 { 0%, 100% { transform: translate(0, 0) rotate(-2deg); } 25% { transform: translate(3px, -8px) rotate(0deg); } 50% { transform: translate(0, -5px) rotate(2deg); } 75% { transform: translate(-3px, -8px) rotate(0deg); } }
+              @keyframes balloonFloat2 { 0%, 100% { transform: translate(0, 0) rotate(1deg); } 33% { transform: translate(-4px, -10px) rotate(-1deg); } 66% { transform: translate(4px, -6px) rotate(2deg); } }
+              @keyframes birdGlide { 0%, 100% { transform: translateX(0) translateY(0); } 25% { transform: translateX(8px) translateY(-3px); } 50% { transform: translateX(15px) translateY(0); } 75% { transform: translateX(8px) translateY(2px); } }
+              .cloud1 { animation: cloudDrift1 12s ease-in-out infinite; }
+              .cloud2 { animation: cloudDrift2 15s ease-in-out infinite; }
+              .sun-core6 { animation: sunPulse6 4s ease-in-out infinite; transform-origin: 580px 45px; }
+              .balloon16 { animation: balloonFloat1 8s ease-in-out infinite; transform-origin: 120px 100px; }
+              .balloon26 { animation: balloonFloat2 10s ease-in-out infinite; transform-origin: 320px 80px; }
+              .balloon36 { animation: balloonFloat1 7s ease-in-out infinite; transform-origin: 480px 110px; }
+              .bird6 { animation: birdGlide 6s ease-in-out infinite; }
+            </style>
+            <rect width="640" height="200" fill="url(#skyGradient)" />
+            <g class="cloud2" opacity="0.4">
+              <ellipse cx="520" cy="160" rx="35" ry="12" fill="#FFFFFF" />
+              <ellipse cx="540" cy="155" rx="25" ry="10" fill="#FFFFFF" />
+            </g>
+            <g class="sun-core6">
+              <circle cx="580" cy="45" r="28" fill="url(#sunGlow6)" />
+              <circle cx="580" cy="45" r="18" fill="#F4A261" />
+            </g>
+            <g class="balloon16">
+              <ellipse cx="120" cy="75" rx="28" ry="35" fill="url(#balloonGrad1)" />
+              <ellipse cx="120" cy="75" rx="28" ry="35" fill="none" stroke="#1a1a1a" stroke-width="1.5" />
+              <path d="M108 108 L112 118 L128 118 L132 108" fill="none" stroke="#1a1a1a" stroke-width="1.5" />
+              <line x1="108" y1="108" x2="100" y2="80" stroke="#1a1a1a" stroke-width="1" />
+              <line x1="132" y1="108" x2="140" y2="80" stroke="#1a1a1a" stroke-width="1" />
+              <rect x="110" y="118" width="20" height="12" rx="2" fill="#457B9D" stroke="#1a1a1a" stroke-width="1" />
+            </g>
+            <g class="cloud1">
+              <ellipse cx="180" cy="50" rx="30" ry="18" fill="#FFFFFF" />
+              <ellipse cx="205" cy="45" rx="22" ry="15" fill="#FFFFFF" />
+              <ellipse cx="160" cy="48" rx="18" ry="12" fill="#FFFFFF" />
+            </g>
+            <g class="balloon26">
+              <ellipse cx="320" cy="55" rx="24" ry="32" fill="url(#balloonGrad2)" />
+              <ellipse cx="320" cy="55" rx="24" ry="32" fill="none" stroke="#1a1a1a" stroke-width="1.5" />
+              <path d="M310 85 L313 93 L327 93 L330 85" fill="none" stroke="#1a1a1a" stroke-width="1.5" />
+              <rect x="311" y="93" width="18" height="10" rx="2" fill="#E63946" stroke="#1a1a1a" stroke-width="1" />
+            </g>
+            <g class="cloud2">
+              <ellipse cx="400" cy="35" rx="25" ry="14" fill="#FFFFFF" />
+              <ellipse cx="420" cy="30" rx="18" ry="12" fill="#FFFFFF" />
+            </g>
+            <g class="bird6"><path d="M250 70 Q255 65 260 70 Q265 65 270 70" fill="none" stroke="#1a1a1a" stroke-width="1.5" stroke-linecap="round" /></g>
+            <g class="bird6" style="animation-delay: 2s;"><path d="M280 55 Q283 52 286 55 Q289 52 292 55" fill="none" stroke="#1a1a1a" stroke-width="1" stroke-linecap="round" opacity="0.6" /></g>
+            <g class="balloon36">
+              <ellipse cx="480" cy="90" rx="20" ry="26" fill="url(#balloonGrad3)" />
+              <ellipse cx="480" cy="90" rx="20" ry="26" fill="none" stroke="#1a1a1a" stroke-width="1.5" />
+              <path d="M472 114 L474 120 L486 120 L488 114" fill="none" stroke="#1a1a1a" stroke-width="1.5" />
+              <rect x="472" y="120" width="16" height="9" rx="2" fill="#F77F00" stroke="#1a1a1a" stroke-width="1" />
+            </g>
+            <g class="cloud1" style="animation-delay: 3s;">
+              <ellipse cx="80" cy="145" rx="40" ry="16" fill="#FFFFFF" />
+              <ellipse cx="110" cy="140" rx="28" ry="14" fill="#FFFFFF" />
+              <ellipse cx="55" cy="142" rx="22" ry="11" fill="#FFFFFF" />
+            </g>
+            <circle cx="150" cy="120" r="3" fill="#E63946" opacity="0.4"><animate attributeName="cy" values="120;115;120" dur="4s" repeatCount="indefinite" /></circle>
+            <circle cx="350" cy="140" r="2.5" fill="#9B5DE5" opacity="0.4"><animate attributeName="cy" values="140;133;140" dur="5s" repeatCount="indefinite" /></circle>
+            <circle cx="550" cy="130" r="2" fill="#2A9D8F" opacity="0.4"><animate attributeName="cy" values="130;125;130" dur="3.5s" repeatCount="indefinite" /></circle>
+          </svg>
+        </div>
+        <p class="design-description">A whimsical sky scene featuring three colorful hot air balloons floating among puffy, balloon-like clouds. The warm sun pulses gently in the corner while simple bird silhouettes glide through the open sky, creating a sense of joyful buoyancy and celebration.</p>
+        <div class="design-meta">
+          <span class="meta-tag">Nature</span>
+          <span class="meta-tag">Light Mode</span>
+          <span class="meta-tag">Animated</span>
+        </div>
+      </article>
+
+      <!-- DESIGN 07: Twilight Grove -->
+      <article class="design-card dark-mode">
+        <div class="card-header">
+          <div>
+            <span class="design-number">Design 07</span>
+            <h2 class="design-title">Twilight Grove of Floating Lanterns</h2>
+          </div>
+          <span class="design-category nature">Nature</span>
+        </div>
+        <div class="svg-container dark-bg">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 200">
+            <defs>
+              <style>
+                @keyframes sway7a { 0%, 100% { transform: rotate(-2deg); } 50% { transform: rotate(2deg); } }
+                @keyframes sway7b { 0%, 100% { transform: rotate(1.5deg); } 50% { transform: rotate(-1.5deg); } }
+                @keyframes twinkle7 { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+                @keyframes glow7 { 0%, 100% { opacity: 0.6; } 50% { opacity: 0.9; } }
+                .tree7-1 { transform-origin: 95px 180px; animation: sway7a 4s ease-in-out infinite; }
+                .tree7-2 { transform-origin: 200px 180px; animation: sway7b 5s ease-in-out infinite; }
+                .tree7-3 { transform-origin: 320px 180px; animation: sway7a 4.5s ease-in-out infinite 0.5s; }
+                .tree7-4 { transform-origin: 450px 180px; animation: sway7b 5.5s ease-in-out infinite; }
+                .tree7-5 { transform-origin: 560px 180px; animation: sway7b 4s ease-in-out infinite 1s; }
+                .star7 { animation: twinkle7 2s ease-in-out infinite; }
+                .canopy-glow7 { animation: glow7 3s ease-in-out infinite; }
+                .firefly7 { animation: twinkle7 1.5s ease-in-out infinite; }
+              </style>
+              <radialGradient id="coralGlow7" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#E63946" stop-opacity="0.8"/><stop offset="100%" stop-color="#E63946" stop-opacity="0.2"/></radialGradient>
+              <radialGradient id="tealGlow7" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#2A9D8F" stop-opacity="0.8"/><stop offset="100%" stop-color="#2A9D8F" stop-opacity="0.2"/></radialGradient>
+              <radialGradient id="purpleGlow7" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#9B5DE5" stop-opacity="0.8"/><stop offset="100%" stop-color="#9B5DE5" stop-opacity="0.2"/></radialGradient>
+              <radialGradient id="blueGlow7" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#457B9D" stop-opacity="0.8"/><stop offset="100%" stop-color="#457B9D" stop-opacity="0.2"/></radialGradient>
+              <radialGradient id="orangeGlow7" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#F77F00" stop-opacity="0.8"/><stop offset="100%" stop-color="#F77F00" stop-opacity="0.2"/></radialGradient>
+              <radialGradient id="moonGlow7" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#F4A261" stop-opacity="0.9"/><stop offset="60%" stop-color="#F4A261" stop-opacity="0.3"/><stop offset="100%" stop-color="#F4A261" stop-opacity="0"/></radialGradient>
+              <linearGradient id="nightSky7" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#0F0F23"/><stop offset="50%" stop-color="#1A1A2E"/><stop offset="100%" stop-color="#16213E"/></linearGradient>
+              <linearGradient id="hillGrad7" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#1E3A5F" stop-opacity="0.8"/><stop offset="100%" stop-color="#0D1B2A"/></linearGradient>
+            </defs>
+            <rect width="640" height="200" fill="url(#nightSky7)"/>
+            <circle class="star7" cx="50" cy="25" r="1" fill="#fff"/>
+            <circle class="star7" cx="120" cy="40" r="0.8" fill="#fff" style="animation-delay: 0.3s;"/>
+            <circle class="star7" cx="180" cy="15" r="1.2" fill="#fff" style="animation-delay: 0.7s;"/>
+            <circle class="star7" cx="380" cy="20" r="1" fill="#fff" style="animation-delay: 0.5s;"/>
+            <circle class="star7" cx="500" cy="28" r="1.1" fill="#fff" style="animation-delay: 1.4s;"/>
+            <circle class="star7" cx="550" cy="12" r="0.9" fill="#fff" style="animation-delay: 0.2s;"/>
+            <circle cx="580" cy="45" r="25" fill="url(#moonGlow7)"/>
+            <circle cx="580" cy="45" r="12" fill="#F4A261" opacity="0.9"/>
+            <path d="M0 160 Q80 130, 160 150 T320 140 T480 155 T640 135 L640 200 L0 200 Z" fill="url(#hillGrad7)" opacity="0.5"/>
+            <g class="tree7-1">
+              <path d="M95 180 Q93 150, 95 120 Q97 100, 95 85" stroke="#3D2B2F" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <circle class="canopy-glow7" cx="95" cy="65" r="35" fill="url(#coralGlow7)" style="animation-delay: 0.2s;"/>
+              <circle cx="80" cy="70" r="18" fill="#E63946" opacity="0.85"/>
+              <circle cx="105" cy="60" r="22" fill="#E63946" opacity="0.9"/>
+              <circle cx="90" cy="50" r="16" fill="#E63946" opacity="0.8"/>
+            </g>
+            <g class="tree7-2">
+              <path d="M200 180 Q198 140, 200 110 Q202 90, 200 70" stroke="#1D3D3A" stroke-width="4" fill="none" stroke-linecap="round"/>
+              <circle class="canopy-glow7" cx="200" cy="50" r="40" fill="url(#tealGlow7)" style="animation-delay: 0.8s;"/>
+              <circle cx="185" cy="55" r="20" fill="#2A9D8F" opacity="0.9"/>
+              <circle cx="215" cy="45" r="25" fill="#2A9D8F" opacity="0.85"/>
+              <circle cx="195" cy="35" r="18" fill="#2A9D8F" opacity="0.8"/>
+            </g>
+            <g class="tree7-3">
+              <path d="M320 180 Q318 130, 320 80 Q322 50, 320 35" stroke="#2E1F4A" stroke-width="5" fill="none" stroke-linecap="round"/>
+              <circle class="canopy-glow7" cx="320" cy="25" r="50" fill="url(#purpleGlow7)" style="animation-delay: 0.5s;"/>
+              <circle cx="300" cy="40" r="22" fill="#9B5DE5" opacity="0.9"/>
+              <circle cx="340" cy="30" r="28" fill="#9B5DE5" opacity="0.85"/>
+              <circle cx="315" cy="15" r="20" fill="#9B5DE5" opacity="0.8"/>
+            </g>
+            <g class="tree7-4">
+              <path d="M450 180 Q448 145, 450 115 Q452 95, 450 80" stroke="#1E3A52" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+              <circle class="canopy-glow7" cx="450" cy="60" r="38" fill="url(#blueGlow7)" style="animation-delay: 1.1s;"/>
+              <circle cx="435" cy="65" r="20" fill="#457B9D" opacity="0.9"/>
+              <circle cx="465" cy="55" r="24" fill="#457B9D" opacity="0.85"/>
+              <circle cx="445" cy="42" r="18" fill="#457B9D" opacity="0.8"/>
+            </g>
+            <g class="tree7-5">
+              <path d="M560 180 Q558 155, 560 130 Q562 115, 560 100" stroke="#4A3520" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <circle class="canopy-glow7" cx="560" cy="80" r="32" fill="url(#orangeGlow7)" style="animation-delay: 0.4s;"/>
+              <circle cx="548" cy="85" r="16" fill="#F77F00" opacity="0.9"/>
+              <circle cx="572" cy="75" r="20" fill="#F4A261" opacity="0.85"/>
+              <circle cx="555" cy="65" r="14" fill="#F77F00" opacity="0.8"/>
+            </g>
+            <circle class="firefly7" cx="130" cy="110" r="2" fill="#F4A261" style="animation-delay: 0.1s;"/>
+            <circle class="firefly7" cx="240" cy="90" r="1.5" fill="#F4A261" style="animation-delay: 0.6s;"/>
+            <circle class="firefly7" cx="370" cy="85" r="2" fill="#F4A261" style="animation-delay: 0.3s;"/>
+            <circle class="firefly7" cx="490" cy="95" r="1.8" fill="#F4A261" style="animation-delay: 1.3s;"/>
+            <path d="M0 185 Q20 180, 40 185 T80 183 T120 186 T160 182 T640 183 L640 200 L0 200 Z" fill="#0D1B2A"/>
+          </svg>
+        </div>
+        <p class="design-description">A magical twilight forest where balloon-like tree canopies glow against a deep night sky. Each tree features clustered circular canopies in celebration colors that appear to float and hover, connected by slender trunk-strings. Fireflies drift between the swaying trees while a warm golden moon illuminates the scene.</p>
+        <div class="design-meta">
+          <span class="meta-tag">Nature</span>
+          <span class="meta-tag">Dark Mode</span>
+          <span class="meta-tag">Animated</span>
+        </div>
+      </article>
+
+      <!-- DESIGN 08: Luminous Drift -->
+      <article class="design-card dark-mode">
+        <div class="card-header">
+          <div>
+            <span class="design-number">Design 08</span>
+            <h2 class="design-title">Luminous Drift</h2>
+          </div>
+          <span class="design-category nature">Nature</span>
+        </div>
+        <div class="svg-container dark-bg">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 200">
+            <defs>
+              <radialGradient id="deepOcean8" cx="50%" cy="0%" r="100%"><stop offset="0%" stop-color="#1A1A2E"/><stop offset="100%" stop-color="#0D0D1A"/></radialGradient>
+              <radialGradient id="jellyGlow1-8" cx="50%" cy="30%" r="70%"><stop offset="0%" stop-color="#9B5DE5" stop-opacity="0.9"/><stop offset="60%" stop-color="#9B5DE5" stop-opacity="0.4"/><stop offset="100%" stop-color="#9B5DE5" stop-opacity="0"/></radialGradient>
+              <radialGradient id="jellyGlow2-8" cx="50%" cy="30%" r="70%"><stop offset="0%" stop-color="#2A9D8F" stop-opacity="0.9"/><stop offset="60%" stop-color="#2A9D8F" stop-opacity="0.4"/><stop offset="100%" stop-color="#2A9D8F" stop-opacity="0"/></radialGradient>
+              <radialGradient id="jellyGlow3-8" cx="50%" cy="30%" r="70%"><stop offset="0%" stop-color="#F4A261" stop-opacity="0.85"/><stop offset="60%" stop-color="#F4A261" stop-opacity="0.35"/><stop offset="100%" stop-color="#F4A261" stop-opacity="0"/></radialGradient>
+              <radialGradient id="jellyGlow4-8" cx="50%" cy="30%" r="70%"><stop offset="0%" stop-color="#E63946" stop-opacity="0.8"/><stop offset="60%" stop-color="#E63946" stop-opacity="0.3"/><stop offset="100%" stop-color="#E63946" stop-opacity="0"/></radialGradient>
+              <filter id="strongGlow8" x="-100%" y="-100%" width="300%" height="300%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+              <filter id="softGlow8" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+            <style>
+              @keyframes float8a { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(5px, -8px); } }
+              @keyframes float8b { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-4px, -10px); } }
+              @keyframes float8c { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(6px, -6px); } }
+              @keyframes pulse8a { 0%, 100% { opacity: 0.7; } 50% { opacity: 1; } }
+              @keyframes pulse8b { 0%, 100% { opacity: 0.6; } 50% { opacity: 0.95; } }
+              @keyframes tentacleWave8 { 0%, 100% { transform: skewX(0deg); } 25% { transform: skewX(3deg); } 75% { transform: skewX(-3deg); } }
+              @keyframes sparkle8 { 0%, 100% { opacity: 0.3; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1.2); } }
+              .jelly8-1 { animation: float8a 6s ease-in-out infinite, pulse8a 4s ease-in-out infinite; }
+              .jelly8-2 { animation: float8b 7s ease-in-out infinite 0.5s, pulse8b 5s ease-in-out infinite 1s; }
+              .jelly8-3 { animation: float8c 5.5s ease-in-out infinite 1s, pulse8a 4.5s ease-in-out infinite 0.5s; }
+              .jelly8-4 { animation: float8a 6.5s ease-in-out infinite 1.5s, pulse8b 5.5s ease-in-out infinite; }
+              .tentacles8 { animation: tentacleWave8 3s ease-in-out infinite; transform-origin: top center; }
+              .sparkle8 { animation: sparkle8 2s ease-in-out infinite; }
+            </style>
+            <rect width="640" height="200" fill="url(#deepOcean8)"/>
+            <g fill="#457B9D" opacity="0.4">
+              <circle class="sparkle8" cx="80" cy="40" r="1" style="animation-delay: 0.2s;"/>
+              <circle class="sparkle8" cx="180" cy="60" r="0.8" style="animation-delay: 0.8s;"/>
+              <circle class="sparkle8" cx="320" cy="35" r="1" style="animation-delay: 1.4s;"/>
+              <circle class="sparkle8" cx="480" cy="55" r="0.8" style="animation-delay: 0.5s;"/>
+              <circle class="sparkle8" cx="560" cy="45" r="1" style="animation-delay: 1.1s;"/>
+            </g>
+            <g class="jelly8-1" filter="url(#strongGlow8)">
+              <ellipse cx="140" cy="75" rx="45" ry="35" fill="url(#jellyGlow1-8)"/>
+              <ellipse cx="140" cy="80" rx="35" ry="25" fill="#9B5DE5" opacity="0.3"/>
+              <ellipse cx="140" cy="75" rx="20" ry="15" fill="#9B5DE5" opacity="0.5"/>
+              <circle cx="140" cy="70" r="8" fill="#fff" opacity="0.4"/>
+              <g class="tentacles8" opacity="0.7">
+                <path d="M115 105 Q110 130 115 160 Q118 175 112 190" stroke="#9B5DE5" stroke-width="2" fill="none" opacity="0.6"/>
+                <path d="M130 108 Q125 135 130 165 Q133 180 128 200" stroke="#9B5DE5" stroke-width="2.5" fill="none" opacity="0.7"/>
+                <path d="M145 110 Q150 140 145 170 Q142 185 148 200" stroke="#9B5DE5" stroke-width="2" fill="none" opacity="0.6"/>
+                <path d="M160 105 Q165 130 160 160 Q157 175 163 190" stroke="#9B5DE5" stroke-width="1.5" fill="none" opacity="0.5"/>
+              </g>
+            </g>
+            <g class="jelly8-2" filter="url(#strongGlow8)">
+              <ellipse cx="420" cy="55" rx="38" ry="30" fill="url(#jellyGlow2-8)"/>
+              <ellipse cx="420" cy="58" rx="28" ry="20" fill="#2A9D8F" opacity="0.3"/>
+              <ellipse cx="420" cy="55" rx="15" ry="12" fill="#2A9D8F" opacity="0.5"/>
+              <circle cx="420" cy="50" r="6" fill="#fff" opacity="0.4"/>
+              <g class="tentacles8" opacity="0.7" style="animation-delay: 0.5s;">
+                <path d="M400 82 Q395 105 400 130 Q403 145 398 165" stroke="#2A9D8F" stroke-width="1.5" fill="none" opacity="0.6"/>
+                <path d="M415 85 Q410 110 415 140 Q418 155 413 180" stroke="#2A9D8F" stroke-width="2" fill="none" opacity="0.7"/>
+                <path d="M430 85 Q435 115 430 145 Q427 160 432 185" stroke="#2A9D8F" stroke-width="1.5" fill="none" opacity="0.6"/>
+              </g>
+            </g>
+            <g class="jelly8-3" filter="url(#strongGlow8)">
+              <ellipse cx="560" cy="90" rx="28" ry="22" fill="url(#jellyGlow3-8)"/>
+              <ellipse cx="560" cy="92" rx="20" ry="15" fill="#F4A261" opacity="0.3"/>
+              <ellipse cx="560" cy="90" rx="10" ry="8" fill="#F4A261" opacity="0.5"/>
+              <circle cx="560" cy="86" r="4" fill="#fff" opacity="0.45"/>
+              <g class="tentacles8" opacity="0.65" style="animation-delay: 1s;">
+                <path d="M545 110 Q542 128 545 148 Q547 158 543 175" stroke="#F4A261" stroke-width="1.5" fill="none" opacity="0.6"/>
+                <path d="M558 112 Q555 132 558 155 Q560 165 556 185" stroke="#F4A261" stroke-width="1.8" fill="none" opacity="0.7"/>
+                <path d="M572 110 Q575 130 572 150 Q570 162 574 180" stroke="#F4A261" stroke-width="1.2" fill="none" opacity="0.55"/>
+              </g>
+            </g>
+            <g class="jelly8-4" filter="url(#softGlow8)" opacity="0.7">
+              <ellipse cx="280" cy="120" rx="20" ry="16" fill="url(#jellyGlow4-8)"/>
+              <ellipse cx="280" cy="122" rx="14" ry="10" fill="#E63946" opacity="0.3"/>
+              <circle cx="280" cy="117" r="3" fill="#fff" opacity="0.35"/>
+              <g class="tentacles8" opacity="0.55" style="animation-delay: 1.5s;">
+                <path d="M268 134 Q266 148 268 162 Q270 172 267 185" stroke="#E63946" stroke-width="1" fill="none" opacity="0.5"/>
+                <path d="M280 136 Q278 152 280 168 Q282 178 279 195" stroke="#E63946" stroke-width="1.3" fill="none" opacity="0.6"/>
+                <path d="M290 134 Q292 150 290 165 Q288 175 291 190" stroke="#E63946" stroke-width="1" fill="none" opacity="0.5"/>
+              </g>
+            </g>
+            <g class="jelly8-2" filter="url(#softGlow8)" opacity="0.4">
+              <ellipse cx="45" cy="130" rx="12" ry="9" fill="url(#jellyGlow2-8)"/>
+              <path d="M40 138 Q38 150 40 162" stroke="#2A9D8F" stroke-width="0.8" fill="none" opacity="0.4"/>
+              <path d="M48 138 Q50 152 48 165" stroke="#2A9D8F" stroke-width="0.8" fill="none" opacity="0.4"/>
+            </g>
+          </svg>
+        </div>
+        <p class="design-description">A serene deep-sea scene featuring bioluminescent jellyfish drifting through dark ocean waters. Jellyfish perfectly embody the celebration aesthetic - their dome shapes mirror balloons, their natural floating movement creates buoyant energy, and their bioluminescence translates beautifully to the glowing color palette.</p>
+        <div class="design-meta">
+          <span class="meta-tag">Nature</span>
+          <span class="meta-tag">Dark Mode</span>
+          <span class="meta-tag">Animated</span>
+        </div>
+      </article>
+
+      <!-- DESIGN 09: Ascending Joy -->
+      <article class="design-card colorful-mode">
+        <div class="card-header">
+          <div>
+            <span class="design-number">Design 09</span>
+            <h2 class="design-title">Ascending Joy</h2>
+          </div>
+          <span class="design-category abstract">Abstract</span>
+        </div>
+        <div class="svg-container colorful-bg">
+          <svg viewBox="0 0 640 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="bgGradient9" x1="0%" y1="100%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#FFE8CC;stop-opacity:1" />
+                <stop offset="50%" style="stop-color:#FFD6E6;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#D6E6FF;stop-opacity:1" />
+              </linearGradient>
+              <radialGradient id="softGlow9" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:0.3" />
+                <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:0" />
+              </radialGradient>
+            </defs>
+            <style>
+              @keyframes float9a { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-8px); } }
+              @keyframes float9b { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-12px); } }
+              @keyframes float9c { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-6px); } }
+              @keyframes gentleRotate9 { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(8deg); } }
+              @keyframes pulse9 { 0%, 100% { opacity: 0.7; } 50% { opacity: 0.9; } }
+              @keyframes drift9 { 0%, 100% { transform: translateX(0px) translateY(0px); } 25% { transform: translateX(4px) translateY(-5px); } 50% { transform: translateX(0px) translateY(-8px); } 75% { transform: translateX(-4px) translateY(-5px); } }
+              .cluster9-1 { animation: float9a 4s ease-in-out infinite; }
+              .cluster9-2 { animation: float9b 5s ease-in-out infinite 0.5s; }
+              .cluster9-3 { animation: float9c 3.5s ease-in-out infinite 1s; }
+              .cluster9-4 { animation: drift9 6s ease-in-out infinite 0.3s; }
+              .cluster9-5 { animation: float9a 4.5s ease-in-out infinite 0.8s; }
+              .rotate-group9 { animation: gentleRotate9 8s ease-in-out infinite; transform-origin: center; }
+              .pulse-shape9 { animation: pulse9 3s ease-in-out infinite; }
+            </style>
+            <rect width="640" height="200" fill="url(#bgGradient9)" />
+            <ellipse cx="320" cy="100" rx="300" ry="120" fill="url(#softGlow9)" />
+            <g class="cluster9-1">
+              <circle cx="85" cy="95" r="32" fill="#E63946" opacity="0.85" />
+              <circle cx="110" cy="120" r="18" fill="#2A9D8F" opacity="0.8" />
+              <circle cx="55" cy="115" r="12" fill="#F4A261" opacity="0.75" />
+            </g>
+            <g class="cluster9-2">
+              <circle cx="160" cy="45" r="14" fill="#9B5DE5" opacity="0.8" />
+              <circle cx="180" cy="65" r="8" fill="#457B9D" opacity="0.7" />
+              <circle cx="145" cy="70" r="6" fill="#F77F00" opacity="0.75" />
+            </g>
+            <g class="cluster9-3">
+              <circle cx="230" cy="130" r="25" fill="#457B9D" opacity="0.8" />
+              <circle cx="255" cy="110" r="20" fill="#F4A261" opacity="0.75" />
+              <circle cx="215" cy="105" r="10" fill="#E63946" opacity="0.7" />
+            </g>
+            <g class="rotate-group9" style="transform-origin: 320px 100px;">
+              <g class="cluster9-4">
+                <circle cx="320" cy="85" r="28" fill="#9B5DE5" opacity="0.85" />
+                <circle cx="350" cy="105" r="22" fill="#2A9D8F" opacity="0.8" />
+                <circle cx="295" cy="115" r="16" fill="#F77F00" opacity="0.75" />
+                <circle cx="330" cy="130" r="10" fill="#E63946" opacity="0.7" />
+              </g>
+            </g>
+            <g class="cluster9-5">
+              <circle cx="430" cy="75" r="24" fill="#F4A261" opacity="0.85" />
+              <circle cx="455" cy="100" r="18" fill="#457B9D" opacity="0.8" />
+              <circle cx="415" cy="110" r="12" fill="#9B5DE5" opacity="0.75" />
+            </g>
+            <g class="cluster9-2">
+              <circle cx="530" cy="90" r="30" fill="#2A9D8F" opacity="0.85" />
+              <circle cx="560" cy="115" r="20" fill="#E63946" opacity="0.8" />
+              <circle cx="510" cy="120" r="14" fill="#F77F00" opacity="0.75" />
+            </g>
+            <g class="cluster9-3">
+              <circle cx="590" cy="55" r="10" fill="#457B9D" opacity="0.7" />
+              <circle cx="605" cy="75" r="6" fill="#F4A261" opacity="0.65" />
+            </g>
+            <g class="cluster9-1">
+              <circle cx="480" cy="160" r="8" fill="#9B5DE5" opacity="0.6" />
+              <circle cx="380" cy="165" r="6" fill="#2A9D8F" opacity="0.55" />
+            </g>
+            <g class="pulse-shape9">
+              <circle cx="270" cy="50" r="5" fill="#E63946" opacity="0.6" />
+              <circle cx="400" cy="40" r="4" fill="#F77F00" opacity="0.55" />
+              <circle cx="180" cy="150" r="5" fill="#457B9D" opacity="0.5" />
+              <circle cx="550" cy="150" r="4" fill="#F4A261" opacity="0.55" />
+            </g>
+            <circle cx="130" cy="160" r="3" fill="#9B5DE5" opacity="0.5" />
+            <circle cx="620" cy="130" r="3" fill="#2A9D8F" opacity="0.45" />
+            <circle cx="50" cy="55" r="3" fill="#F77F00" opacity="0.5" />
+            <circle cx="495" cy="45" r="3" fill="#E63946" opacity="0.45" />
+          </svg>
+        </div>
+        <p class="design-description">Pure circular forms cluster and float across a warm-to-cool gradient sky, creating rhythmic visual music. Overlapping translucent circles in all celebration colors drift with gentle animations, their varying scales and opacities suggesting depth and buoyant movement.</p>
+        <div class="design-meta">
+          <span class="meta-tag">Abstract</span>
+          <span class="meta-tag">Colorful</span>
+          <span class="meta-tag">Animated</span>
+        </div>
+      </article>
+
+      <!-- DESIGN 10: Syncopated Celebration -->
+      <article class="design-card">
+        <div class="card-header">
+          <div>
+            <span class="design-number">Design 10</span>
+            <h2 class="design-title">Syncopated Celebration</h2>
+          </div>
+          <span class="design-category abstract">Abstract</span>
+        </div>
+        <div class="svg-container">
+          <svg viewBox="0 0 640 200" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <style>
+                @keyframes pulse10a { 0%, 100% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.3); opacity: 1; } }
+                @keyframes pulse10b { 0%, 100% { transform: scale(1); opacity: 0.7; } 50% { transform: scale(1.2); opacity: 1; } }
+                @keyframes pulse10c { 0%, 100% { transform: scale(1.1); opacity: 1; } 50% { transform: scale(0.9); opacity: 0.6; } }
+                @keyframes wave10a { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+                @keyframes wave10b { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+                @keyframes float10 { 0%, 100% { transform: translateY(0) rotate(0deg); } 25% { transform: translateY(-5px) rotate(2deg); } 75% { transform: translateY(3px) rotate(-2deg); } }
+                @keyframes ripple10 { 0% { r: 8; opacity: 0.9; } 100% { r: 25; opacity: 0; } }
+                @keyframes flowLine10 { 0%, 100% { stroke-dashoffset: 0; } 50% { stroke-dashoffset: 20; } }
+                @keyframes beat10 { 0%, 20%, 100% { transform: scale(1); } 10% { transform: scale(1.15); } }
+                .note-dot10 { transform-origin: center; }
+                .note10-1 { animation: pulse10a 1.2s ease-in-out infinite; }
+                .note10-2 { animation: pulse10b 1.5s ease-in-out infinite 0.2s; }
+                .note10-3 { animation: pulse10c 1.8s ease-in-out infinite 0.4s; }
+                .wave-group10-1 { animation: wave10a 2s ease-in-out infinite; }
+                .wave-group10-2 { animation: wave10b 2.5s ease-in-out infinite 0.3s; }
+                .wave-group10-3 { animation: wave10a 1.8s ease-in-out infinite 0.6s; }
+                .float-element10 { animation: float10 3s ease-in-out infinite; }
+                .ripple-ring10 { animation: ripple10 2s ease-out infinite; transform-origin: center; }
+                .ripple-ring10-2 { animation: ripple10 2s ease-out infinite 0.5s; transform-origin: center; }
+                .ripple-ring10-3 { animation: ripple10 2s ease-out infinite 1s; transform-origin: center; }
+                .flow-line10 { stroke-dasharray: 10 5; animation: flowLine10 3s linear infinite; }
+                .beat-element10 { animation: beat10 0.8s ease-in-out infinite; transform-origin: center; }
+              </style>
+              <linearGradient id="waveGrad10a" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#E63946" stop-opacity="0.6"/>
+                <stop offset="50%" stop-color="#F77F00" stop-opacity="0.8"/>
+                <stop offset="100%" stop-color="#F4A261" stop-opacity="0.6"/>
+              </linearGradient>
+              <linearGradient id="waveGrad10b" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#457B9D" stop-opacity="0.5"/>
+                <stop offset="50%" stop-color="#2A9D8F" stop-opacity="0.7"/>
+                <stop offset="100%" stop-color="#9B5DE5" stop-opacity="0.5"/>
+              </linearGradient>
+            </defs>
+            <rect width="640" height="200" fill="#FFFEF5"/>
+            <g class="wave-group10-1">
+              <path d="M0 120 Q40 100, 80 120 T160 120 T240 120 T320 120 T400 120 T480 120 T560 120 T640 120" fill="none" stroke="url(#waveGrad10b)" stroke-width="3" stroke-linecap="round" opacity="0.4"/>
+            </g>
+            <g class="wave-group10-2">
+              <path d="M0 100 Q50 75, 100 100 T200 100 T300 100 T400 100 T500 100 T600 100" fill="none" stroke="url(#waveGrad10a)" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+            </g>
+            <g transform="translate(320, 100)">
+              <circle class="ripple-ring10" cx="0" cy="0" r="8" fill="none" stroke="#E63946" stroke-width="2"/>
+              <circle class="ripple-ring10-2" cx="0" cy="0" r="8" fill="none" stroke="#F77F00" stroke-width="2"/>
+              <circle class="ripple-ring10-3" cx="0" cy="0" r="8" fill="none" stroke="#F4A261" stroke-width="1.5"/>
+              <circle class="beat-element10" cx="0" cy="0" r="12" fill="#E63946" opacity="0.9"/>
+            </g>
+            <g class="float-element10" transform="translate(80, 70)">
+              <circle class="note-dot10 note10-1" cx="0" cy="0" r="8" fill="#457B9D"/>
+              <circle class="note-dot10 note10-2" cx="25" cy="15" r="5" fill="#2A9D8F"/>
+              <circle class="note-dot10 note10-3" cx="12" cy="35" r="6" fill="#9B5DE5" opacity="0.8"/>
+            </g>
+            <g transform="translate(520, 60)">
+              <circle class="note-dot10 note10-1" cx="0" cy="0" r="6" fill="#F77F00"/>
+              <circle class="note-dot10 note10-2" cx="18" cy="8" r="4" fill="#E63946"/>
+              <circle class="note-dot10 note10-3" cx="10" cy="25" r="5" fill="#F4A261"/>
+              <circle class="note-dot10 note10-1" cx="30" cy="18" r="3" fill="#9B5DE5" style="animation-delay: 0.3s;"/>
+              <circle class="note-dot10 note10-2" cx="40" cy="5" r="4" fill="#2A9D8F" style="animation-delay: 0.5s;"/>
+            </g>
+            <g class="wave-group10-3">
+              <path d="M150 140 Q180 110, 210 140 Q240 170, 270 140" fill="none" stroke="#2A9D8F" stroke-width="3" stroke-linecap="round" class="flow-line10"/>
+            </g>
+            <g class="wave-group10-1" style="animation-delay: 0.8s;">
+              <path d="M400 150 Q430 120, 460 150 Q490 180, 520 150" fill="none" stroke="#9B5DE5" stroke-width="2.5" stroke-linecap="round" class="flow-line10"/>
+            </g>
+            <g class="float-element10" style="animation-delay: 0.2s;">
+              <circle cx="45" cy="45" r="3" fill="#F4A261" class="note-dot10 note10-2"/>
+              <circle cx="595" cy="155" r="3" fill="#457B9D" class="note-dot10 note10-1"/>
+            </g>
+            <g class="float-element10" style="animation-delay: 0.7s;">
+              <circle cx="180" cy="165" r="2.5" fill="#E63946" class="note-dot10 note10-3"/>
+              <circle cx="460" cy="45" r="2.5" fill="#2A9D8F" class="note-dot10 note10-2"/>
+            </g>
+            <path d="M0 160 Q160 140, 320 160 Q480 180, 640 160" fill="none" stroke="#457B9D" stroke-width="1.5" stroke-linecap="round" opacity="0.35"/>
+            <path d="M0 40 Q160 60, 320 40 Q480 20, 640 40" fill="none" stroke="#F4A261" stroke-width="1.5" stroke-linecap="round" opacity="0.3"/>
+            <g transform="translate(220, 85)">
+              <circle class="beat-element10" cx="0" cy="0" r="7" fill="#F77F00" opacity="0.85" style="animation-delay: 0.4s;"/>
+            </g>
+            <g transform="translate(420, 115)">
+              <circle class="beat-element10" cx="0" cy="0" r="9" fill="#457B9D" opacity="0.8" style="animation-delay: 0.2s;"/>
+            </g>
+            <circle cx="100" cy="130" r="2" fill="#9B5DE5" opacity="0.4" class="note-dot10 note10-3"/>
+            <circle cx="540" cy="90" r="2" fill="#E63946" opacity="0.4" class="note-dot10 note10-1"/>
+            <circle cx="280" cy="50" r="1.5" fill="#2A9D8F" opacity="0.5" class="note-dot10 note10-2"/>
+            <circle cx="380" cy="170" r="1.5" fill="#F77F00" opacity="0.5" class="note-dot10 note10-3"/>
+          </svg>
+        </div>
+        <p class="design-description">This abstract composition visualizes celebratory music through layered rhythmic elements - pulsing circles radiate like a heartbeat from the center, while flowing wave forms undulate like sound frequencies. Scattered dot clusters represent musical notes dancing at different tempos, with generous negative space serving as musical rests.</p>
+        <div class="design-meta">
+          <span class="meta-tag">Abstract</span>
+          <span class="meta-tag">Light Mode</span>
+          <span class="meta-tag">Animated</span>
+        </div>
+      </article>
+
+    </main>
+
+    <footer>
+      <p>Generated via 10-Agent Parallel Exploration</p>
+      <p style="margin-top: 8px; font-size: 0.8rem; color: #AAA;">Canvas: 640x200 | All Animated | Palette + Harmonics</p>
+    </footer>
+  </div>
+</body>
+</html>

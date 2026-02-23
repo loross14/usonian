@@ -25,6 +25,8 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   images: {
+    // Logos/icons use unoptimized={true} for maximum crispness
+    // Quality is set per-component via quality prop
     remotePatterns: [
       { protocol: "https", hostname: "www.dwell.com" },
       { protocol: "https", hostname: "www.laconservancy.org" },

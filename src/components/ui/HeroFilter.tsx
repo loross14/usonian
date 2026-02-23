@@ -1,10 +1,14 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useRef, useEffect, useState, useCallback } from "react";
 import { ViewToggle } from "./ViewToggle";
 import { type ExperienceFilter } from "@/types";
 
-interface HeroFilterProps {
+// =============================================================================
+// TYPES
+// =============================================================================
+
+export interface HeroFilterProps {
   // Experience filter
   currentStatus: ExperienceFilter;
   onStatusChange: (status: ExperienceFilter) => void;
@@ -24,7 +28,31 @@ interface HeroFilterProps {
   onStateChange: (state: string | null) => void;
 }
 
-const EXPERIENCE_TABS: Array<{ value: ExperienceFilter; label: string; shortLabel: string }> = [
+interface ExperienceTab {
+  value: ExperienceFilter;
+  label: string;
+  shortLabel: string;
+}
+
+interface DropdownOption {
+  value: string;
+  label: string;
+}
+
+interface CompactDropdownProps {
+  icon: "architect" | "location";
+  label: string;
+  value: string | null;
+  options: DropdownOption[];
+  onChange: (value: string | null) => void;
+  id: string;
+}
+
+// =============================================================================
+// CONSTANTS
+// =============================================================================
+
+const EXPERIENCE_TABS: ExperienceTab[] = [
   { value: "all", label: "ALL", shortLabel: "ALL" },
   { value: "sale", label: "BUY", shortLabel: "BUY" },
   { value: "visit", label: "VISIT", shortLabel: "VISIT" },
@@ -32,146 +60,54 @@ const EXPERIENCE_TABS: Array<{ value: ExperienceFilter; label: string; shortLabe
   { value: "offmarket", label: "OFF-MARKET", shortLabel: "OFF" },
 ];
 
-export function HeroFilter({
-  currentStatus,
-  onStatusChange,
-  view,
-  onViewChange,
-  currentArchitect,
-  architectOptions,
-  onArchitectChange,
-  currentState,
-  stateOptions,
-  onStateChange,
-}: HeroFilterProps) {
-  const [isExpanded] = useState(true);
-  const containerRef = useRef<HTMLDivElement>(null);
+const MAX_DISPLAY_LENGTH = 14;
 
-  return (
-    <div
-      ref={containerRef}
-      className={`hero-filter ${isExpanded ? "hero-filter--expanded" : ""}`}
-    >
-      {/* Row 1: Status Tabs + View Toggle */}
-      <div className="hero-filter-row">
-        <div className="hero-filter-tabs">
-          {EXPERIENCE_TABS.map((tab) => (
-            <button
-              key={tab.value}
-              onClick={() => onStatusChange(tab.value)}
-              className={`hero-filter-tab ${currentStatus === tab.value ? "active" : ""}`}
-              aria-pressed={currentStatus === tab.value}
-            >
-              <span className="hero-filter-tab-label">
-                {tab.shortLabel}
-              </span>
-            </button>
-          ))}
-        </div>
-        <ViewToggle view={view} onChange={onViewChange} className="hero-filter-view" />
-      </div>
+// =============================================================================
+// UTILITIES
+// =============================================================================
 
-      {/* Row 2: Dropdowns */}
-      <div className="hero-filter-row">
-        <CompactDropdown
-          icon="architect"
-          label="ARCHITECT"
-          value={currentArchitect}
-          options={architectOptions.map((a) => ({ value: a.id, label: a.name }))}
-          onChange={onArchitectChange}
-        />
-        <CompactDropdown
-          icon="location"
-          label="STATE"
-          value={currentState}
-          options={stateOptions.map((s) => ({ value: s, label: s }))}
-          onChange={onStateChange}
-        />
-      </div>
-    </div>
-  );
+/**
+ * Formats an architect name to abbreviated form.
+ * "Frank Lloyd Wright" -> "F. Wright"
+ * "Le Corbusier" -> "L. Corbusier"
+ * "Wright" -> "Wright" (single word unchanged)
+ */
+export function formatArchitectName(fullName: string): string {
+  const trimmed = fullName.trim();
+  if (!trimmed) return "";
+
+  const words = trimmed.split(/\s+/);
+  if (words.length === 1) {
+    return words[0];
+  }
+
+  const firstInitial = words[0].charAt(0).toUpperCase();
+  const lastName = words[words.length - 1];
+
+  return `${firstInitial}. ${lastName}`;
 }
 
-// Compact Dropdown Component
-interface CompactDropdownProps {
-  icon: "architect" | "location";
-  label: string;
-  value: string | null;
-  options: Array<{ value: string; label: string }>;
-  onChange: (value: string | null) => void;
+/**
+ * Truncates a label if it exceeds the maximum display length.
+ */
+export function truncateLabel(label: string, maxLength: number = MAX_DISPLAY_LENGTH): string {
+  if (label.length <= maxLength) {
+    return label;
+  }
+  return `${label.slice(0, maxLength)}...`;
 }
 
-function CompactDropdown({
-  icon,
-  label,
-  value,
-  options,
-  onChange,
-}: CompactDropdownProps) {
-  const [isOpen, setIsOpen] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) {
-        setIsOpen(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
-  const selectedOption = value ? options.find((o) => o.value === value) : null;
-  const displayLabel = selectedOption
-    ? selectedOption.label.length > 14
-      ? selectedOption.label.slice(0, 14) + "..."
-      : selectedOption.label
-    : label;
-
-  const IconComponent = icon === "architect" ? ArchitectIcon : LocationIcon;
-
-  return (
-    <div ref={ref} className="hero-dropdown">
-      <button
-        type="button"
-        onClick={() => setIsOpen(!isOpen)}
-        className={`hero-dropdown-btn ${value ? "has-value" : ""}`}
-      >
-        <IconComponent />
-        <span className="hero-dropdown-label">{displayLabel}</span>
-        <ChevronIcon isOpen={isOpen} />
-      </button>
-
-      {isOpen && (
-        <div className="hero-dropdown-menu">
-          <button
-            onClick={() => {
-              onChange(null);
-              setIsOpen(false);
-            }}
-            className={`hero-dropdown-item ${!value ? "selected" : ""}`}
-          >
-            ALL {label}
-          </button>
-          {options.map((opt) => (
-            <button
-              key={opt.value}
-              onClick={() => {
-                onChange(opt.value);
-                setIsOpen(false);
-              }}
-              className={`hero-dropdown-item ${value === opt.value ? "selected" : ""}`}
-            >
-              {opt.label}
-            </button>
-          ))}
-        </div>
-      )}
-    </div>
-  );
+/**
+ * Generates a unique ID for accessibility purposes.
+ */
+export function generateDropdownId(prefix: string): string {
+  return `hero-dropdown-${prefix}`;
 }
 
-// Icons
+// =============================================================================
+// ICON COMPONENTS
+// =============================================================================
+
 function ArchitectIcon() {
   return (
     <svg
@@ -180,6 +116,7 @@ function ArchitectIcon() {
       stroke="currentColor"
       strokeWidth="1.5"
       className="hero-dropdown-icon"
+      aria-hidden="true"
     >
       <path d="M8 1L3 15M8 1L13 15M4.5 10h7" />
     </svg>
@@ -194,6 +131,7 @@ function LocationIcon() {
       stroke="currentColor"
       strokeWidth="1.5"
       className="hero-dropdown-icon"
+      aria-hidden="true"
     >
       <path d="M8 1C5.5 1 3.5 3 3.5 5.5C3.5 9 8 15 8 15S12.5 9 12.5 5.5C12.5 3 10.5 1 8 1Z" />
       <circle cx="8" cy="5.5" r="1.5" />
@@ -207,8 +145,202 @@ function ChevronIcon({ isOpen }: { isOpen: boolean }) {
       className={`hero-dropdown-chevron ${isOpen ? "open" : ""}`}
       viewBox="0 0 10 6"
       fill="currentColor"
+      aria-hidden="true"
     >
       <path d="M0 0l5 6 5-6z" />
     </svg>
+  );
+}
+
+// =============================================================================
+// COMPACT DROPDOWN
+// =============================================================================
+
+function CompactDropdown({
+  icon,
+  label,
+  value,
+  options,
+  onChange,
+  id,
+}: CompactDropdownProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+  const menuId = `${id}-menu`;
+  const labelId = `${id}-label`;
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent): void {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  // Handle keyboard navigation
+  const handleKeyDown = useCallback((event: React.KeyboardEvent): void => {
+    if (event.key === "Escape") {
+      setIsOpen(false);
+      buttonRef.current?.focus();
+    }
+  }, []);
+
+  const handleToggle = useCallback((): void => {
+    setIsOpen((prev) => !prev);
+  }, []);
+
+  const handleSelect = useCallback(
+    (selectedValue: string | null): void => {
+      onChange(selectedValue);
+      setIsOpen(false);
+      buttonRef.current?.focus();
+    },
+    [onChange]
+  );
+
+  const selectedOption = value ? options.find((opt) => opt.value === value) : null;
+  const displayLabel = selectedOption ? truncateLabel(selectedOption.label) : label;
+  const IconComponent = icon === "architect" ? ArchitectIcon : LocationIcon;
+
+  return (
+    <div
+      ref={containerRef}
+      className="hero-dropdown"
+      onKeyDown={handleKeyDown}
+    >
+      <button
+        ref={buttonRef}
+        type="button"
+        id={id}
+        onClick={handleToggle}
+        className={`hero-dropdown-btn ${value ? "has-value" : ""}`}
+        aria-haspopup="listbox"
+        aria-expanded={isOpen}
+        aria-controls={menuId}
+        aria-labelledby={labelId}
+      >
+        <IconComponent />
+        <span id={labelId} className="hero-dropdown-label">
+          {displayLabel}
+        </span>
+        <ChevronIcon isOpen={isOpen} />
+      </button>
+
+      {isOpen && (
+        <ul
+          id={menuId}
+          role="listbox"
+          aria-labelledby={id}
+          className="hero-dropdown-menu"
+        >
+          <li
+            role="option"
+            aria-selected={!value}
+            onClick={() => handleSelect(null)}
+            className={`hero-dropdown-item ${!value ? "selected" : ""}`}
+            tabIndex={0}
+          >
+            ALL {label}
+          </li>
+          {options.map((opt) => (
+            <li
+              key={opt.value}
+              role="option"
+              aria-selected={value === opt.value}
+              onClick={() => handleSelect(opt.value)}
+              className={`hero-dropdown-item ${value === opt.value ? "selected" : ""}`}
+              tabIndex={0}
+            >
+              {opt.label}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
+// =============================================================================
+// MAIN COMPONENT
+// =============================================================================
+
+export function HeroFilter({
+  currentStatus,
+  onStatusChange,
+  view,
+  onViewChange,
+  currentArchitect,
+  architectOptions,
+  onArchitectChange,
+  currentState,
+  stateOptions,
+  onStateChange,
+}: HeroFilterProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  // Format architect options with abbreviated names for display
+  const formattedArchitectOptions: DropdownOption[] = architectOptions.map((architect) => ({
+    value: architect.id,
+    label: formatArchitectName(architect.name),
+  }));
+
+  // Format state options
+  const formattedStateOptions: DropdownOption[] = stateOptions.map((state) => ({
+    value: state,
+    label: state,
+  }));
+
+  return (
+    <div
+      ref={containerRef}
+      className="hero-filter hero-filter--expanded"
+      role="search"
+      aria-label="Filter properties"
+    >
+      {/* Row 1: Status Tabs + View Toggle */}
+      <div className="hero-filter-row hero-filter-row--tabs" role="tablist" aria-label="Experience type">
+        <div className="hero-filter-tabs">
+          {EXPERIENCE_TABS.map((tab) => (
+            <button
+              key={tab.value}
+              role="tab"
+              onClick={() => onStatusChange(tab.value)}
+              className={`hero-filter-tab ${currentStatus === tab.value ? "active" : ""}`}
+              aria-selected={currentStatus === tab.value}
+              aria-controls={`panel-${tab.value}`}
+              tabIndex={currentStatus === tab.value ? 0 : -1}
+            >
+              <span className="hero-filter-tab-label">{tab.shortLabel}</span>
+            </button>
+          ))}
+        </div>
+        <ViewToggle view={view} onChange={onViewChange} className="hero-filter-view" />
+      </div>
+
+      {/* Row 2: Dropdowns */}
+      <div className="hero-filter-row hero-filter-row--dropdowns" role="group" aria-label="Filter options">
+        <CompactDropdown
+          id={generateDropdownId("architect")}
+          icon="architect"
+          label="ARCHITECT"
+          value={currentArchitect}
+          options={formattedArchitectOptions}
+          onChange={onArchitectChange}
+        />
+        <CompactDropdown
+          id={generateDropdownId("state")}
+          icon="location"
+          label="STATE"
+          value={currentState}
+          options={formattedStateOptions}
+          onChange={onStateChange}
+        />
+      </div>
+    </div>
   );
 }
