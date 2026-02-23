@@ -1,3 +1,23 @@
+/**
+ * Property Sorting Utility
+ * ========================
+ *
+ * This module handles all property sorting logic for the archive grid.
+ *
+ * IMPORTANT: The "smart" sort priority order was deliberately chosen to match
+ * the user's browsing intent:
+ *   1. For Sale - actively purchasable
+ *   2. Stay - can book overnight (BnB, hotel)
+ *   3. Visit - can tour in person
+ *   4. Off-market with price data - historical context available
+ *   5. Off-market without data - least actionable
+ *
+ * Properties without images are penalized heavily (+1000) to push them to the
+ * bottom regardless of category, as they provide poor browsing experience.
+ *
+ * DO NOT reorder the priority values without understanding the UX rationale.
+ */
+
 import { type Property } from "@/types";
 
 // =============================================================================

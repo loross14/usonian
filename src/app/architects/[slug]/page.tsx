@@ -5,7 +5,7 @@ import architectsData from "@/data/architects.json";
 import propertiesData from "@/data/properties.json";
 import { type Architect, type Property } from "@/types";
 import { ReferenceLink } from "@/components/ui/ReferenceLink";
-import { PropertyCard } from "@/components/property/PropertyCard";
+import { ArchitectPropertiesClient } from "./ArchitectPropertiesClient";
 import { isValidUrl } from "@/lib/url-helpers";
 
 // Cast to proper types
@@ -122,27 +122,13 @@ export default async function ArchitectDetailPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* Properties Grid Section */}
+      {/* Properties Grid Section - uses client component for sorting */}
       <section className="border-b border-black">
         <div className="container py-16">
-          <div className="flex justify-between items-center mb-8">
-            <h2>PROPERTIES BY {architect.name.toUpperCase()}</h2>
-            <span className="text-[11px] tracking-[0.1em] opacity-50">
-              {propertyCount} {propertyCount === 1 ? 'ENTRY' : 'ENTRIES'}
-            </span>
-          </div>
-
-          {architectProperties.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-              {architectProperties.map((property) => (
-                <PropertyCard key={property.id} property={property} />
-              ))}
-            </div>
-          ) : (
-            <p className="text-sm opacity-50 py-8 border-t border-black">
-              No properties currently listed for this architect.
-            </p>
-          )}
+          <ArchitectPropertiesClient
+            properties={architectProperties}
+            architectName={architect.name}
+          />
         </div>
       </section>
 

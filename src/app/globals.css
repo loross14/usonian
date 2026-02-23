@@ -3455,3 +3455,59 @@ a:hover {
     flex: 1;
   }
 }
+
+/* =============================================================================
+   SORT CONTROL
+   =============================================================================
+   Dropdown for property sort order. Renders above the grid, NOT in HeroFilter.
+   Component: src/components/ui/SortControl.tsx
+   Logic: src/utils/propertySort.ts
+   ============================================================================= */
+
+.sort-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sort-control-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--black);
+  opacity: 0.6;
+}
+
+.sort-control-select {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  padding: 6px 28px 6px 12px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  background-color: var(--white);
+  color: var(--black);
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6' fill='%23000'%3E%3Cpath d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 8px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.sort-control-select:hover {
+  border-color: rgba(0, 0, 0, 0.3);
+}
+
+.sort-control-select:focus {
+  outline: none;
+  border-color: var(--black);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.sort-control-select option {
+  font-family: var(--font-mono);
+  font-size: 11px;
+}

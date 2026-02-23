@@ -6,6 +6,8 @@ import { createPortal } from "react-dom";
 import { PropertyList } from "@/components/property/PropertyList";
 import { PropertyCard } from "@/components/property/PropertyCard";
 import { HeroFilter } from "@/components/ui/HeroFilter";
+import { SortControl } from "@/components/ui/SortControl";
+import { sortProperties, type SortOption, SORT_OPTIONS } from "@/utils/propertySort";
 
 import { CountdownLoader } from "@/components/pagination/CountdownLoader";
 import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
@@ -76,6 +78,10 @@ export function HomesClient({
 
   // Experience filter state - initialized from URL/localStorage via initializer (single render)
   const [currentStatus, setCurrentStatus] = useState<ExperienceFilter>(getInitialFilter);
+
+  // Sort state - defaults to "smart" (experience-based priority sort)
+  // See src/utils/propertySort.ts for sort logic and priority order
+  const [sortOption, setSortOption] = useState<SortOption>("smart");
 
   // Find portal container on mount
   useEffect(() => {
@@ -159,6 +165,12 @@ export function HomesClient({
     });
   }, [properties, searchParams, currentStatus]);
 
+  // Apply sorting AFTER filtering (filter first, then sort the result)
+  // This ensures sort order is preserved when filters change
+  const sortedProperties = useMemo(() => {
+    return sortProperties(filteredProperties, sortOption);
+  }, [filteredProperties, sortOption]);
+
   const architectOptions = architects
     .filter((a) => a.property_count && a.property_count > 0)
     .sort((a, b) => a.name.localeCompare(b.name));
@@ -187,14 +199,19 @@ export function HomesClient({
           portalContainer
         )}
 
+      {/* Sort Control - intentionally placed ABOVE the grid, not in HeroFilter */}
+      <div className="container pt-6">
+        <SortControl value={sortOption} onChange={setSortOption} options={SORT_OPTIONS} />
+      </div>
+
       {/* Property Display */}
       {view === "list" ? (
         <PropertyList
-          properties={filteredProperties}
+          properties={sortedProperties}
           totalCount={properties.length}
         />
       ) : (
-        <CountdownScrollGrid properties={filteredProperties} />
+        <CountdownScrollGrid properties={sortedProperties} />
       )}
     </>
   );
