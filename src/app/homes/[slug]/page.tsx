@@ -65,7 +65,7 @@ export default async function PropertyDetailPage({ params }: PageProps) {
       <SiteHeader
         breadcrumbs={[
           { label: "USONIAN", href: "/" },
-          { label: "HOMES", href: "/homes" },
+          { label: "ARCHIVE", href: "/homes" },
           { label: property.home_name.toUpperCase() },
         ]}
       />
