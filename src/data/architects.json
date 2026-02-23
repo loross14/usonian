@@ -252,6 +252,18 @@
     "property_count": 35
   },
   {
+    "id": "rudolf-schindler",
+    "slug": "rudolf-schindler",
+    "name": "Rudolf Schindler",
+    "birth_year": 1887,
+    "death_year": 1953,
+    "birthplace": "Vienna, Austria",
+    "biography": "Rudolf Schindler was an Austrian-American architect and a pioneer of California Modernism. He studied under Otto Wagner in Vienna, then worked for Frank Lloyd Wright before establishing his practice in Los Angeles. He developed 'Space Architecture' - focusing on dynamic, flowing spaces rather than style or material. His Kings Road House (1922) is considered by many to be the first modern house built anywhere. He designed approximately 500 projects, of which 150 were built, primarily in the Los Angeles area. His work received renewed critical attention starting in the mid-1960s after being overlooked during his lifetime.",
+    "fellowship_years": null,
+    "image_url": null,
+    "property_count": 20
+  },
+  {
     "id": "shao-fang-sheng",
     "slug": "shao-fang-sheng",
     "name": "Shao Fang Sheng",
@@ -310,5 +322,18 @@
     "fellowship_years": "1932",
     "image_url": null,
     "property_count": 0
+  },
+  {
+    "id": "albert-kahn",
+    "slug": "albert-kahn",
+    "name": "Albert Kahn",
+    "birth_year": 1869,
+    "death_year": 1942,
+    "birthplace": "Rhaunen, Germany",
+    "biography": "Albert Kahn was Detroit's most prolific architect, designing roughly 1,900 buildings over his career. Known as the 'father of modern factory design,' he created Ford's Highland Park and River Rouge plants. His residential work spans Tudor Revival to Italian Renaissance styles, with notable estates throughout Grosse Pointe for Detroit's industrial elite.",
+    "fellowship_years": null,
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Albert_Kahn_(architect)",
+    "image_url": null,
+    "property_count": 3
   }
 ]
