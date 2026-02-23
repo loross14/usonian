@@ -3271,8 +3271,8 @@ a:hover {
   font-weight: 700;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* Responsive - Mobile only (below md breakpoint) */
+@media (max-width: 767px) {
   .hero-filter {
     min-width: unset;
     width: 100%;
@@ -3304,9 +3304,5 @@ a:hover {
   }
 }
 
-/* Mid-range breakpoint: Hide dropdowns when filter drops below hero but isn't mobile */
-@media (min-width: 769px) and (max-width: 1023px) {
-  .hero-filter-row:nth-child(2) {
-    display: none;
-  }
-}
+/* Mid-range breakpoint: Show both filter rows (tabs + dropdowns) */
+/* Both rows visible at 768px-1023px for compact 2-row layout */

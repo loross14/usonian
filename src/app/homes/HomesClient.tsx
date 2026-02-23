@@ -52,9 +52,9 @@ export function HomesClient({
   const [view, setView] = useState<"list" | "grid">("grid");
   const [portalContainer, setPortalContainer] = useState<HTMLElement | null>(null);
 
-  // Experience filter state - initialized to "sale" (default), then updated on mount
-  // Priority: URL param > localStorage > default ("sale")
-  const [currentStatus, setCurrentStatus] = useState<ExperienceFilter>("sale");
+  // Experience filter state - initialized to "all" (default), then updated on mount
+  // Priority: URL param > localStorage > default ("all")
+  const [currentStatus, setCurrentStatus] = useState<ExperienceFilter>("all");
   const [isStatusInitialized, setIsStatusInitialized] = useState(false);
 
   // Find the portal target on mount
@@ -79,8 +79,8 @@ export function HomesClient({
         setCurrentStatus(stored);
         // Update URL to match stored preference
         const params = new URLSearchParams(searchParams.toString());
-        if (stored === "sale") {
-          // "sale" is the default, so we can omit it from URL or keep it clean
+        if (stored === "all") {
+          // "all" is the default, so we can omit it from URL or keep it clean
           params.delete("status");
         } else {
           params.set("status", stored);
@@ -102,9 +102,9 @@ export function HomesClient({
         setCurrentStatus(urlStatus);
         localStorage.setItem(FILTER_STORAGE_KEY, urlStatus);
       }
-    } else if (!urlStatus && currentStatus !== "sale") {
-      // URL has no status param, default to "sale"
-      setCurrentStatus("sale");
+    } else if (!urlStatus && currentStatus !== "all") {
+      // URL has no status param, default to "all"
+      setCurrentStatus("all");
     }
   }, [searchParams, isStatusInitialized]);
 

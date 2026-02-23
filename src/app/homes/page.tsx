@@ -68,9 +68,9 @@ export default async function HomesPage({
       {/* Hero Section */}
       <section>
         <div className="container py-8 md:py-12">
-          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 lg:gap-12">
+          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 md:gap-12">
             {/* Left: Title + Subtitle */}
-            <div className="flex-shrink-0 max-w-xl">
+            <div className="flex-shrink-0">
               <h1 className="animate-fade-up mb-4">
                 ARCHIVE<CompassIcon size="period" className="ml-1 align-baseline" />
               </h1>
@@ -80,7 +80,7 @@ export default async function HomesPage({
             </div>
 
             {/* Right: Filter slot (rendered via portal from HomesClient) */}
-            <div id="hero-filter-slot" className="lg:flex-shrink-0 lg:mt-2" />
+            <div id="hero-filter-slot" className="md:flex-shrink-0 md:mt-2" />
           </div>
         </div>
       </section>

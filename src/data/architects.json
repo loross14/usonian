@@ -240,6 +240,18 @@
     "property_count": 1
   },
   {
+    "id": "richard-neutra",
+    "slug": "richard-neutra",
+    "name": "Richard Neutra",
+    "birth_year": 1892,
+    "death_year": 1970,
+    "birthplace": "Vienna, Austria",
+    "biography": "Richard Neutra was an Austrian-American architect who pioneered 'California Modern' residential architecture and developed the theory of 'biorealism' - designing buildings to support human biological and emotional needs. After studying in Vienna and brief work with Frank Lloyd Wright, he established his practice in Los Angeles. Time Magazine called him 'second only to Frank Lloyd Wright.' His signature elements include clean horizontal lines, extensive glazing, steel-frame construction, and seamless indoor-outdoor integration. He received the AIA Gold Medal posthumously in 1977.",
+    "fellowship_years": null,
+    "image_url": null,
+    "property_count": 35
+  },
+  {
     "id": "shao-fang-sheng",
     "slug": "shao-fang-sheng",
     "name": "Shao Fang Sheng",
