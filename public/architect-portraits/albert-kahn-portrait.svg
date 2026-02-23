@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <defs>
+    <style>
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.85; }
+    }
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+    }
+    .accent { animation: pulse 4s ease-in-out infinite; }
+    .portrait-main { transform-origin: center center; }
+    </style>
+    <linearGradient id="face-grad-kahn" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:rgb(232, 218, 195);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(168, 132, 98);stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Warm White Background -->
+  <rect width="400" height="400" fill="rgb(252, 250, 247)"/>
+
+  <!-- Industrial factory elements background (Ford Plant reference) -->
+  <g class="building-accent" opacity="0.12" transform="translate(0, 0)">
+    <!-- Steel I-beam structure -->
+    <rect x="60" y="30" width="12" height="120" fill="rgb(55, 52, 50)"/>
+    <rect x="328" y="30" width="12" height="120" fill="rgb(55, 52, 50)"/>
+    <rect x="60" y="30" width="280" height="10" fill="rgb(55, 52, 50)"/>
+    <rect x="60" y="70" width="280" height="8" fill="rgb(82, 90, 100)"/>
+    <rect x="60" y="110" width="280" height="8" fill="rgb(82, 90, 100)"/>
+
+    <!-- Factory windows grid -->
+    <rect x="90" y="42" width="25" height="25" fill="rgb(212, 178, 112)" opacity="0.5"/>
+    <rect x="125" y="42" width="25" height="25" fill="rgb(212, 178, 112)" opacity="0.5"/>
+    <rect x="160" y="42" width="25" height="25" fill="rgb(212, 178, 112)" opacity="0.5"/>
+    <rect x="215" y="42" width="25" height="25" fill="rgb(212, 178, 112)" opacity="0.5"/>
+    <rect x="250" y="42" width="25" height="25" fill="rgb(212, 178, 112)" opacity="0.5"/>
+    <rect x="285" y="42" width="25" height="25" fill="rgb(212, 178, 112)" opacity="0.5"/>
+
+    <!-- Classical column hints (residential work) -->
+    <rect x="100" y="300" width="16" height="70" fill="rgb(82, 90, 100)"/>
+    <rect x="284" y="300" width="16" height="70" fill="rgb(82, 90, 100)"/>
+    <rect x="95" y="295" width="26" height="10" fill="rgb(82, 90, 100)"/>
+    <rect x="279" y="295" width="26" height="10" fill="rgb(82, 90, 100)"/>
+  </g>
+
+  <!-- Portrait -->
+  <g class="portrait-main" transform="translate(0, 0)">
+    <!-- Face - Distinguished oval with strong jaw -->
+    <ellipse cx="200" cy="200" rx="65" ry="85" fill="url(#face-grad-kahn)" stroke="rgb(55, 52, 50)" stroke-width="2"/>
+
+    <!-- Strong jawline overlay -->
+    <polygon points="150,230 145,270 200,290 255,270 250,230"
+      fill="rgb(168, 132, 98)" stroke="rgb(55, 52, 50)" stroke-width="1"/>
+
+    <!-- Hair - Receding, distinguished early 1900s style -->
+    <ellipse cx="200" cy="125" rx="55" ry="25" fill="rgb(55, 52, 50)"/>
+    <ellipse cx="165" cy="135" rx="20" ry="15" fill="rgb(82, 90, 100)"/>
+    <ellipse cx="235" cy="135" rx="20" ry="15" fill="rgb(82, 90, 100)"/>
+
+    <!-- Balding forehead -->
+    <ellipse cx="200" cy="140" rx="40" ry="20" fill="rgb(232, 218, 195)"/>
+
+    <!-- Forehead wrinkles - wisdom of experience -->
+    <line x1="170" y1="150" x2="230" y2="150" stroke="rgb(55, 52, 50)" stroke-width="1" opacity="0.3"/>
+    <line x1="175" y1="157" x2="225" y2="157" stroke="rgb(55, 52, 50)" stroke-width="1" opacity="0.25"/>
+
+    <!-- Eyes - Thoughtful, experienced -->
+    <g class="eyes">
+      <ellipse cx="175" cy="185" rx="18" ry="10" fill="rgb(252, 250, 247)" stroke="rgb(55, 52, 50)" stroke-width="1"/>
+      <ellipse cx="225" cy="185" rx="18" ry="10" fill="rgb(252, 250, 247)" stroke="rgb(55, 52, 50)" stroke-width="1"/>
+      <circle cx="175" cy="185" r="7" fill="rgb(55, 52, 50)"/>
+      <circle cx="225" cy="185" r="7" fill="rgb(55, 52, 50)"/>
+      <circle cx="176" cy="184" r="2" fill="rgb(212, 178, 112)" class="accent"/>
+      <circle cx="226" cy="184" r="2" fill="rgb(212, 178, 112)" class="accent"/>
+    </g>
+
+    <!-- Distinguished eyebrows -->
+    <path d="M 155 172 Q 175 165 192 170" fill="none" stroke="rgb(55, 52, 50)" stroke-width="3"/>
+    <path d="M 208 170 Q 225 165 245 172" fill="none" stroke="rgb(55, 52, 50)" stroke-width="3"/>
+
+    <!-- Nose - Strong, distinguished -->
+    <polygon points="200,195 210,230 200,238 190,230" fill="rgb(138, 105, 75)"/>
+
+    <!-- Nostrils hint -->
+    <ellipse cx="194" cy="232" rx="4" ry="2" fill="rgb(55, 52, 50)" opacity="0.3"/>
+    <ellipse cx="206" cy="232" rx="4" ry="2" fill="rgb(55, 52, 50)" opacity="0.3"/>
+
+    <!-- Mustache - Early 1900s style -->
+    <path d="M 170 245 Q 185 252 200 248 Q 215 252 230 245"
+      fill="rgb(55, 52, 50)" stroke="rgb(55, 52, 50)" stroke-width="1"/>
+    <path d="M 175 248 Q 200 255 225 248"
+      fill="rgb(82, 90, 100)" opacity="0.5"/>
+
+    <!-- Mouth - Serious, determined -->
+    <line x1="182" y1="258" x2="218" y2="258" stroke="rgb(55, 52, 50)" stroke-width="2"/>
+
+    <!-- Ears -->
+    <ellipse cx="138" cy="200" rx="10" ry="18" fill="rgb(168, 132, 98)" stroke="rgb(55, 52, 50)" stroke-width="1"/>
+    <ellipse cx="262" cy="200" rx="10" ry="18" fill="rgb(168, 132, 98)" stroke="rgb(55, 52, 50)" stroke-width="1"/>
+
+    <!-- High collar and formal suit (early 1900s) -->
+    <polygon points="145,285 200,310 255,285 270,380 130,380" fill="rgb(55, 52, 50)"/>
+
+    <!-- White dress shirt collar -->
+    <polygon points="175,290 200,315 225,290 215,305 200,300 185,305" fill="rgb(252, 250, 247)"/>
+
+    <!-- Tie -->
+    <polygon points="192,300 200,305 208,300 205,350 200,355 195,350" fill="rgb(194, 114, 84)"/>
+    <polygon points="195,305 200,310 205,305" fill="rgb(156, 88, 64)"/>
+
+    <!-- Suit lapels -->
+    <polygon points="145,285 175,290 165,340 135,340" fill="rgb(82, 90, 100)" stroke="rgb(55, 52, 50)" stroke-width="1"/>
+    <polygon points="255,285 225,290 235,340 265,340" fill="rgb(82, 90, 100)" stroke="rgb(55, 52, 50)" stroke-width="1"/>
+  </g>
+
+  <!-- Industrial baseline accent -->
+  <g class="accent">
+    <rect x="110" y="372" width="180" height="6" fill="rgb(55, 52, 50)"/>
+    <rect x="130" y="380" width="40" height="10" fill="rgb(194, 114, 84)"/>
+    <rect x="180" y="380" width="40" height="10" fill="rgb(212, 178, 112)"/>
+    <rect x="230" y="380" width="40" height="10" fill="rgb(194, 114, 84)"/>
+  </g>
+</svg>

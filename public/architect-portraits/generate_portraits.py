@@ -482,6 +482,129 @@ def generate_eric_lloyd_wright_portrait(width=400, height=400):
 </svg>'''
 
 
+def generate_albert_kahn_portrait(width=400, height=400):
+    """Albert Kahn - Distinguished industrial architect with factory/classical elements"""
+    is_wide = width == 800
+    cx = width // 2
+    cy = height // 2
+    offset_x = 0 if not is_wide else 200
+
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="{width}" height="{height}">
+  <defs>
+    <style>{get_animation_styles()}</style>
+    <linearGradient id="face-grad-kahn" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:{COLORS['sand']};stop-opacity:1" />
+      <stop offset="100%" style="stop-color:{COLORS['cypress']};stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Warm White Background -->
+  <rect width="{width}" height="{height}" fill="{COLORS['warm_white']}"/>
+
+  <!-- Industrial factory elements background (Ford Plant reference) -->
+  <g class="building-accent" opacity="0.12" transform="translate({offset_x}, 0)">
+    <!-- Steel I-beam structure -->
+    <rect x="{cx-140}" y="30" width="12" height="120" fill="{COLORS['charcoal']}"/>
+    <rect x="{cx+128}" y="30" width="12" height="120" fill="{COLORS['charcoal']}"/>
+    <rect x="{cx-140}" y="30" width="280" height="10" fill="{COLORS['charcoal']}"/>
+    <rect x="{cx-140}" y="70" width="280" height="8" fill="{COLORS['slate']}"/>
+    <rect x="{cx-140}" y="110" width="280" height="8" fill="{COLORS['slate']}"/>
+
+    <!-- Factory windows grid -->
+    <rect x="{cx-110}" y="42" width="25" height="25" fill="{COLORS['gold']}" opacity="0.5"/>
+    <rect x="{cx-75}" y="42" width="25" height="25" fill="{COLORS['gold']}" opacity="0.5"/>
+    <rect x="{cx-40}" y="42" width="25" height="25" fill="{COLORS['gold']}" opacity="0.5"/>
+    <rect x="{cx+15}" y="42" width="25" height="25" fill="{COLORS['gold']}" opacity="0.5"/>
+    <rect x="{cx+50}" y="42" width="25" height="25" fill="{COLORS['gold']}" opacity="0.5"/>
+    <rect x="{cx+85}" y="42" width="25" height="25" fill="{COLORS['gold']}" opacity="0.5"/>
+
+    <!-- Classical column hints (residential work) -->
+    <rect x="{cx-100}" y="300" width="16" height="70" fill="{COLORS['slate']}"/>
+    <rect x="{cx+84}" y="300" width="16" height="70" fill="{COLORS['slate']}"/>
+    <rect x="{cx-105}" y="295" width="26" height="10" fill="{COLORS['slate']}"/>
+    <rect x="{cx+79}" y="295" width="26" height="10" fill="{COLORS['slate']}"/>
+  </g>
+
+  <!-- Portrait -->
+  <g class="portrait-main" transform="translate({offset_x}, 0)">
+    <!-- Face - Distinguished oval with strong jaw -->
+    <ellipse cx="{cx}" cy="{cy}" rx="65" ry="85" fill="url(#face-grad-kahn)" stroke="{COLORS['charcoal']}" stroke-width="2"/>
+
+    <!-- Strong jawline overlay -->
+    <polygon points="{cx-50},{cy+30} {cx-55},{cy+70} {cx},{cy+90} {cx+55},{cy+70} {cx+50},{cy+30}"
+      fill="{COLORS['cypress']}" stroke="{COLORS['charcoal']}" stroke-width="1"/>
+
+    <!-- Hair - Receding, distinguished early 1900s style -->
+    <ellipse cx="{cx}" cy="{cy-75}" rx="55" ry="25" fill="{COLORS['charcoal']}"/>
+    <ellipse cx="{cx-35}" cy="{cy-65}" rx="20" ry="15" fill="{COLORS['slate']}"/>
+    <ellipse cx="{cx+35}" cy="{cy-65}" rx="20" ry="15" fill="{COLORS['slate']}"/>
+
+    <!-- Balding forehead -->
+    <ellipse cx="{cx}" cy="{cy-60}" rx="40" ry="20" fill="{COLORS['sand']}"/>
+
+    <!-- Forehead wrinkles - wisdom of experience -->
+    <line x1="{cx-30}" y1="{cy-50}" x2="{cx+30}" y2="{cy-50}" stroke="{COLORS['charcoal']}" stroke-width="1" opacity="0.3"/>
+    <line x1="{cx-25}" y1="{cy-43}" x2="{cx+25}" y2="{cy-43}" stroke="{COLORS['charcoal']}" stroke-width="1" opacity="0.25"/>
+
+    <!-- Eyes - Thoughtful, experienced -->
+    <g class="eyes">
+      <ellipse cx="{cx-25}" cy="{cy-15}" rx="18" ry="10" fill="{COLORS['warm_white']}" stroke="{COLORS['charcoal']}" stroke-width="1"/>
+      <ellipse cx="{cx+25}" cy="{cy-15}" rx="18" ry="10" fill="{COLORS['warm_white']}" stroke="{COLORS['charcoal']}" stroke-width="1"/>
+      <circle cx="{cx-25}" cy="{cy-15}" r="7" fill="{COLORS['charcoal']}"/>
+      <circle cx="{cx+25}" cy="{cy-15}" r="7" fill="{COLORS['charcoal']}"/>
+      <circle cx="{cx-24}" cy="{cy-16}" r="2" fill="{COLORS['gold']}" class="accent"/>
+      <circle cx="{cx+26}" cy="{cy-16}" r="2" fill="{COLORS['gold']}" class="accent"/>
+    </g>
+
+    <!-- Distinguished eyebrows -->
+    <path d="M {cx-45} {cy-28} Q {cx-25} {cy-35} {cx-8} {cy-30}" fill="none" stroke="{COLORS['charcoal']}" stroke-width="3"/>
+    <path d="M {cx+8} {cy-30} Q {cx+25} {cy-35} {cx+45} {cy-28}" fill="none" stroke="{COLORS['charcoal']}" stroke-width="3"/>
+
+    <!-- Nose - Strong, distinguished -->
+    <polygon points="{cx},{cy-5} {cx+10},{cy+30} {cx},{cy+38} {cx-10},{cy+30}" fill="{COLORS['cypress_dark']}"/>
+
+    <!-- Nostrils hint -->
+    <ellipse cx="{cx-6}" cy="{cy+32}" rx="4" ry="2" fill="{COLORS['charcoal']}" opacity="0.3"/>
+    <ellipse cx="{cx+6}" cy="{cy+32}" rx="4" ry="2" fill="{COLORS['charcoal']}" opacity="0.3"/>
+
+    <!-- Mustache - Early 1900s style -->
+    <path d="M {cx-30} {cy+45} Q {cx-15} {cy+52} {cx} {cy+48} Q {cx+15} {cy+52} {cx+30} {cy+45}"
+      fill="{COLORS['charcoal']}" stroke="{COLORS['charcoal']}" stroke-width="1"/>
+    <path d="M {cx-25} {cy+48} Q {cx} {cy+55} {cx+25} {cy+48}"
+      fill="{COLORS['slate']}" opacity="0.5"/>
+
+    <!-- Mouth - Serious, determined -->
+    <line x1="{cx-18}" y1="{cy+58}" x2="{cx+18}" y2="{cy+58}" stroke="{COLORS['charcoal']}" stroke-width="2"/>
+
+    <!-- Ears -->
+    <ellipse cx="{cx-62}" cy="{cy}" rx="10" ry="18" fill="{COLORS['cypress']}" stroke="{COLORS['charcoal']}" stroke-width="1"/>
+    <ellipse cx="{cx+62}" cy="{cy}" rx="10" ry="18" fill="{COLORS['cypress']}" stroke="{COLORS['charcoal']}" stroke-width="1"/>
+
+    <!-- High collar and formal suit (early 1900s) -->
+    <polygon points="{cx-55},{cy+85} {cx},{cy+110} {cx+55},{cy+85} {cx+70},{cy+180} {cx-70},{cy+180}" fill="{COLORS['charcoal']}"/>
+
+    <!-- White dress shirt collar -->
+    <polygon points="{cx-25},{cy+90} {cx},{cy+115} {cx+25},{cy+90} {cx+15},{cy+105} {cx},{cy+100} {cx-15},{cy+105}" fill="{COLORS['warm_white']}"/>
+
+    <!-- Tie -->
+    <polygon points="{cx-8},{cy+100} {cx},{cy+105} {cx+8},{cy+100} {cx+5},{cy+150} {cx},{cy+155} {cx-5},{cy+150}" fill="{COLORS['terracotta']}"/>
+    <polygon points="{cx-5},{cy+105} {cx},{cy+110} {cx+5},{cy+105}" fill="{COLORS['terracotta_dark']}"/>
+
+    <!-- Suit lapels -->
+    <polygon points="{cx-55},{cy+85} {cx-25},{cy+90} {cx-35},{cy+140} {cx-65},{cy+140}" fill="{COLORS['slate']}" stroke="{COLORS['charcoal']}" stroke-width="1"/>
+    <polygon points="{cx+55},{cy+85} {cx+25},{cy+90} {cx+35},{cy+140} {cx+65},{cy+140}" fill="{COLORS['slate']}" stroke="{COLORS['charcoal']}" stroke-width="1"/>
+  </g>
+
+  <!-- Industrial baseline accent -->
+  <g class="accent">
+    <rect x="{cx-90+offset_x}" y="{height-28}" width="180" height="6" fill="{COLORS['charcoal']}"/>
+    <rect x="{cx-70+offset_x}" y="{height-20}" width="40" height="10" fill="{COLORS['terracotta']}"/>
+    <rect x="{cx-20+offset_x}" y="{height-20}" width="40" height="10" fill="{COLORS['gold']}"/>
+    <rect x="{cx+30+offset_x}" y="{height-20}" width="40" height="10" fill="{COLORS['terracotta']}"/>
+  </g>
+</svg>'''
+
+
 def generate_all_portraits():
     """Generate all portrait SVGs in both sizes"""
     architects = [
@@ -491,6 +614,7 @@ def generate_all_portraits():
         ('edgar-tafel', generate_edgar_tafel_portrait),
         ('arthur-dyson', generate_arthur_dyson_portrait),
         ('eric-lloyd-wright', generate_eric_lloyd_wright_portrait),
+        ('albert-kahn', generate_albert_kahn_portrait),
     ]
 
     script_dir = os.path.dirname(os.path.abspath(__file__))
