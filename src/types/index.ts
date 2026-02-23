@@ -166,11 +166,35 @@ export function getStatusLabel(status: string): string {
 }
 
 // Get the primary experience badge for a property (priority-ordered)
+// Used when no filter context is provided (e.g., on "ALL" tab)
 export function getPropertyBadgeType(property: Property): string {
   if (property.status === 'active') return 'active';
   if (property.is_rental === true) return 'stay';
   if (property.is_visitable === true) return 'visit';
   return property.status; // fallback to actual status (sold, archived, etc.)
+}
+
+// Get contextual badge based on active filter
+// When viewing a specific filter, show that filter's badge (not the priority badge)
+export function getContextualBadgeType(property: Property, activeFilter: ExperienceFilter): string {
+  switch (activeFilter) {
+    case 'sale':
+      // On BUY tab, always show "active" (for sale) badge
+      return 'active';
+    case 'visit':
+      // On VISIT tab, show "visit" badge (even if also for sale/rental)
+      return 'visit';
+    case 'stay':
+      // On STAY tab, show "stay" badge (even if also for sale)
+      return 'stay';
+    case 'offmarket':
+      // On OFF tab, show the actual status (sold, archived, etc.)
+      return property.status;
+    case 'all':
+    default:
+      // On ALL tab, use priority-based badge
+      return getPropertyBadgeType(property);
+  }
 }
 
 export function getStatusBadgeClass(status: string): string {

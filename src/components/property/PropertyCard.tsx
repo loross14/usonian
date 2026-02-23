@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Property, formatPrice, formatLocation, getPropertyBadgeType } from "@/types";
+import { Property, formatPrice, formatLocation, getContextualBadgeType, type ExperienceFilter } from "@/types";
 import { Badge } from "@/components/ui/Badge";
 import { getGeneratedSvgUrl } from "@/lib/generated-houses";
 import { getHeroImageUrl } from "@/lib/hero-images";
@@ -11,9 +11,11 @@ interface PropertyCardProps {
   property: Property & { architect_name?: string };
   /** @deprecated No longer used - v2 is the only variant */
   variant?: "default" | "v2";
+  /** Active filter context - determines which badge to show */
+  activeFilter?: ExperienceFilter;
 }
 
-export function PropertyCard({ property }: PropertyCardProps) {
+export function PropertyCard({ property, activeFilter = "all" }: PropertyCardProps) {
   const location = formatLocation(property.parsed_city, property.parsed_state);
 
   const isForSale = property.status === "active";
@@ -25,9 +27,11 @@ export function PropertyCard({ property }: PropertyCardProps) {
       ? `Listed for ${formatPrice(property.listing_price)}`
       : "Price not listed";
   } else if (isSold && property.last_sale_price) {
-    price = `SOLD FOR ${formatPrice(property.last_sale_price)}`;
+    price = `Sold for ${formatPrice(property.last_sale_price)}`;
+  } else if (property.last_sale_price) {
+    price = `Last sold for ${formatPrice(property.last_sale_price)}`;
   } else {
-    price = property.last_sale_price ? formatPrice(property.last_sale_price) : "N/A";
+    price = "Price unavailable";
   }
 
   // Prioritize: Hero JPG > Generated SVG > External URL
@@ -36,12 +40,15 @@ export function PropertyCard({ property }: PropertyCardProps) {
   const imageUrl = heroImageUrl || generatedSvgUrl || property.best_image_url;
   const cardClass = `property-card-v2 ${isForSale ? "property-card-v2--for-sale" : ""}`;
 
+  // Get contextual badge based on active filter
+  const badgeType = getContextualBadgeType(property, activeFilter);
+
   return (
     <Link href={`/homes/${property.slug}`} className={cardClass}>
       {/* Image */}
       <div className="relative aspect-[4/3] bg-sand overflow-hidden mb-4">
-        {/* Experience Badge - shows based on property's experience category */}
-        <Badge status={getPropertyBadgeType(property)} variant="overlay" />
+        {/* Experience Badge - contextual based on active filter */}
+        <Badge status={badgeType} variant="overlay" />
         {imageUrl && (
           <Image
             src={imageUrl}
@@ -54,17 +61,15 @@ export function PropertyCard({ property }: PropertyCardProps) {
       </div>
 
       {/* Content */}
-      <h3 className="text-lg font-semibold mb-1">{property.home_name}</h3>
-      <div className="flex justify-between items-center mb-2">
-        <span className="text-[11px] opacity-60 tracking-wide uppercase">
-          {property.architect_name}
-        </span>
-        <span className="text-[11px] opacity-50">{property.year_built}</span>
+      <div className="property-card-content">
+        <h3 className="property-card-title">{property.home_name}</h3>
+        <div className="property-card-meta">
+          <span className="property-card-architect">{property.architect_name}</span>
+          <span className="property-card-year">{property.year_built}</span>
+        </div>
+        <p className="property-card-location">{location}</p>
+        <p className="property-card-price">{price}</p>
       </div>
-      <p className="text-sm opacity-60 mb-3">{location}</p>
-      <p className={`text-lg font-semibold ${isForSale ? "text-gold" : ""}`}>
-        {price}
-      </p>
     </Link>
   );
 }

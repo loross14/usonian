@@ -6,7 +6,7 @@ import { createPortal } from "react-dom";
 import { PropertyList } from "@/components/property/PropertyList";
 import { PropertyCard } from "@/components/property/PropertyCard";
 import { HeroFilter } from "@/components/ui/HeroFilter";
-import { SortControl } from "@/components/ui/SortControl";
+import { B2Bomber } from "@/components/ui/B2Bomber";
 import { sortProperties, type SortOption, SORT_OPTIONS } from "@/utils/propertySort";
 
 import { Pagination } from "@/components/pagination/Pagination";
@@ -214,28 +214,31 @@ export function HomesClient({
             currentState={currentState}
             stateOptions={stateOptions}
             onStateChange={(state) => updateFilter("state", state)}
+            sortValue={sortOption}
+            sortOptions={SORT_OPTIONS}
+            onSortChange={(val) => setSortOption(val as SortOption)}
           />,
           portalContainer
         )}
-
-      {/* Sort Control - intentionally placed ABOVE the grid, not in HeroFilter */}
-      <div className="container pt-6">
-        <SortControl value={sortOption} onChange={setSortOption} options={SORT_OPTIONS} />
-      </div>
 
       {/* Property Display */}
       {view === "list" ? (
         <PropertyList
           properties={sortedProperties}
           totalCount={properties.length}
+          activeFilter={currentStatus}
         />
       ) : (
         <PaginatedGrid
           properties={sortedProperties}
           currentPage={currentPage}
           onPageChange={handlePageChange}
+          activeFilter={currentStatus}
         />
       )}
+
+      {/* Mouse-following B-2 Stealth Bomber */}
+      <B2Bomber />
     </>
   );
 }
@@ -255,10 +258,12 @@ function PaginatedGrid({
   properties,
   currentPage,
   onPageChange,
+  activeFilter,
 }: {
   properties: EnhancedProperty[];
   currentPage: number;
   onPageChange: (page: number) => void;
+  activeFilter: ExperienceFilter;
 }) {
   const {
     paginatedItems,
@@ -284,7 +289,7 @@ function PaginatedGrid({
                 animationDelay: `${idx * 30}ms`,
               }}
             >
-              <PropertyCard property={property} variant="v2" />
+              <PropertyCard property={property} activeFilter={activeFilter} />
             </div>
           ))}
         </div>

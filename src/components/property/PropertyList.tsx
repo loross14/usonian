@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { formatPrice, formatLocation, type Property } from "@/types";
+import { formatPrice, formatLocation, getContextualBadgeType, type Property, type ExperienceFilter } from "@/types";
 
 interface EnhancedProperty extends Property {
   architect_name?: string;
@@ -11,12 +11,17 @@ interface EnhancedProperty extends Property {
 interface PropertyListProps {
   properties: EnhancedProperty[];
   totalCount: number;
+  activeFilter?: ExperienceFilter;
 }
 
 function getStatusBadgeClass(status: string): string {
   switch (status) {
     case "active":
       return "status-badge for-sale";
+    case "visit":
+      return "status-badge visit";
+    case "stay":
+      return "status-badge stay";
     case "sold":
       return "status-badge sold";
     case "museum":
@@ -31,6 +36,10 @@ function getStatusLabel(status: string): string {
   switch (status) {
     case "active":
       return "FOR SALE";
+    case "visit":
+      return "VISIT";
+    case "stay":
+      return "STAY";
     case "sold":
       return "SOLD";
     case "museum":
@@ -42,7 +51,7 @@ function getStatusLabel(status: string): string {
   }
 }
 
-export function PropertyList({ properties, totalCount }: PropertyListProps) {
+export function PropertyList({ properties, totalCount, activeFilter = "all" }: PropertyListProps) {
   if (properties.length === 0) {
     return (
       <section className="table-section">
@@ -116,10 +125,15 @@ export function PropertyList({ properties, totalCount }: PropertyListProps) {
               {/* Location */}
               <div className="property-location">{location}</div>
 
-              {/* Status */}
-              <span className={getStatusBadgeClass(property.status)}>
-                {getStatusLabel(property.status)}
-              </span>
+              {/* Status - contextual based on active filter */}
+              {(() => {
+                const badgeType = getContextualBadgeType(property, activeFilter);
+                return (
+                  <span className={getStatusBadgeClass(badgeType)}>
+                    {getStatusLabel(badgeType)}
+                  </span>
+                );
+              })()}
 
               {/* Price */}
               <div className={`property-price ${!isForSale ? "na" : ""}`}>

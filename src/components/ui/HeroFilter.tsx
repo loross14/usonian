@@ -26,6 +26,11 @@ export interface HeroFilterProps {
   currentState: string | null;
   stateOptions: string[];
   onStateChange: (state: string | null) => void;
+
+  // Sort
+  sortValue: string;
+  sortOptions: Array<{ value: string; label: string }>;
+  onSortChange: (value: string) => void;
 }
 
 interface ExperienceTab {
@@ -40,12 +45,13 @@ interface DropdownOption {
 }
 
 interface CompactDropdownProps {
-  icon: "architect" | "location";
+  icon: "architect" | "location" | "sort";
   label: string;
   value: string | null;
   options: DropdownOption[];
   onChange: (value: string | null) => void;
   id: string;
+  showAllOption?: boolean;
 }
 
 // =============================================================================
@@ -139,6 +145,21 @@ function LocationIcon() {
   );
 }
 
+function SortIcon() {
+  return (
+    <svg
+      viewBox="0 0 16 16"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      className="hero-dropdown-icon"
+      aria-hidden="true"
+    >
+      <path d="M2 4h12M4 8h8M6 12h4" />
+    </svg>
+  );
+}
+
 function ChevronIcon({ isOpen }: { isOpen: boolean }) {
   return (
     <svg
@@ -163,6 +184,7 @@ function CompactDropdown({
   options,
   onChange,
   id,
+  showAllOption = true,
 }: CompactDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -205,7 +227,7 @@ function CompactDropdown({
 
   const selectedOption = value ? options.find((opt) => opt.value === value) : null;
   const displayLabel = selectedOption ? truncateLabel(selectedOption.label) : label;
-  const IconComponent = icon === "architect" ? ArchitectIcon : LocationIcon;
+  const IconComponent = icon === "architect" ? ArchitectIcon : icon === "sort" ? SortIcon : LocationIcon;
 
   return (
     <div
@@ -238,15 +260,17 @@ function CompactDropdown({
           aria-labelledby={id}
           className="hero-dropdown-menu"
         >
-          <li
-            role="option"
-            aria-selected={!value}
-            onClick={() => handleSelect(null)}
-            className={`hero-dropdown-item ${!value ? "selected" : ""}`}
-            tabIndex={0}
-          >
-            ALL {label}
-          </li>
+          {showAllOption && (
+            <li
+              role="option"
+              aria-selected={!value}
+              onClick={() => handleSelect(null)}
+              className={`hero-dropdown-item ${!value ? "selected" : ""}`}
+              tabIndex={0}
+            >
+              ALL {label}
+            </li>
+          )}
           {options.map((opt) => (
             <li
               key={opt.value}
@@ -280,6 +304,9 @@ export function HeroFilter({
   currentState,
   stateOptions,
   onStateChange,
+  sortValue,
+  sortOptions,
+  onSortChange,
 }: HeroFilterProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -295,16 +322,26 @@ export function HeroFilter({
     label: state,
   }));
 
+  // Format sort options
+  const formattedSortOptions: DropdownOption[] = sortOptions.map((opt) => ({
+    value: opt.value,
+    label: opt.label,
+  }));
+
   return (
     <div
       ref={containerRef}
-      className="hero-filter hero-filter--expanded"
+      className="hero-filter hero-filter--single-row"
       role="search"
       aria-label="Filter properties"
     >
-      {/* Row 1: Status Tabs + View Toggle */}
-      <div className="hero-filter-row hero-filter-row--tabs" role="tablist" aria-label="Experience type">
-        <div className="hero-filter-tabs">
+      {/* Single Row: View Toggle + Tabs + Dropdowns */}
+      <div className="hero-filter-row" role="group" aria-label="Filter and sort controls">
+        {/* View Toggle - Left */}
+        <ViewToggle view={view} onChange={onViewChange} className="hero-filter-view" />
+
+        {/* Experience Tabs */}
+        <div className="hero-filter-tabs" role="tablist" aria-label="Experience type">
           {EXPERIENCE_TABS.map((tab) => (
             <button
               key={tab.value}
@@ -319,27 +356,35 @@ export function HeroFilter({
             </button>
           ))}
         </div>
-        <ViewToggle view={view} onChange={onViewChange} className="hero-filter-view" />
-      </div>
 
-      {/* Row 2: Dropdowns */}
-      <div className="hero-filter-row hero-filter-row--dropdowns" role="group" aria-label="Filter options">
-        <CompactDropdown
-          id={generateDropdownId("architect")}
-          icon="architect"
-          label="ARCHITECT"
-          value={currentArchitect}
-          options={formattedArchitectOptions}
-          onChange={onArchitectChange}
-        />
-        <CompactDropdown
-          id={generateDropdownId("state")}
-          icon="location"
-          label="STATE"
-          value={currentState}
-          options={formattedStateOptions}
-          onChange={onStateChange}
-        />
+        {/* Dropdowns - Right */}
+        <div className="hero-filter-dropdowns" role="group" aria-label="Filter options">
+          <CompactDropdown
+            id={generateDropdownId("architect")}
+            icon="architect"
+            label="ARCHITECT"
+            value={currentArchitect}
+            options={formattedArchitectOptions}
+            onChange={onArchitectChange}
+          />
+          <CompactDropdown
+            id={generateDropdownId("state")}
+            icon="location"
+            label="STATE"
+            value={currentState}
+            options={formattedStateOptions}
+            onChange={onStateChange}
+          />
+          <CompactDropdown
+            id={generateDropdownId("sort")}
+            icon="sort"
+            label="SORT BY"
+            value={sortValue}
+            options={formattedSortOptions}
+            onChange={(val) => onSortChange(val || sortOptions[0]?.value || "smart")}
+            showAllOption={false}
+          />
+        </div>
       </div>
     </div>
   );
