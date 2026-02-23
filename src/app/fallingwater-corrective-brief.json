@@ -1,0 +1,184 @@
+{
+  "correction_type": "Fallingwater Architectural Reference",
+  "document_purpose": "Corrective design brief to redirect stained glass transom designs from generic waterfall imagery to Frank Lloyd Wright's Fallingwater house (1935)",
+
+  "error_summary": "Previous design agents interpreted 'Falling Water' literally as cascading water/waterfalls, producing designs with teardrop shapes, vertical water streams, blue water palettes, and mist effects. This fundamentally misses the reference: 'Fallingwater' is the proper noun name of Frank Lloyd Wright's most celebrated residential work - an architectural icon featuring dramatic cantilevered concrete terraces hovering over Bear Run waterfall in Mill Run, Pennsylvania. The building itself, not falling water, must be the subject.",
+
+  "correct_interpretation": "Fallingwater is a masterwork of organic architecture where horizontal concrete terraces cantilever boldly over a natural waterfall. The design vocabulary is defined by HORIZONTAL PLANES (Prairie School influence), the interplay of buff-colored concrete against Cherokee red steel, integration with natural sandstone outcroppings, and the sensation of the building floating or hovering above the stream. The water is present but subordinate - it flows BENEATH the architecture. The visual drama comes from the stacked, offset rectangular terraces projecting into space.",
+
+  "architectural_context": {
+    "architect": "Frank Lloyd Wright",
+    "year": 1935,
+    "location": "Mill Run, Pennsylvania (Bear Run)",
+    "style": "Organic Architecture / Prairie School influence",
+    "client": "Edgar J. Kaufmann Sr.",
+    "key_innovation": "Reinforced concrete cantilevers extending up to 15 feet over waterfall",
+    "unesco_status": "World Heritage Site (2019)"
+  },
+
+  "color_palette": {
+    "primary": {
+      "concrete_terraces": {
+        "name": "Light Ochre/Buff",
+        "hex_values": ["#D4A843", "#C4A67C", "#E5D4B3"],
+        "usage": "Dominant color - all cantilevered terrace surfaces, parapets, horizontal planes",
+        "glass_treatment": "Cathedral glass or opalescent in warm cream/ochre tones"
+      }
+    },
+    "accent": {
+      "steel_frames": {
+        "name": "Cherokee Red",
+        "hex_values": ["#A52A2A", "#8B4513", "#723232"],
+        "usage": "Window frames, steel casements, horizontal banding between terraces",
+        "glass_treatment": "Deep red cathedral glass for linear accent elements"
+      }
+    },
+    "anchor": {
+      "sandstone_chimney": {
+        "name": "Warm Brown/Tan",
+        "hex_values": ["#8B7355", "#6B5344", "#9C8B75"],
+        "usage": "Central vertical mass, stone walls, connection to earth",
+        "glass_treatment": "Textured brown glass suggesting rough-hewn stone"
+      }
+    },
+    "environmental": {
+      "water_below": {
+        "name": "Cool Teal/Stream",
+        "hex_values": ["#4A90A4", "#5BA3B5", "#3D7A8C"],
+        "usage": "LOWER PORTION ONLY - the stream beneath the terraces",
+        "glass_treatment": "Rippled or water glass in teal, positioned at bottom of composition"
+      },
+      "forest_context": {
+        "name": "Deep Sage/Forest",
+        "hex_values": ["#2D5A3D", "#4A7C59", "#3B6B4A"],
+        "usage": "Background framing, rhododendron and tree canopy suggestions",
+        "glass_treatment": "Variegated green glass at edges and background"
+      }
+    }
+  },
+
+  "shape_vocabulary": [
+    {
+      "shape": "Horizontal Rectangular Planes",
+      "description": "Long, flat rectangles with strong horizontal emphasis representing the cantilevered terraces",
+      "aspect_ratio": "Width significantly greater than height (minimum 3:1)",
+      "edges": "Clean, geometric with slightly rounded parapet tips",
+      "stacking": "Multiple planes overlapping vertically, each offset horizontally from the one below"
+    },
+    {
+      "shape": "Stacked Offset Rectangles",
+      "description": "The signature composition - terraces at different levels, each projecting in different directions",
+      "arrangement": "Lower terraces extend further; upper terraces step back or project opposite direction"
+    },
+    {
+      "shape": "Central Vertical Anchor",
+      "description": "The stone chimney mass rising through the horizontal planes",
+      "treatment": "Single strong vertical element that the horizontals appear to cantilever FROM"
+    },
+    {
+      "shape": "Glass Bands",
+      "description": "Horizontal strips between terraces representing the window walls",
+      "color": "Cherokee red frames with clear or light-toned glass between"
+    },
+    {
+      "shape": "Rounded Parapet Edges",
+      "description": "The 26-inch parapets have distinctive rounded/bullnose edges",
+      "treatment": "Soften the leading edge of each horizontal plane"
+    },
+    {
+      "shape": "Rock Outcropping Base",
+      "description": "Irregular, organic shapes at the foundation representing the natural sandstone",
+      "position": "Lower center, partially beneath water line"
+    }
+  ],
+
+  "compositional_rules": [
+    "HORIZONTAL DOMINANCE: The overall composition must read as strongly horizontal, not vertical",
+    "CANTILEVER EXPRESSION: Terraces must visibly project/extend beyond their support, creating the hovering effect",
+    "ASYMMETRIC BALANCE: Terraces extend different distances left and right - not symmetrical",
+    "ARCHITECTURE ABOVE, WATER BELOW: The building occupies the upper 2/3 of composition; water is in the lower 1/3",
+    "CENTRAL ANCHOR: A vertical stone mass (chimney) grounds the composition at center",
+    "LAYERED DEPTH: Multiple overlapping horizontal planes create spatial depth",
+    "INTEGRATION WITH NATURE: Rock and water are present but subordinate to architecture",
+    "FLOATING SENSATION: Clear separation between lowest terrace and water surface",
+    "PRAIRIE SCHOOL RHYTHM: Horizontal lines echo across the entire width of the composition"
+  ],
+
+  "constraints": {
+    "forbidden": [
+      "Teardrop or raindrop shapes of any kind",
+      "Vertical water streams or cascades as primary elements",
+      "Water as the dominant visual subject",
+      "Blue as a dominant palette color",
+      "Mist, spray, or fog effects",
+      "Curved flowing lines suggesting water movement",
+      "Vertical compositional emphasis",
+      "Generic waterfall imagery",
+      "Water droplet motifs",
+      "Aquatic themes (fish, waves, splashing)",
+      "Any shape vocabulary derived from 'falling water' as a verb phrase"
+    ],
+    "required": [
+      "Stacked horizontal rectangular planes representing cantilevered terraces",
+      "Cherokee red (#A52A2A) accent color on steel/frame elements",
+      "Light ochre (#D4A843) as the PRIMARY color for concrete surfaces",
+      "Water positioned BELOW the architectural elements (lower third of composition)",
+      "Strong horizontal banding throughout the design",
+      "Central vertical anchor element (stone chimney mass)",
+      "Minimum of 2-3 distinct terrace levels in the composition",
+      "Clear cantilever expression (terraces extending beyond support)",
+      "Asymmetric terrace arrangement",
+      "Forest/nature context at periphery (not center)"
+    ]
+  },
+
+  "agent_1_brief": {
+    "name": "Fallingwater (Balloons Style)",
+    "style_context": "The Balloons style typically uses rounded, organic, floating forms with gentle curves and a sense of lightness",
+    "transformation_notes": "Apply the Balloons style's sense of buoyancy and floating forms to express Fallingwater's cantilevered terraces. The terraces themselves should feel like they're floating or hovering - use soft rounded parapet edges (authentic to Wright's design) and gentle gradients to create the balloon-like sense of lightness. The cantilevers ARE the 'balloons' - solid forms defying gravity.",
+    "specific_guidance": {
+      "shape_adaptation": "Interpret the rectangular terraces with softened, rounded edges (matching the actual 26-inch bullnose parapets). Layer these floating planes to create depth. Each terrace is a 'balloon' of concrete hovering in space.",
+      "color_application": "Use warm ochre gradients within terrace shapes to suggest volume and the quality of light on concrete. Cherokee red outlines or leading between shapes. Soft teal at bottom for water.",
+      "composition": "Stack 3 rounded-edge rectangular planes, each offset. Central warm brown vertical anchor. The 'floating' quality comes from the cantilever - show clear air/space beneath each projecting terrace.",
+      "avoid": "Do NOT interpret 'balloons' as literal balloon shapes or water droplets. The balloon quality is in the FEELING of buoyancy, applied to architectural forms.",
+      "leading_pattern": "Horizontal leading lines dominate. Vertical leading only for the central chimney mass."
+    }
+  },
+
+  "agent_2_brief": {
+    "name": "Fallingwater (Saguaro Style)",
+    "style_context": "The Saguaro style draws from desert/Southwest vocabulary - vertical cacti, warm earth tones, strong sun, bold geometric forms",
+    "transformation_notes": "While Saguaro typically emphasizes verticality (cacti), pivot the interpretation to honor Wright's HORIZONTAL prairie vocabulary while using Saguaro's warm earth palette and bold geometric clarity. Think of Taliesin West (Wright's desert masterpiece) as a bridge - desert warmth with horizontal planes.",
+    "specific_guidance": {
+      "shape_adaptation": "Use bold, clean-edged geometric rectangles with the confident simplicity of desert architecture. The terraces should feel solid, sunbaked, and monumental - like desert mesas or sedimentary rock strata. Strong horizontal bands echoing the stratified geology of desert landscapes.",
+      "color_application": "The Saguaro earth palette actually aligns beautifully with Fallingwater's concrete - use warm ochre and sand tones for terraces. Cherokee red accents recall desert sunsets and red rock. Browns suggest desert stone. Teal water below like a desert oasis.",
+      "composition": "Layer horizontal planes like geological strata. The central stone chimney can reference the vertical saguaro element - ONE strong vertical rising through horizontal bands. Water at base like a desert spring.",
+      "avoid": "Do NOT make the composition vertically dominant like a saguaro cactus. The Saguaro influence is in COLOR WARMTH and GEOMETRIC BOLDNESS, not vertical orientation.",
+      "leading_pattern": "Strong horizontal leading creates the striated, stratified effect. The single vertical chimney element provides Saguaro-like accent without dominating."
+    }
+  },
+
+  "visual_reference_checklist": {
+    "before_finalizing_design_ask": [
+      "Can a viewer identify this as ARCHITECTURE (a building) rather than water?",
+      "Are there at least 2-3 distinct horizontal terrace planes?",
+      "Is ochre/buff the dominant color?",
+      "Is Cherokee red present as an accent?",
+      "Is the water confined to the LOWER portion of the composition?",
+      "Does the overall composition read as HORIZONTAL, not vertical?",
+      "Is there a central vertical anchor (chimney mass)?",
+      "Do the terraces appear to CANTILEVER (extend beyond their support)?",
+      "Would Frank Lloyd Wright recognize this as his Fallingwater?"
+    ]
+  },
+
+  "reference_images_to_study": [
+    "Fallingwater exterior from downstream (classic view showing all terraces)",
+    "Fallingwater in autumn with fall colors (shows ochre concrete against nature)",
+    "Detail of terrace parapets showing rounded edges",
+    "Cherokee red window frames close-up",
+    "View showing cantilever extension over Bear Run"
+  ],
+
+  "final_note": "The name 'Fallingwater' is a PROPER NOUN referring to a specific building, not a description of water falling. The design must unmistakably depict ARCHITECTURE - specifically Frank Lloyd Wright's cantilevered concrete masterpiece. When in doubt, add more horizontal planes and reduce any water-like elements."
+}

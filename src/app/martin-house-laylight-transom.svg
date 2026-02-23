@@ -1,0 +1,166 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100">
+  <defs>
+    <!-- Iridescent opal gradient -->
+    <linearGradient id="opalGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF8E7"/>
+      <stop offset="30%" stop-color="#FFFDF5"/>
+      <stop offset="50%" stop-color="#F5EED6"/>
+      <stop offset="70%" stop-color="#FFFAEB"/>
+      <stop offset="100%" stop-color="#FFF5DC"/>
+    </linearGradient>
+
+    <!-- Deep amber gradient -->
+    <linearGradient id="amberDeep" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#D4820A"/>
+      <stop offset="50%" stop-color="#B8860B"/>
+      <stop offset="100%" stop-color="#9A7209"/>
+    </linearGradient>
+
+    <!-- Warm gold gradient -->
+    <linearGradient id="goldWarm" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#E6B422"/>
+      <stop offset="50%" stop-color="#F4C430"/>
+      <stop offset="100%" stop-color="#DAA520"/>
+    </linearGradient>
+
+    <!-- Rich brown gradient -->
+    <linearGradient id="brownRich" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#6B4423"/>
+      <stop offset="100%" stop-color="#4A2C17"/>
+    </linearGradient>
+
+    <!-- Honey amber -->
+    <linearGradient id="honeyAmber" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFBF00"/>
+      <stop offset="100%" stop-color="#E6A000"/>
+    </linearGradient>
+
+    <!-- Light opal for depth -->
+    <radialGradient id="opalCenter" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="70%" stop-color="#FFF8E1"/>
+      <stop offset="100%" stop-color="#F5EACC"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background - warm cream base -->
+  <rect width="320" height="100" fill="#FDF5E6"/>
+
+  <!-- === LAYER 1: Deep background rectangles (furthest back) === -->
+  <!-- Left section deep rectangles -->
+  <rect x="8" y="8" width="40" height="84" fill="url(#brownRich)" opacity="0.9"/>
+  <rect x="52" y="12" width="24" height="76" fill="url(#amberDeep)" opacity="0.85"/>
+
+  <!-- Center-left deep forms -->
+  <rect x="80" y="6" width="32" height="88" fill="url(#brownRich)" opacity="0.88"/>
+  <rect x="116" y="14" width="20" height="72" fill="url(#amberDeep)" opacity="0.9"/>
+
+  <!-- Center deep rectangles -->
+  <rect x="140" y="4" width="40" height="92" fill="url(#brownRich)" opacity="0.92"/>
+
+  <!-- Center-right deep forms -->
+  <rect x="184" y="14" width="20" height="72" fill="url(#amberDeep)" opacity="0.9"/>
+  <rect x="208" y="6" width="32" height="88" fill="url(#brownRich)" opacity="0.88"/>
+
+  <!-- Right section deep rectangles -->
+  <rect x="244" y="12" width="24" height="76" fill="url(#amberDeep)" opacity="0.85"/>
+  <rect x="272" y="8" width="40" height="84" fill="url(#brownRich)" opacity="0.9"/>
+
+  <!-- === LAYER 2: Mid-depth amber and gold shapes === -->
+  <!-- Left cluster -->
+  <rect x="14" y="18" width="28" height="64" fill="url(#amberDeep)" opacity="0.95"/>
+  <rect x="20" y="24" width="16" height="52" fill="url(#goldWarm)"/>
+  <rect x="46" y="22" width="18" height="56" fill="url(#honeyAmber)" opacity="0.9"/>
+
+  <!-- Left-center cluster -->
+  <rect x="68" y="16" width="22" height="68" fill="url(#goldWarm)" opacity="0.92"/>
+  <rect x="74" y="26" width="10" height="48" fill="url(#opalGlow)"/>
+  <rect x="94" y="20" width="16" height="60" fill="url(#amberDeep)" opacity="0.95"/>
+  <rect x="114" y="28" width="14" height="44" fill="url(#honeyAmber)"/>
+
+  <!-- Central pier cluster (focal point) -->
+  <rect x="132" y="12" width="56" height="76" fill="url(#goldWarm)" opacity="0.88"/>
+  <rect x="142" y="18" width="36" height="64" fill="url(#honeyAmber)" opacity="0.95"/>
+  <rect x="150" y="26" width="20" height="48" fill="url(#opalGlow)"/>
+  <rect x="154" y="32" width="12" height="36" fill="url(#opalCenter)"/>
+
+  <!-- Right-center cluster -->
+  <rect x="192" y="28" width="14" height="44" fill="url(#honeyAmber)"/>
+  <rect x="210" y="20" width="16" height="60" fill="url(#amberDeep)" opacity="0.95"/>
+  <rect x="230" y="16" width="22" height="68" fill="url(#goldWarm)" opacity="0.92"/>
+  <rect x="236" y="26" width="10" height="48" fill="url(#opalGlow)"/>
+
+  <!-- Right cluster -->
+  <rect x="256" y="22" width="18" height="56" fill="url(#honeyAmber)" opacity="0.9"/>
+  <rect x="278" y="18" width="28" height="64" fill="url(#amberDeep)" opacity="0.95"/>
+  <rect x="284" y="24" width="16" height="52" fill="url(#goldWarm)"/>
+
+  <!-- === LAYER 3: Accent squares and small rectangles (top layer) === -->
+  <!-- Small accent squares - left -->
+  <rect x="24" y="30" width="8" height="8" fill="url(#opalCenter)"/>
+  <rect x="24" y="62" width="8" height="8" fill="url(#opalCenter)"/>
+  <rect x="48" y="38" width="6" height="6" fill="#FFF8E1"/>
+  <rect x="48" y="56" width="6" height="6" fill="#FFF8E1"/>
+
+  <!-- Small accent squares - left-center -->
+  <rect x="76" y="34" width="6" height="6" fill="#FFFFFF"/>
+  <rect x="76" y="60" width="6" height="6" fill="#FFFFFF"/>
+  <rect x="98" y="40" width="8" height="8" fill="url(#opalCenter)"/>
+  <rect x="98" y="52" width="8" height="8" fill="url(#opalCenter)"/>
+  <rect x="116" y="36" width="6" height="6" fill="#FFF8E1"/>
+  <rect x="116" y="58" width="6" height="6" fill="#FFF8E1"/>
+
+  <!-- Central accent squares (brightest) -->
+  <rect x="156" y="38" width="8" height="8" fill="#FFFFFF"/>
+  <rect x="156" y="54" width="8" height="8" fill="#FFFFFF"/>
+  <rect x="144" y="46" width="6" height="8" fill="url(#opalCenter)"/>
+  <rect x="170" y="46" width="6" height="8" fill="url(#opalCenter)"/>
+
+  <!-- Small accent squares - right-center -->
+  <rect x="196" y="36" width="6" height="6" fill="#FFF8E1"/>
+  <rect x="196" y="58" width="6" height="6" fill="#FFF8E1"/>
+  <rect x="214" y="40" width="8" height="8" fill="url(#opalCenter)"/>
+  <rect x="214" y="52" width="8" height="8" fill="url(#opalCenter)"/>
+  <rect x="238" y="34" width="6" height="6" fill="#FFFFFF"/>
+  <rect x="238" y="60" width="6" height="6" fill="#FFFFFF"/>
+
+  <!-- Small accent squares - right -->
+  <rect x="266" y="38" width="6" height="6" fill="#FFF8E1"/>
+  <rect x="266" y="56" width="6" height="6" fill="#FFF8E1"/>
+  <rect x="288" y="30" width="8" height="8" fill="url(#opalCenter)"/>
+  <rect x="288" y="62" width="8" height="8" fill="url(#opalCenter)"/>
+
+  <!-- === LAYER 4: Lead came lines (zinc caming) === -->
+  <g stroke="#3D2B1F" stroke-width="1.5" fill="none" stroke-linecap="square">
+    <!-- Outer frame -->
+    <rect x="2" y="2" width="316" height="96" stroke-width="3"/>
+
+    <!-- Major vertical divisions -->
+    <line x1="80" y1="2" x2="80" y2="98"/>
+    <line x1="130" y1="2" x2="130" y2="98"/>
+    <line x1="190" y1="2" x2="190" y2="98"/>
+    <line x1="240" y1="2" x2="240" y2="98"/>
+
+    <!-- Secondary vertical lines -->
+    <line x1="40" y1="6" x2="40" y2="94"/>
+    <line x1="60" y1="10" x2="60" y2="90"/>
+    <line x1="105" y1="8" x2="105" y2="92"/>
+    <line x1="160" y1="4" x2="160" y2="96"/>
+    <line x1="215" y1="8" x2="215" y2="92"/>
+    <line x1="260" y1="10" x2="260" y2="90"/>
+    <line x1="280" y1="6" x2="280" y2="94"/>
+
+    <!-- Horizontal structural lines -->
+    <line x1="2" y1="50" x2="318" y2="50"/>
+    <line x1="10" y1="30" x2="310" y2="30"/>
+    <line x1="10" y1="70" x2="310" y2="70"/>
+
+    <!-- Accent square outlines -->
+    <rect x="150" y="26" width="20" height="48" stroke-width="1"/>
+    <rect x="74" y="26" width="10" height="48" stroke-width="0.75"/>
+    <rect x="236" y="26" width="10" height="48" stroke-width="0.75"/>
+  </g>
+
+  <!-- === LAYER 5: Subtle texture overlay === -->
+  <rect width="320" height="100" fill="url(#opalGlow)" opacity="0.08"/>
+</svg>

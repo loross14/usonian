@@ -1,0 +1,288 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100">
+  <defs>
+    <!-- Desert Sky Gradient -->
+    <linearGradient id="desertSkyAnim" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E8C895"/>
+      <stop offset="40%" stop-color="#F5DEB3"/>
+      <stop offset="80%" stop-color="#DEB887"/>
+      <stop offset="100%" stop-color="#D2B48C"/>
+    </linearGradient>
+
+    <!-- Rock Formation Gradients -->
+    <linearGradient id="rockDarkAnim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B7355"/>
+      <stop offset="50%" stop-color="#6B5344"/>
+      <stop offset="100%" stop-color="#5C4033"/>
+    </linearGradient>
+
+    <linearGradient id="rockMidAnim" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#A0826D"/>
+      <stop offset="50%" stop-color="#8B7355"/>
+      <stop offset="100%" stop-color="#9A7B6D"/>
+    </linearGradient>
+
+    <linearGradient id="rockLightAnim" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#B8956E"/>
+      <stop offset="100%" stop-color="#A0826D"/>
+    </linearGradient>
+
+    <!-- Animated Water Gradient -->
+    <linearGradient id="waterFallAnim" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#89CFF0" stop-opacity="0.9">
+        <animate attributeName="stop-opacity" values="0.9;0.7;0.9" dur="2s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="50%" stop-color="#6BB3D9"/>
+      <stop offset="100%" stop-color="#4A90A4"/>
+    </linearGradient>
+
+    <linearGradient id="poolWaterAnim" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#6BB3D9" stop-opacity="0.8"/>
+      <stop offset="60%" stop-color="#4A90A4" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#3D7A8C"/>
+    </linearGradient>
+
+    <linearGradient id="mistGradientAnim" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#E8F4F8" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#F5FAFA" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Vegetation Gradient -->
+    <linearGradient id="poolVegetationAnim" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4A7C59"/>
+      <stop offset="100%" stop-color="#2D5A3D"/>
+    </linearGradient>
+
+    <!-- Glass texture filter -->
+    <filter id="glassTextureAnim" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise"/>
+      <feColorMatrix type="saturate" values="0" result="mono"/>
+      <feBlend in="SourceGraphic" in2="mono" mode="soft-light"/>
+    </filter>
+
+    <!-- Heat shimmer filter -->
+    <filter id="heatShimmer" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="2" result="noise">
+        <animate attributeName="baseFrequency" values="0.02;0.025;0.02" dur="4s" repeatCount="indefinite"/>
+      </feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+
+    <!-- Water flow pattern -->
+    <pattern id="waterFlowPattern" x="0" y="0" width="8" height="16" patternUnits="userSpaceOnUse">
+      <rect width="8" height="16" fill="#6BB3D9"/>
+      <rect x="2" y="0" width="4" height="8" fill="#89CFF0" opacity="0.6">
+        <animate attributeName="y" values="0;16" dur="0.8s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="0" y="8" width="3" height="6" fill="#89CFF0" opacity="0.4">
+        <animate attributeName="y" values="8;24" dur="0.8s" repeatCount="indefinite"/>
+      </rect>
+    </pattern>
+
+    <!-- Mist particles pattern -->
+    <pattern id="mistParticles" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="5" cy="10" r="1" fill="#E8F4F8" opacity="0.5">
+        <animate attributeName="cy" values="20;0" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.5;0" dur="3s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="15" cy="15" r="0.8" fill="#F5FAFA" opacity="0.4">
+        <animate attributeName="cy" values="20;0" dur="2.5s" repeatCount="indefinite" begin="0.5s"/>
+        <animate attributeName="opacity" values="0.4;0" dur="2.5s" repeatCount="indefinite" begin="0.5s"/>
+      </circle>
+      <circle cx="10" cy="18" r="1.2" fill="#E8F4F8" opacity="0.3">
+        <animate attributeName="cy" values="20;0" dur="3.5s" repeatCount="indefinite" begin="1s"/>
+        <animate attributeName="opacity" values="0.3;0" dur="3.5s" repeatCount="indefinite" begin="1s"/>
+      </circle>
+    </pattern>
+  </defs>
+
+  <style>
+    @keyframes waterFlow {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(8px); }
+    }
+    @keyframes ripple {
+      0% { rx: 15; opacity: 0.4; }
+      50% { rx: 25; opacity: 0.2; }
+      100% { rx: 15; opacity: 0.4; }
+    }
+    @keyframes ripple2 {
+      0% { rx: 35; opacity: 0.3; }
+      50% { rx: 45; opacity: 0.15; }
+      100% { rx: 35; opacity: 0.3; }
+    }
+    @keyframes mistDrift {
+      0% { transform: translateY(0) translateX(0); opacity: 0.6; }
+      50% { transform: translateY(-5px) translateX(2px); opacity: 0.3; }
+      100% { transform: translateY(-10px) translateX(0); opacity: 0; }
+    }
+    @keyframes shimmer {
+      0% { opacity: 0.4; }
+      50% { opacity: 0.6; }
+      100% { opacity: 0.4; }
+    }
+    @keyframes sunPulse {
+      0% { r: 12; opacity: 0.8; }
+      50% { r: 14; opacity: 0.9; }
+      100% { r: 12; opacity: 0.8; }
+    }
+    .water-stream {
+      animation: waterFlow 0.8s linear infinite;
+    }
+    .ripple1 {
+      animation: ripple 3s ease-in-out infinite;
+    }
+    .ripple2 {
+      animation: ripple2 4s ease-in-out infinite;
+    }
+    .mist {
+      animation: mistDrift 4s ease-out infinite;
+    }
+    .shimmer {
+      animation: shimmer 2s ease-in-out infinite;
+    }
+    .sun-inner {
+      animation: sunPulse 5s ease-in-out infinite;
+    }
+  </style>
+
+  <!-- Background - Desert Sky -->
+  <rect x="0" y="0" width="320" height="100" fill="url(#desertSkyAnim)"/>
+
+  <!-- Outer border frame - zinc caming -->
+  <rect x="0" y="0" width="320" height="100" fill="none" stroke="#3D3226" stroke-width="4"/>
+
+  <!-- Distant cliff/canyon wall with heat shimmer -->
+  <g filter="url(#heatShimmer)">
+    <polygon points="0,45 40,35 80,42 120,38 160,40 200,35 240,40 280,36 320,42 320,55 0,55" fill="#C4A67C" opacity="0.5"/>
+  </g>
+
+  <!-- Horizontal structural lines - caming -->
+  <line x1="4" y1="55" x2="316" y2="55" stroke="#3D3226" stroke-width="1"/>
+
+  <!-- LEFT ROCK FORMATION with animated waterfall -->
+  <g filter="url(#glassTextureAnim)">
+    <!-- Rock base shape -->
+    <rect x="35" y="30" width="28" height="50" fill="url(#rockMidAnim)"/>
+    <rect x="40" y="25" width="18" height="55" fill="url(#rockDarkAnim)"/>
+    <!-- Rock face detail -->
+    <polygon points="35,30 40,25 40,80 35,80" fill="url(#rockLightAnim)"/>
+    <polygon points="58,25 63,30 63,80 58,80" fill="#5C4033"/>
+  </g>
+  <!-- Animated waterfall stream -->
+  <g clip-path="url(#leftWaterClip)">
+    <rect x="44" y="22" width="10" height="58" fill="url(#waterFlowPattern)" opacity="0.85"/>
+  </g>
+  <rect x="46" y="22" width="6" height="58" fill="url(#waterFallAnim)" opacity="0.7" class="shimmer"/>
+  <!-- Left rock caming -->
+  <rect x="35" y="25" width="28" height="55" fill="none" stroke="#3D3226" stroke-width="1.5"/>
+
+  <!-- CENTER ROCK FORMATION - Tallest with main waterfall -->
+  <g filter="url(#glassTextureAnim)">
+    <!-- Main rock mass -->
+    <rect x="130" y="12" width="60" height="68" fill="url(#rockMidAnim)"/>
+    <rect x="138" y="8" width="44" height="72" fill="url(#rockDarkAnim)"/>
+    <!-- Rock face highlights -->
+    <polygon points="130,12 138,8 138,80 130,80" fill="url(#rockLightAnim)"/>
+    <polygon points="182,8 190,12 190,80 182,80" fill="#5C4033"/>
+    <!-- Ledges -->
+    <rect x="135" y="35" width="50" height="4" fill="#A0826D" opacity="0.7"/>
+    <rect x="140" y="55" width="40" height="3" fill="#A0826D" opacity="0.6"/>
+  </g>
+  <!-- Main animated waterfall cascade -->
+  <rect x="150" y="5" width="20" height="75" fill="url(#waterFlowPattern)" opacity="0.9"/>
+  <rect x="152" y="5" width="16" height="75" fill="url(#waterFallAnim)" opacity="0.75" class="shimmer"/>
+  <rect x="150" y="5" width="3" height="75" fill="#89CFF0" opacity="0.5" class="shimmer"/>
+  <rect x="167" y="5" width="2" height="75" fill="#6BB3D9" opacity="0.4" class="shimmer"/>
+  <!-- Animated spray mist at base -->
+  <ellipse cx="160" cy="78" rx="30" ry="10" fill="url(#mistParticles)" class="mist"/>
+  <ellipse cx="160" cy="78" rx="25" ry="8" fill="url(#mistGradientAnim)" class="mist"/>
+  <!-- Center rock caming -->
+  <rect x="130" y="8" width="60" height="72" fill="none" stroke="#3D3226" stroke-width="1.5"/>
+
+  <!-- RIGHT ROCK FORMATION with animated waterfall -->
+  <g filter="url(#glassTextureAnim)">
+    <!-- Rock base shape -->
+    <rect x="257" y="28" width="28" height="52" fill="url(#rockMidAnim)"/>
+    <rect x="262" y="22" width="18" height="58" fill="url(#rockDarkAnim)"/>
+    <!-- Rock face detail -->
+    <polygon points="257,28 262,22 262,80 257,80" fill="url(#rockLightAnim)"/>
+    <polygon points="280,22 285,28 285,80 280,80" fill="#5C4033"/>
+  </g>
+  <!-- Animated waterfall stream -->
+  <rect x="266" y="20" width="10" height="60" fill="url(#waterFlowPattern)" opacity="0.85"/>
+  <rect x="268" y="20" width="6" height="60" fill="url(#waterFallAnim)" opacity="0.7" class="shimmer"/>
+  <!-- Right rock caming -->
+  <rect x="257" y="22" width="28" height="58" fill="none" stroke="#3D3226" stroke-width="1.5"/>
+
+  <!-- ANIMATED POOL AT BOTTOM -->
+  <g>
+    <!-- Pool base -->
+    <rect x="25" y="78" width="270" height="18" fill="url(#poolWaterAnim)" filter="url(#glassTextureAnim)"/>
+    <!-- Animated pool surface ripples -->
+    <ellipse cx="160" cy="82" rx="40" ry="3" fill="#89CFF0" opacity="0.4" class="ripple2"/>
+    <ellipse cx="160" cy="82" rx="20" ry="2" fill="#89CFF0" opacity="0.5" class="ripple1"/>
+    <ellipse cx="50" cy="84" rx="15" ry="2" fill="#89CFF0" class="ripple1" style="animation-delay: 0.5s;"/>
+    <ellipse cx="270" cy="85" rx="18" ry="2" fill="#89CFF0" class="ripple1" style="animation-delay: 1s;"/>
+    <!-- Pool edge stones -->
+    <rect x="25" y="76" width="270" height="3" fill="#A0826D"/>
+  </g>
+  <!-- Pool caming -->
+  <rect x="25" y="76" width="270" height="20" fill="none" stroke="#3D3226" stroke-width="1.5"/>
+
+  <!-- VEGETATION at pool edges -->
+  <g filter="url(#glassTextureAnim)">
+    <!-- Left reeds -->
+    <polygon points="20,96 25,75 30,96" fill="url(#poolVegetationAnim)"/>
+    <polygon points="28,96 32,78 36,96" fill="#4A7C59"/>
+    <polygon points="15,96 18,80 24,96" fill="#2D5A3D"/>
+    <!-- Right reeds -->
+    <polygon points="290,96 295,76 300,96" fill="url(#poolVegetationAnim)"/>
+    <polygon points="298,96 302,79 306,96" fill="#4A7C59"/>
+    <polygon points="284,96 288,82 294,96" fill="#2D5A3D"/>
+    <!-- Center-left shrubs -->
+    <polygon points="85,96 92,82 99,96" fill="#4A7C59" opacity="0.8"/>
+    <polygon points="78,96 84,85 90,96" fill="#2D5A3D" opacity="0.7"/>
+    <!-- Center-right shrubs -->
+    <polygon points="221,96 228,83 235,96" fill="#4A7C59" opacity="0.8"/>
+    <polygon points="230,96 236,86 242,96" fill="#2D5A3D" opacity="0.7"/>
+  </g>
+  <!-- Vegetation caming -->
+  <line x1="15" y1="96" x2="40" y2="96" stroke="#3D3226" stroke-width="1"/>
+  <line x1="280" y1="96" x2="310" y2="96" stroke="#3D3226" stroke-width="1"/>
+
+  <!-- SUN/WATER SOURCE at top with pulse animation -->
+  <circle cx="160" cy="-5" r="18" fill="#F5DEB3" opacity="0.6"/>
+  <circle cx="160" cy="-5" r="12" fill="#E8C895" opacity="0.8" class="sun-inner">
+    <animate attributeName="r" values="12;14;12" dur="5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.8;0.9;0.8" dur="5s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Vertical division caming -->
+  <line x1="70" y1="4" x2="70" y2="96" stroke="#3D3226" stroke-width="1"/>
+  <line x1="120" y1="4" x2="120" y2="96" stroke="#3D3226" stroke-width="1"/>
+  <line x1="200" y1="4" x2="200" y2="96" stroke="#3D3226" stroke-width="1"/>
+  <line x1="250" y1="4" x2="250" y2="96" stroke="#3D3226" stroke-width="1"/>
+
+  <!-- Corner triangle accents -->
+  <polygon points="8,8 22,8 8,22" fill="#4A7C59"/>
+  <polygon points="8,8 22,8 8,22" fill="none" stroke="#3D3226" stroke-width="1"/>
+
+  <polygon points="312,8 298,8 312,22" fill="#4A7C59"/>
+  <polygon points="312,8 298,8 312,22" fill="none" stroke="#3D3226" stroke-width="1"/>
+
+  <polygon points="8,92 22,92 8,78" fill="#4A90A4"/>
+  <polygon points="8,92 22,92 8,78" fill="none" stroke="#3D3226" stroke-width="1"/>
+
+  <polygon points="312,92 298,92 312,78" fill="#4A90A4"/>
+  <polygon points="312,92 298,92 312,78" fill="none" stroke="#3D3226" stroke-width="1"/>
+
+  <!-- Horizontal bands - prairie rhythm -->
+  <rect x="4" y="50" width="25" height="5" fill="#DEB887" opacity="0.4"/>
+  <rect x="291" y="50" width="25" height="5" fill="#DEB887" opacity="0.4"/>
+
+  <!-- Side panel accents -->
+  <rect x="8" y="35" width="12" height="25" fill="#C4A67C" opacity="0.5"/>
+  <rect x="8" y="35" width="12" height="25" fill="none" stroke="#3D3226" stroke-width="0.75"/>
+  <rect x="300" y="35" width="12" height="25" fill="#C4A67C" opacity="0.5"/>
+  <rect x="300" y="35" width="12" height="25" fill="none" stroke="#3D3226" stroke-width="0.75"/>
+</svg>

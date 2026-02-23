@@ -1,0 +1,181 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100">
+  <defs>
+    <!-- Lead line styles -->
+    <style>
+      .lead { fill: none; stroke: #1a1a1a; stroke-width: 1.2; stroke-linejoin: round; }
+      .lead-thin { fill: none; stroke: #1a1a1a; stroke-width: 0.8; }
+      .lead-accent { fill: none; stroke: #2d2d2d; stroke-width: 0.6; }
+    </style>
+
+    <!-- Water gradients -->
+    <linearGradient id="deepWater" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4A90A4"/>
+      <stop offset="100%" stop-color="#3A7A94"/>
+    </linearGradient>
+    <linearGradient id="midWater" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6BB3D9"/>
+      <stop offset="100%" stop-color="#5AA3C9"/>
+    </linearGradient>
+    <linearGradient id="lightWater" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#89CFF0"/>
+      <stop offset="100%" stop-color="#79BFE0"/>
+    </linearGradient>
+    <linearGradient id="foam" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F5FAFA"/>
+    </linearGradient>
+    <linearGradient id="stoneGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5C5C5C"/>
+      <stop offset="100%" stop-color="#4A4A4A"/>
+    </linearGradient>
+    <linearGradient id="sandstoneGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8B7355"/>
+      <stop offset="100%" stop-color="#7A6345"/>
+    </linearGradient>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E8F4F8"/>
+      <stop offset="100%" stop-color="#D8E8EF"/>
+    </linearGradient>
+    <linearGradient id="poolGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#5AA3C9"/>
+      <stop offset="50%" stop-color="#4A90A4"/>
+      <stop offset="100%" stop-color="#3A7A94"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background sky/mist field -->
+  <rect x="0" y="0" width="320" height="100" fill="url(#skyGrad)"/>
+
+  <!-- Outer border frame -->
+  <rect x="2" y="2" width="316" height="96" class="lead" fill="none"/>
+  <rect x="6" y="6" width="308" height="88" class="lead-thin" fill="none"/>
+
+  <!-- Corner stone accents - top left -->
+  <polygon points="6,6 22,6 6,22" fill="#5C5C5C"/>
+  <polygon points="6,6 22,6 6,22" class="lead-accent"/>
+
+  <!-- Corner stone accents - top right -->
+  <polygon points="314,6 298,6 314,22" fill="#5C5C5C"/>
+  <polygon points="314,6 298,6 314,22" class="lead-accent"/>
+
+  <!-- Corner stone accents - bottom left -->
+  <polygon points="6,94 22,94 6,78" fill="#8B7355"/>
+  <polygon points="6,94 22,94 6,78" class="lead-accent"/>
+
+  <!-- Corner stone accents - bottom right -->
+  <polygon points="314,94 298,94 314,78" fill="#8B7355"/>
+  <polygon points="314,94 298,94 314,78" class="lead-accent"/>
+
+  <!-- TOP TIER - First cantilever ledge -->
+  <rect x="80" y="12" width="160" height="6" fill="url(#sandstoneGrad)"/>
+  <rect x="80" y="12" width="160" height="6" class="lead"/>
+
+  <!-- Top tier water drops (teardrops falling) -->
+  <path d="M110,18 L106,28 Q110,34 114,28 Z" fill="url(#lightWater)"/>
+  <path d="M110,18 L106,28 Q110,34 114,28 Z" class="lead-thin"/>
+
+  <path d="M160,18 L155,30 Q160,38 165,30 Z" fill="url(#midWater)"/>
+  <path d="M160,18 L155,30 Q160,38 165,30 Z" class="lead-thin"/>
+
+  <path d="M210,18 L206,28 Q210,34 214,28 Z" fill="url(#lightWater)"/>
+  <path d="M210,18 L206,28 Q210,34 214,28 Z" class="lead-thin"/>
+
+  <!-- MIDDLE TIER - Second cantilever ledge (wider) -->
+  <rect x="50" y="38" width="220" height="8" fill="url(#stoneGrad)"/>
+  <rect x="50" y="38" width="220" height="8" class="lead"/>
+
+  <!-- Middle tier cascade - more drops -->
+  <path d="M75,46 L70,58 Q75,66 80,58 Z" fill="url(#midWater)"/>
+  <path d="M75,46 L70,58 Q75,66 80,58 Z" class="lead-thin"/>
+
+  <path d="M115,46 L110,60 Q115,68 120,60 Z" fill="url(#deepWater)"/>
+  <path d="M115,46 L110,60 Q115,68 120,60 Z" class="lead-thin"/>
+
+  <path d="M160,46 L154,62 Q160,72 166,62 Z" fill="url(#midWater)"/>
+  <path d="M160,46 L154,62 Q160,72 166,62 Z" class="lead-thin"/>
+
+  <path d="M205,46 L200,60 Q205,68 210,60 Z" fill="url(#deepWater)"/>
+  <path d="M205,46 L200,60 Q205,68 210,60 Z" class="lead-thin"/>
+
+  <path d="M245,46 L240,58 Q245,66 250,58 Z" fill="url(#midWater)"/>
+  <path d="M245,46 L240,58 Q245,66 250,58 Z" class="lead-thin"/>
+
+  <!-- Diamond water drops (geometric variation) -->
+  <polygon points="95,50 90,60 95,70 100,60" fill="url(#lightWater)"/>
+  <polygon points="95,50 90,60 95,70 100,60" class="lead-thin"/>
+
+  <polygon points="140,48 134,60 140,72 146,60" fill="url(#lightWater)"/>
+  <polygon points="140,48 134,60 140,72 146,60" class="lead-thin"/>
+
+  <polygon points="180,48 174,60 180,72 186,60" fill="url(#lightWater)"/>
+  <polygon points="180,48 174,60 180,72 186,60" class="lead-thin"/>
+
+  <polygon points="225,50 220,60 225,70 230,60" fill="url(#lightWater)"/>
+  <polygon points="225,50 220,60 225,70 230,60" class="lead-thin"/>
+
+  <!-- Flowing stream lines (curved paths going down) -->
+  <path d="M85,46 Q80,55 85,65 Q90,75 85,85" fill="none" stroke="#6BB3D9" stroke-width="2"/>
+  <path d="M85,46 Q80,55 85,65 Q90,75 85,85" class="lead-accent"/>
+
+  <path d="M130,46 Q135,58 130,70 Q125,80 130,90" fill="none" stroke="#89CFF0" stroke-width="2.5"/>
+  <path d="M130,46 Q135,58 130,70 Q125,80 130,90" class="lead-accent"/>
+
+  <path d="M160,38 Q155,50 160,62 Q165,74 160,86" fill="none" stroke="#4A90A4" stroke-width="3"/>
+  <path d="M160,38 Q155,50 160,62 Q165,74 160,86" class="lead-accent"/>
+
+  <path d="M190,46 Q185,58 190,70 Q195,80 190,90" fill="none" stroke="#89CFF0" stroke-width="2.5"/>
+  <path d="M190,46 Q185,58 190,70 Q195,80 190,90" class="lead-accent"/>
+
+  <path d="M235,46 Q240,55 235,65 Q230,75 235,85" fill="none" stroke="#6BB3D9" stroke-width="2"/>
+  <path d="M235,46 Q240,55 235,65 Q230,75 235,85" class="lead-accent"/>
+
+  <!-- BOTTOM - Pool/collection area -->
+  <path d="M30,78 L290,78 L290,94 L30,94 Z" fill="url(#poolGrad)"/>
+  <path d="M30,78 L290,78 L290,94 L30,94 Z" class="lead"/>
+
+  <!-- Pool ripple lines -->
+  <ellipse cx="100" cy="86" rx="15" ry="3" fill="none" stroke="#F5FAFA" stroke-width="0.8"/>
+  <ellipse cx="160" cy="84" rx="20" ry="4" fill="none" stroke="#F5FAFA" stroke-width="1"/>
+  <ellipse cx="220" cy="86" rx="15" ry="3" fill="none" stroke="#F5FAFA" stroke-width="0.8"/>
+
+  <!-- Foam/spray particles (like confetti, but mist) -->
+  <circle cx="70" cy="72" r="1.5" fill="#F5FAFA"/>
+  <circle cx="88" cy="68" r="1" fill="#F5FAFA"/>
+  <circle cx="105" cy="74" r="1.2" fill="#F5FAFA"/>
+  <circle cx="150" cy="70" r="1.5" fill="#F5FAFA"/>
+  <circle cx="170" cy="68" r="1" fill="#F5FAFA"/>
+  <circle cx="195" cy="72" r="1.3" fill="#F5FAFA"/>
+  <circle cx="215" cy="74" r="1" fill="#F5FAFA"/>
+  <circle cx="232" cy="68" r="1.2" fill="#F5FAFA"/>
+  <circle cx="250" cy="72" r="1.5" fill="#F5FAFA"/>
+
+  <!-- Rock/ledge elements at sides -->
+  <path d="M10,50 L25,45 L30,55 L25,65 L10,60 Z" fill="url(#sandstoneGrad)"/>
+  <path d="M10,50 L25,45 L30,55 L25,65 L10,60 Z" class="lead-thin"/>
+
+  <path d="M310,50 L295,45 L290,55 L295,65 L310,60 Z" fill="url(#sandstoneGrad)"/>
+  <path d="M310,50 L295,45 L290,55 L295,65 L310,60 Z" class="lead-thin"/>
+
+  <!-- Additional rock formations -->
+  <polygon points="25,78 40,70 50,78" fill="#5C5C5C"/>
+  <polygon points="25,78 40,70 50,78" class="lead-thin"/>
+
+  <polygon points="270,78 280,70 295,78" fill="#5C5C5C"/>
+  <polygon points="270,78 280,70 295,78" class="lead-thin"/>
+
+  <!-- Left side decorative water bands -->
+  <rect x="10" y="30" width="12" height="4" fill="#6BB3D9"/>
+  <rect x="10" y="30" width="12" height="4" class="lead-accent"/>
+  <rect x="10" y="36" width="12" height="3" fill="#89CFF0"/>
+  <rect x="10" y="36" width="12" height="3" class="lead-accent"/>
+
+  <!-- Right side decorative water bands -->
+  <rect x="298" y="30" width="12" height="4" fill="#6BB3D9"/>
+  <rect x="298" y="30" width="12" height="4" class="lead-accent"/>
+  <rect x="298" y="36" width="12" height="3" fill="#89CFF0"/>
+  <rect x="298" y="36" width="12" height="3" class="lead-accent"/>
+
+  <!-- Horizontal division lines suggesting water levels -->
+  <line x1="30" y1="25" x2="50" y2="25" class="lead-accent"/>
+  <line x1="270" y1="25" x2="290" y2="25" class="lead-accent"/>
+</svg>

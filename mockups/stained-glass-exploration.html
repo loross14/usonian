@@ -1,0 +1,2225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FLW Stained Glass Design Exploration</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'JetBrains Mono', 'Courier New', monospace;
+      background: #0a0a0a;
+      color: #fff;
+      padding: 60px 40px;
+      line-height: 1.6;
+    }
+
+    .header {
+      max-width: 1400px;
+      margin: 0 auto 60px;
+      border-bottom: 1px solid #333;
+      padding-bottom: 40px;
+    }
+
+    h1 {
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #BF0A30;
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: #666;
+      text-transform: uppercase;
+    }
+
+    .round-header {
+      max-width: 1400px;
+      margin: 80px auto 40px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #333;
+    }
+
+    .round-header h2 {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: #C9A227;
+    }
+
+    .design-row {
+      max-width: 1400px;
+      margin: 0 auto 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .design-column {
+      background: #111;
+      border: 1px solid #222;
+      padding: 24px;
+    }
+
+    .column-label {
+      font-size: 8px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #666;
+      margin-bottom: 16px;
+    }
+
+    .design-title {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .reference-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 1px solid #333;
+      background: #000;
+    }
+
+    .reference-img-placeholder {
+      width: 100%;
+      aspect-ratio: 3.2 / 1;
+      background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+      border: 1px solid #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      color: #444;
+      letter-spacing: 0.1em;
+    }
+
+    .svg-container {
+      width: 100%;
+      background: #fff;
+      border: 1px solid #333;
+    }
+
+    .svg-container svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .learnings {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid #222;
+    }
+
+    .learnings-title {
+      font-size: 8px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #C9A227;
+      margin-bottom: 12px;
+    }
+
+    .learnings-content {
+      font-size: 9px;
+      line-height: 1.8;
+      color: #888;
+    }
+
+    .learnings-content strong {
+      color: #aaa;
+    }
+
+    .learnings-section {
+      margin-bottom: 16px;
+    }
+
+    .learnings-section-title {
+      font-size: 8px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #666;
+      margin-bottom: 6px;
+    }
+
+    .color-palette {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .color-swatch {
+      width: 24px;
+      height: 24px;
+      border: 1px solid #333;
+    }
+
+    .design-number {
+      font-size: 48px;
+      font-weight: 100;
+      color: #1a1a1a;
+      position: absolute;
+      top: -20px;
+      right: 20px;
+    }
+
+    .design-wrapper {
+      position: relative;
+    }
+
+    /* Full-width learnings below both columns */
+    .full-learnings {
+      max-width: 1400px;
+      margin: -60px auto 80px;
+      padding: 30px;
+      background: #0d0d0d;
+      border: 1px solid #1a1a1a;
+    }
+
+    .learnings-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .img-credit {
+      font-size: 8px;
+      color: #444;
+      margin-top: 8px;
+      letter-spacing: 0.05em;
+    }
+
+    .img-credit a {
+      color: #555;
+      text-decoration: none;
+    }
+
+    .img-credit a:hover {
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <h1>Frank Lloyd Wright Stained Glass</h1>
+    <p class="subtitle">Design Exploration &amp; Adaptation Study · Round 1 of 2</p>
+  </header>
+
+  <div class="round-header">
+    <h2>Round 1 · Initial Exploration · 10 Designs</h2>
+  </div>
+
+  <!-- Design 1: Robie House Window -->
+  <div class="design-row">
+    <div class="design-column">
+      <div class="column-label">Reference · Source</div>
+      <h3 class="design-title">01. Robie House Window</h3>
+      <img
+        src="https://maclinstudio.com/cdn/shop/products/Wright-Robie-Window-Stained-Glass_large.jpg"
+        alt="Frank Lloyd Wright Robie House Window"
+        class="reference-img"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+      >
+      <div class="reference-img-placeholder" style="display:none;">IMAGE LOADING ERROR</div>
+      <p class="img-credit">Source: <a href="https://maclinstudio.com" target="_blank">Maclin Studio</a></p>
+    </div>
+    <div class="design-column">
+      <div class="column-label">Adaptation · Our Design</div>
+      <h3 class="design-title">Robie Chevron Transom</h3>
+      <div class="svg-container">
+        <svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+          <!-- Background -->
+          <rect width="320" height="100" fill="#F5F0E6"/>
+
+          <!-- Outer border -->
+          <rect x="2" y="2" width="316" height="96" fill="none" stroke="#2C2C2C" stroke-width="3"/>
+
+          <!-- Central chevron pattern -->
+          <g stroke="#2C2C2C" stroke-width="1.5" fill="none">
+            <!-- Main chevrons pointing right -->
+            <path d="M160 10 L200 50 L160 90" stroke="#C4A84B" stroke-width="2"/>
+            <path d="M145 15 L185 50 L145 85" stroke="#8B4513"/>
+            <path d="M130 20 L170 50 L130 80" stroke="#C4A84B" stroke-width="2"/>
+            <path d="M115 25 L155 50 L115 75" stroke="#2C2C2C"/>
+
+            <!-- Mirror chevrons pointing left -->
+            <path d="M160 10 L120 50 L160 90" stroke="#C4A84B" stroke-width="2"/>
+            <path d="M175 15 L135 50 L175 85" stroke="#8B4513"/>
+            <path d="M190 20 L150 50 L190 80" stroke="#C4A84B" stroke-width="2"/>
+            <path d="M205 25 L165 50 L205 75" stroke="#2C2C2C"/>
+          </g>
+
+          <!-- Left decorative panel -->
+          <g transform="translate(20, 20)">
+            <rect width="60" height="60" fill="#D4AF37" opacity="0.3" stroke="#2C2C2C"/>
+            <rect x="10" y="10" width="40" height="40" fill="#E8DCC8" stroke="#8B4513"/>
+            <rect x="18" y="18" width="24" height="24" fill="#C4A84B" stroke="#2C2C2C"/>
+            <line x1="30" y1="10" x2="30" y2="50" stroke="#2C2C2C" stroke-width="1"/>
+            <line x1="10" y1="30" x2="50" y2="30" stroke="#2C2C2C" stroke-width="1"/>
+          </g>
+
+          <!-- Right decorative panel -->
+          <g transform="translate(240, 20)">
+            <rect width="60" height="60" fill="#D4AF37" opacity="0.3" stroke="#2C2C2C"/>
+            <rect x="10" y="10" width="40" height="40" fill="#E8DCC8" stroke="#8B4513"/>
+            <rect x="18" y="18" width="24" height="24" fill="#C4A84B" stroke="#2C2C2C"/>
+            <line x1="30" y1="10" x2="30" y2="50" stroke="#2C2C2C" stroke-width="1"/>
+            <line x1="10" y1="30" x2="50" y2="30" stroke="#2C2C2C" stroke-width="1"/>
+          </g>
+
+          <!-- Diamond accents -->
+          <polygon points="160,5 165,10 160,15 155,10" fill="#C4A84B" stroke="#2C2C2C"/>
+          <polygon points="160,85 165,90 160,95 155,90" fill="#C4A84B" stroke="#2C2C2C"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="full-learnings">
+    <div class="learnings-title">Agent Learnings · Design 01</div>
+    <div class="learnings-grid">
+      <div class="learnings-section">
+        <div class="learnings-section-title">Pattern Analysis</div>
+        <p class="learnings-content">The Robie House windows feature bold chevron/arrow motifs that create dynamic horizontal movement. The central spine uses mirrored V-shapes that radiate outward, creating visual tension and energy. Square corner elements anchor the composition and provide geometric stability.</p>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Color Extraction</div>
+        <p class="learnings-content">Primary palette is warm amber (#C4A84B), cream (#F5F0E6), and deep brown (#8B4513). The zinc caming appears as charcoal (#2C2C2C). These earth tones evoke the Prairie landscape and provide warmth when backlit.</p>
+        <div class="color-palette">
+          <div class="color-swatch" style="background: #C4A84B;"></div>
+          <div class="color-swatch" style="background: #F5F0E6;"></div>
+          <div class="color-swatch" style="background: #8B4513;"></div>
+          <div class="color-swatch" style="background: #2C2C2C;"></div>
+        </div>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Design Principles</div>
+        <p class="learnings-content">Strong horizontal emphasis echoes Prairie architecture. Symmetry provides balance while chevrons add dynamism. Nested geometric forms create depth. The design celebrates the interplay of light and lead lines.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Design 2: Tree of Life -->
+  <div class="design-row">
+    <div class="design-column">
+      <div class="column-label">Reference · Source</div>
+      <h3 class="design-title">02. Tree of Life Window</h3>
+      <img
+        src="https://maclinstudio.com/cdn/shop/products/Wright-Tree-of-Life-Window-Stained-Glass_large.jpg"
+        alt="Frank Lloyd Wright Tree of Life Window"
+        class="reference-img"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+      >
+      <div class="reference-img-placeholder" style="display:none;">IMAGE LOADING ERROR</div>
+      <p class="img-credit">Source: <a href="https://maclinstudio.com" target="_blank">Maclin Studio</a></p>
+    </div>
+    <div class="design-column">
+      <div class="column-label">Adaptation · Our Design</div>
+      <h3 class="design-title">Tree of Life Transom</h3>
+      <div class="svg-container">
+        <svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+          <!-- Background -->
+          <rect width="320" height="100" fill="#F8F5E8"/>
+
+          <!-- Outer border -->
+          <rect x="2" y="2" width="316" height="96" fill="none" stroke="#3D3D3D" stroke-width="3"/>
+
+          <!-- Central trunk -->
+          <rect x="155" y="70" width="10" height="28" fill="#5C4033" stroke="#3D3D3D"/>
+
+          <!-- Tree canopy - geometric branches -->
+          <g fill="#4A7C59" stroke="#3D3D3D" stroke-width="1">
+            <!-- Top tier -->
+            <polygon points="160,8 175,25 145,25"/>
+            <polygon points="140,20 155,35 125,35"/>
+            <polygon points="180,20 195,35 165,35"/>
+
+            <!-- Middle tier -->
+            <polygon points="160,28 180,48 140,48"/>
+            <polygon points="130,38 150,55 110,55"/>
+            <polygon points="190,38 210,55 170,55"/>
+
+            <!-- Lower tier -->
+            <polygon points="160,45 190,70 130,70"/>
+            <polygon points="115,50 140,70 90,70"/>
+            <polygon points="205,50 230,70 180,70"/>
+          </g>
+
+          <!-- Accent berries/fruits -->
+          <g fill="#C75146" stroke="#3D3D3D" stroke-width="0.5">
+            <circle cx="145" cy="32" r="3"/>
+            <circle cx="175" cy="32" r="3"/>
+            <circle cx="125" cy="48" r="3"/>
+            <circle cx="195" cy="48" r="3"/>
+            <circle cx="160" cy="38" r="4"/>
+          </g>
+
+          <!-- Side decorative panels -->
+          <g fill="#C9A227" stroke="#3D3D3D" stroke-width="1">
+            <rect x="15" y="15" width="50" height="70" fill="#E8DCC4"/>
+            <rect x="20" y="20" width="40" height="25" fill="#4A7C59" opacity="0.6"/>
+            <rect x="20" y="50" width="40" height="30" fill="#C9A227" opacity="0.5"/>
+            <line x1="40" y1="15" x2="40" y2="85" stroke="#3D3D3D"/>
+          </g>
+
+          <g fill="#C9A227" stroke="#3D3D3D" stroke-width="1">
+            <rect x="255" y="15" width="50" height="70" fill="#E8DCC4"/>
+            <rect x="260" y="20" width="40" height="25" fill="#4A7C59" opacity="0.6"/>
+            <rect x="260" y="50" width="40" height="30" fill="#C9A227" opacity="0.5"/>
+            <line x1="280" y1="15" x2="280" y2="85" stroke="#3D3D3D"/>
+          </g>
+
+          <!-- Ground line -->
+          <line x1="80" y1="70" x2="240" y2="70" stroke="#5C4033" stroke-width="2"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="full-learnings">
+    <div class="learnings-title">Agent Learnings · Design 02</div>
+    <div class="learnings-grid">
+      <div class="learnings-section">
+        <div class="learnings-section-title">Pattern Analysis</div>
+        <p class="learnings-content">The Tree of Life design abstracts organic forms into pure geometry. The tree becomes a series of stacked triangles suggesting growth and vitality. FLW reduced nature to its essential geometric essence while maintaining recognizable symbolism.</p>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Color Extraction</div>
+        <p class="learnings-content">Forest greens (#4A7C59) dominate the canopy, grounded by warm browns (#5C4033) for the trunk. Accent colors include gold (#C9A227) and terracotta red (#C75146) for fruits. Cream backgrounds (#F8F5E8) allow colors to glow.</p>
+        <div class="color-palette">
+          <div class="color-swatch" style="background: #4A7C59;"></div>
+          <div class="color-swatch" style="background: #5C4033;"></div>
+          <div class="color-swatch" style="background: #C9A227;"></div>
+          <div class="color-swatch" style="background: #C75146;"></div>
+        </div>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Design Principles</div>
+        <p class="learnings-content">Vertical central axis creates stability. Triangular repetition builds rhythm and suggests growth upward. Side panels frame the composition and balance the organic center with geometric restraint. The tree as life symbol connects interior to nature.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Design 3: Waterlilies -->
+  <div class="design-row">
+    <div class="design-column">
+      <div class="column-label">Reference · Source</div>
+      <h3 class="design-title">03. Waterlilies Window</h3>
+      <img
+        src="https://maclinstudio.com/cdn/shop/products/Wright-Waterlilies-Stained-Glass-Angle_large.jpg"
+        alt="Frank Lloyd Wright Waterlilies Stained Glass"
+        class="reference-img"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+      >
+      <div class="reference-img-placeholder" style="display:none;">IMAGE LOADING ERROR</div>
+      <p class="img-credit">Source: <a href="https://maclinstudio.com" target="_blank">Maclin Studio</a></p>
+    </div>
+    <div class="design-column">
+      <div class="column-label">Adaptation · Our Design</div>
+      <h3 class="design-title">Waterlilies Transom</h3>
+      <div class="svg-container">
+        <svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+          <!-- Water background gradient -->
+          <defs>
+            <linearGradient id="water" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" style="stop-color:#87CEEB;stop-opacity:0.4"/>
+              <stop offset="100%" style="stop-color:#4A90A4;stop-opacity:0.6"/>
+            </linearGradient>
+          </defs>
+
+          <rect width="320" height="100" fill="url(#water)"/>
+
+          <!-- Outer border -->
+          <rect x="2" y="2" width="316" height="96" fill="none" stroke="#2C4A3E" stroke-width="3"/>
+
+          <!-- Lily pads - geometric ovals -->
+          <g fill="#3D6B4F" stroke="#2C4A3E" stroke-width="1">
+            <ellipse cx="60" cy="55" rx="35" ry="18"/>
+            <ellipse cx="160" cy="45" rx="40" ry="20"/>
+            <ellipse cx="260" cy="55" rx="35" ry="18"/>
+            <ellipse cx="110" cy="75" rx="30" ry="15"/>
+            <ellipse cx="210" cy="75" rx="30" ry="15"/>
+          </g>
+
+          <!-- Lily pad notches -->
+          <g fill="#87CEEB" stroke="#2C4A3E" stroke-width="1">
+            <path d="M60,55 L50,45 L70,45 Z"/>
+            <path d="M160,45 L150,35 L170,35 Z"/>
+            <path d="M260,55 L250,45 L270,45 Z"/>
+          </g>
+
+          <!-- Water lily flowers - geometric -->
+          <g stroke="#2C4A3E" stroke-width="0.75">
+            <!-- Left flower -->
+            <polygon points="60,40 55,55 50,40 45,55 40,40" fill="#FFF8DC"/>
+            <polygon points="60,40 65,55 70,40 75,55 80,40" fill="#FFF8DC"/>
+            <circle cx="60" cy="45" r="6" fill="#F0E68C"/>
+
+            <!-- Center flower (larger) -->
+            <polygon points="160,28 152,45 145,30 138,48 130,32" fill="#FFF8DC"/>
+            <polygon points="160,28 168,45 175,30 182,48 190,32" fill="#FFF8DC"/>
+            <polygon points="160,28 155,38 150,28 145,38 140,28" fill="#FFFACD"/>
+            <polygon points="160,28 165,38 170,28 175,38 180,28" fill="#FFFACD"/>
+            <circle cx="160" cy="32" r="8" fill="#F0E68C"/>
+            <circle cx="160" cy="32" r="4" fill="#DAA520"/>
+
+            <!-- Right flower -->
+            <polygon points="260,40 255,55 250,40 245,55 240,40" fill="#FFF8DC"/>
+            <polygon points="260,40 265,55 270,40 275,55 280,40" fill="#FFF8DC"/>
+            <circle cx="260" cy="45" r="6" fill="#F0E68C"/>
+          </g>
+
+          <!-- Water ripple lines -->
+          <g stroke="#4A90A4" stroke-width="0.5" fill="none" opacity="0.5">
+            <path d="M10,85 Q40,80 70,85 Q100,90 130,85 Q160,80 190,85 Q220,90 250,85 Q280,80 310,85"/>
+            <path d="M10,20 Q40,25 70,20 Q100,15 130,20 Q160,25 190,20 Q220,15 250,20 Q280,25 310,20"/>
+          </g>
+
+          <!-- Small accent elements -->
+          <g fill="#2C4A3E">
+            <circle cx="30" cy="30" r="2"/>
+            <circle cx="290" cy="30" r="2"/>
+            <circle cx="30" cy="70" r="2"/>
+            <circle cx="290" cy="70" r="2"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="full-learnings">
+    <div class="learnings-title">Agent Learnings · Design 03</div>
+    <div class="learnings-grid">
+      <div class="learnings-section">
+        <div class="learnings-section-title">Pattern Analysis</div>
+        <p class="learnings-content">The Waterlilies window demonstrates FLW's ability to stylize organic forms. Elliptical lily pads float on suggested water, while geometric petals radiate from circular centers. The composition balances horizontal floating elements with vertical flower accents.</p>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Color Extraction</div>
+        <p class="learnings-content">Cool blues (#87CEEB, #4A90A4) create water, while deep greens (#3D6B4F, #2C4A3E) form foliage. Warm ivory (#FFF8DC, #FFFACD) and gold (#F0E68C, #DAA520) bring flowers to life. This warm/cool contrast is essential.</p>
+        <div class="color-palette">
+          <div class="color-swatch" style="background: #87CEEB;"></div>
+          <div class="color-swatch" style="background: #3D6B4F;"></div>
+          <div class="color-swatch" style="background: #FFF8DC;"></div>
+          <div class="color-swatch" style="background: #DAA520;"></div>
+        </div>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Design Principles</div>
+        <p class="learnings-content">Three-part composition with central focal point. Organic curves balanced by geometric simplification. Layered depth (water, pads, flowers) creates dimension. Natural subject made architectural through geometric abstraction.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Design 4: Autumn Sumac -->
+  <div class="design-row">
+    <div class="design-column">
+      <div class="column-label">Reference · Source</div>
+      <h3 class="design-title">04. Autumn Sumac Window</h3>
+      <img
+        src="https://cdn.shopify.com/s/files/1/0015/1442/products/Wright-Autumn-Sumac-Stained-Glass_large.jpg"
+        alt="Frank Lloyd Wright Autumn Sumac Stained Glass"
+        class="reference-img"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+      >
+      <div class="reference-img-placeholder" style="display:none;">IMAGE LOADING ERROR</div>
+      <p class="img-credit">Source: <a href="https://architectgiftsplus.com" target="_blank">Architect Gifts Plus</a></p>
+    </div>
+    <div class="design-column">
+      <div class="column-label">Adaptation · Our Design</div>
+      <h3 class="design-title">Autumn Sumac Transom</h3>
+      <div class="svg-container">
+        <svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+          <!-- Background -->
+          <rect width="320" height="100" fill="#F5EFE0"/>
+
+          <!-- Outer border -->
+          <rect x="2" y="2" width="316" height="96" fill="none" stroke="#4A3728" stroke-width="3"/>
+
+          <!-- Vertical stems -->
+          <g stroke="#4A3728" stroke-width="2" fill="none">
+            <line x1="80" y1="98" x2="80" y2="25"/>
+            <line x1="160" y1="98" x2="160" y2="15"/>
+            <line x1="240" y1="98" x2="240" y2="25"/>
+          </g>
+
+          <!-- Sumac leaf clusters - left -->
+          <g fill="#8B4513" stroke="#4A3728" stroke-width="0.75">
+            <ellipse cx="70" cy="35" rx="12" ry="5" transform="rotate(-30 70 35)"/>
+            <ellipse cx="90" cy="35" rx="12" ry="5" transform="rotate(30 90 35)"/>
+            <ellipse cx="65" cy="45" rx="12" ry="5" transform="rotate(-25 65 45)"/>
+            <ellipse cx="95" cy="45" rx="12" ry="5" transform="rotate(25 95 45)"/>
+            <ellipse cx="68" cy="55" rx="10" ry="4" transform="rotate(-20 68 55)"/>
+            <ellipse cx="92" cy="55" rx="10" ry="4" transform="rotate(20 92 55)"/>
+          </g>
+
+          <!-- Sumac seed head - left -->
+          <ellipse cx="80" cy="28" rx="8" ry="12" fill="#A52A2A" stroke="#4A3728"/>
+
+          <!-- Sumac leaf clusters - center (larger) -->
+          <g fill="#6B8E23" stroke="#4A3728" stroke-width="0.75">
+            <ellipse cx="145" cy="28" rx="15" ry="6" transform="rotate(-35 145 28)"/>
+            <ellipse cx="175" cy="28" rx="15" ry="6" transform="rotate(35 175 28)"/>
+            <ellipse cx="140" cy="40" rx="14" ry="5" transform="rotate(-30 140 40)"/>
+            <ellipse cx="180" cy="40" rx="14" ry="5" transform="rotate(30 180 40)"/>
+            <ellipse cx="142" cy="52" rx="13" ry="5" transform="rotate(-25 142 52)"/>
+            <ellipse cx="178" cy="52" rx="13" ry="5" transform="rotate(25 178 52)"/>
+            <ellipse cx="148" cy="62" rx="11" ry="4" transform="rotate(-20 148 62)"/>
+            <ellipse cx="172" cy="62" rx="11" ry="4" transform="rotate(20 172 62)"/>
+          </g>
+
+          <!-- Sumac seed head - center -->
+          <ellipse cx="160" cy="18" rx="10" ry="15" fill="#8B0000" stroke="#4A3728"/>
+
+          <!-- Sumac leaf clusters - right -->
+          <g fill="#DAA520" stroke="#4A3728" stroke-width="0.75">
+            <ellipse cx="230" cy="35" rx="12" ry="5" transform="rotate(-30 230 35)"/>
+            <ellipse cx="250" cy="35" rx="12" ry="5" transform="rotate(30 250 35)"/>
+            <ellipse cx="225" cy="45" rx="12" ry="5" transform="rotate(-25 225 45)"/>
+            <ellipse cx="255" cy="45" rx="12" ry="5" transform="rotate(25 255 45)"/>
+            <ellipse cx="228" cy="55" rx="10" ry="4" transform="rotate(-20 228 55)"/>
+            <ellipse cx="252" cy="55" rx="10" ry="4" transform="rotate(20 252 55)"/>
+          </g>
+
+          <!-- Sumac seed head - right -->
+          <ellipse cx="240" cy="28" rx="8" ry="12" fill="#CD5C5C" stroke="#4A3728"/>
+
+          <!-- Ground/horizon line -->
+          <line x1="20" y1="85" x2="300" y2="85" stroke="#4A3728" stroke-width="1"/>
+
+          <!-- Small geometric accents -->
+          <g fill="#C9A227" stroke="#4A3728" stroke-width="0.5">
+            <rect x="25" y="78" width="8" height="8"/>
+            <rect x="287" y="78" width="8" height="8"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="full-learnings">
+    <div class="learnings-title">Agent Learnings · Design 04</div>
+    <div class="learnings-grid">
+      <div class="learnings-section">
+        <div class="learnings-section-title">Pattern Analysis</div>
+        <p class="learnings-content">The Sumac design captures prairie plants in geometric abstraction. Paired leaves radiate from central stems with mathematical precision. The distinctive seed heads become vertical focal points. Three-column composition creates rhythm across the transom format.</p>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Color Extraction</div>
+        <p class="learnings-content">Autumn palette features deep burgundy (#8B0000), sienna (#8B4513), olive green (#6B8E23), and golden yellow (#DAA520). Warm cream background (#F5EFE0) and brown caming (#4A3728) unify the seasonal colors.</p>
+        <div class="color-palette">
+          <div class="color-swatch" style="background: #8B0000;"></div>
+          <div class="color-swatch" style="background: #6B8E23;"></div>
+          <div class="color-swatch" style="background: #DAA520;"></div>
+          <div class="color-swatch" style="background: #4A3728;"></div>
+        </div>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Design Principles</div>
+        <p class="learnings-content">Vertical elements rise from a horizontal base, creating prairie-appropriate visual language. Organic plant forms simplified to ellipses and lines. Color progression (brown → green → gold) suggests seasonal change. Balance achieved through repetition with variation.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Design 5: Bradley House Skylight -->
+  <div class="design-row">
+    <div class="design-column">
+      <div class="column-label">Reference · Source</div>
+      <h3 class="design-title">05. Bradley House Skylight</h3>
+      <img
+        src="https://cdn.shopify.com/s/files/1/0015/1442/products/Wright-Bradley-Skylight-Stained-Glass_large.jpg"
+        alt="Frank Lloyd Wright Bradley House Skylight"
+        class="reference-img"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+      >
+      <div class="reference-img-placeholder" style="display:none;">IMAGE LOADING ERROR</div>
+      <p class="img-credit">Source: <a href="https://architectgiftsplus.com" target="_blank">Architect Gifts Plus</a></p>
+    </div>
+    <div class="design-column">
+      <div class="column-label">Adaptation · Our Design</div>
+      <h3 class="design-title">Bradley Geometric Transom</h3>
+      <div class="svg-container">
+        <svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+          <!-- Background -->
+          <rect width="320" height="100" fill="#FDF8F0"/>
+
+          <!-- Outer border -->
+          <rect x="2" y="2" width="316" height="96" fill="none" stroke="#3C3C3C" stroke-width="3"/>
+
+          <!-- Main grid structure -->
+          <g stroke="#3C3C3C" stroke-width="1.5" fill="none">
+            <!-- Horizontal bands -->
+            <line x1="10" y1="25" x2="310" y2="25"/>
+            <line x1="10" y1="50" x2="310" y2="50"/>
+            <line x1="10" y1="75" x2="310" y2="75"/>
+
+            <!-- Vertical divisions -->
+            <line x1="53" y1="10" x2="53" y2="90"/>
+            <line x1="107" y1="10" x2="107" y2="90"/>
+            <line x1="160" y1="10" x2="160" y2="90"/>
+            <line x1="213" y1="10" x2="213" y2="90"/>
+            <line x1="267" y1="10" x2="267" y2="90"/>
+          </g>
+
+          <!-- Colored glass panels - alternating pattern -->
+          <g opacity="0.7">
+            <!-- Row 1 -->
+            <rect x="10" y="10" width="43" height="15" fill="#D4AF37"/>
+            <rect x="107" y="10" width="53" height="15" fill="#8B7355"/>
+            <rect x="213" y="10" width="54" height="15" fill="#D4AF37"/>
+
+            <!-- Row 2 -->
+            <rect x="53" y="25" width="54" height="25" fill="#BC8F8F"/>
+            <rect x="160" y="25" width="53" height="25" fill="#BC8F8F"/>
+            <rect x="267" y="25" width="43" height="25" fill="#8B7355"/>
+
+            <!-- Row 3 -->
+            <rect x="10" y="50" width="43" height="25" fill="#8B7355"/>
+            <rect x="107" y="50" width="53" height="25" fill="#D4AF37"/>
+            <rect x="213" y="50" width="54" height="25" fill="#8B7355"/>
+
+            <!-- Row 4 -->
+            <rect x="53" y="75" width="54" height="15" fill="#D4AF37"/>
+            <rect x="160" y="75" width="53" height="15" fill="#D4AF37"/>
+          </g>
+
+          <!-- Central diamond accent -->
+          <polygon points="160,35 175,50 160,65 145,50" fill="#BF0A30" stroke="#3C3C3C" stroke-width="1" opacity="0.8"/>
+
+          <!-- Corner accents -->
+          <g fill="#8B4513" stroke="#3C3C3C" stroke-width="0.75">
+            <rect x="15" y="15" width="8" height="8"/>
+            <rect x="297" y="15" width="8" height="8"/>
+            <rect x="15" y="77" width="8" height="8"/>
+            <rect x="297" y="77" width="8" height="8"/>
+          </g>
+
+          <!-- Small square accents along edges -->
+          <g fill="#D4AF37" stroke="#3C3C3C" stroke-width="0.5">
+            <rect x="78" y="10" width="5" height="5"/>
+            <rect x="237" y="10" width="5" height="5"/>
+            <rect x="78" y="85" width="5" height="5"/>
+            <rect x="237" y="85" width="5" height="5"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="full-learnings">
+    <div class="learnings-title">Agent Learnings · Design 05</div>
+    <div class="learnings-grid">
+      <div class="learnings-section">
+        <div class="learnings-section-title">Pattern Analysis</div>
+        <p class="learnings-content">The Bradley skylight exemplifies FLW's grid-based approach. A regular matrix of rectangles creates ordered rhythm. Color is placed strategically within the grid to create visual movement and focal points. The central diamond breaks the rectilinear pattern.</p>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Color Extraction</div>
+        <p class="learnings-content">Earth tones dominate: gold (#D4AF37), tan (#8B7355), dusty rose (#BC8F8F). A single red accent (#BF0A30) draws the eye to center. Brown (#8B4513) anchors corners. Warm ivory background (#FDF8F0) unifies.</p>
+        <div class="color-palette">
+          <div class="color-swatch" style="background: #D4AF37;"></div>
+          <div class="color-swatch" style="background: #8B7355;"></div>
+          <div class="color-swatch" style="background: #BC8F8F;"></div>
+          <div class="color-swatch" style="background: #BF0A30;"></div>
+        </div>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Design Principles</div>
+        <p class="learnings-content">Grid provides structure while selective color creates interest. Diagonal element (diamond) energizes orthogonal composition. Corner accents anchor the design. Checkerboard-like color placement creates rhythm without literal repetition. Perfect for filtering overhead light.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Design 6: Lake Geneva Tulip -->
+  <div class="design-row">
+    <div class="design-column">
+      <div class="column-label">Reference · Source</div>
+      <h3 class="design-title">06. Lake Geneva Tulip Window</h3>
+      <img
+        src="https://maclinstudio.com/cdn/shop/products/Wright-Lake-Geneva-Tulip-Stained-Glass_large.jpg"
+        alt="Frank Lloyd Wright Lake Geneva Tulip Window"
+        class="reference-img"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+      >
+      <div class="reference-img-placeholder" style="display:none;">IMAGE LOADING ERROR</div>
+      <p class="img-credit">Source: <a href="https://maclinstudio.com" target="_blank">Maclin Studio</a></p>
+    </div>
+    <div class="design-column">
+      <div class="column-label">Adaptation · Our Design</div>
+      <h3 class="design-title">Geometric Tulip Transom</h3>
+      <div class="svg-container">
+        <svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+          <!-- Background -->
+          <rect width="320" height="100" fill="#F8F4E8"/>
+
+          <!-- Outer border -->
+          <rect x="2" y="2" width="316" height="96" fill="none" stroke="#2E2E2E" stroke-width="3"/>
+
+          <!-- Horizontal ground line -->
+          <line x1="20" y1="75" x2="300" y2="75" stroke="#2E2E2E" stroke-width="1.5"/>
+
+          <!-- Tulip stems -->
+          <g stroke="#3D5C3D" stroke-width="2">
+            <line x1="60" y1="75" x2="60" y2="40"/>
+            <line x1="120" y1="75" x2="120" y2="30"/>
+            <line x1="160" y1="75" x2="160" y2="20"/>
+            <line x1="200" y1="75" x2="200" y2="30"/>
+            <line x1="260" y1="75" x2="260" y2="40"/>
+          </g>
+
+          <!-- Tulip leaves -->
+          <g fill="#4A7C4A" stroke="#2E2E2E" stroke-width="0.75">
+            <path d="M60,70 Q50,60 55,50 L60,55 L65,50 Q70,60 60,70"/>
+            <path d="M120,68 Q108,55 115,42 L120,48 L125,42 Q132,55 120,68"/>
+            <path d="M160,65 Q145,50 152,35 L160,42 L168,35 Q175,50 160,65"/>
+            <path d="M200,68 Q188,55 195,42 L200,48 L205,42 Q212,55 200,68"/>
+            <path d="M260,70 Q250,60 255,50 L260,55 L265,50 Q270,60 260,70"/>
+          </g>
+
+          <!-- Tulip blooms - geometric cups -->
+          <g stroke="#2E2E2E" stroke-width="1">
+            <!-- Outer tulip left -->
+            <path d="M48,45 L60,25 L72,45 Q60,50 48,45" fill="#C75050"/>
+            <path d="M52,43 L60,28 L68,43" fill="#E07070" stroke="none"/>
+
+            <!-- Inner tulip left-center -->
+            <path d="M106,35 L120,12 L134,35 Q120,42 106,35" fill="#FFB347"/>
+            <path d="M112,32 L120,17 L128,32" fill="#FFD080" stroke="none"/>
+
+            <!-- Center tulip (largest) -->
+            <path d="M142,28 L160,2 L178,28 Q160,36 142,28" fill="#C75050"/>
+            <path d="M148,25 L160,8 L172,25" fill="#E07070" stroke="none"/>
+
+            <!-- Inner tulip right-center -->
+            <path d="M186,35 L200,12 L214,35 Q200,42 186,35" fill="#FFB347"/>
+            <path d="M192,32 L200,17 L208,32" fill="#FFD080" stroke="none"/>
+
+            <!-- Outer tulip right -->
+            <path d="M248,45 L260,25 L272,45 Q260,50 248,45" fill="#C75050"/>
+            <path d="M252,43 L260,28 L268,43" fill="#E07070" stroke="none"/>
+          </g>
+
+          <!-- Decorative corner squares -->
+          <g fill="#3D5C3D" stroke="#2E2E2E" stroke-width="0.5">
+            <rect x="10" y="10" width="12" height="12"/>
+            <rect x="298" y="10" width="12" height="12"/>
+            <rect x="10" y="80" width="12" height="12"/>
+            <rect x="298" y="80" width="12" height="12"/>
+          </g>
+
+          <!-- Small diamond accents -->
+          <g fill="#C9A227" stroke="#2E2E2E" stroke-width="0.5">
+            <polygon points="35,50 40,55 35,60 30,55"/>
+            <polygon points="285,50 290,55 285,60 280,55"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="full-learnings">
+    <div class="learnings-title">Agent Learnings · Design 06</div>
+    <div class="learnings-grid">
+      <div class="learnings-section">
+        <div class="learnings-section-title">Pattern Analysis</div>
+        <p class="learnings-content">The Lake Geneva tulip design transforms flowers into geometric cups. Rising stems create vertical rhythm while cup shapes echo architectural forms. Bilateral symmetry with central emphasis creates formal balance. Graduated scale (small-large-small) adds depth.</p>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Color Extraction</div>
+        <p class="learnings-content">Warm reds (#C75050, #E07070) and oranges (#FFB347, #FFD080) for blooms create vibrant focal points. Cool greens (#3D5C3D, #4A7C4A) provide complementary contrast. Cream background (#F8F4E8) and gold accents (#C9A227) add warmth.</p>
+        <div class="color-palette">
+          <div class="color-swatch" style="background: #C75050;"></div>
+          <div class="color-swatch" style="background: #FFB347;"></div>
+          <div class="color-swatch" style="background: #4A7C4A;"></div>
+          <div class="color-swatch" style="background: #C9A227;"></div>
+        </div>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Design Principles</div>
+        <p class="learnings-content">Flowers abstracted to triangular/cup forms. Strong vertical growth from horizontal base. Color temperature contrast (warm/cool) creates visual vibration. Corner anchoring with geometric elements frames the organic center. Scale hierarchy guides eye to center.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Design 7: Martin House Casement -->
+  <div class="design-row">
+    <div class="design-column">
+      <div class="column-label">Reference · Source</div>
+      <h3 class="design-title">07. Martin House Casement</h3>
+      <img
+        src="https://maclinstudio.com/cdn/shop/products/Wright-Martin-Casement-Stained-Glass_large.jpg"
+        alt="Frank Lloyd Wright Martin House Casement"
+        class="reference-img"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+      >
+      <div class="reference-img-placeholder" style="display:none;">IMAGE LOADING ERROR</div>
+      <p class="img-credit">Source: <a href="https://maclinstudio.com" target="_blank">Maclin Studio</a></p>
+    </div>
+    <div class="design-column">
+      <div class="column-label">Adaptation · Our Design</div>
+      <h3 class="design-title">Martin Horizontal Transom</h3>
+      <div class="svg-container">
+        <svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+          <!-- Background -->
+          <rect width="320" height="100" fill="#FBF7EE"/>
+
+          <!-- Outer border -->
+          <rect x="2" y="2" width="316" height="96" fill="none" stroke="#333" stroke-width="3"/>
+
+          <!-- Horizontal band structure -->
+          <g stroke="#333" stroke-width="1">
+            <line x1="10" y1="18" x2="310" y2="18"/>
+            <line x1="10" y1="36" x2="310" y2="36"/>
+            <line x1="10" y1="64" x2="310" y2="64"/>
+            <line x1="10" y1="82" x2="310" y2="82"/>
+          </g>
+
+          <!-- Top band - accent squares -->
+          <g fill="#C9A227" stroke="#333" stroke-width="0.75">
+            <rect x="30" y="8" width="10" height="10"/>
+            <rect x="70" y="8" width="10" height="10"/>
+            <rect x="155" y="8" width="10" height="10"/>
+            <rect x="240" y="8" width="10" height="10"/>
+            <rect x="280" y="8" width="10" height="10"/>
+          </g>
+
+          <!-- Second band - iridescent blue squares -->
+          <g fill="#5B8FAF" stroke="#333" stroke-width="0.75" opacity="0.8">
+            <rect x="50" y="22" width="14" height="14"/>
+            <rect x="100" y="22" width="14" height="14"/>
+            <rect x="153" y="22" width="14" height="14"/>
+            <rect x="206" y="22" width="14" height="14"/>
+            <rect x="256" y="22" width="14" height="14"/>
+          </g>
+
+          <!-- Main central band - chevron pattern -->
+          <g fill="#C9A227" stroke="#333" stroke-width="1">
+            <polygon points="30,50 45,36 60,50 45,64"/>
+            <polygon points="90,50 105,36 120,50 105,64"/>
+            <polygon points="150,50 165,36 180,50 165,64"/>
+            <polygon points="200,50 215,36 230,50 215,64"/>
+            <polygon points="260,50 275,36 290,50 275,64"/>
+          </g>
+
+          <!-- Diamond centers -->
+          <g fill="#8B4513" stroke="#333" stroke-width="0.5">
+            <rect x="40" y="45" width="10" height="10" transform="rotate(45 45 50)"/>
+            <rect x="100" y="45" width="10" height="10" transform="rotate(45 105 50)"/>
+            <rect x="160" y="45" width="10" height="10" transform="rotate(45 165 50)"/>
+            <rect x="210" y="45" width="10" height="10" transform="rotate(45 215 50)"/>
+            <rect x="270" y="45" width="10" height="10" transform="rotate(45 275 50)"/>
+          </g>
+
+          <!-- Fourth band - blue squares -->
+          <g fill="#5B8FAF" stroke="#333" stroke-width="0.75" opacity="0.8">
+            <rect x="50" y="64" width="14" height="14"/>
+            <rect x="100" y="64" width="14" height="14"/>
+            <rect x="153" y="64" width="14" height="14"/>
+            <rect x="206" y="64" width="14" height="14"/>
+            <rect x="256" y="64" width="14" height="14"/>
+          </g>
+
+          <!-- Bottom band - accent squares -->
+          <g fill="#C9A227" stroke="#333" stroke-width="0.75">
+            <rect x="30" y="82" width="10" height="10"/>
+            <rect x="70" y="82" width="10" height="10"/>
+            <rect x="155" y="82" width="10" height="10"/>
+            <rect x="240" y="82" width="10" height="10"/>
+            <rect x="280" y="82" width="10" height="10"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="full-learnings">
+    <div class="learnings-title">Agent Learnings · Design 07</div>
+    <div class="learnings-grid">
+      <div class="learnings-section">
+        <div class="learnings-section-title">Pattern Analysis</div>
+        <p class="learnings-content">The Martin House casement uses strong horizontal banding with geometric accents. Diamond/chevron shapes create rhythm across horizontal bands. Vertical alignment of elements creates visual columns within the horizontal structure. The design is highly architectural.</p>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Color Extraction</div>
+        <p class="learnings-content">Limited palette creates sophistication: gold (#C9A227), iridescent blue (#5B8FAF), and brown (#8B4513). Cream background (#FBF7EE) provides neutral base. The blue provides unexpected Prairie-style accent that suggests sky.</p>
+        <div class="color-palette">
+          <div class="color-swatch" style="background: #C9A227;"></div>
+          <div class="color-swatch" style="background: #5B8FAF;"></div>
+          <div class="color-swatch" style="background: #8B4513;"></div>
+          <div class="color-swatch" style="background: #FBF7EE;"></div>
+        </div>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Design Principles</div>
+        <p class="learnings-content">Horizontal emphasis with vertical accent rhythm. Layered banding creates depth. Geometric shapes (squares, diamonds, chevrons) in careful proportion. Symmetrical composition with mirror-image bands top/bottom. Color used sparingly for maximum impact.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Design 8: Oak Park Skylight -->
+  <div class="design-row">
+    <div class="design-column">
+      <div class="column-label">Reference · Source</div>
+      <h3 class="design-title">08. Oak Park Home Skylight</h3>
+      <img
+        src="https://maclinstudio.com/cdn/shop/products/Wright-Oak-Park-Home-Skylight-Stained-Glass_large.jpg"
+        alt="Frank Lloyd Wright Oak Park Home Skylight"
+        class="reference-img"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+      >
+      <div class="reference-img-placeholder" style="display:none;">IMAGE LOADING ERROR</div>
+      <p class="img-credit">Source: <a href="https://maclinstudio.com" target="_blank">Maclin Studio</a></p>
+    </div>
+    <div class="design-column">
+      <div class="column-label">Adaptation · Our Design</div>
+      <h3 class="design-title">Oak Park Intricate Transom</h3>
+      <div class="svg-container">
+        <svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+          <!-- Background -->
+          <rect width="320" height="100" fill="#FAF6ED"/>
+
+          <!-- Outer border -->
+          <rect x="2" y="2" width="316" height="96" fill="none" stroke="#2C2C2C" stroke-width="3"/>
+
+          <!-- Inner border -->
+          <rect x="8" y="8" width="304" height="84" fill="none" stroke="#2C2C2C" stroke-width="1"/>
+
+          <!-- Grid structure -->
+          <g stroke="#2C2C2C" stroke-width="0.75" fill="none">
+            <!-- Vertical lines -->
+            <line x1="40" y1="8" x2="40" y2="92"/>
+            <line x1="80" y1="8" x2="80" y2="92"/>
+            <line x1="120" y1="8" x2="120" y2="92"/>
+            <line x1="160" y1="8" x2="160" y2="92"/>
+            <line x1="200" y1="8" x2="200" y2="92"/>
+            <line x1="240" y1="8" x2="240" y2="92"/>
+            <line x1="280" y1="8" x2="280" y2="92"/>
+
+            <!-- Horizontal lines -->
+            <line x1="8" y1="30" x2="312" y2="30"/>
+            <line x1="8" y1="50" x2="312" y2="50"/>
+            <line x1="8" y1="70" x2="312" y2="70"/>
+          </g>
+
+          <!-- Amber/gold squares - top row -->
+          <g fill="#D4A84B" stroke="#2C2C2C" stroke-width="0.5" opacity="0.8">
+            <rect x="15" y="12" width="18" height="14"/>
+            <rect x="55" y="12" width="18" height="14"/>
+            <rect x="135" y="12" width="18" height="14"/>
+            <rect x="175" y="12" width="18" height="14"/>
+            <rect x="247" y="12" width="18" height="14"/>
+            <rect x="287" y="12" width="18" height="14"/>
+          </g>
+
+          <!-- Green squares - second row -->
+          <g fill="#5C7F5C" stroke="#2C2C2C" stroke-width="0.5" opacity="0.8">
+            <rect x="95" y="33" width="18" height="14"/>
+            <rect x="207" y="33" width="18" height="14"/>
+          </g>
+
+          <!-- Central ornamental pattern -->
+          <g fill="#C4783C" stroke="#2C2C2C" stroke-width="0.75">
+            <rect x="145" y="35" width="30" height="30"/>
+            <polygon points="160,35 175,50 160,65 145,50" fill="#D4A84B"/>
+          </g>
+
+          <!-- Rust/sienna squares -->
+          <g fill="#A0522D" stroke="#2C2C2C" stroke-width="0.5" opacity="0.7">
+            <rect x="15" y="52" width="18" height="14"/>
+            <rect x="287" y="52" width="18" height="14"/>
+            <rect x="55" y="73" width="18" height="14"/>
+            <rect x="247" y="73" width="18" height="14"/>
+          </g>
+
+          <!-- Small decorative squares -->
+          <g fill="#8B4513" stroke="#2C2C2C" stroke-width="0.25">
+            <rect x="42" y="32" width="8" height="8"/>
+            <rect x="82" y="52" width="8" height="8"/>
+            <rect x="122" y="72" width="8" height="8"/>
+            <rect x="190" y="72" width="8" height="8"/>
+            <rect x="230" y="52" width="8" height="8"/>
+            <rect x="270" y="32" width="8" height="8"/>
+          </g>
+
+          <!-- Corner ornaments -->
+          <g fill="#5C7F5C" stroke="#2C2C2C" stroke-width="0.5">
+            <polygon points="10,10 22,10 10,22"/>
+            <polygon points="310,10 310,22 298,10"/>
+            <polygon points="10,90 10,78 22,90"/>
+            <polygon points="310,90 298,90 310,78"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="full-learnings">
+    <div class="learnings-title">Agent Learnings · Design 08</div>
+    <div class="learnings-grid">
+      <div class="learnings-section">
+        <div class="learnings-section-title">Pattern Analysis</div>
+        <p class="learnings-content">The Oak Park skylight showcases Wright's intricate grid work. Multiple overlapping geometric elements create visual complexity. Central diamond-in-square motif anchors scattered color blocks. The design demonstrates how complexity emerges from simple grid relationships.</p>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Color Extraction</div>
+        <p class="learnings-content">Rich autumn palette: amber/gold (#D4A84B), terracotta (#C4783C), sienna (#A0522D), forest green (#5C7F5C), and brown (#8B4513). Warm cream background (#FAF6ED) allows colors to harmonize. Earthy, organic feel despite geometric forms.</p>
+        <div class="color-palette">
+          <div class="color-swatch" style="background: #D4A84B;"></div>
+          <div class="color-swatch" style="background: #C4783C;"></div>
+          <div class="color-swatch" style="background: #5C7F5C;"></div>
+          <div class="color-swatch" style="background: #A0522D;"></div>
+        </div>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Design Principles</div>
+        <p class="learnings-content">Regular grid enables seemingly random color placement. Corner triangles create visual anchors. Central focal point with radiating asymmetrical balance. Complexity through accumulation of simple elements. Design for overhead viewing with scattered light filtering.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Design 9: Saguaro Forms -->
+  <div class="design-row">
+    <div class="design-column">
+      <div class="column-label">Reference · Source</div>
+      <h3 class="design-title">09. Saguaro Forms Window</h3>
+      <img
+        src="https://maclinstudio.com/cdn/shop/products/Wright-Saguaro-Forms-Stained-Glass_large.jpg"
+        alt="Frank Lloyd Wright Saguaro Forms Stained Glass"
+        class="reference-img"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+      >
+      <div class="reference-img-placeholder" style="display:none;">IMAGE LOADING ERROR</div>
+      <p class="img-credit">Source: <a href="https://maclinstudio.com" target="_blank">Maclin Studio</a></p>
+    </div>
+    <div class="design-column">
+      <div class="column-label">Adaptation · Our Design</div>
+      <h3 class="design-title">Desert Saguaro Transom</h3>
+      <div class="svg-container">
+        <svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+          <!-- Desert sky gradient -->
+          <defs>
+            <linearGradient id="desert-sky" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" style="stop-color:#E8C99B;stop-opacity:1"/>
+              <stop offset="100%" style="stop-color:#D4A76A;stop-opacity:1"/>
+            </linearGradient>
+          </defs>
+
+          <rect width="320" height="100" fill="url(#desert-sky)"/>
+
+          <!-- Outer border -->
+          <rect x="2" y="2" width="316" height="96" fill="none" stroke="#5C4033" stroke-width="3"/>
+
+          <!-- Mountains/horizon -->
+          <polygon points="0,98 40,65 80,80 120,55 160,70 200,50 240,65 280,55 320,75 320,98" fill="#8B7355" opacity="0.3"/>
+
+          <!-- Left saguaro -->
+          <g stroke="#5C4033" stroke-width="1.5">
+            <rect x="55" y="35" width="14" height="63" fill="#6B8E6B"/>
+            <!-- Left arm -->
+            <path d="M55,55 L45,55 L45,35 L52,35" fill="#6B8E6B"/>
+            <!-- Right arm -->
+            <path d="M69,50 L79,50 L79,30 L72,30" fill="#6B8E6B"/>
+          </g>
+
+          <!-- Center saguaro (largest) -->
+          <g stroke="#5C4033" stroke-width="1.5">
+            <rect x="148" y="15" width="18" height="83" fill="#7A9E7A"/>
+            <!-- Left arm -->
+            <path d="M148,45 L133,45 L133,25 L143,25 L143,35 L148,35" fill="#7A9E7A"/>
+            <!-- Right arm -->
+            <path d="M166,40 L181,40 L181,20 L171,20 L171,30 L166,30" fill="#7A9E7A"/>
+            <!-- Small left arm -->
+            <path d="M148,70 L140,70 L140,55 L148,55" fill="#7A9E7A"/>
+          </g>
+
+          <!-- Right saguaro -->
+          <g stroke="#5C4033" stroke-width="1.5">
+            <rect x="250" y="40" width="14" height="58" fill="#6B8E6B"/>
+            <!-- Left arm -->
+            <path d="M250,58 L240,58 L240,42 L247,42" fill="#6B8E6B"/>
+            <!-- Right arm -->
+            <path d="M264,52 L272,52 L272,38 L267,38" fill="#6B8E6B"/>
+          </g>
+
+          <!-- Geometric sun/moon element -->
+          <circle cx="280" cy="25" r="15" fill="#F4A460" stroke="#5C4033" stroke-width="1" opacity="0.8"/>
+          <circle cx="280" cy="25" r="8" fill="#FFD700" stroke="#5C4033" stroke-width="0.5"/>
+
+          <!-- Small desert plants -->
+          <g fill="#8FBC8F" stroke="#5C4033" stroke-width="0.75">
+            <ellipse cx="30" cy="90" rx="8" ry="5"/>
+            <ellipse cx="110" cy="92" rx="6" ry="4"/>
+            <ellipse cx="210" cy="90" rx="7" ry="4"/>
+            <ellipse cx="295" cy="92" rx="6" ry="4"/>
+          </g>
+
+          <!-- Corner accents -->
+          <g fill="#DAA520" stroke="#5C4033" stroke-width="0.5">
+            <polygon points="10,10 25,10 10,25"/>
+            <polygon points="310,10 310,25 295,10"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="full-learnings">
+    <div class="learnings-title">Agent Learnings · Design 09</div>
+    <div class="learnings-grid">
+      <div class="learnings-section">
+        <div class="learnings-section-title">Pattern Analysis</div>
+        <p class="learnings-content">Wright's Saguaro designs translate desert flora into geometric forms. The distinctive cactus silhouette becomes rectangles with perpendicular arm extensions. Three-saguaro composition creates rhythm with varied heights. Simplified mountains suggest horizon without detail.</p>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Color Extraction</div>
+        <p class="learnings-content">Desert palette: sage greens (#6B8E6B, #7A9E7A), sandy tans (#E8C99B, #D4A76A), warm brown (#5C4033, #8B7355), and sunset orange/gold (#F4A460, #FFD700). Colors evoke the Sonoran Desert landscape Wright loved.</p>
+        <div class="color-palette">
+          <div class="color-swatch" style="background: #7A9E7A;"></div>
+          <div class="color-swatch" style="background: #D4A76A;"></div>
+          <div class="color-swatch" style="background: #5C4033;"></div>
+          <div class="color-swatch" style="background: #F4A460;"></div>
+        </div>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Design Principles</div>
+        <p class="learnings-content">Vertical cacti rise from horizontal landscape. Geometric abstraction maintains recognizable forms. Warm/cool contrast between sky gradient and green cacti. Central emphasis with flanking elements. Regional character expressed through form and color without literal representation.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Design 10: March Balloons -->
+  <div class="design-row">
+    <div class="design-column">
+      <div class="column-label">Reference · Source</div>
+      <h3 class="design-title">10. March Balloons (Coonley)</h3>
+      <img
+        src="https://maclinstudio.com/cdn/shop/products/Wright-March-Balloons-Coonley-Stained-Glass_large.jpg"
+        alt="Frank Lloyd Wright March Balloons Coonley Playhouse"
+        class="reference-img"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+      >
+      <div class="reference-img-placeholder" style="display:none;">IMAGE LOADING ERROR</div>
+      <p class="img-credit">Source: <a href="https://maclinstudio.com" target="_blank">Maclin Studio</a></p>
+    </div>
+    <div class="design-column">
+      <div class="column-label">Adaptation · Our Design</div>
+      <h3 class="design-title">Celebration Balloons Transom</h3>
+      <div class="svg-container">
+        <svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+          <!-- Background -->
+          <rect width="320" height="100" fill="#FFFEF5"/>
+
+          <!-- Outer border -->
+          <rect x="2" y="2" width="316" height="96" fill="none" stroke="#333" stroke-width="3"/>
+
+          <!-- Balloon strings -->
+          <g stroke="#333" stroke-width="1" fill="none">
+            <path d="M45,95 Q50,70 50,55"/>
+            <path d="M95,95 Q90,65 85,45"/>
+            <path d="M140,95 Q145,60 150,40"/>
+            <path d="M185,95 Q180,55 175,35"/>
+            <path d="M225,95 Q230,60 235,45"/>
+            <path d="M275,95 Q270,65 265,50"/>
+          </g>
+
+          <!-- Balloons - primary colors -->
+          <g stroke="#333" stroke-width="1.5">
+            <!-- Red balloon -->
+            <circle cx="50" cy="40" r="20" fill="#E63946"/>
+            <ellipse cx="50" cy="58" rx="5" ry="3" fill="#E63946"/>
+
+            <!-- Blue balloon -->
+            <circle cx="85" cy="30" r="18" fill="#457B9D"/>
+            <ellipse cx="85" cy="46" rx="4" ry="3" fill="#457B9D"/>
+
+            <!-- Yellow balloon -->
+            <circle cx="150" cy="25" r="22" fill="#F4A261"/>
+            <ellipse cx="150" cy="45" rx="5" ry="3" fill="#F4A261"/>
+
+            <!-- Green balloon -->
+            <circle cx="175" cy="35" r="16" fill="#2A9D8F"/>
+            <ellipse cx="175" cy="49" rx="4" ry="2" fill="#2A9D8F"/>
+
+            <!-- Purple balloon -->
+            <circle cx="235" cy="30" r="19" fill="#9B5DE5"/>
+            <ellipse cx="235" cy="47" rx="4" ry="3" fill="#9B5DE5"/>
+
+            <!-- Orange balloon -->
+            <circle cx="265" cy="38" r="17" fill="#F77F00"/>
+            <ellipse cx="265" cy="53" rx="4" ry="2" fill="#F77F00"/>
+          </g>
+
+          <!-- Balloon highlights -->
+          <g fill="#fff" opacity="0.4">
+            <ellipse cx="43" cy="35" rx="6" ry="4"/>
+            <ellipse cx="78" cy="25" rx="5" ry="3"/>
+            <ellipse cx="142" cy="20" rx="7" ry="4"/>
+            <ellipse cx="168" cy="30" rx="5" ry="3"/>
+            <ellipse cx="228" cy="25" rx="6" ry="3"/>
+            <ellipse cx="258" cy="33" rx="5" ry="3"/>
+          </g>
+
+          <!-- Confetti/flags elements -->
+          <g fill="#E63946" stroke="#333" stroke-width="0.5">
+            <polygon points="15,20 25,15 25,25"/>
+            <polygon points="305,25 295,20 295,30"/>
+          </g>
+          <g fill="#F4A261" stroke="#333" stroke-width="0.5">
+            <polygon points="115,15 125,10 125,20"/>
+            <polygon points="200,20 210,15 210,25"/>
+          </g>
+          <g fill="#2A9D8F" stroke="#333" stroke-width="0.5">
+            <polygon points="25,75 35,70 35,80"/>
+            <polygon points="285,70 295,65 295,75"/>
+          </g>
+
+          <!-- Small geometric accents -->
+          <g fill="#9B5DE5" stroke="#333" stroke-width="0.5">
+            <rect x="10" y="85" width="8" height="8"/>
+            <rect x="302" y="85" width="8" height="8"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="full-learnings">
+    <div class="learnings-title">Agent Learnings · Design 10</div>
+    <div class="learnings-grid">
+      <div class="learnings-section">
+        <div class="learnings-section-title">Pattern Analysis</div>
+        <p class="learnings-content">The Coonley Playhouse windows are Wright's most playful designs. Circles represent balloons rising on curving strings. Unlike his usual geometric abstraction, these windows embrace recognizable, childlike imagery. Asymmetrical placement creates dynamic, celebratory movement.</p>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Color Extraction</div>
+        <p class="learnings-content">Bold primary and secondary colors: red (#E63946), blue (#457B9D), yellow/orange (#F4A261, #F77F00), green (#2A9D8F), purple (#9B5DE5). Cream background (#FFFEF5) and black caming provide unity. Joyful, saturated palette for children's space.</p>
+        <div class="color-palette">
+          <div class="color-swatch" style="background: #E63946;"></div>
+          <div class="color-swatch" style="background: #457B9D;"></div>
+          <div class="color-swatch" style="background: #F4A261;"></div>
+          <div class="color-swatch" style="background: #2A9D8F;"></div>
+        </div>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Design Principles</div>
+        <p class="learnings-content">Circles as primary form (unusual for FLW). Varied sizes create depth and rhythm. Curved strings connect forms to ground. Flag/pennant accents add geometric counterpoint. Design demonstrates FLW could adapt his language for context—here, a playhouse for children.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROUND 2 HEADER -->
+  <div class="round-header" style="margin-top: 120px;">
+    <h2>Round 2 · Advanced Exploration · 10 Additional Designs</h2>
+  </div>
+
+  <!-- Design 11: Thomas House Entry Ceiling -->
+  <div class="design-row">
+    <div class="design-column">
+      <div class="column-label">Reference · Source</div>
+      <h3 class="design-title">11. Thomas House Entry Light</h3>
+      <div class="reference-img-placeholder">THOMAS HOUSE · OAK PARK, IL · 1901</div>
+      <p class="img-credit">Frank Thomas House ceiling light design</p>
+    </div>
+    <div class="design-column">
+      <div class="column-label">Adaptation · Our Design</div>
+      <h3 class="design-title">Thomas Ceiling Transom</h3>
+      <div class="svg-container">
+        <svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="amberGlow11" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#E8C864"/>
+              <stop offset="50%" stop-color="#D4A843"/>
+              <stop offset="100%" stop-color="#C49A3A"/>
+            </linearGradient>
+          </defs>
+          <rect width="320" height="100" fill="#2D2318"/>
+          <rect x="3" y="3" width="314" height="94" fill="#3D2F24" stroke="#4A3728" stroke-width="1"/>
+          <rect x="6" y="6" width="308" height="88" fill="#FFF8DC"/>
+          <rect x="155" y="10" width="10" height="80" fill="url(#amberGlow11)"/>
+          <rect x="40" y="42" width="240" height="16" fill="#E8C864"/>
+          <polygon points="160,30 175,50 160,70 145,50" fill="#D4A843"/>
+          <polygon points="160,38 168,50 160,62 152,50" fill="#F5DEB3" opacity="0.8"/>
+          <rect x="10" y="15" width="130" height="8" fill="#E8C864" opacity="0.85"/>
+          <rect x="10" y="77" width="130" height="8" fill="#E8C864" opacity="0.85"/>
+          <rect x="180" y="15" width="130" height="8" fill="#E8C864" opacity="0.85"/>
+          <rect x="180" y="77" width="130" height="8" fill="#E8C864" opacity="0.85"/>
+          <rect x="25" y="10" width="5" height="80" fill="#C49A3A" opacity="0.7"/>
+          <rect x="55" y="10" width="5" height="80" fill="#C49A3A" opacity="0.7"/>
+          <rect x="95" y="10" width="5" height="80" fill="#C49A3A" opacity="0.7"/>
+          <rect x="125" y="10" width="5" height="80" fill="#C49A3A" opacity="0.7"/>
+          <rect x="190" y="10" width="5" height="80" fill="#C49A3A" opacity="0.7"/>
+          <rect x="220" y="10" width="5" height="80" fill="#C49A3A" opacity="0.7"/>
+          <rect x="260" y="10" width="5" height="80" fill="#C49A3A" opacity="0.7"/>
+          <rect x="290" y="10" width="5" height="80" fill="#C49A3A" opacity="0.7"/>
+          <g fill="#D4A843" stroke="#4A3728" stroke-width="0.5">
+            <rect x="10" y="10" width="12" height="12"/><rect x="298" y="10" width="12" height="12"/>
+            <rect x="10" y="78" width="12" height="12"/><rect x="298" y="78" width="12" height="12"/>
+          </g>
+          <rect x="2" y="2" width="316" height="96" fill="none" stroke="#4A3728" stroke-width="3"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="full-learnings">
+    <div class="learnings-title">Agent Learnings · Design 11</div>
+    <div class="learnings-grid">
+      <div class="learnings-section">
+        <div class="learnings-section-title">Pattern Analysis</div>
+        <p class="learnings-content">Bilateral symmetry with central vertical axis creates ceiling-appropriate focal point. Orthogonal grid structure uses strict rectilinear elements. Horizontal banding at varying heights creates rhythm. Central diamond provides geometric focal point.</p>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Color Extraction</div>
+        <p class="learnings-content">Warm amber (#E8C864), rich gold (#D4A843), deep amber (#C49A3A), cream (#F5DEB3), brown caming (#4A3728). Machine-age aesthetic with pure rectilinear forms.</p>
+        <div class="color-palette">
+          <div class="color-swatch" style="background: #E8C864;"></div>
+          <div class="color-swatch" style="background: #D4A843;"></div>
+          <div class="color-swatch" style="background: #C49A3A;"></div>
+          <div class="color-swatch" style="background: #4A3728;"></div>
+        </div>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Design Principles</div>
+        <p class="learnings-content">"Grammar of the Straight Line" - only rectangles, squares, and 45-degree diamonds. Horizontal emphasis echoes Prairie philosophy. Unity through repeated geometric vocabulary at different scales.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Design 12: Barton House -->
+  <div class="design-row">
+    <div class="design-column">
+      <div class="column-label">Reference · Source</div>
+      <h3 class="design-title">12. Barton House Buffet Door</h3>
+      <div class="reference-img-placeholder">BARTON HOUSE · BUFFALO, NY · 1903</div>
+      <p class="img-credit">Built for Darwin Martin's sister</p>
+    </div>
+    <div class="design-column">
+      <div class="column-label">Adaptation · Our Design</div>
+      <h3 class="design-title">Barton Chevron Transom</h3>
+      <div class="svg-container">
+        <svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+          <rect width="320" height="100" fill="#F5ECD7"/>
+          <rect x="0" y="0" width="320" height="100" fill="none" stroke="#5C4033" stroke-width="4"/>
+          <rect x="4" y="4" width="312" height="92" fill="none" stroke="#8B7355" stroke-width="2"/>
+          <rect x="8" y="8" width="304" height="8" fill="#6B7B4C"/>
+          <rect x="8" y="84" width="304" height="8" fill="#6B7B4C"/>
+          <rect x="10" y="22" width="300" height="56" fill="#EDE4CC"/>
+          <g transform="translate(40, 50)"><polygon points="0,-24 10,0 0,24 -10,0" fill="#D4A456"/><polygon points="0,-16 6,0 0,16 -6,0" fill="#C99A3D"/><polygon points="0,-8 3,0 0,8 -3,0" fill="#6B7B4C"/></g>
+          <g transform="translate(80, 50)"><polygon points="0,-24 10,0 0,24 -10,0" fill="#6B7B4C"/><polygon points="0,-16 6,0 0,16 -6,0" fill="#7D8B5A"/><polygon points="0,-8 3,0 0,8 -3,0" fill="#D4A456"/></g>
+          <g transform="translate(120, 50)"><polygon points="0,-24 10,0 0,24 -10,0" fill="#D4A456"/><polygon points="0,-16 6,0 0,16 -6,0" fill="#C99A3D"/><polygon points="0,-8 3,0 0,8 -3,0" fill="#6B7B4C"/></g>
+          <g transform="translate(160, 50)"><polygon points="0,-28 14,0 0,28 -14,0" fill="#8B7355"/><polygon points="0,-22 10,0 0,22 -10,0" fill="#D4A456"/><polygon points="0,-14 7,0 0,14 -7,0" fill="#C99A3D"/><polygon points="0,-8 4,0 0,8 -4,0" fill="#6B7B4C"/></g>
+          <g transform="translate(200, 50)"><polygon points="0,-24 10,0 0,24 -10,0" fill="#D4A456"/><polygon points="0,-16 6,0 0,16 -6,0" fill="#C99A3D"/><polygon points="0,-8 3,0 0,8 -3,0" fill="#6B7B4C"/></g>
+          <g transform="translate(240, 50)"><polygon points="0,-24 10,0 0,24 -10,0" fill="#6B7B4C"/><polygon points="0,-16 6,0 0,16 -6,0" fill="#7D8B5A"/><polygon points="0,-8 3,0 0,8 -3,0" fill="#D4A456"/></g>
+          <g transform="translate(280, 50)"><polygon points="0,-24 10,0 0,24 -10,0" fill="#D4A456"/><polygon points="0,-16 6,0 0,16 -6,0" fill="#C99A3D"/><polygon points="0,-8 3,0 0,8 -3,0" fill="#6B7B4C"/></g>
+          <g fill="#5C4033"><rect x="8" y="8" width="12" height="8"/><rect x="300" y="8" width="12" height="8"/><rect x="8" y="84" width="12" height="8"/><rect x="300" y="84" width="12" height="8"/></g>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="full-learnings">
+    <div class="learnings-title">Agent Learnings · Design 12</div>
+    <div class="learnings-grid">
+      <div class="learnings-section">
+        <div class="learnings-section-title">Pattern Analysis</div>
+        <p class="learnings-content">Vertical chevron patterns - diamond shapes reading as abstract arrows or wheat stalks. Eight chevron units distributed across horizontal span. Nested concentric diamond shapes (3-5 layers). Central chevron larger for focal point.</p>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Color Extraction</div>
+        <p class="learnings-content">Rich amber (#D4A456), deep amber (#C99A3D), olive green (#6B7B4C), sage green (#7D8B5A), dark brown (#5C4033), warm brown (#8B7355), cream (#F5ECD7).</p>
+        <div class="color-palette">
+          <div class="color-swatch" style="background: #D4A456;"></div>
+          <div class="color-swatch" style="background: #6B7B4C;"></div>
+          <div class="color-swatch" style="background: #5C4033;"></div>
+          <div class="color-swatch" style="background: #8B7355;"></div>
+        </div>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Design Principles</div>
+        <p class="learnings-content">Organic integration - earth tones evoke autumn prairie landscapes. Geometric abstraction of nature. Horizontal dominance with vertical chevron counterpoint. Lead came celebrated as design element.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Design 13: Imperial Hotel Peacock -->
+  <div class="design-row">
+    <div class="design-column">
+      <div class="column-label">Reference · Source</div>
+      <h3 class="design-title">13. Imperial Hotel Peacock</h3>
+      <div class="reference-img-placeholder">IMPERIAL HOTEL · TOKYO · 1913-22</div>
+      <p class="img-credit">From "Peacock Alley" lobby mural</p>
+    </div>
+    <div class="design-column">
+      <div class="column-label">Adaptation · Our Design</div>
+      <h3 class="design-title">Geometric Peacock Transom</h3>
+      <div class="svg-container">
+        <svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="tealGlow13" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#004d4d"/><stop offset="50%" stop-color="#008080"/><stop offset="100%" stop-color="#004d4d"/>
+            </linearGradient>
+            <linearGradient id="goldShine13" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#D4AF37"/><stop offset="50%" stop-color="#FFD700"/><stop offset="100%" stop-color="#B8860B"/>
+            </linearGradient>
+          </defs>
+          <rect width="320" height="100" fill="#0a0f2e"/>
+          <rect x="2" y="2" width="316" height="96" fill="none" stroke="#D4AF37" stroke-width="1.5"/>
+          <!-- Left wing -->
+          <polygon points="10,50 35,25 45,50 35,75" fill="url(#tealGlow13)" stroke="#006666" stroke-width="0.5"/>
+          <polygon points="25,50 50,20 62,50 50,80" fill="#005959" stroke="#008080" stroke-width="0.5"/>
+          <polygon points="42,50 70,15 85,50 70,85" fill="#1a237e" stroke="#1a237e" stroke-width="0.5"/>
+          <!-- Feather eyes left -->
+          <circle cx="25" cy="45" r="6" fill="#004d4d" stroke="#D4AF37" stroke-width="0.5"/><circle cx="25" cy="45" r="3" fill="#D4AF37"/>
+          <circle cx="42" cy="35" r="5" fill="#006666" stroke="#D4AF37" stroke-width="0.5"/><circle cx="42" cy="35" r="2.5" fill="#FFD700"/>
+          <circle cx="42" cy="65" r="5" fill="#006666" stroke="#D4AF37" stroke-width="0.5"/><circle cx="42" cy="65" r="2.5" fill="#FFD700"/>
+          <circle cx="62" cy="25" r="4" fill="#008080" stroke="#D4AF37" stroke-width="0.5"/><circle cx="62" cy="25" r="2" fill="#D4AF37"/>
+          <circle cx="62" cy="50" r="4" fill="#008080" stroke="#D4AF37" stroke-width="0.5"/><circle cx="62" cy="50" r="2" fill="#D4AF37"/>
+          <circle cx="62" cy="75" r="4" fill="#008080" stroke="#D4AF37" stroke-width="0.5"/><circle cx="62" cy="75" r="2" fill="#D4AF37"/>
+          <!-- Right wing (mirrored) -->
+          <polygon points="310,50 285,25 275,50 285,75" fill="url(#tealGlow13)" stroke="#006666" stroke-width="0.5"/>
+          <polygon points="295,50 270,20 258,50 270,80" fill="#005959" stroke="#008080" stroke-width="0.5"/>
+          <polygon points="278,50 250,15 235,50 250,85" fill="#1a237e" stroke="#1a237e" stroke-width="0.5"/>
+          <!-- Feather eyes right -->
+          <circle cx="295" cy="45" r="6" fill="#004d4d" stroke="#D4AF37" stroke-width="0.5"/><circle cx="295" cy="45" r="3" fill="#D4AF37"/>
+          <circle cx="278" cy="35" r="5" fill="#006666" stroke="#D4AF37" stroke-width="0.5"/><circle cx="278" cy="35" r="2.5" fill="#FFD700"/>
+          <circle cx="278" cy="65" r="5" fill="#006666" stroke="#D4AF37" stroke-width="0.5"/><circle cx="278" cy="65" r="2.5" fill="#FFD700"/>
+          <circle cx="258" cy="25" r="4" fill="#008080" stroke="#D4AF37" stroke-width="0.5"/><circle cx="258" cy="25" r="2" fill="#D4AF37"/>
+          <circle cx="258" cy="50" r="4" fill="#008080" stroke="#D4AF37" stroke-width="0.5"/><circle cx="258" cy="50" r="2" fill="#D4AF37"/>
+          <circle cx="258" cy="75" r="4" fill="#008080" stroke="#D4AF37" stroke-width="0.5"/><circle cx="258" cy="75" r="2" fill="#D4AF37"/>
+          <!-- Central body -->
+          <polygon points="160,85 145,65 145,40 160,25 175,40 175,65" fill="#1a237e" stroke="#D4AF37" stroke-width="1"/>
+          <polygon points="160,70 152,55 160,40 168,55" fill="#008080" stroke="#006666" stroke-width="0.5"/>
+          <polygon points="160,62 155,52 160,42 165,52" fill="url(#goldShine13)"/>
+          <circle cx="160" cy="15" r="8" fill="#1a237e" stroke="#D4AF37" stroke-width="1"/>
+          <circle cx="160" cy="15" r="5" fill="#006666"/>
+          <circle cx="160" cy="15" r="2.5" fill="#FFD700"/>
+          <polygon points="160,5 158,10 162,10" fill="#D4AF37"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="full-learnings">
+    <div class="learnings-title">Agent Learnings · Design 13</div>
+    <div class="learnings-grid">
+      <div class="learnings-section">
+        <div class="learnings-section-title">Pattern Analysis</div>
+        <p class="learnings-content">Bilateral symmetry around central vertical axis. Body reduced to hexagonal/diamond polygons. Head as concentric circles. Feathers as chevron-shaped polygons. Feather eyes as nested ellipses/circles representing iconic "eye" spots.</p>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Color Extraction</div>
+        <p class="learnings-content">Deep navy (#0a0f2e), imperial blue (#1a237e), deep teal (#004d4d), teal (#008080), gold (#D4AF37), bright gold (#FFD700), dark gold (#B8860B).</p>
+        <div class="color-palette">
+          <div class="color-swatch" style="background: #1a237e;"></div>
+          <div class="color-swatch" style="background: #008080;"></div>
+          <div class="color-swatch" style="background: #D4AF37;"></div>
+          <div class="color-swatch" style="background: #0a0f2e;"></div>
+        </div>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Design Principles</div>
+        <p class="learnings-content">Organic geometry - peacock abstracted to geometric shapes while retaining essential character. Gold defines structural elements. Blues create primary mass. Horizontal adaptation spreads typical vertical peacock fan into wing-like bilateral arrangement.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Design 14: Martin House Laylight -->
+  <div class="design-row">
+    <div class="design-column">
+      <div class="column-label">Reference · Source</div>
+      <h3 class="design-title">14. Martin Pier Cluster Laylight</h3>
+      <div class="reference-img-placeholder">DARWIN D. MARTIN HOUSE · BUFFALO · 1903-05</div>
+      <p class="img-credit">Elaborate ceiling laylight design</p>
+    </div>
+    <div class="design-column">
+      <div class="column-label">Adaptation · Our Design</div>
+      <h3 class="design-title">Martin Laylight Transom</h3>
+      <div class="svg-container">
+        <svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="opalGlow14" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#FFF8E7"/><stop offset="50%" stop-color="#FFFDF5"/><stop offset="100%" stop-color="#F5E6C8"/>
+            </linearGradient>
+            <linearGradient id="amberDeep14" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#D4820A"/><stop offset="50%" stop-color="#B8860B"/><stop offset="100%" stop-color="#9A7209"/>
+            </linearGradient>
+            <linearGradient id="goldWarm14" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#E6B422"/><stop offset="50%" stop-color="#F4C430"/><stop offset="100%" stop-color="#DAA520"/>
+            </linearGradient>
+          </defs>
+          <rect width="320" height="100" fill="#FDF5E6"/>
+          <!-- Deep background rectangles -->
+          <rect x="8" y="8" width="40" height="84" fill="#6B4423" opacity="0.9"/>
+          <rect x="52" y="12" width="24" height="76" fill="url(#amberDeep14)" opacity="0.85"/>
+          <rect x="80" y="6" width="32" height="88" fill="#4A2C17" opacity="0.88"/>
+          <rect x="116" y="14" width="20" height="72" fill="url(#amberDeep14)" opacity="0.9"/>
+          <rect x="140" y="4" width="40" height="92" fill="#6B4423" opacity="0.92"/>
+          <rect x="184" y="14" width="20" height="72" fill="url(#amberDeep14)" opacity="0.9"/>
+          <rect x="208" y="6" width="32" height="88" fill="#4A2C17" opacity="0.88"/>
+          <rect x="244" y="12" width="24" height="76" fill="url(#amberDeep14)" opacity="0.85"/>
+          <rect x="272" y="8" width="40" height="84" fill="#6B4423" opacity="0.9"/>
+          <!-- Mid-layer shapes -->
+          <rect x="20" y="24" width="16" height="52" fill="url(#goldWarm14)"/>
+          <rect x="74" y="26" width="10" height="48" fill="url(#opalGlow14)"/>
+          <rect x="150" y="26" width="20" height="48" fill="url(#opalGlow14)"/>
+          <rect x="154" y="32" width="12" height="36" fill="#FFFFFF"/>
+          <rect x="236" y="26" width="10" height="48" fill="url(#opalGlow14)"/>
+          <rect x="284" y="24" width="16" height="52" fill="url(#goldWarm14)"/>
+          <!-- Accent squares -->
+          <g fill="#FFFFFF"><rect x="24" y="30" width="8" height="8"/><rect x="24" y="62" width="8" height="8"/><rect x="76" y="34" width="6" height="6"/><rect x="76" y="60" width="6" height="6"/><rect x="156" y="38" width="8" height="8"/><rect x="156" y="54" width="8" height="8"/><rect x="238" y="34" width="6" height="6"/><rect x="238" y="60" width="6" height="6"/><rect x="288" y="30" width="8" height="8"/><rect x="288" y="62" width="8" height="8"/></g>
+          <!-- Lead came -->
+          <g stroke="#3D2B1F" stroke-width="1.5" fill="none">
+            <rect x="2" y="2" width="316" height="96" stroke-width="3"/>
+            <line x1="80" y1="2" x2="80" y2="98"/><line x1="160" y1="2" x2="160" y2="98"/><line x1="240" y1="2" x2="240" y2="98"/>
+            <line x1="2" y1="50" x2="318" y2="50"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="full-learnings">
+    <div class="learnings-title">Agent Learnings · Design 14</div>
+    <div class="learnings-grid">
+      <div class="learnings-section">
+        <div class="learnings-section-title">Pattern Analysis</div>
+        <p class="learnings-content">Nested rectangles decreasing toward center create visual depth. Bilateral symmetry with five "pier clusters" repeated. Vertical emphasis evoking prairie grasses. Interlocking forms create characteristic "woven" quality.</p>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Color Extraction</div>
+        <p class="learnings-content">Deep amber (#B8860B), rich brown (#6B4423), dark brown (#4A2C17), warm gold (#F4C430), honey amber (#FFBF00), iridescent opal (#FFF8E7), cream (#FDF5E6).</p>
+        <div class="color-palette">
+          <div class="color-swatch" style="background: #B8860B;"></div>
+          <div class="color-swatch" style="background: #6B4423;"></div>
+          <div class="color-swatch" style="background: #F4C430;"></div>
+          <div class="color-swatch" style="background: #FFF8E7;"></div>
+        </div>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Design Principles</div>
+        <p class="learnings-content">Depth through layering - five visual layers create illusion of looking through multiple glass planes. Radial gradients simulate iridescent glass. Warm color temperature transforms harsh sunlight into welcoming illumination.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Design 15: May Basket -->
+  <div class="design-row">
+    <div class="design-column">
+      <div class="column-label">Reference · Source</div>
+      <h3 class="design-title">15. May Basket Design</h3>
+      <div class="reference-img-placeholder">LIBERTY MAGAZINE COVER · 1926-27</div>
+      <p class="img-credit">Unpublished FLW magazine cover design</p>
+    </div>
+    <div class="design-column">
+      <div class="column-label">Adaptation · Our Design</div>
+      <h3 class="design-title">Spring Basket Transom</h3>
+      <div class="svg-container">
+        <svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="pinkGrad15" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#f4a5b8"/><stop offset="100%" stop-color="#e87d9a"/>
+            </linearGradient>
+            <linearGradient id="coralGrad15" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#f5917a"/><stop offset="100%" stop-color="#e06b52"/>
+            </linearGradient>
+            <linearGradient id="greenGrad15" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#4a7c59"/><stop offset="100%" stop-color="#6b9e78"/>
+            </linearGradient>
+            <linearGradient id="basketGrad15" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#c9a86c"/><stop offset="100%" stop-color="#a68b4b"/>
+            </linearGradient>
+          </defs>
+          <rect width="320" height="100" fill="#fef9e7"/>
+          <rect x="2" y="2" width="316" height="96" fill="none" stroke="#1a1a1a" stroke-width="2"/>
+          <!-- Corner triangles -->
+          <polygon points="6,6 20,6 6,20" fill="#4a7c59"/><polygon points="314,6 300,6 314,20" fill="#4a7c59"/>
+          <polygon points="6,94 20,94 6,80" fill="#4a7c59"/><polygon points="314,94 300,94 314,80" fill="#4a7c59"/>
+          <!-- Central basket -->
+          <path d="M130,95 L140,60 L180,60 L190,95 Z" fill="url(#basketGrad15)" stroke="#1a1a1a" stroke-width="1"/>
+          <line x1="145" y1="65" x2="138" y2="90" stroke="#1a1a1a" stroke-width="0.8"/>
+          <line x1="155" y1="60" x2="152" y2="95" stroke="#1a1a1a" stroke-width="0.8"/>
+          <line x1="165" y1="60" x2="168" y2="95" stroke="#1a1a1a" stroke-width="0.8"/>
+          <line x1="175" y1="65" x2="182" y2="90" stroke="#1a1a1a" stroke-width="0.8"/>
+          <!-- Basket handle -->
+          <path d="M145,60 Q160,35 175,60" fill="none" stroke="#a68b4b" stroke-width="4"/>
+          <!-- Central tulip -->
+          <path d="M160,55 L150,35 L160,15 L170,35 Z" fill="url(#coralGrad15)" stroke="#1a1a1a" stroke-width="1"/>
+          <!-- Left flowers -->
+          <path d="M95,70 L85,50 L95,25 L105,50 Z" fill="url(#pinkGrad15)" stroke="#1a1a1a" stroke-width="0.75"/>
+          <polygon points="70,55 62,45 70,30 78,45" fill="#f9d966" stroke="#1a1a1a" stroke-width="0.5"/>
+          <polygon points="55,65 48,55 55,42 62,55" fill="url(#coralGrad15)" stroke="#1a1a1a" stroke-width="0.5"/>
+          <!-- Right flowers -->
+          <path d="M225,70 L215,50 L225,25 L235,50 Z" fill="url(#pinkGrad15)" stroke="#1a1a1a" stroke-width="0.75"/>
+          <polygon points="250,55 242,45 250,30 258,45" fill="#f9d966" stroke="#1a1a1a" stroke-width="0.5"/>
+          <polygon points="265,65 258,55 265,42 272,55" fill="url(#coralGrad15)" stroke="#1a1a1a" stroke-width="0.5"/>
+          <!-- Leaves -->
+          <path d="M45,80 Q35,65 45,50 Q50,65 45,80" fill="url(#greenGrad15)" stroke="#1a1a1a" stroke-width="0.5"/>
+          <path d="M30,70 Q22,58 30,45 Q35,58 30,70" fill="#6b9e78" stroke="#1a1a1a" stroke-width="0.5"/>
+          <path d="M275,80 Q285,65 275,50 Q270,65 275,80" fill="url(#greenGrad15)" stroke="#1a1a1a" stroke-width="0.5"/>
+          <path d="M290,70 Q298,58 290,45 Q285,58 290,70" fill="#6b9e78" stroke="#1a1a1a" stroke-width="0.5"/>
+          <!-- Diamond accents -->
+          <polygon points="115,70 108,80 115,90 122,80" fill="#f9d966" stroke="#1a1a1a" stroke-width="0.5"/>
+          <polygon points="205,70 198,80 205,90 212,80" fill="#f9d966" stroke="#1a1a1a" stroke-width="0.5"/>
+          <!-- Top band -->
+          <rect x="60" y="10" width="200" height="3" fill="#4a7c59"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="full-learnings">
+    <div class="learnings-title">Agent Learnings · Design 15</div>
+    <div class="learnings-grid">
+      <div class="learnings-section">
+        <div class="learnings-section-title">Pattern Analysis</div>
+        <p class="learnings-content">Geometric abstraction of spring flowers - tulips reduced to diamond/chevron shapes. Bilateral symmetry with central basket focal point. Curved basket handle softens rigid geometric flower forms.</p>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Color Extraction</div>
+        <p class="learnings-content">Rose pink (#f4a5b8), coral orange (#f5917a), spring green (#4a7c59), sunshine yellow (#f9d966), basket tan (#c9a86c), warm cream (#fef9e7).</p>
+        <div class="color-palette">
+          <div class="color-swatch" style="background: #f4a5b8;"></div>
+          <div class="color-swatch" style="background: #f9d966;"></div>
+          <div class="color-swatch" style="background: #4a7c59;"></div>
+          <div class="color-swatch" style="background: #c9a86c;"></div>
+        </div>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Design Principles</div>
+        <p class="learnings-content">Unity through diamond motif repetition at multiple scales. Chromatic harmony with warm analogous palette grounded by cool green complements. Corner triangles anchor design to architectural surround.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Design 16: Unity Temple -->
+  <div class="design-row">
+    <div class="design-column">
+      <div class="column-label">Reference · Source</div>
+      <h3 class="design-title">16. Unity Temple Skylight</h3>
+      <div class="reference-img-placeholder">UNITY TEMPLE · OAK PARK · 1905-08</div>
+      <p class="img-credit">UNESCO World Heritage Site</p>
+    </div>
+    <div class="design-column">
+      <div class="column-label">Adaptation · Our Design</div>
+      <h3 class="design-title">Unity Skylight Transom</h3>
+      <div class="svg-container">
+        <svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="opal16" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#FFF8E7"/><stop offset="50%" stop-color="#FFFDF5"/><stop offset="100%" stop-color="#F5E6C8"/>
+            </linearGradient>
+            <radialGradient id="amberGlow16" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#F5C34B"/><stop offset="100%" stop-color="#D4952A"/>
+            </radialGradient>
+            <linearGradient id="deepGold16" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#C9A227"/><stop offset="100%" stop-color="#8B6914"/>
+            </linearGradient>
+          </defs>
+          <rect width="320" height="100" fill="#FFF9E8"/>
+          <!-- Light rays -->
+          <g opacity="0.15"><polygon points="160,0 180,100 140,100" fill="#F5C34B"/><polygon points="80,0 100,100 60,100" fill="#D4952A"/><polygon points="240,0 260,100 220,100" fill="#F5C34B"/></g>
+          <!-- Main border -->
+          <rect x="0" y="0" width="320" height="100" fill="none" stroke="#2A1A0A" stroke-width="3"/>
+          <!-- Panel grid - 8x2 with rotational pattern -->
+          <g stroke="#2A1A0A" stroke-width="1.2">
+            <!-- Row 1 panels -->
+            <rect x="5" y="5" width="35" height="40" fill="url(#opal16)"/>
+            <rect x="45" y="5" width="35" height="40" fill="url(#opal16)"/>
+            <rect x="85" y="5" width="35" height="40" fill="url(#opal16)"/>
+            <rect x="125" y="5" width="35" height="40" fill="url(#opal16)"/>
+            <rect x="165" y="5" width="35" height="40" fill="url(#opal16)"/>
+            <rect x="205" y="5" width="35" height="40" fill="url(#opal16)"/>
+            <rect x="245" y="5" width="35" height="40" fill="url(#opal16)"/>
+            <rect x="285" y="5" width="30" height="40" fill="url(#opal16)"/>
+            <!-- Row 2 panels -->
+            <rect x="5" y="55" width="35" height="40" fill="url(#opal16)"/>
+            <rect x="45" y="55" width="35" height="40" fill="url(#opal16)"/>
+            <rect x="85" y="55" width="35" height="40" fill="url(#opal16)"/>
+            <rect x="125" y="55" width="35" height="40" fill="url(#opal16)"/>
+            <rect x="165" y="55" width="35" height="40" fill="url(#opal16)"/>
+            <rect x="205" y="55" width="35" height="40" fill="url(#opal16)"/>
+            <rect x="245" y="55" width="35" height="40" fill="url(#opal16)"/>
+            <rect x="285" y="55" width="30" height="40" fill="url(#opal16)"/>
+          </g>
+          <!-- Gold cross motifs in alternating panels -->
+          <g fill="url(#deepGold16)">
+            <rect x="20" y="10" width="4" height="30"/><rect x="10" y="20" width="24" height="4"/>
+            <rect x="100" y="10" width="4" height="30"/><rect x="90" y="20" width="24" height="4"/>
+            <rect x="180" y="10" width="4" height="30"/><rect x="170" y="20" width="24" height="4"/>
+            <rect x="260" y="10" width="4" height="30"/><rect x="250" y="20" width="24" height="4"/>
+            <rect x="60" y="60" width="4" height="30"/><rect x="50" y="70" width="24" height="4"/>
+            <rect x="140" y="60" width="4" height="30"/><rect x="130" y="70" width="24" height="4"/>
+            <rect x="220" y="60" width="4" height="30"/><rect x="210" y="70" width="24" height="4"/>
+            <rect x="300" y="60" width="4" height="30"/><rect x="290" y="70" width="20" height="4"/>
+          </g>
+          <!-- Corner accents -->
+          <rect x="2" y="2" width="8" height="8" fill="#8B6914" stroke="#2A1A0A" stroke-width="1"/>
+          <rect x="310" y="2" width="8" height="8" fill="#8B6914" stroke="#2A1A0A" stroke-width="1"/>
+          <rect x="2" y="90" width="8" height="8" fill="#8B6914" stroke="#2A1A0A" stroke-width="1"/>
+          <rect x="310" y="90" width="8" height="8" fill="#8B6914" stroke="#2A1A0A" stroke-width="1"/>
+          <!-- Amber jewels -->
+          <g fill="url(#amberGlow16)"><circle cx="22" cy="25" r="4"/><circle cx="102" cy="25" r="4"/><circle cx="182" cy="25" r="4"/><circle cx="262" cy="25" r="4"/><circle cx="62" cy="75" r="4"/><circle cx="142" cy="75" r="4"/><circle cx="222" cy="75" r="4"/><circle cx="302" cy="75" r="3"/></g>
+          <!-- Horizontal caming -->
+          <line x1="0" y1="50" x2="320" y2="50" stroke="#2A1A0A" stroke-width="1.5"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="full-learnings">
+    <div class="learnings-title">Agent Learnings · Design 16</div>
+    <div class="learnings-grid">
+      <div class="learnings-section">
+        <div class="learnings-section-title">Pattern Analysis</div>
+        <p class="learnings-content">Grid of square panels with alternating 90-degree rotation creates visual complexity from simple repetition. Each panel has 4-fold rotational symmetry. Cross and square motifs with central jewels. Checkerboard-style rotation pattern.</p>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Color Extraction</div>
+        <p class="learnings-content">Opalescent cream (#FFF8E7, #FFFDF5), warm amber (#F5C34B, #D4952A), deep gold (#C9A227, #8B6914), brown caming (#2A1A0A). Warm palette creates "happy cloudless day" effect Wright intended.</p>
+        <div class="color-palette">
+          <div class="color-swatch" style="background: #FFF8E7;"></div>
+          <div class="color-swatch" style="background: #F5C34B;"></div>
+          <div class="color-swatch" style="background: #C9A227;"></div>
+          <div class="color-swatch" style="background: #2A1A0A;"></div>
+        </div>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Design Principles</div>
+        <p class="learnings-content">Unity through repetition - single panel design replicated with rotation. Modular composition for scalability. Warm color temperature transforms harsh Illinois sunlight into welcoming illumination. No cool tones present.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Design 17: Avery Coonley House -->
+  <div class="design-row">
+    <div class="design-column">
+      <div class="column-label">Reference · Source</div>
+      <h3 class="design-title">17. Avery Coonley House</h3>
+      <div class="reference-img-placeholder">AVERY COONLEY HOUSE · RIVERSIDE, IL · 1908</div>
+      <p class="img-credit">"I put my best into the Coonley House" - FLW</p>
+    </div>
+    <div class="design-column">
+      <div class="column-label">Adaptation · Our Design</div>
+      <h3 class="design-title">Coonley Estate Transom</h3>
+      <div class="svg-container">
+        <svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="bronzeWash17" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#8B7355"/><stop offset="50%" stop-color="#CD9B6A"/><stop offset="100%" stop-color="#6B5344"/>
+            </linearGradient>
+            <linearGradient id="iridescent17" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#C4B59D"/><stop offset="50%" stop-color="#D4C8B0"/><stop offset="100%" stop-color="#A89880"/>
+            </linearGradient>
+            <linearGradient id="sageGreen17" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#7A8B7A"/><stop offset="100%" stop-color="#8FA08A"/>
+            </linearGradient>
+            <linearGradient id="goldAccent17" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#D4AF37"/><stop offset="100%" stop-color="#B8933A"/>
+            </linearGradient>
+            <linearGradient id="amberGlow17" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#FFBF00" stop-opacity="0.7"/><stop offset="100%" stop-color="#E6A800" stop-opacity="0.9"/>
+            </linearGradient>
+          </defs>
+          <rect width="320" height="100" fill="#F5F0E6"/>
+          <!-- Border frames -->
+          <rect x="2" y="2" width="316" height="96" fill="none" stroke="#3D3226" stroke-width="3"/>
+          <rect x="6" y="6" width="308" height="88" fill="none" stroke="url(#bronzeWash17)" stroke-width="1.5"/>
+          <!-- Left section -->
+          <rect x="12" y="12" width="8" height="76" fill="#5C7A5C"/>
+          <rect x="22" y="12" width="5" height="76" fill="url(#sageGreen17)"/>
+          <polygon points="32,12 50,12 50,25 41,35 32,25" fill="#8B7355"/>
+          <polygon points="32,28 41,38 50,28 50,45 41,55 32,45" fill="url(#iridescent17)"/>
+          <polygon points="32,48 41,58 50,48 50,65 41,75 32,65" fill="#8B7355"/>
+          <polygon points="32,68 41,78 50,68 50,88 32,88" fill="url(#iridescent17)"/>
+          <polygon points="55,30 65,50 55,70 45,50" fill="url(#amberGlow17)" stroke="#B8933A" stroke-width="0.5"/>
+          <!-- Center cluster left -->
+          <rect x="70" y="15" width="25" height="12" fill="#6B7C6B"/>
+          <rect x="75" y="29" width="20" height="10" fill="url(#iridescent17)"/>
+          <rect x="70" y="41" width="25" height="18" fill="#A89880"/>
+          <rect x="75" y="61" width="20" height="10" fill="url(#sageGreen17)"/>
+          <rect x="70" y="73" width="25" height="12" fill="#6B7C6B"/>
+          <rect x="98" y="12" width="4" height="76" fill="url(#goldAccent17)"/>
+          <rect x="104" y="18" width="6" height="64" fill="#5C7A5C"/>
+          <!-- Central focal diamond -->
+          <rect x="115" y="40" width="90" height="20" fill="url(#iridescent17)"/>
+          <polygon points="160,15 185,50 160,85 135,50" fill="url(#amberGlow17)" stroke="url(#goldAccent17)" stroke-width="1"/>
+          <polygon points="160,25 175,50 160,75 145,50" fill="#F5F0E6" stroke="#B8933A" stroke-width="0.5"/>
+          <rect x="152" y="42" width="16" height="16" fill="url(#goldAccent17)" stroke="#8B7355" stroke-width="0.5"/>
+          <rect x="156" y="46" width="8" height="8" fill="#FFBF00"/>
+          <!-- Flanking chevrons -->
+          <polygon points="115,30 125,50 115,70 120,70 130,50 120,30" fill="#7A8B7A"/>
+          <polygon points="205,30 195,50 205,70 200,70 190,50 200,30" fill="#7A8B7A"/>
+          <!-- Center cluster right -->
+          <rect x="210" y="18" width="6" height="64" fill="#5C7A5C"/>
+          <rect x="218" y="12" width="4" height="76" fill="url(#goldAccent17)"/>
+          <rect x="225" y="15" width="25" height="12" fill="#6B7C6B"/>
+          <rect x="225" y="29" width="20" height="10" fill="url(#iridescent17)"/>
+          <rect x="225" y="41" width="25" height="18" fill="#A89880"/>
+          <rect x="225" y="61" width="20" height="10" fill="url(#sageGreen17)"/>
+          <rect x="225" y="73" width="25" height="12" fill="#6B7C6B"/>
+          <!-- Right section -->
+          <polygon points="265,30 275,50 265,70 255,50" fill="url(#amberGlow17)" stroke="#B8933A" stroke-width="0.5"/>
+          <polygon points="288,12 270,12 270,25 279,35 288,25" fill="#8B7355"/>
+          <polygon points="288,28 279,38 270,28 270,45 279,55 288,45" fill="url(#iridescent17)"/>
+          <polygon points="288,48 279,58 270,48 270,65 279,75 288,65" fill="#8B7355"/>
+          <polygon points="288,68 279,78 270,68 270,88 288,88" fill="url(#iridescent17)"/>
+          <rect x="293" y="12" width="5" height="76" fill="url(#sageGreen17)"/>
+          <rect x="300" y="12" width="8" height="76" fill="#5C7A5C"/>
+          <!-- Corner accents -->
+          <polygon points="10,10 20,10 10,20" fill="#5C7A5C"/>
+          <polygon points="310,10 300,10 310,20" fill="#5C7A5C"/>
+          <polygon points="10,90 20,90 10,80" fill="#5C7A5C"/>
+          <polygon points="310,90 300,90 310,80" fill="#5C7A5C"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="full-learnings">
+    <div class="learnings-title">Agent Learnings · Design 17</div>
+    <div class="learnings-grid">
+      <div class="learnings-section">
+        <div class="learnings-section-title">Pattern Analysis</div>
+        <p class="learnings-content">Sophisticated geometric vocabulary representing Wright's mature Prairie period. Chevron/arrow stacks, stepped rectangles, central diamond medallion. Bilateral symmetry with central focal diamond "jewel." ~270 original art glass windows in actual house.</p>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Color Extraction</div>
+        <p class="learnings-content">Bronze wash (#8B7355, #CD9B6A), sage green (#5C7A5C, #7A8B7A), iridescent taupe (#C4B59D, #D4C8B0), antique gold (#D4AF37), amber (#FFBF00), cream (#F5F0E6).</p>
+        <div class="color-palette">
+          <div class="color-swatch" style="background: #8B7355;"></div>
+          <div class="color-swatch" style="background: #7A8B7A;"></div>
+          <div class="color-swatch" style="background: #D4AF37;"></div>
+          <div class="color-swatch" style="background: #C4B59D;"></div>
+        </div>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Design Principles</div>
+        <p class="learnings-content">"Grammar of the Straight Line" - rectilinear and angular forms only. Bronze wash patina on zinc caming. Muted earth palette for sophisticated nature-derived tones. Negative space as active design participant.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Design 18: Dana-Thomas Butterfly -->
+  <div class="design-row">
+    <div class="design-column">
+      <div class="column-label">Reference · Source</div>
+      <h3 class="design-title">18. Dana-Thomas Butterfly</h3>
+      <div class="reference-img-placeholder">DANA-THOMAS HOUSE · SPRINGFIELD, IL · 1902-04</div>
+      <p class="img-credit">Over 200 art glass elements</p>
+    </div>
+    <div class="design-column">
+      <div class="column-label">Adaptation · Our Design</div>
+      <h3 class="design-title">Butterfly Geometry Transom</h3>
+      <div class="svg-container">
+        <svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="amberGlow18" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#E8A832"/><stop offset="50%" stop-color="#D4922A"/><stop offset="100%" stop-color="#C17F22"/>
+            </linearGradient>
+            <linearGradient id="copperWarm18" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#B87333"/><stop offset="100%" stop-color="#9A5F2A"/>
+            </linearGradient>
+            <linearGradient id="sageLight18" x1="0%" y1="100%" x2="0%" y2="0%">
+              <stop offset="0%" stop-color="#8A9A6D"/><stop offset="100%" stop-color="#A3B584"/>
+            </linearGradient>
+          </defs>
+          <rect width="320" height="100" fill="#F5ECD7"/>
+          <rect x="0" y="0" width="320" height="100" fill="none" stroke="#3D3226" stroke-width="4"/>
+          <line x1="4" y1="50" x2="316" y2="50" stroke="#3D3226" stroke-width="1.5"/>
+          <line x1="4" y1="25" x2="316" y2="25" stroke="#3D3226" stroke-width="1"/>
+          <line x1="4" y1="75" x2="316" y2="75" stroke="#3D3226" stroke-width="1"/>
+          <!-- Left butterfly -->
+          <polygon points="30,50 55,20 80,50" fill="url(#amberGlow18)" stroke="#3D3226" stroke-width="1.5"/>
+          <polygon points="30,50 55,80 80,50" fill="url(#copperWarm18)" stroke="#3D3226" stroke-width="1.5"/>
+          <rect x="52" y="35" width="6" height="30" fill="#5C4A3D" rx="1" stroke="#3D3226" stroke-width="1"/>
+          <polygon points="15,35 25,50 15,65" fill="url(#sageLight18)" stroke="#3D3226" stroke-width="1"/>
+          <polygon points="85,35 95,50 85,65" fill="#C9B896" stroke="#3D3226" stroke-width="1"/>
+          <!-- Center butterfly (large) -->
+          <polygon points="130,50 150,15 170,50" fill="url(#amberGlow18)" stroke="#3D3226" stroke-width="1.5"/>
+          <polygon points="150,50 170,15 190,50" fill="#E8A832" stroke="#3D3226" stroke-width="1.5"/>
+          <polygon points="130,50 150,85 170,50" fill="url(#copperWarm18)" stroke="#3D3226" stroke-width="1.5"/>
+          <polygon points="150,50 170,85 190,50" fill="#B87333" stroke="#3D3226" stroke-width="1.5"/>
+          <rect x="157" y="10" width="6" height="80" fill="#5C4A3D" rx="1" stroke="#3D3226" stroke-width="1.5"/>
+          <polygon points="160,5 168,15 160,25 152,15" fill="#D4922A" stroke="#3D3226" stroke-width="1"/>
+          <polygon points="115,30 125,50 115,70" fill="url(#sageLight18)" stroke="#3D3226" stroke-width="1"/>
+          <polygon points="205,30 195,50 205,70" fill="url(#sageLight18)" stroke="#3D3226" stroke-width="1"/>
+          <polygon points="105,40 115,50 105,60" fill="#EDE3CB" stroke="#3D3226" stroke-width="1"/>
+          <polygon points="215,40 205,50 215,60" fill="#EDE3CB" stroke="#3D3226" stroke-width="1"/>
+          <!-- Right butterfly -->
+          <polygon points="240,50 265,20 290,50" fill="url(#amberGlow18)" stroke="#3D3226" stroke-width="1.5"/>
+          <polygon points="240,50 265,80 290,50" fill="url(#copperWarm18)" stroke="#3D3226" stroke-width="1.5"/>
+          <rect x="262" y="35" width="6" height="30" fill="#5C4A3D" rx="1" stroke="#3D3226" stroke-width="1"/>
+          <polygon points="225,35 235,50 225,65" fill="#C9B896" stroke="#3D3226" stroke-width="1"/>
+          <polygon points="305,35 295,50 305,65" fill="url(#sageLight18)" stroke="#3D3226" stroke-width="1"/>
+          <!-- Vertical dividers -->
+          <line x1="100" y1="4" x2="100" y2="96" stroke="#3D3226" stroke-width="1"/>
+          <line x1="220" y1="4" x2="220" y2="96" stroke="#3D3226" stroke-width="1"/>
+          <!-- Corner accents -->
+          <polygon points="8,8 20,8 8,20" fill="#8A9A6D" stroke="#3D3226" stroke-width="1"/>
+          <polygon points="312,8 300,8 312,20" fill="#8A9A6D" stroke="#3D3226" stroke-width="1"/>
+          <polygon points="8,92 20,92 8,80" fill="#8A9A6D" stroke="#3D3226" stroke-width="1"/>
+          <polygon points="312,92 300,92 312,80" fill="#8A9A6D" stroke="#3D3226" stroke-width="1"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="full-learnings">
+    <div class="learnings-title">Agent Learnings · Design 18</div>
+    <div class="learnings-grid">
+      <div class="learnings-section">
+        <div class="learnings-section-title">Pattern Analysis</div>
+        <p class="learnings-content">Butterfly abstracted into chevron/triangle pairs for wings, vertical rectangles for body, diamond for head. Three butterfly motifs create transformation symbolism. Tripartite composition with dominant central figure flanked by smaller iterations.</p>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Color Extraction</div>
+        <p class="learnings-content">Amber gold (#E8A832), deep amber (#D4922A), copper (#B87333), sage green (#8A9A6D), warm cream (#F5ECD7), body brown (#5C4A3D), caming (#3D3226).</p>
+        <div class="color-palette">
+          <div class="color-swatch" style="background: #E8A832;"></div>
+          <div class="color-swatch" style="background: #B87333;"></div>
+          <div class="color-swatch" style="background: #8A9A6D;"></div>
+          <div class="color-swatch" style="background: #3D3226;"></div>
+        </div>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Design Principles</div>
+        <p class="learnings-content">Nature "conventionalized" to geometric essence while maintaining recognizable wing-body relationships. Lead caming as compositional tool. Transformation symbolism appropriate for entry door placement where visitors transition from exterior to interior.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Design 19: Winslow House -->
+  <div class="design-row">
+    <div class="design-column">
+      <div class="column-label">Reference · Source</div>
+      <h3 class="design-title">19. Winslow House Window</h3>
+      <div class="reference-img-placeholder">WINSLOW HOUSE · RIVER FOREST · 1893</div>
+      <p class="img-credit">Wright's first independent commission</p>
+    </div>
+    <div class="design-column">
+      <div class="column-label">Adaptation · Our Design</div>
+      <h3 class="design-title">Winslow Lotus Transom</h3>
+      <div class="svg-container">
+        <svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+          <rect width="320" height="100" fill="#E8E0D0"/>
+          <rect x="2" y="2" width="316" height="96" fill="none" stroke="#3D3D3D" stroke-width="4"/>
+          <rect x="6" y="6" width="308" height="88" fill="none" stroke="#3D3D3D" stroke-width="1.5"/>
+          <rect x="10" y="10" width="300" height="80" fill="#C9B896" stroke="#3D3D3D" stroke-width="1"/>
+          <rect x="14" y="14" width="292" height="72" fill="#E8E0D0" stroke="#3D3D3D" stroke-width="1"/>
+          <rect x="18" y="18" width="284" height="64" fill="#DDD5C3" stroke="#3D3D3D" stroke-width="0.75"/>
+          <!-- Left lotus -->
+          <g transform="translate(40, 50)">
+            <ellipse cx="0" cy="0" rx="18" ry="24" fill="#8A9B7A" stroke="#3D3D3D" stroke-width="1"/>
+            <ellipse cx="0" cy="-5" rx="12" ry="16" fill="#97A888" stroke="#3D3D3D" stroke-width="0.75"/>
+            <ellipse cx="0" cy="-8" rx="6" ry="10" fill="#A8B899" stroke="#3D3D3D" stroke-width="0.5"/>
+          </g>
+          <g transform="translate(68, 50)">
+            <path d="M0 -22 Q8 -10 8 8 Q4 14 0 14 Q-4 14 -8 8 Q-8 -10 0 -22" fill="#D4A556" stroke="#3D3D3D" stroke-width="0.75"/>
+            <path d="M0 -18 Q5 -8 5 4 Q2 8 0 8 Q-2 8 -5 4 Q-5 -8 0 -18" fill="#DEB868" stroke="#3D3D3D" stroke-width="0.5"/>
+          </g>
+          <!-- Left diamond -->
+          <g transform="translate(100, 50)">
+            <polygon points="0,-28 22,0 0,28 -22,0" fill="#E8E0D0" stroke="#3D3D3D" stroke-width="1"/>
+            <polygon points="0,-20 15,0 0,20 -15,0" fill="#7A8B6E" stroke="#3D3D3D" stroke-width="0.75"/>
+            <polygon points="0,-12 9,0 0,12 -9,0" fill="#8A9B7A" stroke="#3D3D3D" stroke-width="0.5"/>
+            <circle cx="0" cy="0" r="4" fill="#D4A556" stroke="#3D3D3D" stroke-width="0.5"/>
+          </g>
+          <!-- Central lotus medallion -->
+          <g transform="translate(160, 50)">
+            <rect x="-35" y="-30" width="70" height="60" fill="#C9B896" stroke="#3D3D3D" stroke-width="1"/>
+            <rect x="-30" y="-26" width="60" height="52" fill="#E8E0D0" stroke="#3D3D3D" stroke-width="0.75"/>
+            <ellipse cx="0" cy="0" rx="24" ry="22" fill="#8A9B7A" stroke="#3D3D3D" stroke-width="1"/>
+            <ellipse cx="0" cy="2" rx="14" ry="12" fill="#A8B899" stroke="#3D3D3D" stroke-width="0.5"/>
+            <ellipse cx="0" cy="4" rx="8" ry="7" fill="#B8C4AB" stroke="#3D3D3D" stroke-width="0.5"/>
+            <circle cx="0" cy="4" r="4" fill="#D4A556" stroke="#3D3D3D" stroke-width="0.5"/>
+          </g>
+          <!-- Right diamond -->
+          <g transform="translate(220, 50)">
+            <polygon points="0,-28 22,0 0,28 -22,0" fill="#E8E0D0" stroke="#3D3D3D" stroke-width="1"/>
+            <polygon points="0,-20 15,0 0,20 -15,0" fill="#7A8B6E" stroke="#3D3D3D" stroke-width="0.75"/>
+            <polygon points="0,-12 9,0 0,12 -9,0" fill="#8A9B7A" stroke="#3D3D3D" stroke-width="0.5"/>
+            <circle cx="0" cy="0" r="4" fill="#D4A556" stroke="#3D3D3D" stroke-width="0.5"/>
+          </g>
+          <!-- Right lotus -->
+          <g transform="translate(252, 50)">
+            <path d="M0 -22 Q8 -10 8 8 Q4 14 0 14 Q-4 14 -8 8 Q-8 -10 0 -22" fill="#D4A556" stroke="#3D3D3D" stroke-width="0.75"/>
+            <path d="M0 -18 Q5 -8 5 4 Q2 8 0 8 Q-2 8 -5 4 Q-5 -8 0 -18" fill="#DEB868" stroke="#3D3D3D" stroke-width="0.5"/>
+          </g>
+          <g transform="translate(280, 50)">
+            <ellipse cx="0" cy="0" rx="18" ry="24" fill="#8A9B7A" stroke="#3D3D3D" stroke-width="1"/>
+            <ellipse cx="0" cy="-5" rx="12" ry="16" fill="#97A888" stroke="#3D3D3D" stroke-width="0.75"/>
+            <ellipse cx="0" cy="-8" rx="6" ry="10" fill="#A8B899" stroke="#3D3D3D" stroke-width="0.5"/>
+          </g>
+          <!-- Corner accents -->
+          <polygon points="22,22 34,22 22,34" fill="#C49A4B" stroke="#3D3D3D" stroke-width="0.5"/>
+          <polygon points="298,22 286,22 298,34" fill="#C49A4B" stroke="#3D3D3D" stroke-width="0.5"/>
+          <polygon points="22,78 34,78 22,66" fill="#C49A4B" stroke="#3D3D3D" stroke-width="0.5"/>
+          <polygon points="298,78 286,78 298,66" fill="#C49A4B" stroke="#3D3D3D" stroke-width="0.5"/>
+          <!-- Horizontal bars -->
+          <rect x="50" y="16" width="220" height="2" fill="#8A7355" stroke="#3D3D3D" stroke-width="0.3"/>
+          <rect x="50" y="82" width="220" height="2" fill="#8A7355" stroke="#3D3D3D" stroke-width="0.3"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="full-learnings">
+    <div class="learnings-title">Agent Learnings · Design 19</div>
+    <div class="learnings-grid">
+      <div class="learnings-section">
+        <div class="learnings-section-title">Pattern Analysis</div>
+        <p class="learnings-content">Victorian-to-Prairie transition design. Lotus motifs as nested ellipses with layered coloring. Diamond medallions with concentric geometric shapes. Multiple border layers show Victorian decorative density beginning to yield to Prairie simplicity.</p>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Color Extraction</div>
+        <p class="learnings-content">Cream base (#E8E0D0), soft tan (#C9B896), sage green (#8A9B7A), amber (#D4A556), warm brown (#8A7355), lead gray (#3D3D3D). Earth-tone restraint rejecting Victorian jewel-bright colors.</p>
+        <div class="color-palette">
+          <div class="color-swatch" style="background: #E8E0D0;"></div>
+          <div class="color-swatch" style="background: #8A9B7A;"></div>
+          <div class="color-swatch" style="background: #D4A556;"></div>
+          <div class="color-swatch" style="background: #3D3D3D;"></div>
+        </div>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Design Principles</div>
+        <p class="learnings-content">Nature abstracted, not imitated - lotus reduced to geometric essentials. Horizontal emphasis emerging via strong horizontal bars. Lead line weights as compositional tools. Classical bilateral symmetry expected in Victorian contexts with emerging horizontal Prairie emphasis.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Design 20: Heath House -->
+  <div class="design-row">
+    <div class="design-column">
+      <div class="column-label">Reference · Source</div>
+      <h3 class="design-title">20. Heath House Window</h3>
+      <div class="reference-img-placeholder">WILLIAM HEATH HOUSE · BUFFALO · 1905</div>
+      <p class="img-credit">Mature Prairie period design</p>
+    </div>
+    <div class="design-column">
+      <div class="column-label">Adaptation · Our Design</div>
+      <h3 class="design-title">Heath Horizontal Transom</h3>
+      <div class="svg-container">
+        <svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="amberGlow20" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#E8A832"/><stop offset="50%" stop-color="#D4942A"/><stop offset="100%" stop-color="#C78522"/>
+            </linearGradient>
+            <linearGradient id="goldShimmer20" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#C9A227"/><stop offset="50%" stop-color="#DDB832"/><stop offset="100%" stop-color="#C9A227"/>
+            </linearGradient>
+            <linearGradient id="creamLight20" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#FDF8E8"/><stop offset="100%" stop-color="#F5EED6"/>
+            </linearGradient>
+          </defs>
+          <rect width="320" height="100" fill="url(#creamLight20)"/>
+          <!-- Primary horizontal bands -->
+          <rect x="0" y="8" width="320" height="6" fill="url(#amberGlow20)" stroke="#2C2418" stroke-width="1.5"/>
+          <rect x="0" y="22" width="320" height="4" fill="url(#goldShimmer20)" stroke="#2C2418" stroke-width="1"/>
+          <rect x="0" y="44" width="320" height="12" fill="url(#amberGlow20)" stroke="#2C2418" stroke-width="1.5"/>
+          <rect x="0" y="74" width="320" height="4" fill="url(#goldShimmer20)" stroke="#2C2418" stroke-width="1"/>
+          <rect x="0" y="86" width="320" height="6" fill="url(#amberGlow20)" stroke="#2C2418" stroke-width="1.5"/>
+          <!-- Vertical dividers -->
+          <rect x="79" y="0" width="2" height="100" fill="#2C2418"/>
+          <rect x="159" y="0" width="2" height="100" fill="#2C2418"/>
+          <rect x="239" y="0" width="2" height="100" fill="#2C2418"/>
+          <!-- Geometric accent squares -->
+          <g fill="#8B5A2B" stroke="#2C2418" stroke-width="0.5">
+            <rect x="20" y="30" width="6" height="6"/><rect x="30" y="30" width="6" height="6"/>
+            <rect x="100" y="30" width="6" height="6"/><rect x="120" y="30" width="8" height="8"/>
+            <rect x="180" y="30" width="6" height="6"/><rect x="196" y="30" width="8" height="8"/>
+            <rect x="260" y="30" width="6" height="6"/><rect x="270" y="30" width="6" height="6"/>
+          </g>
+          <g fill="#C9A227" stroke="#2C2418" stroke-width="0.5">
+            <rect x="54" y="30" width="6" height="6"/><rect x="134" y="30" width="6" height="6"/>
+            <rect x="214" y="30" width="6" height="6"/><rect x="294" y="30" width="6" height="6"/>
+          </g>
+          <g fill="#8B5A2B" stroke="#2C2418" stroke-width="0.5">
+            <rect x="20" y="62" width="6" height="6"/><rect x="30" y="62" width="6" height="6"/>
+            <rect x="100" y="62" width="6" height="6"/><rect x="120" y="60" width="8" height="8"/>
+            <rect x="180" y="62" width="6" height="6"/><rect x="196" y="60" width="8" height="8"/>
+            <rect x="260" y="62" width="6" height="6"/><rect x="270" y="62" width="6" height="6"/>
+          </g>
+          <g fill="#C9A227" stroke="#2C2418" stroke-width="0.5">
+            <rect x="54" y="62" width="6" height="6"/><rect x="134" y="62" width="6" height="6"/>
+            <rect x="214" y="62" width="6" height="6"/><rect x="294" y="62" width="6" height="6"/>
+          </g>
+          <!-- Diamond accents on center band -->
+          <polygon points="40,50 45,45 50,50 45,55" fill="#FDF8E8" stroke="#2C2418" stroke-width="0.5"/>
+          <polygon points="118,50 124,44 130,50 124,56" fill="#FDF8E8" stroke="#2C2418" stroke-width="0.5"/>
+          <polygon points="152,50 160,42 168,50 160,58" fill="#C9A227" stroke="#2C2418" stroke-width="0.75"/>
+          <polygon points="190,50 196,44 202,50 196,56" fill="#FDF8E8" stroke="#2C2418" stroke-width="0.5"/>
+          <polygon points="270,50 275,45 280,50 275,55" fill="#FDF8E8" stroke="#2C2418" stroke-width="0.5"/>
+          <!-- Band detail squares -->
+          <g fill="#8B5A2B" stroke="#2C2418" stroke-width="0.3">
+            <rect x="38" y="9" width="4" height="4"/><rect x="118" y="9" width="4" height="4"/>
+            <rect x="198" y="9" width="4" height="4"/><rect x="278" y="9" width="4" height="4"/>
+            <rect x="38" y="87" width="4" height="4"/><rect x="118" y="87" width="4" height="4"/>
+            <rect x="198" y="87" width="4" height="4"/><rect x="278" y="87" width="4" height="4"/>
+          </g>
+          <!-- Thin horizontal lines -->
+          <line x1="0" y1="18" x2="320" y2="18" stroke="#2C2418" stroke-width="0.75"/>
+          <line x1="0" y1="40" x2="320" y2="40" stroke="#2C2418" stroke-width="0.75"/>
+          <line x1="0" y1="60" x2="320" y2="60" stroke="#2C2418" stroke-width="0.75"/>
+          <line x1="0" y1="82" x2="320" y2="82" stroke="#2C2418" stroke-width="0.75"/>
+          <!-- Outer frame -->
+          <rect x="0" y="0" width="320" height="100" fill="none" stroke="#2C2418" stroke-width="3"/>
+          <rect x="3" y="3" width="314" height="94" fill="none" stroke="#3D332A" stroke-width="1"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <div class="full-learnings">
+    <div class="learnings-title">Agent Learnings · Design 20</div>
+    <div class="learnings-grid">
+      <div class="learnings-section">
+        <div class="learnings-section-title">Pattern Analysis</div>
+        <p class="learnings-content">Five primary horizontal bands at varying thicknesses (6px, 4px, 12px, 4px, 6px) create A-B-C-B-A rhythm. Four equal sections (80px each). Small squares arranged in mirrored pairs above and below center band. Diamond motifs embedded in central amber band.</p>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Color Extraction</div>
+        <p class="learnings-content">Amber light (#E8A832), amber dark (#C78522), gold (#C9A227, #DDB832), saddle brown (#8B5A2B), cream (#FDF8E8, #F5EED6), lead dark (#2C2418).</p>
+        <div class="color-palette">
+          <div class="color-swatch" style="background: #E8A832;"></div>
+          <div class="color-swatch" style="background: #C9A227;"></div>
+          <div class="color-swatch" style="background: #8B5A2B;"></div>
+          <div class="color-swatch" style="background: #2C2418;"></div>
+        </div>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Design Principles</div>
+        <p class="learnings-content">Unity through repetition at consistent intervals. Asymmetry within symmetry - color distribution varies subtly. Hierarchy of weight - thicker bands anchor, medium bands frame, thin bands provide structure. Light as material - gradients simulate luminous quality of real stained glass.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FINAL SUMMARY -->
+  <div class="round-header" style="margin-top: 120px;">
+    <h2>Exploration Complete · 20 Designs</h2>
+    <p class="subtitle" style="margin-top: 12px;">Round 1: 10 iconic FLW windows · Round 2: 10 additional studies</p>
+  </div>
+
+  <div class="full-learnings" style="margin-top: 40px;">
+    <div class="learnings-title">Cumulative Design Principles</div>
+    <div class="learnings-grid">
+      <div class="learnings-section">
+        <div class="learnings-section-title">Geometric Vocabulary</div>
+        <p class="learnings-content">FLW's "Grammar of the Straight Line" uses rectangles, squares, triangles, diamonds, and chevrons. Nature is "conventionalized" - reduced to geometric essence while maintaining recognizable character. Bilateral symmetry provides stability. Horizontal emphasis echoes prairie landscape.</p>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Color Philosophy</div>
+        <p class="learnings-content">Earth-tone palettes: amber, gold, sage green, brown, cream, copper. Warm colors transform harsh sunlight into welcoming illumination. Cool blues used sparingly as sky accents. Iridescent/opalescent effects create depth. Lead caming as dark brown/bronze patina.</p>
+      </div>
+      <div class="learnings-section">
+        <div class="learnings-section-title">Structural Integration</div>
+        <p class="learnings-content">Lead lines (zinc caming) celebrated as design element, not hidden. Corner anchoring with geometric accents. Central focal points with radiating or flanking elements. Modular repetition enables scalability. Light as building material - designs account for transmitted light.</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

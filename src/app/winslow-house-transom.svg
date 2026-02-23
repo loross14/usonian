@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100">
+  <defs>
+    <!-- Gradient for lotus petals - subtle organic feel -->
+    <linearGradient id="lotusGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#D4C4A8"/>
+      <stop offset="100%" stop-color="#C9B896"/>
+    </linearGradient>
+
+    <!-- Amber glass gradient -->
+    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4A556"/>
+      <stop offset="100%" stop-color="#C49A4B"/>
+    </linearGradient>
+
+    <!-- Soft green gradient -->
+    <linearGradient id="greenGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#7A8B6E"/>
+      <stop offset="100%" stop-color="#8FA seventeen"/>
+    </linearGradient>
+
+    <!-- Lead came color -->
+    <linearGradient id="leadGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4A4A4A"/>
+      <stop offset="50%" stop-color="#3D3D3D"/>
+      <stop offset="100%" stop-color="#2E2E2E"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background - cream base -->
+  <rect width="320" height="100" fill="#E8E0D0"/>
+
+  <!-- Main border frame -->
+  <rect x="2" y="2" width="316" height="96" fill="none" stroke="#3D3D3D" stroke-width="4"/>
+  <rect x="6" y="6" width="308" height="88" fill="none" stroke="#3D3D3D" stroke-width="1.5"/>
+
+  <!-- Outer decorative border - geometric transition zone -->
+  <rect x="10" y="10" width="300" height="80" fill="#C9B896" stroke="#3D3D3D" stroke-width="1"/>
+  <rect x="14" y="14" width="292" height="72" fill="#E8E0D0" stroke="#3D3D3D" stroke-width="1"/>
+
+  <!-- Central panel area -->
+  <rect x="18" y="18" width="284" height="64" fill="#DDD5C3" stroke="#3D3D3D" stroke-width="0.75"/>
+
+  <!-- === LEFT SECTION - Lotus Motif === -->
+  <!-- Geometric framework with organic curves -->
+  <g transform="translate(30, 50)">
+    <!-- Stylized lotus bud - left -->
+    <ellipse cx="0" cy="0" rx="18" ry="24" fill="#8A9B7A" stroke="#3D3D3D" stroke-width="1"/>
+    <ellipse cx="0" cy="-5" rx="12" ry="16" fill="#97A888" stroke="#3D3D3D" stroke-width="0.75"/>
+    <ellipse cx="0" cy="-8" rx="6" ry="10" fill="#A8B899" stroke="#3D3D3D" stroke-width="0.5"/>
+    <!-- Lotus accent lines -->
+    <path d="M-12 8 Q0 -2 12 8" fill="none" stroke="#3D3D3D" stroke-width="0.5"/>
+    <path d="M-8 12 Q0 4 8 12" fill="none" stroke="#3D3D3D" stroke-width="0.5"/>
+  </g>
+
+  <!-- Left lotus petals - flanking elements -->
+  <g transform="translate(58, 50)">
+    <path d="M0 -22 Q8 -10 8 8 Q4 14 0 14 Q-4 14 -8 8 Q-8 -10 0 -22" fill="#D4A556" stroke="#3D3D3D" stroke-width="0.75"/>
+    <path d="M0 -18 Q5 -8 5 4 Q2 8 0 8 Q-2 8 -5 4 Q-5 -8 0 -18" fill="#DEB868" stroke="#3D3D3D" stroke-width="0.5"/>
+  </g>
+
+  <!-- === CENTER-LEFT GEOMETRIC LOTUS === -->
+  <g transform="translate(95, 50)">
+    <!-- Diamond frame - Victorian/Prairie transition -->
+    <polygon points="0,-28 22,0 0,28 -22,0" fill="#E8E0D0" stroke="#3D3D3D" stroke-width="1"/>
+    <polygon points="0,-20 15,0 0,20 -15,0" fill="#7A8B6E" stroke="#3D3D3D" stroke-width="0.75"/>
+    <polygon points="0,-12 9,0 0,12 -9,0" fill="#8FA seventeen" stroke="#3D3D3D" stroke-width="0.5"/>
+    <circle cx="0" cy="0" r="4" fill="#D4A556" stroke="#3D3D3D" stroke-width="0.5"/>
+  </g>
+
+  <!-- === CENTRAL MEDALLION - Primary Lotus === -->
+  <g transform="translate(160, 50)">
+    <!-- Outer geometric frame -->
+    <rect x="-35" y="-30" width="70" height="60" fill="#C9B896" stroke="#3D3D3D" stroke-width="1"/>
+    <rect x="-30" y="-26" width="60" height="52" fill="#E8E0D0" stroke="#3D3D3D" stroke-width="0.75"/>
+
+    <!-- Central lotus bloom -->
+    <!-- Outer petals -->
+    <ellipse cx="0" cy="0" rx="24" ry="22" fill="#8A9B7A" stroke="#3D3D3D" stroke-width="1"/>
+
+    <!-- Petal details - organic curves within geometric -->
+    <path d="M0 -20 Q-12 -8 -12 6 Q-6 12 0 12 Q6 12 12 6 Q12 -8 0 -20" fill="#97A888" stroke="#3D3D3D" stroke-width="0.75"/>
+
+    <!-- Inner lotus layers -->
+    <ellipse cx="0" cy="2" rx="14" ry="12" fill="#A8B899" stroke="#3D3D3D" stroke-width="0.5"/>
+    <ellipse cx="0" cy="4" rx="8" ry="7" fill="#B8C4AB" stroke="#3D3D3D" stroke-width="0.5"/>
+
+    <!-- Lotus center - amber accent -->
+    <circle cx="0" cy="4" r="4" fill="#D4A556" stroke="#3D3D3D" stroke-width="0.5"/>
+    <circle cx="0" cy="4" r="2" fill="#C49A4B" stroke="#3D3D3D" stroke-width="0.3"/>
+
+    <!-- Radiating accent lines - geometric structure -->
+    <line x1="-24" y1="0" x2="-30" y2="0" stroke="#3D3D3D" stroke-width="0.75"/>
+    <line x1="24" y1="0" x2="30" y2="0" stroke="#3D3D3D" stroke-width="0.75"/>
+    <line x1="0" y1="-22" x2="0" y2="-26" stroke="#3D3D3D" stroke-width="0.75"/>
+    <line x1="0" y1="22" x2="0" y2="26" stroke="#3D3D3D" stroke-width="0.75"/>
+  </g>
+
+  <!-- === CENTER-RIGHT GEOMETRIC LOTUS === -->
+  <g transform="translate(225, 50)">
+    <!-- Diamond frame - mirroring left side -->
+    <polygon points="0,-28 22,0 0,28 -22,0" fill="#E8E0D0" stroke="#3D3D3D" stroke-width="1"/>
+    <polygon points="0,-20 15,0 0,20 -15,0" fill="#7A8B6E" stroke="#3D3D3D" stroke-width="0.75"/>
+    <polygon points="0,-12 9,0 0,12 -9,0" fill="#8A9B7A" stroke="#3D3D3D" stroke-width="0.5"/>
+    <circle cx="0" cy="0" r="4" fill="#D4A556" stroke="#3D3D3D" stroke-width="0.5"/>
+  </g>
+
+  <!-- Right lotus petal -->
+  <g transform="translate(262, 50)">
+    <path d="M0 -22 Q8 -10 8 8 Q4 14 0 14 Q-4 14 -8 8 Q-8 -10 0 -22" fill="#D4A556" stroke="#3D3D3D" stroke-width="0.75"/>
+    <path d="M0 -18 Q5 -8 5 4 Q2 8 0 8 Q-2 8 -5 4 Q-5 -8 0 -18" fill="#DEB868" stroke="#3D3D3D" stroke-width="0.5"/>
+  </g>
+
+  <!-- === RIGHT SECTION - Lotus Motif (mirror) === -->
+  <g transform="translate(290, 50)">
+    <!-- Stylized lotus bud - right -->
+    <ellipse cx="0" cy="0" rx="18" ry="24" fill="#8A9B7A" stroke="#3D3D3D" stroke-width="1"/>
+    <ellipse cx="0" cy="-5" rx="12" ry="16" fill="#97A888" stroke="#3D3D3D" stroke-width="0.75"/>
+    <ellipse cx="0" cy="-8" rx="6" ry="10" fill="#A8B899" stroke="#3D3D3D" stroke-width="0.5"/>
+    <!-- Lotus accent lines -->
+    <path d="M-12 8 Q0 -2 12 8" fill="none" stroke="#3D3D3D" stroke-width="0.5"/>
+    <path d="M-8 12 Q0 4 8 12" fill="none" stroke="#3D3D3D" stroke-width="0.5"/>
+  </g>
+
+  <!-- === CORNER ACCENTS - Transitional Victorian details === -->
+  <!-- Top left corner -->
+  <g transform="translate(22, 22)">
+    <polygon points="0,0 12,0 0,12" fill="#C49A4B" stroke="#3D3D3D" stroke-width="0.5"/>
+    <polygon points="0,0 8,0 0,8" fill="#D4A556" stroke="#3D3D3D" stroke-width="0.3"/>
+  </g>
+
+  <!-- Top right corner -->
+  <g transform="translate(298, 22)">
+    <polygon points="0,0 -12,0 0,12" fill="#C49A4B" stroke="#3D3D3D" stroke-width="0.5"/>
+    <polygon points="0,0 -8,0 0,8" fill="#D4A556" stroke="#3D3D3D" stroke-width="0.3"/>
+  </g>
+
+  <!-- Bottom left corner -->
+  <g transform="translate(22, 78)">
+    <polygon points="0,0 12,0 0,-12" fill="#C49A4B" stroke="#3D3D3D" stroke-width="0.5"/>
+    <polygon points="0,0 8,0 0,-8" fill="#D4A556" stroke="#3D3D3D" stroke-width="0.3"/>
+  </g>
+
+  <!-- Bottom right corner -->
+  <g transform="translate(298, 78)">
+    <polygon points="0,0 -12,0 0,-12" fill="#C49A4B" stroke="#3D3D3D" stroke-width="0.5"/>
+    <polygon points="0,0 -8,0 0,-8" fill="#D4A556" stroke="#3D3D3D" stroke-width="0.3"/>
+  </g>
+
+  <!-- === HORIZONTAL ACCENT BARS - Prairie horizontality emerging === -->
+  <rect x="50" y="16" width="220" height="2" fill="#8A7355" stroke="#3D3D3D" stroke-width="0.3"/>
+  <rect x="50" y="82" width="220" height="2" fill="#8A7355" stroke="#3D3D3D" stroke-width="0.3"/>
+
+  <!-- Subtle vertical divisions -->
+  <line x1="120" y1="20" x2="120" y2="80" stroke="#3D3D3D" stroke-width="0.5" stroke-dasharray="2,4"/>
+  <line x1="200" y1="20" x2="200" y2="80" stroke="#3D3D3D" stroke-width="0.5" stroke-dasharray="2,4"/>
+
+  <!-- === DECORATIVE BEADING - Victorian remnant === -->
+  <circle cx="120" cy="20" r="2" fill="#D4A556" stroke="#3D3D3D" stroke-width="0.3"/>
+  <circle cx="120" cy="80" r="2" fill="#D4A556" stroke="#3D3D3D" stroke-width="0.3"/>
+  <circle cx="200" cy="20" r="2" fill="#D4A556" stroke="#3D3D3D" stroke-width="0.3"/>
+  <circle cx="200" cy="80" r="2" fill="#D4A556" stroke="#3D3D3D" stroke-width="0.3"/>
+</svg>

@@ -1,0 +1,181 @@
+<svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradient for glass depth effect -->
+    <linearGradient id="amberGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E8A832"/>
+      <stop offset="50%" stop-color="#D4942A"/>
+      <stop offset="100%" stop-color="#C78522"/>
+    </linearGradient>
+
+    <linearGradient id="goldShimmer" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C9A227"/>
+      <stop offset="50%" stop-color="#DDB832"/>
+      <stop offset="100%" stop-color="#C9A227"/>
+    </linearGradient>
+
+    <linearGradient id="creamLight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FDF8E8"/>
+      <stop offset="100%" stop-color="#F5EED6"/>
+    </linearGradient>
+
+    <!-- Lead came pattern -->
+    <pattern id="leadTexture" width="2" height="2" patternUnits="userSpaceOnUse">
+      <rect width="2" height="2" fill="#2C2418"/>
+      <rect width="1" height="1" fill="#3D332A"/>
+    </pattern>
+  </defs>
+
+  <!-- Background - Clear/cream glass field -->
+  <rect x="0" y="0" width="320" height="100" fill="url(#creamLight)"/>
+
+  <!-- === PRIMARY HORIZONTAL BANDS === -->
+  <!-- Top amber band -->
+  <rect x="0" y="8" width="320" height="6" fill="url(#amberGlow)"/>
+  <rect x="0" y="8" width="320" height="6" fill="none" stroke="#2C2418" stroke-width="1.5"/>
+
+  <!-- Upper gold band -->
+  <rect x="0" y="22" width="320" height="4" fill="url(#goldShimmer)"/>
+  <rect x="0" y="22" width="320" height="4" fill="none" stroke="#2C2418" stroke-width="1"/>
+
+  <!-- Central feature band - thicker amber -->
+  <rect x="0" y="44" width="320" height="12" fill="url(#amberGlow)"/>
+  <rect x="0" y="44" width="320" height="12" fill="none" stroke="#2C2418" stroke-width="1.5"/>
+
+  <!-- Lower gold band -->
+  <rect x="0" y="74" width="320" height="4" fill="url(#goldShimmer)"/>
+  <rect x="0" y="74" width="320" height="4" fill="none" stroke="#2C2418" stroke-width="1"/>
+
+  <!-- Bottom amber band -->
+  <rect x="0" y="86" width="320" height="6" fill="url(#amberGlow)"/>
+  <rect x="0" y="86" width="320" height="6" fill="none" stroke="#2C2418" stroke-width="1.5"/>
+
+  <!-- === VERTICAL DIVIDERS (subtle, prairie style) === -->
+  <!-- Major vertical divisions -->
+  <rect x="79" y="0" width="2" height="100" fill="#2C2418"/>
+  <rect x="159" y="0" width="2" height="100" fill="#2C2418"/>
+  <rect x="239" y="0" width="2" height="100" fill="#2C2418"/>
+
+  <!-- === GEOMETRIC ACCENT SQUARES - Left Section === -->
+  <!-- Upper left cluster -->
+  <rect x="20" y="30" width="6" height="6" fill="#8B5A2B"/>
+  <rect x="20" y="30" width="6" height="6" fill="none" stroke="#2C2418" stroke-width="1"/>
+
+  <rect x="30" y="30" width="6" height="6" fill="#C9A227"/>
+  <rect x="30" y="30" width="6" height="6" fill="none" stroke="#2C2418" stroke-width="1"/>
+
+  <rect x="54" y="30" width="6" height="6" fill="#C9A227"/>
+  <rect x="54" y="30" width="6" height="6" fill="none" stroke="#2C2418" stroke-width="1"/>
+
+  <!-- Lower left cluster -->
+  <rect x="20" y="62" width="6" height="6" fill="#C9A227"/>
+  <rect x="20" y="62" width="6" height="6" fill="none" stroke="#2C2418" stroke-width="1"/>
+
+  <rect x="30" y="62" width="6" height="6" fill="#8B5A2B"/>
+  <rect x="30" y="62" width="6" height="6" fill="none" stroke="#2C2418" stroke-width="1"/>
+
+  <rect x="54" y="62" width="6" height="6" fill="#8B5A2B"/>
+  <rect x="54" y="62" width="6" height="6" fill="none" stroke="#2C2418" stroke-width="1"/>
+
+  <!-- === GEOMETRIC ACCENT SQUARES - Center-Left Section === -->
+  <rect x="100" y="30" width="6" height="6" fill="#D4942A"/>
+  <rect x="100" y="30" width="6" height="6" fill="none" stroke="#2C2418" stroke-width="1"/>
+
+  <rect x="120" y="30" width="8" height="8" fill="#8B5A2B"/>
+  <rect x="120" y="30" width="8" height="8" fill="none" stroke="#2C2418" stroke-width="1"/>
+
+  <rect x="134" y="30" width="6" height="6" fill="#D4942A"/>
+  <rect x="134" y="30" width="6" height="6" fill="none" stroke="#2C2418" stroke-width="1"/>
+
+  <rect x="100" y="62" width="6" height="6" fill="#8B5A2B"/>
+  <rect x="100" y="62" width="6" height="6" fill="none" stroke="#2C2418" stroke-width="1"/>
+
+  <rect x="120" y="60" width="8" height="8" fill="#D4942A"/>
+  <rect x="120" y="60" width="8" height="8" fill="none" stroke="#2C2418" stroke-width="1"/>
+
+  <rect x="134" y="62" width="6" height="6" fill="#8B5A2B"/>
+  <rect x="134" y="62" width="6" height="6" fill="none" stroke="#2C2418" stroke-width="1"/>
+
+  <!-- === GEOMETRIC ACCENT SQUARES - Center-Right Section === -->
+  <rect x="180" y="30" width="6" height="6" fill="#8B5A2B"/>
+  <rect x="180" y="30" width="6" height="6" fill="none" stroke="#2C2418" stroke-width="1"/>
+
+  <rect x="196" y="30" width="8" height="8" fill="#C9A227"/>
+  <rect x="196" y="30" width="8" height="8" fill="none" stroke="#2C2418" stroke-width="1"/>
+
+  <rect x="214" y="30" width="6" height="6" fill="#8B5A2B"/>
+  <rect x="214" y="30" width="6" height="6" fill="none" stroke="#2C2418" stroke-width="1"/>
+
+  <rect x="180" y="62" width="6" height="6" fill="#D4942A"/>
+  <rect x="180" y="62" width="6" height="6" fill="none" stroke="#2C2418" stroke-width="1"/>
+
+  <rect x="196" y="60" width="8" height="8" fill="#8B5A2B"/>
+  <rect x="196" y="60" width="8" height="8" fill="none" stroke="#2C2418" stroke-width="1"/>
+
+  <rect x="214" y="62" width="6" height="6" fill="#D4942A"/>
+  <rect x="214" y="62" width="6" height="6" fill="none" stroke="#2C2418" stroke-width="1"/>
+
+  <!-- === GEOMETRIC ACCENT SQUARES - Right Section === -->
+  <rect x="260" y="30" width="6" height="6" fill="#C9A227"/>
+  <rect x="260" y="30" width="6" height="6" fill="none" stroke="#2C2418" stroke-width="1"/>
+
+  <rect x="270" y="30" width="6" height="6" fill="#8B5A2B"/>
+  <rect x="270" y="30" width="6" height="6" fill="none" stroke="#2C2418" stroke-width="1"/>
+
+  <rect x="294" y="30" width="6" height="6" fill="#8B5A2B"/>
+  <rect x="294" y="30" width="6" height="6" fill="none" stroke="#2C2418" stroke-width="1"/>
+
+  <rect x="260" y="62" width="6" height="6" fill="#8B5A2B"/>
+  <rect x="260" y="62" width="6" height="6" fill="none" stroke="#2C2418" stroke-width="1"/>
+
+  <rect x="270" y="62" width="6" height="6" fill="#C9A227"/>
+  <rect x="270" y="62" width="6" height="6" fill="none" stroke="#2C2418" stroke-width="1"/>
+
+  <rect x="294" y="62" width="6" height="6" fill="#C9A227"/>
+  <rect x="294" y="62" width="6" height="6" fill="none" stroke="#2C2418" stroke-width="1"/>
+
+  <!-- === DIAMOND ACCENTS ON CENTER BAND === -->
+  <!-- Left diamond -->
+  <polygon points="40,50 45,45 50,50 45,55" fill="#FDF8E8"/>
+  <polygon points="40,50 45,45 50,50 45,55" fill="none" stroke="#2C2418" stroke-width="1"/>
+
+  <!-- Center-left diamond -->
+  <polygon points="118,50 124,44 130,50 124,56" fill="#FDF8E8"/>
+  <polygon points="118,50 124,44 130,50 124,56" fill="none" stroke="#2C2418" stroke-width="1"/>
+
+  <!-- Center diamond (larger) -->
+  <polygon points="152,50 160,42 168,50 160,58" fill="#C9A227"/>
+  <polygon points="152,50 160,42 168,50 160,58" fill="none" stroke="#2C2418" stroke-width="1.5"/>
+
+  <!-- Center-right diamond -->
+  <polygon points="190,50 196,44 202,50 196,56" fill="#FDF8E8"/>
+  <polygon points="190,50 196,44 202,50 196,56" fill="none" stroke="#2C2418" stroke-width="1"/>
+
+  <!-- Right diamond -->
+  <polygon points="270,50 275,45 280,50 275,55" fill="#FDF8E8"/>
+  <polygon points="270,50 275,45 280,50 275,55" fill="none" stroke="#2C2418" stroke-width="1"/>
+
+  <!-- === SMALL ACCENT DETAILS IN HORIZONTAL BANDS === -->
+  <!-- Top band accents -->
+  <rect x="38" y="9" width="4" height="4" fill="#8B5A2B"/>
+  <rect x="118" y="9" width="4" height="4" fill="#8B5A2B"/>
+  <rect x="198" y="9" width="4" height="4" fill="#8B5A2B"/>
+  <rect x="278" y="9" width="4" height="4" fill="#8B5A2B"/>
+
+  <!-- Bottom band accents -->
+  <rect x="38" y="87" width="4" height="4" fill="#8B5A2B"/>
+  <rect x="118" y="87" width="4" height="4" fill="#8B5A2B"/>
+  <rect x="198" y="87" width="4" height="4" fill="#8B5A2B"/>
+  <rect x="278" y="87" width="4" height="4" fill="#8B5A2B"/>
+
+  <!-- === THIN HORIZONTAL LINES (Lead came detail) === -->
+  <line x1="0" y1="18" x2="320" y2="18" stroke="#2C2418" stroke-width="0.75"/>
+  <line x1="0" y1="40" x2="320" y2="40" stroke="#2C2418" stroke-width="0.75"/>
+  <line x1="0" y1="60" x2="320" y2="60" stroke="#2C2418" stroke-width="0.75"/>
+  <line x1="0" y1="82" x2="320" y2="82" stroke="#2C2418" stroke-width="0.75"/>
+
+  <!-- === OUTER FRAME === -->
+  <rect x="0" y="0" width="320" height="100" fill="none" stroke="#2C2418" stroke-width="3"/>
+
+  <!-- Inner frame line for depth -->
+  <rect x="3" y="3" width="314" height="94" fill="none" stroke="#3D332A" stroke-width="1"/>
+</svg>

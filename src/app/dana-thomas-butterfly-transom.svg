@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100">
+  <defs>
+    <!-- Subtle texture filter for glass effect -->
+    <filter id="glassTexture" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise"/>
+      <feColorMatrix type="saturate" values="0" result="mono"/>
+      <feBlend in="SourceGraphic" in2="mono" mode="soft-light"/>
+    </filter>
+
+    <!-- Gradient for depth in amber panels -->
+    <linearGradient id="amberGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E8A832"/>
+      <stop offset="50%" stop-color="#D4922A"/>
+      <stop offset="100%" stop-color="#C17F22"/>
+    </linearGradient>
+
+    <linearGradient id="copperWarm" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#B87333"/>
+      <stop offset="100%" stop-color="#9A5F2A"/>
+    </linearGradient>
+
+    <linearGradient id="sageLight" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#8A9A6D"/>
+      <stop offset="100%" stop-color="#A3B584"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background cream field -->
+  <rect x="0" y="0" width="320" height="100" fill="#F5ECD7"/>
+
+  <!-- Outer border frame - zinc caming -->
+  <rect x="0" y="0" width="320" height="100" fill="none" stroke="#3D3226" stroke-width="4"/>
+
+  <!-- Horizontal dividing lines - caming structure -->
+  <line x1="4" y1="50" x2="316" y2="50" stroke="#3D3226" stroke-width="1.5"/>
+  <line x1="4" y1="25" x2="316" y2="25" stroke="#3D3226" stroke-width="1"/>
+  <line x1="4" y1="75" x2="316" y2="75" stroke="#3D3226" stroke-width="1"/>
+
+  <!-- LEFT BUTTERFLY ABSTRACTION -->
+  <!-- Upper left wing - chevron form -->
+  <polygon points="30,50 55,20 80,50" fill="url(#amberGlow)" filter="url(#glassTexture)"/>
+  <polygon points="30,50 55,20 80,50" fill="none" stroke="#3D3226" stroke-width="1.5"/>
+
+  <!-- Lower left wing -->
+  <polygon points="30,50 55,80 80,50" fill="url(#copperWarm)" filter="url(#glassTexture)"/>
+  <polygon points="30,50 55,80 80,50" fill="none" stroke="#3D3226" stroke-width="1.5"/>
+
+  <!-- Left body accent -->
+  <rect x="52" y="35" width="6" height="30" fill="#5C4A3D" rx="1"/>
+  <rect x="52" y="35" width="6" height="30" fill="none" stroke="#3D3226" stroke-width="1"/>
+
+  <!-- Left decorative triangles - sage accents -->
+  <polygon points="15,35 25,50 15,65" fill="url(#sageLight)" filter="url(#glassTexture)"/>
+  <polygon points="15,35 25,50 15,65" fill="none" stroke="#3D3226" stroke-width="1"/>
+
+  <polygon points="85,35 95,50 85,65" fill="#C9B896" filter="url(#glassTexture)"/>
+  <polygon points="85,35 95,50 85,65" fill="none" stroke="#3D3226" stroke-width="1"/>
+
+  <!-- CENTER BUTTERFLY - Primary focal point -->
+  <!-- Upper center wing left -->
+  <polygon points="130,50 150,15 170,50" fill="url(#amberGlow)" filter="url(#glassTexture)"/>
+  <polygon points="130,50 150,15 170,50" fill="none" stroke="#3D3226" stroke-width="1.5"/>
+
+  <!-- Upper center wing right -->
+  <polygon points="150,50 170,15 190,50" fill="#E8A832" filter="url(#glassTexture)"/>
+  <polygon points="150,50 170,15 190,50" fill="none" stroke="#3D3226" stroke-width="1.5"/>
+
+  <!-- Lower center wing left -->
+  <polygon points="130,50 150,85 170,50" fill="url(#copperWarm)" filter="url(#glassTexture)"/>
+  <polygon points="130,50 150,85 170,50" fill="none" stroke="#3D3226" stroke-width="1.5"/>
+
+  <!-- Lower center wing right -->
+  <polygon points="150,50 170,85 190,50" fill="#B87333" filter="url(#glassTexture)"/>
+  <polygon points="150,50 170,85 190,50" fill="none" stroke="#3D3226" stroke-width="1.5"/>
+
+  <!-- Center body column -->
+  <rect x="157" y="10" width="6" height="80" fill="#5C4A3D" rx="1"/>
+  <rect x="157" y="10" width="6" height="80" fill="none" stroke="#3D3226" stroke-width="1.5"/>
+
+  <!-- Center diamond accent -->
+  <polygon points="160,5 168,15 160,25 152,15" fill="#D4922A"/>
+  <polygon points="160,5 168,15 160,25 152,15" fill="none" stroke="#3D3226" stroke-width="1"/>
+
+  <!-- Flanking sage panels -->
+  <polygon points="115,30 125,50 115,70" fill="url(#sageLight)" filter="url(#glassTexture)"/>
+  <polygon points="115,30 125,50 115,70" fill="none" stroke="#3D3226" stroke-width="1"/>
+
+  <polygon points="205,30 195,50 205,70" fill="url(#sageLight)" filter="url(#glassTexture)"/>
+  <polygon points="205,30 195,50 205,70" fill="none" stroke="#3D3226" stroke-width="1"/>
+
+  <!-- Outer cream triangles -->
+  <polygon points="105,40 115,50 105,60" fill="#EDE3CB"/>
+  <polygon points="105,40 115,50 105,60" fill="none" stroke="#3D3226" stroke-width="1"/>
+
+  <polygon points="215,40 205,50 215,60" fill="#EDE3CB"/>
+  <polygon points="215,40 205,50 215,60" fill="none" stroke="#3D3226" stroke-width="1"/>
+
+  <!-- RIGHT BUTTERFLY ABSTRACTION - Mirror of left -->
+  <!-- Upper right wing -->
+  <polygon points="240,50 265,20 290,50" fill="url(#amberGlow)" filter="url(#glassTexture)"/>
+  <polygon points="240,50 265,20 290,50" fill="none" stroke="#3D3226" stroke-width="1.5"/>
+
+  <!-- Lower right wing -->
+  <polygon points="240,50 265,80 290,50" fill="url(#copperWarm)" filter="url(#glassTexture)"/>
+  <polygon points="240,50 265,80 290,50" fill="none" stroke="#3D3226" stroke-width="1.5"/>
+
+  <!-- Right body accent -->
+  <rect x="262" y="35" width="6" height="30" fill="#5C4A3D" rx="1"/>
+  <rect x="262" y="35" width="6" height="30" fill="none" stroke="#3D3226" stroke-width="1"/>
+
+  <!-- Right decorative triangles -->
+  <polygon points="225,35 235,50 225,65" fill="#C9B896" filter="url(#glassTexture)"/>
+  <polygon points="225,35 235,50 225,65" fill="none" stroke="#3D3226" stroke-width="1"/>
+
+  <polygon points="305,35 295,50 305,65" fill="url(#sageLight)" filter="url(#glassTexture)"/>
+  <polygon points="305,35 295,50 305,65" fill="none" stroke="#3D3226" stroke-width="1"/>
+
+  <!-- Vertical rhythm dividers -->
+  <line x1="100" y1="4" x2="100" y2="96" stroke="#3D3226" stroke-width="1"/>
+  <line x1="220" y1="4" x2="220" y2="96" stroke="#3D3226" stroke-width="1"/>
+
+  <!-- Corner accents - small geometric details -->
+  <polygon points="8,8 20,8 8,20" fill="#8A9A6D"/>
+  <polygon points="8,8 20,8 8,20" fill="none" stroke="#3D3226" stroke-width="1"/>
+
+  <polygon points="312,8 300,8 312,20" fill="#8A9A6D"/>
+  <polygon points="312,8 300,8 312,20" fill="none" stroke="#3D3226" stroke-width="1"/>
+
+  <polygon points="8,92 20,92 8,80" fill="#8A9A6D"/>
+  <polygon points="8,92 20,92 8,80" fill="none" stroke="#3D3226" stroke-width="1"/>
+
+  <polygon points="312,92 300,92 312,80" fill="#8A9A6D"/>
+  <polygon points="312,92 300,92 312,80" fill="none" stroke="#3D3226" stroke-width="1"/>
+
+  <!-- Subtle horizontal bands - prairie rhythm -->
+  <rect x="4" y="47" width="96" height="6" fill="#E8D9B8" opacity="0.3"/>
+  <rect x="220" y="47" width="96" height="6" fill="#E8D9B8" opacity="0.3"/>
+
+  <!-- Fine detail lines suggesting wing veins -->
+  <line x1="55" y1="25" x2="55" y2="45" stroke="#3D3226" stroke-width="0.5" opacity="0.6"/>
+  <line x1="55" y1="55" x2="55" y2="75" stroke="#3D3226" stroke-width="0.5" opacity="0.6"/>
+
+  <line x1="265" y1="25" x2="265" y2="45" stroke="#3D3226" stroke-width="0.5" opacity="0.6"/>
+  <line x1="265" y1="55" x2="265" y2="75" stroke="#3D3226" stroke-width="0.5" opacity="0.6"/>
+
+  <!-- Central axis emphasis -->
+  <line x1="160" y1="4" x2="160" y2="96" stroke="#3D3226" stroke-width="0.75" opacity="0.4"/>
+</svg>

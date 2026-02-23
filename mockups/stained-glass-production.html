@@ -1,0 +1,3054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FLW Stained Glass · Production Variations</title>
+  <style>
+    :root {
+      --bg: #FAF8F3;
+      --text: #1a1a1a;
+      --border: #1a1a1a;
+      --accent: #8B2500;
+      --muted: #666;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 60px;
+      padding-bottom: 40px;
+      border-bottom: 3px solid var(--border);
+    }
+
+    h1 {
+      font-size: 14px;
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .subtitle {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .design-section {
+      margin-bottom: 80px;
+    }
+
+    .design-header {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .design-number {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+    }
+
+    .design-name {
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+    }
+
+    .variations-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+
+    @media (max-width: 900px) {
+      .variations-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .variation-card {
+      border: 1px solid var(--border);
+      background: #fff;
+    }
+
+    .variation-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    .variation-id {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .variation-name {
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .svg-container {
+      padding: 24px;
+      background: #f5f5f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 180px;
+    }
+
+    .svg-container svg {
+      width: 100%;
+      max-width: 480px;
+      height: auto;
+      display: block;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .variation-description {
+      padding: 16px 20px;
+      font-size: 11px;
+      color: var(--muted);
+      border-top: 1px solid #eee;
+    }
+
+    .production-notes {
+      margin-top: 32px;
+      padding: 24px;
+      background: #f9f9f6;
+      border: 1px solid #ddd;
+    }
+
+    .production-notes h4 {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      color: var(--accent);
+    }
+
+    .production-notes p {
+      font-size: 12px;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    .section-divider {
+      height: 3px;
+      background: var(--border);
+      margin: 60px 0;
+    }
+
+    .manager-section {
+      margin-bottom: 60px;
+      padding: 32px;
+      background: #fff;
+      border: 2px solid var(--border);
+    }
+
+    .manager-section h2 {
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      color: var(--accent);
+    }
+
+    .standards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .standard-item {
+      padding: 20px;
+      background: var(--bg);
+      border: 1px solid #ddd;
+    }
+
+    .standard-item h5 {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .standard-item ul {
+      list-style: none;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .standard-item li {
+      padding: 4px 0;
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .standard-item li::before {
+      content: "·";
+      position: absolute;
+      left: 0;
+    }
+
+    footer {
+      margin-top: 80px;
+      padding-top: 40px;
+      border-top: 3px solid var(--border);
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>FLW Stained Glass · Production Variations</h1>
+      <p class="subtitle">4 Designs × 4 Variations Each · Coordinated Agent Workflow</p>
+    </header>
+
+    <!-- Manager Standards Section -->
+    <section class="manager-section">
+      <h2>Production Standards · Manager Agent</h2>
+      <div class="standards-grid">
+        <div class="standard-item">
+          <h5>SVG Technical</h5>
+          <ul>
+            <li>Viewbox: 320×100 (transom format)</li>
+            <li>Stroke weights: 3px frame, 1.5px elements, 0.5px detail</li>
+            <li>Colors: 6-digit hex codes only</li>
+            <li>Gradients defined in &lt;defs&gt;</li>
+          </ul>
+        </div>
+        <div class="standard-item">
+          <h5>Variation Framework</h5>
+          <ul>
+            <li>A: Refined Original (polish)</li>
+            <li>B: Color Palette Variation</li>
+            <li>C: Density Variation</li>
+            <li>D: Animated Version (CSS)</li>
+          </ul>
+        </div>
+        <div class="standard-item">
+          <h5>Animation Guidelines</h5>
+          <ul>
+            <li>Subtle hover glow/pulse</li>
+            <li>Ambient shimmer effects</li>
+            <li>GPU-accelerated (transform, opacity)</li>
+            <li>Reduced motion fallbacks required</li>
+          </ul>
+        </div>
+        <div class="standard-item">
+          <h5>Quality Checklist</h5>
+          <ul>
+            <li>Clean, optimized paths</li>
+            <li>Consistent stroke weights</li>
+            <li>Proper layering (z-order)</li>
+            <li>Color contrast verified</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Design 1: Geometric Tulip -->
+    <section class="design-section">
+      <div class="design-header">
+        <span class="design-number">DESIGN 01</span>
+        <span class="design-name">Geometric Tulip Transom</span>
+      </div>
+
+      <div class="variations-grid">
+        <!-- Variation A: Refined -->
+        <div class="variation-card">
+          <div class="variation-header">
+            <span class="variation-id">A</span>
+            <span class="variation-name">Refined Original</span>
+          </div>
+          <div class="svg-container">
+            <svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="bgGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#FAF8F0"/>
+                  <stop offset="100%" stop-color="#F5F0E0"/>
+                </linearGradient>
+                <linearGradient id="leafGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#5A8C5A"/>
+                  <stop offset="100%" stop-color="#3D5C3D"/>
+                </linearGradient>
+              </defs>
+              <rect width="320" height="100" fill="url(#bgGradient)"/>
+              <rect x="2" y="2" width="316" height="96" fill="none" stroke="#2E2E2E" stroke-width="3" stroke-linejoin="miter"/>
+              <rect x="6" y="6" width="308" height="88" fill="none" stroke="#2E2E2E" stroke-width="0.5" opacity="0.3"/>
+              <line x1="20" y1="75" x2="300" y2="75" stroke="#2E2E2E" stroke-width="1.5" stroke-linecap="round"/>
+              <g stroke="#3D5C3D" stroke-width="2" stroke-linecap="round">
+                <line x1="60" y1="75" x2="60" y2="40"/>
+                <line x1="120" y1="75" x2="120" y2="30"/>
+                <line x1="160" y1="75" x2="160" y2="20"/>
+                <line x1="200" y1="75" x2="200" y2="30"/>
+                <line x1="260" y1="75" x2="260" y2="40"/>
+              </g>
+              <g fill="url(#leafGradient)" stroke="#2E2E2E" stroke-width="0.75" stroke-linejoin="round">
+                <path d="M60,70 Q50,60 55,50 L60,55 L65,50 Q70,60 60,70"/>
+                <path d="M120,68 Q108,55 115,42 L120,48 L125,42 Q132,55 120,68"/>
+                <path d="M160,65 Q145,50 152,35 L160,42 L168,35 Q175,50 160,65"/>
+                <path d="M200,68 Q188,55 195,42 L200,48 L205,42 Q212,55 200,68"/>
+                <path d="M260,70 Q250,60 255,50 L260,55 L265,50 Q270,60 260,70"/>
+              </g>
+              <g stroke="#2E2E2E" stroke-width="1" stroke-linejoin="round">
+                <path d="M48,45 L60,25 L72,45 Q60,50 48,45" fill="#C75050"/>
+                <path d="M52,43 L60,28 L68,43" fill="#E07070" stroke="none"/>
+                <path d="M106,35 L120,12 L134,35 Q120,42 106,35" fill="#FFB347"/>
+                <path d="M112,32 L120,17 L128,32" fill="#FFD080" stroke="none"/>
+                <path d="M142,28 L160,2 L178,28 Q160,36 142,28" fill="#C75050"/>
+                <path d="M148,25 L160,8 L172,25" fill="#E07070" stroke="none"/>
+                <path d="M186,35 L200,12 L214,35 Q200,42 186,35" fill="#FFB347"/>
+                <path d="M192,32 L200,17 L208,32" fill="#FFD080" stroke="none"/>
+                <path d="M248,45 L260,25 L272,45 Q260,50 248,45" fill="#C75050"/>
+                <path d="M252,43 L260,28 L268,43" fill="#E07070" stroke="none"/>
+              </g>
+              <g>
+                <rect x="11" y="11" width="12" height="12" fill="#2E2E2E" opacity="0.2"/>
+                <rect x="10" y="10" width="12" height="12" fill="#3D5C3D" stroke="#2E2E2E" stroke-width="0.5"/>
+                <rect x="299" y="11" width="12" height="12" fill="#2E2E2E" opacity="0.2"/>
+                <rect x="298" y="10" width="12" height="12" fill="#3D5C3D" stroke="#2E2E2E" stroke-width="0.5"/>
+                <rect x="11" y="79" width="12" height="12" fill="#2E2E2E" opacity="0.2"/>
+                <rect x="10" y="78" width="12" height="12" fill="#3D5C3D" stroke="#2E2E2E" stroke-width="0.5"/>
+                <rect x="299" y="79" width="12" height="12" fill="#2E2E2E" opacity="0.2"/>
+                <rect x="298" y="78" width="12" height="12" fill="#3D5C3D" stroke="#2E2E2E" stroke-width="0.5"/>
+              </g>
+              <g fill="#C9A227" stroke="#2E2E2E" stroke-width="0.5">
+                <polygon points="35,50 40,55 35,60 30,55"/>
+                <polygon points="285,50 290,55 285,60 280,55"/>
+              </g>
+            </svg>
+          </div>
+          <div class="variation-description">Production polish with optimized paths, perfect bilateral symmetry, and enhanced depth through subtle gradients and shadow layering.</div>
+        </div>
+
+        <!-- Variation B: Twilight -->
+        <div class="variation-card">
+          <div class="variation-header">
+            <span class="variation-id">B</span>
+            <span class="variation-name">Twilight Palette</span>
+          </div>
+          <div class="svg-container">
+            <svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="twilightBg" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#2A2D42"/>
+                  <stop offset="100%" stop-color="#1A1D2E"/>
+                </linearGradient>
+                <linearGradient id="twilightLeaf" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#3D5C6D"/>
+                  <stop offset="100%" stop-color="#2A4A5A"/>
+                </linearGradient>
+              </defs>
+              <rect width="320" height="100" fill="url(#twilightBg)"/>
+              <rect x="2" y="2" width="316" height="96" fill="none" stroke="#8B7D9B" stroke-width="3"/>
+              <rect x="6" y="6" width="308" height="88" fill="none" stroke="#8B7D9B" stroke-width="0.5" opacity="0.3"/>
+              <line x1="20" y1="75" x2="300" y2="75" stroke="#6B5D7B" stroke-width="1.5" stroke-linecap="round"/>
+              <g stroke="#3D6B6D" stroke-width="2" stroke-linecap="round">
+                <line x1="60" y1="75" x2="60" y2="40"/>
+                <line x1="120" y1="75" x2="120" y2="30"/>
+                <line x1="160" y1="75" x2="160" y2="20"/>
+                <line x1="200" y1="75" x2="200" y2="30"/>
+                <line x1="260" y1="75" x2="260" y2="40"/>
+              </g>
+              <g fill="url(#twilightLeaf)" stroke="#4A6A7A" stroke-width="0.75" stroke-linejoin="round">
+                <path d="M60,70 Q50,60 55,50 L60,55 L65,50 Q70,60 60,70"/>
+                <path d="M120,68 Q108,55 115,42 L120,48 L125,42 Q132,55 120,68"/>
+                <path d="M160,65 Q145,50 152,35 L160,42 L168,35 Q175,50 160,65"/>
+                <path d="M200,68 Q188,55 195,42 L200,48 L205,42 Q212,55 200,68"/>
+                <path d="M260,70 Q250,60 255,50 L260,55 L265,50 Q270,60 260,70"/>
+              </g>
+              <g stroke="#4A3A5A" stroke-width="1" stroke-linejoin="round">
+                <path d="M48,45 L60,25 L72,45 Q60,50 48,45" fill="#6B4A7A"/>
+                <path d="M52,43 L60,28 L68,43" fill="#8B6A9A" stroke="none"/>
+                <path d="M106,35 L120,12 L134,35 Q120,42 106,35" fill="#9B6B7B"/>
+                <path d="M112,32 L120,17 L128,32" fill="#BB8B9B" stroke="none"/>
+                <path d="M142,28 L160,2 L178,28 Q160,36 142,28" fill="#7B4A6A"/>
+                <path d="M148,25 L160,8 L172,25" fill="#9B6A8A" stroke="none"/>
+                <path d="M186,35 L200,12 L214,35 Q200,42 186,35" fill="#9B6B7B"/>
+                <path d="M192,32 L200,17 L208,32" fill="#BB8B9B" stroke="none"/>
+                <path d="M248,45 L260,25 L272,45 Q260,50 248,45" fill="#6B4A7A"/>
+                <path d="M252,43 L260,28 L268,43" fill="#8B6A9A" stroke="none"/>
+              </g>
+              <g fill="#3D5C6D" stroke="#6B5D7B" stroke-width="0.5">
+                <rect x="10" y="10" width="12" height="12"/>
+                <rect x="298" y="10" width="12" height="12"/>
+                <rect x="10" y="78" width="12" height="12"/>
+                <rect x="298" y="78" width="12" height="12"/>
+              </g>
+              <g fill="#A8B4C4" stroke="#6B5D7B" stroke-width="0.5">
+                <polygon points="35,50 40,55 35,60 30,55"/>
+                <polygon points="285,50 290,55 285,60 280,55"/>
+              </g>
+              <g fill="#D4DCE8" opacity="0.6">
+                <circle cx="90" cy="15" r="1"/>
+                <circle cx="230" cy="15" r="1"/>
+                <circle cx="160" cy="92" r="1"/>
+              </g>
+            </svg>
+          </div>
+          <div class="variation-description">Evening mood with deep purples, dusky roses, and cool blue-green tones evoking twilight. Silver moonlight accents and subtle star elements.</div>
+        </div>
+
+        <!-- Variation C: Minimal -->
+        <div class="variation-card">
+          <div class="variation-header">
+            <span class="variation-id">C</span>
+            <span class="variation-name">Minimal Density</span>
+          </div>
+          <div class="svg-container">
+            <svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+              <rect width="320" height="100" fill="#F8F4E8"/>
+              <rect x="3" y="3" width="314" height="94" fill="none" stroke="#2E2E2E" stroke-width="4"/>
+              <line x1="30" y1="78" x2="290" y2="78" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round"/>
+              <g stroke="#3D5C3D" stroke-width="3" stroke-linecap="round">
+                <line x1="80" y1="78" x2="80" y2="38"/>
+                <line x1="160" y1="78" x2="160" y2="22"/>
+                <line x1="240" y1="78" x2="240" y2="38"/>
+              </g>
+              <g fill="#4A7C4A" stroke="#2E2E2E" stroke-width="1" stroke-linejoin="round">
+                <path d="M80,72 Q65,58 72,42 L80,50 L88,42 Q95,58 80,72"/>
+                <path d="M160,68 Q140,50 150,30 L160,40 L170,30 Q180,50 160,68"/>
+                <path d="M240,72 Q225,58 232,42 L240,50 L248,42 Q255,58 240,72"/>
+              </g>
+              <g stroke="#2E2E2E" stroke-width="1.5" stroke-linejoin="round">
+                <path d="M58,42 L80,18 L102,42 Q80,50 58,42" fill="#C75050"/>
+                <path d="M65,38 L80,22 L95,38" fill="#E07070" stroke="none"/>
+                <path d="M132,28 L160,0 L188,28 Q160,38 132,28" fill="#C75050"/>
+                <path d="M142,24 L160,6 L178,24" fill="#E07070" stroke="none"/>
+                <path d="M218,42 L240,18 L262,42 Q240,50 218,42" fill="#FFB347"/>
+                <path d="M225,38 L240,22 L255,38" fill="#FFD080" stroke="none"/>
+              </g>
+              <g fill="#3D5C3D" stroke="#2E2E2E" stroke-width="1">
+                <rect x="10" y="10" width="14" height="14"/>
+                <rect x="296" y="10" width="14" height="14"/>
+                <rect x="10" y="76" width="14" height="14"/>
+                <rect x="296" y="76" width="14" height="14"/>
+              </g>
+              <g fill="#C9A227" stroke="#2E2E2E" stroke-width="0.75">
+                <polygon points="40,50 46,56 40,62 34,56"/>
+                <polygon points="280,50 286,56 280,62 274,56"/>
+              </g>
+            </svg>
+          </div>
+          <div class="variation-description">Simplified 3-tulip composition with larger, bolder forms and increased stroke weights. Optimized for maximum clarity at small display sizes.</div>
+        </div>
+
+        <!-- Variation D: Animated -->
+        <div class="variation-card">
+          <div class="variation-header">
+            <span class="variation-id">D</span>
+            <span class="variation-name">Animated Glow</span>
+          </div>
+          <div class="svg-container">
+            <svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <filter id="tulipBloomGlow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="2" result="blur"/>
+                  <feMerge>
+                    <feMergeNode in="blur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+                <linearGradient id="tulipBgGradientAnim" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#FAF8F0"/>
+                  <stop offset="100%" stop-color="#F5F0E0"/>
+                </linearGradient>
+              </defs>
+              <style>
+                .tulip-bloom-red { animation: tulipPulseRed 3s ease-in-out infinite; }
+                .tulip-bloom-orange { animation: tulipPulseOrange 3s ease-in-out infinite 0.5s; }
+                .tulip-diamond { animation: tulipDiamondGlow 2s ease-in-out infinite; }
+                @keyframes tulipPulseRed {
+                  0%, 100% { fill: #C75050; }
+                  50% { fill: #D86060; filter: url(#tulipBloomGlow); }
+                }
+                @keyframes tulipPulseOrange {
+                  0%, 100% { fill: #FFB347; }
+                  50% { fill: #FFC060; filter: url(#tulipBloomGlow); }
+                }
+                @keyframes tulipDiamondGlow {
+                  0%, 100% { fill: #C9A227; }
+                  50% { fill: #E0B840; }
+                }
+              </style>
+              <rect width="320" height="100" fill="url(#tulipBgGradientAnim)"/>
+              <rect x="2" y="2" width="316" height="96" fill="none" stroke="#2E2E2E" stroke-width="3"/>
+              <line x1="20" y1="75" x2="300" y2="75" stroke="#2E2E2E" stroke-width="1.5"/>
+              <g stroke="#3D5C3D" stroke-width="2">
+                <line x1="60" y1="75" x2="60" y2="40"/>
+                <line x1="120" y1="75" x2="120" y2="30"/>
+                <line x1="160" y1="75" x2="160" y2="20"/>
+                <line x1="200" y1="75" x2="200" y2="30"/>
+                <line x1="260" y1="75" x2="260" y2="40"/>
+              </g>
+              <g fill="#4A7C4A" stroke="#2E2E2E" stroke-width="0.75">
+                <path d="M60,70 Q50,60 55,50 L60,55 L65,50 Q70,60 60,70"/>
+                <path d="M120,68 Q108,55 115,42 L120,48 L125,42 Q132,55 120,68"/>
+                <path d="M160,65 Q145,50 152,35 L160,42 L168,35 Q175,50 160,65"/>
+                <path d="M200,68 Q188,55 195,42 L200,48 L205,42 Q212,55 200,68"/>
+                <path d="M260,70 Q250,60 255,50 L260,55 L265,50 Q270,60 260,70"/>
+              </g>
+              <g stroke="#2E2E2E" stroke-width="1">
+                <path class="tulip-bloom-red" d="M48,45 L60,25 L72,45 Q60,50 48,45"/>
+                <path d="M52,43 L60,28 L68,43" fill="#E07070" stroke="none"/>
+                <path class="tulip-bloom-orange" d="M106,35 L120,12 L134,35 Q120,42 106,35"/>
+                <path d="M112,32 L120,17 L128,32" fill="#FFD080" stroke="none"/>
+                <path class="tulip-bloom-red" d="M142,28 L160,2 L178,28 Q160,36 142,28"/>
+                <path d="M148,25 L160,8 L172,25" fill="#E07070" stroke="none"/>
+                <path class="tulip-bloom-orange" d="M186,35 L200,12 L214,35 Q200,42 186,35"/>
+                <path d="M192,32 L200,17 L208,32" fill="#FFD080" stroke="none"/>
+                <path class="tulip-bloom-red" d="M248,45 L260,25 L272,45 Q260,50 248,45"/>
+                <path d="M252,43 L260,28 L268,43" fill="#E07070" stroke="none"/>
+              </g>
+              <g fill="#3D5C3D" stroke="#2E2E2E" stroke-width="0.5">
+                <rect x="10" y="10" width="12" height="12"/>
+                <rect x="298" y="10" width="12" height="12"/>
+                <rect x="10" y="78" width="12" height="12"/>
+                <rect x="298" y="78" width="12" height="12"/>
+              </g>
+              <g stroke="#2E2E2E" stroke-width="0.5">
+                <polygon class="tulip-diamond" points="35,50 40,55 35,60 30,55"/>
+                <polygon class="tulip-diamond" points="285,50 290,55 285,60 280,55"/>
+              </g>
+            </svg>
+          </div>
+          <div class="variation-description">Subtle pulsing glow on blooms with staggered timing. Gold diamond accents shimmer independently. CSS-based for performance.</div>
+        </div>
+      </div>
+
+      <div class="production-notes">
+        <h4>Production Notes · Tulip</h4>
+        <p>Refined Original adds background and leaf gradients for depth with shadow offsets on corners. Twilight shifts to deep purple (#2A2D42) with teal stems (#3D6B6D) and dusky rose accents. Minimal reduces to 3 tulips with 4px border strokes. Animated uses SVG filter-based glow with 0.5s stagger between red/orange elements.</p>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Design 2: Martin Horizontal -->
+    <section class="design-section">
+      <div class="design-header">
+        <span class="design-number">DESIGN 02</span>
+        <span class="design-name">Martin Horizontal Transom</span>
+      </div>
+
+      <div class="variations-grid">
+        <!-- Martin A: Refined -->
+        <div class="variation-card">
+          <div class="variation-header">
+            <span class="variation-id">A</span>
+            <span class="variation-name">Refined Original</span>
+          </div>
+          <div class="svg-container">
+            <svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="martinGoldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#D4AF37"/>
+                  <stop offset="50%" stop-color="#C9A227"/>
+                  <stop offset="100%" stop-color="#B8941F"/>
+                </linearGradient>
+                <linearGradient id="martinBlueGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#6B9FBF"/>
+                  <stop offset="50%" stop-color="#5B8FAF"/>
+                  <stop offset="100%" stop-color="#4B7F9F"/>
+                </linearGradient>
+              </defs>
+              <rect width="320" height="100" fill="#FBF7EE"/>
+              <rect x="2" y="2" width="316" height="96" fill="none" stroke="#2A2A2A" stroke-width="3" stroke-linejoin="miter"/>
+              <g stroke="#2A2A2A" stroke-width="1" stroke-linecap="square">
+                <line x1="10" y1="18" x2="310" y2="18"/>
+                <line x1="10" y1="36" x2="310" y2="36"/>
+                <line x1="10" y1="64" x2="310" y2="64"/>
+                <line x1="10" y1="82" x2="310" y2="82"/>
+              </g>
+              <g fill="url(#martinGoldGrad)" stroke="#2A2A2A" stroke-width="0.75">
+                <rect x="25" y="4" width="10" height="10"/>
+                <rect x="85" y="4" width="10" height="10"/>
+                <rect x="155" y="4" width="10" height="10"/>
+                <rect x="225" y="4" width="10" height="10"/>
+                <rect x="285" y="4" width="10" height="10"/>
+              </g>
+              <g fill="url(#martinBlueGrad)" stroke="#2A2A2A" stroke-width="0.75">
+                <rect x="48" y="20" width="14" height="14"/>
+                <rect x="108" y="20" width="14" height="14"/>
+                <rect x="153" y="20" width="14" height="14"/>
+                <rect x="198" y="20" width="14" height="14"/>
+                <rect x="258" y="20" width="14" height="14"/>
+              </g>
+              <g fill="url(#martinGoldGrad)" stroke="#2A2A2A" stroke-width="1" stroke-linejoin="miter">
+                <polygon points="25,50 40,36 55,50 40,64"/>
+                <polygon points="85,50 100,36 115,50 100,64"/>
+                <polygon points="150,50 165,36 180,50 165,64"/>
+                <polygon points="205,50 220,36 235,50 220,64"/>
+                <polygon points="265,50 280,36 295,50 280,64"/>
+              </g>
+              <g fill="#8B4513" stroke="#2A2A2A" stroke-width="0.5">
+                <polygon points="40,43 47,50 40,57 33,50"/>
+                <polygon points="100,43 107,50 100,57 93,50"/>
+                <polygon points="165,43 172,50 165,57 158,50"/>
+                <polygon points="220,43 227,50 220,57 213,50"/>
+                <polygon points="280,43 287,50 280,57 273,50"/>
+              </g>
+              <g fill="url(#martinBlueGrad)" stroke="#2A2A2A" stroke-width="0.75">
+                <rect x="48" y="66" width="14" height="14"/>
+                <rect x="108" y="66" width="14" height="14"/>
+                <rect x="153" y="66" width="14" height="14"/>
+                <rect x="198" y="66" width="14" height="14"/>
+                <rect x="258" y="66" width="14" height="14"/>
+              </g>
+              <g fill="url(#martinGoldGrad)" stroke="#2A2A2A" stroke-width="0.75">
+                <rect x="25" y="86" width="10" height="10"/>
+                <rect x="85" y="86" width="10" height="10"/>
+                <rect x="155" y="86" width="10" height="10"/>
+                <rect x="225" y="86" width="10" height="10"/>
+                <rect x="285" y="86" width="10" height="10"/>
+              </g>
+            </svg>
+          </div>
+          <div class="variation-description">Production polish with perfect 5-column grid alignment, gradient fills for depth, and optimized stroke weights.</div>
+        </div>
+
+        <!-- Martin B: Patina -->
+        <div class="variation-card">
+          <div class="variation-header">
+            <span class="variation-id">B</span>
+            <span class="variation-name">Copper & Verdigris</span>
+          </div>
+          <div class="svg-container">
+            <svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="copperGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#CD7F32"/>
+                  <stop offset="50%" stop-color="#B87333"/>
+                  <stop offset="100%" stop-color="#A66628"/>
+                </linearGradient>
+                <linearGradient id="verdigrisGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#5BC3BE"/>
+                  <stop offset="50%" stop-color="#43B3AE"/>
+                  <stop offset="100%" stop-color="#2D9994"/>
+                </linearGradient>
+                <linearGradient id="bronzeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#6B4423"/>
+                  <stop offset="50%" stop-color="#5C3D1E"/>
+                  <stop offset="100%" stop-color="#4A3016"/>
+                </linearGradient>
+              </defs>
+              <rect width="320" height="100" fill="#F5F0E1"/>
+              <rect x="2" y="2" width="316" height="96" fill="none" stroke="#3D3D3D" stroke-width="3" stroke-linejoin="miter"/>
+              <g stroke="#3D3D3D" stroke-width="1" stroke-linecap="square">
+                <line x1="10" y1="18" x2="310" y2="18"/>
+                <line x1="10" y1="36" x2="310" y2="36"/>
+                <line x1="10" y1="64" x2="310" y2="64"/>
+                <line x1="10" y1="82" x2="310" y2="82"/>
+              </g>
+              <g fill="url(#copperGrad)" stroke="#3D3D3D" stroke-width="0.75">
+                <rect x="25" y="4" width="10" height="10"/>
+                <rect x="85" y="4" width="10" height="10"/>
+                <rect x="155" y="4" width="10" height="10"/>
+                <rect x="225" y="4" width="10" height="10"/>
+                <rect x="285" y="4" width="10" height="10"/>
+              </g>
+              <g fill="url(#verdigrisGrad)" stroke="#3D3D3D" stroke-width="0.75">
+                <rect x="48" y="20" width="14" height="14"/>
+                <rect x="108" y="20" width="14" height="14"/>
+                <rect x="153" y="20" width="14" height="14"/>
+                <rect x="198" y="20" width="14" height="14"/>
+                <rect x="258" y="20" width="14" height="14"/>
+              </g>
+              <g fill="url(#copperGrad)" stroke="#3D3D3D" stroke-width="1" stroke-linejoin="miter">
+                <polygon points="25,50 40,36 55,50 40,64"/>
+                <polygon points="85,50 100,36 115,50 100,64"/>
+                <polygon points="150,50 165,36 180,50 165,64"/>
+                <polygon points="205,50 220,36 235,50 220,64"/>
+                <polygon points="265,50 280,36 295,50 280,64"/>
+              </g>
+              <g fill="url(#bronzeGrad)" stroke="#3D3D3D" stroke-width="0.5">
+                <polygon points="40,43 47,50 40,57 33,50"/>
+                <polygon points="100,43 107,50 100,57 93,50"/>
+                <polygon points="165,43 172,50 165,57 158,50"/>
+                <polygon points="220,43 227,50 220,57 213,50"/>
+                <polygon points="280,43 287,50 280,57 273,50"/>
+              </g>
+              <g fill="url(#verdigrisGrad)" stroke="#3D3D3D" stroke-width="0.75">
+                <rect x="48" y="66" width="14" height="14"/>
+                <rect x="108" y="66" width="14" height="14"/>
+                <rect x="153" y="66" width="14" height="14"/>
+                <rect x="198" y="66" width="14" height="14"/>
+                <rect x="258" y="66" width="14" height="14"/>
+              </g>
+              <g fill="url(#copperGrad)" stroke="#3D3D3D" stroke-width="0.75">
+                <rect x="25" y="86" width="10" height="10"/>
+                <rect x="85" y="86" width="10" height="10"/>
+                <rect x="155" y="86" width="10" height="10"/>
+                <rect x="225" y="86" width="10" height="10"/>
+                <rect x="285" y="86" width="10" height="10"/>
+              </g>
+              <rect width="320" height="100" fill="url(#verdigrisGrad)" opacity="0.03"/>
+            </svg>
+          </div>
+          <div class="variation-description">Aged patina palette with copper (#B87333), verdigris (#43B3AE), and bronze accents suggesting weathered elegance.</div>
+        </div>
+
+        <!-- Martin C: Dense -->
+        <div class="variation-card">
+          <div class="variation-header">
+            <span class="variation-id">C</span>
+            <span class="variation-name">Dense Pattern</span>
+          </div>
+          <div class="svg-container">
+            <svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="denseGold" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#D4AF37"/>
+                  <stop offset="50%" stop-color="#C9A227"/>
+                  <stop offset="100%" stop-color="#B8941F"/>
+                </linearGradient>
+                <linearGradient id="denseBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#6B9FBF"/>
+                  <stop offset="50%" stop-color="#5B8FAF"/>
+                  <stop offset="100%" stop-color="#4B7F9F"/>
+                </linearGradient>
+                <linearGradient id="denseRuby" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#9B2335"/>
+                  <stop offset="100%" stop-color="#7B1D2A"/>
+                </linearGradient>
+                <linearGradient id="denseEmerald" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#287D5A"/>
+                  <stop offset="100%" stop-color="#1E5F44"/>
+                </linearGradient>
+              </defs>
+              <rect width="320" height="100" fill="#FAF6EB"/>
+              <rect x="2" y="2" width="316" height="96" fill="none" stroke="#1A1A1A" stroke-width="3" stroke-linejoin="miter"/>
+              <g stroke="#1A1A1A" stroke-width="1" stroke-linecap="square">
+                <line x1="8" y1="14" x2="312" y2="14"/>
+                <line x1="8" y1="27" x2="312" y2="27"/>
+                <line x1="8" y1="40" x2="312" y2="40"/>
+                <line x1="8" y1="60" x2="312" y2="60"/>
+                <line x1="8" y1="73" x2="312" y2="73"/>
+                <line x1="8" y1="86" x2="312" y2="86"/>
+              </g>
+              <!-- Dense top squares -->
+              <g fill="url(#denseGold)" stroke="#1A1A1A" stroke-width="0.5">
+                <rect x="15" y="4" width="8" height="8"/>
+                <rect x="55" y="4" width="8" height="8"/>
+                <rect x="95" y="4" width="8" height="8"/>
+                <rect x="135" y="4" width="8" height="8"/>
+                <rect x="176" y="4" width="8" height="8"/>
+                <rect x="217" y="4" width="8" height="8"/>
+                <rect x="257" y="4" width="8" height="8"/>
+                <rect x="297" y="4" width="8" height="8"/>
+              </g>
+              <!-- Dense chevrons -->
+              <g fill="url(#denseGold)" stroke="#1A1A1A" stroke-width="0.75">
+                <polygon points="25,50 37,40 49,50 37,60"/>
+                <polygon points="65,50 77,40 89,50 77,60"/>
+                <polygon points="105,50 117,40 129,50 117,60"/>
+                <polygon points="145,50 157,40 169,50 157,60"/>
+                <polygon points="185,50 197,40 209,50 197,60"/>
+                <polygon points="225,50 237,40 249,50 237,60"/>
+                <polygon points="265,50 277,40 289,50 277,60"/>
+              </g>
+              <!-- Diamond centers -->
+              <g fill="#8B4513" stroke="#1A1A1A" stroke-width="0.4">
+                <polygon points="37,46 41,50 37,54 33,50"/>
+                <polygon points="77,46 81,50 77,54 73,50"/>
+                <polygon points="117,46 121,50 117,54 113,50"/>
+                <polygon points="157,46 161,50 157,54 153,50"/>
+                <polygon points="197,46 201,50 197,54 193,50"/>
+                <polygon points="237,46 241,50 237,54 233,50"/>
+                <polygon points="277,46 281,50 277,54 273,50"/>
+              </g>
+              <!-- Dense bottom squares -->
+              <g fill="url(#denseGold)" stroke="#1A1A1A" stroke-width="0.5">
+                <rect x="15" y="88" width="8" height="8"/>
+                <rect x="55" y="88" width="8" height="8"/>
+                <rect x="95" y="88" width="8" height="8"/>
+                <rect x="135" y="88" width="8" height="8"/>
+                <rect x="176" y="88" width="8" height="8"/>
+                <rect x="217" y="88" width="8" height="8"/>
+                <rect x="257" y="88" width="8" height="8"/>
+                <rect x="297" y="88" width="8" height="8"/>
+              </g>
+              <!-- Alternating blue/ruby bands -->
+              <g stroke="#1A1A1A" stroke-width="0.5">
+                <rect x="25" y="16" width="10" height="10" fill="url(#denseBlue)"/>
+                <rect x="45" y="16" width="10" height="10" fill="url(#denseRuby)"/>
+                <rect x="65" y="16" width="10" height="10" fill="url(#denseBlue)"/>
+                <rect x="85" y="16" width="10" height="10" fill="url(#denseRuby)"/>
+                <rect x="105" y="16" width="10" height="10" fill="url(#denseBlue)"/>
+                <rect x="155" y="16" width="10" height="10" fill="url(#denseEmerald)"/>
+                <rect x="205" y="16" width="10" height="10" fill="url(#denseBlue)"/>
+                <rect x="225" y="16" width="10" height="10" fill="url(#denseRuby)"/>
+                <rect x="245" y="16" width="10" height="10" fill="url(#denseBlue)"/>
+                <rect x="265" y="16" width="10" height="10" fill="url(#denseRuby)"/>
+                <rect x="285" y="16" width="10" height="10" fill="url(#denseBlue)"/>
+              </g>
+            </svg>
+          </div>
+          <div class="variation-description">Doubled element count with ruby (#9B2335) and emerald (#287D5A) accents added for rich jewel-box effect.</div>
+        </div>
+
+        <!-- Martin D: Shimmer -->
+        <div class="variation-card">
+          <div class="variation-header">
+            <span class="variation-id">D</span>
+            <span class="variation-name">Animated Shimmer</span>
+          </div>
+          <div class="svg-container">
+            <svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="martinShimmerGold" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#C9A227">
+                    <animate attributeName="stop-color" values="#C9A227;#E0C060;#C9A227" dur="2.5s" repeatCount="indefinite"/>
+                  </stop>
+                  <stop offset="50%" stop-color="#D4AF37">
+                    <animate attributeName="stop-color" values="#D4AF37;#E8C878;#D4AF37" dur="2.5s" repeatCount="indefinite"/>
+                  </stop>
+                  <stop offset="100%" stop-color="#C9A227">
+                    <animate attributeName="stop-color" values="#C9A227;#E0C060;#C9A227" dur="2.5s" repeatCount="indefinite"/>
+                  </stop>
+                </linearGradient>
+                <linearGradient id="martinShimmerBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#6B9FBF">
+                    <animate attributeName="stop-color" values="#6B9FBF;#7BAFD0;#5B8FAF;#6B9FBF" dur="3s" repeatCount="indefinite"/>
+                  </stop>
+                  <stop offset="100%" stop-color="#4B7F9F">
+                    <animate attributeName="stop-color" values="#4B7F9F;#5B90B0;#3B6F8F;#4B7F9F" dur="3s" repeatCount="indefinite"/>
+                  </stop>
+                </linearGradient>
+                <linearGradient id="martinLightSweep" x1="-100%" y1="0%" x2="0%" y2="0%">
+                  <stop offset="0%" stop-color="white" stop-opacity="0"/>
+                  <stop offset="50%" stop-color="white" stop-opacity="0.15"/>
+                  <stop offset="100%" stop-color="white" stop-opacity="0"/>
+                  <animate attributeName="x1" values="-100%;200%" dur="4s" repeatCount="indefinite"/>
+                  <animate attributeName="x2" values="0%;300%" dur="4s" repeatCount="indefinite"/>
+                </linearGradient>
+              </defs>
+              <rect width="320" height="100" fill="#FBF7EE"/>
+              <rect x="2" y="2" width="316" height="96" fill="none" stroke="#2A2A2A" stroke-width="3"/>
+              <g stroke="#2A2A2A" stroke-width="1">
+                <line x1="10" y1="18" x2="310" y2="18"/>
+                <line x1="10" y1="36" x2="310" y2="36"/>
+                <line x1="10" y1="64" x2="310" y2="64"/>
+                <line x1="10" y1="82" x2="310" y2="82"/>
+              </g>
+              <g fill="url(#martinShimmerGold)" stroke="#2A2A2A" stroke-width="0.75">
+                <rect x="25" y="4" width="10" height="10"/>
+                <rect x="85" y="4" width="10" height="10"/>
+                <rect x="155" y="4" width="10" height="10"/>
+                <rect x="225" y="4" width="10" height="10"/>
+                <rect x="285" y="4" width="10" height="10"/>
+              </g>
+              <g fill="url(#martinShimmerBlue)" stroke="#2A2A2A" stroke-width="0.75">
+                <rect x="48" y="20" width="14" height="14"/>
+                <rect x="108" y="20" width="14" height="14"/>
+                <rect x="153" y="20" width="14" height="14"/>
+                <rect x="198" y="20" width="14" height="14"/>
+                <rect x="258" y="20" width="14" height="14"/>
+              </g>
+              <g fill="url(#martinShimmerGold)" stroke="#2A2A2A" stroke-width="1">
+                <polygon points="25,50 40,36 55,50 40,64"/>
+                <polygon points="85,50 100,36 115,50 100,64"/>
+                <polygon points="150,50 165,36 180,50 165,64"/>
+                <polygon points="205,50 220,36 235,50 220,64"/>
+                <polygon points="265,50 280,36 295,50 280,64"/>
+              </g>
+              <g fill="#8B4513" stroke="#2A2A2A" stroke-width="0.5">
+                <polygon points="40,43 47,50 40,57 33,50">
+                  <animate attributeName="fill" values="#8B4513;#A0522D;#8B4513" dur="2s" repeatCount="indefinite"/>
+                </polygon>
+                <polygon points="100,43 107,50 100,57 93,50">
+                  <animate attributeName="fill" values="#8B4513;#A0522D;#8B4513" dur="2s" repeatCount="indefinite" begin="0.4s"/>
+                </polygon>
+                <polygon points="165,43 172,50 165,57 158,50">
+                  <animate attributeName="fill" values="#8B4513;#A0522D;#8B4513" dur="2s" repeatCount="indefinite" begin="0.8s"/>
+                </polygon>
+                <polygon points="220,43 227,50 220,57 213,50">
+                  <animate attributeName="fill" values="#8B4513;#A0522D;#8B4513" dur="2s" repeatCount="indefinite" begin="1.2s"/>
+                </polygon>
+                <polygon points="280,43 287,50 280,57 273,50">
+                  <animate attributeName="fill" values="#8B4513;#A0522D;#8B4513" dur="2s" repeatCount="indefinite" begin="1.6s"/>
+                </polygon>
+              </g>
+              <g fill="url(#martinShimmerBlue)" stroke="#2A2A2A" stroke-width="0.75">
+                <rect x="48" y="66" width="14" height="14"/>
+                <rect x="108" y="66" width="14" height="14"/>
+                <rect x="153" y="66" width="14" height="14"/>
+                <rect x="198" y="66" width="14" height="14"/>
+                <rect x="258" y="66" width="14" height="14"/>
+              </g>
+              <g fill="url(#martinShimmerGold)" stroke="#2A2A2A" stroke-width="0.75">
+                <rect x="25" y="86" width="10" height="10"/>
+                <rect x="85" y="86" width="10" height="10"/>
+                <rect x="155" y="86" width="10" height="10"/>
+                <rect x="225" y="86" width="10" height="10"/>
+                <rect x="285" y="86" width="10" height="10"/>
+              </g>
+              <rect x="0" y="0" width="320" height="100" fill="url(#martinLightSweep)" pointer-events="none"/>
+            </svg>
+          </div>
+          <div class="variation-description">Subtle light sweep across bands with iridescent blue color shifting. SMIL animations for gradient stops with CSS fallbacks.</div>
+        </div>
+      </div>
+
+      <div class="production-notes">
+        <h4>Production Notes · Martin</h4>
+        <p>Establishes 5-column grid at x=25, 85, 155, 225, 285. Chevrons mathematically centered with 30-unit tip-to-tip spans. Diamond centers use explicit polygon points for pixel-perfect rendering. Patina version adds subtle 3% overlay for unified aging effect.</p>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Design 3: Desert Saguaro -->
+    <section class="design-section">
+      <div class="design-header">
+        <span class="design-number">DESIGN 03</span>
+        <span class="design-name">Desert Saguaro Transom</span>
+      </div>
+
+      <div class="variations-grid">
+        <!-- Saguaro A: Refined -->
+        <div class="variation-card">
+          <div class="variation-header">
+            <span class="variation-id">A</span>
+            <span class="variation-name">Refined Original</span>
+          </div>
+          <div class="svg-container">
+            <svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="desertSkyRefined" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#E8C99B"/>
+                  <stop offset="60%" stop-color="#DEB87A"/>
+                  <stop offset="100%" stop-color="#D4A76A"/>
+                </linearGradient>
+                <linearGradient id="saguaroMain" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#6B8E6B"/>
+                  <stop offset="50%" stop-color="#7A9E7A"/>
+                  <stop offset="100%" stop-color="#6B8E6B"/>
+                </linearGradient>
+                <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#FFD700"/>
+                  <stop offset="60%" stop-color="#F4A460"/>
+                  <stop offset="100%" stop-color="#E8943A"/>
+                </radialGradient>
+              </defs>
+              <rect width="320" height="100" fill="url(#desertSkyRefined)"/>
+              <rect x="2" y="2" width="316" height="96" fill="none" stroke="#5C4033" stroke-width="3" stroke-linejoin="miter"/>
+              <polygon points="0,98 40,68 80,82 120,58 160,72 200,52 240,67 280,57 320,77 320,98" fill="#8B7355" opacity="0.25"/>
+              <g fill="url(#saguaroMain)" stroke="#5C4033" stroke-width="1.5" stroke-linejoin="round">
+                <rect x="55" y="35" width="14" height="63" rx="1"/>
+                <path d="M55,55 H47 V37 H53 V55 Z"/>
+                <path d="M69,50 H77 V32 H71 V50 Z"/>
+              </g>
+              <g fill="url(#saguaroMain)" stroke="#5C4033" stroke-width="1.5" stroke-linejoin="round">
+                <rect x="148" y="15" width="18" height="83" rx="1"/>
+                <path d="M148,45 H135 V27 H144 V37 H148 Z"/>
+                <path d="M166,40 H179 V22 H170 V32 H166 Z"/>
+                <path d="M148,70 H141 V57 H148 Z"/>
+              </g>
+              <g fill="url(#saguaroMain)" stroke="#5C4033" stroke-width="1.5" stroke-linejoin="round">
+                <rect x="250" y="40" width="14" height="58" rx="1"/>
+                <path d="M250,58 H242 V44 H248 V58 Z"/>
+                <path d="M264,52 H271 V40 H266 V52 Z"/>
+              </g>
+              <circle cx="280" cy="25" r="15" fill="url(#sunGlow)" stroke="#5C4033" stroke-width="1" opacity="0.85"/>
+              <circle cx="280" cy="25" r="7" fill="#FFE44D" stroke="#5C4033" stroke-width="0.5"/>
+              <g fill="#8FBC8F" stroke="#5C4033" stroke-width="0.75">
+                <ellipse cx="30" cy="90" rx="8" ry="5"/>
+                <ellipse cx="110" cy="92" rx="6" ry="4"/>
+                <ellipse cx="210" cy="90" rx="7" ry="4"/>
+                <ellipse cx="295" cy="92" rx="6" ry="4"/>
+              </g>
+              <g fill="#DAA520" stroke="#5C4033" stroke-width="0.5">
+                <polygon points="10,10 25,10 10,25"/>
+                <polygon points="310,10 310,25 295,10"/>
+              </g>
+            </svg>
+          </div>
+          <div class="variation-description">Optimized path commands (H/V shorthand), smooth gradient transitions, and clean right-angle saguaro geometry.</div>
+        </div>
+
+        <!-- Saguaro B: Sunset -->
+        <div class="variation-card">
+          <div class="variation-header">
+            <span class="variation-id">B</span>
+            <span class="variation-name">Sunset Blaze</span>
+          </div>
+          <div class="svg-container">
+            <svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="sunsetBlaze" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#4A1C5C"/>
+                  <stop offset="25%" stop-color="#8B2252"/>
+                  <stop offset="50%" stop-color="#CD4F39"/>
+                  <stop offset="75%" stop-color="#FF6B35"/>
+                  <stop offset="100%" stop-color="#FFB347"/>
+                </linearGradient>
+                <radialGradient id="blazingSun" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#FFFFFF"/>
+                  <stop offset="30%" stop-color="#FFD700"/>
+                  <stop offset="70%" stop-color="#FF8C00"/>
+                  <stop offset="100%" stop-color="#FF4500"/>
+                </radialGradient>
+                <radialGradient id="sunCorona" cx="50%" cy="50%" r="50%">
+                  <stop offset="60%" stop-color="#FF8C00" stop-opacity="0.4"/>
+                  <stop offset="100%" stop-color="#FF4500" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+              <rect width="320" height="100" fill="url(#sunsetBlaze)"/>
+              <circle cx="280" cy="28" r="28" fill="url(#sunCorona)"/>
+              <rect x="2" y="2" width="316" height="96" fill="none" stroke="#1A0A0A" stroke-width="3"/>
+              <polygon points="0,98 40,68 80,82 120,58 160,72 200,52 240,67 280,57 320,77 320,98" fill="#2D1A1A" opacity="0.6"/>
+              <g fill="#2D3A2D" stroke="#1A261A" stroke-width="1.5">
+                <rect x="55" y="35" width="14" height="63" rx="1"/>
+                <path d="M55,55 H47 V37 H53 V55 Z"/>
+                <path d="M69,50 H77 V32 H71 V50 Z"/>
+              </g>
+              <g fill="#2D3A2D" stroke="#1A261A" stroke-width="1.5">
+                <rect x="148" y="15" width="18" height="83" rx="1"/>
+                <path d="M148,45 H135 V27 H144 V37 H148 Z"/>
+                <path d="M166,40 H179 V22 H170 V32 H166 Z"/>
+                <path d="M148,70 H141 V57 H148 Z"/>
+              </g>
+              <g fill="#2D3A2D" stroke="#1A261A" stroke-width="1.5">
+                <rect x="250" y="40" width="14" height="58" rx="1"/>
+                <path d="M250,58 H242 V44 H248 V58 Z"/>
+                <path d="M264,52 H271 V40 H266 V52 Z"/>
+              </g>
+              <circle cx="280" cy="28" r="16" fill="url(#blazingSun)" stroke="#FF4500" stroke-width="1"/>
+              <circle cx="280" cy="28" r="8" fill="#FFFACD" stroke="#FFD700" stroke-width="0.5"/>
+              <g fill="#2D3A2D" stroke="#1A261A" stroke-width="0.75">
+                <ellipse cx="30" cy="90" rx="8" ry="5"/>
+                <ellipse cx="110" cy="92" rx="6" ry="4"/>
+                <ellipse cx="210" cy="90" rx="7" ry="4"/>
+                <ellipse cx="295" cy="92" rx="6" ry="4"/>
+              </g>
+              <g fill="#FF8C00" stroke="#8B2252" stroke-width="0.5">
+                <polygon points="10,10 25,10 10,25"/>
+                <polygon points="310,10 310,25 295,10"/>
+              </g>
+            </svg>
+          </div>
+          <div class="variation-description">Dramatic 5-stop sunset gradient from purple to orange. Saguaros rendered as dark silhouettes (#2D3A2D) with intense blazing sun and corona glow.</div>
+        </div>
+
+        <!-- Saguaro C: Night -->
+        <div class="variation-card">
+          <div class="variation-header">
+            <span class="variation-id">C</span>
+            <span class="variation-name">Night Desert</span>
+          </div>
+          <div class="svg-container">
+            <svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="nightSky" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#0D1B2A"/>
+                  <stop offset="40%" stop-color="#1B2838"/>
+                  <stop offset="70%" stop-color="#2D3E50"/>
+                  <stop offset="100%" stop-color="#3D5A73"/>
+                </linearGradient>
+                <linearGradient id="saguaroMoonlit" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#4A6670"/>
+                  <stop offset="50%" stop-color="#5A7A85"/>
+                  <stop offset="100%" stop-color="#4A6670"/>
+                </linearGradient>
+                <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#FFFFFF"/>
+                  <stop offset="60%" stop-color="#E8E8F0"/>
+                  <stop offset="100%" stop-color="#C0C8D8"/>
+                </radialGradient>
+                <radialGradient id="moonHalo" cx="50%" cy="50%" r="50%">
+                  <stop offset="50%" stop-color="#A0B0C0" stop-opacity="0.15"/>
+                  <stop offset="100%" stop-color="#6080A0" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+              <rect width="320" height="100" fill="url(#nightSky)"/>
+              <circle cx="280" cy="25" r="25" fill="url(#moonHalo)"/>
+              <g fill="#E8E8FF" opacity="0.9">
+                <polygon points="45,15 47,18 45,21 43,18"/>
+                <polygon points="90,8 91.5,11 90,14 88.5,11"/>
+                <polygon points="135,20 136.5,23 135,26 133.5,23"/>
+                <polygon points="180,12 182,15 180,18 178,15"/>
+                <polygon points="220,22 221.5,25 220,28 218.5,25"/>
+                <polygon points="25,35 26,37 25,39 24,37"/>
+                <polygon points="120,32 121,34 120,36 119,34"/>
+                <polygon points="195,8 196,10 195,12 194,10"/>
+              </g>
+              <g fill="#FFFFFF" opacity="0.7">
+                <polygon points="70,28 71,30 70,32 69,30"/>
+                <polygon points="240,15 241,17 240,19 239,17"/>
+              </g>
+              <rect x="2" y="2" width="316" height="96" fill="none" stroke="#1A2A3A" stroke-width="3"/>
+              <polygon points="0,98 40,68 80,82 120,58 160,72 200,52 240,67 280,57 320,77 320,98" fill="#1A2838" opacity="0.5"/>
+              <g fill="url(#saguaroMoonlit)" stroke="#2A3A4A" stroke-width="1.5">
+                <rect x="55" y="35" width="14" height="63" rx="1"/>
+                <path d="M55,55 H47 V37 H53 V55 Z"/>
+                <path d="M69,50 H77 V32 H71 V50 Z"/>
+              </g>
+              <g fill="url(#saguaroMoonlit)" stroke="#2A3A4A" stroke-width="1.5">
+                <rect x="148" y="15" width="18" height="83" rx="1"/>
+                <path d="M148,45 H135 V27 H144 V37 H148 Z"/>
+                <path d="M166,40 H179 V22 H170 V32 H166 Z"/>
+                <path d="M148,70 H141 V57 H148 Z"/>
+              </g>
+              <g fill="url(#saguaroMoonlit)" stroke="#2A3A4A" stroke-width="1.5">
+                <rect x="250" y="40" width="14" height="58" rx="1"/>
+                <path d="M250,58 H242 V44 H248 V58 Z"/>
+                <path d="M264,52 H271 V40 H266 V52 Z"/>
+              </g>
+              <circle cx="280" cy="25" r="15" fill="url(#moonGlow)" stroke="#8090A0" stroke-width="0.5"/>
+              <circle cx="276" cy="22" r="3" fill="#C8D0E0" opacity="0.3"/>
+              <circle cx="283" cy="28" r="2" fill="#C8D0E0" opacity="0.25"/>
+              <g fill="#3A5060" stroke="#2A3A4A" stroke-width="0.75">
+                <ellipse cx="30" cy="90" rx="8" ry="5"/>
+                <ellipse cx="110" cy="92" rx="6" ry="4"/>
+                <ellipse cx="210" cy="90" rx="7" ry="4"/>
+                <ellipse cx="295" cy="92" rx="6" ry="4"/>
+              </g>
+              <g fill="#607890" stroke="#2A3A4A" stroke-width="0.5">
+                <polygon points="10,10 25,10 10,25"/>
+                <polygon points="310,10 310,25 295,10"/>
+              </g>
+            </svg>
+          </div>
+          <div class="variation-description">Deep blue-purple night sky with diamond stars at varying sizes/opacities. Silver-green moonlit saguaros with full moon and subtle crater details.</div>
+        </div>
+
+        <!-- Saguaro D: Shimmer -->
+        <div class="variation-card">
+          <div class="variation-header">
+            <span class="variation-id">D</span>
+            <span class="variation-name">Heat Shimmer</span>
+          </div>
+          <div class="svg-container">
+            <svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="heatSky" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#F5DEB3"/>
+                  <stop offset="50%" stop-color="#E8C99B"/>
+                  <stop offset="100%" stop-color="#D4A76A"/>
+                </linearGradient>
+                <linearGradient id="saguaroHeat" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#6B8E6B"/>
+                  <stop offset="50%" stop-color="#7A9E7A"/>
+                  <stop offset="100%" stop-color="#6B8E6B"/>
+                </linearGradient>
+                <radialGradient id="sunHeat" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#FFFFFF"/>
+                  <stop offset="30%" stop-color="#FFD700"/>
+                  <stop offset="70%" stop-color="#FFA500"/>
+                  <stop offset="100%" stop-color="#FF8C00"/>
+                </radialGradient>
+                <radialGradient id="sunPulse" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#FFD700" stop-opacity="0.5">
+                    <animate attributeName="stop-opacity" values="0.5;0.2;0.5" dur="2s" repeatCount="indefinite"/>
+                  </stop>
+                  <stop offset="100%" stop-color="#FF8C00" stop-opacity="0">
+                    <animate attributeName="stop-opacity" values="0;0.1;0" dur="2s" repeatCount="indefinite"/>
+                  </stop>
+                </radialGradient>
+                <filter id="heatDistort" x="-10%" y="-10%" width="120%" height="120%">
+                  <feTurbulence type="fractalNoise" baseFrequency="0.02 0.06" numOctaves="2" result="noise" seed="5">
+                    <animate attributeName="baseFrequency" values="0.02 0.06;0.025 0.07;0.02 0.06" dur="4s" repeatCount="indefinite"/>
+                  </feTurbulence>
+                  <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G"/>
+                </filter>
+              </defs>
+              <style>
+                .saguaro-sun-main { animation: saguaroSunPulse 2s ease-in-out infinite; }
+                .saguaro-sun-corona { animation: saguaroCoronaPulse 2s ease-in-out infinite; }
+                @keyframes saguaroSunPulse {
+                  0%, 100% { opacity: 0.9; }
+                  50% { opacity: 1; }
+                }
+                @keyframes saguaroCoronaPulse {
+                  0%, 100% { opacity: 0.3; }
+                  50% { opacity: 0.5; }
+                }
+              </style>
+              <rect width="320" height="100" fill="url(#heatSky)"/>
+              <circle class="saguaro-sun-corona" cx="280" cy="25" r="22" fill="url(#sunPulse)"/>
+              <rect x="2" y="2" width="316" height="96" fill="none" stroke="#5C4033" stroke-width="3"/>
+              <g filter="url(#heatDistort)">
+                <polygon points="0,98 40,68 80,82 120,58 160,72 200,52 240,67 280,57 320,77 320,98" fill="#8B7355" opacity="0.3"/>
+              </g>
+              <g filter="url(#heatDistort)">
+                <g fill="url(#saguaroHeat)" stroke="#5C4033" stroke-width="1.5">
+                  <rect x="55" y="35" width="14" height="63" rx="1"/>
+                  <path d="M55,55 H47 V37 H53 V55 Z"/>
+                  <path d="M69,50 H77 V32 H71 V50 Z"/>
+                </g>
+                <g fill="url(#saguaroHeat)" stroke="#5C4033" stroke-width="1.5">
+                  <rect x="148" y="15" width="18" height="83" rx="1"/>
+                  <path d="M148,45 H135 V27 H144 V37 H148 Z"/>
+                  <path d="M166,40 H179 V22 H170 V32 H166 Z"/>
+                  <path d="M148,70 H141 V57 H148 Z"/>
+                </g>
+                <g fill="url(#saguaroHeat)" stroke="#5C4033" stroke-width="1.5">
+                  <rect x="250" y="40" width="14" height="58" rx="1"/>
+                  <path d="M250,58 H242 V44 H248 V58 Z"/>
+                  <path d="M264,52 H271 V40 H266 V52 Z"/>
+                </g>
+              </g>
+              <circle class="saguaro-sun-main" cx="280" cy="25" r="15" fill="url(#sunHeat)" stroke="#E07020" stroke-width="1"/>
+              <circle cx="280" cy="25" r="7" fill="#FFFACD" stroke="#FFD700" stroke-width="0.5"/>
+              <g fill="#8FBC8F" stroke="#5C4033" stroke-width="0.75">
+                <ellipse cx="30" cy="90" rx="8" ry="5"/>
+                <ellipse cx="110" cy="92" rx="6" ry="4"/>
+                <ellipse cx="210" cy="90" rx="7" ry="4"/>
+                <ellipse cx="295" cy="92" rx="6" ry="4"/>
+              </g>
+              <g fill="#DAA520" stroke="#5C4033" stroke-width="0.5">
+                <polygon points="10,10 25,10 10,25"/>
+                <polygon points="310,10 310,25 295,10"/>
+              </g>
+            </svg>
+          </div>
+          <div class="variation-description">Heat wave distortion using feTurbulence with animated baseFrequency. Sun corona pulses while saguaros shimmer. Frame stays crisp.</div>
+        </div>
+      </div>
+
+      <div class="production-notes">
+        <h4>Production Notes · Saguaro</h4>
+        <p>All path commands optimized to H/V shorthand. Multi-stop radial gradients for celestial bodies. Sunset silhouettes use #2D3A2D fill with #1A261A stroke. Night stars as 4-point polygons at 0.7-0.9 opacity. Heat shimmer applies filter selectively to saguaros and horizon only.</p>
+      </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Design 4: Celebration Balloons -->
+    <section class="design-section">
+      <div class="design-header">
+        <span class="design-number">DESIGN 04</span>
+        <span class="design-name">Celebration Balloons Transom</span>
+      </div>
+
+      <div class="variations-grid">
+        <!-- Balloons A: Refined -->
+        <div class="variation-card">
+          <div class="variation-header">
+            <span class="variation-id">A</span>
+            <span class="variation-name">Refined Original</span>
+          </div>
+          <div class="svg-container">
+            <svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+              <rect width="320" height="100" fill="#FFFEF5"/>
+              <rect x="2" y="2" width="316" height="96" fill="none" stroke="#333" stroke-width="2.5"/>
+              <rect x="6" y="6" width="308" height="88" fill="none" stroke="#333" stroke-width="0.5" opacity="0.3"/>
+              <g stroke="#333" stroke-width="1" fill="none" stroke-linecap="round">
+                <path d="M50,95 Q52,75 50,58"/>
+                <path d="M85,95 Q88,70 85,49"/>
+                <path d="M150,95 Q148,65 150,48"/>
+                <path d="M175,95 Q177,70 175,52"/>
+                <path d="M235,95 Q233,68 235,50"/>
+                <path d="M265,95 Q267,72 265,56"/>
+              </g>
+              <g stroke="#333" stroke-width="1.5">
+                <circle cx="50" cy="38" r="20" fill="#E63946"/>
+                <ellipse cx="50" cy="57" rx="4" ry="2.5" fill="#E63946"/>
+                <circle cx="85" cy="30" r="18" fill="#457B9D"/>
+                <ellipse cx="85" cy="47" rx="3.5" ry="2.5" fill="#457B9D"/>
+                <circle cx="150" cy="26" r="22" fill="#F4A261"/>
+                <ellipse cx="150" cy="47" rx="4.5" ry="2.5" fill="#F4A261"/>
+                <circle cx="175" cy="35" r="16" fill="#2A9D8F"/>
+                <ellipse cx="175" cy="50" rx="3" ry="2" fill="#2A9D8F"/>
+                <circle cx="235" cy="30" r="19" fill="#9B5DE5"/>
+                <ellipse cx="235" cy="48" rx="3.5" ry="2.5" fill="#9B5DE5"/>
+                <circle cx="265" cy="38" r="17" fill="#F77F00"/>
+                <ellipse cx="265" cy="54" rx="3" ry="2" fill="#F77F00"/>
+              </g>
+              <g fill="#fff" opacity="0.45">
+                <ellipse cx="42" cy="32" rx="7" ry="4" transform="rotate(-15 42 32)"/>
+                <ellipse cx="78" cy="24" rx="6" ry="3.5" transform="rotate(-15 78 24)"/>
+                <ellipse cx="141" cy="19" rx="8" ry="4.5" transform="rotate(-15 141 19)"/>
+                <ellipse cx="168" cy="29" rx="5.5" ry="3" transform="rotate(-15 168 29)"/>
+                <ellipse cx="228" cy="24" rx="6.5" ry="3.5" transform="rotate(-15 228 24)"/>
+                <ellipse cx="258" cy="32" rx="6" ry="3" transform="rotate(-15 258 32)"/>
+              </g>
+              <g fill="#E63946" stroke="#333" stroke-width="0.5">
+                <polygon points="15,22 25,17 25,27"/>
+                <polygon points="305,22 295,17 295,27"/>
+              </g>
+              <g fill="#F4A261" stroke="#333" stroke-width="0.5">
+                <polygon points="115,18 125,13 125,23"/>
+                <polygon points="205,18 215,13 215,23"/>
+              </g>
+              <g fill="#2A9D8F" stroke="#333" stroke-width="0.5">
+                <polygon points="25,78 35,73 35,83"/>
+                <polygon points="285,73 295,68 295,78"/>
+              </g>
+              <g fill="#9B5DE5" stroke="#333" stroke-width="0.5">
+                <rect x="10" y="84" width="8" height="8"/>
+                <rect x="302" y="84" width="8" height="8"/>
+              </g>
+            </svg>
+          </div>
+          <div class="variation-description">Proportional balloon ties (20% of radius), highlights at consistent 10 o'clock (-15° rotation), round linecaps on strings.</div>
+        </div>
+
+        <!-- Balloons B: Jewel -->
+        <div class="variation-card">
+          <div class="variation-header">
+            <span class="variation-id">B</span>
+            <span class="variation-name">Jewel Tones</span>
+          </div>
+          <div class="svg-container">
+            <svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+              <rect width="320" height="100" fill="#FDF8F0"/>
+              <rect x="2" y="2" width="316" height="96" fill="none" stroke="#2D2926" stroke-width="2.5"/>
+              <rect x="6" y="6" width="308" height="88" fill="none" stroke="#2D2926" stroke-width="0.5" opacity="0.25"/>
+              <g stroke="#2D2926" stroke-width="1" fill="none" stroke-linecap="round">
+                <path d="M50,95 Q52,75 50,58"/>
+                <path d="M85,95 Q88,70 85,49"/>
+                <path d="M150,95 Q148,65 150,48"/>
+                <path d="M175,95 Q177,70 175,52"/>
+                <path d="M235,95 Q233,68 235,50"/>
+                <path d="M265,95 Q267,72 265,56"/>
+              </g>
+              <g stroke="#2D2926" stroke-width="1.5">
+                <circle cx="50" cy="38" r="20" fill="#9B2335"/>
+                <ellipse cx="50" cy="57" rx="4" ry="2.5" fill="#9B2335"/>
+                <circle cx="85" cy="30" r="18" fill="#234E70"/>
+                <ellipse cx="85" cy="47" rx="3.5" ry="2.5" fill="#234E70"/>
+                <circle cx="150" cy="26" r="22" fill="#C47F17"/>
+                <ellipse cx="150" cy="47" rx="4.5" ry="2.5" fill="#C47F17"/>
+                <circle cx="175" cy="35" r="16" fill="#1B6B50"/>
+                <ellipse cx="175" cy="50" rx="3" ry="2" fill="#1B6B50"/>
+                <circle cx="235" cy="30" r="19" fill="#6B3FA0"/>
+                <ellipse cx="235" cy="48" rx="3.5" ry="2.5" fill="#6B3FA0"/>
+                <circle cx="265" cy="38" r="17" fill="#D4870E"/>
+                <ellipse cx="265" cy="54" rx="3" ry="2" fill="#D4870E"/>
+              </g>
+              <g fill="#fff" opacity="0.35">
+                <ellipse cx="42" cy="32" rx="7" ry="4" transform="rotate(-15 42 32)"/>
+                <ellipse cx="78" cy="24" rx="6" ry="3.5" transform="rotate(-15 78 24)"/>
+                <ellipse cx="141" cy="19" rx="8" ry="4.5" transform="rotate(-15 141 19)"/>
+                <ellipse cx="168" cy="29" rx="5.5" ry="3" transform="rotate(-15 168 29)"/>
+                <ellipse cx="228" cy="24" rx="6.5" ry="3.5" transform="rotate(-15 228 24)"/>
+                <ellipse cx="258" cy="32" rx="6" ry="3" transform="rotate(-15 258 32)"/>
+              </g>
+              <g fill="#fff" opacity="0.15">
+                <ellipse cx="55" cy="44" rx="4" ry="2.5" transform="rotate(25 55 44)"/>
+                <ellipse cx="90" cy="35" rx="3.5" ry="2" transform="rotate(25 90 35)"/>
+                <ellipse cx="157" cy="32" rx="5" ry="3" transform="rotate(25 157 32)"/>
+                <ellipse cx="180" cy="40" rx="3" ry="2" transform="rotate(25 180 40)"/>
+                <ellipse cx="242" cy="35" rx="4" ry="2.5" transform="rotate(25 242 35)"/>
+                <ellipse cx="271" cy="43" rx="3.5" ry="2" transform="rotate(25 271 43)"/>
+              </g>
+              <g fill="#9B2335" stroke="#2D2926" stroke-width="0.5">
+                <polygon points="15,22 25,17 25,27"/>
+                <polygon points="305,22 295,17 295,27"/>
+              </g>
+              <g fill="#C47F17" stroke="#2D2926" stroke-width="0.5">
+                <polygon points="115,18 125,13 125,23"/>
+                <polygon points="205,18 215,13 215,23"/>
+              </g>
+              <g fill="#1B6B50" stroke="#2D2926" stroke-width="0.5">
+                <polygon points="25,78 35,73 35,83"/>
+                <polygon points="285,73 295,68 295,78"/>
+              </g>
+              <g fill="#6B3FA0" stroke="#2D2926" stroke-width="0.5">
+                <rect x="10" y="84" width="8" height="8"/>
+                <rect x="302" y="84" width="8" height="8"/>
+              </g>
+            </svg>
+          </div>
+          <div class="variation-description">Sophisticated jewel palette: Ruby (#9B2335), Sapphire (#234E70), Topaz (#C47F17), Emerald (#1B6B50), Amethyst (#6B3FA0), Citrine (#D4870E). Dual highlight layers.</div>
+        </div>
+
+        <!-- Balloons C: Geometric -->
+        <div class="variation-card">
+          <div class="variation-header">
+            <span class="variation-id">C</span>
+            <span class="variation-name">Geometric Abstraction</span>
+          </div>
+          <div class="svg-container">
+            <svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+              <rect width="320" height="100" fill="#FFFEF5"/>
+              <rect x="2" y="2" width="316" height="96" fill="none" stroke="#333" stroke-width="2.5"/>
+              <line x1="10" y1="10" x2="10" y2="90" stroke="#333" stroke-width="0.5" opacity="0.3"/>
+              <line x1="310" y1="10" x2="310" y2="90" stroke="#333" stroke-width="0.5" opacity="0.3"/>
+              <line x1="10" y1="10" x2="310" y2="10" stroke="#333" stroke-width="0.5" opacity="0.3"/>
+              <g stroke="#333" stroke-width="1.5" fill="none">
+                <line x1="50" y1="95" x2="50" y2="58"/>
+                <line x1="85" y1="95" x2="85" y2="52"/>
+                <line x1="150" y1="95" x2="150" y2="53"/>
+                <line x1="175" y1="95" x2="175" y2="55"/>
+                <line x1="235" y1="95" x2="235" y2="54"/>
+                <line x1="265" y1="95" x2="265" y2="58"/>
+              </g>
+              <g stroke="#333" stroke-width="1.5">
+                <rect x="32" y="22" width="36" height="34" rx="10" ry="10" fill="#E63946"/>
+                <polygon points="50,56 46,60 54,60" fill="#E63946"/>
+                <polygon points="85,15 102,22 102,40 85,47 68,40 68,22" fill="#457B9D"/>
+                <polygon points="85,47 81,52 89,52" fill="#457B9D"/>
+                <rect x="125" y="15" width="50" height="36" rx="12" ry="12" fill="#F4A261"/>
+                <polygon points="150,51 145,56 155,56" fill="#F4A261"/>
+                <polygon points="175,22 184,28 184,42 175,48 166,42 166,28" fill="#2A9D8F"/>
+                <polygon points="175,48 171,53 179,53" fill="#2A9D8F"/>
+                <rect x="214" y="14" width="42" height="38" rx="8" ry="8" fill="#9B5DE5"/>
+                <polygon points="235,52 230,57 240,57" fill="#9B5DE5"/>
+                <polygon points="265,22 282,40 265,58 248,40" fill="#F77F00"/>
+              </g>
+              <g fill="#fff" opacity="0.4">
+                <rect x="36" y="26" width="12" height="6" rx="2"/>
+                <rect x="72" y="20" width="10" height="5" rx="1.5"/>
+                <rect x="130" y="20" width="14" height="6" rx="2"/>
+                <rect x="168" y="28" width="8" height="4" rx="1"/>
+                <rect x="218" y="18" width="12" height="6" rx="2"/>
+                <rect x="256" y="32" width="10" height="5" rx="1.5"/>
+              </g>
+              <g fill="#E63946" stroke="#333" stroke-width="0.5">
+                <rect x="12" y="18" width="10" height="10"/>
+                <rect x="298" y="20" width="10" height="10"/>
+              </g>
+              <g fill="#F4A261" stroke="#333" stroke-width="0.5">
+                <polygon points="115,15 125,10 125,20"/>
+                <polygon points="205,18 215,13 215,23"/>
+              </g>
+              <g fill="#2A9D8F" stroke="#333" stroke-width="0.5">
+                <rect x="22" y="74" width="10" height="10"/>
+                <rect x="288" y="70" width="10" height="10"/>
+              </g>
+              <g fill="#9B5DE5" stroke="#333" stroke-width="0.5">
+                <rect x="10" y="84" width="8" height="8"/>
+                <rect x="302" y="84" width="8" height="8"/>
+              </g>
+            </svg>
+          </div>
+          <div class="variation-description">Prairie-style geometry: rounded rectangles, hexagons, octagons, and rhombus forms. Straight vertical strings. Rectangular highlights.</div>
+        </div>
+
+        <!-- Balloons D: Rising -->
+        <div class="variation-card">
+          <div class="variation-header">
+            <span class="variation-id">D</span>
+            <span class="variation-name">Rising Animation</span>
+          </div>
+          <div class="svg-container">
+            <svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+              <style>
+                @keyframes balloonFloat1 {
+                  0%, 100% { transform: translateY(0); }
+                  50% { transform: translateY(-4px); }
+                }
+                @keyframes balloonFloat2 {
+                  0%, 100% { transform: translateY(0); }
+                  50% { transform: translateY(-6px); }
+                }
+                @keyframes balloonFloat3 {
+                  0%, 100% { transform: translateY(0); }
+                  50% { transform: translateY(-3px); }
+                }
+                @keyframes stringSway1 {
+                  0%, 100% { transform: rotate(0deg); }
+                  25% { transform: rotate(2deg); }
+                  75% { transform: rotate(-2deg); }
+                }
+                @keyframes stringSway2 {
+                  0%, 100% { transform: rotate(0deg); }
+                  25% { transform: rotate(-2deg); }
+                  75% { transform: rotate(2deg); }
+                }
+                .balloon-grp-1 { animation: balloonFloat1 3s ease-in-out infinite; transform-origin: center bottom; }
+                .balloon-grp-2 { animation: balloonFloat2 4s ease-in-out infinite 0.5s; transform-origin: center bottom; }
+                .balloon-grp-3 { animation: balloonFloat3 3.5s ease-in-out infinite 1s; transform-origin: center bottom; }
+                .str-1 { animation: stringSway1 4s ease-in-out infinite; transform-origin: 50px 95px; }
+                .str-2 { animation: stringSway2 4.5s ease-in-out infinite 0.3s; transform-origin: 85px 95px; }
+                .str-3 { animation: stringSway1 3.8s ease-in-out infinite 0.6s; transform-origin: 150px 95px; }
+                .str-4 { animation: stringSway2 4.2s ease-in-out infinite 0.9s; transform-origin: 175px 95px; }
+                .str-5 { animation: stringSway1 4s ease-in-out infinite 1.2s; transform-origin: 235px 95px; }
+                .str-6 { animation: stringSway2 3.7s ease-in-out infinite 1.5s; transform-origin: 265px 95px; }
+              </style>
+              <rect width="320" height="100" fill="#FFFEF5"/>
+              <rect x="2" y="2" width="316" height="96" fill="none" stroke="#333" stroke-width="2.5"/>
+              <g fill="none" stroke="#333" stroke-width="1" stroke-linecap="round">
+                <path class="str-1" d="M50,95 Q52,75 50,58"/>
+                <path class="str-2" d="M85,95 Q88,70 85,49"/>
+                <path class="str-3" d="M150,95 Q148,65 150,48"/>
+                <path class="str-4" d="M175,95 Q177,70 175,52"/>
+                <path class="str-5" d="M235,95 Q233,68 235,50"/>
+                <path class="str-6" d="M265,95 Q267,72 265,56"/>
+              </g>
+              <g class="balloon-grp-1">
+                <g stroke="#333" stroke-width="1.5">
+                  <circle cx="50" cy="38" r="20" fill="#E63946"/>
+                  <ellipse cx="50" cy="57" rx="4" ry="2.5" fill="#E63946"/>
+                </g>
+                <ellipse cx="42" cy="32" rx="7" ry="4" fill="#fff" opacity="0.45" transform="rotate(-15 42 32)"/>
+                <g stroke="#333" stroke-width="1.5">
+                  <circle cx="175" cy="35" r="16" fill="#2A9D8F"/>
+                  <ellipse cx="175" cy="50" rx="3" ry="2" fill="#2A9D8F"/>
+                </g>
+                <ellipse cx="168" cy="29" rx="5.5" ry="3" fill="#fff" opacity="0.45" transform="rotate(-15 168 29)"/>
+              </g>
+              <g class="balloon-grp-2">
+                <g stroke="#333" stroke-width="1.5">
+                  <circle cx="85" cy="30" r="18" fill="#457B9D"/>
+                  <ellipse cx="85" cy="47" rx="3.5" ry="2.5" fill="#457B9D"/>
+                </g>
+                <ellipse cx="78" cy="24" rx="6" ry="3.5" fill="#fff" opacity="0.45" transform="rotate(-15 78 24)"/>
+                <g stroke="#333" stroke-width="1.5">
+                  <circle cx="235" cy="30" r="19" fill="#9B5DE5"/>
+                  <ellipse cx="235" cy="48" rx="3.5" ry="2.5" fill="#9B5DE5"/>
+                </g>
+                <ellipse cx="228" cy="24" rx="6.5" ry="3.5" fill="#fff" opacity="0.45" transform="rotate(-15 228 24)"/>
+              </g>
+              <g class="balloon-grp-3">
+                <g stroke="#333" stroke-width="1.5">
+                  <circle cx="150" cy="26" r="22" fill="#F4A261"/>
+                  <ellipse cx="150" cy="47" rx="4.5" ry="2.5" fill="#F4A261"/>
+                </g>
+                <ellipse cx="141" cy="19" rx="8" ry="4.5" fill="#fff" opacity="0.45" transform="rotate(-15 141 19)"/>
+                <g stroke="#333" stroke-width="1.5">
+                  <circle cx="265" cy="38" r="17" fill="#F77F00"/>
+                  <ellipse cx="265" cy="54" rx="3" ry="2" fill="#F77F00"/>
+                </g>
+                <ellipse cx="258" cy="32" rx="6" ry="3" fill="#fff" opacity="0.45" transform="rotate(-15 258 32)"/>
+              </g>
+              <g fill="#E63946" stroke="#333" stroke-width="0.5">
+                <polygon points="15,22 25,17 25,27"/>
+                <polygon points="305,22 295,17 295,27"/>
+              </g>
+              <g fill="#F4A261" stroke="#333" stroke-width="0.5">
+                <polygon points="115,18 125,13 125,23"/>
+                <polygon points="205,18 215,13 215,23"/>
+              </g>
+              <g fill="#2A9D8F" stroke="#333" stroke-width="0.5">
+                <polygon points="25,78 35,73 35,83"/>
+                <polygon points="285,73 295,68 295,78"/>
+              </g>
+              <g fill="#9B5DE5" stroke="#333" stroke-width="0.5">
+                <rect x="10" y="84" width="8" height="8"/>
+                <rect x="302" y="84" width="8" height="8"/>
+              </g>
+            </svg>
+          </div>
+          <div class="variation-description">Three balloon groups with staggered float timing (0s, 0.5s, 1s). Varying amplitudes (3-6px) and durations (3-4s). String sway with transform-origin at base.</div>
+        </div>
+      </div>
+
+      <div class="production-notes">
+        <h4>Production Notes · Balloons</h4>
+        <p>Maintains Coonley Playhouse playfulness across all variations. Tie proportions standardized at 20% of balloon radius. Jewel version adds secondary highlight layer at 25° for gem-like depth. Geometric version uses straight vertical strings and rectangular highlights for Prairie compatibility. Animation groups avoid mechanical sync via staggered delays.</p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════════════ -->
+    <!-- FALLING WATER CASE STUDIES - Paired Agent Exploration -->
+    <!-- ═══════════════════════════════════════════════════════════════════════════════ -->
+
+    <div class="section-divider">
+      <span>New Concept: Falling Water</span>
+    </div>
+
+    <!-- FALLING WATER (BALLOONS STYLE) ════════════════════════════════════════════════ -->
+    <section class="design-section">
+      <h2>Falling Water Transom (Balloons Style)</h2>
+      <p class="design-intro">Transforms the rising energy of celebration balloons into cascading water energy. Features horizontal cantilever tiers inspired by Fallingwater house, geometric water drops (teardrops and diamonds), flowing stream lines, and naturalistic rock ledges. The playful upward motion becomes serene downward flow.</p>
+
+      <div class="variations-grid">
+        <!-- Refined Variation -->
+        <div class="variation-card">
+          <h3>Falling Water Refined</h3>
+          <div class="svg-container">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100">
+  <defs>
+    <!-- Lead line styles -->
+    <style>
+      .lead { fill: none; stroke: #1a1a1a; stroke-width: 1.2; stroke-linejoin: round; }
+      .lead-thin { fill: none; stroke: #1a1a1a; stroke-width: 0.8; }
+      .lead-accent { fill: none; stroke: #2d2d2d; stroke-width: 0.6; }
+    </style>
+
+    <!-- Water gradients -->
+    <linearGradient id="fw-deepWater" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4A90A4"/>
+      <stop offset="100%" stop-color="#3A7A94"/>
+    </linearGradient>
+    <linearGradient id="fw-midWater" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6BB3D9"/>
+      <stop offset="100%" stop-color="#5AA3C9"/>
+    </linearGradient>
+    <linearGradient id="fw-lightWater" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#89CFF0"/>
+      <stop offset="100%" stop-color="#79BFE0"/>
+    </linearGradient>
+    <linearGradient id="fw-foam" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F5FAFA"/>
+    </linearGradient>
+    <linearGradient id="fw-stoneGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5C5C5C"/>
+      <stop offset="100%" stop-color="#4A4A4A"/>
+    </linearGradient>
+    <linearGradient id="fw-sandstoneGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8B7355"/>
+      <stop offset="100%" stop-color="#7A6345"/>
+    </linearGradient>
+    <linearGradient id="fw-skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E8F4F8"/>
+      <stop offset="100%" stop-color="#D8E8EF"/>
+    </linearGradient>
+    <linearGradient id="fw-poolGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#5AA3C9"/>
+      <stop offset="50%" stop-color="#4A90A4"/>
+      <stop offset="100%" stop-color="#3A7A94"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background sky/mist field -->
+  <rect x="0" y="0" width="320" height="100" fill="url(#fw-skyGrad)"/>
+
+  <!-- Outer border frame -->
+  <rect x="2" y="2" width="316" height="96" class="lead" fill="none"/>
+  <rect x="6" y="6" width="308" height="88" class="lead-thin" fill="none"/>
+
+  <!-- Corner stone accents - top left -->
+  <polygon points="6,6 22,6 6,22" fill="#5C5C5C"/>
+  <polygon points="6,6 22,6 6,22" class="lead-accent"/>
+
+  <!-- Corner stone accents - top right -->
+  <polygon points="314,6 298,6 314,22" fill="#5C5C5C"/>
+  <polygon points="314,6 298,6 314,22" class="lead-accent"/>
+
+  <!-- Corner stone accents - bottom left -->
+  <polygon points="6,94 22,94 6,78" fill="#8B7355"/>
+  <polygon points="6,94 22,94 6,78" class="lead-accent"/>
+
+  <!-- Corner stone accents - bottom right -->
+  <polygon points="314,94 298,94 314,78" fill="#8B7355"/>
+  <polygon points="314,94 298,94 314,78" class="lead-accent"/>
+
+  <!-- TOP TIER - First cantilever ledge -->
+  <rect x="80" y="12" width="160" height="6" fill="url(#fw-sandstoneGrad)"/>
+  <rect x="80" y="12" width="160" height="6" class="lead"/>
+
+  <!-- Top tier water drops (teardrops falling) -->
+  <path d="M110,18 L106,28 Q110,34 114,28 Z" fill="url(#fw-lightWater)"/>
+  <path d="M110,18 L106,28 Q110,34 114,28 Z" class="lead-thin"/>
+
+  <path d="M160,18 L155,30 Q160,38 165,30 Z" fill="url(#fw-midWater)"/>
+  <path d="M160,18 L155,30 Q160,38 165,30 Z" class="lead-thin"/>
+
+  <path d="M210,18 L206,28 Q210,34 214,28 Z" fill="url(#fw-lightWater)"/>
+  <path d="M210,18 L206,28 Q210,34 214,28 Z" class="lead-thin"/>
+
+  <!-- MIDDLE TIER - Second cantilever ledge (wider) -->
+  <rect x="50" y="38" width="220" height="8" fill="url(#fw-stoneGrad)"/>
+  <rect x="50" y="38" width="220" height="8" class="lead"/>
+
+  <!-- Middle tier cascade - more drops -->
+  <path d="M75,46 L70,58 Q75,66 80,58 Z" fill="url(#fw-midWater)"/>
+  <path d="M75,46 L70,58 Q75,66 80,58 Z" class="lead-thin"/>
+
+  <path d="M115,46 L110,60 Q115,68 120,60 Z" fill="url(#fw-deepWater)"/>
+  <path d="M115,46 L110,60 Q115,68 120,60 Z" class="lead-thin"/>
+
+  <path d="M160,46 L154,62 Q160,72 166,62 Z" fill="url(#fw-midWater)"/>
+  <path d="M160,46 L154,62 Q160,72 166,62 Z" class="lead-thin"/>
+
+  <path d="M205,46 L200,60 Q205,68 210,60 Z" fill="url(#fw-deepWater)"/>
+  <path d="M205,46 L200,60 Q205,68 210,60 Z" class="lead-thin"/>
+
+  <path d="M245,46 L240,58 Q245,66 250,58 Z" fill="url(#fw-midWater)"/>
+  <path d="M245,46 L240,58 Q245,66 250,58 Z" class="lead-thin"/>
+
+  <!-- Diamond water drops (geometric variation) -->
+  <polygon points="95,50 90,60 95,70 100,60" fill="url(#fw-lightWater)"/>
+  <polygon points="95,50 90,60 95,70 100,60" class="lead-thin"/>
+
+  <polygon points="140,48 134,60 140,72 146,60" fill="url(#fw-lightWater)"/>
+  <polygon points="140,48 134,60 140,72 146,60" class="lead-thin"/>
+
+  <polygon points="180,48 174,60 180,72 186,60" fill="url(#fw-lightWater)"/>
+  <polygon points="180,48 174,60 180,72 186,60" class="lead-thin"/>
+
+  <polygon points="225,50 220,60 225,70 230,60" fill="url(#fw-lightWater)"/>
+  <polygon points="225,50 220,60 225,70 230,60" class="lead-thin"/>
+
+  <!-- Flowing stream lines (curved paths going down) -->
+  <path d="M85,46 Q80,55 85,65 Q90,75 85,85" fill="none" stroke="#6BB3D9" stroke-width="2"/>
+  <path d="M85,46 Q80,55 85,65 Q90,75 85,85" class="lead-accent"/>
+
+  <path d="M130,46 Q135,58 130,70 Q125,80 130,90" fill="none" stroke="#89CFF0" stroke-width="2.5"/>
+  <path d="M130,46 Q135,58 130,70 Q125,80 130,90" class="lead-accent"/>
+
+  <path d="M160,38 Q155,50 160,62 Q165,74 160,86" fill="none" stroke="#4A90A4" stroke-width="3"/>
+  <path d="M160,38 Q155,50 160,62 Q165,74 160,86" class="lead-accent"/>
+
+  <path d="M190,46 Q185,58 190,70 Q195,80 190,90" fill="none" stroke="#89CFF0" stroke-width="2.5"/>
+  <path d="M190,46 Q185,58 190,70 Q195,80 190,90" class="lead-accent"/>
+
+  <path d="M235,46 Q240,55 235,65 Q230,75 235,85" fill="none" stroke="#6BB3D9" stroke-width="2"/>
+  <path d="M235,46 Q240,55 235,65 Q230,75 235,85" class="lead-accent"/>
+
+  <!-- BOTTOM - Pool/collection area -->
+  <path d="M30,78 L290,78 L290,94 L30,94 Z" fill="url(#fw-poolGrad)"/>
+  <path d="M30,78 L290,78 L290,94 L30,94 Z" class="lead"/>
+
+  <!-- Pool ripple lines -->
+  <ellipse cx="100" cy="86" rx="15" ry="3" fill="none" stroke="#F5FAFA" stroke-width="0.8"/>
+  <ellipse cx="160" cy="84" rx="20" ry="4" fill="none" stroke="#F5FAFA" stroke-width="1"/>
+  <ellipse cx="220" cy="86" rx="15" ry="3" fill="none" stroke="#F5FAFA" stroke-width="0.8"/>
+
+  <!-- Foam/spray particles (like confetti, but mist) -->
+  <circle cx="70" cy="72" r="1.5" fill="#F5FAFA"/>
+  <circle cx="88" cy="68" r="1" fill="#F5FAFA"/>
+  <circle cx="105" cy="74" r="1.2" fill="#F5FAFA"/>
+  <circle cx="150" cy="70" r="1.5" fill="#F5FAFA"/>
+  <circle cx="170" cy="68" r="1" fill="#F5FAFA"/>
+  <circle cx="195" cy="72" r="1.3" fill="#F5FAFA"/>
+  <circle cx="215" cy="74" r="1" fill="#F5FAFA"/>
+  <circle cx="232" cy="68" r="1.2" fill="#F5FAFA"/>
+  <circle cx="250" cy="72" r="1.5" fill="#F5FAFA"/>
+
+  <!-- Rock/ledge elements at sides -->
+  <path d="M10,50 L25,45 L30,55 L25,65 L10,60 Z" fill="url(#fw-sandstoneGrad)"/>
+  <path d="M10,50 L25,45 L30,55 L25,65 L10,60 Z" class="lead-thin"/>
+
+  <path d="M310,50 L295,45 L290,55 L295,65 L310,60 Z" fill="url(#fw-sandstoneGrad)"/>
+  <path d="M310,50 L295,45 L290,55 L295,65 L310,60 Z" class="lead-thin"/>
+
+  <!-- Additional rock formations -->
+  <polygon points="25,78 40,70 50,78" fill="#5C5C5C"/>
+  <polygon points="25,78 40,70 50,78" class="lead-thin"/>
+
+  <polygon points="270,78 280,70 295,78" fill="#5C5C5C"/>
+  <polygon points="270,78 280,70 295,78" class="lead-thin"/>
+
+  <!-- Left side decorative water bands -->
+  <rect x="10" y="30" width="12" height="4" fill="#6BB3D9"/>
+  <rect x="10" y="30" width="12" height="4" class="lead-accent"/>
+  <rect x="10" y="36" width="12" height="3" fill="#89CFF0"/>
+  <rect x="10" y="36" width="12" height="3" class="lead-accent"/>
+
+  <!-- Right side decorative water bands -->
+  <rect x="298" y="30" width="12" height="4" fill="#6BB3D9"/>
+  <rect x="298" y="30" width="12" height="4" class="lead-accent"/>
+  <rect x="298" y="36" width="12" height="3" fill="#89CFF0"/>
+  <rect x="298" y="36" width="12" height="3" class="lead-accent"/>
+
+  <!-- Horizontal division lines suggesting water levels -->
+  <line x1="30" y1="25" x2="50" y2="25" class="lead-accent"/>
+  <line x1="270" y1="25" x2="290" y2="25" class="lead-accent"/>
+</svg>
+          </div>
+          <div class="variation-description">Serene stained glass transom inspired by Fallingwater house. Horizontal cantilever tiers, geometric water drops (teardrops and diamonds), flowing stream lines with sinuous curves, and pool collection area with ripple lines.</div>
+        </div>
+
+        <!-- Animated Variation -->
+        <div class="variation-card">
+          <h3>Falling Water Animated</h3>
+          <div class="svg-container">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100">
+  <defs>
+    <style>
+      .lead { fill: none; stroke: #1a1a1a; stroke-width: 1.2; stroke-linejoin: round; }
+      .lead-thin { fill: none; stroke: #1a1a1a; stroke-width: 0.8; }
+      .lead-accent { fill: none; stroke: #2d2d2d; stroke-width: 0.6; }
+
+      .fw-drop-1 { animation: fw-cascade 3s ease-in-out infinite; }
+      .fw-drop-2 { animation: fw-cascade 3s ease-in-out 0.3s infinite; }
+      .fw-drop-3 { animation: fw-cascade 3s ease-in-out 0.6s infinite; }
+      .fw-drop-4 { animation: fw-cascade 3s ease-in-out 0.9s infinite; }
+      .fw-drop-5 { animation: fw-cascade 3s ease-in-out 1.2s infinite; }
+
+      @keyframes fw-cascade {
+        0%, 100% { transform: translateY(0); opacity: 1; }
+        40% { transform: translateY(4px); opacity: 0.9; }
+        70% { transform: translateY(2px); opacity: 1; }
+      }
+
+      .fw-shimmer { animation: fw-shimmer 4s ease-in-out infinite; }
+      @keyframes fw-shimmer {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.7; }
+      }
+
+      .fw-ripple-1 { animation: fw-ripple 4s ease-in-out infinite; }
+      .fw-ripple-2 { animation: fw-ripple 4s ease-in-out 1.3s infinite; }
+      .fw-ripple-3 { animation: fw-ripple 4s ease-in-out 2.6s infinite; }
+
+      @keyframes fw-ripple {
+        0% { transform: scale(0.8); opacity: 0; }
+        50% { transform: scale(1); opacity: 0.8; }
+        100% { transform: scale(1.2); opacity: 0; }
+      }
+
+      .fw-stream-1 { animation: fw-flow 5s ease-in-out infinite; }
+      .fw-stream-2 { animation: fw-flow 5s ease-in-out 1s infinite; }
+      .fw-stream-3 { animation: fw-flow 5s ease-in-out 2s infinite; }
+
+      @keyframes fw-flow {
+        0%, 100% { stroke-dashoffset: 0; opacity: 0.9; }
+        50% { stroke-dashoffset: 10; opacity: 1; }
+      }
+
+      .fw-mist-1 { animation: fw-mist 6s ease-in-out infinite; }
+      .fw-mist-2 { animation: fw-mist 6s ease-in-out 1.5s infinite; }
+      .fw-mist-3 { animation: fw-mist 6s ease-in-out 3s infinite; }
+
+      @keyframes fw-mist {
+        0%, 100% { transform: translateY(0) translateX(0); opacity: 0.6; }
+        25% { transform: translateY(-2px) translateX(1px); opacity: 0.9; }
+        50% { transform: translateY(-1px) translateX(-1px); opacity: 0.7; }
+        75% { transform: translateY(1px) translateX(2px); opacity: 0.8; }
+      }
+    </style>
+
+    <linearGradient id="fwa-deepWater" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4A90A4"/>
+      <stop offset="100%" stop-color="#3A7A94"/>
+    </linearGradient>
+    <linearGradient id="fwa-midWater" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6BB3D9"/>
+      <stop offset="100%" stop-color="#5AA3C9"/>
+    </linearGradient>
+    <linearGradient id="fwa-lightWater" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#89CFF0"/>
+      <stop offset="100%" stop-color="#79BFE0"/>
+    </linearGradient>
+    <linearGradient id="fwa-stoneGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5C5C5C"/>
+      <stop offset="100%" stop-color="#4A4A4A"/>
+    </linearGradient>
+    <linearGradient id="fwa-sandstoneGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8B7355"/>
+      <stop offset="100%" stop-color="#7A6345"/>
+    </linearGradient>
+    <linearGradient id="fwa-skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E8F4F8"/>
+      <stop offset="100%" stop-color="#D8E8EF"/>
+    </linearGradient>
+    <linearGradient id="fwa-poolGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#5AA3C9"/>
+      <stop offset="50%" stop-color="#4A90A4"/>
+      <stop offset="100%" stop-color="#3A7A94"/>
+    </linearGradient>
+    <linearGradient id="fwa-shimmerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#89CFF0">
+        <animate attributeName="stop-color" values="#89CFF0;#FFFFFF;#89CFF0" dur="3s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="50%" stop-color="#FFFFFF">
+        <animate attributeName="stop-color" values="#FFFFFF;#89CFF0;#FFFFFF" dur="3s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="100%" stop-color="#89CFF0">
+        <animate attributeName="stop-color" values="#89CFF0;#FFFFFF;#89CFF0" dur="3s" repeatCount="indefinite"/>
+      </stop>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="320" height="100" fill="url(#fwa-skyGrad)"/>
+  <rect x="2" y="2" width="316" height="96" class="lead" fill="none"/>
+  <rect x="6" y="6" width="308" height="88" class="lead-thin" fill="none"/>
+
+  <polygon points="6,6 22,6 6,22" fill="#5C5C5C"/>
+  <polygon points="6,6 22,6 6,22" class="lead-accent"/>
+  <polygon points="314,6 298,6 314,22" fill="#5C5C5C"/>
+  <polygon points="314,6 298,6 314,22" class="lead-accent"/>
+  <polygon points="6,94 22,94 6,78" fill="#8B7355"/>
+  <polygon points="6,94 22,94 6,78" class="lead-accent"/>
+  <polygon points="314,94 298,94 314,78" fill="#8B7355"/>
+  <polygon points="314,94 298,94 314,78" class="lead-accent"/>
+
+  <rect x="80" y="12" width="160" height="6" fill="url(#fwa-sandstoneGrad)"/>
+  <rect x="80" y="12" width="160" height="6" class="lead"/>
+
+  <g class="fw-drop-1">
+    <path d="M110,18 L106,28 Q110,34 114,28 Z" fill="url(#fwa-lightWater)"/>
+    <path d="M110,18 L106,28 Q110,34 114,28 Z" class="lead-thin"/>
+  </g>
+  <g class="fw-drop-2">
+    <path d="M160,18 L155,30 Q160,38 165,30 Z" fill="url(#fwa-midWater)"/>
+    <path d="M160,18 L155,30 Q160,38 165,30 Z" class="lead-thin"/>
+  </g>
+  <g class="fw-drop-3">
+    <path d="M210,18 L206,28 Q210,34 214,28 Z" fill="url(#fwa-lightWater)"/>
+    <path d="M210,18 L206,28 Q210,34 214,28 Z" class="lead-thin"/>
+  </g>
+
+  <rect x="50" y="38" width="220" height="8" fill="url(#fwa-stoneGrad)"/>
+  <rect x="50" y="38" width="220" height="8" class="lead"/>
+
+  <g class="fw-drop-4">
+    <path d="M75,46 L70,58 Q75,66 80,58 Z" fill="url(#fwa-midWater)"/>
+    <path d="M75,46 L70,58 Q75,66 80,58 Z" class="lead-thin"/>
+  </g>
+  <g class="fw-drop-5">
+    <path d="M115,46 L110,60 Q115,68 120,60 Z" fill="url(#fwa-deepWater)"/>
+    <path d="M115,46 L110,60 Q115,68 120,60 Z" class="lead-thin"/>
+  </g>
+  <g class="fw-drop-1">
+    <path d="M160,46 L154,62 Q160,72 166,62 Z" fill="url(#fwa-midWater)"/>
+    <path d="M160,46 L154,62 Q160,72 166,62 Z" class="lead-thin"/>
+  </g>
+  <g class="fw-drop-2">
+    <path d="M205,46 L200,60 Q205,68 210,60 Z" fill="url(#fwa-deepWater)"/>
+    <path d="M205,46 L200,60 Q205,68 210,60 Z" class="lead-thin"/>
+  </g>
+  <g class="fw-drop-3">
+    <path d="M245,46 L240,58 Q245,66 250,58 Z" fill="url(#fwa-midWater)"/>
+    <path d="M245,46 L240,58 Q245,66 250,58 Z" class="lead-thin"/>
+  </g>
+
+  <g class="fw-drop-4">
+    <polygon points="95,50 90,60 95,70 100,60" fill="url(#fwa-shimmerGrad)"/>
+    <polygon points="95,50 90,60 95,70 100,60" class="lead-thin"/>
+  </g>
+  <g class="fw-drop-5">
+    <polygon points="140,48 134,60 140,72 146,60" fill="url(#fwa-lightWater)" class="fw-shimmer"/>
+    <polygon points="140,48 134,60 140,72 146,60" class="lead-thin"/>
+  </g>
+  <g class="fw-drop-4">
+    <polygon points="180,48 174,60 180,72 186,60" fill="url(#fwa-lightWater)" class="fw-shimmer"/>
+    <polygon points="180,48 174,60 180,72 186,60" class="lead-thin"/>
+  </g>
+  <g class="fw-drop-5">
+    <polygon points="225,50 220,60 225,70 230,60" fill="url(#fwa-shimmerGrad)"/>
+    <polygon points="225,50 220,60 225,70 230,60" class="lead-thin"/>
+  </g>
+
+  <g class="fw-stream-1">
+    <path d="M85,46 Q80,55 85,65 Q90,75 85,85" fill="none" stroke="#6BB3D9" stroke-width="2" stroke-dasharray="5,3"/>
+    <path d="M85,46 Q80,55 85,65 Q90,75 85,85" class="lead-accent"/>
+  </g>
+  <g class="fw-stream-2">
+    <path d="M130,46 Q135,58 130,70 Q125,80 130,90" fill="none" stroke="#89CFF0" stroke-width="2.5" stroke-dasharray="6,4"/>
+    <path d="M130,46 Q135,58 130,70 Q125,80 130,90" class="lead-accent"/>
+  </g>
+  <g class="fw-stream-3">
+    <path d="M160,38 Q155,50 160,62 Q165,74 160,86" fill="none" stroke="#4A90A4" stroke-width="3" stroke-dasharray="8,4"/>
+    <path d="M160,38 Q155,50 160,62 Q165,74 160,86" class="lead-accent"/>
+  </g>
+  <g class="fw-stream-2">
+    <path d="M190,46 Q185,58 190,70 Q195,80 190,90" fill="none" stroke="#89CFF0" stroke-width="2.5" stroke-dasharray="6,4"/>
+    <path d="M190,46 Q185,58 190,70 Q195,80 190,90" class="lead-accent"/>
+  </g>
+  <g class="fw-stream-1">
+    <path d="M235,46 Q240,55 235,65 Q230,75 235,85" fill="none" stroke="#6BB3D9" stroke-width="2" stroke-dasharray="5,3"/>
+    <path d="M235,46 Q240,55 235,65 Q230,75 235,85" class="lead-accent"/>
+  </g>
+
+  <path d="M30,78 L290,78 L290,94 L30,94 Z" fill="url(#fwa-poolGrad)"/>
+  <path d="M30,78 L290,78 L290,94 L30,94 Z" class="lead"/>
+
+  <g class="fw-ripple-1">
+    <ellipse cx="100" cy="86" rx="15" ry="3" fill="none" stroke="#F5FAFA" stroke-width="0.8"/>
+  </g>
+  <g class="fw-ripple-2">
+    <ellipse cx="160" cy="84" rx="20" ry="4" fill="none" stroke="#F5FAFA" stroke-width="1"/>
+  </g>
+  <g class="fw-ripple-3">
+    <ellipse cx="220" cy="86" rx="15" ry="3" fill="none" stroke="#F5FAFA" stroke-width="0.8"/>
+  </g>
+
+  <circle cx="70" cy="72" r="1.5" fill="#F5FAFA" class="fw-mist-1"/>
+  <circle cx="88" cy="68" r="1" fill="#F5FAFA" class="fw-mist-2"/>
+  <circle cx="105" cy="74" r="1.2" fill="#F5FAFA" class="fw-mist-3"/>
+  <circle cx="150" cy="70" r="1.5" fill="#F5FAFA" class="fw-mist-1"/>
+  <circle cx="170" cy="68" r="1" fill="#F5FAFA" class="fw-mist-2"/>
+  <circle cx="195" cy="72" r="1.3" fill="#F5FAFA" class="fw-mist-3"/>
+  <circle cx="215" cy="74" r="1" fill="#F5FAFA" class="fw-mist-1"/>
+  <circle cx="232" cy="68" r="1.2" fill="#F5FAFA" class="fw-mist-2"/>
+  <circle cx="250" cy="72" r="1.5" fill="#F5FAFA" class="fw-mist-3"/>
+
+  <path d="M10,50 L25,45 L30,55 L25,65 L10,60 Z" fill="url(#fwa-sandstoneGrad)"/>
+  <path d="M10,50 L25,45 L30,55 L25,65 L10,60 Z" class="lead-thin"/>
+  <path d="M310,50 L295,45 L290,55 L295,65 L310,60 Z" fill="url(#fwa-sandstoneGrad)"/>
+  <path d="M310,50 L295,45 L290,55 L295,65 L310,60 Z" class="lead-thin"/>
+
+  <polygon points="25,78 40,70 50,78" fill="#5C5C5C"/>
+  <polygon points="25,78 40,70 50,78" class="lead-thin"/>
+  <polygon points="270,78 280,70 295,78" fill="#5C5C5C"/>
+  <polygon points="270,78 280,70 295,78" class="lead-thin"/>
+
+  <rect x="10" y="30" width="12" height="4" fill="#6BB3D9" class="fw-shimmer"/>
+  <rect x="10" y="30" width="12" height="4" class="lead-accent"/>
+  <rect x="10" y="36" width="12" height="3" fill="#89CFF0" class="fw-shimmer"/>
+  <rect x="10" y="36" width="12" height="3" class="lead-accent"/>
+  <rect x="298" y="30" width="12" height="4" fill="#6BB3D9" class="fw-shimmer"/>
+  <rect x="298" y="30" width="12" height="4" class="lead-accent"/>
+  <rect x="298" y="36" width="12" height="3" fill="#89CFF0" class="fw-shimmer"/>
+  <rect x="298" y="36" width="12" height="3" class="lead-accent"/>
+
+  <line x1="30" y1="25" x2="50" y2="25" class="lead-accent"/>
+  <line x1="270" y1="25" x2="290" y2="25" class="lead-accent"/>
+</svg>
+          </div>
+          <div class="variation-description">Animated version with cascading water drops (staggered 0-1.2s delays), shimmer effects on water surfaces, expanding ripple animations in the pool, flowing stream lines with stroke-dashoffset, and drifting mist particles.</div>
+        </div>
+      </div>
+
+      <div class="production-notes">
+        <h4>Production Notes · Falling Water (Balloons Style)</h4>
+        <p>Concept Translation: Rising balloons become falling water drops (teardrops + diamonds). Upward strings transform into sinuous stream lines. Confetti flags evolve into mist particles. Two horizontal cantilever tiers reference Fallingwater's iconic terraces at y=12 and y=38.</p>
+        <p>Color Palette: Deep Water #4A90A4 · Mid Water #6BB3D9 · Light Water #89CFF0 · Foam #F5FAFA · Stone #5C5C5C · Sandstone #8B7355 · Sky Mist #E8F4F8</p>
+      </div>
+    </section>
+
+    <!-- FALLING WATER (SAGUARO STYLE) ═════════════════════════════════════════════════ -->
+    <section class="design-section">
+      <h2>Falling Water Transom (Saguaro Style)</h2>
+      <p class="design-intro">A desert oasis interpretation that transforms the geometric saguaro cacti into rock formations with cascading waterfalls. Features three vertical rock columns at varying heights (left, center-tall, right) with water flowing down into a reflective pool. Maintains warm desert sky gradients while introducing cool water blues for a harmonious oasis scene.</p>
+
+      <div class="variations-grid">
+        <!-- Refined Variation -->
+        <div class="variation-card">
+          <h3>Desert Waterfall Refined</h3>
+          <div class="svg-container">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100">
+  <defs>
+    <linearGradient id="dw-desertSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E8C895"/>
+      <stop offset="40%" stop-color="#F5DEB3"/>
+      <stop offset="80%" stop-color="#DEB887"/>
+      <stop offset="100%" stop-color="#D2B48C"/>
+    </linearGradient>
+
+    <linearGradient id="dw-rockDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B7355"/>
+      <stop offset="50%" stop-color="#6B5344"/>
+      <stop offset="100%" stop-color="#5C4033"/>
+    </linearGradient>
+
+    <linearGradient id="dw-rockMid" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#A0826D"/>
+      <stop offset="50%" stop-color="#8B7355"/>
+      <stop offset="100%" stop-color="#9A7B6D"/>
+    </linearGradient>
+
+    <linearGradient id="dw-rockLight" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#B8956E"/>
+      <stop offset="100%" stop-color="#A0826D"/>
+    </linearGradient>
+
+    <linearGradient id="dw-waterFall" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#89CFF0" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#6BB3D9"/>
+      <stop offset="100%" stop-color="#4A90A4"/>
+    </linearGradient>
+
+    <linearGradient id="dw-poolWater" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#6BB3D9" stop-opacity="0.8"/>
+      <stop offset="60%" stop-color="#4A90A4" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#3D7A8C"/>
+    </linearGradient>
+
+    <linearGradient id="dw-mistGradient" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#E8F4F8" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#F5FAFA" stop-opacity="0"/>
+    </linearGradient>
+
+    <linearGradient id="dw-poolVegetation" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4A7C59"/>
+      <stop offset="100%" stop-color="#2D5A3D"/>
+    </linearGradient>
+
+    <filter id="dw-glassTexture" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise"/>
+      <feColorMatrix type="saturate" values="0" result="mono"/>
+      <feBlend in="SourceGraphic" in2="mono" mode="soft-light"/>
+    </filter>
+  </defs>
+
+  <rect x="0" y="0" width="320" height="100" fill="url(#dw-desertSky)"/>
+  <rect x="0" y="0" width="320" height="100" fill="none" stroke="#3D3226" stroke-width="4"/>
+
+  <polygon points="0,45 40,35 80,42 120,38 160,40 200,35 240,40 280,36 320,42 320,55 0,55" fill="#C4A67C" opacity="0.5"/>
+  <line x1="4" y1="55" x2="316" y2="55" stroke="#3D3226" stroke-width="1"/>
+
+  <!-- LEFT ROCK FORMATION -->
+  <g filter="url(#dw-glassTexture)">
+    <rect x="35" y="30" width="28" height="50" fill="url(#dw-rockMid)"/>
+    <rect x="40" y="25" width="18" height="55" fill="url(#dw-rockDark)"/>
+    <polygon points="35,30 40,25 40,80 35,80" fill="url(#dw-rockLight)"/>
+    <polygon points="58,25 63,30 63,80 58,80" fill="#5C4033"/>
+    <rect x="46" y="22" width="6" height="58" fill="url(#dw-waterFall)" opacity="0.85"/>
+    <rect x="44" y="22" width="2" height="58" fill="#89CFF0" opacity="0.4"/>
+  </g>
+  <rect x="35" y="25" width="28" height="55" fill="none" stroke="#3D3226" stroke-width="1.5"/>
+
+  <!-- CENTER ROCK FORMATION (Tallest) -->
+  <g filter="url(#dw-glassTexture)">
+    <rect x="130" y="12" width="60" height="68" fill="url(#dw-rockMid)"/>
+    <rect x="138" y="8" width="44" height="72" fill="url(#dw-rockDark)"/>
+    <polygon points="130,12 138,8 138,80 130,80" fill="url(#dw-rockLight)"/>
+    <polygon points="182,8 190,12 190,80 182,80" fill="#5C4033"/>
+    <rect x="135" y="35" width="50" height="4" fill="#A0826D" opacity="0.7"/>
+    <rect x="140" y="55" width="40" height="3" fill="#A0826D" opacity="0.6"/>
+    <rect x="152" y="5" width="16" height="75" fill="url(#dw-waterFall)" opacity="0.9"/>
+    <rect x="150" y="5" width="3" height="75" fill="#89CFF0" opacity="0.5"/>
+    <rect x="167" y="5" width="2" height="75" fill="#6BB3D9" opacity="0.4"/>
+    <ellipse cx="160" cy="78" rx="25" ry="8" fill="url(#dw-mistGradient)"/>
+  </g>
+  <rect x="130" y="8" width="60" height="72" fill="none" stroke="#3D3226" stroke-width="1.5"/>
+
+  <!-- RIGHT ROCK FORMATION -->
+  <g filter="url(#dw-glassTexture)">
+    <rect x="257" y="28" width="28" height="52" fill="url(#dw-rockMid)"/>
+    <rect x="262" y="22" width="18" height="58" fill="url(#dw-rockDark)"/>
+    <polygon points="257,28 262,22 262,80 257,80" fill="url(#dw-rockLight)"/>
+    <polygon points="280,22 285,28 285,80 280,80" fill="#5C4033"/>
+    <rect x="268" y="20" width="6" height="60" fill="url(#dw-waterFall)" opacity="0.85"/>
+    <rect x="274" y="20" width="2" height="60" fill="#89CFF0" opacity="0.4"/>
+  </g>
+  <rect x="257" y="22" width="28" height="58" fill="none" stroke="#3D3226" stroke-width="1.5"/>
+
+  <!-- POOL -->
+  <g>
+    <rect x="25" y="78" width="270" height="18" fill="url(#dw-poolWater)" filter="url(#dw-glassTexture)"/>
+    <ellipse cx="160" cy="82" rx="40" ry="3" fill="#89CFF0" opacity="0.4"/>
+    <ellipse cx="50" cy="84" rx="15" ry="2" fill="#89CFF0" opacity="0.3"/>
+    <ellipse cx="270" cy="85" rx="18" ry="2" fill="#89CFF0" opacity="0.3"/>
+    <rect x="25" y="76" width="270" height="3" fill="#A0826D"/>
+  </g>
+  <rect x="25" y="76" width="270" height="20" fill="none" stroke="#3D3226" stroke-width="1.5"/>
+
+  <!-- VEGETATION -->
+  <g filter="url(#dw-glassTexture)">
+    <polygon points="20,96 25,75 30,96" fill="url(#dw-poolVegetation)"/>
+    <polygon points="28,96 32,78 36,96" fill="#4A7C59"/>
+    <polygon points="15,96 18,80 24,96" fill="#2D5A3D"/>
+    <polygon points="290,96 295,76 300,96" fill="url(#dw-poolVegetation)"/>
+    <polygon points="298,96 302,79 306,96" fill="#4A7C59"/>
+    <polygon points="284,96 288,82 294,96" fill="#2D5A3D"/>
+    <polygon points="85,96 92,82 99,96" fill="#4A7C59" opacity="0.8"/>
+    <polygon points="78,96 84,85 90,96" fill="#2D5A3D" opacity="0.7"/>
+    <polygon points="221,96 228,83 235,96" fill="#4A7C59" opacity="0.8"/>
+    <polygon points="230,96 236,86 242,96" fill="#2D5A3D" opacity="0.7"/>
+  </g>
+  <line x1="15" y1="96" x2="40" y2="96" stroke="#3D3226" stroke-width="1"/>
+  <line x1="280" y1="96" x2="310" y2="96" stroke="#3D3226" stroke-width="1"/>
+
+  <!-- SUN -->
+  <circle cx="160" cy="-5" r="18" fill="#F5DEB3" opacity="0.6"/>
+  <circle cx="160" cy="-5" r="12" fill="#E8C895" opacity="0.8"/>
+
+  <!-- CAMING LINES -->
+  <line x1="70" y1="4" x2="70" y2="96" stroke="#3D3226" stroke-width="1"/>
+  <line x1="120" y1="4" x2="120" y2="96" stroke="#3D3226" stroke-width="1"/>
+  <line x1="200" y1="4" x2="200" y2="96" stroke="#3D3226" stroke-width="1"/>
+  <line x1="250" y1="4" x2="250" y2="96" stroke="#3D3226" stroke-width="1"/>
+
+  <!-- CORNER ACCENTS -->
+  <polygon points="8,8 22,8 8,22" fill="#4A7C59"/>
+  <polygon points="8,8 22,8 8,22" fill="none" stroke="#3D3226" stroke-width="1"/>
+  <polygon points="312,8 298,8 312,22" fill="#4A7C59"/>
+  <polygon points="312,8 298,8 312,22" fill="none" stroke="#3D3226" stroke-width="1"/>
+  <polygon points="8,92 22,92 8,78" fill="#4A90A4"/>
+  <polygon points="8,92 22,92 8,78" fill="none" stroke="#3D3226" stroke-width="1"/>
+  <polygon points="312,92 298,92 312,78" fill="#4A90A4"/>
+  <polygon points="312,92 298,92 312,78" fill="none" stroke="#3D3226" stroke-width="1"/>
+
+  <!-- SIDE BANDS -->
+  <rect x="4" y="50" width="25" height="5" fill="#DEB887" opacity="0.4"/>
+  <rect x="291" y="50" width="25" height="5" fill="#DEB887" opacity="0.4"/>
+  <rect x="8" y="35" width="12" height="25" fill="#C4A67C" opacity="0.5"/>
+  <rect x="8" y="35" width="12" height="25" fill="none" stroke="#3D3226" stroke-width="0.75"/>
+  <rect x="300" y="35" width="12" height="25" fill="#C4A67C" opacity="0.5"/>
+  <rect x="300" y="35" width="12" height="25" fill="none" stroke="#3D3226" stroke-width="0.75"/>
+</svg>
+          </div>
+          <div class="variation-description">Three-element vertical composition (left, center-tall, right) preserves the Desert Saguaro structure. Geometric cacti become rock formations with waterfalls cascading into a reflective pool. Warm desert sky with cool water blues creates harmonious contrast.</div>
+        </div>
+
+        <!-- Animated Variation -->
+        <div class="variation-card">
+          <h3>Desert Waterfall Animated</h3>
+          <div class="svg-container">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100">
+  <defs>
+    <linearGradient id="dwa-desertSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E8C895"/>
+      <stop offset="40%" stop-color="#F5DEB3"/>
+      <stop offset="80%" stop-color="#DEB887"/>
+      <stop offset="100%" stop-color="#D2B48C"/>
+    </linearGradient>
+
+    <linearGradient id="dwa-rockDark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B7355"/>
+      <stop offset="50%" stop-color="#6B5344"/>
+      <stop offset="100%" stop-color="#5C4033"/>
+    </linearGradient>
+
+    <linearGradient id="dwa-rockMid" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#A0826D"/>
+      <stop offset="50%" stop-color="#8B7355"/>
+      <stop offset="100%" stop-color="#9A7B6D"/>
+    </linearGradient>
+
+    <linearGradient id="dwa-rockLight" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#B8956E"/>
+      <stop offset="100%" stop-color="#A0826D"/>
+    </linearGradient>
+
+    <linearGradient id="dwa-waterFall" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#89CFF0" stop-opacity="0.9">
+        <animate attributeName="stop-opacity" values="0.9;0.7;0.9" dur="2s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="50%" stop-color="#6BB3D9"/>
+      <stop offset="100%" stop-color="#4A90A4"/>
+    </linearGradient>
+
+    <linearGradient id="dwa-poolWater" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#6BB3D9" stop-opacity="0.8"/>
+      <stop offset="60%" stop-color="#4A90A4" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#3D7A8C"/>
+    </linearGradient>
+
+    <linearGradient id="dwa-mistGradient" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#E8F4F8" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#F5FAFA" stop-opacity="0"/>
+    </linearGradient>
+
+    <linearGradient id="dwa-poolVegetation" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4A7C59"/>
+      <stop offset="100%" stop-color="#2D5A3D"/>
+    </linearGradient>
+
+    <filter id="dwa-glassTexture" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise"/>
+      <feColorMatrix type="saturate" values="0" result="mono"/>
+      <feBlend in="SourceGraphic" in2="mono" mode="soft-light"/>
+    </filter>
+
+    <filter id="dwa-heatShimmer" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="turbulence" baseFrequency="0.02" numOctaves="2" result="noise">
+        <animate attributeName="baseFrequency" values="0.02;0.025;0.02" dur="4s" repeatCount="indefinite"/>
+      </feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.5" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+
+    <pattern id="dwa-waterFlowPattern" x="0" y="0" width="8" height="16" patternUnits="userSpaceOnUse">
+      <rect width="8" height="16" fill="#6BB3D9"/>
+      <rect x="2" y="0" width="4" height="8" fill="#89CFF0" opacity="0.6">
+        <animate attributeName="y" values="0;16" dur="0.8s" repeatCount="indefinite"/>
+      </rect>
+      <rect x="0" y="8" width="3" height="6" fill="#89CFF0" opacity="0.4">
+        <animate attributeName="y" values="8;24" dur="0.8s" repeatCount="indefinite"/>
+      </rect>
+    </pattern>
+
+    <pattern id="dwa-mistParticles" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="5" cy="10" r="1" fill="#E8F4F8" opacity="0.5">
+        <animate attributeName="cy" values="20;0" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.5;0" dur="3s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="15" cy="15" r="0.8" fill="#F5FAFA" opacity="0.4">
+        <animate attributeName="cy" values="20;0" dur="2.5s" repeatCount="indefinite" begin="0.5s"/>
+        <animate attributeName="opacity" values="0.4;0" dur="2.5s" repeatCount="indefinite" begin="0.5s"/>
+      </circle>
+      <circle cx="10" cy="18" r="1.2" fill="#E8F4F8" opacity="0.3">
+        <animate attributeName="cy" values="20;0" dur="3.5s" repeatCount="indefinite" begin="1s"/>
+        <animate attributeName="opacity" values="0.3;0" dur="3.5s" repeatCount="indefinite" begin="1s"/>
+      </circle>
+    </pattern>
+  </defs>
+
+  <style>
+    .dwa-ripple1 { animation: dwa-ripple 3s ease-in-out infinite; }
+    .dwa-ripple2 { animation: dwa-ripple2 4s ease-in-out infinite; }
+    .dwa-mist { animation: dwa-mistDrift 4s ease-out infinite; }
+    .dwa-shimmer { animation: dwa-shimmer 2s ease-in-out infinite; }
+    .dwa-sun-inner { animation: dwa-sunPulse 5s ease-in-out infinite; }
+
+    @keyframes dwa-ripple {
+      0% { rx: 15; opacity: 0.4; }
+      50% { rx: 25; opacity: 0.2; }
+      100% { rx: 15; opacity: 0.4; }
+    }
+    @keyframes dwa-ripple2 {
+      0% { rx: 35; opacity: 0.3; }
+      50% { rx: 45; opacity: 0.15; }
+      100% { rx: 35; opacity: 0.3; }
+    }
+    @keyframes dwa-mistDrift {
+      0% { transform: translateY(0) translateX(0); opacity: 0.6; }
+      50% { transform: translateY(-5px) translateX(2px); opacity: 0.3; }
+      100% { transform: translateY(-10px) translateX(0); opacity: 0; }
+    }
+    @keyframes dwa-shimmer {
+      0% { opacity: 0.4; }
+      50% { opacity: 0.6; }
+      100% { opacity: 0.4; }
+    }
+    @keyframes dwa-sunPulse {
+      0% { r: 12; opacity: 0.8; }
+      50% { r: 14; opacity: 0.9; }
+      100% { r: 12; opacity: 0.8; }
+    }
+  </style>
+
+  <rect x="0" y="0" width="320" height="100" fill="url(#dwa-desertSky)"/>
+  <rect x="0" y="0" width="320" height="100" fill="none" stroke="#3D3226" stroke-width="4"/>
+
+  <g filter="url(#dwa-heatShimmer)">
+    <polygon points="0,45 40,35 80,42 120,38 160,40 200,35 240,40 280,36 320,42 320,55 0,55" fill="#C4A67C" opacity="0.5"/>
+  </g>
+  <line x1="4" y1="55" x2="316" y2="55" stroke="#3D3226" stroke-width="1"/>
+
+  <!-- LEFT ROCK with animated waterfall -->
+  <g filter="url(#dwa-glassTexture)">
+    <rect x="35" y="30" width="28" height="50" fill="url(#dwa-rockMid)"/>
+    <rect x="40" y="25" width="18" height="55" fill="url(#dwa-rockDark)"/>
+    <polygon points="35,30 40,25 40,80 35,80" fill="url(#dwa-rockLight)"/>
+    <polygon points="58,25 63,30 63,80 58,80" fill="#5C4033"/>
+  </g>
+  <rect x="44" y="22" width="10" height="58" fill="url(#dwa-waterFlowPattern)" opacity="0.85"/>
+  <rect x="46" y="22" width="6" height="58" fill="url(#dwa-waterFall)" opacity="0.7" class="dwa-shimmer"/>
+  <rect x="35" y="25" width="28" height="55" fill="none" stroke="#3D3226" stroke-width="1.5"/>
+
+  <!-- CENTER ROCK with main waterfall -->
+  <g filter="url(#dwa-glassTexture)">
+    <rect x="130" y="12" width="60" height="68" fill="url(#dwa-rockMid)"/>
+    <rect x="138" y="8" width="44" height="72" fill="url(#dwa-rockDark)"/>
+    <polygon points="130,12 138,8 138,80 130,80" fill="url(#dwa-rockLight)"/>
+    <polygon points="182,8 190,12 190,80 182,80" fill="#5C4033"/>
+    <rect x="135" y="35" width="50" height="4" fill="#A0826D" opacity="0.7"/>
+    <rect x="140" y="55" width="40" height="3" fill="#A0826D" opacity="0.6"/>
+  </g>
+  <rect x="150" y="5" width="20" height="75" fill="url(#dwa-waterFlowPattern)" opacity="0.9"/>
+  <rect x="152" y="5" width="16" height="75" fill="url(#dwa-waterFall)" opacity="0.75" class="dwa-shimmer"/>
+  <rect x="150" y="5" width="3" height="75" fill="#89CFF0" opacity="0.5" class="dwa-shimmer"/>
+  <rect x="167" y="5" width="2" height="75" fill="#6BB3D9" opacity="0.4" class="dwa-shimmer"/>
+  <ellipse cx="160" cy="78" rx="30" ry="10" fill="url(#dwa-mistParticles)" class="dwa-mist"/>
+  <ellipse cx="160" cy="78" rx="25" ry="8" fill="url(#dwa-mistGradient)" class="dwa-mist"/>
+  <rect x="130" y="8" width="60" height="72" fill="none" stroke="#3D3226" stroke-width="1.5"/>
+
+  <!-- RIGHT ROCK with animated waterfall -->
+  <g filter="url(#dwa-glassTexture)">
+    <rect x="257" y="28" width="28" height="52" fill="url(#dwa-rockMid)"/>
+    <rect x="262" y="22" width="18" height="58" fill="url(#dwa-rockDark)"/>
+    <polygon points="257,28 262,22 262,80 257,80" fill="url(#dwa-rockLight)"/>
+    <polygon points="280,22 285,28 285,80 280,80" fill="#5C4033"/>
+  </g>
+  <rect x="266" y="20" width="10" height="60" fill="url(#dwa-waterFlowPattern)" opacity="0.85"/>
+  <rect x="268" y="20" width="6" height="60" fill="url(#dwa-waterFall)" opacity="0.7" class="dwa-shimmer"/>
+  <rect x="257" y="22" width="28" height="58" fill="none" stroke="#3D3226" stroke-width="1.5"/>
+
+  <!-- ANIMATED POOL -->
+  <g>
+    <rect x="25" y="78" width="270" height="18" fill="url(#dwa-poolWater)" filter="url(#dwa-glassTexture)"/>
+    <ellipse cx="160" cy="82" rx="40" ry="3" fill="#89CFF0" opacity="0.4" class="dwa-ripple2"/>
+    <ellipse cx="160" cy="82" rx="20" ry="2" fill="#89CFF0" opacity="0.5" class="dwa-ripple1"/>
+    <ellipse cx="50" cy="84" rx="15" ry="2" fill="#89CFF0" class="dwa-ripple1" style="animation-delay: 0.5s;"/>
+    <ellipse cx="270" cy="85" rx="18" ry="2" fill="#89CFF0" class="dwa-ripple1" style="animation-delay: 1s;"/>
+    <rect x="25" y="76" width="270" height="3" fill="#A0826D"/>
+  </g>
+  <rect x="25" y="76" width="270" height="20" fill="none" stroke="#3D3226" stroke-width="1.5"/>
+
+  <!-- VEGETATION -->
+  <g filter="url(#dwa-glassTexture)">
+    <polygon points="20,96 25,75 30,96" fill="url(#dwa-poolVegetation)"/>
+    <polygon points="28,96 32,78 36,96" fill="#4A7C59"/>
+    <polygon points="15,96 18,80 24,96" fill="#2D5A3D"/>
+    <polygon points="290,96 295,76 300,96" fill="url(#dwa-poolVegetation)"/>
+    <polygon points="298,96 302,79 306,96" fill="#4A7C59"/>
+    <polygon points="284,96 288,82 294,96" fill="#2D5A3D"/>
+    <polygon points="85,96 92,82 99,96" fill="#4A7C59" opacity="0.8"/>
+    <polygon points="78,96 84,85 90,96" fill="#2D5A3D" opacity="0.7"/>
+    <polygon points="221,96 228,83 235,96" fill="#4A7C59" opacity="0.8"/>
+    <polygon points="230,96 236,86 242,96" fill="#2D5A3D" opacity="0.7"/>
+  </g>
+  <line x1="15" y1="96" x2="40" y2="96" stroke="#3D3226" stroke-width="1"/>
+  <line x1="280" y1="96" x2="310" y2="96" stroke="#3D3226" stroke-width="1"/>
+
+  <!-- ANIMATED SUN -->
+  <circle cx="160" cy="-5" r="18" fill="#F5DEB3" opacity="0.6"/>
+  <circle cx="160" cy="-5" r="12" fill="#E8C895" opacity="0.8" class="dwa-sun-inner">
+    <animate attributeName="r" values="12;14;12" dur="5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.8;0.9;0.8" dur="5s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- CAMING -->
+  <line x1="70" y1="4" x2="70" y2="96" stroke="#3D3226" stroke-width="1"/>
+  <line x1="120" y1="4" x2="120" y2="96" stroke="#3D3226" stroke-width="1"/>
+  <line x1="200" y1="4" x2="200" y2="96" stroke="#3D3226" stroke-width="1"/>
+  <line x1="250" y1="4" x2="250" y2="96" stroke="#3D3226" stroke-width="1"/>
+
+  <!-- CORNER ACCENTS -->
+  <polygon points="8,8 22,8 8,22" fill="#4A7C59"/>
+  <polygon points="8,8 22,8 8,22" fill="none" stroke="#3D3226" stroke-width="1"/>
+  <polygon points="312,8 298,8 312,22" fill="#4A7C59"/>
+  <polygon points="312,8 298,8 312,22" fill="none" stroke="#3D3226" stroke-width="1"/>
+  <polygon points="8,92 22,92 8,78" fill="#4A90A4"/>
+  <polygon points="8,92 22,92 8,78" fill="none" stroke="#3D3226" stroke-width="1"/>
+  <polygon points="312,92 298,92 312,78" fill="#4A90A4"/>
+  <polygon points="312,92 298,92 312,78" fill="none" stroke="#3D3226" stroke-width="1"/>
+
+  <!-- SIDE BANDS -->
+  <rect x="4" y="50" width="25" height="5" fill="#DEB887" opacity="0.4"/>
+  <rect x="291" y="50" width="25" height="5" fill="#DEB887" opacity="0.4"/>
+  <rect x="8" y="35" width="12" height="25" fill="#C4A67C" opacity="0.5"/>
+  <rect x="8" y="35" width="12" height="25" fill="none" stroke="#3D3226" stroke-width="0.75"/>
+  <rect x="300" y="35" width="12" height="25" fill="#C4A67C" opacity="0.5"/>
+  <rect x="300" y="35" width="12" height="25" fill="none" stroke="#3D3226" stroke-width="0.75"/>
+</svg>
+          </div>
+          <div class="variation-description">Animated desert oasis with pattern-based water flow, expanding pool ripples, rising mist particles, heat shimmer filter on distant canyon, and pulsing sun. All animations use CSS @keyframes for smooth GPU-accelerated performance.</div>
+        </div>
+      </div>
+
+      <div class="production-notes">
+        <h4>Production Notes · Falling Water (Saguaro Style)</h4>
+        <p>Compositional Translation: Three-element vertical structure preserved (left, center-tall, right). Geometric saguaro cacti become rock formations with rectangular shapes. Horizontal banding and corner triangles maintain prairie-style structure.</p>
+        <p>Color Harmony: Rock formations #8B7355, #A0826D, #5C4033 (warm browns). Water elements #4A90A4, #6BB3D9, #89CFF0 (cool blues). Vegetation #2D5A3D, #4A7C59 (sage greens). Desert sky gradient from #E8C895 to #D2B48C preserved.</p>
+        <p>Symbolism: Sun at top can be interpreted as water source. Transformation from arid (saguaro) to oasis represents renewal. Water blue corner accents at bottom vs. vegetation green at top shows the water cycle.</p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════════════════════ -->
+    <!-- FALLINGWATER (CORRECTED) - Manager Intervention -->
+    <!-- ═══════════════════════════════════════════════════════════════════════════════ -->
+
+    <div class="section-divider" style="border-color: #A52A2A; background: linear-gradient(to right, #D4A843, #A52A2A, #D4A843);">
+      <span style="background: #A52A2A; color: white;">CORRECTION: Fallingwater Architecture</span>
+    </div>
+
+    <div class="correction-notice" style="background: #FFF8E7; border: 2px solid #A52A2A; padding: 20px; margin: 20px 0; border-radius: 8px;">
+      <h3 style="color: #A52A2A; margin-top: 0;">⚠️ Manager Intervention - Conceptual Correction</h3>
+      <p><strong>The Error:</strong> The previous "Falling Water" designs depicted <em>generic waterfalls</em> - water drops cascading down, vertical emphasis, blue water palette. This completely missed the reference.</p>
+      <p><strong>The Truth:</strong> "Fallingwater" is Frank Lloyd Wright's iconic 1935 house in Pennsylvania - famous for its <strong>horizontal cantilevered terraces</strong> hovering over Bear Run waterfall. It uses only two paint colors: <span style="background: #D4A843; padding: 2px 8px; border-radius: 3px;">Light Ochre</span> for concrete and <span style="background: #A52A2A; color: white; padding: 2px 8px; border-radius: 3px;">Cherokee Red</span> for steel.</p>
+      <p><strong>The Fix:</strong> These corrected designs show the <em>architecture itself</em> - stacked horizontal terraces, Cherokee red accents, water BELOW (not cascading down).</p>
+    </div>
+
+    <!-- FALLINGWATER (BALLOONS STYLE) - CORRECTED ═════════════════════════════════════ -->
+    <section class="design-section">
+      <h2>Fallingwater (Balloons Style) - CORRECTED</h2>
+      <p class="design-intro">The "Balloons" influence is now expressed through the BUOYANT, FLOATING quality of the cantilevered terraces - solid concrete forms that appear to defy gravity, just as balloons rise. Three stacked horizontal ochre terraces with softened parapet edges extend asymmetrically from a central sandstone chimney. Cherokee red steel bands accent each level. Forest frames the edges; Bear Run stream flows below.</p>
+
+      <div class="variations-grid">
+        <!-- Refined Variation -->
+        <div class="variation-card">
+          <h3>Fallingwater Refined</h3>
+          <div class="svg-container">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100">
+  <defs>
+    <style>
+      .lead { fill: none; stroke: #1a1a1a; stroke-width: 1.2; stroke-linejoin: round; }
+      .lead-thin { fill: none; stroke: #1a1a1a; stroke-width: 0.8; }
+      .lead-accent { fill: none; stroke: #2d2d2d; stroke-width: 0.6; }
+      .lead-heavy { fill: none; stroke: #1a1a1a; stroke-width: 1.5; }
+    </style>
+
+    <linearGradient id="fwb-concreteTop" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E5D4B3"/>
+      <stop offset="50%" stop-color="#D4A843"/>
+      <stop offset="100%" stop-color="#C4A67C"/>
+    </linearGradient>
+    <linearGradient id="fwb-concreteMid" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#D4A843"/>
+      <stop offset="100%" stop-color="#B89832"/>
+    </linearGradient>
+    <linearGradient id="fwb-concreteBottom" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#C4A67C"/>
+      <stop offset="100%" stop-color="#B8956C"/>
+    </linearGradient>
+    <linearGradient id="fwb-cherokeeRed" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#A52A2A"/>
+      <stop offset="100%" stop-color="#8B2323"/>
+    </linearGradient>
+    <linearGradient id="fwb-sandstone" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B7355"/>
+      <stop offset="50%" stop-color="#6B5344"/>
+      <stop offset="100%" stop-color="#9C8B75"/>
+    </linearGradient>
+    <linearGradient id="fwb-streamWater" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3D7A8C"/>
+      <stop offset="50%" stop-color="#4A90A4"/>
+      <stop offset="100%" stop-color="#3D7A8C"/>
+    </linearGradient>
+    <linearGradient id="fwb-forestDark" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2D5A3D"/>
+      <stop offset="100%" stop-color="#1D4A2D"/>
+    </linearGradient>
+    <linearGradient id="fwb-forestLight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4A7C59"/>
+      <stop offset="100%" stop-color="#3B6B4A"/>
+    </linearGradient>
+    <linearGradient id="fwb-skyAtmos" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E8EEE6"/>
+      <stop offset="100%" stop-color="#D8E4DA"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="320" height="100" fill="url(#fwb-skyAtmos)"/>
+  <rect x="2" y="2" width="316" height="96" class="lead" fill="none"/>
+  <rect x="6" y="6" width="308" height="88" class="lead-thin" fill="none"/>
+
+  <!-- Forest corners -->
+  <polygon points="6,6 35,6 6,35" fill="url(#fwb-forestDark)"/>
+  <polygon points="6,6 35,6 6,35" class="lead-accent"/>
+  <polygon points="6,20 25,6 6,6" fill="url(#fwb-forestLight)"/>
+  <polygon points="314,6 285,6 314,35" fill="url(#fwb-forestDark)"/>
+  <polygon points="314,6 285,6 314,35" class="lead-accent"/>
+  <polygon points="314,20 295,6 314,6" fill="url(#fwb-forestLight)"/>
+
+  <rect x="6" y="35" width="18" height="30" fill="url(#fwb-forestDark)"/>
+  <rect x="6" y="35" width="18" height="30" class="lead-thin"/>
+  <rect x="296" y="35" width="18" height="30" fill="url(#fwb-forestDark)"/>
+  <rect x="296" y="35" width="18" height="30" class="lead-thin"/>
+
+  <!-- Central chimney -->
+  <rect x="148" y="12" width="24" height="68" fill="url(#fwb-sandstone)"/>
+  <rect x="148" y="12" width="24" height="68" class="lead"/>
+  <line x1="148" y1="25" x2="172" y2="25" class="lead-accent"/>
+  <line x1="148" y1="38" x2="172" y2="38" class="lead-accent"/>
+  <line x1="148" y1="52" x2="172" y2="52" class="lead-accent"/>
+  <line x1="148" y1="65" x2="172" y2="65" class="lead-accent"/>
+
+  <!-- Top terrace (extends right) -->
+  <path d="M155,15 L250,15 Q260,15 260,20 L260,24 Q260,29 250,29 L155,29 L155,15" fill="url(#fwb-concreteTop)"/>
+  <path d="M155,15 L250,15 Q260,15 260,20 L260,24 Q260,29 250,29 L155,29 L155,15" class="lead"/>
+  <rect x="168" y="29" width="85" height="3" fill="url(#fwb-cherokeeRed)"/>
+  <rect x="168" y="29" width="85" height="3" class="lead-thin"/>
+
+  <!-- Middle terrace (extends left, main) -->
+  <path d="M40,38 Q30,38 30,43 L30,50 Q30,55 40,55 L175,55 L175,38 L40,38" fill="url(#fwb-concreteMid)"/>
+  <path d="M40,38 Q30,38 30,43 L30,50 Q30,55 40,55 L175,55 L175,38 L40,38" class="lead-heavy"/>
+  <rect x="35" y="55" width="135" height="4" fill="url(#fwb-cherokeeRed)"/>
+  <rect x="35" y="55" width="135" height="4" class="lead-thin"/>
+  <path d="M168,42 L225,42 Q232,42 232,47 L232,51 Q232,56 225,56 L168,56" fill="url(#fwb-concreteMid)"/>
+  <path d="M168,42 L225,42 Q232,42 232,47 L232,51 Q232,56 225,56 L168,56" class="lead"/>
+
+  <!-- Bottom terrace (extends right) -->
+  <path d="M165,62 L280,62 Q290,62 290,67 L290,72 Q290,77 280,77 L165,77 L165,62" fill="url(#fwb-concreteBottom)"/>
+  <path d="M165,62 L280,62 Q290,62 290,67 L290,72 Q290,77 280,77 L165,77 L165,62" class="lead"/>
+  <rect x="170" y="77" width="115" height="3" fill="url(#fwb-cherokeeRed)"/>
+  <rect x="170" y="77" width="115" height="3" class="lead-thin"/>
+
+  <!-- Small left cantilever at bottom -->
+  <path d="M60,65 Q50,65 50,70 L50,74 Q50,79 60,79 L148,79 L148,65 L60,65" fill="url(#fwb-concreteBottom)"/>
+  <path d="M60,65 Q50,65 50,70 L50,74 Q50,79 60,79 L148,79 L148,65 L60,65" class="lead"/>
+
+  <!-- Rock outcropping -->
+  <polygon points="130,80 145,75 160,80 175,78 180,85 170,88 145,90 120,88 115,85" fill="#6B5344"/>
+  <polygon points="130,80 145,75 160,80 175,78 180,85 170,88 145,90 120,88 115,85" class="lead-thin"/>
+  <polygon points="100,82 115,78 125,84 110,90" fill="#8B7355"/>
+  <polygon points="190,82 205,78 215,84 200,88" fill="#8B7355"/>
+
+  <!-- Water at bottom -->
+  <path d="M24,82 L296,82 L296,94 L24,94 Z" fill="url(#fwb-streamWater)"/>
+  <path d="M24,82 L296,82 L296,94 L24,94 Z" class="lead"/>
+  <line x1="40" y1="86" x2="80" y2="86" stroke="#5BA3B5" stroke-width="0.8"/>
+  <line x1="100" y1="88" x2="130" y2="88" stroke="#5BA3B5" stroke-width="0.6"/>
+  <line x1="180" y1="87" x2="220" y2="87" stroke="#5BA3B5" stroke-width="0.8"/>
+  <line x1="240" y1="86" x2="280" y2="86" stroke="#5BA3B5" stroke-width="0.6"/>
+
+  <!-- Bottom corner forest -->
+  <polygon points="6,94 6,75 24,82 24,94" fill="url(#fwb-forestDark)"/>
+  <polygon points="6,94 6,75 24,82 24,94" class="lead-thin"/>
+  <polygon points="314,94 314,75 296,82 296,94" fill="url(#fwb-forestDark)"/>
+  <polygon points="314,94 314,75 296,82 296,94" class="lead-thin"/>
+
+  <line x1="6" y1="35" x2="24" y2="35" class="lead-thin"/>
+  <line x1="296" y1="35" x2="314" y2="35" class="lead-thin"/>
+  <line x1="6" y1="65" x2="24" y2="65" class="lead-thin"/>
+  <line x1="296" y1="65" x2="314" y2="65" class="lead-thin"/>
+</svg>
+          </div>
+          <div class="variation-description">Architecture-correct design: Three stacked horizontal cantilevered terraces in warm ochre/buff, Cherokee red steel bands, central sandstone chimney as vertical anchor. Water at bottom only. The "floating" cantilevers express the balloons' buoyant quality.</div>
+        </div>
+
+        <!-- Animated Variation -->
+        <div class="variation-card">
+          <h3>Fallingwater Animated</h3>
+          <div class="svg-container">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100">
+  <defs>
+    <style>
+      .lead { fill: none; stroke: #1a1a1a; stroke-width: 1.2; stroke-linejoin: round; }
+      .lead-thin { fill: none; stroke: #1a1a1a; stroke-width: 0.8; }
+      .lead-accent { fill: none; stroke: #2d2d2d; stroke-width: 0.6; }
+      .lead-heavy { fill: none; stroke: #1a1a1a; stroke-width: 1.5; }
+
+      .fwb-terrace-float-1 { animation: fwb-float1 6s ease-in-out infinite; }
+      .fwb-terrace-float-2 { animation: fwb-float2 7s ease-in-out infinite; }
+      .fwb-terrace-float-3 { animation: fwb-float3 5s ease-in-out infinite; }
+
+      @keyframes fwb-float1 {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-1.5px); }
+      }
+      @keyframes fwb-float2 {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-1px); }
+      }
+      @keyframes fwb-float3 {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-1.2px); }
+      }
+
+      .fwb-red-pulse { animation: fwb-warmPulse 4s ease-in-out infinite; }
+      @keyframes fwb-warmPulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.85; }
+      }
+
+      .fwb-water-ripple { animation: fwb-ripple 8s ease-in-out infinite; }
+      @keyframes fwb-ripple {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(2px); }
+        75% { transform: translateX(-2px); }
+      }
+
+      .fwb-concrete-shimmer { animation: fwb-shimmer 5s ease-in-out infinite; }
+      @keyframes fwb-shimmer {
+        0%, 100% { filter: brightness(1); }
+        50% { filter: brightness(1.05); }
+      }
+    </style>
+
+    <linearGradient id="fwba-concreteTop" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E5D4B3"/>
+      <stop offset="50%" stop-color="#D4A843"/>
+      <stop offset="100%" stop-color="#C4A67C"/>
+    </linearGradient>
+    <linearGradient id="fwba-concreteMid" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#D4A843"/>
+      <stop offset="100%" stop-color="#B89832"/>
+    </linearGradient>
+    <linearGradient id="fwba-concreteBottom" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#C4A67C"/>
+      <stop offset="100%" stop-color="#B8956C"/>
+    </linearGradient>
+    <linearGradient id="fwba-cherokeeRed" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#A52A2A"/>
+      <stop offset="100%" stop-color="#8B2323"/>
+    </linearGradient>
+    <linearGradient id="fwba-sandstone" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B7355"/>
+      <stop offset="50%" stop-color="#6B5344"/>
+      <stop offset="100%" stop-color="#9C8B75"/>
+    </linearGradient>
+    <linearGradient id="fwba-streamWater" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3D7A8C"/>
+      <stop offset="50%" stop-color="#4A90A4"/>
+      <stop offset="100%" stop-color="#3D7A8C"/>
+    </linearGradient>
+    <linearGradient id="fwba-forestDark" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2D5A3D"/>
+      <stop offset="100%" stop-color="#1D4A2D"/>
+    </linearGradient>
+    <linearGradient id="fwba-forestLight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4A7C59"/>
+      <stop offset="100%" stop-color="#3B6B4A"/>
+    </linearGradient>
+    <linearGradient id="fwba-skyAtmos" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E8EEE6"/>
+      <stop offset="100%" stop-color="#D8E4DA"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="320" height="100" fill="url(#fwba-skyAtmos)"/>
+  <rect x="2" y="2" width="316" height="96" class="lead" fill="none"/>
+  <rect x="6" y="6" width="308" height="88" class="lead-thin" fill="none"/>
+
+  <polygon points="6,6 35,6 6,35" fill="url(#fwba-forestDark)"/>
+  <polygon points="6,20 25,6 6,6" fill="url(#fwba-forestLight)"/>
+  <polygon points="314,6 285,6 314,35" fill="url(#fwba-forestDark)"/>
+  <polygon points="314,20 295,6 314,6" fill="url(#fwba-forestLight)"/>
+  <rect x="6" y="35" width="18" height="30" fill="url(#fwba-forestDark)"/>
+  <rect x="296" y="35" width="18" height="30" fill="url(#fwba-forestDark)"/>
+
+  <rect x="148" y="12" width="24" height="68" fill="url(#fwba-sandstone)"/>
+  <rect x="148" y="12" width="24" height="68" class="lead"/>
+  <line x1="148" y1="25" x2="172" y2="25" class="lead-accent"/>
+  <line x1="148" y1="38" x2="172" y2="38" class="lead-accent"/>
+  <line x1="148" y1="52" x2="172" y2="52" class="lead-accent"/>
+  <line x1="148" y1="65" x2="172" y2="65" class="lead-accent"/>
+
+  <!-- Animated top terrace -->
+  <g class="fwb-terrace-float-1">
+    <path d="M155,15 L250,15 Q260,15 260,20 L260,24 Q260,29 250,29 L155,29 L155,15" fill="url(#fwba-concreteTop)" class="fwb-concrete-shimmer"/>
+    <path d="M155,15 L250,15 Q260,15 260,20 L260,24 Q260,29 250,29 L155,29 L155,15" class="lead"/>
+    <rect x="168" y="29" width="85" height="3" fill="url(#fwba-cherokeeRed)" class="fwb-red-pulse"/>
+    <rect x="168" y="29" width="85" height="3" class="lead-thin"/>
+  </g>
+
+  <!-- Animated middle terrace -->
+  <g class="fwb-terrace-float-2">
+    <path d="M40,38 Q30,38 30,43 L30,50 Q30,55 40,55 L175,55 L175,38 L40,38" fill="url(#fwba-concreteMid)" class="fwb-concrete-shimmer"/>
+    <path d="M40,38 Q30,38 30,43 L30,50 Q30,55 40,55 L175,55 L175,38 L40,38" class="lead-heavy"/>
+    <rect x="35" y="55" width="135" height="4" fill="url(#fwba-cherokeeRed)" class="fwb-red-pulse"/>
+    <rect x="35" y="55" width="135" height="4" class="lead-thin"/>
+    <path d="M168,42 L225,42 Q232,42 232,47 L232,51 Q232,56 225,56 L168,56" fill="url(#fwba-concreteMid)" class="fwb-concrete-shimmer"/>
+    <path d="M168,42 L225,42 Q232,42 232,47 L232,51 Q232,56 225,56 L168,56" class="lead"/>
+  </g>
+
+  <!-- Animated bottom terrace -->
+  <g class="fwb-terrace-float-3">
+    <path d="M165,62 L280,62 Q290,62 290,67 L290,72 Q290,77 280,77 L165,77 L165,62" fill="url(#fwba-concreteBottom)" class="fwb-concrete-shimmer"/>
+    <path d="M165,62 L280,62 Q290,62 290,67 L290,72 Q290,77 280,77 L165,77 L165,62" class="lead"/>
+    <rect x="170" y="77" width="115" height="3" fill="url(#fwba-cherokeeRed)" class="fwb-red-pulse"/>
+    <rect x="170" y="77" width="115" height="3" class="lead-thin"/>
+  </g>
+
+  <g class="fwb-terrace-float-2">
+    <path d="M60,65 Q50,65 50,70 L50,74 Q50,79 60,79 L148,79 L148,65 L60,65" fill="url(#fwba-concreteBottom)" class="fwb-concrete-shimmer"/>
+    <path d="M60,65 Q50,65 50,70 L50,74 Q50,79 60,79 L148,79 L148,65 L60,65" class="lead"/>
+  </g>
+
+  <polygon points="130,80 145,75 160,80 175,78 180,85 170,88 145,90 120,88 115,85" fill="#6B5344"/>
+  <polygon points="100,82 115,78 125,84 110,90" fill="#8B7355"/>
+  <polygon points="190,82 205,78 215,84 200,88" fill="#8B7355"/>
+
+  <g class="fwb-water-ripple">
+    <path d="M24,82 L296,82 L296,94 L24,94 Z" fill="url(#fwba-streamWater)"/>
+    <path d="M24,82 L296,82 L296,94 L24,94 Z" class="lead"/>
+  </g>
+
+  <polygon points="6,94 6,75 24,82 24,94" fill="url(#fwba-forestDark)"/>
+  <polygon points="314,94 314,75 296,82 296,94" fill="url(#fwba-forestDark)"/>
+</svg>
+          </div>
+          <div class="variation-description">Animated version with subtle float animations on terraces (expressing buoyancy), Cherokee red bands with warm pulse, concrete shimmer suggesting sunlight, and horizontal water ripple. NO vertical water cascades.</div>
+        </div>
+      </div>
+
+      <div class="production-notes" style="border-left: 4px solid #A52A2A;">
+        <h4>Production Notes · Fallingwater (Balloons Style) - CORRECTED</h4>
+        <p><strong>What Changed:</strong> Teardrop shapes → Horizontal rectangles. Vertical water streams → Horizontal terrace planes. Blue dominance → Ochre/buff primary with Cherokee red accents. Water throughout → Water at bottom only.</p>
+        <p><strong>The "Balloons" Influence:</strong> Expressed through BUOYANCY - the terraces appear to float/hover just as balloons defy gravity. Softened parapet edges (rounded Q curves) give a "pillow-like" quality.</p>
+      </div>
+    </section>
+
+    <!-- FALLINGWATER (SAGUARO STYLE) - CORRECTED ══════════════════════════════════════ -->
+    <section class="design-section">
+      <h2>Fallingwater (Saguaro Style) - CORRECTED</h2>
+      <p class="design-intro">The Saguaro style's warm earth palette and bold geometry are retained, but the composition is now HORIZONTAL rather than vertical. Three cantilevered terraces extend asymmetrically from a central stone chimney. The warm desert sky gradient meets the cool teal stream at bottom. Forest vegetation frames the edges, while the architecture hovers dramatically over Bear Run.</p>
+
+      <div class="variations-grid">
+        <!-- Refined Variation -->
+        <div class="variation-card">
+          <h3>Fallingwater Refined</h3>
+          <div class="svg-container">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100">
+  <defs>
+    <linearGradient id="fws-desertSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E8C895"/>
+      <stop offset="40%" stop-color="#F5DEB3"/>
+      <stop offset="80%" stop-color="#DEB887"/>
+      <stop offset="100%" stop-color="#D2B48C"/>
+    </linearGradient>
+    <linearGradient id="fws-concreteMain" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E5D4B3"/>
+      <stop offset="50%" stop-color="#D4A843"/>
+      <stop offset="100%" stop-color="#C4A67C"/>
+    </linearGradient>
+    <linearGradient id="fws-concreteLight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F0E6D0"/>
+      <stop offset="100%" stop-color="#E5D4B3"/>
+    </linearGradient>
+    <linearGradient id="fws-sandstone" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9C8B75"/>
+      <stop offset="50%" stop-color="#8B7355"/>
+      <stop offset="100%" stop-color="#6B5344"/>
+    </linearGradient>
+    <linearGradient id="fws-cherokeeRed" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#A52A2A"/>
+      <stop offset="100%" stop-color="#8B4513"/>
+    </linearGradient>
+    <linearGradient id="fws-streamWater" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#5BA3B5" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#4A90A4"/>
+      <stop offset="100%" stop-color="#3D7A8C"/>
+    </linearGradient>
+    <linearGradient id="fws-forest" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4A7C59"/>
+      <stop offset="100%" stop-color="#2D5A3D"/>
+    </linearGradient>
+    <linearGradient id="fws-rockBase" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B7355"/>
+      <stop offset="100%" stop-color="#5C4033"/>
+    </linearGradient>
+    <filter id="fws-glassTexture" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise"/>
+      <feColorMatrix type="saturate" values="0" result="mono"/>
+      <feBlend in="SourceGraphic" in2="mono" mode="soft-light"/>
+    </filter>
+  </defs>
+
+  <rect x="0" y="0" width="320" height="100" fill="url(#fws-desertSky)"/>
+  <rect x="0" y="0" width="320" height="100" fill="none" stroke="#3D3226" stroke-width="4"/>
+
+  <!-- Forest framing -->
+  <g filter="url(#fws-glassTexture)">
+    <polygon points="5,25 35,20 45,35 50,50 45,65 35,75 25,75 15,70 5,65" fill="url(#fws-forest)" opacity="0.85"/>
+  </g>
+  <polygon points="5,25 35,20 45,35 50,50 45,65 35,75 25,75 15,70 5,65" fill="none" stroke="#3D3226" stroke-width="1"/>
+
+  <g filter="url(#fws-glassTexture)">
+    <polygon points="315,22 285,18 275,32 270,48 275,62 285,72 295,72 305,68 315,62" fill="url(#fws-forest)" opacity="0.85"/>
+  </g>
+  <polygon points="315,22 285,18 275,32 270,48 275,62 285,72 295,72 305,68 315,62" fill="none" stroke="#3D3226" stroke-width="1"/>
+
+  <!-- Rock base -->
+  <g filter="url(#fws-glassTexture)">
+    <polygon points="115,72 130,68 145,75 160,70 175,76 190,72 205,78 205,95 115,95" fill="url(#fws-rockBase)"/>
+  </g>
+  <polygon points="115,72 130,68 145,75 160,70 175,76 190,72 205,78 205,95 115,95" fill="none" stroke="#3D3226" stroke-width="1"/>
+
+  <!-- Central chimney -->
+  <g filter="url(#fws-glassTexture)">
+    <rect x="150" y="8" width="22" height="67" fill="url(#fws-sandstone)"/>
+  </g>
+  <rect x="150" y="8" width="22" height="67" fill="none" stroke="#3D3226" stroke-width="1.5"/>
+
+  <!-- Upper terrace (left) -->
+  <g filter="url(#fws-glassTexture)">
+    <rect x="65" y="18" width="85" height="10" fill="url(#fws-concreteMain)" rx="1"/>
+    <rect x="65" y="16" width="85" height="4" fill="url(#fws-concreteLight)" rx="2"/>
+  </g>
+  <rect x="68" y="28" width="80" height="3" fill="url(#fws-cherokeeRed)"/>
+  <rect x="65" y="16" width="85" height="14" fill="none" stroke="#3D3226" stroke-width="1.5"/>
+
+  <!-- Middle terrace (right) -->
+  <g filter="url(#fws-glassTexture)">
+    <rect x="172" y="32" width="95" height="12" fill="url(#fws-concreteMain)" rx="1"/>
+    <rect x="172" y="30" width="95" height="4" fill="url(#fws-concreteLight)" rx="2"/>
+  </g>
+  <rect x="175" y="44" width="88" height="4" fill="url(#fws-cherokeeRed)"/>
+  <rect x="172" y="30" width="95" height="18" fill="none" stroke="#3D3226" stroke-width="1.5"/>
+
+  <!-- Lower terrace (left) -->
+  <g filter="url(#fws-glassTexture)">
+    <rect x="55" y="50" width="95" height="14" fill="url(#fws-concreteMain)" rx="1"/>
+    <rect x="55" y="48" width="95" height="4" fill="url(#fws-concreteLight)" rx="2"/>
+  </g>
+  <rect x="58" y="64" width="90" height="5" fill="url(#fws-cherokeeRed)"/>
+  <rect x="55" y="48" width="95" height="21" fill="none" stroke="#3D3226" stroke-width="1.5"/>
+
+  <!-- Small extension (right) -->
+  <g filter="url(#fws-glassTexture)">
+    <rect x="172" y="58" width="45" height="10" fill="url(#fws-concreteMain)" rx="1"/>
+  </g>
+  <rect x="175" y="68" width="40" height="3" fill="url(#fws-cherokeeRed)"/>
+  <rect x="172" y="56" width="45" height="15" fill="none" stroke="#3D3226" stroke-width="1.5"/>
+
+  <!-- Stream at bottom -->
+  <g filter="url(#fws-glassTexture)">
+    <rect x="4" y="82" width="312" height="14" fill="url(#fws-streamWater)"/>
+    <ellipse cx="80" cy="87" rx="30" ry="3" fill="#5BA3B5" opacity="0.4"/>
+    <ellipse cx="160" cy="88" rx="25" ry="2" fill="#5BA3B5" opacity="0.5"/>
+    <ellipse cx="240" cy="86" rx="35" ry="3" fill="#5BA3B5" opacity="0.4"/>
+  </g>
+  <rect x="4" y="82" width="312" height="14" fill="none" stroke="#3D3226" stroke-width="1.5"/>
+
+  <line x1="4" y1="82" x2="316" y2="82" stroke="#3D3226" stroke-width="1.5"/>
+
+  <!-- Corner accents -->
+  <polygon points="8,8 22,8 8,22" fill="#4A7C59"/>
+  <polygon points="8,8 22,8 8,22" fill="none" stroke="#3D3226" stroke-width="1"/>
+  <polygon points="312,8 298,8 312,22" fill="#4A7C59"/>
+  <polygon points="312,8 298,8 312,22" fill="none" stroke="#3D3226" stroke-width="1"/>
+  <polygon points="8,92 22,92 8,78" fill="#4A90A4"/>
+  <polygon points="8,92 22,92 8,78" fill="none" stroke="#3D3226" stroke-width="1"/>
+  <polygon points="312,92 298,92 312,78" fill="#4A90A4"/>
+  <polygon points="312,92 298,92 312,78" fill="none" stroke="#3D3226" stroke-width="1"/>
+</svg>
+          </div>
+          <div class="variation-description">Architecture-correct design with warm Saguaro palette: Horizontal cantilevered terraces in ochre, Cherokee red steel bands, central sandstone chimney, forest framing, Bear Run stream at bottom. NO vertical rock formations with waterfalls.</div>
+        </div>
+
+        <!-- Animated Variation -->
+        <div class="variation-card">
+          <h3>Fallingwater Animated</h3>
+          <div class="svg-container">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100">
+  <defs>
+    <linearGradient id="fwsa-desertSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E8C895"/>
+      <stop offset="40%" stop-color="#F5DEB3"/>
+      <stop offset="80%" stop-color="#DEB887"/>
+      <stop offset="100%" stop-color="#D2B48C"/>
+    </linearGradient>
+    <linearGradient id="fwsa-concreteMain" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E5D4B3">
+        <animate attributeName="stop-color" values="#E5D4B3;#EDE3C8;#E5D4B3" dur="6s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="50%" stop-color="#D4A843"/>
+      <stop offset="100%" stop-color="#C4A67C"/>
+    </linearGradient>
+    <linearGradient id="fwsa-concreteLight" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F0E6D0"/>
+      <stop offset="100%" stop-color="#E5D4B3"/>
+    </linearGradient>
+    <linearGradient id="fwsa-sandstone" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9C8B75"/>
+      <stop offset="50%" stop-color="#8B7355"/>
+      <stop offset="100%" stop-color="#6B5344"/>
+    </linearGradient>
+    <linearGradient id="fwsa-cherokeeRed" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#A52A2A">
+        <animate attributeName="stop-color" values="#A52A2A;#B83535;#A52A2A" dur="4s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="100%" stop-color="#8B4513"/>
+    </linearGradient>
+    <linearGradient id="fwsa-streamWater" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#5BA3B5" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#4A90A4"/>
+      <stop offset="100%" stop-color="#3D7A8C"/>
+    </linearGradient>
+    <linearGradient id="fwsa-forest" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4A7C59"/>
+      <stop offset="100%" stop-color="#2D5A3D"/>
+    </linearGradient>
+    <linearGradient id="fwsa-rockBase" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B7355"/>
+      <stop offset="100%" stop-color="#5C4033"/>
+    </linearGradient>
+    <filter id="fwsa-heatShimmer" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="turbulence" baseFrequency="0.03" numOctaves="2" result="noise">
+        <animate attributeName="baseFrequency" values="0.03;0.04;0.03" dur="5s" repeatCount="indefinite"/>
+      </feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="fwsa-glassTexture" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise"/>
+      <feColorMatrix type="saturate" values="0" result="mono"/>
+      <feBlend in="SourceGraphic" in2="mono" mode="soft-light"/>
+    </filter>
+  </defs>
+
+  <style>
+    @keyframes fwsa-waterRipple {
+      0% { rx: 25; opacity: 0.4; }
+      50% { rx: 35; opacity: 0.2; }
+      100% { rx: 25; opacity: 0.4; }
+    }
+    @keyframes fwsa-gentleFloat {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-0.5px); }
+      100% { transform: translateY(0); }
+    }
+    .fwsa-ripple { animation: fwsa-waterRipple 4s ease-in-out infinite; }
+    .fwsa-hover { animation: fwsa-gentleFloat 6s ease-in-out infinite; }
+  </style>
+
+  <rect x="0" y="0" width="320" height="100" fill="url(#fwsa-desertSky)"/>
+  <rect x="0" y="0" width="320" height="100" fill="none" stroke="#3D3226" stroke-width="4"/>
+
+  <g filter="url(#fwsa-glassTexture)">
+    <polygon points="5,25 35,20 45,35 50,50 45,65 35,75 25,75 15,70 5,65" fill="url(#fwsa-forest)" opacity="0.85"/>
+  </g>
+  <polygon points="5,25 35,20 45,35 50,50 45,65 35,75 25,75 15,70 5,65" fill="none" stroke="#3D3226" stroke-width="1"/>
+
+  <g filter="url(#fwsa-glassTexture)">
+    <polygon points="315,22 285,18 275,32 270,48 275,62 285,72 295,72 305,68 315,62" fill="url(#fwsa-forest)" opacity="0.85"/>
+  </g>
+  <polygon points="315,22 285,18 275,32 270,48 275,62 285,72 295,72 305,68 315,62" fill="none" stroke="#3D3226" stroke-width="1"/>
+
+  <g filter="url(#fwsa-glassTexture)">
+    <polygon points="115,72 130,68 145,75 160,70 175,76 190,72 205,78 205,95 115,95" fill="url(#fwsa-rockBase)"/>
+  </g>
+  <polygon points="115,72 130,68 145,75 160,70 175,76 190,72 205,78 205,95 115,95" fill="none" stroke="#3D3226" stroke-width="1"/>
+
+  <!-- Chimney with heat shimmer -->
+  <g filter="url(#fwsa-heatShimmer)">
+    <rect x="150" y="8" width="22" height="67" fill="url(#fwsa-sandstone)"/>
+  </g>
+  <rect x="150" y="8" width="22" height="67" fill="none" stroke="#3D3226" stroke-width="1.5"/>
+
+  <!-- Animated terraces -->
+  <g filter="url(#fwsa-glassTexture)" class="fwsa-hover">
+    <rect x="65" y="18" width="85" height="10" fill="url(#fwsa-concreteMain)" rx="1"/>
+    <rect x="65" y="16" width="85" height="4" fill="url(#fwsa-concreteLight)" rx="2"/>
+  </g>
+  <rect x="68" y="28" width="80" height="3" fill="url(#fwsa-cherokeeRed)"/>
+  <rect x="65" y="16" width="85" height="14" fill="none" stroke="#3D3226" stroke-width="1.5"/>
+
+  <g filter="url(#fwsa-glassTexture)" class="fwsa-hover" style="animation-delay: 0.5s;">
+    <rect x="172" y="32" width="95" height="12" fill="url(#fwsa-concreteMain)" rx="1"/>
+    <rect x="172" y="30" width="95" height="4" fill="url(#fwsa-concreteLight)" rx="2"/>
+  </g>
+  <rect x="175" y="44" width="88" height="4" fill="url(#fwsa-cherokeeRed)"/>
+  <rect x="172" y="30" width="95" height="18" fill="none" stroke="#3D3226" stroke-width="1.5"/>
+
+  <g filter="url(#fwsa-glassTexture)" class="fwsa-hover" style="animation-delay: 1s;">
+    <rect x="55" y="50" width="95" height="14" fill="url(#fwsa-concreteMain)" rx="1"/>
+    <rect x="55" y="48" width="95" height="4" fill="url(#fwsa-concreteLight)" rx="2"/>
+  </g>
+  <rect x="58" y="64" width="90" height="5" fill="url(#fwsa-cherokeeRed)"/>
+  <rect x="55" y="48" width="95" height="21" fill="none" stroke="#3D3226" stroke-width="1.5"/>
+
+  <g filter="url(#fwsa-glassTexture)" class="fwsa-hover" style="animation-delay: 1.5s;">
+    <rect x="172" y="58" width="45" height="10" fill="url(#fwsa-concreteMain)" rx="1"/>
+  </g>
+  <rect x="175" y="68" width="40" height="3" fill="url(#fwsa-cherokeeRed)"/>
+  <rect x="172" y="56" width="45" height="15" fill="none" stroke="#3D3226" stroke-width="1.5"/>
+
+  <!-- Animated stream -->
+  <g filter="url(#fwsa-glassTexture)">
+    <rect x="4" y="82" width="312" height="14" fill="url(#fwsa-streamWater)"/>
+    <ellipse cx="80" cy="87" rx="30" ry="3" fill="#5BA3B5" class="fwsa-ripple"/>
+    <ellipse cx="160" cy="88" rx="25" ry="2" fill="#5BA3B5" class="fwsa-ripple" style="animation-delay: 1s;"/>
+    <ellipse cx="240" cy="86" rx="35" ry="3" fill="#5BA3B5" class="fwsa-ripple" style="animation-delay: 2s;"/>
+  </g>
+  <rect x="4" y="82" width="312" height="14" fill="none" stroke="#3D3226" stroke-width="1.5"/>
+
+  <line x1="4" y1="82" x2="316" y2="82" stroke="#3D3226" stroke-width="1.5"/>
+
+  <polygon points="8,8 22,8 8,22" fill="#4A7C59"/>
+  <polygon points="8,8 22,8 8,22" fill="none" stroke="#3D3226" stroke-width="1"/>
+  <polygon points="312,8 298,8 312,22" fill="#4A7C59"/>
+  <polygon points="312,8 298,8 312,22" fill="none" stroke="#3D3226" stroke-width="1"/>
+  <polygon points="8,92 22,92 8,78" fill="#4A90A4"/>
+  <polygon points="8,92 22,92 8,78" fill="none" stroke="#3D3226" stroke-width="1"/>
+  <polygon points="312,92 298,92 312,78" fill="#4A90A4"/>
+  <polygon points="312,92 298,92 312,78" fill="none" stroke="#3D3226" stroke-width="1"/>
+</svg>
+          </div>
+          <div class="variation-description">Animated version with sunlight shimmer on ochre concrete, heat shimmer above stone chimney, Cherokee red warm glow, horizontal water ripples (NOT vertical cascades), and gentle hover on terraces.</div>
+        </div>
+      </div>
+
+      <div class="production-notes" style="border-left: 4px solid #A52A2A;">
+        <h4>Production Notes · Fallingwater (Saguaro Style) - CORRECTED</h4>
+        <p><strong>What Changed:</strong> Three vertical rock columns → Horizontal cantilevered terraces. Waterfalls down rocks → Water at bottom only. Vertical emphasis → Horizontal emphasis. Kept: warm desert sky, bold geometry, corner accents.</p>
+        <p><strong>Saguaro Transformation:</strong> The single vertical element (stone chimney) replaces the three saguaro-like verticals. Terraces extend horizontally like mesa strata, honoring both Wright's cantilever drama and the Saguaro style's geometric clarity.</p>
+      </div>
+    </section>
+
+    <footer>
+      <p>Generated via Coordinated Agent Workflow · Manager + 4 Design Agents + 2 Paired Agents + Manager Correction</p>
+    </footer>
+  </div>
+</body>
+</html>

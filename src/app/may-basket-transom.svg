@@ -1,0 +1,175 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100">
+  <defs>
+    <!-- Lead line style -->
+    <style>
+      .lead { fill: none; stroke: #1a1a1a; stroke-width: 1.2; stroke-linejoin: round; }
+      .lead-thin { fill: none; stroke: #1a1a1a; stroke-width: 0.8; }
+      .lead-accent { fill: none; stroke: #2d2d2d; stroke-width: 0.6; }
+    </style>
+
+    <!-- Gradients for glass depth -->
+    <linearGradient id="pinkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f4a5b8"/>
+      <stop offset="100%" stop-color="#e87d9a"/>
+    </linearGradient>
+    <linearGradient id="coralGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f5917a"/>
+      <stop offset="100%" stop-color="#e06b52"/>
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4a7c59"/>
+      <stop offset="100%" stop-color="#6b9e78"/>
+    </linearGradient>
+    <linearGradient id="yellowGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f9d966"/>
+      <stop offset="100%" stop-color="#e8c44a"/>
+    </linearGradient>
+    <linearGradient id="creamGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fef9e7"/>
+      <stop offset="100%" stop-color="#f5ecd3"/>
+    </linearGradient>
+    <linearGradient id="basketGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#c9a86c"/>
+      <stop offset="100%" stop-color="#a68b4b"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background cream field -->
+  <rect x="0" y="0" width="320" height="100" fill="url(#creamGrad)"/>
+
+  <!-- Outer border frame -->
+  <rect x="2" y="2" width="316" height="96" class="lead" fill="none"/>
+  <rect x="6" y="6" width="308" height="88" class="lead-thin" fill="none"/>
+
+  <!-- Corner geometric accents - top left -->
+  <polygon points="6,6 20,6 6,20" fill="#4a7c59"/>
+  <polygon points="6,6 20,6 6,20" class="lead-accent"/>
+
+  <!-- Corner geometric accents - top right -->
+  <polygon points="314,6 300,6 314,20" fill="#4a7c59"/>
+  <polygon points="314,6 300,6 314,20" class="lead-accent"/>
+
+  <!-- Corner geometric accents - bottom left -->
+  <polygon points="6,94 20,94 6,80" fill="#4a7c59"/>
+  <polygon points="6,94 20,94 6,80" class="lead-accent"/>
+
+  <!-- Corner geometric accents - bottom right -->
+  <polygon points="314,94 300,94 314,80" fill="#4a7c59"/>
+  <polygon points="314,94 300,94 314,80" class="lead-accent"/>
+
+  <!-- Central basket structure -->
+  <path d="M130,95 L140,60 L180,60 L190,95 Z" fill="url(#basketGrad)"/>
+  <path d="M130,95 L140,60 L180,60 L190,95 Z" class="lead"/>
+
+  <!-- Basket weave pattern -->
+  <line x1="145" y1="65" x2="138" y2="90" class="lead-thin"/>
+  <line x1="155" y1="60" x2="152" y2="95" class="lead-thin"/>
+  <line x1="165" y1="60" x2="168" y2="95" class="lead-thin"/>
+  <line x1="175" y1="65" x2="182" y2="90" class="lead-thin"/>
+  <line x1="135" y1="75" x2="185" y2="75" class="lead-accent"/>
+  <line x1="133" y1="85" x2="187" y2="85" class="lead-accent"/>
+
+  <!-- Basket handle arch -->
+  <path d="M145,60 Q160,35 175,60" fill="none" stroke="#a68b4b" stroke-width="4"/>
+  <path d="M145,60 Q160,35 175,60" class="lead"/>
+  <path d="M148,60 Q160,40 172,60" fill="none" class="lead-accent"/>
+
+  <!-- Central tulip - main flower -->
+  <path d="M160,55 L150,35 L160,15 L170,35 Z" fill="url(#coralGrad)"/>
+  <path d="M160,55 L150,35 L160,15 L170,35 Z" class="lead"/>
+  <path d="M160,38 L160,55" class="lead-accent"/>
+
+  <!-- Left flower cluster -->
+  <!-- Geometric tulip left -->
+  <path d="M95,70 L85,50 L95,25 L105,50 Z" fill="url(#pinkGrad)"/>
+  <path d="M95,70 L85,50 L95,25 L105,50 Z" class="lead"/>
+  <line x1="95" y1="50" x2="95" y2="70" class="lead-accent"/>
+
+  <!-- Left small flower 1 -->
+  <polygon points="70,55 62,45 70,30 78,45" fill="#f9d966"/>
+  <polygon points="70,55 62,45 70,30 78,45" class="lead-thin"/>
+
+  <!-- Left small flower 2 -->
+  <polygon points="55,65 48,55 55,42 62,55" fill="url(#coralGrad)"/>
+  <polygon points="55,65 48,55 55,42 62,55" class="lead-thin"/>
+
+  <!-- Left leaves -->
+  <path d="M75,95 Q65,70 80,50" fill="none" stroke="#4a7c59" stroke-width="3"/>
+  <path d="M75,95 Q65,70 80,50" class="lead-accent"/>
+  <path d="M90,95 Q85,75 95,60" fill="none" stroke="#6b9e78" stroke-width="2.5"/>
+  <path d="M60,95 Q50,75 55,55" fill="none" stroke="#4a7c59" stroke-width="2"/>
+
+  <!-- Leaf shapes - left -->
+  <path d="M45,80 Q35,65 45,50 Q50,65 45,80" fill="url(#greenGrad)"/>
+  <path d="M45,80 Q35,65 45,50 Q50,65 45,80" class="lead-thin"/>
+
+  <path d="M30,70 Q22,58 30,45 Q35,58 30,70" fill="#6b9e78"/>
+  <path d="M30,70 Q22,58 30,45 Q35,58 30,70" class="lead-thin"/>
+
+  <!-- Right flower cluster -->
+  <!-- Geometric tulip right -->
+  <path d="M225,70 L215,50 L225,25 L235,50 Z" fill="url(#pinkGrad)"/>
+  <path d="M225,70 L215,50 L225,25 L235,50 Z" class="lead"/>
+  <line x1="225" y1="50" x2="225" y2="70" class="lead-accent"/>
+
+  <!-- Right small flower 1 -->
+  <polygon points="250,55 242,45 250,30 258,45" fill="#f9d966"/>
+  <polygon points="250,55 242,45 250,30 258,45" class="lead-thin"/>
+
+  <!-- Right small flower 2 -->
+  <polygon points="265,65 258,55 265,42 272,55" fill="url(#coralGrad)"/>
+  <polygon points="265,65 258,55 265,42 272,55" class="lead-thin"/>
+
+  <!-- Right leaves -->
+  <path d="M245,95 Q255,70 240,50" fill="none" stroke="#4a7c59" stroke-width="3"/>
+  <path d="M245,95 Q255,70 240,50" class="lead-accent"/>
+  <path d="M230,95 Q235,75 225,60" fill="none" stroke="#6b9e78" stroke-width="2.5"/>
+  <path d="M260,95 Q270,75 265,55" fill="none" stroke="#4a7c59" stroke-width="2"/>
+
+  <!-- Leaf shapes - right -->
+  <path d="M275,80 Q285,65 275,50 Q270,65 275,80" fill="url(#greenGrad)"/>
+  <path d="M275,80 Q285,65 275,50 Q270,65 275,80" class="lead-thin"/>
+
+  <path d="M290,70 Q298,58 290,45 Q285,58 290,70" fill="#6b9e78"/>
+  <path d="M290,70 Q298,58 290,45 Q285,58 290,70" class="lead-thin"/>
+
+  <!-- Decorative geometric bands - left -->
+  <rect x="10" y="45" width="12" height="4" fill="#e87d9a"/>
+  <rect x="10" y="45" width="12" height="4" class="lead-accent"/>
+  <rect x="10" y="52" width="12" height="4" fill="#f9d966"/>
+  <rect x="10" y="52" width="12" height="4" class="lead-accent"/>
+
+  <!-- Decorative geometric bands - right -->
+  <rect x="298" y="45" width="12" height="4" fill="#e87d9a"/>
+  <rect x="298" y="45" width="12" height="4" class="lead-accent"/>
+  <rect x="298" y="52" width="12" height="4" fill="#f9d966"/>
+  <rect x="298" y="52" width="12" height="4" class="lead-accent"/>
+
+  <!-- Diamond accents flanking basket -->
+  <polygon points="115,70 108,80 115,90 122,80" fill="#f9d966"/>
+  <polygon points="115,70 108,80 115,90 122,80" class="lead-thin"/>
+
+  <polygon points="205,70 198,80 205,90 212,80" fill="#f9d966"/>
+  <polygon points="205,70 198,80 205,90 212,80" class="lead-thin"/>
+
+  <!-- Small circular flower centers -->
+  <circle cx="70" cy="43" r="3" fill="#c9a86c"/>
+  <circle cx="70" cy="43" r="3" class="lead-accent"/>
+  <circle cx="250" cy="43" r="3" fill="#c9a86c"/>
+  <circle cx="250" cy="43" r="3" class="lead-accent"/>
+
+  <!-- Top decorative band -->
+  <rect x="60" y="10" width="200" height="3" fill="#4a7c59"/>
+  <rect x="60" y="10" width="200" height="3" class="lead-accent"/>
+
+  <!-- Small accent squares in top band -->
+  <rect x="80" y="10" width="3" height="3" fill="#f9d966"/>
+  <rect x="120" y="10" width="3" height="3" fill="#e87d9a"/>
+  <rect x="197" y="10" width="3" height="3" fill="#e87d9a"/>
+  <rect x="237" y="10" width="3" height="3" fill="#f9d966"/>
+
+  <!-- Subtle horizontal division lines -->
+  <line x1="25" y1="40" x2="45" y2="40" class="lead-accent"/>
+  <line x1="275" y1="40" x2="295" y2="40" class="lead-accent"/>
+
+</svg>

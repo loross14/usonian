@@ -1,0 +1,209 @@
+<svg viewBox="0 0 320 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Iridescent gradient effects -->
+    <linearGradient id="bronzeWash" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B7355"/>
+      <stop offset="50%" stop-color="#CD9B6A"/>
+      <stop offset="100%" stop-color="#6B5344"/>
+    </linearGradient>
+
+    <linearGradient id="iridescent1" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C4B59D"/>
+      <stop offset="30%" stop-color="#D4C8B0"/>
+      <stop offset="70%" stop-color="#BFB199"/>
+      <stop offset="100%" stop-color="#A89880"/>
+    </linearGradient>
+
+    <linearGradient id="iridescent2" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7A8B7A"/>
+      <stop offset="50%" stop-color="#8FA08A"/>
+      <stop offset="100%" stop-color="#6B7C6B"/>
+    </linearGradient>
+
+    <linearGradient id="goldAccent" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#D4AF37"/>
+      <stop offset="50%" stop-color="#C5A028"/>
+      <stop offset="100%" stop-color="#B8933A"/>
+    </linearGradient>
+
+    <linearGradient id="amberGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFBF00" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#E6A800" stop-opacity="0.9"/>
+    </linearGradient>
+
+    <linearGradient id="creamBase" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F5F0E6"/>
+      <stop offset="100%" stop-color="#EDE5D8"/>
+    </linearGradient>
+
+    <!-- Subtle glass texture -->
+    <filter id="glassTexture" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise"/>
+      <feColorMatrix type="saturate" values="0" result="grayNoise"/>
+      <feBlend in="SourceGraphic" in2="grayNoise" mode="overlay" result="blend"/>
+      <feComposite in="blend" in2="SourceGraphic" operator="in"/>
+    </filter>
+
+    <!-- Zinc caming style -->
+    <filter id="camingShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0.3" dy="0.3" stdDeviation="0.2" flood-color="#2C2C2C" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+
+  <!-- Background base -->
+  <rect x="0" y="0" width="320" height="100" fill="url(#creamBase)"/>
+
+  <!-- === OUTER BORDER FRAME === -->
+  <rect x="2" y="2" width="316" height="96" fill="none" stroke="#3D3226" stroke-width="3"/>
+  <rect x="6" y="6" width="308" height="88" fill="none" stroke="url(#bronzeWash)" stroke-width="1.5"/>
+
+  <!-- === LEFT SECTION === -->
+  <g filter="url(#glassTexture)">
+    <!-- Left vertical panel cluster -->
+    <rect x="12" y="12" width="8" height="76" fill="#5C7A5C"/>
+    <rect x="22" y="12" width="5" height="76" fill="url(#iridescent2)"/>
+
+    <!-- Left chevron stack -->
+    <polygon points="32,12 50,12 50,25 41,35 32,25" fill="#8B7355"/>
+    <polygon points="32,28 41,38 50,28 50,45 41,55 32,45" fill="url(#iridescent1)"/>
+    <polygon points="32,48 41,58 50,48 50,65 41,75 32,65" fill="#8B7355"/>
+    <polygon points="32,68 41,78 50,68 50,88 32,88" fill="url(#iridescent1)"/>
+
+    <!-- Left diamond accent -->
+    <polygon points="55,30 65,50 55,70 45,50" fill="url(#amberGlow)" stroke="#B8933A" stroke-width="0.5"/>
+  </g>
+
+  <!-- === CENTER-LEFT GEOMETRIC CLUSTER === -->
+  <g filter="url(#glassTexture)">
+    <!-- Stepped rectangles -->
+    <rect x="70" y="15" width="25" height="12" fill="#6B7C6B"/>
+    <rect x="75" y="29" width="20" height="10" fill="url(#iridescent1)"/>
+    <rect x="70" y="41" width="25" height="18" fill="#A89880"/>
+    <rect x="75" y="61" width="20" height="10" fill="url(#iridescent2)"/>
+    <rect x="70" y="73" width="25" height="12" fill="#6B7C6B"/>
+
+    <!-- Vertical accent bars -->
+    <rect x="98" y="12" width="4" height="76" fill="url(#goldAccent)"/>
+    <rect x="104" y="18" width="6" height="64" fill="#5C7A5C"/>
+  </g>
+
+  <!-- === CENTER FOCAL MEDALLION === -->
+  <g filter="url(#glassTexture)">
+    <!-- Central horizontal band system -->
+    <rect x="115" y="40" width="90" height="20" fill="url(#iridescent1)"/>
+
+    <!-- Center diamond composition -->
+    <polygon points="160,15 185,50 160,85 135,50" fill="url(#amberGlow)" stroke="url(#goldAccent)" stroke-width="1"/>
+
+    <!-- Inner diamond -->
+    <polygon points="160,25 175,50 160,75 145,50" fill="#F5F0E6" stroke="#B8933A" stroke-width="0.5"/>
+
+    <!-- Center square jewel -->
+    <rect x="152" y="42" width="16" height="16" fill="url(#goldAccent)" stroke="#8B7355" stroke-width="0.5"/>
+    <rect x="156" y="46" width="8" height="8" fill="#FFBF00"/>
+
+    <!-- Flanking chevrons left -->
+    <polygon points="115,30 125,50 115,70 120,70 130,50 120,30" fill="#7A8B7A"/>
+    <polygon points="120,35 128,50 120,65 125,65 133,50 125,35" fill="url(#iridescent2)"/>
+
+    <!-- Flanking chevrons right -->
+    <polygon points="205,30 195,50 205,70 200,70 190,50 200,30" fill="#7A8B7A"/>
+    <polygon points="200,35 192,50 200,65 195,65 187,50 195,35" fill="url(#iridescent2)"/>
+
+    <!-- Top decorative band -->
+    <rect x="125" y="12" width="70" height="8" fill="#8B7355"/>
+    <rect x="135" y="14" width="50" height="4" fill="url(#bronzeWash)"/>
+
+    <!-- Bottom decorative band -->
+    <rect x="125" y="80" width="70" height="8" fill="#8B7355"/>
+    <rect x="135" y="82" width="50" height="4" fill="url(#bronzeWash)"/>
+  </g>
+
+  <!-- === CENTER-RIGHT GEOMETRIC CLUSTER === -->
+  <g filter="url(#glassTexture)">
+    <!-- Vertical accent bars -->
+    <rect x="210" y="18" width="6" height="64" fill="#5C7A5C"/>
+    <rect x="218" y="12" width="4" height="76" fill="url(#goldAccent)"/>
+
+    <!-- Stepped rectangles (mirrored) -->
+    <rect x="225" y="15" width="25" height="12" fill="#6B7C6B"/>
+    <rect x="225" y="29" width="20" height="10" fill="url(#iridescent1)"/>
+    <rect x="225" y="41" width="25" height="18" fill="#A89880"/>
+    <rect x="225" y="61" width="20" height="10" fill="url(#iridescent2)"/>
+    <rect x="225" y="73" width="25" height="12" fill="#6B7C6B"/>
+  </g>
+
+  <!-- === RIGHT SECTION === -->
+  <g filter="url(#glassTexture)">
+    <!-- Right diamond accent -->
+    <polygon points="265,30 275,50 265,70 255,50" fill="url(#amberGlow)" stroke="#B8933A" stroke-width="0.5"/>
+
+    <!-- Right chevron stack -->
+    <polygon points="288,12 270,12 270,25 279,35 288,25" fill="#8B7355"/>
+    <polygon points="288,28 279,38 270,28 270,45 279,55 288,45" fill="url(#iridescent1)"/>
+    <polygon points="288,48 279,58 270,48 270,65 279,75 288,65" fill="#8B7355"/>
+    <polygon points="288,68 279,78 270,68 270,88 288,88" fill="url(#iridescent1)"/>
+
+    <!-- Right vertical panel cluster -->
+    <rect x="293" y="12" width="5" height="76" fill="url(#iridescent2)"/>
+    <rect x="300" y="12" width="8" height="76" fill="#5C7A5C"/>
+  </g>
+
+  <!-- === ZINC CAMING LINES === -->
+  <g stroke="#3D3226" stroke-width="1.2" fill="none" filter="url(#camingShadow)">
+    <!-- Horizontal structural lines -->
+    <line x1="10" y1="50" x2="115" y2="50"/>
+    <line x1="205" y1="50" x2="310" y2="50"/>
+
+    <!-- Vertical divisions -->
+    <line x1="65" y1="10" x2="65" y2="90"/>
+    <line x1="110" y1="10" x2="110" y2="90"/>
+    <line x1="210" y1="10" x2="210" y2="90"/>
+    <line x1="255" y1="10" x2="255" y2="90"/>
+
+    <!-- Center diamond caming -->
+    <polygon points="160,15 185,50 160,85 135,50" fill="none" stroke-width="1.5"/>
+  </g>
+
+  <!-- Fine detail caming -->
+  <g stroke="#4A4236" stroke-width="0.6" fill="none">
+    <!-- Left section details -->
+    <line x1="20" y1="12" x2="20" y2="88"/>
+    <line x1="27" y1="12" x2="27" y2="88"/>
+    <line x1="32" y1="35" x2="50" y2="35"/>
+    <line x1="32" y1="55" x2="50" y2="55"/>
+    <line x1="32" y1="75" x2="50" y2="75"/>
+
+    <!-- Right section details (mirrored) -->
+    <line x1="300" y1="12" x2="300" y2="88"/>
+    <line x1="293" y1="12" x2="293" y2="88"/>
+    <line x1="288" y1="35" x2="270" y2="35"/>
+    <line x1="288" y1="55" x2="270" y2="55"/>
+    <line x1="288" y1="75" x2="270" y2="75"/>
+
+    <!-- Center cluster details -->
+    <line x1="70" y1="27" x2="95" y2="27"/>
+    <line x1="70" y1="59" x2="95" y2="59"/>
+    <line x1="70" y1="73" x2="95" y2="73"/>
+
+    <line x1="225" y1="27" x2="250" y2="27"/>
+    <line x1="225" y1="59" x2="250" y2="59"/>
+    <line x1="225" y1="73" x2="250" y2="73"/>
+  </g>
+
+  <!-- Small accent squares (jewel details) -->
+  <g fill="url(#goldAccent)">
+    <rect x="58" y="47" width="4" height="6"/>
+    <rect x="258" y="47" width="4" height="6"/>
+    <rect x="100" y="47" width="3" height="6"/>
+    <rect x="217" y="47" width="3" height="6"/>
+  </g>
+
+  <!-- Corner accent triangles -->
+  <g fill="#5C7A5C">
+    <polygon points="10,10 20,10 10,20"/>
+    <polygon points="310,10 300,10 310,20"/>
+    <polygon points="10,90 20,90 10,80"/>
+    <polygon points="310,90 300,90 310,80"/>
+  </g>
+</svg>

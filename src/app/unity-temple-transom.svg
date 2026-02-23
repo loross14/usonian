@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100">
+  <defs>
+    <!-- Opalescent gradient for luminous effect -->
+    <linearGradient id="opalescent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF8E7"/>
+      <stop offset="50%" stop-color="#FFFDF5"/>
+      <stop offset="100%" stop-color="#F5E6C8"/>
+    </linearGradient>
+
+    <!-- Warm amber radial glow -->
+    <radialGradient id="amberGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#F5C34B"/>
+      <stop offset="100%" stop-color="#D4952A"/>
+    </radialGradient>
+
+    <!-- Deep gold gradient -->
+    <linearGradient id="deepGold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#C9A227"/>
+      <stop offset="100%" stop-color="#8B6914"/>
+    </linearGradient>
+
+    <!-- Sunlight filter effect -->
+    <filter id="sunlight" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0.3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+
+    <!-- Single Unity Temple panel module (rotates 90° per instance) -->
+    <g id="panel">
+      <!-- Outer frame -->
+      <rect x="0" y="0" width="40" height="40" fill="none" stroke="#3D2914" stroke-width="1.5"/>
+      <!-- Central opalescent square -->
+      <rect x="8" y="8" width="24" height="24" fill="url(#opalescent)" stroke="#3D2914" stroke-width="0.8"/>
+      <!-- Inner gold diamond frame -->
+      <polygon points="20,4 36,20 20,36 4,20" fill="none" stroke="#8B6914" stroke-width="1"/>
+      <!-- Corner amber accents -->
+      <rect x="2" y="2" width="6" height="6" fill="#D4952A" stroke="#3D2914" stroke-width="0.5"/>
+      <rect x="32" y="2" width="6" height="6" fill="#D4952A" stroke="#3D2914" stroke-width="0.5"/>
+      <rect x="2" y="32" width="6" height="6" fill="#D4952A" stroke="#3D2914" stroke-width="0.5"/>
+      <rect x="32" y="32" width="6" height="6" fill="#D4952A" stroke="#3D2914" stroke-width="0.5"/>
+      <!-- Central cross motif -->
+      <rect x="18" y="12" width="4" height="16" fill="url(#deepGold)" stroke="#3D2914" stroke-width="0.4"/>
+      <rect x="12" y="18" width="16" height="4" fill="url(#deepGold)" stroke="#3D2914" stroke-width="0.4"/>
+      <!-- Central jewel -->
+      <circle cx="20" cy="20" r="3" fill="url(#amberGlow)" stroke="#3D2914" stroke-width="0.5"/>
+    </g>
+  </defs>
+
+  <!-- Background suggesting filtered daylight -->
+  <rect width="320" height="100" fill="#FFF9E8"/>
+
+  <!-- Subtle light rays -->
+  <g opacity="0.15">
+    <polygon points="160,0 180,100 140,100" fill="#F5C34B"/>
+    <polygon points="80,0 100,100 60,100" fill="#D4952A"/>
+    <polygon points="240,0 260,100 220,100" fill="#F5C34B"/>
+  </g>
+
+  <!-- Main border caming -->
+  <rect x="0" y="0" width="320" height="100" fill="none" stroke="#2A1A0A" stroke-width="3"/>
+
+  <!-- Row 1: Panels with alternating 90° rotation -->
+  <g filter="url(#sunlight)">
+    <!-- Panel 1 - 0° -->
+    <use href="#panel" x="0" y="5" transform="translate(0,5)"/>
+    <!-- Panel 2 - 90° -->
+    <use href="#panel" x="40" y="5" transform="translate(60,25) rotate(90) translate(-20,-20)"/>
+    <!-- Panel 3 - 0° -->
+    <use href="#panel" x="80" y="5" transform="translate(80,5)"/>
+    <!-- Panel 4 - 90° -->
+    <use href="#panel" x="120" y="5" transform="translate(140,25) rotate(90) translate(-20,-20)"/>
+    <!-- Panel 5 - 0° -->
+    <use href="#panel" x="160" y="5" transform="translate(160,5)"/>
+    <!-- Panel 6 - 90° -->
+    <use href="#panel" x="200" y="5" transform="translate(220,25) rotate(90) translate(-20,-20)"/>
+    <!-- Panel 7 - 0° -->
+    <use href="#panel" x="240" y="5" transform="translate(240,5)"/>
+    <!-- Panel 8 - 90° -->
+    <use href="#panel" x="280" y="5" transform="translate(300,25) rotate(90) translate(-20,-20)"/>
+  </g>
+
+  <!-- Row 2: Inverse rotation pattern -->
+  <g filter="url(#sunlight)">
+    <!-- Panel 1 - 90° -->
+    <use href="#panel" x="0" y="50" transform="translate(20,70) rotate(90) translate(-20,-20)"/>
+    <!-- Panel 2 - 0° -->
+    <use href="#panel" x="40" y="50" transform="translate(40,50)"/>
+    <!-- Panel 3 - 90° -->
+    <use href="#panel" x="80" y="50" transform="translate(100,70) rotate(90) translate(-20,-20)"/>
+    <!-- Panel 4 - 0° -->
+    <use href="#panel" x="120" y="50" transform="translate(120,50)"/>
+    <!-- Panel 5 - 90° -->
+    <use href="#panel" x="160" y="50" transform="translate(180,70) rotate(90) translate(-20,-20)"/>
+    <!-- Panel 6 - 0° -->
+    <use href="#panel" x="200" y="50" transform="translate(200,50)"/>
+    <!-- Panel 7 - 90° -->
+    <use href="#panel" x="240" y="50" transform="translate(260,70) rotate(90) translate(-20,-20)"/>
+    <!-- Panel 8 - 0° -->
+    <use href="#panel" x="280" y="50" transform="translate(280,50)"/>
+  </g>
+
+  <!-- Horizontal caming bars -->
+  <line x1="0" y1="5" x2="320" y2="5" stroke="#2A1A0A" stroke-width="2"/>
+  <line x1="0" y1="50" x2="320" y2="50" stroke="#2A1A0A" stroke-width="1.5"/>
+  <line x1="0" y1="95" x2="320" y2="95" stroke="#2A1A0A" stroke-width="2"/>
+
+  <!-- Vertical caming divisions -->
+  <g stroke="#2A1A0A" stroke-width="1.2">
+    <line x1="40" y1="0" x2="40" y2="100"/>
+    <line x1="80" y1="0" x2="80" y2="100"/>
+    <line x1="120" y1="0" x2="120" y2="100"/>
+    <line x1="160" y1="0" x2="160" y2="100"/>
+    <line x1="200" y1="0" x2="200" y2="100"/>
+    <line x1="240" y1="0" x2="240" y2="100"/>
+    <line x1="280" y1="0" x2="280" y2="100"/>
+  </g>
+
+  <!-- Corner accents for visual grounding -->
+  <rect x="2" y="2" width="8" height="8" fill="#8B6914" stroke="#2A1A0A" stroke-width="1"/>
+  <rect x="310" y="2" width="8" height="8" fill="#8B6914" stroke="#2A1A0A" stroke-width="1"/>
+  <rect x="2" y="90" width="8" height="8" fill="#8B6914" stroke="#2A1A0A" stroke-width="1"/>
+  <rect x="310" y="90" width="8" height="8" fill="#8B6914" stroke="#2A1A0A" stroke-width="1"/>
+</svg>
