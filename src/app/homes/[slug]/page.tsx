@@ -11,6 +11,7 @@ import { getGeneratedSvgUrl } from "@/lib/generated-houses";
 import { getHeroImageUrl } from "@/lib/hero-images";
 import { getArchitectPortraitUrl } from "@/lib/architect-portraits";
 import { isValidUrl } from "@/lib/url-helpers";
+import { SiteHeader } from "@/components/layout/SiteHeader";
 
 // Cast JSON data to proper types
 const propertiesData = propertiesDataRaw as Property[];
@@ -60,31 +61,21 @@ export default async function PropertyDetailPage({ params }: PageProps) {
 
   return (
     <>
+      {/* Site Header with Breadcrumb */}
+      <SiteHeader
+        breadcrumbs={[
+          { label: "USONIAN", href: "/" },
+          { label: "HOMES", href: "/homes" },
+          { label: property.home_name.toUpperCase() },
+        ]}
+      />
+
       {/* Hero Section - Split Layout */}
       <section className="border-b border-black">
         <div className="container py-16 md:py-24">
           <div className="flex flex-col-reverse lg:flex-row lg:items-start lg:justify-between gap-8 lg:gap-12">
             {/* Left: Content */}
             <div className="flex-1">
-              {/* Breadcrumb */}
-              <nav className="mb-8" aria-label="Breadcrumb">
-                <Link
-                  href="/homes"
-                  className="inline-flex items-center gap-3 text-sm font-semibold tracking-[0.1em] hover:underline underline-offset-4 transition-opacity"
-                >
-                  <Image
-                    src="/icons/logo-transparent.png"
-                    alt=""
-                    aria-hidden="true"
-                    width={20}
-                    height={20}
-                    className="w-5 h-5 object-contain"
-                  />
-                  <span className="opacity-60">ARCHIVE</span>
-                  <span className="opacity-60">/</span>
-                  <span>{property.home_name.toUpperCase()}</span>
-                </Link>
-              </nav>
 
               {/* Architect */}
               {architect && (

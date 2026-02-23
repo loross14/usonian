@@ -7,6 +7,7 @@ import { type Architect, type Property } from "@/types";
 import { ReferenceLink } from "@/components/ui/ReferenceLink";
 import { ArchitectPropertiesClient } from "./ArchitectPropertiesClient";
 import { isValidUrl } from "@/lib/url-helpers";
+import { SiteHeader } from "@/components/layout/SiteHeader";
 
 // Cast to proper types
 const architects = architectsData as Architect[];
@@ -58,32 +59,21 @@ export default async function ArchitectDetailPage({ params }: PageProps) {
 
   return (
     <>
+      {/* Site Header with Breadcrumb */}
+      <SiteHeader
+        breadcrumbs={[
+          { label: "USONIAN", href: "/" },
+          { label: "ARCHITECTS", href: "/architects" },
+          { label: architect.name.toUpperCase() },
+        ]}
+      />
+
       {/* Hero Section - Split Layout (matching property page) */}
       <section className="border-b border-black">
         <div className="container py-16 md:py-24">
           <div className="flex flex-col lg:flex-row lg:items-start gap-8 lg:gap-12">
             {/* Left Column */}
             <div className="flex-1">
-              {/* Breadcrumb */}
-            <nav className="mb-8" aria-label="Breadcrumb">
-              <Link
-                href="/architects"
-                className="inline-flex items-center gap-3 text-sm font-semibold tracking-[0.1em] hover:underline underline-offset-4 transition-opacity"
-              >
-                <Image
-                  src="/icons/logo-transparent.png"
-                  alt=""
-                  aria-hidden="true"
-                  width={20}
-                  height={20}
-                  className="w-5 h-5 object-contain"
-                />
-                <span className="opacity-60">ARCHITECTS</span>
-                <span className="opacity-60">/</span>
-                <span>{architect.name.toUpperCase()}</span>
-              </Link>
-            </nav>
-
             {/* Stacked Name */}
             <h1 className="animate-fade-up mb-6">
               {firstName}<br />

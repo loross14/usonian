@@ -6,7 +6,7 @@ import { createPortal } from "react-dom";
 import { PropertyList } from "@/components/property/PropertyList";
 import { PropertyCard } from "@/components/property/PropertyCard";
 import { HeroFilter } from "@/components/ui/HeroFilter";
-import { B2Bomber } from "@/components/ui/B2Bomber";
+// import { B2Bomber } from "@/components/ui/B2Bomber"; // Disabled for now
 import { sortProperties, type SortOption, SORT_OPTIONS } from "@/utils/propertySort";
 
 import { Pagination } from "@/components/pagination/Pagination";
@@ -237,8 +237,8 @@ export function HomesClient({
         />
       )}
 
-      {/* Mouse-following B-2 Stealth Bomber */}
-      <B2Bomber />
+      {/* Mouse-following B-2 Stealth Bomber - Disabled for now */}
+      {/* <B2Bomber /> */}
     </>
   );
 }
