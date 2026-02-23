@@ -31,8 +31,11 @@ export const metadata: Metadata = {
     "organic architecture",
   ],
   icons: {
-    icon: "/icons/Usonian-Logo.png",
-    apple: "/icons/Usonian-Logo.png",
+    icon: [
+      { url: "/icons/usonian-favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icons/usonian-favicon-192.png", sizes: "192x192", type: "image/png" },
+    ],
+    apple: "/icons/usonian-apple-touch-icon.png",
   },
 };
 
