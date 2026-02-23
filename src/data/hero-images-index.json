@@ -119,6 +119,9 @@
       "slug": "bonnet-house"
     },
     {
+      "slug": "bonnet-house-neutra"
+    },
+    {
       "slug": "bookstaber-house"
     },
     {
@@ -269,6 +272,9 @@
       "slug": "ebelin-bucerius-house"
     },
     {
+      "slug": "edsel-eleanor-ford-house"
+    },
+    {
       "slug": "edward-boynton-house"
     },
     {
@@ -408,6 +414,9 @@
     },
     {
       "slug": "glen-house"
+    },
+    {
+      "slug": "glen-house-neutra"
     },
     {
       "slug": "goetsch-winckler-house"
@@ -629,6 +638,9 @@
       "slug": "linn-house"
     },
     {
+      "slug": "linn-house-neutra"
+    },
+    {
       "slug": "loring-house"
     },
     {
@@ -726,6 +738,9 @@
     },
     {
       "slug": "perkins-house"
+    },
+    {
+      "slug": "perkins-house-neutra"
     },
     {
       "slug": "pescher-house"
