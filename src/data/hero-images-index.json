@@ -91,10 +91,17 @@
       "slug": "austin-house-broad-margin"
     },
     {
+      "slug": "bailey-house-case-study-20"
+    },
+    {
       "slug": "ben-rebhuhn-house"
     },
     {
       "slug": "benjamin-adelman-house"
+    },
+    {
+      "slug": "benjamin-siegel-house",
+      "hero_image": "/ai-images/hero/benjamin-siegel-house.jpg"
     },
     {
       "slug": "bernard-schwartz-house"
@@ -103,7 +110,13 @@
       "slug": "beth-sholom-synagogue"
     },
     {
+      "slug": "bewobau-housing"
+    },
+    {
       "slug": "bob-hope-residence"
+    },
+    {
+      "slug": "bonnet-house"
     },
     {
       "slug": "bookstaber-house"
@@ -115,7 +128,19 @@
       "slug": "brothers-house-the-gray"
     },
     {
+      "slug": "brown-house-neutra"
+    },
+    {
+      "slug": "bubeshko-apartments"
+    },
+    {
       "slug": "bubilian-house"
+    },
+    {
+      "slug": "bucerius-house"
+    },
+    {
+      "slug": "buck-house"
     },
     {
       "slug": "buckley-house"
@@ -157,6 +182,9 @@
       "slug": "chemosphere-malin-residence"
     },
     {
+      "slug": "chuey-house"
+    },
+    {
       "slug": "church-of-saint-mary"
     },
     {
@@ -164,6 +192,9 @@
     },
     {
       "slug": "clarence-sondern-house"
+    },
+    {
+      "slug": "clark-house-neutra"
     },
     {
       "slug": "clarke-arnold-house"
@@ -223,6 +254,9 @@
       "slug": "dow-house-studio"
     },
     {
+      "slug": "druckman-residence"
+    },
+    {
       "slug": "dudley-spencer-house"
     },
     {
@@ -230,6 +264,9 @@
     },
     {
       "slug": "earl-stein-house"
+    },
+    {
+      "slug": "ebelin-bucerius-house"
     },
     {
       "slug": "edward-boynton-house"
@@ -241,10 +278,16 @@
       "slug": "edward-serlin-house"
     },
     {
+      "slug": "el-pueblo-ribera-court"
+    },
+    {
       "slug": "elam-house"
     },
     {
       "slug": "elizabeth-murphy-house"
+    },
+    {
+      "slug": "elliott-house-schindler"
     },
     {
       "slug": "ellis-feiman-house"
@@ -292,6 +335,9 @@
       "slug": "first-united-methodist-church"
     },
     {
+      "slug": "fitzpatrick-leland-house"
+    },
+    {
       "slug": "florida-southern-college"
     },
     {
@@ -314,6 +360,9 @@
     },
     {
       "slug": "friedman-house-fir-tree"
+    },
+    {
+      "slug": "galka-scheyer-house"
     },
     {
       "slug": "gallery-house"
@@ -355,13 +404,25 @@
       "slug": "gerald-tonkens-house"
     },
     {
+      "slug": "gettysburg-cyclorama"
+    },
+    {
+      "slug": "glen-house"
+    },
+    {
       "slug": "goetsch-winckler-house"
+    },
+    {
+      "slug": "gonzalez-gorrondona-house"
     },
     {
       "slug": "gordon-house"
     },
     {
       "slug": "grace-a-dow-memorial-library"
+    },
+    {
+      "slug": "grace-miller-house"
     },
     {
       "slug": "greenhills-school"
@@ -419,6 +480,9 @@
     },
     {
       "slug": "house-of-spirit"
+    },
+    {
+      "slug": "how-house"
     },
     {
       "slug": "howard-ball-house"
@@ -496,13 +560,25 @@
       "slug": "kalita-humphreys-theater"
     },
     {
+      "slug": "kallis-sharlin-residence"
+    },
+    {
+      "slug": "kambara-residence"
+    },
+    {
       "slug": "karl-kundert-medical-clinic"
     },
     {
       "slug": "karl-staley-house"
     },
     {
+      "slug": "kaufmann-desert-house"
+    },
+    {
       "slug": "keland-boyd-house"
+    },
+    {
+      "slug": "kemper-house-neutra"
     },
     {
       "slug": "kentuck-knob"
@@ -511,7 +587,13 @@
       "slug": "king-kamehameha-golf-club"
     },
     {
+      "slug": "king-of-prussia-house"
+    },
+    {
       "slug": "knight-house-duke"
+    },
+    {
+      "slug": "kun-house"
     },
     {
       "slug": "lapp-riverhouse"
@@ -521,6 +603,9 @@
     },
     {
       "slug": "lautner-house"
+    },
+    {
+      "slug": "lechner-house"
     },
     {
       "slug": "lencioni-residence-wave"
@@ -538,16 +623,34 @@
       "slug": "lindholm-service-station"
     },
     {
+      "slug": "linn-house"
+    },
+    {
+      "slug": "loring-house"
+    },
+    {
       "slug": "louis-penfield-house"
     },
     {
+      "slug": "lovell-beach-house"
+    },
+    {
+      "slug": "lovell-health-house"
+    },
+    {
       "slug": "lowell-walter-house-cedar-rock"
+    },
+    {
+      "slug": "mackey-apartments"
     },
     {
       "slug": "malcolm-willey-house"
     },
     {
       "slug": "malibu-estate-own"
+    },
+    {
+      "slug": "manola-court"
     },
     {
       "slug": "marin-county-civic-center"
@@ -589,10 +692,19 @@
       "slug": "nathan-rubin-house"
     },
     {
+      "slug": "neutra-vdl-studio"
+    },
+    {
       "slug": "norman-lykes-house"
     },
     {
       "slug": "notz-house"
+    },
+    {
+      "slug": "ohara-house"
+    },
+    {
+      "slug": "oliver-house-schindler"
     },
     {
       "slug": "oscar-c-diehl-house"
@@ -608,6 +720,12 @@
     },
     {
       "slug": "paul-trier-house"
+    },
+    {
+      "slug": "perkins-house"
+    },
+    {
+      "slug": "pescher-house"
     },
     {
       "slug": "peters-margedant-house"
@@ -647,6 +765,12 @@
     },
     {
       "slug": "reed-house"
+    },
+    {
+      "slug": "rentsch-house"
+    },
+    {
+      "slug": "reunion-house"
     },
     {
       "slug": "rev-jesse-r-zeigler-house"
@@ -706,7 +830,13 @@
       "slug": "ross-house"
     },
     {
+      "slug": "roxy-roth-house"
+    },
+    {
       "slug": "russell-kraus-house"
+    },
+    {
+      "slug": "sale-house"
     },
     {
       "slug": "samuel-dorothy-eppstein-house"
@@ -724,6 +854,15 @@
       "slug": "sc-johnson-research-tower"
     },
     {
+      "slug": "schindler-echo-park"
+    },
+    {
+      "slug": "schindler-house-kings-road"
+    },
+    {
+      "slug": "schlessinger-house"
+    },
+    {
       "slug": "seamour-shavin-house"
     },
     {
@@ -737,6 +876,9 @@
     },
     {
       "slug": "silvertop-reiner-residence"
+    },
+    {
+      "slug": "singleton-house"
     },
     {
       "slug": "skyfire-own"
@@ -760,6 +902,9 @@
       "slug": "st-john-s-lutheran-church"
     },
     {
+      "slug": "sten-frenke-house"
+    },
+    {
       "slug": "stephen-hunt-bungalow"
     },
     {
@@ -772,19 +917,28 @@
       "slug": "stoneflower"
     },
     {
+      "slug": "strathmore-apartments"
+    },
+    {
       "slug": "stuart-richardson-house"
     },
     {
       "slug": "suntop-homes"
     },
     {
-      "slug": "taliesin-west"
-    },
-    {
       "slug": "taliesin"
     },
     {
+      "slug": "taliesin-west"
+    },
+    {
+      "slug": "taylor-house-neutra"
+    },
+    {
       "slug": "teaters-knoll"
+    },
+    {
+      "slug": "the-lew-house"
     },
     {
       "slug": "theodore-baird-house"
@@ -802,10 +956,16 @@
       "slug": "thomas-p-hardy-house"
     },
     {
+      "slug": "tischler-house"
+    },
+    {
       "slug": "toufic-kalil-house"
     },
     {
       "slug": "towsley-house"
+    },
+    {
+      "slug": "tremaine-house"
     },
     {
       "slug": "trinkaus-house"
@@ -821,6 +981,9 @@
     },
     {
       "slug": "v-c-morris-gift-store"
+    },
+    {
+      "slug": "walker-house-schindler"
     },
     {
       "slug": "walter-davidson-house"
@@ -863,6 +1026,12 @@
     },
     {
       "slug": "william-tracy-house"
+    },
+    {
+      "slug": "wilson-house-schindler"
+    },
+    {
+      "slug": "wirin-house"
     },
     {
       "slug": "wood-peterson-house"
