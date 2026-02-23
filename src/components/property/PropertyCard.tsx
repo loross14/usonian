@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Property, formatPrice, formatLocation, getPropertyBadgeType } from "@/types";
 import { Badge } from "@/components/ui/Badge";
 import { getGeneratedSvgUrl } from "@/lib/generated-houses";
@@ -42,10 +43,12 @@ export function PropertyCard({ property }: PropertyCardProps) {
         {/* Experience Badge - shows based on property's experience category */}
         <Badge status={getPropertyBadgeType(property)} variant="overlay" />
         {imageUrl && (
-          <img
+          <Image
             src={imageUrl}
             alt={property.home_name}
-            className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-200"
+            fill
+            className="object-cover grayscale hover:grayscale-0 transition-all duration-200"
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
         )}
       </div>

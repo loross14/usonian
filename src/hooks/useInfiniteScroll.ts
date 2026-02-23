@@ -57,8 +57,9 @@ export function useInfiniteScroll<T>({
     setIsLoading(false);
   }, [batchSize]);
 
-  // Reset when items array reference changes
+  // Reset pagination when items array reference changes
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- reactive reset when data changes is valid
     reset();
   }, [items, reset]);
 

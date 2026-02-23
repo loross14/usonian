@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import architectsData from "@/data/architects.json";
 import { CompassIcon } from "@/components/icons/CompassIcon";
 import { type Architect } from "@/types";
@@ -39,10 +40,12 @@ export default function ArchitectsPage() {
               href="/homes"
               className="inline-flex items-center gap-3 text-sm font-semibold tracking-[0.1em] hover:underline underline-offset-4 transition-opacity"
             >
-              <img
+              <Image
                 src="/icons/logo-transparent.png"
                 alt=""
                 aria-hidden="true"
+                width={20}
+                height={20}
                 className="w-5 h-5 object-contain"
               />
               <span className="opacity-60">ARCHIVE</span>

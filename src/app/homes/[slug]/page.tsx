@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import propertiesDataRaw from "@/data/properties.json";
 import architectsDataRaw from "@/data/architects.json";
 import { formatPrice, formatLocation, getPropertyBadgeType, type Property, type Architect } from "@/types";
@@ -46,9 +47,6 @@ export default async function PropertyDetailPage({ params }: PageProps) {
 
   const architect = architectsData.find((a) => a.id === property.architect_id);
   const location = formatLocation(property.parsed_city, property.parsed_state);
-  const price = property.status === "active"
-    ? (property.listing_price ? `Listed for ${formatPrice(property.listing_price)}` : "Price not listed")
-    : (property.last_sale_price ? formatPrice(property.last_sale_price) : "PRICE UPON REQUEST");
 
   // Get hero image (prioritize JPG photos over SVG illustrations)
   const heroImageUrl = getHeroImageUrl(property.slug);
@@ -74,10 +72,12 @@ export default async function PropertyDetailPage({ params }: PageProps) {
                   href="/homes"
                   className="inline-flex items-center gap-3 text-sm font-semibold tracking-[0.1em] hover:underline underline-offset-4 transition-opacity"
                 >
-                  <img
+                  <Image
                     src="/icons/logo-transparent.png"
                     alt=""
                     aria-hidden="true"
+                    width={20}
+                    height={20}
                     className="w-5 h-5 object-contain"
                   />
                   <span className="opacity-60">ARCHIVE</span>
@@ -105,13 +105,13 @@ export default async function PropertyDetailPage({ params }: PageProps) {
               {/* Quick Stats */}
               <div className="flex flex-wrap items-center gap-4 text-xs tracking-[0.1em]">
                 <span className="opacity-60">{property.year_built}</span>
-                <span className="opacity-30">//</span>
+                <span className="opacity-30" aria-hidden="true">{"/"}</span><span className="opacity-30" aria-hidden="true">{"/"}</span>
                 <span className="opacity-60">{location}</span>
-                <span className="opacity-30">//</span>
+                <span className="opacity-30" aria-hidden="true">{"/"}</span><span className="opacity-30" aria-hidden="true">{"/"}</span>
                 <Badge status={getPropertyBadgeType(property)} />
                 {property.preservation_status && (
                   <>
-                    <span className="opacity-30">//</span>
+                    <span className="opacity-30" aria-hidden="true">{"/"}</span><span className="opacity-30" aria-hidden="true">{"/"}</span>
                     <span className="text-gold text-[10px] tracking-[0.2em]">{property.preservation_status}</span>
                   </>
                 )}
@@ -122,11 +122,13 @@ export default async function PropertyDetailPage({ params }: PageProps) {
             <div className="lg:flex-shrink-0 lg:self-start lg:max-w-lg flex flex-col gap-4">
               {/* Property Image */}
               {propertyImageUrl && (
-                <div className="w-full aspect-[4/3] rounded overflow-hidden">
-                  <img
+                <div className="w-full aspect-[4/3] rounded overflow-hidden relative">
+                  <Image
                     src={propertyImageUrl}
                     alt={property.home_name}
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 512px"
                   />
                 </div>
               )}
@@ -269,9 +271,11 @@ export default async function PropertyDetailPage({ params }: PageProps) {
                 {/* Architect Portrait */}
                 {architectPortraitUrl && (
                   <div className="mb-4">
-                    <img
+                    <Image
                       src={architectPortraitUrl}
                       alt={`Portrait of ${architect.name}`}
+                      width={96}
+                      height={96}
                       className="w-24 h-24 object-contain grayscale group-hover:grayscale-0 transition-all"
                     />
                   </div>

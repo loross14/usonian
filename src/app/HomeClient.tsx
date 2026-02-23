@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { getGeneratedSvgUrl } from "@/lib/generated-houses";
 import { getHeroImageUrl } from "@/lib/hero-images";
 import { formatPrice, type Property } from "@/types";
@@ -77,9 +78,15 @@ export function HomeClient({
                 <span className={`v2-status-badge ${getStatusBadgeClass(property.status)}`}>
                   {getStatusLabel(property.status)}
                 </span>
-                <div className="v2-property-image">
+                <div className="v2-property-image relative">
                   {imageUrl ? (
-                    <img src={imageUrl} alt={property.home_name} />
+                    <Image
+                      src={imageUrl}
+                      alt={property.home_name}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
                   ) : (
                     property.home_name.toUpperCase()
                   )}

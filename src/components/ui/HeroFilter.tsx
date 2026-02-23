@@ -63,7 +63,7 @@ export function HeroFilter({
               aria-pressed={currentStatus === tab.value}
             >
               <span className="hero-filter-tab-label">
-                {tab.label}
+                {tab.shortLabel}
               </span>
             </button>
           ))}
@@ -79,7 +79,6 @@ export function HeroFilter({
           value={currentArchitect}
           options={architectOptions.map((a) => ({ value: a.id, label: a.name }))}
           onChange={onArchitectChange}
-          isExpanded={isExpanded}
         />
         <CompactDropdown
           icon="location"
@@ -87,7 +86,6 @@ export function HeroFilter({
           value={currentState}
           options={stateOptions.map((s) => ({ value: s, label: s }))}
           onChange={onStateChange}
-          isExpanded={isExpanded}
         />
       </div>
     </div>
@@ -101,7 +99,6 @@ interface CompactDropdownProps {
   value: string | null;
   options: Array<{ value: string; label: string }>;
   onChange: (value: string | null) => void;
-  isExpanded: boolean;
 }
 
 function CompactDropdown({
@@ -110,7 +107,6 @@ function CompactDropdown({
   value,
   options,
   onChange,
-  isExpanded,
 }: CompactDropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);

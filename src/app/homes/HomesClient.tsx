@@ -23,6 +23,26 @@ const FILTER_STORAGE_KEY = "usonian-archive-experience-filter";
 // Valid experience filter values
 const VALID_FILTERS: ExperienceFilter[] = ["all", "sale", "visit", "stay", "offmarket"];
 
+/**
+ * Get initial filter value from URL or localStorage (client-side only)
+ * Priority: URL param > localStorage > default ("all")
+ */
+function getInitialFilter(): ExperienceFilter {
+  if (typeof window === "undefined") return "all";
+
+  const urlStatus = new URLSearchParams(window.location.search).get("status") as ExperienceFilter;
+  if (urlStatus && VALID_FILTERS.includes(urlStatus)) {
+    return urlStatus;
+  }
+
+  const stored = localStorage.getItem(FILTER_STORAGE_KEY) as ExperienceFilter;
+  if (stored && VALID_FILTERS.includes(stored)) {
+    return stored;
+  }
+
+  return "all";
+}
+
 interface EnhancedProperty extends Property {
   architect_name?: string;
   is_taliesin?: boolean;
@@ -50,63 +70,46 @@ export function HomesClient({
   const router = useRouter();
   const pathname = usePathname();
   const [view, setView] = useState<"list" | "grid">("grid");
+
+  // Portal container - initialized after mount
   const [portalContainer, setPortalContainer] = useState<HTMLElement | null>(null);
 
-  // Experience filter state - initialized to "all" (default), then updated on mount
-  // Priority: URL param > localStorage > default ("all")
-  const [currentStatus, setCurrentStatus] = useState<ExperienceFilter>("all");
-  const [isStatusInitialized, setIsStatusInitialized] = useState(false);
+  // Experience filter state - initialized from URL/localStorage via initializer (single render)
+  const [currentStatus, setCurrentStatus] = useState<ExperienceFilter>(getInitialFilter);
 
-  // Find the portal target on mount
+  // Find portal container on mount
   useEffect(() => {
     const slot = document.getElementById("hero-filter-slot");
-    setPortalContainer(slot);
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- DOM query on mount is valid
+    if (slot) setPortalContainer(slot);
   }, []);
 
-  // Initialize filter from URL or localStorage on mount (client-side only)
+  // Sync URL with localStorage preference on mount (deferred decision - keeping current behavior)
   useEffect(() => {
     const urlStatus = searchParams.get("status") as ExperienceFilter;
-
-    // If URL has a valid filter, use it
-    if (urlStatus && VALID_FILTERS.includes(urlStatus)) {
-      setCurrentStatus(urlStatus);
-      // Also persist to localStorage
-      localStorage.setItem(FILTER_STORAGE_KEY, urlStatus);
-    } else {
-      // No URL param - check localStorage
+    if (!urlStatus) {
       const stored = localStorage.getItem(FILTER_STORAGE_KEY) as ExperienceFilter;
-      if (stored && VALID_FILTERS.includes(stored)) {
-        setCurrentStatus(stored);
-        // Update URL to match stored preference
+      if (stored && VALID_FILTERS.includes(stored) && stored !== "all") {
         const params = new URLSearchParams(searchParams.toString());
-        if (stored === "all") {
-          // "all" is the default, so we can omit it from URL or keep it clean
-          params.delete("status");
-        } else {
-          params.set("status", stored);
-        }
+        params.set("status", stored);
         router.replace(`${pathname}?${params.toString()}`, { scroll: false });
       }
-      // Otherwise, keep the default "sale"
     }
-    setIsStatusInitialized(true);
-  }, []); // Only run on mount
+  }, [pathname, router, searchParams]);
 
   // Sync filter state when URL changes (e.g., browser back/forward)
   useEffect(() => {
-    if (!isStatusInitialized) return;
-
     const urlStatus = searchParams.get("status") as ExperienceFilter;
     if (urlStatus && VALID_FILTERS.includes(urlStatus)) {
       if (urlStatus !== currentStatus) {
+        // eslint-disable-next-line react-hooks/set-state-in-effect -- syncing state with URL is valid
         setCurrentStatus(urlStatus);
         localStorage.setItem(FILTER_STORAGE_KEY, urlStatus);
       }
     } else if (!urlStatus && currentStatus !== "all") {
-      // URL has no status param, default to "all"
       setCurrentStatus("all");
     }
-  }, [searchParams, isStatusInitialized]);
+  }, [searchParams, currentStatus]);
 
   const currentArchitect = searchParams.get("architect");
   const currentState = searchParams.get("state");

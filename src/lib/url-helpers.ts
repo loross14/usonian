@@ -62,15 +62,3 @@ export function isValidUrl(url: string | null | undefined): url is string {
     return false;
   }
 }
-
-/**
- * Get the domain from a URL for display
- * e.g., "https://www.dwell.com/article/..." → "dwell.com"
- */
-export function getDomain(url: string): string {
-  try {
-    return new URL(url).hostname.replace(/^www\./, '');
-  } catch {
-    return url;
-  }
-}

@@ -13,13 +13,6 @@ const architectPhotos: Record<string, string> = {
 };
 
 /**
- * Check if a portrait photo exists for an architect slug
- */
-export function hasArchitectPortrait(slug: string): boolean {
-  return slug in architectPhotos;
-}
-
-/**
  * Get the URL path for an architect's portrait photo
  * Returns null if no portrait exists for this architect
  */

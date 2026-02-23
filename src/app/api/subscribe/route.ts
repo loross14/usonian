@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
+import { isValidEmail, normalizeEmail } from '@/lib/validation/email'
 
 function getSupabase() {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
@@ -10,12 +11,6 @@ function getSupabase() {
   }
 
   return createClient(supabaseUrl, supabaseServiceKey)
-}
-
-// Simple email validation
-function isValidEmail(email: string): boolean {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-  return emailRegex.test(email)
 }
 
 export async function POST(request: NextRequest) {
@@ -32,7 +27,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const normalizedEmail = email.toLowerCase().trim()
+    const normalizedEmail = normalizeEmail(email)
 
     if (!isValidEmail(normalizedEmail)) {
       return NextResponse.json(
@@ -119,7 +114,7 @@ export async function DELETE(request: NextRequest) {
       )
     }
 
-    const normalizedEmail = email.toLowerCase().trim()
+    const normalizedEmail = normalizeEmail(email)
 
     const { error } = await supabase
       .from('subscribers')

@@ -40,11 +40,11 @@ export function CountdownLoader({
 
   // Subtle glitch animation during loading
   useEffect(() => {
-    if (!isLoading) {
-      setGlitchFrame(0);
-      return;
-    }
+    if (!isLoading) return;
 
+    // Reset frame when loading starts, then animate
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- resetting animation state on prop change is valid
+    setGlitchFrame(0);
     const interval = setInterval(() => {
       setGlitchFrame((prev) => (prev + 1) % 4);
     }, 150);

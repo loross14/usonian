@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import architectsData from "@/data/architects.json";
 import propertiesData from "@/data/properties.json";
 import { type Architect, type Property } from "@/types";
@@ -69,10 +70,12 @@ export default async function ArchitectDetailPage({ params }: PageProps) {
                 href="/architects"
                 className="inline-flex items-center gap-3 text-sm font-semibold tracking-[0.1em] hover:underline underline-offset-4 transition-opacity"
               >
-                <img
+                <Image
                   src="/icons/logo-transparent.png"
                   alt=""
                   aria-hidden="true"
+                  width={20}
+                  height={20}
                   className="w-5 h-5 object-contain"
                 />
                 <span className="opacity-60">ARCHITECTS</span>
@@ -92,7 +95,7 @@ export default async function ArchitectDetailPage({ params }: PageProps) {
               <span className="font-bold">{propertyCount} PROPERTIES</span>
               {isTaliesin && (
                 <>
-                  <span className="opacity-30">//</span>
+                  <span className="opacity-30" aria-hidden="true">{"/"}</span><span className="opacity-30" aria-hidden="true">{"/"}</span>
                   <span className="opacity-60">TALIESIN &apos;{architect.fellowship_years?.split('-')[0]?.slice(-2)}-&apos;{architect.fellowship_years?.split('-')[1]?.slice(-2)}</span>
                 </>
               )}

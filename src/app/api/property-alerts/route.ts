@@ -1,14 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@supabase/supabase-js'
+import { isValidEmail, normalizeEmail } from '@/lib/validation/email'
 
 // Initialize Supabase client with service role for bypassing RLS
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY
-
-function isValidEmail(email: string): boolean {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-  return emailRegex.test(email)
-}
 
 /**
  * POST: Create a property listing alert
@@ -47,7 +43,7 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const normalizedEmail = email.toLowerCase().trim()
+    const normalizedEmail = normalizeEmail(email)
 
     // Check if alert already exists
     const { data: existingAlert } = await supabase
@@ -139,7 +135,7 @@ export async function DELETE(request: NextRequest) {
         status: 'unsubscribed',
         unsubscribed_at: new Date().toISOString(),
       })
-      .eq('email', email.toLowerCase())
+      .eq('email', normalizeEmail(email))
       .eq('property_id', propertyId)
 
     if (error) throw error
