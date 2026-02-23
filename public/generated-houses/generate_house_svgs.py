@@ -1112,6 +1112,447 @@ def generate_stoneflower(slug: str, home_name: str, year: int) -> str:
 
     return svg
 
+# =============================================================================
+# ALBERT KAHN ARCHITECTURAL STYLE GENERATORS
+# =============================================================================
+
+def generate_cotswold_house(slug: str, home_name: str, year: int) -> str:
+    """Generate Cotswold/English Country style house (Edsel & Eleanor Ford House).
+
+    Key features:
+    - Briar Hill sandstone walls (warm tawny color)
+    - Steep pitched gabled roofs with asymmetric massing
+    - Split-stone English slate roof
+    - Large stone chimneys
+    - Diamond-patterned leaded glass windows
+    - Storybook/medieval cottage character
+    """
+    colors = {
+        'sandstone': 'rgb(194, 170, 138)',  # Warm tawny sandstone
+        'sandstone_dark': 'rgb(156, 132, 105)',
+        'slate': 'rgb(72, 78, 88)',  # English slate gray
+        'slate_light': 'rgb(95, 102, 115)',
+        'accent': COLORS['gold'],
+        'dark': COLORS['charcoal'],
+        'chimney': 'rgb(140, 115, 90)',
+        'window_lead': 'rgb(55, 55, 55)',
+    }
+
+    anim_css = ANIMATIONS['breathe']
+
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <style>
+      {anim_css}
+    </style>
+    <pattern id="stone-texture-{slug[:8]}" patternUnits="userSpaceOnUse" width="20" height="20">
+      <rect width="20" height="20" fill="{colors['sandstone']}"/>
+      <rect x="0" y="0" width="9" height="9" fill="{colors['sandstone_dark']}" opacity="0.3"/>
+      <rect x="10" y="10" width="9" height="9" fill="{colors['sandstone_dark']}" opacity="0.3"/>
+    </pattern>
+  </defs>
+
+  <!-- White Background -->
+  <rect width="400" height="300" fill="white"/>
+
+  <!-- Ground/lawn -->
+  <rect x="0" y="230" width="400" height="70" fill="rgb(180, 195, 165)" opacity="0.3"/>
+
+  <g class="house-main">
+    <!-- Main sandstone wall - left wing -->
+    <rect x="30" y="140" width="120" height="90" fill="url(#stone-texture-{slug[:8]})" stroke="{colors['dark']}" stroke-width="1"/>
+
+    <!-- Main sandstone wall - center/grand hall -->
+    <rect x="145" y="120" width="130" height="110" fill="url(#stone-texture-{slug[:8]})" stroke="{colors['dark']}" stroke-width="1"/>
+
+    <!-- Main sandstone wall - right wing -->
+    <rect x="270" y="150" width="100" height="80" fill="url(#stone-texture-{slug[:8]})" stroke="{colors['dark']}" stroke-width="1"/>
+
+    <!-- Steep gabled roof - left wing -->
+    <polygon
+      points="25,140 90,70 160,140"
+      fill="{colors['slate']}"
+      stroke="{colors['dark']}"
+      stroke-width="2"
+    />
+    <!-- Roof texture lines - left -->
+    <line x1="50" y1="125" x2="130" y2="125" stroke="{colors['slate_light']}" stroke-width="1" opacity="0.5"/>
+    <line x1="60" y1="110" x2="120" y2="110" stroke="{colors['slate_light']}" stroke-width="1" opacity="0.5"/>
+
+    <!-- Steep gabled roof - center (tallest) -->
+    <polygon
+      points="140,120 210,45 280,120"
+      fill="{colors['slate']}"
+      stroke="{colors['dark']}"
+      stroke-width="2"
+      class="accent"
+    />
+    <!-- Roof texture lines - center -->
+    <line x1="160" y1="100" x2="260" y2="100" stroke="{colors['slate_light']}" stroke-width="1" opacity="0.5"/>
+    <line x1="175" y1="80" x2="245" y2="80" stroke="{colors['slate_light']}" stroke-width="1" opacity="0.5"/>
+
+    <!-- Steep gabled roof - right wing -->
+    <polygon
+      points="265,150 320,100 380,150"
+      fill="{colors['slate']}"
+      stroke="{colors['dark']}"
+      stroke-width="2"
+    />
+
+    <!-- Tall stone chimney - left -->
+    <rect x="80" y="40" width="18" height="55" fill="{colors['chimney']}" stroke="{colors['dark']}" stroke-width="1"/>
+    <rect x="77" y="38" width="24" height="6" fill="{colors['chimney']}" stroke="{colors['dark']}" stroke-width="1"/>
+
+    <!-- Tall stone chimney - center -->
+    <rect x="230" y="20" width="20" height="50" fill="{colors['chimney']}" stroke="{colors['dark']}" stroke-width="1"/>
+    <rect x="227" y="18" width="26" height="6" fill="{colors['chimney']}" stroke="{colors['dark']}" stroke-width="1"/>
+
+    <!-- Diamond-patterned leaded glass windows -->
+    <g class="windows">
+      <!-- Left wing windows - diamond pattern -->
+      <rect x="50" y="160" width="35" height="45" fill="{colors['accent']}" opacity="0.6"/>
+      <line x1="50" y1="182" x2="85" y2="182" stroke="{colors['window_lead']}" stroke-width="1"/>
+      <line x1="67" y1="160" x2="67" y2="205" stroke="{colors['window_lead']}" stroke-width="1"/>
+      <!-- Diamond pattern -->
+      <line x1="50" y1="170" x2="67" y2="182" stroke="{colors['window_lead']}" stroke-width="1"/>
+      <line x1="67" y1="170" x2="85" y2="182" stroke="{colors['window_lead']}" stroke-width="1"/>
+      <line x1="50" y1="195" x2="67" y2="182" stroke="{colors['window_lead']}" stroke-width="1"/>
+      <line x1="67" y1="195" x2="85" y2="182" stroke="{colors['window_lead']}" stroke-width="1"/>
+
+      <rect x="100" y="160" width="35" height="45" fill="{colors['accent']}" opacity="0.6"/>
+      <line x1="100" y1="182" x2="135" y2="182" stroke="{colors['window_lead']}" stroke-width="1"/>
+      <line x1="117" y1="160" x2="117" y2="205" stroke="{colors['window_lead']}" stroke-width="1"/>
+
+      <!-- Center grand window -->
+      <rect x="175" y="140" width="70" height="60" fill="{colors['accent']}" opacity="0.6"/>
+      <line x1="175" y1="170" x2="245" y2="170" stroke="{colors['window_lead']}" stroke-width="2"/>
+      <line x1="197" y1="140" x2="197" y2="200" stroke="{colors['window_lead']}" stroke-width="1"/>
+      <line x1="210" y1="140" x2="210" y2="200" stroke="{colors['window_lead']}" stroke-width="2"/>
+      <line x1="223" y1="140" x2="223" y2="200" stroke="{colors['window_lead']}" stroke-width="1"/>
+
+      <!-- Right wing windows -->
+      <rect x="290" y="170" width="30" height="35" fill="{colors['accent']}" opacity="0.6"/>
+      <line x1="305" y1="170" x2="305" y2="205" stroke="{colors['window_lead']}" stroke-width="1"/>
+      <rect x="330" y="170" width="25" height="35" fill="{colors['accent']}" opacity="0.6"/>
+    </g>
+
+    <!-- Arched entry door with wrought iron -->
+    <path
+      d="M 195 230 L 195 200 Q 210 185 225 200 L 225 230 Z"
+      fill="{colors['dark']}"
+    />
+    <path
+      d="M 198 230 L 198 202 Q 210 190 222 202 L 222 230 Z"
+      fill="{colors['chimney']}"
+    />
+
+    <!-- Entry archway stone detail -->
+    <path
+      d="M 188 200 Q 210 180 232 200"
+      fill="none"
+      stroke="{colors['sandstone_dark']}"
+      stroke-width="6"
+    />
+  </g>
+
+  <!-- Formal garden hint -->
+  <ellipse cx="100" cy="260" rx="40" ry="12" fill="rgb(160, 180, 145)" opacity="0.4"/>
+  <ellipse cx="300" cy="260" rx="40" ry="12" fill="rgb(160, 180, 145)" opacity="0.4"/>
+</svg>'''
+
+    return svg
+
+
+def generate_tudor_revival_house(slug: str, home_name: str, year: int) -> str:
+    """Generate Tudor Revival style house (Jerome Remick House).
+
+    Key features:
+    - Half-timbering with dark beams on light stucco
+    - Steep pitched roof
+    - Prominent decorative chimneys
+    - Leaded glass windows with cherub details
+    - Oak paneling suggestion
+    - Stone and stucco combination
+    """
+    colors = {
+        'stucco': 'rgb(245, 238, 225)',  # Cream stucco
+        'timber': 'rgb(55, 40, 30)',  # Dark oak timber
+        'roof': 'rgb(95, 75, 60)',  # Dark slate/wood shingle
+        'roof_light': 'rgb(115, 95, 80)',
+        'stone': 'rgb(140, 135, 125)',
+        'accent': COLORS['gold'],
+        'dark': COLORS['charcoal'],
+    }
+
+    anim_css = ANIMATIONS['breathe']
+
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <style>
+      {anim_css}
+    </style>
+  </defs>
+
+  <!-- White Background -->
+  <rect width="400" height="300" fill="white"/>
+
+  <!-- Ground -->
+  <rect x="0" y="230" width="400" height="70" fill="rgb(175, 190, 160)" opacity="0.3"/>
+
+  <g class="house-main">
+    <!-- Stone foundation/base -->
+    <rect x="40" y="210" width="320" height="25" fill="{colors['stone']}" stroke="{colors['dark']}" stroke-width="1"/>
+    <!-- Stone texture -->
+    <line x1="80" y1="222" x2="80" y2="235" stroke="{colors['dark']}" stroke-width="1" opacity="0.3"/>
+    <line x1="140" y1="210" x2="140" y2="235" stroke="{colors['dark']}" stroke-width="1" opacity="0.3"/>
+    <line x1="200" y1="222" x2="200" y2="235" stroke="{colors['dark']}" stroke-width="1" opacity="0.3"/>
+    <line x1="260" y1="210" x2="260" y2="235" stroke="{colors['dark']}" stroke-width="1" opacity="0.3"/>
+    <line x1="320" y1="222" x2="320" y2="235" stroke="{colors['dark']}" stroke-width="1" opacity="0.3"/>
+
+    <!-- Main stucco walls -->
+    <rect x="40" y="120" width="150" height="90" fill="{colors['stucco']}" stroke="{colors['dark']}" stroke-width="1"/>
+    <rect x="185" y="100" width="180" height="110" fill="{colors['stucco']}" stroke="{colors['dark']}" stroke-width="1"/>
+
+    <!-- Half-timbering - horizontal beams -->
+    <rect x="40" y="160" width="150" height="8" fill="{colors['timber']}"/>
+    <rect x="185" y="150" width="180" height="8" fill="{colors['timber']}"/>
+    <rect x="185" y="100" width="180" height="8" fill="{colors['timber']}"/>
+
+    <!-- Half-timbering - vertical beams -->
+    <rect x="40" y="120" width="8" height="90" fill="{colors['timber']}"/>
+    <rect x="110" y="120" width="8" height="90" fill="{colors['timber']}"/>
+    <rect x="182" y="120" width="8" height="90" fill="{colors['timber']}"/>
+
+    <rect x="185" y="100" width="8" height="110" fill="{colors['timber']}"/>
+    <rect x="265" y="100" width="8" height="110" fill="{colors['timber']}"/>
+    <rect x="345" y="100" width="8" height="110" fill="{colors['timber']}"/>
+    <rect x="357" y="100" width="8" height="110" fill="{colors['timber']}"/>
+
+    <!-- Half-timbering - diagonal braces (X pattern) -->
+    <line x1="48" y1="120" x2="110" y2="160" stroke="{colors['timber']}" stroke-width="6"/>
+    <line x1="110" y1="120" x2="48" y2="160" stroke="{colors['timber']}" stroke-width="6"/>
+
+    <line x1="120" y1="120" x2="182" y2="160" stroke="{colors['timber']}" stroke-width="6"/>
+    <line x1="182" y1="120" x2="120" y2="160" stroke="{colors['timber']}" stroke-width="6"/>
+
+    <line x1="193" y1="108" x2="265" y2="150" stroke="{colors['timber']}" stroke-width="6"/>
+    <line x1="265" y1="108" x2="193" y2="150" stroke="{colors['timber']}" stroke-width="6"/>
+
+    <!-- Steep pitched roof - main -->
+    <polygon
+      points="30,120 115,50 200,120"
+      fill="{colors['roof']}"
+      stroke="{colors['dark']}"
+      stroke-width="2"
+    />
+    <!-- Roof shingle hints -->
+    <line x1="55" y1="105" x2="175" y2="105" stroke="{colors['roof_light']}" stroke-width="1"/>
+    <line x1="70" y1="85" x2="160" y2="85" stroke="{colors['roof_light']}" stroke-width="1"/>
+
+    <!-- Steep pitched roof - right wing (larger) -->
+    <polygon
+      points="175,100 275,30 380,100"
+      fill="{colors['roof']}"
+      stroke="{colors['dark']}"
+      stroke-width="2"
+      class="accent"
+    />
+    <line x1="200" y1="85" x2="350" y2="85" stroke="{colors['roof_light']}" stroke-width="1"/>
+    <line x1="220" y1="65" x2="330" y2="65" stroke="{colors['roof_light']}" stroke-width="1"/>
+    <line x1="245" y1="45" x2="305" y2="45" stroke="{colors['roof_light']}" stroke-width="1"/>
+
+    <!-- Prominent decorative chimney -->
+    <rect x="300" y="10" width="22" height="45" fill="{colors['stone']}" stroke="{colors['dark']}" stroke-width="1"/>
+    <!-- Chimney pot detail -->
+    <rect x="304" y="5" width="6" height="10" fill="{colors['timber']}"/>
+    <rect x="314" y="5" width="6" height="10" fill="{colors['timber']}"/>
+    <!-- Chimney decorative band -->
+    <rect x="298" y="25" width="26" height="4" fill="{colors['timber']}"/>
+
+    <!-- Leaded glass windows -->
+    <g class="windows">
+      <!-- Left wing - paired windows -->
+      <rect x="55" y="130" width="50" height="28" fill="{colors['accent']}" opacity="0.6"/>
+      <line x1="70" y1="130" x2="70" y2="158" stroke="{colors['dark']}" stroke-width="2"/>
+      <line x1="90" y1="130" x2="90" y2="158" stroke="{colors['dark']}" stroke-width="2"/>
+      <line x1="55" y1="144" x2="105" y2="144" stroke="{colors['dark']}" stroke-width="1"/>
+
+      <rect x="130" y="130" width="45" height="28" fill="{colors['accent']}" opacity="0.6"/>
+      <line x1="152" y1="130" x2="152" y2="158" stroke="{colors['dark']}" stroke-width="2"/>
+      <line x1="130" y1="144" x2="175" y2="144" stroke="{colors['dark']}" stroke-width="1"/>
+
+      <!-- Right wing - grand window bank -->
+      <rect x="200" y="115" width="80" height="35" fill="{colors['accent']}" opacity="0.6"/>
+      <line x1="220" y1="115" x2="220" y2="150" stroke="{colors['dark']}" stroke-width="1"/>
+      <line x1="240" y1="115" x2="240" y2="150" stroke="{colors['dark']}" stroke-width="2"/>
+      <line x1="260" y1="115" x2="260" y2="150" stroke="{colors['dark']}" stroke-width="1"/>
+      <line x1="200" y1="132" x2="280" y2="132" stroke="{colors['dark']}" stroke-width="1"/>
+
+      <!-- Stained glass cherub window hint (oriel window) -->
+      <rect x="295" y="115" width="45" height="40" fill="{colors['accent']}" opacity="0.7"/>
+      <circle cx="317" cy="132" r="12" fill="rgb(220, 180, 140)" opacity="0.5"/>
+      <line x1="295" y1="132" x2="340" y2="132" stroke="{colors['dark']}" stroke-width="1"/>
+      <line x1="317" y1="115" x2="317" y2="155" stroke="{colors['dark']}" stroke-width="1"/>
+    </g>
+
+    <!-- Tudor arch entry -->
+    <rect x="60" y="172" width="45" height="40" fill="{colors['timber']}"/>
+    <path
+      d="M 63 172 L 63 190 Q 82 182 102 190 L 102 172 Z"
+      fill="{colors['timber']}"
+    />
+    <!-- Door panels -->
+    <rect x="68" y="180" width="12" height="28" fill="{colors['stone']}" opacity="0.3"/>
+    <rect x="85" y="180" width="12" height="28" fill="{colors['stone']}" opacity="0.3"/>
+  </g>
+
+  <!-- Formal landscaping -->
+  <circle cx="35" cy="245" r="20" fill="rgb(100, 130, 90)" opacity="0.4"/>
+  <circle cx="375" cy="245" r="20" fill="rgb(100, 130, 90)" opacity="0.4"/>
+</svg>'''
+
+    return svg
+
+
+def generate_italian_renaissance_house(slug: str, home_name: str, year: int) -> str:
+    """Generate Italian Renaissance Revival style house (Benjamin Siegel House).
+
+    Key features:
+    - All-limestone villa exterior
+    - Symmetrical facade with classical proportions
+    - Arched windows and doorways
+    - Balustrades and cornices
+    - Low-pitched roof (barely visible)
+    - Elegant motor court with fountain
+    - Formal, palatial character
+    """
+    colors = {
+        'limestone': 'rgb(235, 230, 218)',  # Warm ivory limestone
+        'limestone_shadow': 'rgb(205, 198, 185)',
+        'trim': 'rgb(180, 172, 158)',
+        'roof': 'rgb(145, 120, 100)',  # Terracotta tile
+        'accent': COLORS['gold'],
+        'dark': COLORS['charcoal'],
+        'balustrade': 'rgb(220, 215, 205)',
+    }
+
+    anim_css = ANIMATIONS['breathe']
+
+    svg = f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <style>
+      {anim_css}
+    </style>
+  </defs>
+
+  <!-- White Background -->
+  <rect width="400" height="300" fill="white"/>
+
+  <!-- Motor court / ground -->
+  <rect x="0" y="235" width="400" height="65" fill="rgb(200, 195, 185)" opacity="0.3"/>
+
+  <g class="house-main">
+    <!-- Main limestone facade - perfectly symmetrical -->
+    <rect x="50" y="90" width="300" height="145" fill="{colors['limestone']}" stroke="{colors['dark']}" stroke-width="1"/>
+
+    <!-- Cornice / roofline detail -->
+    <rect x="45" y="80" width="310" height="15" fill="{colors['trim']}" stroke="{colors['dark']}" stroke-width="1"/>
+    <rect x="40" y="75" width="320" height="8" fill="{colors['limestone']}" stroke="{colors['dark']}" stroke-width="1"/>
+
+    <!-- Low-pitched roof (barely visible - Italian Renaissance) -->
+    <polygon
+      points="40,75 200,55 360,75"
+      fill="{colors['roof']}"
+      class="accent"
+    />
+    <line x1="40" y1="75" x2="360" y2="75" stroke="{colors['dark']}" stroke-width="2"/>
+
+    <!-- Classical pilasters - symmetrical pairs -->
+    <rect x="60" y="95" width="12" height="135" fill="{colors['trim']}"/>
+    <rect x="328" y="95" width="12" height="135" fill="{colors['trim']}"/>
+
+    <rect x="130" y="95" width="10" height="135" fill="{colors['limestone_shadow']}"/>
+    <rect x="260" y="95" width="10" height="135" fill="{colors['limestone_shadow']}"/>
+
+    <!-- Upper floor arched windows - symmetrical -->
+    <g class="windows">
+      <!-- Left pair -->
+      <rect x="85" y="100" width="35" height="45" fill="{colors['accent']}" opacity="0.6"/>
+      <path d="M 85 100 Q 102 85 120 100" fill="{colors['trim']}" stroke="{colors['dark']}" stroke-width="1"/>
+      <line x1="102" y1="100" x2="102" y2="145" stroke="{colors['dark']}" stroke-width="1"/>
+
+      <!-- Center left -->
+      <rect x="150" y="100" width="35" height="45" fill="{colors['accent']}" opacity="0.6"/>
+      <path d="M 150 100 Q 167 85 185 100" fill="{colors['trim']}" stroke="{colors['dark']}" stroke-width="1"/>
+      <line x1="167" y1="100" x2="167" y2="145" stroke="{colors['dark']}" stroke-width="1"/>
+
+      <!-- Center right (mirror) -->
+      <rect x="215" y="100" width="35" height="45" fill="{colors['accent']}" opacity="0.6"/>
+      <path d="M 215 100 Q 232 85 250 100" fill="{colors['trim']}" stroke="{colors['dark']}" stroke-width="1"/>
+      <line x1="232" y1="100" x2="232" y2="145" stroke="{colors['dark']}" stroke-width="1"/>
+
+      <!-- Right pair (mirror) -->
+      <rect x="280" y="100" width="35" height="45" fill="{colors['accent']}" opacity="0.6"/>
+      <path d="M 280 100 Q 297 85 315 100" fill="{colors['trim']}" stroke="{colors['dark']}" stroke-width="1"/>
+      <line x1="297" y1="100" x2="297" y2="145" stroke="{colors['dark']}" stroke-width="1"/>
+
+      <!-- Lower floor windows - rectangular, symmetrical -->
+      <rect x="85" y="165" width="35" height="55" fill="{colors['accent']}" opacity="0.5"/>
+      <line x1="102" y1="165" x2="102" y2="220" stroke="{colors['dark']}" stroke-width="1"/>
+      <rect x="85" y="163" width="35" height="5" fill="{colors['trim']}"/>
+
+      <rect x="280" y="165" width="35" height="55" fill="{colors['accent']}" opacity="0.5"/>
+      <line x1="297" y1="165" x2="297" y2="220" stroke="{colors['dark']}" stroke-width="1"/>
+      <rect x="280" y="163" width="35" height="5" fill="{colors['trim']}"/>
+    </g>
+
+    <!-- Grand central entry with balustrade above -->
+    <!-- Entry arch -->
+    <rect x="160" y="160" width="80" height="75" fill="{colors['dark']}"/>
+    <path
+      d="M 165 160 Q 200 130 235 160 L 235 235 L 165 235 Z"
+      fill="{colors['limestone_shadow']}"
+    />
+    <path
+      d="M 170 165 Q 200 140 230 165 L 230 235 L 170 235 Z"
+      fill="{colors['dark']}"
+    />
+
+    <!-- Entry surround / pediment -->
+    <rect x="150" y="150" width="100" height="12" fill="{colors['trim']}" stroke="{colors['dark']}" stroke-width="1"/>
+    <polygon
+      points="155,150 200,130 245,150"
+      fill="{colors['trim']}"
+      stroke="{colors['dark']}"
+      stroke-width="1"
+    />
+
+    <!-- Balcony above entry -->
+    <rect x="155" y="145" width="90" height="8" fill="{colors['balustrade']}" stroke="{colors['dark']}" stroke-width="1"/>
+    <!-- Balustrade posts -->
+    <rect x="160" y="138" width="4" height="10" fill="{colors['trim']}"/>
+    <rect x="175" y="138" width="4" height="10" fill="{colors['trim']}"/>
+    <rect x="190" y="138" width="4" height="10" fill="{colors['trim']}"/>
+    <rect x="205" y="138" width="4" height="10" fill="{colors['trim']}"/>
+    <rect x="220" y="138" width="4" height="10" fill="{colors['trim']}"/>
+    <rect x="235" y="138" width="4" height="10" fill="{colors['trim']}"/>
+
+    <!-- Stringcourse (horizontal band) -->
+    <rect x="50" y="155" width="300" height="4" fill="{colors['trim']}"/>
+  </g>
+
+  <!-- Formal motor court with fountain -->
+  <ellipse cx="200" cy="265" rx="45" ry="12" fill="rgb(180, 195, 210)" opacity="0.5"/>
+  <circle cx="200" cy="265" r="8" fill="{colors['trim']}"/>
+
+  <!-- Symmetrical formal landscaping -->
+  <ellipse cx="90" cy="255" rx="25" ry="10" fill="rgb(140, 165, 130)" opacity="0.4"/>
+  <ellipse cx="310" cy="255" rx="25" ry="10" fill="rgb(140, 165, 130)" opacity="0.4"/>
+</svg>'''
+
+    return svg
+
+
 def select_house_style(slug: str, home_name: str, year: int, description: str) -> str:
     """Select appropriate house style based on property characteristics.
 
@@ -1133,6 +1574,10 @@ def select_house_style(slug: str, home_name: str, year: int, description: str) -
         'garcia-house': generate_garcia_house,
         # E. Fay Jones iconic works
         'stoneflower': generate_stoneflower,
+        # Albert Kahn iconic works
+        'edsel-eleanor-ford-house': generate_cotswold_house,
+        'jerome-remick-house': generate_tudor_revival_house,
+        'benjamin-siegel-house': generate_italian_renaissance_house,
     }
 
     # Check for iconic building first
@@ -1156,6 +1601,14 @@ def select_house_style(slug: str, home_name: str, year: int, description: str) -
         return generate_garcia_house(slug, home_name, year)
     elif 'stoneflower' in name_lower:
         return generate_stoneflower(slug, home_name, year)
+
+    # Albert Kahn properties - match by name or style keywords
+    elif 'ford house' in name_lower or 'cotswold' in desc_lower or 'english country' in desc_lower:
+        return generate_cotswold_house(slug, home_name, year)
+    elif 'remick' in name_lower or ('tudor' in desc_lower and 'revival' in desc_lower):
+        return generate_tudor_revival_house(slug, home_name, year)
+    elif 'siegel' in name_lower or 'italian renaissance' in desc_lower:
+        return generate_italian_renaissance_house(slug, home_name, year)
 
     # Generic style matching
     elif 'palm springs' in desc_lower or 'desert' in desc_lower:

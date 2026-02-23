@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <style>
+      
+        @keyframes draw {
+            from { stroke-dashoffset: 1000; }
+            to { stroke-dashoffset: 0; }
+        }
+        .line-draw {
+            stroke-dasharray: 1000;
+            animation: draw 3s ease-out forwards;
+        }
+    
+    </style>
+  </defs>
+
+  <!-- White Background -->
+  <rect width="400" height="300" fill="white"/>
+
+  <!-- Ground Line - extends to edges -->
+  <line x1="0" y1="220" x2="400" y2="220" stroke="rgb(140, 155, 175)" stroke-width="2"/>
+
+  <g class="house-main">
+    <!-- Prairie-style horizontal roof overhangs - edge to edge -->
+    <polygon
+      points="10,120 390,120 410,135 -10,135"
+      fill="rgb(120, 72, 56)"
+      class="accent"
+    />
+    <polygon
+      points="20,105 380,105 390,120 10,120"
+      fill="rgb(55, 52, 50)"
+    />
+
+    <!-- Main structure - wider -->
+    <rect x="25" y="135" width="350" height="85" fill="rgb(140, 155, 175)"/>
+
+    <!-- Lower horizontal band - extends past edges -->
+    <rect x="5" y="190" width="390" height="30" fill="rgb(120, 72, 56)" class="accent"/>
+
+    <!-- Windows - horizontal band -->
+    <g class="windows">
+      <rect x="40" y="145" width="35" height="35" fill="rgb(212, 178, 112)" opacity="0.8"/>
+      <line x1="57" y1="145" x2="57" y2="180" stroke="rgb(55, 52, 50)" stroke-width="2"/>
+      <rect x="85" y="145" width="35" height="35" fill="rgb(212, 178, 112)" opacity="0.8"/>
+      <line x1="102" y1="145" x2="102" y2="180" stroke="rgb(55, 52, 50)" stroke-width="2"/>
+      <rect x="130" y="145" width="35" height="35" fill="rgb(212, 178, 112)" opacity="0.8"/>
+      <line x1="147" y1="145" x2="147" y2="180" stroke="rgb(55, 52, 50)" stroke-width="2"/>
+      <rect x="175" y="145" width="35" height="35" fill="rgb(212, 178, 112)" opacity="0.8"/>
+      <line x1="192" y1="145" x2="192" y2="180" stroke="rgb(55, 52, 50)" stroke-width="2"/>
+      <rect x="220" y="145" width="35" height="35" fill="rgb(212, 178, 112)" opacity="0.8"/>
+      <line x1="237" y1="145" x2="237" y2="180" stroke="rgb(55, 52, 50)" stroke-width="2"/>
+      <rect x="265" y="145" width="35" height="35" fill="rgb(212, 178, 112)" opacity="0.8"/>
+      <line x1="282" y1="145" x2="282" y2="180" stroke="rgb(55, 52, 50)" stroke-width="2"/>
+      <rect x="310" y="145" width="35" height="35" fill="rgb(212, 178, 112)" opacity="0.8"/>
+      <line x1="327" y1="145" x2="327" y2="180" stroke="rgb(55, 52, 50)" stroke-width="2"/>
+    </g>
+
+    <!-- Chimney -->
+    <rect x="312" y="65" width="25" height="50" fill="rgb(55, 52, 50)"/>
+
+    <!-- Decorative horizontal lines (FLW signature) -->
+    <line x1="25" y1="165" x2="375" y2="165" stroke="rgb(55, 52, 50)" stroke-width="1" class="line-draw"/>
+    <line x1="15" y1="112" x2="385" y2="112" stroke="rgb(212, 178, 112)" stroke-width="1"/>
+  </g>
+
+  <!-- Ground plane fills bottom -->
+  <rect x="0" y="220" width="400" height="80" fill="rgb(140, 155, 175)" opacity="0.3"/>
+</svg>

@@ -1,72 +1,58 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
   <defs>
     <style>
-      @keyframes rise {
-        0% { transform: translateY(12px); opacity: 0; }
-        100% { transform: translateY(0px); opacity: 1; }
-      }
-      .house-main {
-        animation: rise 0.6s cubic-bezier(0.33, 1, 0.68, 1) forwards;
-        opacity: 0;
-      }
+      
+        @keyframes draw {
+            from { stroke-dashoffset: 1000; }
+            to { stroke-dashoffset: 0; }
+        }
+        .line-draw {
+            stroke-dasharray: 1000;
+            animation: draw 3s ease-out forwards;
+        }
+    
     </style>
-    <!-- Subtle shadow filter -->
-    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="rgb(55, 52, 50)" flood-opacity="0.15"/>
-    </filter>
+    <linearGradient id="roof-grad-robert-d" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:rgb(120, 72, 56);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:rgb(55, 52, 50);stop-opacity:1" />
+    </linearGradient>
   </defs>
 
   <!-- White Background -->
   <rect width="400" height="300" fill="white"/>
 
-  <!-- Ground plane -->
-  <rect x="0" y="250" width="400" height="50" fill="rgb(205, 188, 162)" opacity="0.4"/>
-
-  <g class="house-main" filter="url(#shadow)">
-    <!-- TWO-STORY USONIAN - Frank Lloyd Wright -->
-
-    <!-- Ground floor - horizontal mass -->
-    <rect x="60" y="180" width="280" height="70" fill="rgb(168, 132, 98)" stroke="rgb(55, 52, 50)" stroke-width="2"/>
-
-    <!-- Ground floor windows - horizontal band -->
-    <rect x="80" y="200" width="200" height="35" fill="rgb(212, 178, 112)" opacity="0.8"/>
-
-    <!-- Ground floor mullions -->
-    <line x1="120" y1="200" x2="120" y2="235" stroke="rgb(55, 52, 50)" stroke-width="1"/>
-    <line x1="160" y1="200" x2="160" y2="235" stroke="rgb(55, 52, 50)" stroke-width="1"/>
-    <line x1="200" y1="200" x2="200" y2="235" stroke="rgb(55, 52, 50)" stroke-width="1"/>
-    <line x1="240" y1="200" x2="240" y2="235" stroke="rgb(55, 52, 50)" stroke-width="1"/>
-
-    <!-- Entry element -->
-    <rect x="295" y="195" width="30" height="55" fill="rgb(120, 72, 56)"/>
-
-    <!-- Second floor - setback for Usonian proportion -->
-    <rect x="80" y="110" width="220" height="70" fill="rgb(232, 218, 195)" stroke="rgb(55, 52, 50)" stroke-width="2"/>
-
-    <!-- Second floor windows - clerestory band -->
-    <rect x="95" y="120" width="180" height="25" fill="rgb(212, 178, 112)" opacity="0.8"/>
-
-    <!-- Second floor mullions -->
-    <line x1="135" y1="120" x2="135" y2="145" stroke="rgb(55, 52, 50)" stroke-width="1"/>
-    <line x1="175" y1="120" x2="175" y2="145" stroke="rgb(55, 52, 50)" stroke-width="1"/>
-    <line x1="215" y1="120" x2="215" y2="145" stroke="rgb(55, 52, 50)" stroke-width="1"/>
-    <line x1="255" y1="120" x2="255" y2="145" stroke="rgb(55, 52, 50)" stroke-width="1"/>
-
-    <!-- Cantilever roof overhang - signature FLW element -->
-    <polygon
-      points="50,105 350,105 340,110 60,110"
-      fill="rgb(82, 90, 100)"
-      stroke="rgb(55, 52, 50)"
-      stroke-width="2"
+  <g class="house-main">
+    <!-- Curved/dramatic roof - edge to edge -->
+    <path
+      d="M -10 175 Q 200 20 410 155 L 410 175 L -10 175 Z"
+      fill="url(#roof-grad-robert-d)"
+      class="accent"
     />
 
-    <!-- Roof fascia accent -->
-    <line x1="50" y1="105" x2="350" y2="105" stroke="rgb(55, 52, 50)" stroke-width="3"/>
+    <!-- Main structure with angle - wider -->
+    <polygon
+      points="15,175 385,155 395,220 5,220"
+      fill="rgb(205, 188, 162)"
+    />
 
-    <!-- Chimney mass - vertical accent -->
-    <rect x="290" y="70" width="25" height="40" fill="rgb(120, 72, 56)" stroke="rgb(55, 52, 50)" stroke-width="2"/>
+    <!-- Glass wall - wider -->
+    <g class="windows">
+      <rect x="35" y="165" width="280" height="45" fill="rgb(212, 178, 112)" opacity="0.6"/>
+      <line x1="85" y1="165" x2="85" y2="210" stroke="rgb(55, 52, 50)" stroke-width="1"/>
+      <line x1="135" y1="165" x2="135" y2="210" stroke="rgb(55, 52, 50)" stroke-width="1"/>
+      <line x1="185" y1="165" x2="185" y2="210" stroke="rgb(55, 52, 50)" stroke-width="1"/>
+      <line x1="235" y1="165" x2="235" y2="210" stroke="rgb(55, 52, 50)" stroke-width="1"/>
+      <line x1="285" y1="165" x2="285" y2="210" stroke="rgb(55, 52, 50)" stroke-width="1"/>
+    </g>
 
-    <!-- Horizontal datum lines - FLW detail -->
-    <line x1="60" y1="180" x2="340" y2="180" stroke="rgb(55, 52, 50)" stroke-width="2"/>
+    <!-- Cantilevered element - extends past edge -->
+    <rect x="330" y="140" width="80" height="15" fill="rgb(120, 72, 56)" class="accent"/>
+    <line x1="330" y1="155" x2="410" y2="155" stroke="rgb(55, 52, 50)" stroke-width="2" class="line-draw"/>
+
+    <!-- Support column (organic) -->
+    <ellipse cx="370" cy="190" rx="10" ry="35" fill="rgb(55, 52, 50)"/>
   </g>
+
+  <!-- Ground - edge to edge -->
+  <path d="M 0 220 Q 100 215 200 220 Q 300 225 400 218 L 400 300 L 0 300 Z" fill="rgb(205, 188, 162)" opacity="0.4"/>
 </svg>

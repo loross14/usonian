@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-02-22",
-  "total_count": 294,
+  "generated_at": "2026-02-21",
+  "total_count": 351,
   "properties": [
     {
       "slug": "lautner-house",
@@ -1765,6 +1765,348 @@
       "home_name": "King Kamehameha Golf Club",
       "svg_file": "king-kamehameha-golf-club.svg",
       "year_built": 1993
+    },
+    {
+      "slug": "bailey-house-case-study-20",
+      "home_name": "Bailey House (Case Study #20)",
+      "svg_file": "bailey-house-case-study-20.svg",
+      "year_built": 1948
+    },
+    {
+      "slug": "sale-house-neutra",
+      "home_name": "Sale House",
+      "svg_file": "sale-house-neutra.svg",
+      "year_built": 1960
+    },
+    {
+      "slug": "bonnet-house-neutra",
+      "home_name": "Bonnet House",
+      "svg_file": "bonnet-house-neutra.svg",
+      "year_built": 1941
+    },
+    {
+      "slug": "king-of-prussia-house",
+      "home_name": "King of Prussia House",
+      "svg_file": "king-of-prussia-house.svg",
+      "year_built": 1963
+    },
+    {
+      "slug": "neutra-vdl-studio",
+      "home_name": "Neutra VDL Studio and Residences",
+      "svg_file": "neutra-vdl-studio.svg",
+      "year_built": 1932
+    },
+    {
+      "slug": "lovell-health-house",
+      "home_name": "Lovell Health House",
+      "svg_file": "lovell-health-house.svg",
+      "year_built": 1929
+    },
+    {
+      "slug": "kaufmann-desert-house",
+      "home_name": "Kaufmann Desert House",
+      "svg_file": "kaufmann-desert-house.svg",
+      "year_built": 1946
+    },
+    {
+      "slug": "galka-scheyer-house",
+      "home_name": "Galka Scheyer House",
+      "svg_file": "galka-scheyer-house.svg",
+      "year_built": 1934
+    },
+    {
+      "slug": "the-lew-house",
+      "home_name": "The Lew House",
+      "svg_file": "the-lew-house.svg",
+      "year_built": 1958
+    },
+    {
+      "slug": "linn-house-neutra",
+      "home_name": "Linn House",
+      "svg_file": "linn-house-neutra.svg",
+      "year_built": 1958
+    },
+    {
+      "slug": "tremaine-house",
+      "home_name": "Tremaine House",
+      "svg_file": "tremaine-house.svg",
+      "year_built": 1948
+    },
+    {
+      "slug": "singleton-house",
+      "home_name": "Singleton House",
+      "svg_file": "singleton-house.svg",
+      "year_built": 1959
+    },
+    {
+      "slug": "brown-house-neutra",
+      "home_name": "Brown House",
+      "svg_file": "brown-house-neutra.svg",
+      "year_built": 1955
+    },
+    {
+      "slug": "perkins-house-neutra",
+      "home_name": "Perkins House",
+      "svg_file": "perkins-house-neutra.svg",
+      "year_built": 1955
+    },
+    {
+      "slug": "ohara-house",
+      "home_name": "Ohara House",
+      "svg_file": "ohara-house.svg",
+      "year_built": 1959
+    },
+    {
+      "slug": "kambara-residence",
+      "home_name": "Kambara Residence",
+      "svg_file": "kambara-residence.svg",
+      "year_built": 1960
+    },
+    {
+      "slug": "reunion-house",
+      "home_name": "Reunion House (Dion Neutra House)",
+      "svg_file": "reunion-house.svg",
+      "year_built": 1951
+    },
+    {
+      "slug": "sten-frenke-house",
+      "home_name": "Sten and Frenke House",
+      "svg_file": "sten-frenke-house.svg",
+      "year_built": 1934
+    },
+    {
+      "slug": "wirin-house",
+      "home_name": "Wirin House",
+      "svg_file": "wirin-house.svg",
+      "year_built": 1949
+    },
+    {
+      "slug": "kun-house",
+      "home_name": "Josef Kun House",
+      "svg_file": "kun-house.svg",
+      "year_built": 1936
+    },
+    {
+      "slug": "taylor-house-neutra",
+      "home_name": "Taylor House",
+      "svg_file": "taylor-house-neutra.svg",
+      "year_built": 1961
+    },
+    {
+      "slug": "chuey-house",
+      "home_name": "Chuey House",
+      "svg_file": "chuey-house.svg",
+      "year_built": 1956
+    },
+    {
+      "slug": "loring-house",
+      "home_name": "Loring House",
+      "svg_file": "loring-house.svg",
+      "year_built": 1958
+    },
+    {
+      "slug": "clark-house-neutra",
+      "home_name": "Clark House",
+      "svg_file": "clark-house-neutra.svg",
+      "year_built": 1957
+    },
+    {
+      "slug": "grace-miller-house",
+      "home_name": "Grace Miller House",
+      "svg_file": "grace-miller-house.svg",
+      "year_built": 1937
+    },
+    {
+      "slug": "glen-house-neutra",
+      "home_name": "Glen House",
+      "svg_file": "glen-house-neutra.svg",
+      "year_built": 1956
+    },
+    {
+      "slug": "strathmore-apartments",
+      "home_name": "Strathmore Apartments",
+      "svg_file": "strathmore-apartments.svg",
+      "year_built": 1937
+    },
+    {
+      "slug": "pescher-house",
+      "home_name": "Pescher House",
+      "svg_file": "pescher-house.svg",
+      "year_built": 1968
+    },
+    {
+      "slug": "rentsch-house",
+      "home_name": "Rentsch House",
+      "svg_file": "rentsch-house.svg",
+      "year_built": 1965
+    },
+    {
+      "slug": "bucerius-house",
+      "home_name": "Bucerius House",
+      "svg_file": "bucerius-house.svg",
+      "year_built": 1966
+    },
+    {
+      "slug": "kemper-house-neutra",
+      "home_name": "Kemper House",
+      "svg_file": "kemper-house-neutra.svg",
+      "year_built": 1968
+    },
+    {
+      "slug": "bewobau-housing",
+      "home_name": "Bewobau Housing Development",
+      "svg_file": "bewobau-housing.svg",
+      "year_built": 1964
+    },
+    {
+      "slug": "gonzalez-gorrondona-house",
+      "home_name": "Gonzalez-Gorrondona House",
+      "svg_file": "gonzalez-gorrondona-house.svg",
+      "year_built": 1965
+    },
+    {
+      "slug": "ebelin-bucerius-house",
+      "home_name": "Ebelin Bucerius House",
+      "svg_file": "ebelin-bucerius-house.svg",
+      "year_built": 1966
+    },
+    {
+      "slug": "edsel-eleanor-ford-house",
+      "home_name": "Edsel & Eleanor Ford House",
+      "svg_file": "edsel-eleanor-ford-house.svg",
+      "year_built": 1929
+    },
+    {
+      "slug": "jerome-remick-house",
+      "home_name": "Jerome Remick House",
+      "svg_file": "jerome-remick-house.svg",
+      "year_built": 1928
+    },
+    {
+      "slug": "benjamin-siegel-house",
+      "home_name": "Benjamin Siegel House",
+      "svg_file": "benjamin-siegel-house.svg",
+      "year_built": 1915
+    },
+    {
+      "slug": "kallis-sharlin-residence",
+      "home_name": "Kallis-Sharlin Residence",
+      "svg_file": "kallis-sharlin-residence.svg",
+      "year_built": 1946
+    },
+    {
+      "slug": "lechner-house",
+      "home_name": "Lechner House",
+      "svg_file": "lechner-house.svg",
+      "year_built": 1948
+    },
+    {
+      "slug": "roxy-roth-house",
+      "home_name": "Roxy Roth House",
+      "svg_file": "roxy-roth-house.svg",
+      "year_built": 1946
+    },
+    {
+      "slug": "druckman-residence",
+      "home_name": "Druckman Residence",
+      "svg_file": "druckman-residence.svg",
+      "year_built": 1941
+    },
+    {
+      "slug": "schindler-house-kings-road",
+      "home_name": "Schindler House (Kings Road)",
+      "svg_file": "schindler-house-kings-road.svg",
+      "year_built": 1922
+    },
+    {
+      "slug": "lovell-beach-house",
+      "home_name": "Lovell Beach House",
+      "svg_file": "lovell-beach-house.svg",
+      "year_built": 1926
+    },
+    {
+      "slug": "mackey-apartments",
+      "home_name": "Mackey Apartments",
+      "svg_file": "mackey-apartments.svg",
+      "year_built": 1939
+    },
+    {
+      "slug": "fitzpatrick-leland-house",
+      "home_name": "Fitzpatrick-Leland House",
+      "svg_file": "fitzpatrick-leland-house.svg",
+      "year_built": 1936
+    },
+    {
+      "slug": "schindler-echo-park",
+      "home_name": "Schindler Home (Echo Park)",
+      "svg_file": "schindler-echo-park.svg",
+      "year_built": 1938
+    },
+    {
+      "slug": "manola-court",
+      "home_name": "Manola Court (Sachs Apartments)",
+      "svg_file": "manola-court.svg",
+      "year_built": 1940
+    },
+    {
+      "slug": "how-house",
+      "home_name": "How House",
+      "svg_file": "how-house.svg",
+      "year_built": 1925
+    },
+    {
+      "slug": "tischler-house",
+      "home_name": "Tischler House",
+      "svg_file": "tischler-house.svg",
+      "year_built": 1950
+    },
+    {
+      "slug": "buck-house",
+      "home_name": "Buck House",
+      "svg_file": "buck-house.svg",
+      "year_built": 1934
+    },
+    {
+      "slug": "elliott-house-schindler",
+      "home_name": "Elliott House",
+      "svg_file": "elliott-house-schindler.svg",
+      "year_built": 1930
+    },
+    {
+      "slug": "oliver-house-schindler",
+      "home_name": "Oliver House",
+      "svg_file": "oliver-house-schindler.svg",
+      "year_built": 1934
+    },
+    {
+      "slug": "walker-house-schindler",
+      "home_name": "Walker House",
+      "svg_file": "walker-house-schindler.svg",
+      "year_built": 1936
+    },
+    {
+      "slug": "wilson-house-schindler",
+      "home_name": "Wilson House",
+      "svg_file": "wilson-house-schindler.svg",
+      "year_built": 1939
+    },
+    {
+      "slug": "schlessinger-house",
+      "home_name": "Schlessinger House",
+      "svg_file": "schlessinger-house.svg",
+      "year_built": 1954
+    },
+    {
+      "slug": "bubeshko-apartments",
+      "home_name": "Bubeshko Apartments",
+      "svg_file": "bubeshko-apartments.svg",
+      "year_built": 1941
+    },
+    {
+      "slug": "el-pueblo-ribera-court",
+      "home_name": "El Pueblo Ribera Court",
+      "svg_file": "el-pueblo-ribera-court.svg",
+      "year_built": 1923
     }
   ]
 }
