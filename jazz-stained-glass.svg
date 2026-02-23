@@ -1,0 +1,194 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100">
+  <style>
+    @keyframes d01-float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-2px); }
+    }
+    .float-1 { animation: d01-float 3s ease-in-out infinite; }
+    .float-2 { animation: d01-float 3s ease-in-out 0.3s infinite; }
+    .float-3 { animation: d01-float 3s ease-in-out 0.6s infinite; }
+    .float-4 { animation: d01-float 3s ease-in-out 0.9s infinite; }
+    .float-5 { animation: d01-float 3s ease-in-out 1.2s infinite; }
+  </style>
+
+  <defs>
+    <!-- Gradients for glass panels -->
+    <linearGradient id="redGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E63946"/>
+      <stop offset="50%" stop-color="#F05A67"/>
+      <stop offset="100%" stop-color="#C42D3A"/>
+    </linearGradient>
+
+    <linearGradient id="blueGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#457B9D"/>
+      <stop offset="50%" stop-color="#5A94B8"/>
+      <stop offset="100%" stop-color="#3A6885"/>
+    </linearGradient>
+
+    <linearGradient id="orangeGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F4A261"/>
+      <stop offset="50%" stop-color="#F7B87A"/>
+      <stop offset="100%" stop-color="#D88B4A"/>
+    </linearGradient>
+
+    <linearGradient id="tealGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2A9D8F"/>
+      <stop offset="50%" stop-color="#3DB5A6"/>
+      <stop offset="100%" stop-color="#228577"/>
+    </linearGradient>
+
+    <linearGradient id="purpleGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9B5DE5"/>
+      <stop offset="50%" stop-color="#AF7AEF"/>
+      <stop offset="100%" stop-color="#8245D0"/>
+    </linearGradient>
+
+    <linearGradient id="amberGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F77F00"/>
+      <stop offset="50%" stop-color="#FF9933"/>
+      <stop offset="100%" stop-color="#D66B00"/>
+    </linearGradient>
+
+    <linearGradient id="goldGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C9A227"/>
+      <stop offset="50%" stop-color="#DDB83D"/>
+      <stop offset="100%" stop-color="#A88820"/>
+    </linearGradient>
+
+    <linearGradient id="greenGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3D5C3D"/>
+      <stop offset="50%" stop-color="#4F704F"/>
+      <stop offset="100%" stop-color="#2E472E"/>
+    </linearGradient>
+
+    <!-- Drop shadow filter -->
+    <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="1" dy="1" stdDeviation="0.5" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="320" height="100" fill="#FFFEF5"/>
+
+  <!-- Outer frame -->
+  <rect x="2" y="2" width="316" height="96" fill="none" stroke="#2E2E2E" stroke-width="3"/>
+
+  <!-- Inner frame -->
+  <rect x="6" y="6" width="308" height="88" fill="none" stroke="#2E2E2E" stroke-width="0.5" opacity="0.3"/>
+
+  <!-- Corner squares with drop shadows -->
+  <!-- Top-left corner -->
+  <rect x="8" y="8" width="12" height="12" fill="url(#greenGlass)" filter="url(#dropShadow)"/>
+  <rect x="8" y="8" width="12" height="12" fill="none" stroke="#2E2E2E" stroke-width="1"/>
+
+  <!-- Top-right corner -->
+  <rect x="300" y="8" width="12" height="12" fill="url(#greenGlass)" filter="url(#dropShadow)"/>
+  <rect x="300" y="8" width="12" height="12" fill="none" stroke="#2E2E2E" stroke-width="1"/>
+
+  <!-- Bottom-left corner -->
+  <rect x="8" y="80" width="12" height="12" fill="url(#greenGlass)" filter="url(#dropShadow)"/>
+  <rect x="8" y="80" width="12" height="12" fill="none" stroke="#2E2E2E" stroke-width="1"/>
+
+  <!-- Bottom-right corner -->
+  <rect x="300" y="80" width="12" height="12" fill="url(#greenGlass)" filter="url(#dropShadow)"/>
+  <rect x="300" y="80" width="12" height="12" fill="none" stroke="#2E2E2E" stroke-width="1"/>
+
+  <!-- Side diamond accents -->
+  <!-- Left diamond -->
+  <polygon points="35,42 43,50 35,58 27,50" fill="url(#goldGlass)"/>
+  <polygon points="35,42 43,50 35,58 27,50" fill="none" stroke="#2E2E2E" stroke-width="1"/>
+  <ellipse cx="33" cy="48" rx="3" ry="1.5" fill="#FFF" opacity="0.45" transform="rotate(-15 33 48)"/>
+
+  <!-- Right diamond -->
+  <polygon points="285,42 293,50 285,58 277,50" fill="url(#goldGlass)"/>
+  <polygon points="285,42 293,50 285,58 277,50" fill="none" stroke="#2E2E2E" stroke-width="1"/>
+  <ellipse cx="283" cy="48" rx="3" ry="1.5" fill="#FFF" opacity="0.45" transform="rotate(-15 283 48)"/>
+
+  <!-- Piano keys as alternating rectangular bands -->
+  <g class="float-1">
+    <!-- White keys -->
+    <rect x="55" y="70" width="8" height="20" fill="#FFFEF5" stroke="#333" stroke-width="0.5"/>
+    <rect x="71" y="70" width="8" height="20" fill="#FFFEF5" stroke="#333" stroke-width="0.5"/>
+    <rect x="87" y="70" width="8" height="20" fill="#FFFEF5" stroke="#333" stroke-width="0.5"/>
+    <rect x="103" y="70" width="8" height="20" fill="#FFFEF5" stroke="#333" stroke-width="0.5"/>
+    <rect x="119" y="70" width="8" height="20" fill="#FFFEF5" stroke="#333" stroke-width="0.5"/>
+    <!-- Black keys -->
+    <rect x="63" y="70" width="6" height="12" fill="url(#purpleGlass)" stroke="#2E2E2E" stroke-width="1"/>
+    <rect x="79" y="70" width="6" height="12" fill="url(#purpleGlass)" stroke="#2E2E2E" stroke-width="1"/>
+    <rect x="95" y="70" width="6" height="12" fill="url(#purpleGlass)" stroke="#2E2E2E" stroke-width="1"/>
+    <rect x="111" y="70" width="6" height="12" fill="url(#purpleGlass)" stroke="#2E2E2E" stroke-width="1"/>
+  </g>
+
+  <!-- Saxophone curve as geometric rounded form -->
+  <g class="float-2">
+    <!-- Sax body curve -->
+    <path d="M140,25 Q145,20 155,22 L165,30 Q175,40 172,55 Q170,65 160,70 L155,68 Q165,60 165,50 Q165,38 155,32 L148,28 Q142,26 140,25 Z"
+          fill="url(#amberGlass)" stroke="#2E2E2E" stroke-width="1.5"/>
+    <ellipse cx="152" cy="35" rx="5" ry="3" fill="#FFF" opacity="0.45" transform="rotate(-15 152 35)"/>
+    <!-- Sax bell -->
+    <ellipse cx="158" cy="72" rx="8" ry="5" fill="url(#orangeGlass)" stroke="#2E2E2E" stroke-width="1.5"/>
+    <ellipse cx="156" cy="70" rx="3" ry="1.5" fill="#FFF" opacity="0.45" transform="rotate(-15 156 70)"/>
+    <!-- Sax keys -->
+    <circle cx="150" cy="40" r="2.5" fill="url(#goldGlass)" stroke="#333" stroke-width="0.5"/>
+    <circle cx="155" cy="48" r="2.5" fill="url(#goldGlass)" stroke="#333" stroke-width="0.5"/>
+    <circle cx="158" cy="56" r="2.5" fill="url(#goldGlass)" stroke="#333" stroke-width="0.5"/>
+  </g>
+
+  <!-- Musical notes as geometric balloons -->
+  <!-- Quarter note 1 -->
+  <g class="float-3">
+    <ellipse cx="195" cy="45" rx="7" ry="5" fill="url(#redGlass)" stroke="#2E2E2E" stroke-width="1.5" transform="rotate(-20 195 45)"/>
+    <ellipse cx="193" cy="43" rx="2.5" ry="1.5" fill="#FFF" opacity="0.45" transform="rotate(-15 193 43)"/>
+    <line x1="201" y1="42" x2="201" y2="22" stroke="#2E2E2E" stroke-width="1.5"/>
+  </g>
+
+  <!-- Eighth note pair -->
+  <g class="float-4">
+    <ellipse cx="220" cy="55" rx="6" ry="4" fill="url(#blueGlass)" stroke="#2E2E2E" stroke-width="1.5" transform="rotate(-20 220 55)"/>
+    <ellipse cx="218" cy="53" rx="2" ry="1" fill="#FFF" opacity="0.45" transform="rotate(-15 218 53)"/>
+    <line x1="225" y1="52" x2="225" y2="32" stroke="#2E2E2E" stroke-width="1.5"/>
+
+    <ellipse cx="238" cy="50" rx="6" ry="4" fill="url(#tealGlass)" stroke="#2E2E2E" stroke-width="1.5" transform="rotate(-20 238 50)"/>
+    <ellipse cx="236" cy="48" rx="2" ry="1" fill="#FFF" opacity="0.45" transform="rotate(-15 236 48)"/>
+    <line x1="243" y1="47" x2="243" y2="27" stroke="#2E2E2E" stroke-width="1.5"/>
+
+    <!-- Beam connecting eighth notes -->
+    <path d="M225,32 Q234,28 243,27" fill="none" stroke="#2E2E2E" stroke-width="2"/>
+    <path d="M225,36 Q234,32 243,31" fill="none" stroke="#2E2E2E" stroke-width="2"/>
+  </g>
+
+  <!-- Quarter note 2 -->
+  <g class="float-5">
+    <ellipse cx="260" cy="65" rx="7" ry="5" fill="url(#purpleGlass)" stroke="#2E2E2E" stroke-width="1.5" transform="rotate(-20 260 65)"/>
+    <ellipse cx="258" cy="63" rx="2.5" ry="1.5" fill="#FFF" opacity="0.45" transform="rotate(-15 258 63)"/>
+    <line x1="266" y1="62" x2="266" y2="40" stroke="#2E2E2E" stroke-width="1.5"/>
+  </g>
+
+  <!-- Decorative geometric accent shapes -->
+  <!-- Small triangular accents -->
+  <polygon points="75,25 82,35 68,35" fill="url(#tealGlass)" stroke="#333" stroke-width="1"/>
+  <ellipse cx="75" cy="30" rx="2" ry="1" fill="#FFF" opacity="0.45" transform="rotate(-15 75 30)"/>
+
+  <polygon points="100,18 108,30 92,30" fill="url(#redGlass)" stroke="#333" stroke-width="1"/>
+  <ellipse cx="100" cy="23" rx="2" ry="1" fill="#FFF" opacity="0.45" transform="rotate(-15 100 23)"/>
+
+  <!-- Small diamond accents floating -->
+  <g class="float-2">
+    <polygon points="185,75 190,80 185,85 180,80" fill="url(#orangeGlass)" stroke="#333" stroke-width="0.5"/>
+  </g>
+
+  <g class="float-4">
+    <polygon points="230,78 234,82 230,86 226,82" fill="url(#blueGlass)" stroke="#333" stroke-width="0.5"/>
+  </g>
+
+  <!-- Horizontal accent lines -->
+  <line x1="22" y1="50" x2="25" y2="50" stroke="#2E2E2E" stroke-width="0.5" opacity="0.5"/>
+  <line x1="295" y1="50" x2="298" y2="50" stroke="#2E2E2E" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- Vertical decorative bars -->
+  <rect x="48" y="25" width="3" height="50" fill="url(#blueGlass)" stroke="#333" stroke-width="0.5"/>
+  <ellipse cx="49" cy="35" rx="1" ry="3" fill="#FFF" opacity="0.45" transform="rotate(-15 49 35)"/>
+
+  <rect x="270" y="25" width="3" height="50" fill="url(#redGlass)" stroke="#333" stroke-width="0.5"/>
+  <ellipse cx="271" cy="35" rx="1" ry="3" fill="#FFF" opacity="0.45" transform="rotate(-15 271 35)"/>
+</svg>

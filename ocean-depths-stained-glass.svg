@@ -1,0 +1,220 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100">
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFEF5"/>
+      <stop offset="100%" stop-color="#F8F6E8"/>
+    </linearGradient>
+
+    <!-- Deep ocean blue -->
+    <linearGradient id="deepBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#457B9D"/>
+      <stop offset="100%" stop-color="#1D3557"/>
+    </linearGradient>
+
+    <!-- Teal water -->
+    <linearGradient id="tealWater" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2A9D8F"/>
+      <stop offset="100%" stop-color="#1A6B60"/>
+    </linearGradient>
+
+    <!-- Coral orange -->
+    <linearGradient id="coralOrange" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F4A261"/>
+      <stop offset="100%" stop-color="#E76F51"/>
+    </linearGradient>
+
+    <!-- Jellyfish dome -->
+    <linearGradient id="jellyPink" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#9B5DE5"/>
+      <stop offset="60%" stop-color="#7B2CBF"/>
+      <stop offset="100%" stop-color="#5A189A"/>
+    </linearGradient>
+
+    <!-- Gold accent -->
+    <linearGradient id="goldAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4AF37"/>
+      <stop offset="50%" stop-color="#C9A227"/>
+      <stop offset="100%" stop-color="#A68B1F"/>
+    </linearGradient>
+
+    <!-- Green corners -->
+    <linearGradient id="greenCorner" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4A7C4A"/>
+      <stop offset="100%" stop-color="#3D5C3D"/>
+    </linearGradient>
+
+    <!-- Fish blue -->
+    <linearGradient id="fishBlue" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#48CAE4"/>
+      <stop offset="100%" stop-color="#0096C7"/>
+    </linearGradient>
+
+    <!-- Bubble gradient -->
+    <linearGradient id="bubbleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ADE8F4"/>
+      <stop offset="100%" stop-color="#90E0EF"/>
+    </linearGradient>
+
+    <!-- Red accent -->
+    <linearGradient id="redAccent" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E63946"/>
+      <stop offset="100%" stop-color="#C1121F"/>
+    </linearGradient>
+
+    <!-- Drop shadow filter -->
+    <filter id="dropShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="1" dy="1" stdDeviation="0.5" flood-color="#2E2E2E" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+
+  <style>
+    @keyframes d02-float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-2px); }
+    }
+    @keyframes d02-drift {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(2px); }
+    }
+    .jellyfish-group { animation: d02-float 3s ease-in-out infinite; }
+    .fish-group { animation: d02-drift 4s ease-in-out infinite; }
+    .bubble-1 { animation: d02-float 2s ease-in-out infinite; animation-delay: 0s; }
+    .bubble-2 { animation: d02-float 2.5s ease-in-out infinite; animation-delay: 0.3s; }
+    .bubble-3 { animation: d02-float 2s ease-in-out infinite; animation-delay: 0.6s; }
+    .coral-group { animation: d02-drift 5s ease-in-out infinite; animation-delay: 0.5s; }
+  </style>
+
+  <!-- Background -->
+  <rect width="320" height="100" fill="url(#bgGrad)"/>
+
+  <!-- Outer frame -->
+  <rect x="2" y="2" width="316" height="96" fill="none" stroke="#2E2E2E" stroke-width="3"/>
+
+  <!-- Inner frame -->
+  <rect x="6" y="6" width="308" height="88" fill="none" stroke="#2E2E2E" stroke-width="0.5" opacity="0.3"/>
+
+  <!-- Corner squares with drop shadows -->
+  <!-- Top-left corner -->
+  <rect x="7" y="7" width="12" height="12" fill="url(#greenCorner)" filter="url(#dropShadow)"/>
+  <rect x="6" y="6" width="12" height="12" fill="url(#greenCorner)" stroke="#2E2E2E" stroke-width="1"/>
+  <ellipse cx="10" cy="10" rx="3" ry="1.5" fill="white" opacity="0.45" transform="rotate(-15 10 10)"/>
+
+  <!-- Top-right corner -->
+  <rect x="303" y="7" width="12" height="12" fill="url(#greenCorner)" filter="url(#dropShadow)"/>
+  <rect x="302" y="6" width="12" height="12" fill="url(#greenCorner)" stroke="#2E2E2E" stroke-width="1"/>
+  <ellipse cx="306" cy="10" rx="3" ry="1.5" fill="white" opacity="0.45" transform="rotate(-15 306 10)"/>
+
+  <!-- Bottom-left corner -->
+  <rect x="7" y="83" width="12" height="12" fill="url(#greenCorner)" filter="url(#dropShadow)"/>
+  <rect x="6" y="82" width="12" height="12" fill="url(#greenCorner)" stroke="#2E2E2E" stroke-width="1"/>
+  <ellipse cx="10" cy="86" rx="3" ry="1.5" fill="white" opacity="0.45" transform="rotate(-15 10 86)"/>
+
+  <!-- Bottom-right corner -->
+  <rect x="303" y="83" width="12" height="12" fill="url(#greenCorner)" filter="url(#dropShadow)"/>
+  <rect x="302" y="82" width="12" height="12" fill="url(#greenCorner)" stroke="#2E2E2E" stroke-width="1"/>
+  <ellipse cx="306" cy="86" rx="3" ry="1.5" fill="white" opacity="0.45" transform="rotate(-15 306 86)"/>
+
+  <!-- Side diamond accents -->
+  <!-- Left diamond -->
+  <polygon points="35,42 43,50 35,58 27,50" fill="url(#goldAccent)" stroke="#2E2E2E" stroke-width="1"/>
+  <ellipse cx="34" cy="48" rx="2" ry="1" fill="white" opacity="0.45" transform="rotate(-15 34 48)"/>
+
+  <!-- Right diamond -->
+  <polygon points="285,42 293,50 285,58 277,50" fill="url(#goldAccent)" stroke="#2E2E2E" stroke-width="1"/>
+  <ellipse cx="284" cy="48" rx="2" ry="1" fill="white" opacity="0.45" transform="rotate(-15 284 48)"/>
+
+  <!-- Jellyfish (left side) -->
+  <g class="jellyfish-group">
+    <!-- Dome -->
+    <path d="M55,45 Q55,28 70,28 Q85,28 85,45 Q70,50 55,45" fill="url(#jellyPink)" stroke="#333" stroke-width="1.5"/>
+    <ellipse cx="68" cy="33" rx="6" ry="3" fill="white" opacity="0.45" transform="rotate(-15 68 33)"/>
+    <!-- Tentacles -->
+    <path d="M60,45 Q58,55 60,70" fill="none" stroke="#333" stroke-width="0.5" opacity="0.8"/>
+    <path d="M65,47 Q63,58 65,72" fill="none" stroke="#333" stroke-width="0.5" opacity="0.8"/>
+    <path d="M70,48 Q70,60 70,74" fill="none" stroke="#333" stroke-width="0.5" opacity="0.8"/>
+    <path d="M75,47 Q77,58 75,72" fill="none" stroke="#333" stroke-width="0.5" opacity="0.8"/>
+    <path d="M80,45 Q82,55 80,70" fill="none" stroke="#333" stroke-width="0.5" opacity="0.8"/>
+  </g>
+
+  <!-- Geometric Fish 1 (center-left) -->
+  <g class="fish-group">
+    <!-- Body -->
+    <ellipse cx="120" cy="50" rx="15" ry="10" fill="url(#fishBlue)" stroke="#2E2E2E" stroke-width="1.5"/>
+    <ellipse cx="117" cy="46" rx="5" ry="2.5" fill="white" opacity="0.45" transform="rotate(-15 117 46)"/>
+    <!-- Tail fin -->
+    <polygon points="135,50 145,42 145,58" fill="url(#tealWater)" stroke="#333" stroke-width="1"/>
+    <!-- Top fin -->
+    <polygon points="115,40 120,35 125,40" fill="url(#coralOrange)" stroke="#333" stroke-width="0.5"/>
+    <!-- Eye -->
+    <circle cx="110" cy="48" r="2" fill="#2E2E2E"/>
+    <circle cx="109.5" cy="47.5" r="0.5" fill="white"/>
+  </g>
+
+  <!-- Coral cluster (center) -->
+  <g class="coral-group">
+    <!-- Main branch -->
+    <path d="M155,85 L155,65 L150,55 M155,65 L160,52 M155,70 L148,60" fill="none" stroke="url(#coralOrange)" stroke-width="2"/>
+    <circle cx="150" cy="55" r="3" fill="url(#coralOrange)" stroke="#333" stroke-width="0.5"/>
+    <circle cx="160" cy="52" r="3.5" fill="url(#redAccent)" stroke="#333" stroke-width="0.5"/>
+    <circle cx="148" cy="60" r="2.5" fill="url(#coralOrange)" stroke="#333" stroke-width="0.5"/>
+    <!-- Second branch -->
+    <path d="M170,85 L170,68 L175,58 M170,72 L165,62" fill="none" stroke="url(#redAccent)" stroke-width="1.5"/>
+    <circle cx="175" cy="58" r="3" fill="url(#redAccent)" stroke="#333" stroke-width="0.5"/>
+    <circle cx="165" cy="62" r="2" fill="url(#coralOrange)" stroke="#333" stroke-width="0.5"/>
+  </g>
+
+  <!-- Geometric Fish 2 (center-right) -->
+  <g class="fish-group" style="animation-delay: 1s;">
+    <!-- Body -->
+    <ellipse cx="200" cy="40" rx="12" ry="8" fill="url(#deepBlue)" stroke="#2E2E2E" stroke-width="1.5"/>
+    <ellipse cx="197" cy="37" rx="4" ry="2" fill="white" opacity="0.45" transform="rotate(-15 197 37)"/>
+    <!-- Tail -->
+    <polygon points="212,40 220,34 220,46" fill="url(#tealWater)" stroke="#333" stroke-width="1"/>
+    <!-- Fins -->
+    <polygon points="195,48 200,54 205,48" fill="url(#coralOrange)" stroke="#333" stroke-width="0.5"/>
+    <!-- Eye -->
+    <circle cx="192" cy="38" r="1.5" fill="#2E2E2E"/>
+    <circle cx="191.5" cy="37.5" r="0.4" fill="white"/>
+  </g>
+
+  <!-- Small jellyfish (right side) -->
+  <g class="jellyfish-group" style="animation-delay: 1.5s;">
+    <path d="M235,55 Q235,45 245,45 Q255,45 255,55 Q245,58 235,55" fill="url(#jellyPink)" stroke="#333" stroke-width="1"/>
+    <ellipse cx="244" cy="48" rx="4" ry="2" fill="white" opacity="0.45" transform="rotate(-15 244 48)"/>
+    <!-- Tentacles -->
+    <path d="M239,55 Q237,62 239,72" fill="none" stroke="#333" stroke-width="0.5" opacity="0.7"/>
+    <path d="M245,56 Q245,64 245,74" fill="none" stroke="#333" stroke-width="0.5" opacity="0.7"/>
+    <path d="M251,55 Q253,62 251,72" fill="none" stroke="#333" stroke-width="0.5" opacity="0.7"/>
+  </g>
+
+  <!-- Bubbles -->
+  <g class="bubble-1">
+    <circle cx="95" cy="30" r="4" fill="url(#bubbleGrad)" stroke="#333" stroke-width="0.5"/>
+    <ellipse cx="93.5" cy="28.5" rx="1.5" ry="1" fill="white" opacity="0.45" transform="rotate(-15 93.5 28.5)"/>
+  </g>
+  <g class="bubble-2">
+    <circle cx="180" cy="25" r="3" fill="url(#bubbleGrad)" stroke="#333" stroke-width="0.5"/>
+    <ellipse cx="179" cy="24" rx="1" ry="0.6" fill="white" opacity="0.45" transform="rotate(-15 179 24)"/>
+  </g>
+  <g class="bubble-3">
+    <circle cx="230" cy="32" r="2.5" fill="url(#bubbleGrad)" stroke="#333" stroke-width="0.5"/>
+    <ellipse cx="229" cy="31" rx="0.8" ry="0.5" fill="white" opacity="0.45" transform="rotate(-15 229 31)"/>
+  </g>
+  <g class="bubble-1" style="animation-delay: 0.8s;">
+    <circle cx="265" cy="28" r="2" fill="url(#bubbleGrad)" stroke="#333" stroke-width="0.5"/>
+    <ellipse cx="264.5" cy="27.5" rx="0.6" ry="0.4" fill="white" opacity="0.45" transform="rotate(-15 264.5 27.5)"/>
+  </g>
+  <g class="bubble-2" style="animation-delay: 0.4s;">
+    <circle cx="50" cy="22" r="2.5" fill="url(#bubbleGrad)" stroke="#333" stroke-width="0.5"/>
+    <ellipse cx="49" cy="21" rx="0.8" ry="0.5" fill="white" opacity="0.45" transform="rotate(-15 49 21)"/>
+  </g>
+
+  <!-- Small geometric seaweed/kelp accents -->
+  <path d="M22,75 Q25,65 22,55 Q25,45 22,35" fill="none" stroke="url(#tealWater)" stroke-width="1" opacity="0.6"/>
+  <path d="M298,75 Q295,65 298,55 Q295,45 298,35" fill="none" stroke="url(#tealWater)" stroke-width="1" opacity="0.6"/>
+
+  <!-- Ocean floor suggestion -->
+  <path d="M20,88 Q40,82 60,88 Q80,82 100,88 Q120,82 140,88 Q160,82 180,88 Q200,82 220,88 Q240,82 260,88 Q280,82 300,88" fill="none" stroke="url(#deepBlue)" stroke-width="1" opacity="0.4"/>
+
+</svg>

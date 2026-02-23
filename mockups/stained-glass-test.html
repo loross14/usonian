@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FLW Stained Glass Style Test - Synthesized Specification</title>
+  <style>
+    :root {
+      --bg: #FAF8F3;
+      --card-bg: #FFFFFF;
+      --text: #2E2E2E;
+      --accent: #C9A227;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      color: var(--text);
+      padding: 40px 20px;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 3px solid var(--accent);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 300;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 1rem;
+      color: #666;
+      font-family: monospace;
+    }
+
+    .design-card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .design-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .design-number {
+      font-family: monospace;
+      font-size: 0.9rem;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    .design-title {
+      font-size: 1.4rem;
+      font-weight: 500;
+    }
+
+    .svg-container {
+      border: 1px solid #eee;
+      border-radius: 4px;
+      overflow: hidden;
+      background: #FFFEF5;
+    }
+
+    .svg-container svg {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .design-description {
+      margin-top: 16px;
+      font-style: italic;
+      color: #555;
+      padding: 12px;
+      background: #f9f9f9;
+      border-radius: 4px;
+    }
+
+    .meta-tags {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 12px;
+      background: #eee;
+      font-family: monospace;
+    }
+
+    .tag.animated { background: #E6F3E6; color: #2A7A2A; }
+    .tag.theme { background: #E6E6F3; color: #2A2A7A; }
+
+    .style-spec {
+      background: #1A1A2E;
+      color: #FFFEF5;
+      padding: 30px;
+      border-radius: 8px;
+      margin-top: 40px;
+    }
+
+    .style-spec h2 {
+      color: var(--accent);
+      margin-bottom: 20px;
+      font-weight: 400;
+    }
+
+    .style-spec pre {
+      background: #0a0a15;
+      padding: 16px;
+      border-radius: 4px;
+      overflow-x: auto;
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+
+    .style-spec code {
+      color: #89CFF0;
+    }
+
+    .checklist {
+      columns: 2;
+      column-gap: 40px;
+      list-style: none;
+      margin-top: 20px;
+    }
+
+    .checklist li {
+      margin-bottom: 8px;
+      padding-left: 28px;
+      position: relative;
+    }
+
+    .checklist li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #2A9D8F;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>FLW Stained Glass Transom</h1>
+      <p class="subtitle">Synthesized Style Specification Test · viewBox="0 0 320 100"</p>
+    </header>
+
+    <!-- Design 01: Jazz -->
+    <section class="design-card">
+      <div class="design-header">
+        <span class="design-number">DESIGN 01</span>
+        <h2 class="design-title">Syncopated Glass</h2>
+      </div>
+      <div class="svg-container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100">
+  <style>
+    @keyframes d01-float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-2px); }
+    }
+    .float-1 { animation: d01-float 3s ease-in-out infinite; }
+    .float-2 { animation: d01-float 3s ease-in-out 0.3s infinite; }
+    .float-3 { animation: d01-float 3s ease-in-out 0.6s infinite; }
+    .float-4 { animation: d01-float 3s ease-in-out 0.9s infinite; }
+    .float-5 { animation: d01-float 3s ease-in-out 1.2s infinite; }
+  </style>
+
+  <defs>
+    <linearGradient id="redGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E63946"/>
+      <stop offset="50%" stop-color="#F05A67"/>
+      <stop offset="100%" stop-color="#C42D3A"/>
+    </linearGradient>
+
+    <linearGradient id="blueGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#457B9D"/>
+      <stop offset="50%" stop-color="#5A94B8"/>
+      <stop offset="100%" stop-color="#3A6885"/>
+    </linearGradient>
+
+    <linearGradient id="orangeGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F4A261"/>
+      <stop offset="50%" stop-color="#F7B87A"/>
+      <stop offset="100%" stop-color="#D88B4A"/>
+    </linearGradient>
+
+    <linearGradient id="tealGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2A9D8F"/>
+      <stop offset="50%" stop-color="#3DB5A6"/>
+      <stop offset="100%" stop-color="#228577"/>
+    </linearGradient>
+
+    <linearGradient id="purpleGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9B5DE5"/>
+      <stop offset="50%" stop-color="#AF7AEF"/>
+      <stop offset="100%" stop-color="#8245D0"/>
+    </linearGradient>
+
+    <linearGradient id="amberGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F77F00"/>
+      <stop offset="50%" stop-color="#FF9933"/>
+      <stop offset="100%" stop-color="#D66B00"/>
+    </linearGradient>
+
+    <linearGradient id="goldGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C9A227"/>
+      <stop offset="50%" stop-color="#DDB83D"/>
+      <stop offset="100%" stop-color="#A88820"/>
+    </linearGradient>
+
+    <linearGradient id="greenGlass" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3D5C3D"/>
+      <stop offset="50%" stop-color="#4F704F"/>
+      <stop offset="100%" stop-color="#2E472E"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="320" height="100" fill="#FFFEF5"/>
+
+  <!-- Outer frame -->
+  <rect x="2" y="2" width="316" height="96" fill="none" stroke="#2E2E2E" stroke-width="3"/>
+
+  <!-- Inner frame -->
+  <rect x="6" y="6" width="308" height="88" fill="none" stroke="#2E2E2E" stroke-width="0.5" opacity="0.3"/>
+
+  <!-- Corner squares -->
+  <rect x="11" y="11" width="12" height="12" fill="#2E2E2E" opacity="0.2"/>
+  <rect x="10" y="10" width="12" height="12" fill="url(#greenGlass)" stroke="#2E2E2E" stroke-width="0.5"/>
+  <rect x="299" y="11" width="12" height="12" fill="#2E2E2E" opacity="0.2"/>
+  <rect x="298" y="10" width="12" height="12" fill="url(#greenGlass)" stroke="#2E2E2E" stroke-width="0.5"/>
+  <rect x="11" y="79" width="12" height="12" fill="#2E2E2E" opacity="0.2"/>
+  <rect x="10" y="78" width="12" height="12" fill="url(#greenGlass)" stroke="#2E2E2E" stroke-width="0.5"/>
+  <rect x="299" y="79" width="12" height="12" fill="#2E2E2E" opacity="0.2"/>
+  <rect x="298" y="78" width="12" height="12" fill="url(#greenGlass)" stroke="#2E2E2E" stroke-width="0.5"/>
+
+  <!-- Side diamond accents -->
+  <polygon points="35,42 43,50 35,58 27,50" fill="url(#goldGlass)" stroke="#2E2E2E" stroke-width="0.5"/>
+  <ellipse cx="33" cy="48" rx="3" ry="1.5" fill="#FFF" opacity="0.45" transform="rotate(-15 33 48)"/>
+  <polygon points="285,42 293,50 285,58 277,50" fill="url(#goldGlass)" stroke="#2E2E2E" stroke-width="0.5"/>
+  <ellipse cx="283" cy="48" rx="3" ry="1.5" fill="#FFF" opacity="0.45" transform="rotate(-15 283 48)"/>
+
+  <!-- Piano keys -->
+  <g class="float-1">
+    <rect x="55" y="70" width="8" height="20" fill="#FFFEF5" stroke="#333" stroke-width="0.5"/>
+    <rect x="71" y="70" width="8" height="20" fill="#FFFEF5" stroke="#333" stroke-width="0.5"/>
+    <rect x="87" y="70" width="8" height="20" fill="#FFFEF5" stroke="#333" stroke-width="0.5"/>
+    <rect x="103" y="70" width="8" height="20" fill="#FFFEF5" stroke="#333" stroke-width="0.5"/>
+    <rect x="119" y="70" width="8" height="20" fill="#FFFEF5" stroke="#333" stroke-width="0.5"/>
+    <rect x="63" y="70" width="6" height="12" fill="url(#purpleGlass)" stroke="#2E2E2E" stroke-width="1"/>
+    <rect x="79" y="70" width="6" height="12" fill="url(#purpleGlass)" stroke="#2E2E2E" stroke-width="1"/>
+    <rect x="95" y="70" width="6" height="12" fill="url(#purpleGlass)" stroke="#2E2E2E" stroke-width="1"/>
+    <rect x="111" y="70" width="6" height="12" fill="url(#purpleGlass)" stroke="#2E2E2E" stroke-width="1"/>
+  </g>
+
+  <!-- Saxophone -->
+  <g class="float-2">
+    <path d="M140,25 Q145,20 155,22 L165,30 Q175,40 172,55 Q170,65 160,70 L155,68 Q165,60 165,50 Q165,38 155,32 L148,28 Q142,26 140,25 Z"
+          fill="url(#amberGlass)" stroke="#2E2E2E" stroke-width="1.5"/>
+    <ellipse cx="152" cy="35" rx="5" ry="3" fill="#FFF" opacity="0.45" transform="rotate(-15 152 35)"/>
+    <ellipse cx="158" cy="72" rx="8" ry="5" fill="url(#orangeGlass)" stroke="#2E2E2E" stroke-width="1.5"/>
+    <ellipse cx="156" cy="70" rx="3" ry="1.5" fill="#FFF" opacity="0.45" transform="rotate(-15 156 70)"/>
+    <circle cx="150" cy="40" r="2.5" fill="url(#goldGlass)" stroke="#333" stroke-width="0.5"/>
+    <circle cx="155" cy="48" r="2.5" fill="url(#goldGlass)" stroke="#333" stroke-width="0.5"/>
+    <circle cx="158" cy="56" r="2.5" fill="url(#goldGlass)" stroke="#333" stroke-width="0.5"/>
+  </g>
+
+  <!-- Musical notes -->
+  <g class="float-3">
+    <ellipse cx="195" cy="45" rx="7" ry="5" fill="url(#redGlass)" stroke="#2E2E2E" stroke-width="1.5" transform="rotate(-20 195 45)"/>
+    <ellipse cx="193" cy="43" rx="2.5" ry="1.5" fill="#FFF" opacity="0.45" transform="rotate(-15 193 43)"/>
+    <line x1="201" y1="42" x2="201" y2="22" stroke="#2E2E2E" stroke-width="1.5"/>
+  </g>
+
+  <g class="float-4">
+    <ellipse cx="220" cy="55" rx="6" ry="4" fill="url(#blueGlass)" stroke="#2E2E2E" stroke-width="1.5" transform="rotate(-20 220 55)"/>
+    <ellipse cx="218" cy="53" rx="2" ry="1" fill="#FFF" opacity="0.45" transform="rotate(-15 218 53)"/>
+    <line x1="225" y1="52" x2="225" y2="32" stroke="#2E2E2E" stroke-width="1.5"/>
+    <ellipse cx="238" cy="50" rx="6" ry="4" fill="url(#tealGlass)" stroke="#2E2E2E" stroke-width="1.5" transform="rotate(-20 238 50)"/>
+    <ellipse cx="236" cy="48" rx="2" ry="1" fill="#FFF" opacity="0.45" transform="rotate(-15 236 48)"/>
+    <line x1="243" y1="47" x2="243" y2="27" stroke="#2E2E2E" stroke-width="1.5"/>
+    <path d="M225,32 Q234,28 243,27" fill="none" stroke="#2E2E2E" stroke-width="2"/>
+    <path d="M225,36 Q234,32 243,31" fill="none" stroke="#2E2E2E" stroke-width="2"/>
+  </g>
+
+  <g class="float-5">
+    <ellipse cx="260" cy="65" rx="7" ry="5" fill="url(#purpleGlass)" stroke="#2E2E2E" stroke-width="1.5" transform="rotate(-20 260 65)"/>
+    <ellipse cx="258" cy="63" rx="2.5" ry="1.5" fill="#FFF" opacity="0.45" transform="rotate(-15 258 63)"/>
+    <line x1="266" y1="62" x2="266" y2="40" stroke="#2E2E2E" stroke-width="1.5"/>
+  </g>
+
+  <!-- Triangular accents -->
+  <polygon points="75,25 82,35 68,35" fill="url(#tealGlass)" stroke="#333" stroke-width="1"/>
+  <polygon points="100,18 108,30 92,30" fill="url(#redGlass)" stroke="#333" stroke-width="1"/>
+
+  <!-- Vertical bars -->
+  <rect x="48" y="25" width="3" height="50" fill="url(#blueGlass)" stroke="#333" stroke-width="0.5"/>
+  <rect x="270" y="25" width="3" height="50" fill="url(#redGlass)" stroke="#333" stroke-width="0.5"/>
+</svg>
+      </div>
+      <p class="design-description">Jazz instruments transform into geometric stained glass forms - a curved saxophone in amber glass, musical notes as tilted ellipses with lead line stems, and piano keys as alternating rectangular bands in the FLW Prairie style.</p>
+      <div class="meta-tags">
+        <span class="tag theme">jazz-music</span>
+        <span class="tag animated">animated</span>
+        <span class="tag">320×100</span>
+      </div>
+    </section>
+
+    <!-- Design 02: Ocean -->
+    <section class="design-card">
+      <div class="design-header">
+        <span class="design-number">DESIGN 02</span>
+        <h2 class="design-title">Depths of Glass</h2>
+      </div>
+      <div class="svg-container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFEF5"/>
+      <stop offset="100%" stop-color="#F8F6E8"/>
+    </linearGradient>
+    <linearGradient id="deepBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#457B9D"/>
+      <stop offset="100%" stop-color="#1D3557"/>
+    </linearGradient>
+    <linearGradient id="tealWater" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2A9D8F"/>
+      <stop offset="100%" stop-color="#1A6B60"/>
+    </linearGradient>
+    <linearGradient id="coralOrange" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F4A261"/>
+      <stop offset="100%" stop-color="#E76F51"/>
+    </linearGradient>
+    <linearGradient id="jellyPink" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#9B5DE5"/>
+      <stop offset="60%" stop-color="#7B2CBF"/>
+      <stop offset="100%" stop-color="#5A189A"/>
+    </linearGradient>
+    <linearGradient id="goldAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4AF37"/>
+      <stop offset="50%" stop-color="#C9A227"/>
+      <stop offset="100%" stop-color="#A68B1F"/>
+    </linearGradient>
+    <linearGradient id="greenCorner" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4A7C4A"/>
+      <stop offset="100%" stop-color="#3D5C3D"/>
+    </linearGradient>
+    <linearGradient id="fishBlue" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#48CAE4"/>
+      <stop offset="100%" stop-color="#0096C7"/>
+    </linearGradient>
+    <linearGradient id="bubbleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ADE8F4"/>
+      <stop offset="100%" stop-color="#90E0EF"/>
+    </linearGradient>
+    <linearGradient id="redAccent" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E63946"/>
+      <stop offset="100%" stop-color="#C1121F"/>
+    </linearGradient>
+  </defs>
+
+  <style>
+    @keyframes d02-float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-2px); }
+    }
+    @keyframes d02-drift {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(2px); }
+    }
+    .jellyfish-group { animation: d02-float 3s ease-in-out infinite; }
+    .fish-group { animation: d02-drift 4s ease-in-out infinite; }
+    .bubble-1 { animation: d02-float 2s ease-in-out infinite; }
+    .bubble-2 { animation: d02-float 2.5s ease-in-out infinite; animation-delay: 0.3s; }
+    .bubble-3 { animation: d02-float 2s ease-in-out infinite; animation-delay: 0.6s; }
+    .coral-group { animation: d02-drift 5s ease-in-out infinite; animation-delay: 0.5s; }
+  </style>
+
+  <!-- Background -->
+  <rect width="320" height="100" fill="url(#bgGrad)"/>
+
+  <!-- Outer frame -->
+  <rect x="2" y="2" width="316" height="96" fill="none" stroke="#2E2E2E" stroke-width="3"/>
+
+  <!-- Inner frame -->
+  <rect x="6" y="6" width="308" height="88" fill="none" stroke="#2E2E2E" stroke-width="0.5" opacity="0.3"/>
+
+  <!-- Corner squares -->
+  <rect x="11" y="11" width="12" height="12" fill="#2E2E2E" opacity="0.2"/>
+  <rect x="10" y="10" width="12" height="12" fill="url(#greenCorner)" stroke="#2E2E2E" stroke-width="0.5"/>
+  <ellipse cx="14" cy="14" rx="3" ry="1.5" fill="white" opacity="0.45" transform="rotate(-15 14 14)"/>
+  <rect x="299" y="11" width="12" height="12" fill="#2E2E2E" opacity="0.2"/>
+  <rect x="298" y="10" width="12" height="12" fill="url(#greenCorner)" stroke="#2E2E2E" stroke-width="0.5"/>
+  <rect x="11" y="79" width="12" height="12" fill="#2E2E2E" opacity="0.2"/>
+  <rect x="10" y="78" width="12" height="12" fill="url(#greenCorner)" stroke="#2E2E2E" stroke-width="0.5"/>
+  <rect x="299" y="79" width="12" height="12" fill="#2E2E2E" opacity="0.2"/>
+  <rect x="298" y="78" width="12" height="12" fill="url(#greenCorner)" stroke="#2E2E2E" stroke-width="0.5"/>
+
+  <!-- Side diamond accents -->
+  <polygon points="35,42 43,50 35,58 27,50" fill="url(#goldAccent)" stroke="#2E2E2E" stroke-width="0.5"/>
+  <ellipse cx="34" cy="48" rx="2" ry="1" fill="white" opacity="0.45" transform="rotate(-15 34 48)"/>
+  <polygon points="285,42 293,50 285,58 277,50" fill="url(#goldAccent)" stroke="#2E2E2E" stroke-width="0.5"/>
+  <ellipse cx="284" cy="48" rx="2" ry="1" fill="white" opacity="0.45" transform="rotate(-15 284 48)"/>
+
+  <!-- Jellyfish -->
+  <g class="jellyfish-group">
+    <path d="M55,45 Q55,28 70,28 Q85,28 85,45 Q70,50 55,45" fill="url(#jellyPink)" stroke="#333" stroke-width="1.5"/>
+    <ellipse cx="68" cy="33" rx="6" ry="3" fill="white" opacity="0.45" transform="rotate(-15 68 33)"/>
+    <path d="M60,45 Q58,55 60,70" fill="none" stroke="#333" stroke-width="0.5" opacity="0.8"/>
+    <path d="M65,47 Q63,58 65,72" fill="none" stroke="#333" stroke-width="0.5" opacity="0.8"/>
+    <path d="M70,48 Q70,60 70,74" fill="none" stroke="#333" stroke-width="0.5" opacity="0.8"/>
+    <path d="M75,47 Q77,58 75,72" fill="none" stroke="#333" stroke-width="0.5" opacity="0.8"/>
+    <path d="M80,45 Q82,55 80,70" fill="none" stroke="#333" stroke-width="0.5" opacity="0.8"/>
+  </g>
+
+  <!-- Fish 1 -->
+  <g class="fish-group">
+    <ellipse cx="120" cy="50" rx="15" ry="10" fill="url(#fishBlue)" stroke="#2E2E2E" stroke-width="1.5"/>
+    <ellipse cx="117" cy="46" rx="5" ry="2.5" fill="white" opacity="0.45" transform="rotate(-15 117 46)"/>
+    <polygon points="135,50 145,42 145,58" fill="url(#tealWater)" stroke="#333" stroke-width="1"/>
+    <polygon points="115,40 120,35 125,40" fill="url(#coralOrange)" stroke="#333" stroke-width="0.5"/>
+    <circle cx="110" cy="48" r="2" fill="#2E2E2E"/>
+    <circle cx="109.5" cy="47.5" r="0.5" fill="white"/>
+  </g>
+
+  <!-- Coral cluster -->
+  <g class="coral-group">
+    <path d="M155,85 L155,65 L150,55 M155,65 L160,52 M155,70 L148,60" fill="none" stroke="url(#coralOrange)" stroke-width="2"/>
+    <circle cx="150" cy="55" r="3" fill="url(#coralOrange)" stroke="#333" stroke-width="0.5"/>
+    <circle cx="160" cy="52" r="3.5" fill="url(#redAccent)" stroke="#333" stroke-width="0.5"/>
+    <circle cx="148" cy="60" r="2.5" fill="url(#coralOrange)" stroke="#333" stroke-width="0.5"/>
+    <path d="M170,85 L170,68 L175,58 M170,72 L165,62" fill="none" stroke="url(#redAccent)" stroke-width="1.5"/>
+    <circle cx="175" cy="58" r="3" fill="url(#redAccent)" stroke="#333" stroke-width="0.5"/>
+    <circle cx="165" cy="62" r="2" fill="url(#coralOrange)" stroke="#333" stroke-width="0.5"/>
+  </g>
+
+  <!-- Fish 2 -->
+  <g class="fish-group" style="animation-delay: 1s;">
+    <ellipse cx="200" cy="40" rx="12" ry="8" fill="url(#deepBlue)" stroke="#2E2E2E" stroke-width="1.5"/>
+    <ellipse cx="197" cy="37" rx="4" ry="2" fill="white" opacity="0.45" transform="rotate(-15 197 37)"/>
+    <polygon points="212,40 220,34 220,46" fill="url(#tealWater)" stroke="#333" stroke-width="1"/>
+    <polygon points="195,48 200,54 205,48" fill="url(#coralOrange)" stroke="#333" stroke-width="0.5"/>
+    <circle cx="192" cy="38" r="1.5" fill="#2E2E2E"/>
+  </g>
+
+  <!-- Small jellyfish -->
+  <g class="jellyfish-group" style="animation-delay: 1.5s;">
+    <path d="M235,55 Q235,45 245,45 Q255,45 255,55 Q245,58 235,55" fill="url(#jellyPink)" stroke="#333" stroke-width="1"/>
+    <ellipse cx="244" cy="48" rx="4" ry="2" fill="white" opacity="0.45" transform="rotate(-15 244 48)"/>
+    <path d="M239,55 Q237,62 239,72" fill="none" stroke="#333" stroke-width="0.5" opacity="0.7"/>
+    <path d="M245,56 Q245,64 245,74" fill="none" stroke="#333" stroke-width="0.5" opacity="0.7"/>
+    <path d="M251,55 Q253,62 251,72" fill="none" stroke="#333" stroke-width="0.5" opacity="0.7"/>
+  </g>
+
+  <!-- Bubbles -->
+  <g class="bubble-1">
+    <circle cx="95" cy="30" r="4" fill="url(#bubbleGrad)" stroke="#333" stroke-width="0.5"/>
+    <ellipse cx="93.5" cy="28.5" rx="1.5" ry="1" fill="white" opacity="0.45" transform="rotate(-15 93.5 28.5)"/>
+  </g>
+  <g class="bubble-2">
+    <circle cx="180" cy="25" r="3" fill="url(#bubbleGrad)" stroke="#333" stroke-width="0.5"/>
+    <ellipse cx="179" cy="24" rx="1" ry="0.6" fill="white" opacity="0.45" transform="rotate(-15 179 24)"/>
+  </g>
+  <g class="bubble-3">
+    <circle cx="230" cy="32" r="2.5" fill="url(#bubbleGrad)" stroke="#333" stroke-width="0.5"/>
+    <ellipse cx="229" cy="31" rx="0.8" ry="0.5" fill="white" opacity="0.45" transform="rotate(-15 229 31)"/>
+  </g>
+  <g class="bubble-1" style="animation-delay: 0.8s;">
+    <circle cx="265" cy="28" r="2" fill="url(#bubbleGrad)" stroke="#333" stroke-width="0.5"/>
+  </g>
+  <g class="bubble-2" style="animation-delay: 0.4s;">
+    <circle cx="50" cy="22" r="2.5" fill="url(#bubbleGrad)" stroke="#333" stroke-width="0.5"/>
+  </g>
+
+  <!-- Seaweed accents -->
+  <path d="M22,75 Q25,65 22,55 Q25,45 22,35" fill="none" stroke="url(#tealWater)" stroke-width="1" opacity="0.6"/>
+  <path d="M298,75 Q295,65 298,55 Q295,45 298,35" fill="none" stroke="url(#tealWater)" stroke-width="1" opacity="0.6"/>
+
+  <!-- Ocean floor -->
+  <path d="M20,88 Q40,82 60,88 Q80,82 100,88 Q120,82 140,88 Q160,82 180,88 Q200,82 220,88 Q240,82 260,88 Q280,82 300,88" fill="none" stroke="url(#deepBlue)" stroke-width="1" opacity="0.4"/>
+</svg>
+      </div>
+      <p class="design-description">Ocean depths rendered in geometric glass - jellyfish with domed forms and flowing tentacle lines, geometric fish with triangular fins, branching coral clusters, and rising bubbles with light-catching highlights.</p>
+      <div class="meta-tags">
+        <span class="tag theme">ocean-depths</span>
+        <span class="tag animated">animated</span>
+        <span class="tag">320×100</span>
+      </div>
+    </section>
+
+    <!-- Design 03: Space -->
+    <section class="design-card">
+      <div class="design-header">
+        <span class="design-number">DESIGN 03</span>
+        <h2 class="design-title">Cosmic Transom</h2>
+      </div>
+      <div class="svg-container">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100">
+  <defs>
+    <linearGradient id="planetBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#457B9D"/>
+      <stop offset="100%" stop-color="#1D3557"/>
+    </linearGradient>
+    <linearGradient id="planetPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#9B5DE5"/>
+      <stop offset="50%" stop-color="#7B4DC5"/>
+      <stop offset="100%" stop-color="#5A3DA5"/>
+    </linearGradient>
+    <linearGradient id="planetOrange" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F77F00"/>
+      <stop offset="100%" stop-color="#E63946"/>
+    </linearGradient>
+    <linearGradient id="planetTeal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2A9D8F"/>
+      <stop offset="100%" stop-color="#1A6D5F"/>
+    </linearGradient>
+    <linearGradient id="rocketBody" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E8E8E8"/>
+      <stop offset="50%" stop-color="#C0C0C0"/>
+      <stop offset="100%" stop-color="#A0A0A0"/>
+    </linearGradient>
+    <linearGradient id="rocketNose" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E63946"/>
+      <stop offset="100%" stop-color="#B82D38"/>
+    </linearGradient>
+    <linearGradient id="starGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFD700"/>
+      <stop offset="50%" stop-color="#C9A227"/>
+      <stop offset="100%" stop-color="#A08020"/>
+    </linearGradient>
+    <linearGradient id="cornerGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4D7C4D"/>
+      <stop offset="100%" stop-color="#3D5C3D"/>
+    </linearGradient>
+    <linearGradient id="diamondGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4AF37"/>
+      <stop offset="50%" stop-color="#C9A227"/>
+      <stop offset="100%" stop-color="#B89220"/>
+    </linearGradient>
+    <linearGradient id="saturnRing" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F4A261" stop-opacity="0.3"/>
+      <stop offset="50%" stop-color="#F4A261"/>
+      <stop offset="100%" stop-color="#F4A261" stop-opacity="0.3"/>
+    </linearGradient>
+    <linearGradient id="moonGray" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4D4D4"/>
+      <stop offset="100%" stop-color="#A0A0A0"/>
+    </linearGradient>
+    <linearGradient id="cosmicBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1A1A2E"/>
+      <stop offset="50%" stop-color="#16213E"/>
+      <stop offset="100%" stop-color="#0F3460"/>
+    </linearGradient>
+  </defs>
+
+  <style>
+    @keyframes d03-twinkle {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.8); }
+    }
+    @keyframes d03-float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-2px); }
+    }
+    .star { animation: d03-twinkle 2s ease-in-out infinite; }
+    .star-1 { animation-delay: 0s; }
+    .star-2 { animation-delay: 0.3s; }
+    .star-3 { animation-delay: 0.6s; }
+    .star-4 { animation-delay: 0.9s; }
+    .star-5 { animation-delay: 1.2s; }
+    .star-6 { animation-delay: 1.5s; }
+    .planet-float { animation: d03-float 4s ease-in-out infinite; }
+    .planet-1 { animation-delay: 0s; }
+    .planet-2 { animation-delay: 1s; }
+    .planet-3 { animation-delay: 2s; }
+  </style>
+
+  <!-- Background -->
+  <rect width="320" height="100" fill="#FFFEF5"/>
+
+  <!-- Cosmic inner panel -->
+  <rect x="10" y="10" width="300" height="80" fill="url(#cosmicBg)" stroke="#2E2E2E" stroke-width="0.5"/>
+
+  <!-- Outer frame -->
+  <rect x="2" y="2" width="316" height="96" fill="none" stroke="#2E2E2E" stroke-width="3"/>
+
+  <!-- Inner frame -->
+  <rect x="6" y="6" width="308" height="88" fill="none" stroke="#2E2E2E" stroke-width="0.5" opacity="0.3"/>
+
+  <!-- Corner squares -->
+  <rect x="11" y="11" width="12" height="12" fill="#2E2E2E" opacity="0.2"/>
+  <rect x="10" y="10" width="12" height="12" fill="url(#cornerGreen)" stroke="#2E2E2E" stroke-width="0.5"/>
+  <rect x="299" y="11" width="12" height="12" fill="#2E2E2E" opacity="0.2"/>
+  <rect x="298" y="10" width="12" height="12" fill="url(#cornerGreen)" stroke="#2E2E2E" stroke-width="0.5"/>
+  <rect x="11" y="79" width="12" height="12" fill="#2E2E2E" opacity="0.2"/>
+  <rect x="10" y="78" width="12" height="12" fill="url(#cornerGreen)" stroke="#2E2E2E" stroke-width="0.5"/>
+  <rect x="299" y="79" width="12" height="12" fill="#2E2E2E" opacity="0.2"/>
+  <rect x="298" y="78" width="12" height="12" fill="url(#cornerGreen)" stroke="#2E2E2E" stroke-width="0.5"/>
+
+  <!-- Side diamond accents -->
+  <polygon points="35,42 43,50 35,58 27,50" fill="url(#diamondGold)" stroke="#2E2E2E" stroke-width="0.5"/>
+  <ellipse cx="34" cy="48" rx="3" ry="1.5" fill="white" opacity="0.45" transform="rotate(-15 34 48)"/>
+  <polygon points="285,42 293,50 285,58 277,50" fill="url(#diamondGold)" stroke="#2E2E2E" stroke-width="0.5"/>
+  <ellipse cx="284" cy="48" rx="3" ry="1.5" fill="white" opacity="0.45" transform="rotate(-15 284 48)"/>
+
+  <!-- Saturn -->
+  <g class="planet-float planet-1">
+    <ellipse cx="80" cy="50" rx="28" ry="6" fill="url(#saturnRing)" stroke="#333" stroke-width="0.5"/>
+    <circle cx="80" cy="50" r="18" fill="url(#planetOrange)" stroke="#2E2E2E" stroke-width="1.5"/>
+    <ellipse cx="76" cy="45" rx="5" ry="3" fill="white" opacity="0.45" transform="rotate(-15 76 45)"/>
+    <ellipse cx="80" cy="50" rx="28" ry="6" fill="none" stroke="#333" stroke-width="1" opacity="0.6"/>
+  </g>
+
+  <!-- Blue planet -->
+  <g class="planet-float planet-2">
+    <circle cx="240" cy="45" r="14" fill="url(#planetBlue)" stroke="#2E2E2E" stroke-width="1.5"/>
+    <ellipse cx="236" cy="41" rx="4" ry="2.5" fill="white" opacity="0.45" transform="rotate(-15 236 41)"/>
+    <path d="M230 48 Q240 45 250 48" fill="none" stroke="#1D3557" stroke-width="0.5" opacity="0.5"/>
+  </g>
+
+  <!-- Purple planet -->
+  <g class="planet-float planet-3">
+    <circle cx="130" cy="35" r="10" fill="url(#planetPurple)" stroke="#2E2E2E" stroke-width="1.5"/>
+    <ellipse cx="127" cy="32" rx="3" ry="2" fill="white" opacity="0.45" transform="rotate(-15 127 32)"/>
+  </g>
+
+  <!-- Moon -->
+  <circle cx="260" cy="70" r="8" fill="url(#moonGray)" stroke="#2E2E2E" stroke-width="1"/>
+  <ellipse cx="258" cy="68" rx="2.5" ry="1.5" fill="white" opacity="0.45" transform="rotate(-15 258 68)"/>
+  <circle cx="262" cy="72" r="1.5" fill="#888" opacity="0.4"/>
+
+  <!-- Teal planet -->
+  <circle cx="200" cy="65" r="11" fill="url(#planetTeal)" stroke="#2E2E2E" stroke-width="1.5"/>
+  <ellipse cx="197" cy="62" rx="3.5" ry="2" fill="white" opacity="0.45" transform="rotate(-15 197 62)"/>
+
+  <!-- Rocket -->
+  <g transform="translate(160, 50)">
+    <rect x="-5" y="-20" width="10" height="30" rx="5" ry="5" fill="url(#rocketBody)" stroke="#2E2E2E" stroke-width="1.5"/>
+    <polygon points="0,-28 -5,-20 5,-20" fill="url(#rocketNose)" stroke="#2E2E2E" stroke-width="1"/>
+    <polygon points="-5,5 -12,15 -5,10" fill="url(#rocketNose)" stroke="#333" stroke-width="0.5"/>
+    <polygon points="5,5 12,15 5,10" fill="url(#rocketNose)" stroke="#333" stroke-width="0.5"/>
+    <circle cx="0" cy="-8" r="3" fill="url(#planetBlue)" stroke="#333" stroke-width="0.5"/>
+    <ellipse cx="-1" cy="-9" rx="1" ry="0.7" fill="white" opacity="0.6"/>
+    <polygon points="-3,10 0,20 3,10" fill="#F77F00" stroke="#E63946" stroke-width="0.5"/>
+    <polygon points="-2,10 0,16 2,10" fill="#FFD700"/>
+    <ellipse cx="-2" cy="-15" rx="2" ry="4" fill="white" opacity="0.3" transform="rotate(-15 -2 -15)"/>
+  </g>
+
+  <!-- Stars -->
+  <g class="star star-1">
+    <polygon points="55,25 58,30 55,35 52,30" fill="url(#starGold)" stroke="#333" stroke-width="0.5"/>
+    <ellipse cx="54" cy="29" rx="1.5" ry="1" fill="white" opacity="0.45" transform="rotate(-15 54 29)"/>
+  </g>
+  <g class="star star-2">
+    <polygon points="110,65 113,70 110,75 107,70" fill="url(#starGold)" stroke="#333" stroke-width="0.5"/>
+  </g>
+  <g class="star star-3">
+    <polygon points="145,75 147,78 145,81 143,78" fill="url(#starGold)" stroke="#333" stroke-width="0.5"/>
+  </g>
+  <g class="star star-4">
+    <polygon points="185,25 188,30 185,35 182,30" fill="url(#starGold)" stroke="#333" stroke-width="0.5"/>
+  </g>
+  <g class="star star-5">
+    <polygon points="220,30 222,33 220,36 218,33" fill="url(#starGold)" stroke="#333" stroke-width="0.5"/>
+  </g>
+  <g class="star star-6">
+    <polygon points="270,25 273,30 270,35 267,30" fill="url(#starGold)" stroke="#333" stroke-width="0.5"/>
+  </g>
+  <g class="star star-1">
+    <polygon points="95,22 96,24 95,26 94,24" fill="url(#starGold)" stroke="#333" stroke-width="0.3"/>
+  </g>
+  <g class="star star-3">
+    <polygon points="175,80 176,82 175,84 174,82" fill="url(#starGold)" stroke="#333" stroke-width="0.3"/>
+  </g>
+
+  <!-- Decorative lead lines -->
+  <line x1="50" y1="15" x2="50" y2="85" stroke="#333" stroke-width="0.5" opacity="0.4"/>
+  <line x1="270" y1="15" x2="270" y2="85" stroke="#333" stroke-width="0.5" opacity="0.4"/>
+</svg>
+      </div>
+      <p class="design-description">Space exploration as stained glass - Saturn with geometric rings, planets in jewel-tone gradients, a streamlined rocket ship with flame, and twinkling diamond stars against a cosmic deep blue inner panel.</p>
+      <div class="meta-tags">
+        <span class="tag theme">space-exploration</span>
+        <span class="tag animated">animated</span>
+        <span class="tag">320×100</span>
+      </div>
+    </section>
+
+    <!-- Style Specification Summary -->
+    <section class="style-spec">
+      <h2>Synthesized Style Specification</h2>
+      <p>All designs follow the FLW Stained Glass Transom style with these mandatory elements:</p>
+
+      <ul class="checklist">
+        <li>ViewBox: 320×100 (transom format)</li>
+        <li>Outer frame: 3px stroke #2E2E2E</li>
+        <li>Inner frame: 0.5px stroke, 30% opacity</li>
+        <li>4 corner squares: 12×12 with +1,+1 shadow</li>
+        <li>Side diamonds: at x=35 and x=285</li>
+        <li>Background: warm cream #FFFEF5</li>
+        <li>LinearGradient fills for all shapes</li>
+        <li>Stroke overlay on all filled shapes</li>
+        <li>White ellipse highlights: -15° rotation</li>
+        <li>Highlight opacity: 0.45</li>
+        <li>Stroke weights: 3px > 1.5px > 1px > 0.5px</li>
+        <li>Class prefixes: d01-, d02-, d03- etc.</li>
+      </ul>
+
+      <pre><code>/* Frame Template */
+&lt;rect x="2" y="2" width="316" height="96" stroke="#2E2E2E" stroke-width="3"/&gt;
+&lt;rect x="6" y="6" width="308" height="88" stroke="#2E2E2E" stroke-width="0.5" opacity="0.3"/&gt;
+
+/* Corner Square Template */
+&lt;rect x="11" y="11" width="12" height="12" fill="#2E2E2E" opacity="0.2"/&gt;
+&lt;rect x="10" y="10" width="12" height="12" fill="[ACCENT]" stroke="#2E2E2E" stroke-width="0.5"/&gt;
+
+/* Highlight Template */
+&lt;ellipse cx="[X-20%]" cy="[Y-20%]" rx="[35%]" ry="[20%]"
+         fill="#fff" opacity="0.45" transform="rotate(-15 cx cy)"/&gt;</code></pre>
+    </section>
+  </div>
+</body>
+</html>

@@ -9,8 +9,8 @@ import { HeroFilter } from "@/components/ui/HeroFilter";
 import { SortControl } from "@/components/ui/SortControl";
 import { sortProperties, type SortOption, SORT_OPTIONS } from "@/utils/propertySort";
 
-import { CountdownLoader } from "@/components/pagination/CountdownLoader";
-import { useInfiniteScroll } from "@/hooks/useInfiniteScroll";
+import { Pagination } from "@/components/pagination/Pagination";
+import { usePagination } from "@/hooks/usePagination";
 
 import {
   matchesExperienceFilter,
@@ -83,6 +83,9 @@ export function HomesClient({
   // See src/utils/propertySort.ts for sort logic and priority order
   const [sortOption, setSortOption] = useState<SortOption>("smart");
 
+  // Pagination state - read from URL, defaults to page 1
+  const currentPage = Math.max(1, parseInt(searchParams.get("page") || "1", 10));
+
   // Find portal container on mount
   useEffect(() => {
     const slot = document.getElementById("hero-filter-slot");
@@ -121,6 +124,8 @@ export function HomesClient({
   const updateFilter = useCallback(
     (key: string, value: string | null) => {
       const params = new URLSearchParams(searchParams.toString());
+      // Reset to page 1 when filters change
+      params.delete("page");
       if (value) {
         params.set(key, value);
         // Persist experience filter to localStorage
@@ -137,6 +142,20 @@ export function HomesClient({
         }
       }
       router.push(`${pathname}?${params.toString()}`, { scroll: false });
+    },
+    [searchParams, router, pathname]
+  );
+
+  // Handle page changes - update URL with ?page=N
+  const handlePageChange = useCallback(
+    (page: number) => {
+      const params = new URLSearchParams(searchParams.toString());
+      if (page === 1) {
+        params.delete("page"); // Clean URL for page 1
+      } else {
+        params.set("page", page.toString());
+      }
+      router.push(`${pathname}?${params.toString()}`, { scroll: true });
     },
     [searchParams, router, pathname]
   );
@@ -211,7 +230,11 @@ export function HomesClient({
           totalCount={properties.length}
         />
       ) : (
-        <CountdownScrollGrid properties={sortedProperties} />
+        <PaginatedGrid
+          properties={sortedProperties}
+          currentPage={currentPage}
+          onPageChange={handlePageChange}
+        />
       )}
     </>
   );
@@ -221,47 +244,49 @@ export function HomesClient({
 // GRID IMPLEMENTATIONS
 // ============================================================================
 
+/** Items per page - 5 rows × 5 columns on desktop */
+const ITEMS_PER_PAGE = 25;
+
 /**
- * CountdownScrollGrid - "THE COUNTDOWN"
- * Shows remaining count as descending counter: «187 MORE»
+ * PaginatedGrid - Archive pagination
+ * Shows 25 items per page (5 rows) with minimal numbered pagination
  */
-function CountdownScrollGrid({ properties }: { properties: EnhancedProperty[] }) {
+function PaginatedGrid({
+  properties,
+  currentPage,
+  onPageChange,
+}: {
+  properties: EnhancedProperty[];
+  currentPage: number;
+  onPageChange: (page: number) => void;
+}) {
   const {
-    visibleItems,
-    sentinelRef,
-    isLoading,
-    isComplete,
-    loadedCount,
+    paginatedItems,
+    totalPages,
     totalCount,
-    remainingCount,
-  } = useInfiniteScroll({
+    startIndex,
+    endIndex,
+  } = usePagination({
     items: properties,
-    batchSize: 9,
-    loadDelay: 400,
+    itemsPerPage: ITEMS_PER_PAGE,
+    currentPage,
   });
 
   return (
     <section className="table-section">
       <div className="container py-10">
         <div className="responsive-card-grid">
-          {visibleItems.map((property, idx) => {
-            const batchIndex = Math.floor(idx / 9);
-            const currentBatch = Math.floor((visibleItems.length - 1) / 9);
-            const shouldAnimate = batchIndex === currentBatch;
-            const indexInBatch = idx % 9;
-
-            return (
-              <div
-                key={property.id}
-                className={shouldAnimate ? "animate-fade-up" : ""}
-                style={{
-                  animationDelay: shouldAnimate ? `${indexInBatch * 50}ms` : undefined,
-                }}
-              >
-                <PropertyCard property={property} variant="v2" />
-              </div>
-            );
-          })}
+          {paginatedItems.map((property, idx) => (
+            <div
+              key={property.id}
+              className="animate-fade-up"
+              style={{
+                animationDelay: `${idx * 30}ms`,
+              }}
+            >
+              <PropertyCard property={property} variant="v2" />
+            </div>
+          ))}
         </div>
 
         {properties.length === 0 && (
@@ -273,16 +298,14 @@ function CountdownScrollGrid({ properties }: { properties: EnhancedProperty[] })
         )}
 
         {properties.length > 0 && (
-          <>
-            <CountdownLoader
-              isLoading={isLoading}
-              isComplete={isComplete}
-              loadedCount={loadedCount}
-              totalCount={totalCount}
-              remainingCount={remainingCount}
-            />
-            <div ref={sentinelRef} style={{ height: "1px" }} />
-          </>
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            totalCount={totalCount}
+            startIndex={startIndex}
+            endIndex={endIndex}
+            onPageChange={onPageChange}
+          />
         )}
       </div>
     </section>
