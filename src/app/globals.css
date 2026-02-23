@@ -3235,7 +3235,7 @@ a:hover {
 @media (min-width: 768px) {
   .site-header-grid {
     display: grid;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: 1fr 2fr 1fr;
     align-items: center;
     gap: 2rem;
   }
@@ -3285,6 +3285,7 @@ a:hover {
 @media (min-width: 768px) {
   .site-header-col--center {
     justify-content: center;
+    width: 100%;
   }
 }
 
