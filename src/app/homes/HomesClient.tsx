@@ -101,15 +101,13 @@ export function HomesClient({
   useEffect(() => {
     const urlStatus = searchParams.get("status") as ExperienceFilter;
     if (urlStatus && VALID_FILTERS.includes(urlStatus)) {
-      if (urlStatus !== currentStatus) {
-        // eslint-disable-next-line react-hooks/set-state-in-effect -- syncing state with URL is valid
-        setCurrentStatus(urlStatus);
-        localStorage.setItem(FILTER_STORAGE_KEY, urlStatus);
-      }
-    } else if (!urlStatus && currentStatus !== "all") {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- syncing state with URL is valid
+      setCurrentStatus(urlStatus);
+      localStorage.setItem(FILTER_STORAGE_KEY, urlStatus);
+    } else if (!urlStatus) {
       setCurrentStatus("all");
     }
-  }, [searchParams, currentStatus]);
+  }, [searchParams]); // Only depend on searchParams
 
   const currentArchitect = searchParams.get("architect");
   const currentState = searchParams.get("state");
@@ -126,10 +124,10 @@ export function HomesClient({
         }
       } else {
         params.delete(key);
-        // When clearing status, default to "sale" and persist
+        // When clearing status, default to "all" and persist
         if (key === "status") {
-          localStorage.setItem(FILTER_STORAGE_KEY, "sale");
-          setCurrentStatus("sale");
+          localStorage.setItem(FILTER_STORAGE_KEY, "all");
+          setCurrentStatus("all");
         }
       }
       router.push(`${pathname}?${params.toString()}`, { scroll: false });
@@ -228,7 +226,7 @@ function CountdownScrollGrid({ properties }: { properties: EnhancedProperty[] })
   return (
     <section className="table-section">
       <div className="container py-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="responsive-card-grid">
           {visibleItems.map((property, idx) => {
             const batchIndex = Math.floor(idx / 9);
             const currentBatch = Math.floor((visibleItems.length - 1) / 9);

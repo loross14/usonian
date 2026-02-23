@@ -41,15 +41,12 @@ export function PropertyGrid({ properties }: PropertyGridProps) {
   return (
     <div
       ref={gridRef}
-      className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-12 md:gap-y-24"
+      className="responsive-card-grid responsive-card-grid--staggered"
     >
       {properties.map((property, index) => (
         <div
           key={property.id}
-          className={`
-            property-card-animate
-            ${index % 2 === 1 ? "md:mt-32" : ""}
-          `}
+          className="property-card-animate"
           style={{ animationDelay: isVisible ? `${index * 80}ms` : undefined }}
         >
           <PropertyCard property={property} variant="v2" />

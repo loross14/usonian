@@ -39,6 +39,13 @@
 
   /* Grid line for overlay */
   --grid-line: rgba(0, 0, 0, 0.06);
+
+  /* Responsive Card Grid System */
+  --grid-gap-x-base: 2rem;
+  --grid-gap-y-base: 3rem;
+  --grid-gap-x-dense: 1.5rem;
+  --grid-gap-y-dense: 2rem;
+  --grid-stagger-offset: 8rem;
 }
 
 @theme inline {
@@ -2839,6 +2846,84 @@ a:hover {
 }
 
 /* ============================================
+   RESPONSIVE CARD GRID SYSTEM
+   ============================================
+
+   Columns: 2 (mobile) → 4 (md:768px) → 5 (lg:1024px)
+   Min: 2, Max: 5 enforced
+
+   Usage:
+   <div class="responsive-card-grid">
+     <div>Card 1</div>
+     ...
+   </div>
+
+   Variants:
+   - .responsive-card-grid--staggered: Alternating vertical offsets
+
+   ============================================ */
+
+/* Base responsive card grid */
+.responsive-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--grid-gap-y-base) var(--grid-gap-x-base);
+}
+
+@media (min-width: 768px) {
+  .responsive-card-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--grid-gap-y-dense) var(--grid-gap-x-dense);
+  }
+
+  :root {
+    --grid-stagger-offset: 4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsive-card-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  :root {
+    --grid-stagger-offset: 3rem;
+  }
+}
+
+/* Staggered variant - alternating column vertical offsets */
+
+/* Mobile: 2 columns - column 2 offset */
+.responsive-card-grid--staggered > *:nth-child(2n) {
+  margin-top: var(--grid-stagger-offset);
+}
+
+/* Tablet: 4 columns - columns 2 and 4 offset */
+@media (min-width: 768px) {
+  .responsive-card-grid--staggered > *:nth-child(2n) {
+    margin-top: 0;
+  }
+
+  .responsive-card-grid--staggered > *:nth-child(4n-2),
+  .responsive-card-grid--staggered > *:nth-child(4n) {
+    margin-top: var(--grid-stagger-offset);
+  }
+}
+
+/* Desktop: 5 columns - columns 2 and 4 offset */
+@media (min-width: 1024px) {
+  .responsive-card-grid--staggered > *:nth-child(4n-2),
+  .responsive-card-grid--staggered > *:nth-child(4n) {
+    margin-top: 0;
+  }
+
+  .responsive-card-grid--staggered > *:nth-child(5n+2),
+  .responsive-card-grid--staggered > *:nth-child(5n+4) {
+    margin-top: var(--grid-stagger-offset);
+  }
+}
+
+/* ============================================
    V2 GRID VIEW CARD STYLES
    Matches v2-homes-grid.html mockup
    ============================================ */
@@ -3078,6 +3163,8 @@ a:hover {
    ============================================ */
 
 .hero-filter {
+  position: relative;
+  z-index: 100;
   border: 1px solid rgba(0, 0, 0, 0.15);
   background: transparent;
   padding: 12px 16px;
@@ -3086,6 +3173,8 @@ a:hover {
   gap: 10px;
   transition: all 0.2s ease;
   min-width: 280px;
+  max-width: 100%;
+  overflow: visible;
 }
 
 .hero-filter:hover,
@@ -3121,6 +3210,9 @@ a:hover {
   transition: all 0.15s ease;
   text-transform: uppercase;
   white-space: nowrap;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .hero-filter-tab:last-child {
@@ -3238,7 +3330,7 @@ a:hover {
   overflow-y: auto;
   background: var(--white);
   border: 1px solid var(--black);
-  z-index: 100;
+  z-index: 1000;
   box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
 }
 
@@ -3271,7 +3363,11 @@ a:hover {
   font-weight: 700;
 }
 
-/* Responsive - Mobile only (below md breakpoint) */
+/* =============================================================================
+   HERO FILTER - RESPONSIVE STYLES
+   ============================================================================= */
+
+/* Mobile: Vertical stacking (< 768px) */
 @media (max-width: 767px) {
   .hero-filter {
     min-width: unset;
@@ -3279,23 +3375,64 @@ a:hover {
     margin-top: 24px;
   }
 
-  .hero-filter-row {
+  /* Row 1: Tabs + Toggle stay together */
+  .hero-filter-row--tabs {
     flex-wrap: wrap;
+    gap: 8px;
   }
 
   .hero-filter-tabs {
-    flex: unset;
-    width: 100%;
+    flex: 1 1 auto;
+    min-width: 0;
   }
 
   .hero-filter-tab {
     flex: 1;
     text-align: center;
     padding: 8px 6px;
+    font-size: 10px;
   }
 
   .hero-filter-view {
-    margin-left: 0;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+
+  /* Row 2: Dropdowns stack vertically */
+  .hero-filter-row--dropdowns {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .hero-dropdown {
+    flex: none;
+    width: 100%;
+  }
+}
+
+/* Tablet: Force toggle inline (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero-filter-row--tabs {
+    flex-wrap: nowrap;
+  }
+
+  .hero-filter-tabs {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .hero-filter-tab {
+    padding: 6px 8px;
+    font-size: 10px;
+  }
+
+  .hero-filter-view {
+    flex-shrink: 0;
+    margin-left: 8px;
+  }
+
+  .hero-filter-row--dropdowns {
+    flex-wrap: nowrap;
   }
 
   .hero-dropdown {
@@ -3304,5 +3441,17 @@ a:hover {
   }
 }
 
-/* Mid-range breakpoint: Show both filter rows (tabs + dropdowns) */
-/* Both rows visible at 768px-1023px for compact 2-row layout */
+/* Desktop (>= 1024px): Full two-row layout */
+@media (min-width: 1024px) {
+  .hero-filter-tabs {
+    flex: 1;
+  }
+
+  .hero-filter-view {
+    margin-left: auto;
+  }
+
+  .hero-dropdown {
+    flex: 1;
+  }
+}
